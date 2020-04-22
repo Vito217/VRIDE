@@ -22,10 +22,15 @@ It works much like the Pharo IDE: create and search for classes using the System
 
 ### The System Browser
 
-Just like Pharo's System Browser, you can use the text editor to create your own classes. In order to do so, write your piece of code and execute the corresponding shorcut. Classes are shown in the left window, while their methods are shown in the right window. Once you select one of the objects .
+Just like Pharo's System Browser, you can use the text editor to create your own classes. In order to do so, write your piece of code and execute the corresponding shorcut. Classes are shown in the left window, while their methods are shown in the right window. Once you select one of the objects, you can see its source code.
+
+![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/screenShots/2020-04-22-(2).png)
+![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/screenShots/2020-04-22-(3).png)
 
 ### The Playground
 Once you've defined your own objects, or if you just want to play with some basic operations, write some code using the playground's text editor. Depending on the shorcut you use, you can either execute your code or print the result after selecting a statement.
+
+![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/screenShots/2020-04-22-(4).png)
 
 ## How does it work?
 
@@ -35,6 +40,8 @@ The software uses a C# script that makes HTTP request to a Pharo server. The ser
 ```
 ZnReadEvalPrintDelegate startInServerOn: 1701.
 ```
+
+![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/screenShots/2020-04-22.png)
 
 A Zinc instruction looks something like this:
 
@@ -68,6 +75,8 @@ public class PharoRequests
 
 Pharo will warn you that there may be linebreaks inside your Pharo code, but it will work anyways (at least on my Windows machine).
 
+![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/screenShots/2020-04-22-(7).png)
+
 Once a new class or method is created, a new Unity GameObject is created and placed in its corresponding scrollable window.
 
 ### Working with prefabs
@@ -75,9 +84,12 @@ Once a new class or method is created, a new Unity GameObject is created and pla
 Each element is instantiated as a prefab, and most of the prefabs are Canvas. The most relevant prefabs are the following:
 
 <ul>
-  <li>Scrollable Window, which is adapted to fit its width and height to its content. It can be used as class container and method container</li>
-  <li>Text Editor requires Text Mesh Pro, wich uses Rich Text in order to produce Text Highlighting</li>
+  <li>Scrollable Window: it is adapted to fit its width and height to its content. It can be used as a class container and a method container</li>
+  <li>Text Editor: requires Text Mesh Pro, which uses Rich Text in order to produce Text Highlighting</li>
 </ul>
+
+![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/screenShots/2020-04-22-(6).png)
+![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/screenShots/2020-04-22-(5).png)
 
 ### Text Highlighting
 
