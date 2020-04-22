@@ -17,9 +17,9 @@ public class BrowserTextEditor : TextEditorBehaviour
 
     /*void Start()
     {
-
-        Regex rgx = new Regex(@"\A(.*)(\s|\n)");
-        string methodName = rgx.Matches("NewMethod ")[0].Groups[1].Value;
+        Regex rgx = new Regex(@"(\A(.*:?) )|(\A(.*:?)\n)");
+        string line = "name: value\nname := value";
+        string methodName = rgx.Matches(line)[0].Value;
         Debug.Log(methodName);
     }*/
 
@@ -131,8 +131,8 @@ public class BrowserTextEditor : TextEditorBehaviour
             var responseString = await response.Content.ReadAsStringAsync();
 
             // Getting method name
-            Regex rgx = new Regex(@"\A(.*)(\s|\n)");
-            string methodName = rgx.Matches(clean_code)[0].Groups[1].Value;
+            Regex rgx = new Regex(@"(\A(.*:?) )|(\A(.*:?)\n)");
+            string methodName = rgx.Matches(clean_code)[0].Value;
 
             GameObject existing_method = 
                 GameObject.Find("/Browser/Methods/Panel/Scroll View/Viewport/Content/" + current_class_name + "/" + methodName);
