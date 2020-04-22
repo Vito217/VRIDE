@@ -31,22 +31,40 @@ Once you've defined your own objects, or if you just want to play with some basi
 The software uses a C# script that makes HTTP request to a Pharo server. The server is initialized using the Zinc HTTP package. Take this line as an example:
 
 ```
-Zn
+ZnReadEvalPrintDelegate startInServerOn: 1701.
 ```
 
-A Zinc instruction look something like this:
+A Zinc instruction looks something like this:
 
 ```
-Zn
+ZnClient new
+    url: 'http://localhost:1701/repl';
+    contents: '42 factorial';
+    post.
 ```
 
 Since it is a POST request that has to be done from a C# code, we use HTTP client. Then, the instruction looks like this:
 
 ```
-Zn
+using System.Net.Http;
+...
+
+public class PharoRequests
+{
+    private static readonly HttpClient client = new HttpClient();
+
+    async void PharoCall()
+    {   
+        var content = new StringContent("42 factorial", Encoding.UTF8);
+
+        var response = await client.PostAsync("http://localhost:1701/repl", content);
+
+        var responseString = await response.Content.ReadAsStringAsync();
+    }
+}
 ```
 
-Pharo will warn you that there may be linebreaks inside your Pharo code, but it will work anyways.
+Pharo will warn you that there may be linebreaks inside your Pharo code, but it will work anyways (at least on my Windows machine).
 
 Once a new class or method is created, a new Unity GameObject is created and placed in its corresponding scrollable window.
 
