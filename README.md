@@ -110,6 +110,7 @@ The text highlightning is based on regular expressions. You can specify a list o
   <li>Error/Crash handlers.</li>
   <li>VR camera and controls.</li>
   <li>Graphical visualizations of the executed code.</li>
+  <li>Calling stored classes (they won't reappear when the software is closed)</li>
   <li>A list of bugs (shown below).</li>
 </ul>
 
@@ -117,5 +118,5 @@ The text highlightning is based on regular expressions. You can specify a list o
 
 <ul>
   <li>The Pharo server must have a default author. Otherwise, if the user tries to define a method, the server will be waiting for an author. If the user selects the yet undefined method, the software will crash.</li>
-  <li>Some details in the text highlightning, such as incorrect coloring, blank spaces, etc.</li>
+  <li>Some details in the text editor, such as incorrect highlightning, coloring, blank spaces, etc.</li>
 </ul>
