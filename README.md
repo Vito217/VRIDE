@@ -120,3 +120,7 @@ The text highlightning is based on regular expressions. You can specify a list o
   <li>The Pharo server must have a default author. Otherwise, if the user tries to define a method, the server will be waiting for an author. If the user selects the yet undefined method, the software will crash.</li>
   <li>Some details in the text editor, such as incorrect highlightning, coloring, blank spaces, etc.</li>
 </ul>
+
+## Channel Log
+
+<a href="https://github.com/Vito217/PharoVRIDE/blob/master/ChannelLog.md">Click here to see the Channel Log</a>
