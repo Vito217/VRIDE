@@ -13,17 +13,7 @@ public class BrowserTextEditor : TextEditorBehaviour
     public GameObject class_prefab;
     public GameObject method_prefab;
     public GameObject content_list_prefab;
-    public string IP = "http://localhost:1701/repl";
 
-    /*void Start()
-    {
-        Regex rgx = new Regex(@"(\A(.*:?) )|(\A(.*:?)\n)");
-        string line = "name: value\nname := value";
-        string methodName = rgx.Matches(line)[0].Value;
-        Debug.Log(methodName);
-    }*/
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.anyKeyDown && field.isFocused)
@@ -34,14 +24,15 @@ public class BrowserTextEditor : TextEditorBehaviour
             }
             else if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey("g"))
             {
-                PharoDefine(field.text);
+                PharoDefine();
             }
         }
     }
 
-    async void PharoDefine(string input_code)
+    async void PharoDefine()
     {
         // Cleaning code from RichText
+        string input_code = field.text;
         string clean_code = input_code;
         clean_code = clean_code.Replace("<color=#b32d00>", "");
         clean_code = clean_code.Replace("<color=#00ffffff>", "");
@@ -107,7 +98,7 @@ public class BrowserTextEditor : TextEditorBehaviour
 
                 //Assign method variables
                 BrowserMethod new_method_component = new_method.GetComponent<BrowserMethod>();
-                new_method_component.sourceCode = "initialize super initialize .";
+                new_method_component.sourceCode = "initialize\n\tsuper initialize .";
                 new_method_component.field = this.gameObject.GetComponent<TMP_InputField>();
             }
             else
@@ -133,6 +124,10 @@ public class BrowserTextEditor : TextEditorBehaviour
             // Getting method name
             Regex rgx = new Regex(@"(\A(.*:?) )|(\A(.*:?)\n)");
             string methodName = rgx.Matches(clean_code)[0].Value;
+            methodName = methodName.Replace("\n", "");
+            methodName = methodName.Replace("\r", "");
+            methodName = methodName.Replace("\t", "");
+            methodName = methodName.Replace(" ", "");
 
             GameObject existing_method = 
                 GameObject.Find("/Browser/Methods/Panel/Scroll View/Viewport/Content/" + current_class_name + "/" + methodName);
@@ -154,6 +149,7 @@ public class BrowserTextEditor : TextEditorBehaviour
                 //Update class source code
                 BrowserMethod existing_component = existing_method.GetComponent<BrowserMethod>();
                 existing_component.sourceCode = input_code;
+                field.text = existing_component.sourceCode;
             }
         }
     }

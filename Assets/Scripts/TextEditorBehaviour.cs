@@ -12,6 +12,7 @@ public class TextEditorBehaviour : MonoBehaviour
 {
     public TextMeshProUGUI code;
     public TMP_InputField field;
+    public string IP = "http://localhost:1701/repl";
     public static readonly HttpClient client = new HttpClient();
     private string pattern2 = @"(\b)(void|string|int|char|float|double|bool|static|public|private|def|print|return|Object)(\s)";
     private List<string> keywords = new List<string> { 
