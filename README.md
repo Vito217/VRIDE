@@ -121,6 +121,16 @@ The text highlightning is based on regular expressions. You can specify a list o
   <li>Some details in the text editor, such as incorrect highlightning, coloring, blank spaces, etc.</li>
 </ul>
 
+## Controls
+
+<ul>
+  <li>Left Click: Select and Drag</li>
+  <li>Arrows: Move Player</li>
+  <li>Mouse movement: Move Camera</li>
+  <li>Ctrl + G: Execute (and print, only if you are in Playground)</li>
+  <li>Ctrl + H: Inspect the selected variable (only in Playground)</li>
+</ul>
+
 ## Channel Log
 
 <a href="https://github.com/Vito217/PharoVRIDE/blob/master/ChannelLog.md">Click here to see the Channel Log</a>
