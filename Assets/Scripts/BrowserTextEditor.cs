@@ -14,6 +14,9 @@ public class BrowserTextEditor : TextEditorBehaviour
     public GameObject method_prefab;
     public GameObject content_list_prefab;
 
+    public GameObject class_list;
+    public GameObject method_list;
+
     void Update()
     {
         if (Input.anyKeyDown && field.isFocused)
@@ -65,18 +68,19 @@ public class BrowserTextEditor : TextEditorBehaviour
             string className = rgx.Matches(clean_code)[0].Groups[1].Value;
 
             // Check if class object exists
-            GameObject existing_class = GameObject.Find("/Browser/Classes/Panel/Scroll View/Viewport/Content/" + className);
-            if (!existing_class)
+            Transform existing_class_transform = class_list.transform.Find(className);
+
+            if (!existing_class_transform)
             {
                 // Create new browser class
                 GameObject new_class = Instantiate(class_prefab);
-                new_class.transform.SetParent(GameObject.Find("/Browser/Classes/Panel/Scroll View/Viewport/Content").transform, false);
+                new_class.transform.SetParent(class_list.transform, false);
                 new_class.GetComponent<TextMeshProUGUI>().text = className;
                 new_class.name = className;
 
                 // Create method list
                 GameObject new_method_list = Instantiate(content_list_prefab);
-                new_method_list.transform.SetParent(GameObject.Find("/Browser/Methods/Panel/Scroll View/Viewport/Content").transform, false);
+                new_method_list.transform.SetParent(method_list.transform, false);
                 new_method_list.name = className;
                 new_method_list.SetActive(false);
 
@@ -104,6 +108,7 @@ public class BrowserTextEditor : TextEditorBehaviour
             else
             {
                 //Update class source code
+                GameObject existing_class = existing_class_transform.gameObject;
                 BrowserClass existing_component = existing_class.GetComponent<BrowserClass>();
                 existing_component.sourceCode = input_code;
             }
@@ -111,7 +116,7 @@ public class BrowserTextEditor : TextEditorBehaviour
         }
         else
         {
-            GameObject class_window = GameObject.Find("/Browser/Classes/Panel/Scroll View/Viewport/Content");
+            GameObject class_window = class_list;
             BrowserClass current_class = class_window.GetComponent<ClassWindow>().getLastSelectedClass();
             string current_class_name = current_class.name;
 
@@ -129,13 +134,12 @@ public class BrowserTextEditor : TextEditorBehaviour
             methodName = methodName.Replace("\t", "");
             methodName = methodName.Replace(" ", "");
 
-            GameObject existing_method = 
-                GameObject.Find("/Browser/Methods/Panel/Scroll View/Viewport/Content/" + current_class_name + "/" + methodName);
+            Transform existing_method_transform = method_list.transform.Find(current_class_name).Find(methodName);
 
-            if (!existing_method)
+            if (!existing_method_transform)
             {
                 GameObject new_method = Instantiate(method_prefab);
-                new_method.transform.SetParent(GameObject.Find("/Browser/Methods/Panel/Scroll View/Viewport/Content/" + current_class_name).transform, false);
+                new_method.transform.SetParent(method_list.transform.Find(current_class_name), false);
                 new_method.GetComponent<TextMeshProUGUI>().text = methodName;
                 new_method.name = methodName;
 
@@ -147,6 +151,7 @@ public class BrowserTextEditor : TextEditorBehaviour
             else
             {
                 //Update class source code
+                GameObject existing_method = existing_method_transform.gameObject;
                 BrowserMethod existing_component = existing_method.GetComponent<BrowserMethod>();
                 existing_component.sourceCode = input_code;
                 field.text = existing_component.sourceCode;

@@ -10,8 +10,7 @@ using TMPro;
 
 public class PlaygroundTextEditor : TextEditorBehaviour
 {
-    public GameObject inspector_row_prefab;
-    public GameObject inspector_content;
+    public GameObject inspector_prefab;
 
     // Update is called once per frame
     void Update()
@@ -95,6 +94,11 @@ public class PlaygroundTextEditor : TextEditorBehaviour
         var content = new StringContent(code, Encoding.UTF8);
         var response = await client.PostAsync(IP, content);
         var responseString = await response.Content.ReadAsStringAsync();
+
+        GameObject new_inspector = Instantiate(inspector_prefab);
+        new_inspector.GetComponent<InspectorInit>().initializeContent(responseString);
+
+        /*
         responseString = Regex.Replace(responseString, @"an OrderedCollection\((.*)\)", "$1");
 
         // Deleting previous children
@@ -103,9 +107,11 @@ public class PlaygroundTextEditor : TextEditorBehaviour
             children.Add(child.gameObject);
         }
         children.ForEach(child => Destroy(child));
-
+        
         // Adding new children
         responseString = Regex.Replace(responseString, @"self=a\s(.*)", "self=a$1");
+
+
         string[] tuples = responseString.Split(' ');
         foreach (string tuple in tuples)
         {
@@ -121,5 +127,6 @@ public class PlaygroundTextEditor : TextEditorBehaviour
             new_row.transform.SetParent(inspector_content.transform, false);
             new_row.name = tuple;
         }
+        */
     }
 }
