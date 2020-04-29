@@ -100,13 +100,13 @@ The text highlightning is based on regular expressions. You can specify a list o
 <ul>
   <li>Browser Text Editor and Scrollable Windows: define classes or methods, and select them to see their sourcecode.</li>
   <li>Playground: writes code and prints its result.</li>
+  <li>Inspector: inspect a variable and its value.</li>
 </ul>
 
 ## What is NOT working (a.k.a. TODO)
 
 <ul>
   <li>Any kind of logging. It won't display any error, warning or std prints.</li>
-  <li>The inspector.</li>
   <li>Error/Crash handlers.</li>
   <li>VR camera and controls.</li>
   <li>Graphical visualizations of the executed code.</li>
