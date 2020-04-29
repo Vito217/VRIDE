@@ -1,5 +1,10 @@
 # PharoVRIDE's Channel Log
 
+## V0.2.1 (29/04/2020)
+<ul>
+  <li>Improved Prefabs</li>
+</ul>
+
 ## V0.2.0 (26/04/2020)
 <ul>
   <li>Now the inspector is working. Select the variable you want to inspect and do Ctrl + H</li>
