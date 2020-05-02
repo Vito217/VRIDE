@@ -10,6 +10,7 @@ public class MouseLook : MonoBehaviour
     public float range = 100f;
 
     public GameObject browser_prefab;
+    public GameObject playground_prefab;
     
     // Start is called before the first frame update
     void Start()
@@ -32,14 +33,25 @@ public class MouseLook : MonoBehaviour
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         playerBody.Rotate(Vector3.up * mouseX);
 
-        if (Input.GetButtonDown("Fire1")) {
+        
+        if (Input.GetKey(KeyCode.LeftControl)) {
             RaycastHit hit;
             if (Physics.Raycast(transform.position, transform.forward, out hit, range)) {
                 //KeyInput k = (KeyInput) hit.transform.gameObject.GetComponent("KeyInput");
                 //code.text += k.value;
-                //GameObject new_browser = Instantiate(browser_prefab);
-                //new_browser.transform.forward = new Vector3(transform.forward.x, 0, transform.forward.z);
-                //new_browser.transform.position = hit.point;
+
+                if (Input.GetKeyDown("q")) {
+                    GameObject new_browser = Instantiate(browser_prefab);
+                    //new_browser.transform.Find("Classes").Find("Panel").gameObject.GetComponent<Image>().color = Random.ColorHSV();
+                    new_browser.transform.forward = new Vector3(transform.forward.x, 0, transform.forward.z);
+                    new_browser.transform.position = hit.point;
+                }
+                else if (Input.GetKeyDown("e"))
+                {
+                    GameObject new_playground = Instantiate(playground_prefab);
+                    new_playground.transform.forward = new Vector3(transform.forward.x, 0, transform.forward.z);
+                    new_playground.transform.position = hit.point;
+                }
             }
         }
     }

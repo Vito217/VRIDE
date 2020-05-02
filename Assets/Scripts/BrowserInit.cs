@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class BrowserInit : MonoBehaviour
@@ -8,6 +9,9 @@ public class BrowserInit : MonoBehaviour
     public GameObject methods_window;
     public GameObject text_editor;
     public GameObject this_object;
+    public GameObject classes_panel;
+    public GameObject methods_panel;
+    public GameObject editor_panel;
     public float rise_speed = 1.0f;
     public float expand_speed = 1.0f;
     Vector3 new_classes_pos;
@@ -19,6 +23,11 @@ public class BrowserInit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Color new_color = Random.ColorHSV();
+        classes_panel.GetComponent<Image>().color = new_color;
+        methods_panel.GetComponent<Image>().color = new_color;
+        editor_panel.GetComponent<Image>().color = new_color;
+
         Vector3 methods_pos = methods_window.transform.localPosition;
         classes_window.transform.localPosition = methods_pos;
         text_editor.transform.localPosition = methods_pos;
@@ -50,7 +59,7 @@ public class BrowserInit : MonoBehaviour
     void initializeAnimation() {
         if (this_object.transform.position.y < y_limit)
         {
-            rise_speed = rise_speed * 0.92f;
+            //rise_speed = rise_speed * 0.92f;
             this_object.transform.position = Vector3.MoveTowards(
                 this_object.transform.position,
                 new_pos,
@@ -59,7 +68,7 @@ public class BrowserInit : MonoBehaviour
         }
         else
         {
-            expand_speed = expand_speed * 0.9f;
+            //expand_speed = expand_speed * 0.9f;
             classes_window.transform.localPosition = Vector3.MoveTowards(
                 classes_window.transform.localPosition,
                 new_classes_pos,

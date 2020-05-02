@@ -25,7 +25,7 @@ public class BrowserTextEditor : TextEditorBehaviour
             {
                 onChangeInput();
             }
-            else if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey("g"))
+            else if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown("g"))
             {
                 PharoDefine();
             }
@@ -122,7 +122,7 @@ public class BrowserTextEditor : TextEditorBehaviour
 
             // Executing pharo code
             clean_code = clean_code.Replace("'", "''");
-            string method_code = current_class_name + " compile: '"+ clean_code +"'";
+            string method_code = current_class_name + " compile: '" + clean_code + "'";
             var response = await client.PostAsync(IP, new StringContent(method_code, Encoding.UTF8));
             var responseString = await response.Content.ReadAsStringAsync();
 
