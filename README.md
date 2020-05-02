@@ -130,7 +130,7 @@ The text highlightning is based on regular expressions. You can specify a list o
   <li>Ctrl + G: Execute (and print, only if you are in Playground)</li>
   <li>Ctrl + H: Inspect the selected variable (only in Playground)</li>
   <li>Ctrl + Q: Invoke a new Browser</li>
-  <li>Ctrl + Q: Invoke a new Playground</li>
+  <li>Ctrl + E: Invoke a new Playground</li>
 </ul>
 
 ## Channel Log
