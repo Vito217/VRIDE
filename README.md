@@ -3,7 +3,7 @@ A Virtual Reality Interactive Development Environment made in Unity that support
 
 <i><b>Note:</b> This is still an early WIP, so there could be lot of features missing</i>
 
-![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/screenShots/2020-04-22-(1).png)
+![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-04-22-(1).png)
 
 ## What is PharoVRIDE?
 
@@ -24,13 +24,13 @@ It works much like the Pharo IDE: create and search for classes using the System
 
 Just like Pharo's System Browser, you can use the text editor to create your own classes. In order to do so, write your piece of code and execute the corresponding shorcut. Classes are shown in the left window, while their methods are shown in the right window. Once you select one of the objects, you can see its source code.
 
-![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/screenShots/2020-04-22-(2).png)
-![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/screenShots/2020-04-22-(3).png)
+![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-04-22-(2).png)
+![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-04-22-(3).png)
 
 ### The Playground
 Once you've defined your own objects, or if you just want to play with some basic operations, write some code using the playground's text editor. Depending on the shorcut you use, you can either execute your code or print the result after selecting a statement.
 
-![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/screenShots/2020-04-22-(4).png)
+![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-04-22-(4).png)
 
 ## How does it work?
 
@@ -41,7 +41,7 @@ The software uses a C# script that makes HTTP request to a Pharo server. The ser
 ZnReadEvalPrintDelegate startInServerOn: 1701.
 ```
 
-![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/screenShots/2020-04-22.png)
+![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-04-22.png)
 
 A Zinc instruction looks something like this:
 
@@ -75,7 +75,7 @@ public class PharoRequests
 
 Pharo will warn you that there may be linebreaks inside your Pharo code, but it will work anyways (at least on my Windows machine).
 
-![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/screenShots/2020-04-22-(7).png)
+![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-04-22-(7).png)
 
 Once a new class or method is created, a new Unity GameObject is created and placed in its corresponding scrollable window.
 
@@ -88,8 +88,8 @@ Each element is instantiated as a prefab, and most of the prefabs are Canvas. Th
   <li>Text Editor: requires Text Mesh Pro, which uses Rich Text in order to produce Text Highlighting</li>
 </ul>
 
-![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/screenShots/2020-04-22-(6).png)
-![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/screenShots/2020-04-22-(5).png)
+![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-04-22-(6).png)
+![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-04-22-(5).png)
 
 ### Text Highlighting
 
