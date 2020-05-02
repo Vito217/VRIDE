@@ -8,8 +8,8 @@
   <li>Added a real-time day/night cycle (just for fun)</li>
 </ul>
 
-![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/screenShots/2020-05-02_(1).png)
-![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/screenShots/2020-05-02.png)
+![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-05-02_(1).png)
+![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-05-02.png)
 
 ## V0.2.1 (29/04/2020)
 <ul>
