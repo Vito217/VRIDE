@@ -22,13 +22,9 @@ public class BrowserTextEditor : TextEditorBehaviour
         if (Input.anyKeyDown && field.isFocused)
         {
             if (!(Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftControl) || Input.GetMouseButton(0) || Input.GetMouseButton(1)))
-            {
                 onChangeInput();
-            }
             else if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown("g"))
-            {
                 PharoDefine();
-            }
         }
     }
 
@@ -62,6 +58,7 @@ public class BrowserTextEditor : TextEditorBehaviour
             var content = new StringContent(clean_code, Encoding.UTF8);
             var response = await client.PostAsync(IP, content);
             var responseString = await response.Content.ReadAsStringAsync();
+            //Debug.Log(responseString);
 
             // Getting class name
             Regex rgx = new Regex(@"\s#(.*)(\s|\n)");
@@ -104,6 +101,8 @@ public class BrowserTextEditor : TextEditorBehaviour
                 BrowserMethod new_method_component = new_method.GetComponent<BrowserMethod>();
                 new_method_component.sourceCode = "initialize\n\tsuper initialize .";
                 new_method_component.field = this.gameObject.GetComponent<TMP_InputField>();
+
+                class_list.GetComponent<ClassWindow>().setLastSelectedClass(new_class_component);
             }
             else
             {

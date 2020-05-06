@@ -8,7 +8,7 @@ public class PlaygroundInit : MonoBehaviour
     public GameObject this_object;
     public GameObject this_panel;
     public float rise_speed = 1.0f;
-    float y_limit = 4.0f;
+    public float y_limit = 5.0f;
     public bool initializing = true;
     Vector3 new_pos;
 
@@ -26,9 +26,7 @@ public class PlaygroundInit : MonoBehaviour
     void Update()
     {
         if (initializing)
-        {
             initializeAnimation();
-        }
     }
 
     void initializeAnimation()
@@ -43,8 +41,6 @@ public class PlaygroundInit : MonoBehaviour
             );
         }
         else
-        {
             initializing = false;
-        }
     }
 }

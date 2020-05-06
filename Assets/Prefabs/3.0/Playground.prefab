@@ -75,7 +75,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   this_object: {fileID: 876944620325929771}
   this_panel: {fileID: 876944619196613706}
-  rise_speed: 1
+  rise_speed: 0.5
+  y_limit: 5
   initializing: 1
 --- !u!114 &876944620248350698
 MonoBehaviour:
@@ -174,12 +175,12 @@ PrefabInstance:
     - target: {fileID: 2593645588223636068, guid: 7c48868681267d347acc7bcc874e21fb,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2593645588223636068, guid: 7c48868681267d347acc7bcc874e21fb,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2593645588223636068, guid: 7c48868681267d347acc7bcc874e21fb,
         type: 3}

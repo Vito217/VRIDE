@@ -26,28 +26,19 @@ public class PlaygroundTextEditor : TextEditorBehaviour
             }
 
             if (!(Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftControl) || Input.GetMouseButton(0) || Input.GetMouseButton(1)))
-            {
                 onChangeInput();
-            }
             else if (Input.GetKey(KeyCode.LeftControl))
             {
                 if (Input.GetKeyDown("g"))
-                {
                     PharoPrint();
-                }
                 else if (Input.GetKeyDown("h"))
-                {
                     PharoInspect();
-                }
+                else if (Input.GetKeyDown("v"))
+                    onChangeInput();
                 else if (Input.GetKeyDown("c"))
                 {
                     // Do Nothing
                 }
-                else if (Input.GetKeyDown("v"))
-                {
-                    onChangeInput();
-                }
-
             }
         }
     }
@@ -117,36 +108,5 @@ public class PlaygroundTextEditor : TextEditorBehaviour
         new_inspector.GetComponent<InspectorInit>().new_pos = newWorldPos;
         new_inspector.GetComponent<InspectorInit>().initializeContent(responseString);
         new_inspector.GetComponent<InspectorInit>().initializing = true;
-
-        /*
-        responseString = Regex.Replace(responseString, @"an OrderedCollection\((.*)\)", "$1");
-
-        // Deleting previous children
-        var children = new List<GameObject>();
-        foreach (Transform child in inspector_content.transform) {
-            children.Add(child.gameObject);
-        }
-        children.ForEach(child => Destroy(child));
-        
-        // Adding new children
-        responseString = Regex.Replace(responseString, @"self=a\s(.*)", "self=a$1");
-
-
-        string[] tuples = responseString.Split(' ');
-        foreach (string tuple in tuples)
-        {
-            string[] pair = tuple.Split('=');
-            string variable = pair[0].Replace("'", "");
-            string value = pair[1].Replace("'", "");
-
-            GameObject new_row = Instantiate(inspector_row_prefab);
-            TextMeshProUGUI var_button = new_row.transform.Find("Variable").transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
-            TextMeshProUGUI val_button = new_row.transform.Find("Value").transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
-            var_button.text = variable;
-            val_button.text = value;
-            new_row.transform.SetParent(inspector_content.transform, false);
-            new_row.name = tuple;
-        }
-        */
     }
 }
