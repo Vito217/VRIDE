@@ -1,6 +1,6 @@
 # PharoVRIDE's Channel Log
 
-## V0.4.0 (02/05/2020)
+## V0.4.0 (06/05/2020)
 <ul>
   <li>Added a title screen</li>
   <li>Added support for future VR controls (still in development)</li>
