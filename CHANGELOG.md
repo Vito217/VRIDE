@@ -1,5 +1,13 @@
 # PharoVRIDE's Channel Log
 
+## V0.4.0 (06/05/2020)
+<ul>
+  <li>Added a title screen</li>
+  <li>Added support for future VR controls (still in development)</li>
+  <li>Fixed some bugs that occur during method definition</li>
+  <li>Some prefabs improvements</li>
+</ul>
+
 ## V0.3.0 (02/05/2020)
 <ul>
   <li>Now you can invoke as many instances of browsers and playgrounds as you want (see the Controls section in the README file)</li>
