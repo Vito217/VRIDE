@@ -12,7 +12,11 @@ public class TitleScreenBehaviour : MonoBehaviour
     public GameObject nonvrplayer_prefab;
     public GameObject oculusplayer_prefab;
     public GameObject htcplayer_prefab;
-    public GameObject default_camera;
+
+    public GameObject UIHelpers_prefab;
+    public GameObject defaultEventSystem_prefab;
+
+    //public GameObject default_camera;
 
     // Start is called before the first frame update
     void Start()
@@ -22,27 +26,56 @@ public class TitleScreenBehaviour : MonoBehaviour
 
     IEnumerator Coroutine()
     {
-
-        foreach (string s in XRSettings.supportedDevices)
+        if(XRSettings.loadedDeviceName == "")
         {
-            XRSettings.LoadDeviceByName(s);
-            if (XRSettings.loadedDeviceName != "")
-                break;
+            foreach (string s in XRSettings.supportedDevices)
+            {
+                XRSettings.LoadDeviceByName(s);
+                if (XRSettings.loadedDeviceName != "")
+                    break;
+            }
         }
+        
+        GameObject new_player;
+        GameObject eventSystem;
+
         switch (XRSettings.loadedDeviceName)
         {
             case "OpenVR":
+
+                //Enable SteamVR (HTC Vive)
                 yield return null;
                 XRSettings.enabled = true;
+
+                //Instantiate player
+                new_player = Instantiate(htcplayer_prefab);
+                new_player.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
+
+                //Instantiate Event System
+                eventSystem = Instantiate(UIHelpers_prefab);
+
                 break;
+
             case "Oculus":
+                
+                // Enable Oculus
                 yield return null;
                 XRSettings.enabled = true;
+                
+                // Instantiate player
+                new_player = Instantiate(oculusplayer_prefab);
+                new_player.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
+
+                // Instantiate Event System
+                eventSystem = Instantiate(UIHelpers_prefab);
+
                 break;
+
             default:
-                GameObject new_player = Instantiate(nonvrplayer_prefab);
-                new_player.transform.position = new Vector3(0.0f, 0.5f, 0.0f);
-                default_camera.SetActive(false);
+
+                eventSystem = Instantiate(defaultEventSystem_prefab);
+                new_player = Instantiate(nonvrplayer_prefab);
+                new_player.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
                 break;
         }
 

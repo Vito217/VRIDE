@@ -70,6 +70,7 @@ public class CustomMouseLook : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.LeftControl))
             spawner.SetActive(false);
+
         else if (Input.GetKeyDown(KeyCode.LeftControl))
             spawner.SetActive(true);
     }

@@ -8,6 +8,7 @@ using System.Net.Http;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq.Expressions;
+using System.Security.Cryptography;
 
 public class PlaygroundTextEditor : TextEditorBehaviour
 {
@@ -102,6 +103,19 @@ public class PlaygroundTextEditor : TextEditorBehaviour
         GameObject new_inspector = Instantiate(inspector_prefab);
         new_inspector.transform.forward = this.transform.forward;
         new_inspector.transform.position = this.transform.position;
+
+        if (inspector_prefab.name.StartsWith("OVR"))
+        {
+            Camera camera = transform.parent.parent.gameObject.GetComponent<Camera>();
+            GameObject laser_pointer = GameObject.Find("/OVREventSystem/LaserPointer");
+
+            new_inspector.transform.Find("InspectorTable").gameObject.GetComponent<OVRRaycaster>().pointer = laser_pointer;
+            new_inspector.transform.Find("TextEditor").gameObject.GetComponent<OVRRaycaster>().pointer = laser_pointer;
+
+            new_inspector.transform.Find("InspectorTable").gameObject.GetComponent<Canvas>().worldCamera = camera;
+            new_inspector.transform.Find("TextEditor").gameObject.GetComponent<Canvas>().worldCamera = camera;
+        }
+
         float width = this.gameObject.GetComponent<RectTransform>().sizeDelta.x;
         float height = this.gameObject.GetComponent<RectTransform>().sizeDelta.y;
         Vector3 newWorldPos = transform.TransformPoint(new Vector3(1.75f*width, -0.5f*height, 0));
