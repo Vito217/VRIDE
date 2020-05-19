@@ -1,5 +1,10 @@
 # PharoVRIDE's Channel Log
 
+## V0.5.0 (10/05/2020)
+<ul>
+  <li>Added SteamVR controlls.</li>
+</ul>
+
 ## V0.4.0 (06/05/2020)
 <ul>
   <li>Added a title screen</li>

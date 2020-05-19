@@ -136,3 +136,7 @@ The text highlightning is based on regular expressions. You can specify a list o
 ## Channel Log
 
 <a href="https://github.com/Vito217/PharoVRIDE/blob/master/CHANGELOG.md">Click here to see the Channel Log</a>
+
+## Download
+
+<a href="https://mega.nz/file/VIYQTChT#-UR2-MGmffdcovX4cm85d-vqzqKn5yANCj1o3KziUAs">VRIDE v0.5.0 for Windows and Mac OS</a>
