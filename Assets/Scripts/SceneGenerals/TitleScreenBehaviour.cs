@@ -25,6 +25,10 @@ public class TitleScreenBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //FileUtil.CopyFileOrDirectory(_path, "Assets/Textures/importedTexture12.png");
+        //AssetDatabase.Refresh();
+        //var go = Resources.Load<GameObject>("SVG/SVGExample");
+        //GameObject instance = Instantiate(go) as GameObject;
         StartCoroutine(Coroutine());
     }
 

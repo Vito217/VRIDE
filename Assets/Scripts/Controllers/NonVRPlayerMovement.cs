@@ -16,12 +16,6 @@ public class NonVRPlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey("escape"))
-        {
-            //Application.Quit();
-            //UnityEditor.EditorApplication.Exit(0);
-        }
-
         if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
         {
             float x = Input.GetAxis("Horizontal");
@@ -29,10 +23,9 @@ public class NonVRPlayerMovement : MonoBehaviour
 
             Vector3 move = transform.right * x + transform.forward * z;
             controller.Move(move * speed * Time.deltaTime);
-            velocity.y += gravity * Time.deltaTime;
-            controller.Move(velocity * Time.deltaTime);
         }
-
+        velocity.y += gravity * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit)

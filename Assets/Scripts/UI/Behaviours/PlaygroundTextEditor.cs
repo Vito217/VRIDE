@@ -1,14 +1,16 @@
 ﻿using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityEditor;
 using System.Net.Http;
 using UnityEngine.UI;
 using TMPro;
-using System.Linq.Expressions;
-using System.Security.Cryptography;
+using System.Globalization;
+using System.Linq;
 
 public class PlaygroundTextEditor : TextEditorBehaviour
 {
@@ -20,14 +22,17 @@ public class PlaygroundTextEditor : TextEditorBehaviour
     {
         if (Input.anyKeyDown && field.isFocused)
         {
-            if(out_index > 0 && field.caretPosition <= out_index)
-            {
-                field.text = Regex.Replace(field.text, @" <color=#b32d00>((.*)\n)*</color>", "");
-                out_index = -1;
-            }
-
-            if (!(Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftControl) || Input.GetMouseButton(0) || Input.GetMouseButton(1)))
+            if (!(Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftControl) || Input.GetMouseButton(0) || Input.GetMouseButton(1))) {
+                if ((out_index > 0 && field.caretPosition <= out_index) ||
+                    (Input.GetKey(KeyCode.Return) && field.caretPosition >= out_index && out_index >= 0) ||
+                    (Input.GetKey(KeyCode.Space) && field.caretPosition >= out_index && out_index >= 0))
+                {
+                    field.text = Regex.Replace(field.text, @"\s<color=#b32d00>.*", "");
+                    field.caretPosition = out_index;
+                    out_index = -1;
+                }
                 onChangeInput();
+            }
             else if (Input.GetKey(KeyCode.LeftControl))
             {
                 if (Input.GetKeyDown("g"))
@@ -38,7 +43,9 @@ public class PlaygroundTextEditor : TextEditorBehaviour
                     onChangeInput();
                 else if (Input.GetKeyDown("c"))
                 {
-                    // Do Nothing
+                    field.text = Regex.Replace(field.text, @"\s<color=#b32d00>.*", "");
+                    field.caretPosition = out_index;
+                    out_index = -1;
                 }
             }
         }
@@ -46,32 +53,36 @@ public class PlaygroundTextEditor : TextEditorBehaviour
 
     async void PharoPrint()
     {
-        string clean_code = field.text;
-        clean_code = Regex.Replace(clean_code, @" <color=#b32d00>((.*)\n)*</color>", "");
-        clean_code = clean_code.Replace("<color=#00ffffff>", "");
-        clean_code = clean_code.Replace("</color>", "");
-        clean_code = clean_code.Replace("<b>", "");
-        clean_code = clean_code.Replace("</b>", "");
-        clean_code = clean_code.Replace("<br>", " ");
+        string clean_code = cleanCode(field.text);
+
+        Debug.Log(clean_code);
 
         var content = new StringContent(clean_code, Encoding.UTF8);
-        var response = await client.PostAsync("http://localhost:1701/repl", content);
-        var responseString = await response.Content.ReadAsStringAsync();
-        string output = " <color=#b32d00>" + responseString + "</color>";
-        out_index = clean_code.Length;
-        field.text += output;
+        var response = await client.PostAsync(IP, content);
+        string responseString = await response.Content.ReadAsStringAsync();
+
+        Debug.Log(responseString);
+
+        if (Regex.Match(clean_code, @"visualize(2D?)(\s*)\.").Success)
+        {
+            responseString = Regex.Replace(responseString, @"#|\[|\]|\n|( 0)*", "");
+            byte[] byteArray = responseString.Split(' ').Select(x => Byte.Parse(x, NumberStyles.Integer, null)).ToArray();
+            File.WriteAllBytes("./Assets/Resources/SVG/new_file.svg", byteArray);
+            AssetDatabase.Refresh();
+        }
+        else
+        {
+            string output = " <color=#b32d00>" + responseString + "</color>";
+            output = output.Remove(output.LastIndexOf("\n"), 1);
+            out_index = clean_code.Length;
+            field.text += output;
+        }
     }
 
 
     async void PharoInspect()
     {
-        string clean_code = field.text;
-        clean_code = Regex.Replace(clean_code, @" <color=#b32d00>((.*)\n)*</color>", "");
-        clean_code = clean_code.Replace("<color=#00ffffff>", "");
-        clean_code = clean_code.Replace("</color>", "");
-        clean_code = clean_code.Replace("<b>", "");
-        clean_code = clean_code.Replace("</b>", "");
-        clean_code = clean_code.Replace("<br>", " ");
+        string clean_code = cleanCode(field.text);
 
         // Getting selected text
         int start = field.selectionAnchorPosition;
