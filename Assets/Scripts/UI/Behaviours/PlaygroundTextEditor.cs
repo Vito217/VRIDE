@@ -6,15 +6,19 @@ using System.Text;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.AddressableAssets;
 using System.Net.Http;
 using UnityEngine.UI;
 using TMPro;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
+using Unity.VectorGraphics;
 
 public class PlaygroundTextEditor : TextEditorBehaviour
 {
     public GameObject inspector_prefab;
+    public GameObject svg_prefab;
     private int out_index = -1;
 
     // Update is called once per frame
@@ -55,20 +59,39 @@ public class PlaygroundTextEditor : TextEditorBehaviour
     {
         string clean_code = cleanCode(field.text);
 
-        Debug.Log(clean_code);
+        //Debug.Log(clean_code);
 
-        var content = new StringContent(clean_code, Encoding.UTF8);
+        string final_code =
+            "[" + clean_code + "]\n" +
+                "\ton: Error\n" +
+                "\tdo: [:e | '[Error] ' , (e message lookupClass name), ': ' , (e messageText)].";
+
+        var content = new StringContent(final_code, Encoding.UTF8);
         var response = await client.PostAsync(IP, content);
         string responseString = await response.Content.ReadAsStringAsync();
 
-        Debug.Log(responseString);
-
-        if (Regex.Match(clean_code, @"visualize(2D?)(\s*)\.").Success)
+        if (Regex.Match(clean_code, @"visualize(2D)?(\s*)\.").Success)
         {
+
             responseString = Regex.Replace(responseString, @"#|\[|\]|\n|( 0)*", "");
             byte[] byteArray = responseString.Split(' ').Select(x => Byte.Parse(x, NumberStyles.Integer, null)).ToArray();
-            File.WriteAllBytes("./Assets/Resources/SVG/new_file.svg", byteArray);
-            AssetDatabase.Refresh();
+            string file_path = Application.persistentDataPath + @"\temp";
+            File.WriteAllBytes(file_path, byteArray);
+
+            var tessOptions = new VectorUtils.TessellationOptions()
+            {
+                StepDistance = 100.0f,
+                MaxCordDeviation = 0.5f,
+                MaxTanAngleDeviation = 0.1f,
+                SamplingStepSize = 0.01f
+            };
+
+            var sceneInfo = SVGParser.ImportSVG(new StreamReader(file_path));
+            var geoms = VectorUtils.TessellateScene(sceneInfo.Scene, tessOptions);
+            var sprite = VectorUtils.BuildSprite(geoms, 10.0f, VectorUtils.Alignment.Center, Vector2.zero, 128, true);
+            GameObject instance = Instantiate(svg_prefab) as GameObject;
+            instance.GetComponent<SpriteRenderer>().sprite = sprite;
+            //File.Delete(file_path);
         }
         else
         {

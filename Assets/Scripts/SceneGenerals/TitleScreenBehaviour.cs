@@ -29,6 +29,9 @@ public class TitleScreenBehaviour : MonoBehaviour
         //AssetDatabase.Refresh();
         //var go = Resources.Load<GameObject>("SVG/SVGExample");
         //GameObject instance = Instantiate(go) as GameObject;
+
+        //Debug.Log(Application.streamingAssetsPath);
+
         StartCoroutine(Coroutine());
     }
 
