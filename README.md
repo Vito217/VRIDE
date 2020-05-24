@@ -140,3 +140,7 @@ The text highlightning is based on regular expressions. You can specify a list o
 ## Download
 
 <a href="https://mega.nz/file/VIYQTChT#-UR2-MGmffdcovX4cm85d-vqzqKn5yANCj1o3KziUAs">VRIDE v0.5.0 for Windows and Mac OS</a>
+
+<a href="https://mega.nz/file/BBxCWSYb#O5s8w5GpGbem4JQau2gtNxVZIajTBl4jl1c6uRsR0dE">VRIDE v0.6.0 for Windows</a>
+
+<a href="https://mega.nz/file/McgSSAIA#brL_q03jJ1iqpg4nMGjOuXxJwllLuEUEK3RAvFkZujI">VRIDE's Pharo 8.0 Image</a>

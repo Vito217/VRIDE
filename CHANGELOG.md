@@ -1,5 +1,15 @@
 # PharoVRIDE's Channel Log
 
+## V0.6.0 (24/05/2020)
+<ul>
+  <li>Changed camera behaviour for desktop mode. Now camera will move each time the cursor is positioned on the borders</li>
+  <li>Added window close button.</li>
+  <li>Windows can now be dragged left and right.</li>
+  <li>Added compatibility with Roassal2's Grapher class (still a WIP). It only works with the custom VRIDE Pharo image, and must be called using the "visualize" instruction.</li>
+  <li>Now browsers contain the same information (classes and methods)</li>
+  <li>Fixed some coding and minor bugs</li>
+</ul>
+
 ## V0.5.0 (10/05/2020)
 <ul>
   <li>Added SteamVR controlls.</li>
