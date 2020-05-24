@@ -18,20 +18,10 @@ public class TitleScreenBehaviour : MonoBehaviour
     //public GameObject UIHelpers_prefab;
     public GameObject defaultEventSystem_prefab;
 
-    
-
-    //public GameObject default_camera;
-
     // Start is called before the first frame update
     void Start()
     {
-        //FileUtil.CopyFileOrDirectory(_path, "Assets/Textures/importedTexture12.png");
-        //AssetDatabase.Refresh();
-        //var go = Resources.Load<GameObject>("SVG/SVGExample");
-        //GameObject instance = Instantiate(go) as GameObject;
-
-        //Debug.Log(Application.streamingAssetsPath);
-
+        Application.targetFrameRate = 300;
         StartCoroutine(Coroutine());
     }
 

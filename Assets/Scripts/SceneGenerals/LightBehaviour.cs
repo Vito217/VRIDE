@@ -6,15 +6,8 @@ using UnityEngine;
 
 public class LightBehaviour : MonoBehaviour
 {
-    float grades;
+    float grades = 0.0f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        grades = 0.0f;
-    }
-
-    // Update is called once per frame
     void Update()
     {
         DateTime now = System.DateTime.Now;

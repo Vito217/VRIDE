@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class BrowserClass : BrowserObject
 {
@@ -17,10 +18,16 @@ public class BrowserClass : BrowserObject
             last_class.onDeselectClass();
         parent_window.GetComponent<ClassWindow>().setLastSelectedClass(this);
         method_list.SetActive(true);
+        Color newCol;
+        if (ColorUtility.TryParseHtmlString("#00FFFF", out newCol))
+            GetComponent<TextMeshProUGUI>().color = newCol;
     }
 
     public void onDeselectClass()
     {
         method_list.SetActive(false);
+        Color newCol;
+        if (ColorUtility.TryParseHtmlString("#FFFFFF", out newCol))
+            GetComponent<TextMeshProUGUI>().color = newCol;
     }
 }

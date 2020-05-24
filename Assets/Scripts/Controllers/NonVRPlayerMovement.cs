@@ -7,6 +7,7 @@ public class NonVRPlayerMovement : MonoBehaviour
     public CharacterController controller;
     public float speed = 1f;
     public float gravity = -10f;
+    public bool can_move = true;
     Vector3 velocity;
 
     void Start()
@@ -16,13 +17,14 @@ public class NonVRPlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
+        if (can_move)
         {
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
 
             Vector3 move = transform.right * x + transform.forward * z;
             controller.Move(move * speed * Time.deltaTime);
+            
         }
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);

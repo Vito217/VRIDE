@@ -14,6 +14,8 @@ public class VRIDEController : MonoBehaviour
     public float range = 100f;
     private int sp_opacity;
 
+    private GameObject og_browser = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,23 +47,37 @@ public class VRIDEController : MonoBehaviour
 
                 if (Input.GetKeyDown("q"))
                 {
-                    GameObject new_browser = Instantiate(browser_prefab);
+                    GameObject new_browser;
+                    if (og_browser == null)
+                    {
+                        new_browser = Instantiate(browser_prefab);
+                        new_browser.transform.Find("Toolbar").gameObject.GetComponent<ToolbarBehaviour>().player = gameObject;
+                        new_browser.transform.Find("CodeEditor/Panel/InputField (TMP)").gameObject.GetComponent<BrowserTextEditor>().player = gameObject;
+                        og_browser = new_browser;
+                    }
+                    else
+                    {
+                        new_browser = Instantiate(og_browser);
+                        new_browser.GetComponent<BrowserInit>().initializing = true;
+                    }
                     new_browser.transform.forward = new Vector3(transform.forward.x, 0, transform.forward.z);
                     new_browser.transform.position = hit.point;
                 }
                 else if (Input.GetKeyDown("e"))
                 {
                     GameObject new_playground = Instantiate(playground_prefab);
+                    new_playground.transform.Find("Toolbar").gameObject.GetComponent<ToolbarBehaviour>().player = gameObject;
+                    new_playground.transform.Find("Editor/Panel/InputField (TMP)").gameObject.GetComponent<PlaygroundTextEditor>().player = gameObject;
                     new_playground.transform.forward = new Vector3(transform.forward.x, 0, transform.forward.z);
                     new_playground.transform.position = hit.point;
                 }
             }
         }
 
-        if (Input.GetKeyUp(KeyCode.LeftControl))
+        if (Input.GetKeyUp(KeyCode.LeftControl) || Input.GetKeyUp(KeyCode.LeftCommand))
             spawner.SetActive(false);
 
-        else if (Input.GetKeyDown(KeyCode.LeftControl))
+        else if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.LeftCommand))
             spawner.SetActive(true);
 
         if (Input.GetKeyDown(KeyCode.Escape))

@@ -69,34 +69,45 @@ public class PlaygroundTextEditor : TextEditorBehaviour
         var content = new StringContent(final_code, Encoding.UTF8);
         var response = await client.PostAsync(IP, content);
         string responseString = await response.Content.ReadAsStringAsync();
+        string output = "";
 
-        if (Regex.Match(clean_code, @"visualize(2D)?(\s*)\.").Success)
+        try
         {
-
-            responseString = Regex.Replace(responseString, @"#|\[|\]|\n|( 0)*", "");
-            byte[] byteArray = responseString.Split(' ').Select(x => Byte.Parse(x, NumberStyles.Integer, null)).ToArray();
-            string file_path = Application.persistentDataPath + @"\temp";
-            File.WriteAllBytes(file_path, byteArray);
-
-            var tessOptions = new VectorUtils.TessellationOptions()
+            if (Regex.Match(clean_code, @"visualize(2D)?(\s*)\.").Success)
             {
-                StepDistance = 100.0f,
-                MaxCordDeviation = 0.5f,
-                MaxTanAngleDeviation = 0.1f,
-                SamplingStepSize = 0.01f
-            };
 
-            var sceneInfo = SVGParser.ImportSVG(new StreamReader(file_path));
-            var geoms = VectorUtils.TessellateScene(sceneInfo.Scene, tessOptions);
-            var sprite = VectorUtils.BuildSprite(geoms, 10.0f, VectorUtils.Alignment.Center, Vector2.zero, 128, true);
-            GameObject instance = Instantiate(svg_prefab) as GameObject;
-            instance.GetComponent<SpriteRenderer>().sprite = sprite;
-            //File.Delete(file_path);
+                responseString = Regex.Replace(responseString, @"#|\[|\]|\n|( 0)*", "");
+                byte[] byteArray = responseString.Split(' ').Select(x => Byte.Parse(x, NumberStyles.Integer, null)).ToArray();
+                string file_path = Application.persistentDataPath + @"\temp";
+                File.WriteAllBytes(file_path, byteArray);
+
+                var tessOptions = new VectorUtils.TessellationOptions()
+                {
+                    StepDistance = 100.0f,
+                    MaxCordDeviation = 0.5f,
+                    MaxTanAngleDeviation = 0.1f,
+                    SamplingStepSize = 0.01f
+                };
+
+                var sceneInfo = SVGParser.ImportSVG(new StreamReader(file_path));
+                var geoms = VectorUtils.TessellateScene(sceneInfo.Scene, tessOptions);
+                var sprite = VectorUtils.BuildSprite(geoms, 10.0f, VectorUtils.Alignment.Center, Vector2.zero, 128, true);
+                GameObject instance = Instantiate(svg_prefab) as GameObject;
+                instance.GetComponent<SpriteRenderer>().sprite = sprite;
+                //File.Delete(file_path);
+            }
+            else
+            {
+                output = " <color=#b32d00>" + responseString + "</color>";
+                output = output.Remove(output.LastIndexOf("\n"), 1);
+            }
         }
-        else
+        catch
         {
-            string output = " <color=#b32d00>" + responseString + "</color>";
-            output = output.Remove(output.LastIndexOf("\n"), 1);
+            output = " <color=#b32d00>[Error] Bad request or not compatible format.</color>";
+        }
+        finally
+        {
             out_index = clean_code.Length;
             field.text += output;
         }

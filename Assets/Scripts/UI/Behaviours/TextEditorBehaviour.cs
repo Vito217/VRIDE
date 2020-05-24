@@ -14,6 +14,7 @@ public class TextEditorBehaviour : MonoBehaviour
     public TMP_InputField field;
     public string IP = "http://localhost:1701/repl";
     public static readonly HttpClient client = new HttpClient();
+    public GameObject player;
     private StringBuilder sb = new StringBuilder();
     private List<string> notAN = new List<string> {" ","\n","\t","\r"};
 
@@ -63,5 +64,15 @@ public class TextEditorBehaviour : MonoBehaviour
         clean_code = clean_code.Replace("    ", "\t");
         clean_code = clean_code.Replace("<br>", "\n");
         return clean_code;
+    }
+
+    public void onSelect()
+    {
+        player.GetComponent<NonVRPlayerMovement>().can_move = false;
+    }
+
+    public void onDeselect()
+    {
+        player.GetComponent<NonVRPlayerMovement>().can_move = true;
     }
 }

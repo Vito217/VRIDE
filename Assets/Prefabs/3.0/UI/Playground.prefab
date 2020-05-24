@@ -94,6 +94,7 @@ MonoBehaviour:
   code: {fileID: 876944619254424106}
   field: {fileID: 876944620688103494}
   IP: http://localhost:1701/repl
+  player: {fileID: 0}
   inspector_prefab: {fileID: 6172760806287065057, guid: 8edb5bebbffcf3341af87069bb0c36e6,
     type: 3}
   svg_prefab: {fileID: 8472558987816325677, guid: 3e252fc6582950742940a32fe32015e8,
@@ -252,8 +253,68 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2593645588907822700, guid: 7c48868681267d347acc7bcc874e21fb,
         type: 3}
+      propertyPath: m_OnSelect.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593645588907822700, guid: 7c48868681267d347acc7bcc874e21fb,
+        type: 3}
+      propertyPath: m_OnDeselect.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593645588907822700, guid: 7c48868681267d347acc7bcc874e21fb,
+        type: 3}
       propertyPath: m_GlobalPointSize
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593645588907822700, guid: 7c48868681267d347acc7bcc874e21fb,
+        type: 3}
+      propertyPath: m_OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593645588907822700, guid: 7c48868681267d347acc7bcc874e21fb,
+        type: 3}
+      propertyPath: m_OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593645588907822700, guid: 7c48868681267d347acc7bcc874e21fb,
+        type: 3}
+      propertyPath: m_OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 876944620248350698}
+    - target: {fileID: 2593645588907822700, guid: 7c48868681267d347acc7bcc874e21fb,
+        type: 3}
+      propertyPath: m_OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: onSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593645588907822700, guid: 7c48868681267d347acc7bcc874e21fb,
+        type: 3}
+      propertyPath: m_OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593645588907822700, guid: 7c48868681267d347acc7bcc874e21fb,
+        type: 3}
+      propertyPath: m_OnDeselect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593645588907822700, guid: 7c48868681267d347acc7bcc874e21fb,
+        type: 3}
+      propertyPath: m_OnDeselect.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593645588907822700, guid: 7c48868681267d347acc7bcc874e21fb,
+        type: 3}
+      propertyPath: m_OnDeselect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 876944620248350698}
+    - target: {fileID: 2593645588907822700, guid: 7c48868681267d347acc7bcc874e21fb,
+        type: 3}
+      propertyPath: m_OnDeselect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: onDeselect
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593645588907822700, guid: 7c48868681267d347acc7bcc874e21fb,
+        type: 3}
+      propertyPath: m_OnDeselect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2593645588327724032, guid: 7c48868681267d347acc7bcc874e21fb,
         type: 3}
@@ -437,6 +498,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4613259853952307500, guid: 63c0b6b8108275245b9877e9374cabbc,
+        type: 3}
+      propertyPath: window
+      value: 
+      objectReference: {fileID: 876944620325929771}
     - target: {fileID: 7264972150671091054, guid: 63c0b6b8108275245b9877e9374cabbc,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -463,6 +529,36 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7264972150671091054, guid: 63c0b6b8108275245b9877e9374cabbc,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073258365928294768, guid: 63c0b6b8108275245b9877e9374cabbc,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073258365928294768, guid: 63c0b6b8108275245b9877e9374cabbc,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073258365928294768, guid: 63c0b6b8108275245b9877e9374cabbc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073258365928294768, guid: 63c0b6b8108275245b9877e9374cabbc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073258365928294768, guid: 63c0b6b8108275245b9877e9374cabbc,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073258365928294768, guid: 63c0b6b8108275245b9877e9374cabbc,
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -497,11 +593,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    - target: {fileID: 4613259853952307500, guid: 63c0b6b8108275245b9877e9374cabbc,
-        type: 3}
-      propertyPath: window
-      value: 
-      objectReference: {fileID: 876944620325929771}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63c0b6b8108275245b9877e9374cabbc, type: 3}
 --- !u!224 &782147412130184720 stripped
