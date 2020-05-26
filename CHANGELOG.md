@@ -2,7 +2,7 @@
 
 ## V0.6.1 (26/05/2020)
 <ul>
-  <li>Fixed bug where two or more classes and they're methods are shown at the same time</li>
+  <li>Fixed bug where two or more classes and their methods are shown at the same time</li>
 </ul>
 
 ## V0.6.0 (24/05/2020)
