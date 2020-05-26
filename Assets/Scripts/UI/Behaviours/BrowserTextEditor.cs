@@ -64,7 +64,7 @@ public class BrowserTextEditor : TextEditorBehaviour
             string className = rgx.Matches(clean_code)[0].Groups[1].Value;
 
             BrowserClass new_class_component = createOrUpdateClass(className, input_code);
-            class_list.GetComponent<ClassWindow>().setLastSelectedClass(new_class_component);
+            new_class_component.gameObject.GetComponent<Button>().onClick.Invoke();            
 
             foreach(GameObject browser in GameObject.FindGameObjectsWithTag("BrowserTextEditor"))
             {
@@ -102,7 +102,7 @@ public class BrowserTextEditor : TextEditorBehaviour
         }
     }
 
-    public BrowserClass createOrUpdateClass(string className, string input_code)
+    BrowserClass createOrUpdateClass(string className, string input_code)
     {
         // Check if class object exists
         Transform existing_class_transform = class_list.transform.Find(className);
@@ -156,7 +156,7 @@ public class BrowserTextEditor : TextEditorBehaviour
         }
     }
 
-    public void createOrUpdateMethod(string className, string methodName, string input_code)
+    void createOrUpdateMethod(string className, string methodName, string input_code)
     {
         Transform existing_method_transform = method_list.transform.Find(className).Find(methodName);
 

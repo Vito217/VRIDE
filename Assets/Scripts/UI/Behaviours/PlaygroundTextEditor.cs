@@ -58,9 +58,6 @@ public class PlaygroundTextEditor : TextEditorBehaviour
     async void PharoPrint()
     {
         string clean_code = cleanCode(field.text);
-
-        //Debug.Log(clean_code);
-
         string final_code =
             "[" + clean_code + "]\n" +
                 "\ton: Error\n" +
@@ -73,7 +70,7 @@ public class PlaygroundTextEditor : TextEditorBehaviour
 
         try
         {
-            if (Regex.Match(clean_code, @"visualize(2D)?(\s*)\.").Success)
+            if (Regex.Match(clean_code, @"visualize(\s*)\.").Success)
             {
 
                 responseString = Regex.Replace(responseString, @"#|\[|\]|\n|( 0)*", "");
@@ -94,7 +91,19 @@ public class PlaygroundTextEditor : TextEditorBehaviour
                 var sprite = VectorUtils.BuildSprite(geoms, 10.0f, VectorUtils.Alignment.Center, Vector2.zero, 128, true);
                 GameObject instance = Instantiate(svg_prefab) as GameObject;
                 instance.GetComponent<SpriteRenderer>().sprite = sprite;
-                //File.Delete(file_path);
+            }
+            else if (Regex.Match(clean_code, @"visualize2D(\s*)\.").Success)
+            {
+                responseString = Regex.Replace(responseString, @"#|\[|\]|\n", "");
+                byte[] byteArray = responseString.Split(' ').Select(x => Byte.Parse(x, NumberStyles.Integer, null)).ToArray();
+                string file_path = Application.persistentDataPath + @"\temp";
+                File.WriteAllBytes(file_path, byteArray);
+
+                Texture2D tex = new Texture2D(2, 2);
+                tex.LoadImage(byteArray);
+                Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(tex.width / 2, tex.height / 2));
+                GameObject instance = Instantiate(svg_prefab) as GameObject;
+                instance.GetComponent<SpriteRenderer>().sprite = sprite;
             }
             else
             {

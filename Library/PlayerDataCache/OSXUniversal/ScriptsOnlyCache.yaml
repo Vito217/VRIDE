@@ -15,15 +15,20 @@ ScriptsOnlyBuild:
     - PlaygroundTextEditor
     - TextEditorBehaviour
     - TitleScreenBehaviour
+    - ToolbarBehaviour
     - VRIDEController
     Oculus.VR.Editor.dll:
     - Assets.Oculus.VR.Editor.OVRPlatformToolSettings
     SteamVR.dll:
+    - Valve.VR.Extras.SteamVR_LaserPointer
     - Valve.VR.InteractionSystem.Teleport
     - Valve.VR.InteractionSystem.TeleportArc
     - Valve.VR.InteractionSystem.TeleportArea
+    - Valve.VR.SteamVR_Behaviour_Pose
     - Valve.VR.SteamVR_Behaviour_Skeleton
     - Valve.VR.SteamVR_ExternalCamera
+    - Valve.VR.SteamVR_PlayArea
+    - Valve.VR.SteamVR_RenderModel
     - Valve.VR.SteamVR_Settings
     - Valve.VR.SteamVR_Skeleton_Pose
     - Valve.VR.SteamVR_Skeleton_Poser
@@ -107,95 +112,105 @@ ScriptsOnlyBuild:
     - Class: 109
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9486}
+      Script: {instanceID: 9516}
     - Class: 114
-      Script: {instanceID: 9602}
+      Script: {instanceID: 9688}
     - Class: 114
-      Script: {instanceID: 9670}
+      Script: {instanceID: 9774}
     - Class: 114
-      Script: {instanceID: 9736}
+      Script: {instanceID: 9804}
     - Class: 114
-      Script: {instanceID: 9738}
+      Script: {instanceID: 9864}
     - Class: 114
-      Script: {instanceID: 9740}
+      Script: {instanceID: 9866}
     - Class: 114
-      Script: {instanceID: 9744}
+      Script: {instanceID: 9868}
     - Class: 114
-      Script: {instanceID: 9746}
+      Script: {instanceID: 9872}
     - Class: 114
-      Script: {instanceID: 9750}
+      Script: {instanceID: 9874}
     - Class: 114
-      Script: {instanceID: 9754}
+      Script: {instanceID: 9878}
     - Class: 114
-      Script: {instanceID: 9758}
+      Script: {instanceID: 9882}
     - Class: 114
-      Script: {instanceID: 9766}
+      Script: {instanceID: 9886}
     - Class: 114
-      Script: {instanceID: 9782}
+      Script: {instanceID: 9894}
     - Class: 114
-      Script: {instanceID: 9784}
+      Script: {instanceID: 9910}
     - Class: 114
-      Script: {instanceID: 9786}
+      Script: {instanceID: 9912}
     - Class: 114
-      Script: {instanceID: 9794}
+      Script: {instanceID: 9914}
     - Class: 114
-      Script: {instanceID: 9796}
+      Script: {instanceID: 9922}
     - Class: 114
-      Script: {instanceID: 9806}
+      Script: {instanceID: 9924}
     - Class: 114
-      Script: {instanceID: 9826}
+      Script: {instanceID: 9934}
     - Class: 114
-      Script: {instanceID: 9888}
+      Script: {instanceID: 9960}
     - Class: 114
-      Script: {instanceID: 9988}
+      Script: {instanceID: 10040}
     - Class: 114
-      Script: {instanceID: 10086}
+      Script: {instanceID: 10148}
     - Class: 114
-      Script: {instanceID: 10094}
+      Script: {instanceID: 10264}
     - Class: 114
-      Script: {instanceID: 10166}
+      Script: {instanceID: 10274}
     - Class: 114
-      Script: {instanceID: 10318}
+      Script: {instanceID: 10366}
     - Class: 114
-      Script: {instanceID: 10420}
+      Script: {instanceID: 10534}
     - Class: 114
-      Script: {instanceID: 10464}
+      Script: {instanceID: 10668}
     - Class: 114
-      Script: {instanceID: 10938}
+      Script: {instanceID: 10718}
     - Class: 114
-      Script: {instanceID: 11052}
+      Script: {instanceID: 11300}
     - Class: 114
-      Script: {instanceID: 11260}
+      Script: {instanceID: 11458}
     - Class: 114
-      Script: {instanceID: 11278}
+      Script: {instanceID: 11740}
     - Class: 114
-      Script: {instanceID: 11328}
+      Script: {instanceID: 11762}
     - Class: 114
-      Script: {instanceID: 11342}
+      Script: {instanceID: 11826}
     - Class: 114
-      Script: {instanceID: 11348}
+      Script: {instanceID: 11840}
     - Class: 114
-      Script: {instanceID: 11490}
+      Script: {instanceID: 11846}
     - Class: 114
-      Script: {instanceID: 11606}
+      Script: {instanceID: 11978}
     - Class: 114
-      Script: {instanceID: 11628}
-    - Class: 114
-      Script: {instanceID: 11638}
-    - Class: 114
-      Script: {instanceID: 11864}
-    - Class: 114
-      Script: {instanceID: 11880}
-    - Class: 114
-      Script: {instanceID: 11964}
+      Script: {instanceID: 11988}
     - Class: 114
       Script: {instanceID: 12016}
     - Class: 114
-      Script: {instanceID: 12326}
+      Script: {instanceID: 12036}
     - Class: 114
-      Script: {instanceID: 12340}
+      Script: {instanceID: 12180}
     - Class: 114
-      Script: {instanceID: 12344}
+      Script: {instanceID: 12190}
+    - Class: 114
+      Script: {instanceID: 12212}
+    - Class: 114
+      Script: {instanceID: 12224}
+    - Class: 114
+      Script: {instanceID: 12494}
+    - Class: 114
+      Script: {instanceID: 12514}
+    - Class: 114
+      Script: {instanceID: 12630}
+    - Class: 114
+      Script: {instanceID: 12690}
+    - Class: 114
+      Script: {instanceID: 13094}
+    - Class: 114
+      Script: {instanceID: 13116}
+    - Class: 114
+      Script: {instanceID: 13122}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -209,6 +224,8 @@ ScriptsOnlyBuild:
     - Class: 143
       Script: {instanceID: 0}
     - Class: 157
+      Script: {instanceID: 0}
+    - Class: 212
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -451,7 +468,7 @@ ScriptsOnlyBuild:
     className: SoundEmitter
   - hash:
       serializedVersion: 2
-      Hash: bd61762216a93ae9d04ab5ca01dfb653
+      Hash: 2e3c32232796ce04087e23116e6e516b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: NonVRPlayerMovement
@@ -728,6 +745,12 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.ResourceManager.dll
+    namespaceName: UnityEngine.ResourceManagement.Diagnostics
+    className: DiagnosticEventCollector
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR
     className: SteamVR_CameraMask
@@ -931,7 +954,7 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: cad1eb791d9de46db4ac22082a47dd2b
+      Hash: 2c9a5b818c1a4aed228ba5ee4354210b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BrowserTextEditor
@@ -1021,6 +1044,12 @@ ScriptsOnlyBuild:
     className: BrowserInit
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.ResourceManager.dll
+    namespaceName: UnityEngine.ResourceManagement.Util
+    className: DelayedActionManager
+  - hash:
+      serializedVersion: 2
       Hash: 2d6c48bcbb0c5879a658aca82ca624a7
     assemblyName: Assembly-CSharp.dll
     namespaceName: OculusSampleFramework
@@ -1093,7 +1122,7 @@ ScriptsOnlyBuild:
     className: LocomotionTeleport
   - hash:
       serializedVersion: 2
-      Hash: 1da9b1702a153305777f29e490d9ab20
+      Hash: 88fb3d17a35f5c06848d9899748aa744
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: NonVRPlayerCamera
@@ -1235,6 +1264,12 @@ ScriptsOnlyBuild:
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem
     className: HandCollider
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.ResourceManager.dll
+    namespaceName: 
+    className: MonoBehaviourCallbackHooks
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -1891,7 +1926,7 @@ ScriptsOnlyBuild:
     className: ItemPackageSpawner
   - hash:
       serializedVersion: 2
-      Hash: beb9b7a85bd653262a1cbacba2bfd5ec
+      Hash: c22c6bb9b8cabad08031c937259e1661
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlaygroundTextEditor
@@ -2047,6 +2082,12 @@ ScriptsOnlyBuild:
     className: LocalPlayer
   - hash:
       serializedVersion: 2
+      Hash: f1b001dcf0f786a375c9ef019a1abfd4
+    assemblyName: Unity.VectorGraphics.dll
+    namespaceName: 
+    className: SVGImage
+  - hash:
+      serializedVersion: 2
       Hash: 9f7fd5f1cdce7cb0cbd6b8430ff831c1
     assemblyName: Oculus.Platform.dll
     namespaceName: Oculus.Platform.Samples.VrBoardGame
@@ -2141,6 +2182,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: SignalReceiver
+  - hash:
+      serializedVersion: 2
+      Hash: 54a5082489fad547766d3d4d7635df12
+    assemblyName: Unity.ScriptableBuildPipeline.dll
+    namespaceName: UnityEngine.Build.Pipeline
+    className: CompatibilityAssetBundleManifest
   - hash:
       serializedVersion: 2
       Hash: ddb88151c19644f8893fc50abf00c917
@@ -2419,10 +2466,16 @@ ScriptsOnlyBuild:
     className: EnableSwitch
   - hash:
       serializedVersion: 2
-      Hash: 86555fa26bdcf3816abbc82ad96de9aa
+      Hash: f99148f1517452a2d9529b89550f236d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TextEditorBehaviour
+  - hash:
+      serializedVersion: 2
+      Hash: 180874664887523386a55e967c686c08
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ToolbarBehaviour
   - hash:
       serializedVersion: 2
       Hash: 3d6b3d2e1fe8d4b6d97e1d75339c3f9a
@@ -2900,4 +2953,4 @@ ScriptsOnlyBuild:
   platform: 2
   scenePathNames:
   - Assets/Scenes/MainScene.unity
-  playerPath: C:/Users/VictorStefano/Desktop/VRIDEv0.5 (MACOS).app
+  playerPath: C:/Users/VictorStefano/Desktop/VRIDE v0.6.1 (MacOS).app
