@@ -6,7 +6,6 @@ using UnityEngine;
 using System.Net.Http;
 using UnityEngine.UI;
 using TMPro;
-using System.Reflection;
 
 public class InspectorInit : MonoBehaviour
 {

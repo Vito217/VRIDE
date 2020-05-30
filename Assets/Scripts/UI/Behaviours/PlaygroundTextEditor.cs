@@ -19,25 +19,15 @@ public class PlaygroundTextEditor : TextEditorBehaviour
 {
     public GameObject inspector_prefab;
     public GameObject svg_prefab;
-    private int out_index = -1;
 
     // Update is called once per frame
     void Update()
     {
         if (Input.anyKeyDown && field.isFocused)
         {
-            if (!(Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftControl) || Input.GetMouseButton(0) || Input.GetMouseButton(1))) {
-                if ((out_index > 0 && field.caretPosition <= out_index) ||
-                    (Input.GetKey(KeyCode.Return) && field.caretPosition >= out_index && out_index >= 0) ||
-                    (Input.GetKey(KeyCode.Space) && field.caretPosition >= out_index && out_index >= 0))
-                {
-                    field.text = Regex.Replace(field.text, @"\s<color=#b32d00>.*", "");
-                    field.caretPosition = out_index;
-                    out_index = -1;
-                }
+            if (!(Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftCommand) || Input.GetMouseButton(0) || Input.GetMouseButton(1))) 
                 onChangeInput();
-            }
-            else if (Input.GetKey(KeyCode.LeftControl))
+            else if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftCommand))
             {
                 if (Input.GetKeyDown("g"))
                     PharoPrint();
@@ -46,11 +36,7 @@ public class PlaygroundTextEditor : TextEditorBehaviour
                 else if (Input.GetKeyDown("v"))
                     onChangeInput();
                 else if (Input.GetKeyDown("c"))
-                {
-                    field.text = Regex.Replace(field.text, @"\s<color=#b32d00>.*", "");
-                    field.caretPosition = out_index;
-                    out_index = -1;
-                }
+                    onChangeInput();
             }
         }
     }
@@ -88,9 +74,21 @@ public class PlaygroundTextEditor : TextEditorBehaviour
 
                 var sceneInfo = SVGParser.ImportSVG(new StreamReader(file_path));
                 var geoms = VectorUtils.TessellateScene(sceneInfo.Scene, tessOptions);
-                var sprite = VectorUtils.BuildSprite(geoms, 10.0f, VectorUtils.Alignment.Center, Vector2.zero, 128, true);
+                Sprite sprite = VectorUtils.BuildSprite(geoms, 100.0f, VectorUtils.Alignment.Center, Vector2.zero, 128, true);
+                
                 GameObject instance = Instantiate(svg_prefab) as GameObject;
                 instance.GetComponent<SpriteRenderer>().sprite = sprite;
+                instance.transform.position = new Vector3(transform.position.x, instance.GetComponent<SpriteRenderer>().bounds.size.y * 0.5f, transform.position.z);
+                
+                GameObject toolbar = instance.transform.Find("Toolbar").gameObject;
+                toolbar.GetComponent<ToolbarBehaviour>().player = player;
+                toolbar.transform.position = new Vector3(toolbar.transform.position.x, instance.GetComponent<SpriteRenderer>().bounds.size.y + 0.125f, toolbar.transform.position.z);
+
+                float width = this.gameObject.GetComponent<RectTransform>().sizeDelta.x;
+                float height = this.gameObject.GetComponent<RectTransform>().sizeDelta.y;
+                Vector3 newWorldPos = transform.TransformPoint(new Vector3(-0.75f * width, -0.5f * height, 0));
+                instance.GetComponent<SVGObjectInit>().new_pos = newWorldPos;
+                instance.GetComponent<SVGObjectInit>().initializing = true;
             }
             else if (Regex.Match(clean_code, @"visualize2D(\s*)\.").Success)
             {
@@ -101,7 +99,7 @@ public class PlaygroundTextEditor : TextEditorBehaviour
 
                 Texture2D tex = new Texture2D(2, 2);
                 tex.LoadImage(byteArray);
-                Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(tex.width / 2, tex.height / 2));
+                Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(tex.width * 0.5f, tex.height * 0.5f));
                 GameObject instance = Instantiate(svg_prefab) as GameObject;
                 instance.GetComponent<SpriteRenderer>().sprite = sprite;
             }
@@ -111,13 +109,12 @@ public class PlaygroundTextEditor : TextEditorBehaviour
                 output = output.Remove(output.LastIndexOf("\n"), 1);
             }
         }
-        catch
+        catch (Exception e)
         {
-            output = " <color=#b32d00>[Error] Bad request or not compatible format.</color>";
+            output = " <color=#b32d00>[Error] " + e.Message + "</color>";
         }
         finally
         {
-            out_index = clean_code.Length;
             field.text += output;
         }
     }
@@ -142,7 +139,8 @@ public class PlaygroundTextEditor : TextEditorBehaviour
 
         // Assuming selection is the variable to inspect,
         // we send the message
-        string code = clean_code + "\n" +
+
+        string code = clean_code + ".\n" +
             "tuples := OrderedCollection new.\n" +
             "tuples addLast: 'self=',(" + selection + " value asString).\n" +
             selection + " class instVarNames do: [ :each |\n" +
@@ -150,31 +148,45 @@ public class PlaygroundTextEditor : TextEditorBehaviour
             "].\n" +
             "tuples .";
 
+        string final_code =
+            "[" + code + "]\n" +
+                "\ton: Error\n" +
+                "\tdo: [:e | '[Error] ' , (e message lookupClass name), ': ' , (e messageText)].";
+
         var content = new StringContent(code, Encoding.UTF8);
         var response = await client.PostAsync(IP, content);
-        var responseString = await response.Content.ReadAsStringAsync();
+        string responseString = await response.Content.ReadAsStringAsync();
 
-        GameObject new_inspector = Instantiate(inspector_prefab);
-        new_inspector.transform.forward = this.transform.forward;
-        new_inspector.transform.position = this.transform.position;
+        if (!Regex.Match(responseString, @"\[Error\](.*)").Success)
+        {
+            GameObject new_inspector = Instantiate(inspector_prefab);
+            new_inspector.transform.forward = this.transform.forward;
+            new_inspector.transform.position = this.transform.position;
 
-        //if (inspector_prefab.name.StartsWith("OVR"))
-        //{
-        //    Camera camera = transform.parent.parent.gameObject.GetComponent<Camera>();
-        //    GameObject laser_pointer = GameObject.Find("/OVREventSystem/LaserPointer");
+            //if (inspector_prefab.name.StartsWith("OVR"))
+            //{
+            //    Camera camera = transform.parent.parent.gameObject.GetComponent<Camera>();
+            //    GameObject laser_pointer = GameObject.Find("/OVREventSystem/LaserPointer");
 
-        //    new_inspector.transform.Find("InspectorTable").gameObject.GetComponent<OVRRaycaster>().pointer = laser_pointer;
-        //    new_inspector.transform.Find("TextEditor").gameObject.GetComponent<OVRRaycaster>().pointer = laser_pointer;
+            //    new_inspector.transform.Find("InspectorTable").gameObject.GetComponent<OVRRaycaster>().pointer = laser_pointer;
+            //    new_inspector.transform.Find("TextEditor").gameObject.GetComponent<OVRRaycaster>().pointer = laser_pointer;
 
-        //    new_inspector.transform.Find("InspectorTable").gameObject.GetComponent<Canvas>().worldCamera = camera;
-        //    new_inspector.transform.Find("TextEditor").gameObject.GetComponent<Canvas>().worldCamera = camera;
-        //}
+            //    new_inspector.transform.Find("InspectorTable").gameObject.GetComponent<Canvas>().worldCamera = camera;
+            //    new_inspector.transform.Find("TextEditor").gameObject.GetComponent<Canvas>().worldCamera = camera;
+            //}
 
-        float width = this.gameObject.GetComponent<RectTransform>().sizeDelta.x;
-        float height = this.gameObject.GetComponent<RectTransform>().sizeDelta.y;
-        Vector3 newWorldPos = transform.TransformPoint(new Vector3(1.75f*width, -0.5f*height, 0));
-        new_inspector.GetComponent<InspectorInit>().new_pos = newWorldPos;
-        new_inspector.GetComponent<InspectorInit>().initializeContent(responseString);
-        new_inspector.GetComponent<InspectorInit>().initializing = true;
+            float width = this.gameObject.GetComponent<RectTransform>().sizeDelta.x;
+            float height = this.gameObject.GetComponent<RectTransform>().sizeDelta.y;
+            Vector3 newWorldPos = transform.TransformPoint(new Vector3(1.75f * width, -0.5f * height, 0));
+            new_inspector.GetComponent<InspectorInit>().new_pos = newWorldPos;
+            new_inspector.GetComponent<InspectorInit>().initializeContent(responseString);
+            new_inspector.GetComponent<InspectorInit>().initializing = true;
+        }
+        else
+        {
+            string output = " <color=#b32d00>" + responseString + "</color>";
+            output = output.Remove(output.LastIndexOf("\n"), 1);
+            field.text += output;
+        }
     }
 }

@@ -60,7 +60,7 @@ public class TextEditorBehaviour : MonoBehaviour
 
     public string cleanCode(string clean_code)
     {
-        clean_code = Regex.Replace(clean_code, @"\s<color=#b32d00>.*|<color=#00ffffff>|</color>|<b>|</b>", "");
+        clean_code = Regex.Replace(clean_code, @"<color=#b32d00>|<color=#00ffffff>|</color>|<b>|</b>", "");
         clean_code = clean_code.Replace("    ", "\t");
         clean_code = clean_code.Replace("<br>", "\n");
         return clean_code;
