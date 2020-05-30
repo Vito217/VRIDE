@@ -103,13 +103,11 @@ The text highlightning is based on regular expressions. You can specify a list o
   <li>Inspector: inspect a variable and its value.</li>
 </ul>
 
-## What is NOT working (a.k.a. TODO)
+## What is NOT entirely working (a.k.a. TODO)
 
 <ul>
-  <li>Any kind of logging. It won't display any error, warning or std prints.</li>
-  <li>Error/Crash handlers.</li>
-  <li>VR camera and controls.</li>
-  <li>Graphical visualizations of the executed code.</li>
+  <li>Full logging and error/crash handlers.</li>
+  <li>Full graphical visualizations of the executed code.</li>
   <li>Calling stored classes (they won't reappear when the software is closed)</li>
   <li>A list of bugs (shown below).</li>
 </ul>
@@ -119,6 +117,9 @@ The text highlightning is based on regular expressions. You can specify a list o
 <ul>
   <li>The Pharo server must have a default author. Otherwise, if the user tries to define a method, the server will be waiting for an author. If the user selects the yet undefined method, the software will crash.</li>
   <li>Some details in the text editor, such as incorrect highlightning, coloring, blank spaces, etc.</li>
+  <li>A Roassal2 Grapher instance will appear on the same spot the player is standing on.</li>
+  <li>Not every SVG extracted from Roassal2 is compatible with Unity. In that case, an [Error] code wil be thrown.</li>
+  <li>Roassal2 Grapher as PNG is not well imported. Instead, it'll display a default question mark.</li>
 </ul>
 
 ## Controls
@@ -127,10 +128,10 @@ The text highlightning is based on regular expressions. You can specify a list o
   <li>Left Click: Select and Drag</li>
   <li>Arrows: Move Player</li>
   <li>Mouse movement: Move Camera</li>
-  <li>Ctrl + G: Execute (and print, only if you are in Playground)</li>
-  <li>Ctrl + H: Inspect the selected variable (only in Playground)</li>
-  <li>Ctrl + Q: Invoke a new Browser</li>
-  <li>Ctrl + E: Invoke a new Playground</li>
+  <li>Ctrl + G or Cmd + G: Execute (and print, only if you are in Playground)</li>
+  <li>Ctrl + H or Cmd + H: Inspect the selected variable (only in Playground)</li>
+  <li>Ctrl + Q or Cmd + Q: Invoke a new Browser</li>
+  <li>Ctrl + E or Cmd + E: Invoke a new Playground</li>
 </ul>
 
 ## Channel Log
