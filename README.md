@@ -117,9 +117,8 @@ The text highlightning is based on regular expressions. You can specify a list o
 <ul>
   <li>The Pharo server must have a default author. Otherwise, if the user tries to define a method, the server will be waiting for an author. If the user selects the yet undefined method, the software will crash.</li>
   <li>Some details in the text editor, such as incorrect highlightning, coloring, blank spaces, etc.</li>
-  <li>A Roassal2 Grapher instance will appear on the same spot the player is standing on.</li>
   <li>Not every SVG extracted from Roassal2 is compatible with Unity. In that case, an [Error] code wil be thrown.</li>
-  <li>Roassal2 Grapher as PNG is not well imported. Instead, it'll display a default question mark.</li>
+  <li>Roassal2 Grapher as PNG is not correctly imported. Instead, it'll display a default question mark.</li>
 </ul>
 
 ## Controls
@@ -146,4 +145,6 @@ The text highlightning is based on regular expressions. You can specify a list o
 
 <a href="https://mega.nz/file/ZE52GaYS#3TFSERScRQXeQy_YOi5I12SaCnjWVJa7HRnLAOjkcTU">VRIDE v0.6.1 for Mac OS</a>
 
-<a href="https://mega.nz/file/McgSSAIA#brL_q03jJ1iqpg4nMGjOuXxJwllLuEUEK3RAvFkZujI">VRIDE's Pharo 8.0 Image</a>
+<a href="https://mega.nz/file/tNxTFJ6a#_cgMoiHNFWSqyo8-j6eBDvZNrnoNZlaiQY9kFcMkJ9I">VRIDE v0.6.2 for Windows and Mac OS</a>
+
+<a href="https://mega.nz/file/0VohwBaA#lDNvk45Vy-W4lsha6ECdl4N-VjTBMQAzhaUnS7TP72s">VRIDE's Pharo 8.0 Image</a>
