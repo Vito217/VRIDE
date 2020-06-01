@@ -13,6 +13,7 @@ ScriptsOnlyBuild:
     - ONSPSettings
     - PlaygroundInit
     - PlaygroundTextEditor
+    - SVGObjectInit
     - TextEditorBehaviour
     - TitleScreenBehaviour
     - ToolbarBehaviour
@@ -45,8 +46,6 @@ ScriptsOnlyBuild:
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
     - UnityEditor.Graphs.AnimatorControllerTool
-    UnityEditor.TestRunner.dll:
-    - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.EventTrigger
@@ -206,11 +205,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12690}
     - Class: 114
-      Script: {instanceID: 13094}
+      Script: {instanceID: 13020}
     - Class: 114
-      Script: {instanceID: 13116}
+      Script: {instanceID: 13096}
     - Class: 114
-      Script: {instanceID: 13122}
+      Script: {instanceID: 13118}
+    - Class: 114
+      Script: {instanceID: 13124}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -730,6 +731,18 @@ ScriptsOnlyBuild:
     assemblyName: Oculus.Platform.dll
     namespaceName: Oculus.Platform.Samples.VrBoardGame
     className: BoardPosition
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.Advertisements.dll
+    namespaceName: UnityEngine.Advertisements
+    className: CallbackExecutor
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.Advertisements.dll
+    namespaceName: UnityEngine.Advertisements.Editor
+    className: Placeholder
   - hash:
       serializedVersion: 2
       Hash: 49c73a89c6591b151c2f9fd8cf489125
@@ -2856,6 +2869,12 @@ ScriptsOnlyBuild:
     className: OVRSkeleton
   - hash:
       serializedVersion: 2
+      Hash: ff495965b90ddfcb5013239e4fb90ab4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SVGObjectInit
+  - hash:
+      serializedVersion: 2
       Hash: d287c185a119d79ff1e89b8a6a2ad8aa
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR
@@ -2953,4 +2972,4 @@ ScriptsOnlyBuild:
   platform: 2
   scenePathNames:
   - Assets/Scenes/MainScene.unity
-  playerPath: C:/Users/VictorStefano/Desktop/VRIDE v0.6.1 (MacOS).app
+  playerPath: C:/Users/VictorStefano/Desktop/VRIDE v0.6.2 (MacOS).app
