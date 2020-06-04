@@ -7,6 +7,7 @@ using UnityEngine;
 using System.Net.Http;
 using UnityEngine.UI;
 using TMPro;
+using PharoModule;
 
 public class BrowserTextEditor : TextEditorBehaviour
 {
@@ -21,91 +22,60 @@ public class BrowserTextEditor : TextEditorBehaviour
     {
         if (Input.anyKeyDown && field.isFocused)
         {
-            if (!(Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftControl) || Input.GetMouseButton(0) || Input.GetMouseButton(1)))
+            if (!(Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftControl) ||
+                    Input.GetKey(KeyCode.LeftCommand) || Input.GetKey(KeyCode.RightCommand) ||
+                        Input.GetMouseButton(0) || Input.GetMouseButton(1)))
                 onChangeInput();
-            else if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown("g"))
+            else if ((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftCommand)) 
+                        && Input.GetKeyDown("g"))
                 PharoDefine();
         }
     }
 
     async void PharoDefine()
     {
-        // Steps:
-        // 1- Execute Pharo code
-        // 2- Check if Class exists in Unity's Browser
-        // 3- If not:
-        //      - Create new BrowserClass with className. Make it child of Browser/Classes/..../content
-        //      - Create new non-active method list (ScrollableWindowContent) with className. Make it child of Browser/Methdos/..../content
-        //      - Assign name, source_code, text_field, parent_window and method_list to new class object
-        //      - Create a initialize method (BrowserMethod). Make it child of Browser/Methdos/..../content/<classname>
-        //      - Assign name, source_code and text_field to new method
-        // 4- Else:
-        //      - Update class' source code
-
         // Cleaning code from RichText
         string input_code = field.text;
-        string clean_code = input_code;
-        clean_code = clean_code.Replace("<color=#b32d00>", "");
-        clean_code = clean_code.Replace("<color=#00ffffff>", "");
-        clean_code = clean_code.Replace("</color>", "");
-        clean_code = clean_code.Replace("<b>", "");
-        clean_code = clean_code.Replace("</b>", "");
-        clean_code = clean_code.Replace("<br>", " ");
+        string clean_code = cleanCode(input_code);
 
         if (clean_code.Contains("subclass"))
         {
             // Executing pharo code
-            var content = new StringContent(clean_code, Encoding.UTF8);
-            var response = await client.PostAsync(IP, content);
-            var responseString = await response.Content.ReadAsStringAsync();
-
-            // Getting class name
-            Regex rgx = new Regex(@"\s#(.*)(\s|\n)");
-            string className = rgx.Matches(clean_code)[0].Groups[1].Value;
-
-            BrowserClass new_class_component = createOrUpdateClass(className, input_code);
-            new_class_component.gameObject.GetComponent<Button>().onClick.Invoke();            
-
+            string responseString = await Pharo.Execute(clean_code);
+            string className = Regex.Matches(clean_code, @"\s#(.*)(\s|\n)")[0].Groups[1].Value;
+            createOrUpdateClass(className, input_code); 
             foreach(GameObject browser in GameObject.FindGameObjectsWithTag("BrowserTextEditor"))
             {
                 if(browser != gameObject)
-                    browser.GetComponent<BrowserTextEditor>().createOrUpdateClass(className, input_code); ;
+                    browser.GetComponent<BrowserTextEditor>()
+                        .createOrUpdateClass(className, input_code);
             }
         }
         else
         {
-            GameObject class_window = class_list;
-            BrowserClass current_class = class_window.GetComponent<ClassWindow>().getLastSelectedClass();
-            string current_class_name = current_class.name;
-
             // Executing pharo code
-            clean_code = clean_code.Replace("'", "''");
-            string method_code = current_class_name + " compile: '" + clean_code + "'";
-            var response = await client.PostAsync(IP, new StringContent(method_code, Encoding.UTF8));
-            var responseString = await response.Content.ReadAsStringAsync();
+            string current_class_name = class_list.GetComponent<ClassWindow>().getLastSelectedClass().name;
+            string method_code = current_class_name + " compile: '" + clean_code.Replace("'", "''") + "'";
+            string responseString = await Pharo.Execute(method_code);
 
             // Getting method name
-            Regex rgx = new Regex(@"(\A(.*:?) )|(\A(.*:?)\n)");
-            string methodName = rgx.Matches(clean_code)[0].Value;
-            methodName = methodName.Replace("\n", "");
-            methodName = methodName.Replace("\r", "");
-            methodName = methodName.Replace("\t", "");
-            methodName = methodName.Replace(" ", "");
-
+            string methodName = Regex.Matches(clean_code, @"(\A(.*:?) )|(\A(.*:?)\n)")[0].Value;
+            methodName = Regex.Replace(methodName, @"\n|\r|\t|\s", "");
             createOrUpdateMethod(current_class_name, methodName, input_code);
-
             foreach (GameObject browser in GameObject.FindGameObjectsWithTag("BrowserTextEditor"))
             {
                 if (browser != gameObject)
-                    browser.GetComponent<BrowserTextEditor>().createOrUpdateMethod(current_class_name, methodName, input_code); ;
+                    browser.GetComponent<BrowserTextEditor>()
+                        .createOrUpdateMethod(current_class_name, methodName, input_code);
             }
         }
     }
 
-    BrowserClass createOrUpdateClass(string className, string input_code)
+    void createOrUpdateClass(string className, string input_code)
     {
         // Check if class object exists
         Transform existing_class_transform = class_list.transform.Find(className);
+        GameObject browser_class;
 
         if (!existing_class_transform)
         {
@@ -143,7 +113,7 @@ public class BrowserTextEditor : TextEditorBehaviour
                 "    statements";
             new_method_component.field = GetComponent<TMP_InputField>();
 
-            return new_class_component;
+            browser_class = new_class;
         }
         else
         {
@@ -152,8 +122,9 @@ public class BrowserTextEditor : TextEditorBehaviour
             BrowserClass existing_component = existing_class.GetComponent<BrowserClass>();
             existing_component.sourceCode = input_code;
 
-            return existing_component;
+            browser_class = existing_class;
         }
+        browser_class.GetComponent<Button>().onClick.Invoke();
     }
 
     void createOrUpdateMethod(string className, string methodName, string input_code)

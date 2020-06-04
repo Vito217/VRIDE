@@ -7,63 +7,29 @@ using System.Net.Http;
 using UnityEngine.UI;
 using TMPro;
 
-public class InspectorInit : MonoBehaviour
+public class InspectorInit : InitializeBehaviour
 {
-    public GameObject inspector_content;
-    public GameObject inspector_row_prefab;
-    public GameObject this_object;
-    public GameObject table_panel;
-    public GameObject editor_panel;
-
-    public bool initializing = false;
-    public float expand_speed = 1.0f;
-    public Vector3 new_pos;
+    public Transform inspector_content;
+    public InspectorRow inspector_row_prefab;
+    public Image table_panel;
+    public Image editor_panel;
 
     // Start is called before the first frame update
     void Start()
     {
         Color new_color = Random.ColorHSV();
-        table_panel.GetComponent<Image>().color = new_color;
-        editor_panel.GetComponent<Image>().color = new_color;
+        table_panel.color = new_color;
+        editor_panel.color = new_color;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (initializing)
-            initializeAnimation();
-    }
-
-    void initializeAnimation()
-    {
-        //rise_speed = rise_speed * 0.92f;
-        this_object.transform.position = Vector3.MoveTowards(
-            this_object.transform.position,
-            new_pos,
-            expand_speed
-        );
-
-        if (this_object.transform.position == new_pos)
-            initializing = false;
-    }
-
-    public void initializeContent(string responseString) {
-        responseString = Regex.Replace(responseString, @"an OrderedCollection\((.*)\)", "$1");
-        responseString = Regex.Replace(responseString, @"self=a\s(.*)", "self=a$1");
-        string[] tuples = responseString.Split(' ');
-        foreach (string tuple in tuples)
+    public void setContent(string response) {
+        response = Regex.Replace(response, @"an OrderedCollection\((.*)\)", "$1");
+        response = Regex.Replace(response, @"self=a\s(.*)", "self=a$1");
+        foreach (string tuple in response.Split(' '))
         {
-            string[] pair = tuple.Split('=');
-            string variable = pair[0].Replace("'", "");
-            string value = pair[1].Replace("'", "");
-
-            GameObject new_row = Instantiate(inspector_row_prefab);
-            TextMeshProUGUI var_button = new_row.transform.Find("Variable").transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
-            TextMeshProUGUI val_button = new_row.transform.Find("Value").transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
-            var_button.text = variable;
-            val_button.text = value;
-            new_row.transform.SetParent(inspector_content.transform, false);
-            new_row.name = tuple;
+            string[] pair = tuple.Replace("'", "").Split('=');
+            InspectorRow new_row = Instantiate(inspector_row_prefab);
+            new_row.setContent(pair[0], pair[1], inspector_content);
         }
     }
 }

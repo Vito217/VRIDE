@@ -5,19 +5,19 @@ using UnityEngine;
 public class NonVRPlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
+    public VRIDEController vride_controller;
     public float speed = 1f;
     public float gravity = -10f;
-    public bool can_move = true;
     Vector3 velocity;
 
     void Start()
     {
-
+        vride_controller = GetComponent<VRIDEController>();
     }
 
     void Update()
     {
-        if (can_move)
+        if (vride_controller.can_move)
         {
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
@@ -32,8 +32,7 @@ public class NonVRPlayerMovement : MonoBehaviour
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.gameObject.tag == "Ground") {
+        if (hit.gameObject.tag == "Ground")
             velocity.y = 0f;
-        }
     }
 }

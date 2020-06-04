@@ -93,8 +93,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d3fa84f04a10e042a9a41c8145de855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toolbar: {fileID: 5989667541054816726}
+  speed: 8
   initializing: 0
-  expand_speed: 1
   new_pos: {x: 0, y: 0, z: 0}
 --- !u!1001 &1376418691887354106
 PrefabInstance:
@@ -108,6 +109,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Toolbar
       objectReference: {fileID: 0}
+    - target: {fileID: 4613259853952307500, guid: 63c0b6b8108275245b9877e9374cabbc,
+        type: 3}
+      propertyPath: window
+      value: 
+      objectReference: {fileID: 8472558987816325677}
     - target: {fileID: 3850850384663914253, guid: 63c0b6b8108275245b9877e9374cabbc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -218,11 +224,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0.25
       objectReference: {fileID: 0}
-    - target: {fileID: 4613259853952307500, guid: 63c0b6b8108275245b9877e9374cabbc,
-        type: 3}
-      propertyPath: window
-      value: 
-      objectReference: {fileID: 8472558987816325677}
     - target: {fileID: 7264972150671091054, guid: 63c0b6b8108275245b9877e9374cabbc,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -311,3 +312,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1376418691887354106}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5989667541054816726 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4613259853952307500, guid: 63c0b6b8108275245b9877e9374cabbc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1376418691887354106}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ceb1bbb010c31d4b8c967e436db716c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
