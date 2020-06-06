@@ -8,6 +8,7 @@ using System.Net.Http;
 using UnityEngine.UI;
 using TMPro;
 using PharoModule;
+using LoggingModule;
 
 public class BrowserTextEditor : TextEditorBehaviour
 {
@@ -50,6 +51,7 @@ public class BrowserTextEditor : TextEditorBehaviour
                     browser.GetComponent<BrowserTextEditor>()
                         .createOrUpdateClass(className, input_code);
             }
+            InteractionLogger.RegisterCodeDefinition("class", clean_code, responseString);
         }
         else
         {
@@ -68,6 +70,7 @@ public class BrowserTextEditor : TextEditorBehaviour
                     browser.GetComponent<BrowserTextEditor>()
                         .createOrUpdateMethod(current_class_name, methodName, input_code);
             }
+            InteractionLogger.RegisterCodeDefinition("method", clean_code, responseString);
         }
     }
 
@@ -151,5 +154,17 @@ public class BrowserTextEditor : TextEditorBehaviour
             existing_component.sourceCode = input_code;
             field.text = existing_component.sourceCode;
         }
+    }
+
+    public override void onSelect()
+    {
+        base.onSelect();
+        InteractionLogger.StartTimerFor("Browser");
+    }
+
+    public override void onDeselect()
+    {
+        base.onDeselect();
+        InteractionLogger.EndTimerFor("Browser");
     }
 }

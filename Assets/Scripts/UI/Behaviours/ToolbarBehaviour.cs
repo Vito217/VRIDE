@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using LoggingModule;
 
 public class ToolbarBehaviour : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class ToolbarBehaviour : MonoBehaviour
 
     public void onClose()
     {
+        InteractionLogger.Discount(window.name.Replace("(Clone)", ""));
         Destroy(window);
     }
 

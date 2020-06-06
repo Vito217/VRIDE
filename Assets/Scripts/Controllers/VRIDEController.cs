@@ -4,18 +4,19 @@ using System.Collections.Specialized;
 using UnityEngine;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
+using LoggingModule;
 
 public class VRIDEController : MonoBehaviour
 {
     public InitializeBehaviour browser_prefab;
     public InitializeBehaviour playground_prefab;
+    private InitializeBehaviour og_browser = null;
     public GameObject spawner_prefab;
     public Camera camera;
     GameObject spawner;
     public float range = 100f;
     private int sp_opacity;
     public bool can_move = true;
-    private InitializeBehaviour og_browser = null;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,8 @@ public class VRIDEController : MonoBehaviour
         spawner.transform.SetParent(transform, false);
         spawner.SetActive(false);
         sp_opacity = 0;
+
+        InteractionLogger.SessionStart();
     }
 
     // Update is called once per frame
@@ -53,9 +56,13 @@ public class VRIDEController : MonoBehaviour
                         }
                         else
                             new_window = Instantiate(og_browser);
+                        InteractionLogger.Count("Browser");
                     }
                     else
+                    {
                         new_window = Instantiate(playground_prefab);
+                        InteractionLogger.Count("Playground");
+                    }
                     new_window.Initialize(
                         hit.point,
                         new Vector3(hit.point.x, 2f, hit.point.z),
@@ -72,6 +79,9 @@ public class VRIDEController : MonoBehaviour
             spawner.SetActive(true);
 
         if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            InteractionLogger.SessionEnd();
             Application.Quit();
+        }  
     }
 }

@@ -23,8 +23,7 @@ public class TextEditorBehaviour : MonoBehaviour
         text = Regex.Replace(text, @"<color=#b32d00>|<color=#00ffffff>|</color>|<b>|</b>", "");
         text = Regex.Replace(text, @"\t", "".PadRight(4));
 
-        bool tab_pressed = Input.GetKeyDown(KeyCode.Tab);
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || tab_pressed)
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
         {
             int i;
             for (i = last_caret_position - 1; i >= 0 && !notAN.Contains(text[i]); i--)
@@ -34,13 +33,14 @@ public class TextEditorBehaviour : MonoBehaviour
             for (i=i; i>=0 && notAN.Contains(text[i]); i--) { }
             if ((i==-1) || (i>=0 && text[i]=='.') || (pw_len > 0 && previous_word[0]=='#'))
                 last_caret_position += 1;
-            if (tab_pressed)
-            {
-                last_caret_position += 4;
-                if (text[last_caret_position - 1] != ' ')
-                    last_caret_position -= 1;
-            }
             sb.Clear();
+        }
+        bool tab_pressed = Input.GetKeyDown(KeyCode.Tab);
+        if (tab_pressed)
+        {
+            last_caret_position += 4;
+            if (text[last_caret_position - 1] != ' ')
+                last_caret_position -= 1;
         }
 
         text = Regex.Replace(text, @"(\A|\.\s*\n*\s*)([a-zA-Z0-9]+)(\s|\n)", "$1<b>$2</b>$3");
@@ -55,12 +55,12 @@ public class TextEditorBehaviour : MonoBehaviour
         return Regex.Replace(code, @"<color=#b32d00>|<color=#00ffffff>|</color>|<b>|</b>", "");
     }
 
-    public void onSelect()
+    public virtual void onSelect()
     {
         player.GetComponent<VRIDEController>().can_move = false;
     }
 
-    public void onDeselect()
+    public virtual void onDeselect()
     {
         player.GetComponent<VRIDEController>().can_move = true;
     }

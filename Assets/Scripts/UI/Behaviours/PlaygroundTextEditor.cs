@@ -17,6 +17,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using Unity.VectorGraphics;
 using System.Security.Cryptography;
 using System.Threading;
+using LoggingModule;
 
 public class PlaygroundTextEditor : TextEditorBehaviour
 {
@@ -93,6 +94,8 @@ public class PlaygroundTextEditor : TextEditorBehaviour
             }
             else
                 output = " <color=#b32d00>" + responseString.Remove(responseString.LastIndexOf("\n"), 1) + "</color>";
+
+            InteractionLogger.RegisterCodeExecution(clean_code, responseString);
         }
         catch (Exception e)
         {
@@ -133,6 +136,8 @@ public class PlaygroundTextEditor : TextEditorBehaviour
         }
         else
             field.text += " <color=#b32d00>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>";
+
+        InteractionLogger.RegisterCodeInspection(selection, res);
     }
 
     Sprite importSVG(string path)
@@ -148,5 +153,17 @@ public class PlaygroundTextEditor : TextEditorBehaviour
         var geoms = VectorUtils.TessellateScene(sceneInfo.Scene, tessOptions);
         Sprite sprite = VectorUtils.BuildSprite(geoms, 100.0f, VectorUtils.Alignment.Center, Vector2.zero, 128, true);
         return sprite;
+    }
+
+    public override void onSelect()
+    {
+        base.onSelect();
+        InteractionLogger.StartTimerFor("Playground");
+    }
+
+    public override void onDeselect()
+    {
+        base.onDeselect();
+        InteractionLogger.EndTimerFor("Playground");
     }
 }
