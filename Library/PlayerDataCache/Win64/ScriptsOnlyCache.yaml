@@ -6,12 +6,17 @@ ScriptsOnlyBuild:
     - BrowserMethod
     - BrowserTextEditor
     - ClassWindow
+    - CustomInputModule
+    - InspectorInit
+    - InspectorRow
     - LightBehaviour
     - NonVRPlayerCamera
     - NonVRPlayerMovement
     - ONSPSettings
     - PlaygroundInit
     - PlaygroundTextEditor
+    - SVGObjectInit
+    - TextEditorBehaviour
     - TitleScreenBehaviour
     - ToolbarBehaviour
     - VRIDEController
@@ -43,6 +48,8 @@ ScriptsOnlyBuild:
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
     - UnityEditor.Graphs.AnimatorControllerTool
+    UnityEditor.TestRunner.dll:
+    - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.EventTrigger
@@ -186,11 +193,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12040}
     - Class: 114
+      Script: {instanceID: 12186}
+    - Class: 114
       Script: {instanceID: 12196}
     - Class: 114
       Script: {instanceID: 12218}
     - Class: 114
       Script: {instanceID: 12230}
+    - Class: 114
+      Script: {instanceID: 12478}
     - Class: 114
       Script: {instanceID: 12502}
     - Class: 114
@@ -200,9 +211,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12698}
     - Class: 114
+      Script: {instanceID: 13028}
+    - Class: 114
+      Script: {instanceID: 13104}
+    - Class: 114
       Script: {instanceID: 13126}
     - Class: 114
       Script: {instanceID: 13132}
+    - Class: 114
+      Script: {instanceID: 22520}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -722,18 +739,6 @@ ScriptsOnlyBuild:
     assemblyName: Oculus.Platform.dll
     namespaceName: Oculus.Platform.Samples.VrBoardGame
     className: BoardPosition
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: UnityEngine.Advertisements.dll
-    namespaceName: UnityEngine.Advertisements
-    className: CallbackExecutor
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: UnityEngine.Advertisements.dll
-    namespaceName: UnityEngine.Advertisements.Editor
-    className: Placeholder
   - hash:
       serializedVersion: 2
       Hash: 49c73a89c6591b151c2f9fd8cf489125
@@ -2972,7 +2977,13 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ClassWindow
+  - hash:
+      serializedVersion: 2
+      Hash: 5947ca1afc1378a8023796d94a224765
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CustomInputModule
   platform: 19
   scenePathNames:
   - Assets/Scenes/MainScene.unity
-  playerPath: C:/Users/VictorStefano/Desktop/VRIDE v0.6.2 (Win10)/PharoVRIDE.exe
+  playerPath: C:/Users/VictorStefano/Desktop/VRIDE/PharoVRIDE.exe
