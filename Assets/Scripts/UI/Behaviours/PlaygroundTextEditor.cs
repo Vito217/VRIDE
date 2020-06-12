@@ -18,6 +18,7 @@ using Unity.VectorGraphics;
 using System.Security.Cryptography;
 using System.Threading;
 using LoggingModule;
+using ImageUtils;
 
 public class PlaygroundTextEditor : TextEditorBehaviour
 {
@@ -38,9 +39,8 @@ public class PlaygroundTextEditor : TextEditorBehaviour
     {
         if (Input.anyKeyDown && field.isFocused)
         {
-            if (!(Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftControl) || 
-                    Input.GetKey(KeyCode.LeftCommand) || Input.GetKey(KeyCode.RightCommand) || 
-                        Input.GetMouseButton(0) || Input.GetMouseButton(1))) 
+            if (!(Input.GetKey(KeyCode.LeftCommand) ||
+                    Input.GetKey(KeyCode.LeftControl)))
                 onChangeInput();
             else if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftCommand))
             {
@@ -52,7 +52,9 @@ public class PlaygroundTextEditor : TextEditorBehaviour
                     onChangeInput();
                 else if (Input.GetKeyDown("c"))
                     onChangeInput();
+                else { }
             }
+            else { }
         }
     }
 
@@ -63,38 +65,40 @@ public class PlaygroundTextEditor : TextEditorBehaviour
         string output = "";
         try
         {
-            if (Regex.Match(clean_code, @"visualize(\s*)\.").Success)
+            if(Regex.Match(clean_code, @"visualize(2D)?(\s*)\.").Success)
             {
-                responseString = Regex.Replace(responseString, @"#|\[|\]|\n|( 0)*", "");
-                byte[] byteArray = responseString.Split(' ').Select(x => Byte.Parse(x, NumberStyles.Integer, null)).ToArray();
-                string file_path = Application.persistentDataPath + @"\temp";
-                File.WriteAllBytes(file_path, byteArray);
-                Sprite sprite = importSVG(file_path);
+                Sprite sprite = null;
+                if (Regex.Match(clean_code, @"visualize(\s*)\.").Success)
+                {
+                    responseString = Regex.Replace(responseString, @"#|\[|\]|\n|( 0)*", "");
+                    byte[] byteArray = responseString.Split(' ').Select(x => Byte.Parse(x, NumberStyles.Integer, null)).ToArray();
+                    string file_path = Application.persistentDataPath + @"\temp";
+                    File.WriteAllBytes(file_path, byteArray);
+                    sprite = ImageModule.ImportSVG(file_path);
+                }
+                else if (Regex.Match(clean_code, @"visualize2D(\s*)\.").Success)
+                {
+                    responseString = Regex.Replace(responseString, @"#|\[|\]|\n", "");
+                    byte[] byteArray = responseString.Split(' ').Select(x => Byte.Parse(x, NumberStyles.Integer, null)).ToArray();
+                    Texture2D tex = new Texture2D(2, 2);
+                    tex.LoadImage(byteArray);
+                    sprite = Sprite.Create(
+                        tex,
+                        new Rect(0, 0, tex.width, tex.height),
+                        Vector2.zero
+                    );
+                }
                 SVGObjectInit instance = Instantiate(svg_prefab);
-                SpriteRenderer sr = instance.GetComponent<SpriteRenderer>();
-                sr.sprite = sprite;
+                instance.setSprite(sprite);
                 instance.Initialize(
-                    new Vector3(transform.position.x, sr.bounds.size.y * 0.5f, transform.position.z),
+                    transform.position,
                     transform.TransformPoint(new Vector3(-0.75f * width, -0.5f * height, 0)),
                     transform.forward,
                     player
                 );
+                responseString = "a RTBuilder\n";
             }
-            else if (Regex.Match(clean_code, @"visualize2D(\s*)\.").Success)
-            {
-                responseString = Regex.Replace(responseString, @"#|\[|\]|\n", "");
-                byte[] byteArray = responseString.Split(' ').Select(x => Byte.Parse(x, NumberStyles.Integer, null)).ToArray();
-                string file_path = Application.persistentDataPath + @"\temp";
-                File.WriteAllBytes(file_path, byteArray);
-                Texture2D tex = new Texture2D(2, 2);
-                tex.LoadImage(byteArray);
-                Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(tex.width * 0.5f, tex.height * 0.5f));
-                SVGObjectInit instance = Instantiate(svg_prefab);
-                instance.GetComponent<SpriteRenderer>().sprite = sprite;
-            }
-            else
-                output = " <color=#b32d00>" + responseString.Remove(responseString.LastIndexOf("\n"), 1) + "</color>";
-
+            output = " <color=#b32d00>" + responseString.Remove(responseString.LastIndexOf("\n"), 1) + "</color>";
             InteractionLogger.RegisterCodeExecution(clean_code, responseString);
         }
         catch (Exception e)
@@ -138,21 +142,6 @@ public class PlaygroundTextEditor : TextEditorBehaviour
             field.text += " <color=#b32d00>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>";
 
         InteractionLogger.RegisterCodeInspection(selection, res);
-    }
-
-    Sprite importSVG(string path)
-    {
-        var tessOptions = new VectorUtils.TessellationOptions()
-        {
-            StepDistance = 100.0f,
-            MaxCordDeviation = 0.5f,
-            MaxTanAngleDeviation = 0.1f,
-            SamplingStepSize = 0.01f
-        };
-        var sceneInfo = SVGParser.ImportSVG(new StreamReader(path));
-        var geoms = VectorUtils.TessellateScene(sceneInfo.Scene, tessOptions);
-        Sprite sprite = VectorUtils.BuildSprite(geoms, 100.0f, VectorUtils.Alignment.Center, Vector2.zero, 128, true);
-        return sprite;
     }
 
     public override void onSelect()

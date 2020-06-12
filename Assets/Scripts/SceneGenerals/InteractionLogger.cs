@@ -30,6 +30,11 @@ namespace LoggingModule
             { "stillOpenedInspectors" , 0 },
             { "totalHistorycalInspectors" , 0 },
 
+            { "totalOpenedGraphObjects" , 0 },
+            { "totalClosedGraphObjects" , 0 },
+            { "stillOpenedGraphObjects" , 0 },
+            { "totalHistorycalGraphObjects" , 0 },
+
             { "totalPlaygroundMilliseconds" , 0 },
             { "totalBrowserMilliseconds" , 0 },
             { "totalInspectorMilliseconds" , 0 }
