@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using System.Threading;
 using System.Net.Http;
 using UnityEngine.UI;
 using TMPro;
@@ -53,6 +54,34 @@ public class TextEditorBehaviour : MonoBehaviour
     public string cleanCode(string code)
     {
         return Regex.Replace(code, @"<color=#b32d00>|<color=#00ffffff>|</color>|<b>|</b>", "");
+    }
+
+    public string getSelectedCode(string clean_code)
+    {
+        int start = field.selectionAnchorPosition;
+        int end = field.caretPosition;
+        if (end < start)
+            start = Interlocked.Exchange(ref end, start);
+        int selection_length = end - start;
+        string selection = clean_code.Substring(start, selection_length);
+        if (selection == "")
+            return clean_code;
+        return selection;
+    }
+
+    public string getLastLineOfCode(string clean_code)
+    {
+        string[] lines = clean_code.Split('.');
+        int len = lines.Length;
+        if (len == 1)
+            return lines[0];
+        else
+        {
+            string last = lines[len - 1];
+            string penultimate = lines[len - 2];
+            return String.IsNullOrWhiteSpace(last) || String.IsNullOrEmpty(last) ?
+                penultimate : last;
+        }
     }
 
     public virtual void onSelect()

@@ -16,7 +16,6 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using Unity.VectorGraphics;
 using System.Security.Cryptography;
-using System.Threading;
 using LoggingModule;
 using ImageUtils;
 
@@ -39,36 +38,48 @@ public class PlaygroundTextEditor : TextEditorBehaviour
     {
         if (Input.anyKeyDown && field.isFocused)
         {
-            if (!(Input.GetKey(KeyCode.LeftCommand) ||
-                    Input.GetKey(KeyCode.LeftControl)))
+            bool leftCmd = Input.GetKey(KeyCode.LeftCommand);
+            bool leftCtrl = Input.GetKey(KeyCode.LeftControl);
+            bool f3 = Input.GetKey(KeyCode.F3);
+            bool f4 = Input.GetKey(KeyCode.F4);
+            bool f5 = Input.GetKey(KeyCode.F5);
+            bool p = Input.GetKey("p");
+            bool d = Input.GetKey("d");
+            bool i = Input.GetKey("i");
+            bool c = Input.GetKey("c");
+            bool v = Input.GetKey("v");
+
+            if (!(leftCmd || leftCtrl || f3 || f4 || f5))
                 onChangeInput();
-            else if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftCommand))
+            else
             {
-                if (Input.GetKeyDown("g"))
+                if (((leftCmd || leftCtrl) && d) || f3)
+                    PharoDo();
+                else if (((leftCmd || leftCtrl) && p) || f4)
                     PharoPrint();
-                else if (Input.GetKeyDown("h"))
+                else if (((leftCmd || leftCtrl) && i) || f5)
                     PharoInspect();
-                else if (Input.GetKeyDown("v"))
+                else if ((leftCmd || leftCtrl) && v)
                     onChangeInput();
-                else if (Input.GetKeyDown("c"))
+                else if ((leftCmd || leftCtrl) && c)
                     onChangeInput();
                 else { }
             }
-            else { }
         }
     }
 
-    async void PharoPrint()
+    async void PharoDo()
     {
         string clean_code = cleanCode(field.text);
-        string responseString = await Pharo.Print(clean_code);
+        string selectedCode = getSelectedCode(clean_code);
+        string responseString = await Pharo.Print(selectedCode);
         string output = "";
         try
         {
-            if(Regex.Match(clean_code, @"visualize(2D)?(\s*)\.").Success)
+            if (Regex.Match(selectedCode, @"visualize(\s*)(asSVG|asPNG)(\s*)\.").Success)
             {
                 Sprite sprite = null;
-                if (Regex.Match(clean_code, @"visualize(\s*)\.").Success)
+                if (Regex.Match(selectedCode, @"visualize(\s*)asSVG(\s*)\.").Success)
                 {
                     responseString = Regex.Replace(responseString, @"#|\[|\]|\n|( 0)*", "");
                     byte[] byteArray = responseString.Split(' ').Select(x => Byte.Parse(x, NumberStyles.Integer, null)).ToArray();
@@ -76,7 +87,7 @@ public class PlaygroundTextEditor : TextEditorBehaviour
                     File.WriteAllBytes(file_path, byteArray);
                     sprite = ImageModule.ImportSVG(file_path);
                 }
-                else if (Regex.Match(clean_code, @"visualize2D(\s*)\.").Success)
+                else
                 {
                     responseString = Regex.Replace(responseString, @"#|\[|\]|\n", "");
                     byte[] byteArray = responseString.Split(' ').Select(x => Byte.Parse(x, NumberStyles.Integer, null)).ToArray();
@@ -96,10 +107,30 @@ public class PlaygroundTextEditor : TextEditorBehaviour
                     transform.forward,
                     player
                 );
-                responseString = "a RTBuilder\n";
             }
-            output = " <color=#b32d00>" + responseString.Remove(responseString.LastIndexOf("\n"), 1) + "</color>";
-            InteractionLogger.RegisterCodeExecution(clean_code, responseString);
+            PharoInspect();
+            InteractionLogger.RegisterCodeExecution(selectedCode, responseString);
+        }
+        catch (Exception e)
+        {
+            output = " <color=#b32d00>[Error] " + e.Message + "</color>";
+        }
+        finally
+        {
+            field.text += output;
+        }
+    }
+
+    async void PharoPrint()
+    {
+        string clean_code = cleanCode(field.text);
+        string selection = getSelectedCode(clean_code);
+        string res = await Pharo.Print(selection);
+        string output = "";
+        try
+        {
+            output = " <color=#b32d00>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>";
+            InteractionLogger.RegisterCodeExecution(selection, res);
         }
         catch (Exception e)
         {
@@ -114,18 +145,8 @@ public class PlaygroundTextEditor : TextEditorBehaviour
     async void PharoInspect()
     {
         string clean_code = cleanCode(field.text);
-
-        // Getting selected text
-        int start = field.selectionAnchorPosition;
-        int end = field.caretPosition;
-        if (end < start)
-            start = Interlocked.Exchange(ref end, start);
-        int selection_length = end - start;
-        
-        // Assuming selection is the variable to inspect, we send the message
-        string selection = clean_code.Substring(start, selection_length);
-        string res = await Pharo.Inspect(clean_code, selection);
-
+        string selection = getSelectedCode(clean_code);
+        string res = await Pharo.Inspect(selection);
         if (!Regex.Match(res, @"\[Error\](.*)").Success)
         {
             Vector3 newWorldPos = transform.TransformPoint(new Vector3(1.6f * width, 0, 0));
@@ -140,7 +161,6 @@ public class PlaygroundTextEditor : TextEditorBehaviour
         }
         else
             field.text += " <color=#b32d00>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>";
-
         InteractionLogger.RegisterCodeInspection(selection, res);
     }
 

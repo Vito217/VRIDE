@@ -26,14 +26,14 @@ namespace PharoModule
            );
         }
 
-        public static async Task<string> Inspect(string code, string var)
+        public static async Task<string> Inspect(string code)
         {
             return await Print(
-                code + ".\n" +
+                "res := [" + code + "] value .\n" +
                 "tuples := OrderedCollection new.\n" +
-                "tuples addLast: 'self=',(" + var + " value asString).\n" +
-                var + " class instVarNames do: [ :each |\n" +
-                    "\ttuples addLast: (each asString),'=', ((" + var + " instVarNamed: each value) asString).\n" +
+                "tuples addLast: 'self=',(res value asString).\n" +
+                "res class instVarNames do: [ :each |\n" +
+                    "\ttuples addLast: (each asString),'=', ((res instVarNamed: each value) asString).\n" +
                 "].\n" +
                 "tuples ."
             );

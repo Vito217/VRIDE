@@ -5,78 +5,61 @@ using UnityEngine;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 using LoggingModule;
+using System.Security.Cryptography;
 
 public class VRIDEController : MonoBehaviour
 {
     public InitializeBehaviour browser_prefab;
     public InitializeBehaviour playground_prefab;
     private InitializeBehaviour og_browser = null;
-    public GameObject spawner_prefab;
     public Camera camera;
-    GameObject spawner;
-    public float range = 100f;
-    private int sp_opacity;
     public bool can_move = true;
 
-    // Start is called before the first frame update
     void Start()
     {
-        spawner = Instantiate(spawner_prefab);
-        spawner.transform.SetParent(transform, false);
-        spawner.SetActive(false);
-        sp_opacity = 0;
-
         InteractionLogger.SessionStart();
     }
 
-    // Update is called once per frame
+    // F1 : Browser
+    // F2 : Playground
+    // F3 : Do it
+    // F4 : Print it
+    // F5 : Inspect it
+
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftCommand))
+        if (Input.GetKeyDown(KeyCode.F1) || Input.GetKeyDown(KeyCode.F2))
         {
-            RaycastHit hit;
-            if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit, range))
-            {
-                if (spawner.activeSelf)
+            InitializeBehaviour new_window;
+            Vector3 pos = transform.position;
+            Vector3 forw = transform.forward;
+            Vector3 newWinPos = new Vector3(
+                pos.x + forw.x * 5f,
+                0f,
+                pos.z + forw.z * 5f
+            );
+            if (Input.GetKeyDown(KeyCode.F1)){
+                if (og_browser == null)
                 {
-                    var r = spawner.GetComponent<Renderer>();
-                    float alpha = Mathf.Abs(Mathf.Sin(Mathf.Deg2Rad * sp_opacity));
-                    r.material.color = new Color(r.material.color.r, r.material.color.g, r.material.color.b, alpha);
-                    sp_opacity = (sp_opacity + 4) % 360;
-                    spawner.transform.position = hit.point;
+                    new_window = Instantiate(browser_prefab);
+                    og_browser = new_window;
                 }
-                if (Input.GetKeyDown("q") || Input.GetKeyDown("e"))
-                {
-                    InitializeBehaviour new_window;
-                    if (Input.GetKeyDown("q")){
-                        if (og_browser == null)
-                        {
-                            new_window = Instantiate(browser_prefab);
-                            og_browser = new_window;
-                        }
-                        else
-                            new_window = Instantiate(og_browser);
-                        InteractionLogger.Count("Browser");
-                    }
-                    else
-                    {
-                        new_window = Instantiate(playground_prefab);
-                        InteractionLogger.Count("Playground");
-                    }
-                    new_window.Initialize(
-                        hit.point,
-                        new Vector3(hit.point.x, 2f, hit.point.z),
-                        new Vector3(transform.forward.x, 0, transform.forward.z),
-                        gameObject
-                    );
-                }
+                else
+                    new_window = Instantiate(og_browser);
+                InteractionLogger.Count("Browser");
             }
+            else
+            {
+                new_window = Instantiate(playground_prefab);
+                InteractionLogger.Count("Playground");
+            }
+            new_window.Initialize(
+                newWinPos,
+                new Vector3(newWinPos.x, 2f, newWinPos.z),
+                new Vector3(forw.x, 0, forw.z),
+                gameObject
+            );
         }
-
-        if (Input.GetKeyUp(KeyCode.LeftControl) || Input.GetKeyUp(KeyCode.LeftCommand))
-            spawner.SetActive(false);
-        else if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.LeftCommand))
-            spawner.SetActive(true);
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
