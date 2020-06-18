@@ -11,7 +11,7 @@ public class VRIDEController : MonoBehaviour
 {
     public InitializeBehaviour browser_prefab;
     public InitializeBehaviour playground_prefab;
-    private InitializeBehaviour og_browser = null;
+    private InitializeBehaviour og_browser;
     public Camera camera;
     public bool can_move = true;
 

@@ -8,14 +8,16 @@ using Valve.VR.InteractionSystem;
 public class TitleScreenBehaviour : MonoBehaviour
 {
     public GameObject text;
-    public GameObject nonvrplayer_prefab;
-    //public GameObject oculusplayer_prefab;
+    private Dictionary<string, GameObject> dict;
+
     public GameObject htcplayer_prefab;
     public GameObject teleporterPrefab;
-    //public GameObject UIHelpers_prefab;
+
+    public GameObject nonvrplayer_prefab;
     public GameObject defaultEventSystem_prefab;
 
-    private Dictionary<string, GameObject> dict;
+    //public GameObject oculusplayer_prefab;
+    //public GameObject UIHelpers_prefab;
 
     void Start()
     {
@@ -28,9 +30,6 @@ public class TitleScreenBehaviour : MonoBehaviour
 
     IEnumerator Coroutine()
     {
-        //string[] devices = XRSettings.supportedDevices;
-        //XRSettings.LoadDeviceByName(devices);
-        //yield return null;
         GameObject new_player = Instantiate(dict[XRSettings.loadedDeviceName]);
         new_player.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
         if (XRSettings.loadedDeviceName == "OpenVR")

@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 using LoggingModule;
+using System.Collections.Specialized;
 
 public class ToolbarBehaviour : MonoBehaviour
 {
     public GameObject window;
     public GameObject player;
     private bool dragging = false;
+    private Vector3 rel_pos;
+    private Vector3 rel_fwd;
 
     public void onClose()
     {
@@ -18,15 +21,13 @@ public class ToolbarBehaviour : MonoBehaviour
 
     public void onDrag()
     {
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
+        rel_pos = player.transform.InverseTransformPoint(window.transform.position);
+        rel_fwd = player.transform.InverseTransformDirection(window.transform.forward);
         dragging = true;
     }
 
     public void onEndDrag()
     {
-        //Cursor.lockState = CursorLockMode.None;
-        //Cursor.visible = true;
         dragging = false;
     }
 
@@ -38,15 +39,14 @@ public class ToolbarBehaviour : MonoBehaviour
 
     private void dragAction()
     {
-        Vector3 new_pos = player.transform.position + player.transform.forward * 5.0f;
-        new_pos = new Vector3(new_pos.x, window.transform.position.y, new_pos.z);
-        Vector3 new_forw = new Vector3(player.transform.forward.x, 0.0f, player.transform.forward.z);
+        Vector3 new_pos = player.transform.TransformPoint(rel_pos);
+        Vector3 new_forw = player.transform.TransformDirection(rel_fwd);
 
         window.transform.position = Vector3.MoveTowards(
             window.transform.position,
             new_pos,
-            0.5f
-            );
+            0.15f
+        );
 
         window.transform.forward = new_forw;
     }

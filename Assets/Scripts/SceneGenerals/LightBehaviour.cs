@@ -16,8 +16,7 @@ public class LightBehaviour : MonoBehaviour
         {
             grades = (seconds / 240) + 270;
         }
-        //else if(21600 <= grades && grades < 86400)
-        else
+        else //if(21600 <= grades && grades < 86400)
         {
             grades = (seconds / 240) - 90;
         }

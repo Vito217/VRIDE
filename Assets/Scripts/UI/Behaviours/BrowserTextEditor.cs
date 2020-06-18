@@ -12,24 +12,28 @@ using LoggingModule;
 
 public class BrowserTextEditor : TextEditorBehaviour
 {
-    public GameObject class_prefab;
-    public GameObject method_prefab;
-    public GameObject content_list_prefab;
+    public BrowserClass class_prefab;
+    public BrowserMethod method_prefab;
 
-    public GameObject class_list;
-    public GameObject method_list;
+    public Transform content_list_prefab;
+    public ClassWindow class_list;
+    public Transform method_list;
 
     void Update()
     {
         if (Input.anyKeyDown && field.isFocused)
         {
-            if (!(Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftControl) ||
-                    Input.GetKey(KeyCode.LeftCommand) || Input.GetKey(KeyCode.RightCommand) ||
-                        Input.GetMouseButton(0) || Input.GetMouseButton(1)))
+            bool leftCmd = Input.GetKey(KeyCode.LeftCommand);
+            bool leftCtrl = Input.GetKey(KeyCode.LeftControl);
+            bool f6 = Input.GetKey(KeyCode.F6);
+            bool s = Input.GetKey("g");
+
+            if (!(leftCmd || leftCtrl || f6 || s))
                 onChangeInput();
-            else if ((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftCommand)) 
-                        && Input.GetKeyDown("g"))
-                PharoDefine();
+            else {
+                if (((leftCmd || leftCtrl) && s) || f6)
+                    PharoDefine();
+            }
         }
     }
 
@@ -56,7 +60,7 @@ public class BrowserTextEditor : TextEditorBehaviour
         else
         {
             // Executing pharo code
-            string current_class_name = class_list.GetComponent<ClassWindow>().getLastSelectedClass().name;
+            string current_class_name = class_list.getLastSelectedClass().name;
             string method_code = current_class_name + " compile: '" + clean_code.Replace("'", "''") + "'";
             string responseString = await Pharo.Execute(method_code);
 
@@ -77,83 +81,46 @@ public class BrowserTextEditor : TextEditorBehaviour
     void createOrUpdateClass(string className, string input_code)
     {
         // Check if class object exists
-        Transform existing_class_transform = class_list.transform.Find(className);
-        GameObject browser_class;
-
-        if (!existing_class_transform)
+        BrowserClass new_class;
+        Transform existing_class = class_list.transform.Find(className);
+        if (!existing_class)
         {
             // Create new browser class
-            GameObject new_class = Instantiate(class_prefab);
-            new_class.transform.SetParent(class_list.transform, false);
-            new_class.GetComponent<TextMeshProUGUI>().text = className;
+            new_class = Instantiate(class_prefab, class_list.transform, false);
+            new_class.gameObject.GetComponent<TextMeshProUGUI>().text = className;
+            new_class.gameObject.name = className;
             new_class.name = className;
+            new_class.field = field;
+            new_class.parent_window = class_list;
 
             // Create method list
-            GameObject new_method_list = Instantiate(content_list_prefab);
-            new_method_list.transform.SetParent(method_list.transform, false);
+            Transform new_method_list = Instantiate(content_list_prefab, method_list, false);
+            new_method_list.Find("template").gameObject.GetComponent<BrowserMethod>().field = field;
             new_method_list.name = className;
-            new_method_list.SetActive(false);
-
-            // Assign class variables
-            BrowserClass new_class_component = new_class.GetComponent<BrowserClass>();
-            new_class_component.name = className;
-            new_class_component.sourceCode = input_code;
-            new_class_component.field = GetComponent<TMP_InputField>();
-            new_class_component.parent_window = new_class.transform.parent.gameObject;
-            new_class_component.method_list = new_method_list;
-
-            // Creating initialize method
-            GameObject new_method = Instantiate(method_prefab);
-            new_method.transform.SetParent(new_method_list.transform, false);
-            new_method.GetComponent<TextMeshProUGUI>().text = "<i>template</i>";
-            new_method.name = "template";
-
-            //Assign method variables
-            BrowserMethod new_method_component = new_method.GetComponent<BrowserMethod>();
-            new_method_component.sourceCode = 
-                "<b>messageSelectorAndArgumentNames</b>\n" +
-                "    | temporary variable names |\n"+
-                "    statements";
-            new_method_component.field = GetComponent<TMP_InputField>();
-
-            browser_class = new_class;
+            new_method_list.gameObject.SetActive(false);
+            new_class.method_list = new_method_list.gameObject;
         }
         else
-        {
-            //Update class source code
-            GameObject existing_class = existing_class_transform.gameObject;
-            BrowserClass existing_component = existing_class.GetComponent<BrowserClass>();
-            existing_component.sourceCode = input_code;
-
-            browser_class = existing_class;
-        }
-        browser_class.GetComponent<Button>().onClick.Invoke();
+            new_class = existing_class.gameObject.GetComponent<BrowserClass>();
+        new_class.sourceCode = input_code;
+        new_class.gameObject.GetComponent<Button>().onClick.Invoke();
     }
 
     void createOrUpdateMethod(string className, string methodName, string input_code)
     {
-        Transform existing_method_transform = method_list.transform.Find(className).Find(methodName);
-
-        if (!existing_method_transform)
+        BrowserMethod new_method;
+        Transform existing_method = method_list.transform.Find(className).Find(methodName);
+        if (!existing_method)
         {
-            GameObject new_method = Instantiate(method_prefab);
-            new_method.transform.SetParent(method_list.transform.Find(className), false);
-            new_method.GetComponent<TextMeshProUGUI>().text = methodName;
-            new_method.name = methodName;
-
-            //Assign method variables
-            BrowserMethod new_method_component = new_method.GetComponent<BrowserMethod>();
-            new_method_component.sourceCode = input_code;
-            new_method_component.field = GetComponent<TMP_InputField>();
+            new_method = Instantiate(method_prefab, method_list.Find(className), false);
+            new_method.gameObject.GetComponent<TextMeshProUGUI>().text = methodName;
+            new_method.gameObject.name = methodName;
+            new_method.field = field;
         }
         else
-        {
-            //Update class source code
-            GameObject existing_method = existing_method_transform.gameObject;
-            BrowserMethod existing_component = existing_method.GetComponent<BrowserMethod>();
-            existing_component.sourceCode = input_code;
-            field.text = existing_component.sourceCode;
-        }
+            new_method = existing_method.gameObject.GetComponent<BrowserMethod>();
+        new_method.sourceCode = input_code;
+        new_method.gameObject.GetComponent<Button>().onClick.Invoke();
     }
 
     public override void onSelect()

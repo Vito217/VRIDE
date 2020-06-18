@@ -7,16 +7,16 @@ using TMPro;
 
 public class BrowserClass : BrowserObject
 {
-    public GameObject parent_window;
+    public ClassWindow parent_window;
     public GameObject method_list;
 
     public void onSelectClass()
     {
         field.text = sourceCode;
-        BrowserClass last_class = parent_window.GetComponent<ClassWindow>().getLastSelectedClass();
+        BrowserClass last_class = parent_window.getLastSelectedClass();
         if(last_class != null)
             last_class.onDeselectClass();
-        parent_window.GetComponent<ClassWindow>().setLastSelectedClass(this);
+        parent_window.setLastSelectedClass(this);
         method_list.SetActive(true);
         Color newCol;
         if (ColorUtility.TryParseHtmlString("#00FFFF", out newCol))

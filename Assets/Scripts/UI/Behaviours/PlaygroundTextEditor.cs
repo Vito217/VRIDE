@@ -12,7 +12,6 @@ using UnityEngine.UI;
 using TMPro;
 using PharoModule;
 using System.Globalization;
-using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using Unity.VectorGraphics;
 using System.Security.Cryptography;
@@ -23,6 +22,7 @@ public class PlaygroundTextEditor : TextEditorBehaviour
 {
     public InspectorInit inspector_prefab;
     public SVGObjectInit svg_prefab;
+    private SVGObjectInit view;
     private float width;
     private float height;
 
@@ -33,7 +33,6 @@ public class PlaygroundTextEditor : TextEditorBehaviour
         height = sd.y;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.anyKeyDown && field.isFocused)
@@ -59,19 +58,15 @@ public class PlaygroundTextEditor : TextEditorBehaviour
                     PharoPrint();
                 else if (((leftCmd || leftCtrl) && i) || f5)
                     PharoInspect();
-                else if ((leftCmd || leftCtrl) && v)
+                else if (((leftCmd || leftCtrl) && v) || ((leftCmd || leftCtrl) && c))
                     onChangeInput();
-                else if ((leftCmd || leftCtrl) && c)
-                    onChangeInput();
-                else { }
             }
         }
     }
 
     async void PharoDo()
     {
-        string clean_code = cleanCode(field.text);
-        string selectedCode = getSelectedCode(clean_code);
+        string selectedCode = getSelectedCode(cleanCode(field.text));
         string responseString = await Pharo.Print(selectedCode);
         string output = "";
         try
@@ -80,33 +75,20 @@ public class PlaygroundTextEditor : TextEditorBehaviour
             {
                 Sprite sprite = null;
                 if (Regex.Match(selectedCode, @"visualize(\s*)asSVG(\s*)\.").Success)
-                {
-                    responseString = Regex.Replace(responseString, @"#|\[|\]|\n|( 0)*", "");
-                    byte[] byteArray = responseString.Split(' ').Select(x => Byte.Parse(x, NumberStyles.Integer, null)).ToArray();
-                    string file_path = Application.persistentDataPath + @"\temp";
-                    File.WriteAllBytes(file_path, byteArray);
-                    sprite = ImageModule.ImportSVG(file_path);
-                }
+                    sprite = ImageModule.ImportSVG(responseString);
                 else
+                    sprite = ImageModule.ImportPNG(responseString);
+                if (view == null)
                 {
-                    responseString = Regex.Replace(responseString, @"#|\[|\]|\n", "");
-                    byte[] byteArray = responseString.Split(' ').Select(x => Byte.Parse(x, NumberStyles.Integer, null)).ToArray();
-                    Texture2D tex = new Texture2D(2, 2);
-                    tex.LoadImage(byteArray);
-                    sprite = Sprite.Create(
-                        tex,
-                        new Rect(0, 0, tex.width, tex.height),
-                        Vector2.zero
+                    view = Instantiate(svg_prefab);
+                    view.Initialize(
+                        transform.position,
+                        transform.TransformPoint(new Vector3(-0.75f * width, -0.5f * height, 0)),
+                        transform.forward,
+                        player
                     );
                 }
-                SVGObjectInit instance = Instantiate(svg_prefab);
-                instance.setSprite(sprite);
-                instance.Initialize(
-                    transform.position,
-                    transform.TransformPoint(new Vector3(-0.75f * width, -0.5f * height, 0)),
-                    transform.forward,
-                    player
-                );
+                view.setSprite(sprite);
             }
             PharoInspect();
             InteractionLogger.RegisterCodeExecution(selectedCode, responseString);
@@ -123,8 +105,7 @@ public class PlaygroundTextEditor : TextEditorBehaviour
 
     async void PharoPrint()
     {
-        string clean_code = cleanCode(field.text);
-        string selection = getSelectedCode(clean_code);
+        string selection = getSelectedCode(cleanCode(field.text));
         string res = await Pharo.Print(selection);
         string output = "";
         try
@@ -144,8 +125,7 @@ public class PlaygroundTextEditor : TextEditorBehaviour
 
     async void PharoInspect()
     {
-        string clean_code = cleanCode(field.text);
-        string selection = getSelectedCode(clean_code);
+        string selection = getSelectedCode(cleanCode(field.text));
         string res = await Pharo.Inspect(selection);
         if (!Regex.Match(res, @"\[Error\](.*)").Success)
         {
