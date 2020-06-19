@@ -11,10 +11,14 @@ using TMPro;
 public class SVGObjectInit : InitializeBehaviour
 {
     public SVGImage graph_panel;
+    public string raw_image;
+    public string type;
 
-    public void setSprite(Sprite sp)
+    public void setSprite(Sprite sp, string raw, string tp)
     {
         graph_panel.sprite = sp;
+        raw_image = raw;
+        type = tp;
     }
 
 }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ClassWindow : MonoBehaviour
 {
-    private BrowserClass last_selected_class = null;
+    public BrowserClass last_selected_class = null;
 
     public BrowserClass getLastSelectedClass()
     {

@@ -15,7 +15,18 @@ public class ToolbarBehaviour : MonoBehaviour
 
     public void onClose()
     {
-        InteractionLogger.Discount(window.name.Replace("(Clone)", ""));
+        string name = window.name.Replace("(Clone)", "");
+        VRIDEController controller = player.GetComponent<VRIDEController>();
+        if (name.Equals("Browser"))
+            controller.browsers.Remove(window);
+        else if (name.Equals("Playground"))
+            controller.playgrounds.Remove(window);
+        else if (name.Equals("Inspector"))
+            controller.inspectors.Remove(window);
+        else//if (name.Equals("GraphObject"))
+            controller.graphs.Remove(window);
+
+        InteractionLogger.Discount(name);
         Destroy(window);
     }
 

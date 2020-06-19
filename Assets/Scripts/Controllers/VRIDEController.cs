@@ -1,22 +1,35 @@
-﻿using System.Collections;
+﻿using System.IO;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using UnityEngine;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 using LoggingModule;
+using SaveAndLoad;
+using System.Text;
+using System.Xml.Linq;
+using System.Runtime.Serialization;
 using System.Security.Cryptography;
+using System.Diagnostics.Eventing.Reader;
+using System.Runtime.Serialization.Formatters.Binary;
 
 public class VRIDEController : MonoBehaviour
 {
     public InitializeBehaviour browser_prefab;
     public InitializeBehaviour playground_prefab;
-    private InitializeBehaviour og_browser;
+    public InitializeBehaviour og_browser;
     public Camera camera;
     public bool can_move = true;
 
+    public List<GameObject> browsers = new List<GameObject>();
+    public List<GameObject> playgrounds = new List<GameObject>();
+    public List<GameObject> inspectors = new List<GameObject>();
+    public List<GameObject> graphs = new List<GameObject>();
+
     void Start()
     {
+        SaveAndLoadModule.Load(this);
         InteractionLogger.SessionStart();
     }
 
@@ -46,11 +59,13 @@ public class VRIDEController : MonoBehaviour
                 }
                 else
                     new_window = Instantiate(og_browser);
+                browsers.Add(new_window.gameObject);
                 InteractionLogger.Count("Browser");
             }
             else
             {
                 new_window = Instantiate(playground_prefab);
+                playgrounds.Add(new_window.gameObject);
                 InteractionLogger.Count("Playground");
             }
             new_window.Initialize(
@@ -63,6 +78,7 @@ public class VRIDEController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            SaveAndLoadModule.Save(this);
             InteractionLogger.SessionEnd();
             Application.Quit();
         }  

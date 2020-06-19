@@ -17,6 +17,7 @@ using Unity.VectorGraphics;
 using System.Security.Cryptography;
 using LoggingModule;
 using ImageUtils;
+using System.Media;
 
 public class PlaygroundTextEditor : TextEditorBehaviour
 {
@@ -73,14 +74,16 @@ public class PlaygroundTextEditor : TextEditorBehaviour
         {
             if (Regex.Match(selectedCode, @"visualize(\s*)(asSVG|asPNG)(\s*)\.").Success)
             {
+                string type = "";
                 Sprite sprite = null;
                 if (Regex.Match(selectedCode, @"visualize(\s*)asSVG(\s*)\.").Success)
-                    sprite = ImageModule.ImportSVG(responseString);
+                    { sprite = ImageModule.ImportSVG(responseString); type = "SVG"; }
                 else
-                    sprite = ImageModule.ImportPNG(responseString);
+                    { sprite = ImageModule.ImportPNG(responseString); type = "PNG"; }
                 if (view == null)
                 {
                     view = Instantiate(svg_prefab);
+                    player.GetComponent<VRIDEController>().graphs.Add(view.gameObject);
                     view.Initialize(
                         transform.position,
                         transform.TransformPoint(new Vector3(-0.75f * width, -0.5f * height, 0)),
@@ -88,7 +91,7 @@ public class PlaygroundTextEditor : TextEditorBehaviour
                         player
                     );
                 }
-                view.setSprite(sprite);
+                view.setSprite(sprite, responseString, type);
             }
             PharoInspect();
             InteractionLogger.RegisterCodeExecution(selectedCode, responseString);
@@ -131,6 +134,7 @@ public class PlaygroundTextEditor : TextEditorBehaviour
         {
             Vector3 newWorldPos = transform.TransformPoint(new Vector3(1.6f * width, 0, 0));
             InspectorInit new_inspector = Instantiate(inspector_prefab);
+            player.GetComponent<VRIDEController>().graphs.Add(view.gameObject);
             new_inspector.setContent(res);
             new_inspector.Initialize(
                 new Vector3(transform.position.x, 2, transform.position.z),
