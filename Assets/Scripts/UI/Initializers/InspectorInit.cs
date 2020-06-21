@@ -13,6 +13,7 @@ public class InspectorInit : InitializeBehaviour
     public InspectorRow inspector_row_prefab;
     public Image table_panel;
     public Image editor_panel;
+    public string data;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class InspectorInit : InitializeBehaviour
     }
 
     public void setContent(string response) {
+        data = response;
         response = Regex.Replace(response, @"an OrderedCollection\((.*)\)", "$1");
         response = Regex.Replace(response, @"self=a\s(.*)", "self=a$1");
         foreach (string tuple in response.Split(' '))

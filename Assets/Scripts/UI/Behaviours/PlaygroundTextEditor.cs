@@ -11,6 +11,7 @@ using System.Net.Http;
 using UnityEngine.UI;
 using TMPro;
 using PharoModule;
+using InstantiatorModule;
 using System.Globalization;
 using System.Runtime.Serialization.Formatters.Binary;
 using Unity.VectorGraphics;
@@ -21,8 +22,6 @@ using System.Media;
 
 public class PlaygroundTextEditor : TextEditorBehaviour
 {
-    public InspectorInit inspector_prefab;
-    public SVGObjectInit svg_prefab;
     private SVGObjectInit view;
     private float width;
     private float height;
@@ -74,15 +73,10 @@ public class PlaygroundTextEditor : TextEditorBehaviour
         {
             if (Regex.Match(selectedCode, @"visualize(\s*)(asSVG|asPNG)(\s*)\.").Success)
             {
-                string type = "";
-                Sprite sprite = null;
-                if (Regex.Match(selectedCode, @"visualize(\s*)asSVG(\s*)\.").Success)
-                    { sprite = ImageModule.ImportSVG(responseString); type = "SVG"; }
-                else
-                    { sprite = ImageModule.ImportPNG(responseString); type = "PNG"; }
+                string type = Regex.Match(selectedCode, @"visualize(\s*)asSVG(\s*)\.").Success ? "SVG" : "PNG";
                 if (view == null)
                 {
-                    view = Instantiate(svg_prefab);
+                    view = Instantiator.Graph() as SVGObjectInit;
                     player.GetComponent<VRIDEController>().graphs.Add(view.gameObject);
                     view.Initialize(
                         transform.position,
@@ -91,7 +85,7 @@ public class PlaygroundTextEditor : TextEditorBehaviour
                         player
                     );
                 }
-                view.setSprite(sprite, responseString, type);
+                view.setSprite(responseString, type);
             }
             PharoInspect();
             InteractionLogger.RegisterCodeExecution(selectedCode, responseString);
@@ -133,8 +127,8 @@ public class PlaygroundTextEditor : TextEditorBehaviour
         if (!Regex.Match(res, @"\[Error\](.*)").Success)
         {
             Vector3 newWorldPos = transform.TransformPoint(new Vector3(1.6f * width, 0, 0));
-            InspectorInit new_inspector = Instantiate(inspector_prefab);
-            player.GetComponent<VRIDEController>().graphs.Add(view.gameObject);
+            InspectorInit new_inspector = Instantiator.Inspector() as InspectorInit;
+            player.GetComponent<VRIDEController>().inspectors.Add(new_inspector.gameObject);
             new_inspector.setContent(res);
             new_inspector.Initialize(
                 new Vector3(transform.position.x, 2, transform.position.z),

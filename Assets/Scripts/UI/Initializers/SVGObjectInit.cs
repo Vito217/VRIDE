@@ -6,6 +6,7 @@ using UnityEngine;
 using System.Net.Http;
 using UnityEngine.UI;
 using Unity.VectorGraphics;
+using ImageUtils;
 using TMPro;
 
 public class SVGObjectInit : InitializeBehaviour
@@ -14,11 +15,12 @@ public class SVGObjectInit : InitializeBehaviour
     public string raw_image;
     public string type;
 
-    public void setSprite(Sprite sp, string raw, string tp)
+    public void setSprite(string raw, string tp)
     {
-        graph_panel.sprite = sp;
         raw_image = raw;
         type = tp;
+        graph_panel.sprite = type == "SVG" ?
+            ImageModule.ImportSVG(raw) :
+            ImageModule.ImportPNG(raw);
     }
-
 }

@@ -86,11 +86,13 @@ MonoBehaviour:
     type: 3}
   playground_prefab: {fileID: 4528608663118621400, guid: 450e17a1d9a87614e8aff7ea7d71181d,
     type: 3}
-  spawner_prefab: {fileID: 6416327808081392998, guid: 5f329768827c86446a103cb9872c2c55,
-    type: 3}
+  og_browser: {fileID: 0}
   camera: {fileID: 1353750187074472649}
-  range: 100
   can_move: 1
+  browsers: []
+  playgrounds: []
+  inspectors: []
+  graphs: []
 --- !u!1 &1353750187074472651
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,7 +263,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6395422996981459449}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
@@ -283,7 +285,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6395422996981459449}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
@@ -351,11 +353,10 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: o
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7be70e1d04d36cd46a6e1b96751a7d83, type: 2}
@@ -392,7 +393,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 258
+  m_textAlignment: 514
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -456,11 +457,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1353750186002011700}
     m_Modifications:
-    - target: {fileID: 2548992823208286277, guid: 9bb7a9a2136e6de4a8d3f4f5a598c870,
-        type: 3}
-      propertyPath: m_Name
-      value: DefaultEventSystem
-      objectReference: {fileID: 0}
     - target: {fileID: 2548992823208286272, guid: 9bb7a9a2136e6de4a8d3f4f5a598c870,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -515,6 +511,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2548992823208286277, guid: 9bb7a9a2136e6de4a8d3f4f5a598c870,
+        type: 3}
+      propertyPath: m_Name
+      value: DefaultEventSystem
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bb7a9a2136e6de4a8d3f4f5a598c870, type: 3}

@@ -7,6 +7,7 @@ using Valve.VR;
 using Valve.VR.InteractionSystem;
 using LoggingModule;
 using SaveAndLoad;
+using InstantiatorModule;
 using System.Text;
 using System.Xml.Linq;
 using System.Runtime.Serialization;
@@ -16,9 +17,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class VRIDEController : MonoBehaviour
 {
-    public InitializeBehaviour browser_prefab;
-    public InitializeBehaviour playground_prefab;
-    public InitializeBehaviour og_browser;
+    public InitializeBehaviour og_browser = null;
     public Camera camera;
     public bool can_move = true;
 
@@ -54,7 +53,7 @@ public class VRIDEController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F1)){
                 if (og_browser == null)
                 {
-                    new_window = Instantiate(browser_prefab);
+                    new_window = Instantiator.Browser();
                     og_browser = new_window;
                 }
                 else
@@ -64,7 +63,7 @@ public class VRIDEController : MonoBehaviour
             }
             else
             {
-                new_window = Instantiate(playground_prefab);
+                new_window = Instantiator.Playground();
                 playgrounds.Add(new_window.gameObject);
                 InteractionLogger.Count("Playground");
             }
