@@ -87,7 +87,8 @@ public class PlaygroundTextEditor : TextEditorBehaviour
                 }
                 view.setSprite(responseString, type);
             }
-            PharoInspect();
+            else
+                PharoInspect();
             InteractionLogger.RegisterCodeExecution(selectedCode, responseString);
         }
         catch (Exception e)

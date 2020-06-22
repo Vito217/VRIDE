@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -13,6 +14,7 @@ using System.Text;
 using System.Xml.Linq;
 using System.Runtime.Serialization;
 using System.Security.Cryptography;
+using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
 using System.Runtime.Serialization.Formatters.Binary;
 
@@ -28,26 +30,7 @@ public class VRIDEController : MonoBehaviour
 
     void Start()
     {
-        string enginePath = Application.streamingAssetsPath + "PharoEngine/";
-        string pharoPath = enginePath + "pharo";
-        string imagePath = enginePath + "vride.image";
-        string serverPath = enginePath + "server.st";
-        string command = String.Format("{0} {1} st {2}", pharoPath, imagePath, serverPath);
-        string bashFile = Application.platform == RuntimePlatform.WindowsPlayer ? "C:/Windows/System32/bash.exe" : "/bin/bash";
-
-        var process = new Process()
-        {
-            StartInfo = new ProcessStartInfo
-            {
-                FileName = bashFile,
-                Arguments = $"-c \"{command}\"",
-                RedirectStandardOutput = true,
-                UseShellExecute = false,
-                CreateNoWindow = true,
-            }
-        };
-        process.Start();
-
+        //Pharo.Start();
         SaveAndLoadModule.Load(this);
         InteractionLogger.SessionStart();
     }

@@ -7,6 +7,9 @@ using UnityEngine;
 using System.Threading;
 using System.Net.Http;
 using UnityEngine.UI;
+using SaveAndLoad;
+using PharoModule;
+using LoggingModule;
 using TMPro;
 
 public class TextEditorBehaviour : MonoBehaviour
