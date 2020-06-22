@@ -82,16 +82,27 @@ public class BrowserTextEditor : TextEditorBehaviour
             Instantiator.ClassObject(class_list, className, field, 
                 Instantiator.MethodListObject(method_list, className, field)) :
             existing_class.gameObject.GetComponent<BrowserClass>();
+
+        VRIDEController.data.classes.Remove(new Tuple<string, string>(className, new_class.sourceCode));
+        VRIDEController.data.classes.Add(new Tuple<string, string>(className, input_code));
+        if (!VRIDEController.data.methodLists.ContainsKey(className))
+            VRIDEController.data.methodLists.Add(className, new List<Tuple<string, string>>());
+
         new_class.sourceCode = input_code;
         new_class.click();
     }
 
     void createOrUpdateMethod(string className, string methodName, string input_code)
     {
-        Transform existing_method = method_list.transform.Find(className).Find(methodName);
+        Transform classMethodList = method_list.transform.Find(className);
+        Transform existing_method = classMethodList.Find(methodName);
         BrowserMethod new_method = !existing_method ?
-            Instantiator.MethodObject(method_list, className, methodName, field) :
+            Instantiator.MethodObject(classMethodList, className, methodName, field) :
             existing_method.gameObject.GetComponent<BrowserMethod>();
+
+        VRIDEController.data.methodLists[className].Remove(new Tuple<string, string>(methodName, new_method.sourceCode));
+        VRIDEController.data.methodLists[className].Add(new Tuple<string, string>(methodName, input_code));
+
         new_method.sourceCode = input_code;
         new_method.click();
     }

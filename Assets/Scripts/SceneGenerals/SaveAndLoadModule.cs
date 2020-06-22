@@ -17,37 +17,6 @@ namespace SaveAndLoad
     {
         static string sessionPath = Application.persistentDataPath + "/session.data";
 
-        public static SystemData SerializeSystemData(InitializeBehaviour browser)
-        {
-            List<Tuple<string, string>> classes = new List<Tuple<string, string>>();
-            Dictionary<string, List<Tuple<string, string>>> methodLists =
-                new Dictionary<string, List<Tuple<string, string>>>();
-
-            if(browser != null)
-            {
-                Transform classList = browser.transform.Find(Instantiator.classPath);
-                foreach (Transform classObject in classList)
-                {
-                    string className = classObject.gameObject.name;
-                    string sourceCode = classObject.gameObject.GetComponent<BrowserClass>().sourceCode;
-                    classes.Add(new Tuple<string, string>(className, sourceCode));
-
-                    Transform methodList = browser.transform.Find(Instantiator.methodPath + "/" + className);
-                    List<Tuple<string, string>> methods = new List<Tuple<string, string>>();
-                    foreach (Transform methodObject in methodList)
-                    {
-                        string methodName = methodObject.gameObject.name;
-                        string code = methodObject.gameObject.GetComponent<BrowserMethod>().sourceCode;
-                        methods.Add(new Tuple<string, string>(methodName, code));
-                    }
-
-                    methodLists.Add(className, methods);
-                }
-            }
-
-            return new SystemData(classes, methodLists);
-        }
-
         public static List<BrowserData> SerializeBrowsers(List<GameObject> browsers)
         {
             List<BrowserData> browserList = new List<BrowserData>();
@@ -68,51 +37,19 @@ namespace SaveAndLoad
             SystemData data = session.classesAndMethods;
             List<BrowserData> browsersData = session.browsers;
             List<GameObject> browsers = new List<GameObject>();
-            bool first = true;
 
             foreach(BrowserData bdata in browsersData)
             {
-
                 Vector3 pos = new Vector3(bdata.position.x, 0f, bdata.position.z);
                 Vector3 fwd = new Vector3(bdata.forward.x, bdata.forward.y, bdata.forward.z);
                 Vector3 final_pos = new Vector3(bdata.position.x, 2f, bdata.position.z);
 
-                BrowserInit browser;
-
-                if (first)
-                {
-                    browser = Instantiator.Browser() as BrowserInit;
-
-                    ClassWindow classList = browser.transform.Find(Instantiator.classPath).gameObject.GetComponent<ClassWindow>();
-                    TMP_InputField field = browser.transform.Find(Instantiator.editorPath).gameObject.GetComponent<TMP_InputField>();
-                    Transform methodList = browser.transform.Find(Instantiator.methodPath);
-
-                    foreach (Tuple<string, string> classAndCode in data.classes)
-                    {
-                        string className = classAndCode.Item1;
-                        string classCode = classAndCode.Item2;
-
-                        Transform classMethodList = Instantiator.MethodListObject(methodList, className, field);
-                        BrowserClass c = Instantiator.ClassObject(classList, className, field, classMethodList, classCode);
-
-                        List<Tuple<string, string>> methods = data.methodLists[className];
-
-                        foreach (Tuple<string, string> methodAndCode in methods)
-                        {
-                            string methodName = methodAndCode.Item1;
-                            string methodCode = methodAndCode.Item2;
-
-                            Instantiator.MethodObject(methodList, className, methodName, field, methodCode);
-                        }
-                        if (className == bdata.lastSelectedClass) c.click();
-                    }
-                    player.og_browser = browser;
-                    first = false;
-                }
-                else
-                    browser = UnityEngine.Object.Instantiate(player.og_browser) as BrowserInit;
+                BrowserInit browser = Instantiator.Browser(data) as BrowserInit;
                 browser.Initialize(pos, final_pos, fwd, player.gameObject);
                 browsers.Add(browser.gameObject);
+
+                Transform lsc = browser.transform.Find(Instantiator.classPath).Find(bdata.lastSelectedClass);
+                if (lsc) lsc.gameObject.GetComponent<BrowserClass>().click();
             }
             player.browsers = browsers;
         }
@@ -223,7 +160,7 @@ namespace SaveAndLoad
         public static void Save(VRIDEController player)
         {
             Session s = new Session(
-                SerializeSystemData(player.og_browser),
+                VRIDEController.data,
                 SerializeBrowsers(player.browsers),
                 SerializePlaygrounds(player.playgrounds),
                 SerializeInspectors(player.inspectors),
@@ -245,6 +182,7 @@ namespace SaveAndLoad
                 Session session = (Session) bf.Deserialize(file);
                 file.Close();
 
+                VRIDEController.data = session.classesAndMethods;
                 DeserializeBrowsers(session, player);
                 DeserializePlaygrounds(session, player);
                 DeserializeInspectors(session, player);

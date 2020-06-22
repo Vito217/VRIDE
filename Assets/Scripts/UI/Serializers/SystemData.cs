@@ -10,6 +10,11 @@ public class SystemData
     public Dictionary<string, List<Tuple<string, string>>> methodLists = 
         new Dictionary<string, List<Tuple<string, string>>>();
 
+    public SystemData()
+    {
+
+    }
+
     public SystemData(List<Tuple<string, string>> cls,
                       Dictionary<string, List<Tuple<string, string>>> ml)
     {

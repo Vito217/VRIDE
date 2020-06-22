@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,7 +18,7 @@ namespace InstantiatorModule
 
         public static BrowserClass browserClassPrefab = Resources.Load<BrowserClass>(oldPrefabs + "BrowserClass");
         public static BrowserMethod browserMethodPrefab = Resources.Load<BrowserMethod>(oldPrefabs + "BrowserMethod");
-        public static Transform contentListPrefab = Resources.Load<Transform>(oldPrefabs + "ScrollableWindowContent");
+        public static Transform classMethodListPrefab = Resources.Load<Transform>(oldPrefabs + "ClassMethodList");
         public static InspectorRow inspectorRowPrefab = Resources.Load<InspectorRow>(oldPrefabs + "InspectorRow");
         public static InitializeBehaviour browserPrefab = Resources.Load<BrowserInit>(prefabs + "Browser");
         public static InitializeBehaviour playgroundPrefab = Resources.Load<PlaygroundInit>(prefabs + "Playground");
@@ -47,7 +48,7 @@ namespace InstantiatorModule
 
         public static Transform MethodListObject(Transform methodListContent, string className, TMP_InputField field)
         {
-            Transform new_method_list = UnityEngine.Object.Instantiate(contentListPrefab, methodListContent, false);
+            Transform new_method_list = UnityEngine.Object.Instantiate(classMethodListPrefab, methodListContent, false);
             new_method_list.Find("template").gameObject.GetComponent<BrowserMethod>().field = field;
             new_method_list.name = className;
             new_method_list.gameObject.SetActive(false);
@@ -57,7 +58,7 @@ namespace InstantiatorModule
         public static BrowserMethod MethodObject(Transform parentWindow, string className, string methodName, 
             TMP_InputField field)
         {
-            BrowserMethod new_method = UnityEngine.Object.Instantiate(browserMethodPrefab, parentWindow.Find(className), false);
+            BrowserMethod new_method = UnityEngine.Object.Instantiate(browserMethodPrefab, parentWindow, false);
             new_method.gameObject.GetComponent<TextMeshProUGUI>().text = methodName;
             new_method.gameObject.name = methodName;
             new_method.field = field;
@@ -77,9 +78,37 @@ namespace InstantiatorModule
             return UnityEngine.Object.Instantiate(playgroundPrefab);
         }
 
-        public static InitializeBehaviour Browser()
+        public static InitializeBehaviour Browser(SystemData data)
         {
-            return UnityEngine.Object.Instantiate(browserPrefab);
+            InitializeBehaviour browser = UnityEngine.Object.Instantiate(browserPrefab);
+
+            ClassWindow classList = browser.transform.Find(classPath).gameObject.GetComponent<ClassWindow>();
+            TMP_InputField field = browser.transform.Find(editorPath).gameObject.GetComponent<TMP_InputField>();
+            Transform methodList = browser.transform.Find(methodPath);
+
+            bool first = true;
+            foreach (Tuple<string, string> classAndCode in data.classes)
+            {
+                string className = classAndCode.Item1;
+                string classCode = classAndCode.Item2;
+
+                Transform classMethodList = MethodListObject(methodList, className, field);
+                BrowserClass c = ClassObject(classList, className, field, classMethodList, classCode);
+
+                List<Tuple<string, string>> methods = data.methodLists[className];
+
+                foreach (Tuple<string, string> methodAndCode in methods)
+                {
+                    string methodName = methodAndCode.Item1;
+                    string methodCode = methodAndCode.Item2;
+
+                    BrowserMethod m = MethodObject(classMethodList, className, methodName, field, methodCode);
+                }
+
+                if (first) { c.click(); first = false; }
+            }
+
+            return browser;
         }
 
         public static InitializeBehaviour Inspector()
