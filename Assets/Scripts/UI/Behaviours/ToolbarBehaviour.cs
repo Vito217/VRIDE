@@ -23,7 +23,7 @@ public class ToolbarBehaviour : MonoBehaviour
             controller.playgrounds.Remove(window);
         else if (name.Equals("Inspector"))
             controller.inspectors.Remove(window);
-        else//if (name.Equals("GraphObject"))
+        else
             controller.graphs.Remove(window);
 
         InteractionLogger.Discount(name);
@@ -35,11 +35,15 @@ public class ToolbarBehaviour : MonoBehaviour
         rel_pos = player.transform.InverseTransformPoint(window.transform.position);
         rel_fwd = player.transform.InverseTransformDirection(window.transform.forward);
         dragging = true;
+
+        InteractionLogger.StartTimerFor("WindowDragging");
     }
 
     public void onEndDrag()
     {
         dragging = false;
+
+        InteractionLogger.EndTimerFor("WindowDragging");
     }
 
     void Update()

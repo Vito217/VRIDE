@@ -37,14 +37,15 @@ namespace LoggingModule
 
             { "totalPlaygroundMilliseconds" , 0 },
             { "totalBrowserMilliseconds" , 0 },
-            { "totalInspectorMilliseconds" , 0 }
-
+            { "totalInspectorMilliseconds" , 0 },
+            { "totalWindowDraggingMilliseconds", 0 }
         };
 
         private static Dictionary<string, Stopwatch> timers = new Dictionary<string, Stopwatch>() {
             { "PlaygroundInteraction" , null },
             { "BrowserInteraction" , null },
             { "InspectorInteraction" , null },
+            { "WindowDraggingInteraction" , null }
         };
 
         public static void writeLineToLog(string line)
@@ -80,7 +81,7 @@ namespace LoggingModule
         public static void StartTimerFor(string window)
         {
             timers[window + "Interaction"] = Stopwatch.StartNew();
-            writeLineToLog("Started interaction with a " + window);
+            writeLineToLog("Started interaction with a " + window + " at " + DateTime.Now.ToString());
         }
 
         public static void EndTimerFor(string window)
@@ -89,7 +90,7 @@ namespace LoggingModule
             int elapsedTime = (int) timers[window + "Interaction"].Elapsed.TotalMilliseconds;
             counters["total" + window + "Milliseconds"] += elapsedTime;
             writeLineToLog(
-                "Finished interaction with a " + window + "\n" +
+                "Finished interaction with a " + window + " at " + DateTime.Now.ToString() + "\n" +
                 "Time Spent: " + elapsedTime.ToString() + " ms"
             );
         }

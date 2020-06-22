@@ -84,6 +84,7 @@ public class PlaygroundTextEditor : TextEditorBehaviour
                         transform.forward,
                         player
                     );
+                    InteractionLogger.Count("GraphObject");
                 }
                 view.setSprite(responseString, type);
             }

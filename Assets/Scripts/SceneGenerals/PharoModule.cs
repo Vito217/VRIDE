@@ -29,7 +29,7 @@ namespace PharoModule
                 {
                     FileName = bashFile,
                     WorkingDirectory = enginePath,
-                    Arguments = $"-c \"./pharo Pharo.image st server.st\"",
+                    Arguments = $"-c \"./pharo vride.image st server.st\"",
                     RedirectStandardOutput = false,
                     UseShellExecute = true,
                     CreateNoWindow = true,
