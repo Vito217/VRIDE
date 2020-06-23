@@ -10,6 +10,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 using InstantiatorModule;
+using LoggingModule;
 
 namespace SaveAndLoad
 {
@@ -50,6 +51,8 @@ namespace SaveAndLoad
 
                 Transform lsc = browser.transform.Find(Instantiator.classPath).Find(bdata.lastSelectedClass);
                 if (lsc) lsc.gameObject.GetComponent<BrowserClass>().click();
+
+                InteractionLogger.Count("Browser");
             }
             player.browsers = browsers;
         }
@@ -84,6 +87,8 @@ namespace SaveAndLoad
                     .GetComponent<TMP_InputField>().text = pdata.sourceCode;
 
                 playgrounds.Add(playground.gameObject);
+
+                InteractionLogger.Count("Playground");
             }
             player.playgrounds = playgrounds;
         }
@@ -116,6 +121,8 @@ namespace SaveAndLoad
                 inspector.Initialize(pos, final_pos, fwd, player.gameObject);
 
                 inspectors.Add(inspector.gameObject);
+
+                InteractionLogger.Count("Inspector");
             }
             player.inspectors = inspectors;
         }
@@ -153,6 +160,8 @@ namespace SaveAndLoad
                 graph.Initialize(pos, final_pos, fwd, player.gameObject);
 
                 graphs.Add(graph.gameObject);
+
+                InteractionLogger.Count("GraphObject");
             }
             player.graphs = graphs;
         }

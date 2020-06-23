@@ -66,11 +66,11 @@ public class PlaygroundTextEditor : TextEditorBehaviour
 
     async void PharoDo()
     {
-        string selectedCode = getSelectedCode(cleanCode(field.text));
-        string responseString = await Pharo.Print(selectedCode);
         string output = "";
         try
         {
+            string selectedCode = getSelectedCode(cleanCode(field.text));
+            string responseString = await Pharo.Print(selectedCode);
             if (Regex.Match(selectedCode, @"visualize(\s*)(asSVG|asPNG)(\s*)\.").Success)
             {
                 string type = Regex.Match(selectedCode, @"visualize(\s*)asSVG(\s*)\.").Success ? "SVG" : "PNG";
@@ -104,11 +104,11 @@ public class PlaygroundTextEditor : TextEditorBehaviour
 
     async void PharoPrint()
     {
-        string selection = getSelectedCode(cleanCode(field.text));
-        string res = await Pharo.Print(selection);
         string output = "";
         try
         {
+            string selection = getSelectedCode(cleanCode(field.text));
+            string res = await Pharo.Print(selection);
             output = " <color=#b32d00>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>";
             InteractionLogger.RegisterCodeExecution(selection, res);
         }
@@ -124,24 +124,37 @@ public class PlaygroundTextEditor : TextEditorBehaviour
 
     async void PharoInspect()
     {
-        string selection = getSelectedCode(cleanCode(field.text));
-        string res = await Pharo.Inspect(selection);
-        if (!Regex.Match(res, @"\[Error\](.*)").Success)
+        string output = "";
+        try
         {
-            Vector3 newWorldPos = transform.TransformPoint(new Vector3(1.6f * width, 0, 0));
-            InspectorInit new_inspector = Instantiator.Inspector() as InspectorInit;
-            player.GetComponent<VRIDEController>().inspectors.Add(new_inspector.gameObject);
-            new_inspector.setContent(res);
-            new_inspector.Initialize(
-                new Vector3(transform.position.x, 2, transform.position.z),
-                new Vector3(newWorldPos.x, 2, newWorldPos.z),
-                transform.forward,
-                player
-            );
+            string selection = getSelectedCode(cleanCode(field.text));
+            string res = await Pharo.Inspect(selection);
+            if (!Regex.Match(res, @"\[Error\](.*)").Success)
+            {
+                Vector3 newWorldPos = transform.TransformPoint(new Vector3(1.6f * width, 0, 0));
+                InspectorInit new_inspector = Instantiator.Inspector() as InspectorInit;
+                player.GetComponent<VRIDEController>().inspectors.Add(new_inspector.gameObject);
+                new_inspector.setContent(res);
+                new_inspector.Initialize(
+                    new Vector3(transform.position.x, 2, transform.position.z),
+                    new Vector3(newWorldPos.x, 2, newWorldPos.z),
+                    transform.forward,
+                    player
+                );
+                InteractionLogger.Count("Inspector");
+            }
+            else
+                output = " <color=#b32d00>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>";
+            InteractionLogger.RegisterCodeInspection(selection, res);
         }
-        else
-            field.text += " <color=#b32d00>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>";
-        InteractionLogger.RegisterCodeInspection(selection, res);
+        catch(Exception e)
+        {
+            output = " <color=#b32d00>[Error] " + e.Message + "</color>";
+        }
+        finally
+        {
+            field.text += output;
+        }
     }
 
     public override void onSelect()
