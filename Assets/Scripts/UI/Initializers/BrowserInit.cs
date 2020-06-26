@@ -6,6 +6,7 @@ using UnityEngine;
 public class BrowserInit : InitializeBehaviour
 {
     public BrowserTextEditor text_editor;
+    public Image packages_panel;
     public Image classes_panel;
     public Image methods_panel;
     public Image editor_panel;
@@ -17,6 +18,7 @@ public class BrowserInit : InitializeBehaviour
         classes_panel.color = new_color;
         methods_panel.color = new_color;
         editor_panel.color = new_color;
+        packages_panel.color = new_color;
     }
 
     public override void Initialize(Vector3 init_pos, Vector3 final_pos, Vector3 forward, GameObject player)

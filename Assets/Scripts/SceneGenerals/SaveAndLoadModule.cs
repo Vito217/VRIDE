@@ -25,10 +25,19 @@ namespace SaveAndLoad
             {
                 Vector3 pos = browser.transform.position;
                 Vector3 fwd = browser.transform.forward;
-                BrowserClass lastClass = browser.transform.Find(Instantiator.classPath)
-                    .gameObject.GetComponent<ClassWindow>().last_selected_class;
-                string lastClassName = lastClass == null ? "" : lastClass.name;
-                browserList.Add(new BrowserData(pos, fwd, lastClassName));
+
+                BrowserPackage lastPackage = browser.transform.Find(Instantiator.packagePath)
+                    .gameObject.GetComponent<PackageWindow>().last_selected_package;
+                string lastPackageName = lastPackage == null ? 
+                    "" : 
+                    lastPackage.name;
+
+                Transform lastClass = browser.transform.Find(Instantiator.classPath + "/" + lastPackageName);
+                string lastClassName = lastClass == null ? 
+                    "" : 
+                    lastClass.gameObject.GetComponent<ClassWindow>().last_selected_class.name;
+
+                browserList.Add(new BrowserData(pos, fwd, lastClassName, lastPackageName));
             }
             return browserList;
         }
@@ -50,7 +59,7 @@ namespace SaveAndLoad
                 browsers.Add(browser.gameObject);
 
                 Transform lsc = browser.transform.Find(Instantiator.classPath).Find(bdata.lastSelectedClass);
-                if (lsc) lsc.gameObject.GetComponent<BrowserClass>().click();
+                if (lsc != null && bdata.lastSelectedClass != "") lsc.gameObject.GetComponent<BrowserClass>().click();
 
                 InteractionLogger.Count("Browser");
             }
@@ -196,6 +205,14 @@ namespace SaveAndLoad
                 DeserializePlaygrounds(session, player);
                 DeserializeInspectors(session, player);
                 DeserializeGraphs(session, player);
+            }
+            else
+            {
+                VRIDEController.data = new SystemData();
+                player.browsers = new List<GameObject>();
+                player.playgrounds = new List<GameObject>();
+                player.inspectors = new List<GameObject>();
+                player.graphs = new List<GameObject>();
             }
         }
     }

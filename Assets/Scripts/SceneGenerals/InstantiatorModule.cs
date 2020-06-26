@@ -12,13 +12,16 @@ namespace InstantiatorModule
         public static string oldPrefabs = "Prefabs/2.0/";
         public static string prefabs = "Prefabs/3.0/UI/";
         public static string editorPath = "Editor/Panel/InputField (TMP)";
-        public static string classPath = "Classes/Panel/Scroll View/Viewport/Content";
-        public static string methodPath = "Methods/Panel/Scroll View/Viewport/Content";
+        public static string packagePath = "Objects/Packages/Panel/Scroll View/Viewport/Content";
+        public static string classPath = "Objects/Classes/Panel/Scroll View/Viewport/Content";
+        public static string methodPath = "Objects/Methods/Panel/Scroll View/Viewport/Content";
         public static string inspectedPath = "InspectorTable/Panel/Scroll View/Viewport/Content";
 
         public static BrowserClass browserClassPrefab = Resources.Load<BrowserClass>(oldPrefabs + "BrowserClass");
         public static BrowserMethod browserMethodPrefab = Resources.Load<BrowserMethod>(oldPrefabs + "BrowserMethod");
+        public static BrowserPackage browserPackagePrefab = Resources.Load<BrowserPackage>(oldPrefabs + "BrowserPackage");
         public static Transform classMethodListPrefab = Resources.Load<Transform>(oldPrefabs + "ClassMethodList");
+        public static ClassWindow packageClassListPrefab = Resources.Load<ClassWindow>(oldPrefabs + "PackageClassList");
         public static InspectorRow inspectorRowPrefab = Resources.Load<InspectorRow>(oldPrefabs + "InspectorRow");
         public static InitializeBehaviour browserPrefab = Resources.Load<BrowserInit>(prefabs + "Browser");
         public static InitializeBehaviour playgroundPrefab = Resources.Load<PlaygroundInit>(prefabs + "Playground");
@@ -44,6 +47,28 @@ namespace InstantiatorModule
             BrowserClass new_class = ClassObject(parentWindow, className, field, methodList);
             new_class.sourceCode = sourceCode;
             return new_class;
+        }
+
+        public static BrowserPackage PackageObject(PackageWindow parentWindow, string packageName, TMP_InputField field,
+            ClassWindow classList)
+        {
+            BrowserPackage newPackage = UnityEngine.Object.Instantiate(browserPackagePrefab, parentWindow.transform, false);
+            newPackage.gameObject.GetComponent<TextMeshProUGUI>().text = packageName;
+            newPackage.gameObject.name = packageName;
+            newPackage.name = packageName;
+            newPackage.field = field;
+            newPackage.parentWindow = parentWindow;
+            newPackage.classList = classList;
+            return newPackage;
+        }
+
+        public static ClassWindow ClassListObject(Transform classListContent, string packageName, TMP_InputField field)
+        {
+            ClassWindow newClassList = UnityEngine.Object.Instantiate(packageClassListPrefab, classListContent, false);
+            newClassList.transform.Find("template").gameObject.GetComponent<BrowserClass>().field = field;
+            newClassList.name = packageName;
+            newClassList.gameObject.SetActive(false);
+            return newClassList;
         }
 
         public static Transform MethodListObject(Transform methodListContent, string className, TMP_InputField field)
@@ -82,32 +107,46 @@ namespace InstantiatorModule
         {
             InitializeBehaviour browser = UnityEngine.Object.Instantiate(browserPrefab);
 
-            ClassWindow classList = browser.transform.Find(classPath).gameObject.GetComponent<ClassWindow>();
+            PackageWindow packList = browser.transform.Find(packagePath).gameObject.GetComponent<PackageWindow>();
+            Transform classList = browser.transform.Find(classPath);
             TMP_InputField field = browser.transform.Find(editorPath).gameObject.GetComponent<TMP_InputField>();
             Transform methodList = browser.transform.Find(methodPath);
 
-            bool first = true;
-            foreach (Tuple<string, string> classAndCode in data.classes)
+            bool firstPack = true;
+            bool firstClass = true;
+
+            Dictionary<string, List<Tuple<string, string>>> packAndClasses = data.classes;
+            Dictionary<string, List<Tuple<string, string>>> classAndMethods = data.methodLists;
+
+            foreach (KeyValuePair<string, List<Tuple<string, string>>> keyVal in packAndClasses)
             {
-                string className = classAndCode.Item1;
-                string classCode = classAndCode.Item2;
+                string packageName = keyVal.Key;
+                List<Tuple<string, string>> classes = keyVal.Value;
+                ClassWindow packageClassList = ClassListObject(classList, packageName, field);
+                BrowserPackage pack = PackageObject(packList, packageName, field, packageClassList);
 
-                Transform classMethodList = MethodListObject(methodList, className, field);
-                BrowserClass c = ClassObject(classList, className, field, classMethodList, classCode);
-
-                List<Tuple<string, string>> methods = data.methodLists[className];
-
-                foreach (Tuple<string, string> methodAndCode in methods)
+                foreach (Tuple<string, string> classAndCode in classes)
                 {
-                    string methodName = methodAndCode.Item1;
-                    string methodCode = methodAndCode.Item2;
+                    string className = classAndCode.Item1;
+                    string classCode = classAndCode.Item2;
 
-                    BrowserMethod m = MethodObject(classMethodList, className, methodName, field, methodCode);
+                    Transform classMethodList = MethodListObject(methodList, className, field);
+                    BrowserClass c = ClassObject(packageClassList, className, field, classMethodList, classCode);
+
+                    List<Tuple<string, string>> methods = data.methodLists[className];
+
+                    foreach (Tuple<string, string> methodAndCode in methods)
+                    {
+                        string methodName = methodAndCode.Item1;
+                        string methodCode = methodAndCode.Item2;
+
+                        BrowserMethod m = MethodObject(classMethodList, className, methodName, field, methodCode);
+                    }
+
+                    if (firstClass) { c.click(); firstClass = false; }
                 }
-
-                if (first) { c.click(); first = false; }
+                if (firstPack) { pack.click(); firstPack = false; }
             }
-
             return browser;
         }
 

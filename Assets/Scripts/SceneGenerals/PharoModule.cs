@@ -51,7 +51,17 @@ namespace PharoModule
                 "[" + code + "]\n" +
                     "\ton: Error\n" +
                     "\tdo: [:e | '[Error] ' , (e message lookupClass name), ': ' , (e messageText)]."
+            );
+
+            /**
+            return await Execute(
+                "res := [" + code + "]\n" +
+                    "\ton: Error\n" +
+                    "\tdo: [:e | '[Error] ' , (e message lookupClass name), ': ' , (e messageText)].\n" +
+                "SmalltalkImage current snapshot: true andQuit: false.\n" +
+                "res ."
            );
+            **/
         }
 
         public static async Task<string> Inspect(string code)

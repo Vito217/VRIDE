@@ -10,6 +10,18 @@ public class BrowserClass : BrowserObject
     public ClassWindow parent_window;
     public GameObject method_list;
 
+    void Start()
+    {
+        if (sourceCode == "")
+        {
+            sourceCode =
+                "<b>Object</b> subclass: #NameOfSubclass\n" +
+                    "    instanceVariableNames: ''\n" +
+                    "    classVariableNames: ''\n" +
+                    "    package: 'MyPackage'";
+        }
+    }
+
     public void onSelectClass()
     {
         field.text = sourceCode;
@@ -17,7 +29,8 @@ public class BrowserClass : BrowserObject
         if(last_class != null)
             last_class.onDeselectClass();
         parent_window.setLastSelectedClass(this);
-        method_list.SetActive(true);
+        if(method_list != null)
+            method_list.SetActive(true);
         Color newCol;
         if (ColorUtility.TryParseHtmlString("#00FFFF", out newCol))
             GetComponent<TextMeshProUGUI>().color = newCol;

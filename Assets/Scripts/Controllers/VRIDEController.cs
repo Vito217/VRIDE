@@ -22,15 +22,15 @@ public class VRIDEController : MonoBehaviour
 {
     public Camera camera;
     public bool can_move = true;
-    public static SystemData data = new SystemData();
-    public List<GameObject> browsers = new List<GameObject>();
-    public List<GameObject> playgrounds = new List<GameObject>();
-    public List<GameObject> inspectors = new List<GameObject>();
-    public List<GameObject> graphs = new List<GameObject>();
+    public static SystemData data;
+    public List<GameObject> browsers;
+    public List<GameObject> playgrounds;
+    public List<GameObject> inspectors;
+    public List<GameObject> graphs;
 
     void Start()
     {
-        Pharo.Start();
+        //Pharo.Start();
         SaveAndLoadModule.Load(this);
         InteractionLogger.SessionStart();
     }
