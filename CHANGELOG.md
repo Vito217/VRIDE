@@ -1,5 +1,14 @@
 # PharoVRIDE's Channel Log
 
+## V0.7.0 (28/06/2020)
+<ul>
+  <li>Pharo Image included. You don't have to call Zinc anymore. VRIDE does it for you!</li>
+  <li>Added log file with timestamps</li>
+  <li>Added Browser Packages section</li>
+  <li>Added cache System.</li>
+  <li>Fixed some visual issues</li>
+</ul>
+
 ## V0.6.2 (01/06/2020)
 <ul>
   <li>Fixed some inspector bugs.</li>
