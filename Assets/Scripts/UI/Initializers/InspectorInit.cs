@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -18,16 +19,16 @@ public class InspectorInit : InitializeBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Color new_color = Random.ColorHSV();
+        Color new_color = UnityEngine.Random.ColorHSV();
         table_panel.color = new_color;
         editor_panel.color = new_color;
     }
 
     public void setContent(string response) {
         data = response;
-        response = Regex.Replace(response, @"an OrderedCollection\((.*)\)", "$1");
-        response = Regex.Replace(response, @"self=a\s(.*)", "self=a$1");
-        foreach (string tuple in response.Split(' '))
+        response = response.Replace("an OrderedCollection('", "");
+        response = response.Replace("')", "");
+        foreach (string tuple in response.Split(new string[] { "' '" }, StringSplitOptions.None))
         {
             string[] pair = tuple.Replace("'", "").Split('=');
             InspectorRow new_row = Instantiate(inspector_row_prefab);

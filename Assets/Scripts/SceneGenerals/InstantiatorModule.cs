@@ -27,6 +27,7 @@ namespace InstantiatorModule
         public static InitializeBehaviour playgroundPrefab = Resources.Load<PlaygroundInit>(prefabs + "Playground");
         public static InitializeBehaviour inspectorPrefab = Resources.Load<InspectorInit>(prefabs + "Inspector");
         public static InitializeBehaviour svgPrefab = Resources.Load<SVGObjectInit>(prefabs + "GraphObject");
+        public static InitializeBehaviour transcriptPrefab = Resources.Load<TranscriptInit>(prefabs + "Transcript");
 
         public static BrowserClass ClassObject(ClassWindow parentWindow, string className, TMP_InputField field,
             Transform methodList)
@@ -158,6 +159,14 @@ namespace InstantiatorModule
         public static InitializeBehaviour Graph()
         {
             return UnityEngine.Object.Instantiate(svgPrefab);
+        }
+
+        public static InitializeBehaviour Transcript()
+        {
+            InitializeBehaviour t = UnityEngine.Object.Instantiate(transcriptPrefab);
+            t.transform.Find("Editor/Panel/InputField (TMP)").gameObject
+                    .GetComponent<TMP_InputField>().text = VRIDEController.transcriptContents;
+            return t;
         }
     }
 }

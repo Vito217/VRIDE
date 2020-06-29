@@ -23,14 +23,16 @@ public class VRIDEController : MonoBehaviour
     public Camera camera;
     public bool can_move = true;
     public static SystemData data;
+    public static string transcriptContents = "";
     public List<GameObject> browsers;
     public List<GameObject> playgrounds;
     public List<GameObject> inspectors;
     public List<GameObject> graphs;
+    public List<GameObject> transcripts;
 
     void Start()
     {
-        //Pharo.Start();
+        Pharo.Start();
         SaveAndLoadModule.Load(this);
         InteractionLogger.SessionStart();
     }
@@ -41,30 +43,49 @@ public class VRIDEController : MonoBehaviour
     // F4 : Print it
     // F5 : Inspect it
     // F6 : Accept
+    // F7 : Transcript
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F1) || Input.GetKeyDown(KeyCode.F2))
+        bool leftCmd = Input.GetKey(KeyCode.LeftCommand);
+        bool leftCtrl = Input.GetKey(KeyCode.LeftControl);
+        bool f1 = Input.GetKeyDown(KeyCode.F1);
+        bool f2 = Input.GetKeyDown(KeyCode.F2);
+        bool f7 = Input.GetKeyDown(KeyCode.F7);
+        bool o = Input.GetKeyDown("o");
+        bool b = Input.GetKeyDown("b");
+        bool w = Input.GetKeyDown("w");
+        bool t = Input.GetKeyDown("t");
+
+        if (f1 || f2 || f7 || leftCmd || leftCtrl)
         {
             Vector3 pos = transform.position;
             Vector3 forw = transform.forward;
 
-            Vector3 newWinPos = new Vector3(pos.x + forw.x * 5f, 0f, pos.z + forw.z * 5f);
-            Vector3 newWinFinalPos = new Vector3(newWinPos.x, 2f, newWinPos.z);
-            Vector3 newForward = new Vector3(forw.x, 0, forw.z);
+            Vector3 newPos = new Vector3(pos.x + forw.x * 5f, 0f, pos.z + forw.z * 5f);
+            Vector3 newFinalPos = new Vector3(newPos.x, 2f, newPos.z);
+            Vector3 newForw = new Vector3(forw.x, 0, forw.z);
 
-            if (Input.GetKeyDown(KeyCode.F1)){
+            if (f1 || ((leftCtrl || leftCmd) && o && b))
+            {
                 BrowserInit browser = Instantiator.Browser(data) as BrowserInit;
-                browser.Initialize(newWinPos, newWinFinalPos, newForward, gameObject);
+                browser.Initialize(newPos, new Vector3(newFinalPos.x, 2.25f, newFinalPos.z), newForw, gameObject);
                 browsers.Add(browser.gameObject);
                 InteractionLogger.Count("Browser");
             }
-            else
+            else if (f2 || ((leftCtrl || leftCmd) && o && w))
             {
                 PlaygroundInit playground = Instantiator.Playground() as PlaygroundInit;
-                playground.Initialize(newWinPos, newWinFinalPos, newForward, gameObject);
+                playground.Initialize(newPos, newFinalPos, newForw, gameObject);
                 playgrounds.Add(playground.gameObject);
                 InteractionLogger.Count("Playground");
+            }
+            else if (f7 || ((leftCtrl || leftCmd) && o && t))
+            {
+                TranscriptInit transcript = Instantiator.Transcript() as TranscriptInit;
+                transcript.Initialize(newPos, newFinalPos, newForw, gameObject);
+                transcripts.Add(transcript.gameObject);
+                InteractionLogger.Count("Transcript");
             }
         }
 

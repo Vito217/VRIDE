@@ -35,9 +35,15 @@ namespace LoggingModule
             { "stillOpenedGraphObjects" , 0 },
             { "totalHistorycalGraphObjects" , 0 },
 
+            { "totalOpenedTranscripts" , 0 },
+            { "totalClosedTranscripts" , 0 },
+            { "stillOpenedTranscripts" , 0 },
+            { "totalHistorycalTranscripts" , 0 },
+
             { "totalPlaygroundMilliseconds" , 0 },
             { "totalBrowserMilliseconds" , 0 },
             { "totalInspectorMilliseconds" , 0 },
+            { "totalTranscriptMilliseconds" , 0 },
             { "totalWindowDraggingMilliseconds", 0 }
         };
 
@@ -45,7 +51,8 @@ namespace LoggingModule
             { "PlaygroundInteraction" , null },
             { "BrowserInteraction" , null },
             { "InspectorInteraction" , null },
-            { "WindowDraggingInteraction" , null }
+            { "WindowDraggingInteraction" , null },
+            { "TranscriptInteraction" , null }
         };
 
         public static void writeLineToLog(string line)
@@ -58,30 +65,30 @@ namespace LoggingModule
 
         public static void SessionStart()
         {
-            sessionStart = DateTime.Now;
-            writeLineToLog("-------------------------------------------------");
-            writeLineToLog("New session started at " + sessionStart.ToString());
+            //sessionStart = DateTime.Now;
+            //writeLineToLog("-------------------------------------------------");
+            writeLineToLog("[ " + DateTime.Now + " ] New session started.");
         }
 
         public static void Count(string window)
         {
-            counters["totalOpened" + window + "s"] += 1;
-            counters["stillOpened" + window + "s"] += 1;
-            counters["totalHistorycal" + window + "s"] += 1;
-            writeLineToLog("Opened new window: " + window);
+            //counters["totalOpened" + window + "s"] += 1;
+            //counters["stillOpened" + window + "s"] += 1;
+            //counters["totalHistorycal" + window + "s"] += 1;
+            writeLineToLog("[ " + DateTime.Now + " ] Opened new window: " + window);
         }
 
         public static void Discount(string window)
         {
-            counters["totalClosed" + window + "s"] += 1;
-            counters["stillOpened" + window + "s"] -= 1;
-            writeLineToLog("Closed a window: " + window);
+            //counters["totalClosed" + window + "s"] += 1;
+            //counters["stillOpened" + window + "s"] -= 1;
+            writeLineToLog("[ " + DateTime.Now + " ] Closed a window: " + window);
         }
 
         public static void StartTimerFor(string window)
         {
             timers[window + "Interaction"] = Stopwatch.StartNew();
-            writeLineToLog("Started interaction with a " + window + " at " + DateTime.Now.ToString());
+            writeLineToLog("[ " + DateTime.Now + " ] Started interaction with a " + window);
         }
 
         public static void EndTimerFor(string window)
@@ -90,51 +97,44 @@ namespace LoggingModule
             int elapsedTime = (int) timers[window + "Interaction"].Elapsed.TotalMilliseconds;
             counters["total" + window + "Milliseconds"] += elapsedTime;
             writeLineToLog(
-                "Finished interaction with a " + window + " at " + DateTime.Now.ToString() + "\n" +
-                "Time Spent: " + elapsedTime.ToString() + " ms"
+                "[ " + DateTime.Now + " ] Finished interaction with a " + window + ". Time Spent: " + elapsedTime.ToString() + " ms"
             );
         }
 
         public static void RegisterCodeDefinition(string type, string code, string response)
         {
             writeLineToLog(
-                "Defined " + type + " with code:\n" +
-                code + "\n" +
-                "and response:\n" +
-                response
+                "[ " + DateTime.Now + " ] Defined " + type + " with code: " +
+                code + " and response: " + response
             );
         }
 
         public static void RegisterCodeExecution(string code, string response)
         {
             writeLineToLog(
-               "Executed code:\n" +
-               code + "\n" +
-               "with response:\n" +
-               response
+               "[ " + DateTime.Now + " ] Executed code: " +
+               code +  " with response: " + response
             );
         }
 
         public static void RegisterCodeInspection(string code, string response)
         {
             writeLineToLog(
-                "Inspected variable:\n" + 
-                code + "\n" +
-                "with response:\n" + 
-                response
+                "[ " + DateTime.Now + " ] Inspected variable: " + 
+                code + "with response: " + response
             );
         }
 
         public static void SessionEnd()
         {
-            sessionEnd = DateTime.Now;
-            writeLineToLog("Session ended at " + sessionEnd.ToString());
-            writeLineToLog("Summary:");
-            foreach (KeyValuePair<string, int> entry in counters)
-            {
-                writeLineToLog(entry.Key + ": " + entry.Value.ToString());
-            }
-            writeLineToLog("-------------------------------------------------");
+            //sessionEnd = DateTime.Now;
+            writeLineToLog("[ " + DateTime.Now + " ] Session ended.");
+            //writeLineToLog("Summary:");
+            //foreach (KeyValuePair<string, int> entry in counters)
+            //{
+            //    writeLineToLog(entry.Key + ": " + entry.Value.ToString());
+            //}
+            //writeLineToLog("-------------------------------------------------");
         }
     }
 }

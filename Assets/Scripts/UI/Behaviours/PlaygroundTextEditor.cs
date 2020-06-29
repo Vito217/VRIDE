@@ -39,14 +39,14 @@ public class PlaygroundTextEditor : TextEditorBehaviour
         {
             bool leftCmd = Input.GetKey(KeyCode.LeftCommand);
             bool leftCtrl = Input.GetKey(KeyCode.LeftControl);
-            bool f3 = Input.GetKey(KeyCode.F3);
-            bool f4 = Input.GetKey(KeyCode.F4);
-            bool f5 = Input.GetKey(KeyCode.F5);
-            bool p = Input.GetKey("p");
-            bool d = Input.GetKey("d");
-            bool i = Input.GetKey("i");
-            bool c = Input.GetKey("c");
-            bool v = Input.GetKey("v");
+            bool f3 = Input.GetKeyDown(KeyCode.F3);
+            bool f4 = Input.GetKeyDown(KeyCode.F4);
+            bool f5 = Input.GetKeyDown(KeyCode.F5);
+            bool p = Input.GetKeyDown("p");
+            bool d = Input.GetKeyDown("d");
+            bool i = Input.GetKeyDown("i");
+            bool c = Input.GetKeyDown("c");
+            bool v = Input.GetKeyDown("v");
 
             if (!(leftCmd || leftCtrl || f3 || f4 || f5))
                 onChangeInput();
@@ -69,6 +69,24 @@ public class PlaygroundTextEditor : TextEditorBehaviour
         string output = "";
         try
         {
+            /**
+            // Getting Transcripts
+            foreach (Match m in Regex.Matches(selectedCode, @"Transcript\sshow:.*\."))
+            {
+                string response = await Pharo.Transcript(m.Value);
+                response = Regex.Match(response, @"'stepContents=.*'\)").Value;
+                Debug.Log(response);
+                response = response.Replace("stepContents=", "").Replace("'", "").Replace(")", "");
+                VRIDEController.transcriptContents += response + "\n";
+            }
+            foreach (GameObject t in player.GetComponent<VRIDEController>().transcripts)
+            {
+                t.transform.Find("Editor/Panel/InputField (TMP)").gameObject
+                    .GetComponent<TMP_InputField>().text = VRIDEController.transcriptContents;
+            }
+            **/
+
+            // Execution
             string selectedCode = getSelectedCode(cleanCode(field.text));
             string responseString = await Pharo.Print(selectedCode);
             if (Regex.Match(selectedCode, @"visualize(\s*)(asSVG|asPNG)(\s*)\.").Success)
@@ -89,7 +107,9 @@ public class PlaygroundTextEditor : TextEditorBehaviour
                 view.setSprite(responseString, type);
             }
             else
+            {
                 PharoInspect();
+            }
             InteractionLogger.RegisterCodeExecution(selectedCode, responseString);
         }
         catch (Exception e)

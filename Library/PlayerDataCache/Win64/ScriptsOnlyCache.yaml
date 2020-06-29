@@ -4,6 +4,7 @@ ScriptsOnlyBuild:
     - BrowserClass
     - BrowserInit
     - BrowserMethod
+    - BrowserPackage
     - BrowserTextEditor
     - CharacterCameraConstraint
     - ClassWindow
@@ -17,6 +18,7 @@ ScriptsOnlyBuild:
     - OculusLook
     - OvrAvatar
     - OvrAvatarLocalDriver
+    - PackageWindow
     - PlaygroundInit
     - PlaygroundTextEditor
     - SVGObjectInit
@@ -24,6 +26,7 @@ ScriptsOnlyBuild:
     - TextEditorBehaviour
     - TitleScreenBehaviour
     - ToolbarBehaviour
+    - TranscriptInit
     - VRIDEController
     Oculus.VR.Editor.dll:
     - Assets.Oculus.VR.Editor.OVRPlatformToolSettings
@@ -110,6 +113,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.ScrollRect
     - UnityEngine.UI.Scrollbar
     - UnityEngine.UI.Text
+    - UnityEngine.UI.Toggle
     - UnityEngine.UI.VerticalLayoutGroup
   sceneClasses:
     Assets/Scenes/MainScene.unity:
@@ -250,93 +254,101 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13446}
     - Class: 114
-      Script: {instanceID: 13608}
+      Script: {instanceID: 13492}
     - Class: 114
-      Script: {instanceID: 13718}
+      Script: {instanceID: 13610}
     - Class: 114
-      Script: {instanceID: 13962}
+      Script: {instanceID: 13720}
     - Class: 114
-      Script: {instanceID: 14058}
+      Script: {instanceID: 13964}
     - Class: 114
-      Script: {instanceID: 14090}
+      Script: {instanceID: 14060}
     - Class: 114
-      Script: {instanceID: 14192}
+      Script: {instanceID: 14092}
     - Class: 114
-      Script: {instanceID: 14228}
+      Script: {instanceID: 14130}
     - Class: 114
-      Script: {instanceID: 14368}
+      Script: {instanceID: 14196}
     - Class: 114
-      Script: {instanceID: 14394}
+      Script: {instanceID: 14232}
     - Class: 114
-      Script: {instanceID: 14434}
+      Script: {instanceID: 14372}
     - Class: 114
-      Script: {instanceID: 14464}
+      Script: {instanceID: 14398}
+    - Class: 114
+      Script: {instanceID: 14438}
     - Class: 114
       Script: {instanceID: 14468}
     - Class: 114
-      Script: {instanceID: 14480}
+      Script: {instanceID: 14472}
     - Class: 114
-      Script: {instanceID: 14498}
+      Script: {instanceID: 14484}
     - Class: 114
       Script: {instanceID: 14502}
     - Class: 114
-      Script: {instanceID: 14504}
+      Script: {instanceID: 14506}
     - Class: 114
-      Script: {instanceID: 14650}
+      Script: {instanceID: 14508}
     - Class: 114
-      Script: {instanceID: 14662}
+      Script: {instanceID: 14654}
     - Class: 114
-      Script: {instanceID: 14694}
+      Script: {instanceID: 14666}
     - Class: 114
-      Script: {instanceID: 14716}
+      Script: {instanceID: 14698}
     - Class: 114
-      Script: {instanceID: 14744}
+      Script: {instanceID: 14720}
     - Class: 114
-      Script: {instanceID: 14812}
+      Script: {instanceID: 14748}
     - Class: 114
-      Script: {instanceID: 14916}
+      Script: {instanceID: 14816}
     - Class: 114
-      Script: {instanceID: 14932}
+      Script: {instanceID: 14920}
     - Class: 114
-      Script: {instanceID: 14966}
+      Script: {instanceID: 14936}
     - Class: 114
-      Script: {instanceID: 14976}
+      Script: {instanceID: 14970}
     - Class: 114
-      Script: {instanceID: 14984}
+      Script: {instanceID: 14980}
     - Class: 114
-      Script: {instanceID: 15080}
+      Script: {instanceID: 14988}
     - Class: 114
-      Script: {instanceID: 15264}
+      Script: {instanceID: 15084}
     - Class: 114
-      Script: {instanceID: 15300}
+      Script: {instanceID: 15268}
     - Class: 114
-      Script: {instanceID: 15324}
+      Script: {instanceID: 15304}
     - Class: 114
-      Script: {instanceID: 15428}
+      Script: {instanceID: 15328}
     - Class: 114
-      Script: {instanceID: 15498}
+      Script: {instanceID: 15432}
     - Class: 114
-      Script: {instanceID: 15700}
+      Script: {instanceID: 15502}
     - Class: 114
-      Script: {instanceID: 15784}
+      Script: {instanceID: 15576}
     - Class: 114
-      Script: {instanceID: 15824}
+      Script: {instanceID: 15706}
     - Class: 114
-      Script: {instanceID: 15872}
+      Script: {instanceID: 15790}
     - Class: 114
-      Script: {instanceID: 15956}
+      Script: {instanceID: 15830}
     - Class: 114
-      Script: {instanceID: 15960}
+      Script: {instanceID: 15878}
     - Class: 114
-      Script: {instanceID: 16004}
+      Script: {instanceID: 15962}
     - Class: 114
-      Script: {instanceID: 16062}
+      Script: {instanceID: 15966}
     - Class: 114
-      Script: {instanceID: 16106}
+      Script: {instanceID: 15992}
     - Class: 114
-      Script: {instanceID: 16114}
+      Script: {instanceID: 16010}
     - Class: 114
-      Script: {instanceID: 18380}
+      Script: {instanceID: 16068}
+    - Class: 114
+      Script: {instanceID: 16112}
+    - Class: 114
+      Script: {instanceID: 16120}
+    - Class: 114
+      Script: {instanceID: 27614}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -810,7 +822,7 @@ ScriptsOnlyBuild:
     className: SteamVR_Settings
   - hash:
       serializedVersion: 2
-      Hash: 1c0f2a4e308f4038cccd913d29e1bc26
+      Hash: fa3f00233baad9e169d08186919d352b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BrowserTextEditor
@@ -900,7 +912,7 @@ ScriptsOnlyBuild:
     className: TeleportAimHandlerParabolic
   - hash:
       serializedVersion: 2
-      Hash: 17cbb0c42f6eb8f797f75bbb89239fa3
+      Hash: a201886f2695a3655f6a83476fb3ed22
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BrowserInit
@@ -1536,6 +1548,12 @@ ScriptsOnlyBuild:
     className: MoviePlayerSampleControls
   - hash:
       serializedVersion: 2
+      Hash: 079814d9ab87c9be6ccdf879ccf57930
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BrowserPackage
+  - hash:
+      serializedVersion: 2
       Hash: 332290fe3e8a08b4913b85b9ed80c28f
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR
@@ -1948,6 +1966,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: OVRTouchSample
     className: TouchController
+  - hash:
+      serializedVersion: 2
+      Hash: 51d42287a1b44d38ea646dd4df5b7045
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PackageWindow
   - hash:
       serializedVersion: 2
       Hash: c6c39ad48c140a867a97bff30ed415e8
@@ -2646,6 +2670,12 @@ ScriptsOnlyBuild:
     className: VREyeRaycaster
   - hash:
       serializedVersion: 2
+      Hash: 12fa7c1eccfa3c78466e52284c585792
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TranscriptInit
+  - hash:
+      serializedVersion: 2
       Hash: dcc608e96ec2ac8ad8de1fc54d7d0b7a
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem.Sample
@@ -2940,7 +2970,7 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: 47a5c8d64f74392646793c45474712bf
+      Hash: 27570f74373dd259574aed6b0e35ea34
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: VRIDEController

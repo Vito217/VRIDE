@@ -23,6 +23,8 @@ public class ToolbarBehaviour : MonoBehaviour
             controller.playgrounds.Remove(window);
         else if (name.Equals("Inspector"))
             controller.inspectors.Remove(window);
+        else if (name.Equals("Transcript"))
+            controller.transcripts.Remove(window);
         else
             controller.graphs.Remove(window);
 

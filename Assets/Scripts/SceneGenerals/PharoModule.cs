@@ -7,6 +7,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Diagnostics;
 using UnityEngine;
+using System.Text.RegularExpressions;
 
 namespace PharoModule
 {
@@ -52,16 +53,6 @@ namespace PharoModule
                     "\ton: Error\n" +
                     "\tdo: [:e | '[Error] ' , (e message lookupClass name), ': ' , (e messageText)]."
             );
-
-            /**
-            return await Execute(
-                "res := [" + code + "]\n" +
-                    "\ton: Error\n" +
-                    "\tdo: [:e | '[Error] ' , (e message lookupClass name), ': ' , (e messageText)].\n" +
-                "SmalltalkImage current snapshot: true andQuit: false.\n" +
-                "res ."
-           );
-            **/
         }
 
         public static async Task<string> Inspect(string code)
@@ -76,5 +67,20 @@ namespace PharoModule
                 "tuples ."
             );
         }
+
+        /**
+        public static async Task<string> Transcript(string code)
+        {
+            return await Execute(
+                "t := " + code +"\n" +
+                "tuples := OrderedCollection new.\n" +
+                "tuples addLast: 'self=',(t value asString).\n" +
+                "t class instVarNames do: [ :each |\n" +
+                    "\ttuples addLast: (each asString),'=', ((t instVarNamed: each value) asString).\n" +
+                "].\n" +
+                "tuples ."
+            );
+        }
+        **/
     }
 }
