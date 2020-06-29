@@ -7,6 +7,8 @@
   <li>Added Browser Packages section</li>
   <li>Added cache System.</li>
   <li>Fixed some visual issues</li>
+  <li>Improved Mouse and Keyboard controls</li>
+  <li>Improved window dragging</li>
 </ul>
 
 ## V0.6.2 (01/06/2020)
