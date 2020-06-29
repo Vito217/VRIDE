@@ -24,15 +24,15 @@ public class VRIDEController : MonoBehaviour
     public bool can_move = true;
     public static SystemData data;
     public static string transcriptContents = "";
-    public List<GameObject> browsers;
-    public List<GameObject> playgrounds;
-    public List<GameObject> inspectors;
-    public List<GameObject> graphs;
-    public List<GameObject> transcripts;
+    public List<Browser> browsers;
+    public List<Playground> playgrounds;
+    public List<Inspector> inspectors;
+    public List<Graph> graphs;
+    public List<Transcript> transcripts;
 
     void Start()
     {
-        Pharo.Start();
+        //Pharo.Start();
         SaveAndLoadModule.Load(this);
         InteractionLogger.SessionStart();
     }
@@ -68,23 +68,23 @@ public class VRIDEController : MonoBehaviour
 
             if (f1 || ((leftCtrl || leftCmd) && o && b))
             {
-                BrowserInit browser = Instantiator.Browser(data) as BrowserInit;
-                browser.Initialize(newPos, new Vector3(newFinalPos.x, 2.25f, newFinalPos.z), newForw, gameObject);
-                browsers.Add(browser.gameObject);
+                Browser browser = Instantiator.Browser(data) as Browser;
+                browser.Initialize(newPos, new Vector3(newFinalPos.x, 2.25f, newFinalPos.z), newForw, this);
+                browsers.Add(browser);
                 InteractionLogger.Count("Browser");
             }
             else if (f2 || ((leftCtrl || leftCmd) && o && w))
             {
-                PlaygroundInit playground = Instantiator.Playground() as PlaygroundInit;
-                playground.Initialize(newPos, newFinalPos, newForw, gameObject);
-                playgrounds.Add(playground.gameObject);
+                Playground playground = Instantiator.Playground() as Playground;
+                playground.Initialize(newPos, newFinalPos, newForw, this);
+                playgrounds.Add(playground);
                 InteractionLogger.Count("Playground");
             }
             else if (f7 || ((leftCtrl || leftCmd) && o && t))
             {
-                TranscriptInit transcript = Instantiator.Transcript() as TranscriptInit;
-                transcript.Initialize(newPos, newFinalPos, newForw, gameObject);
-                transcripts.Add(transcript.gameObject);
+                Transcript transcript = Instantiator.Transcript() as Transcript;
+                transcript.Initialize(newPos, newFinalPos, newForw, this);
+                transcripts.Add(transcript);
                 InteractionLogger.Count("Transcript");
             }
         }

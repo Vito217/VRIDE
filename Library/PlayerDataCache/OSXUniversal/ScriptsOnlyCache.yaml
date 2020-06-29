@@ -4,48 +4,99 @@ ScriptsOnlyBuild:
     - BrowserClass
     - BrowserInit
     - BrowserMethod
+    - BrowserPackage
     - BrowserTextEditor
+    - CharacterCameraConstraint
     - ClassWindow
+    - CustomStandaloneInputModule
     - InspectorInit
+    - InspectorRow
     - LightBehaviour
     - NonVRPlayerCamera
     - NonVRPlayerMovement
     - ONSPSettings
+    - OculusLook
+    - OvrAvatar
+    - OvrAvatarLocalDriver
+    - PackageWindow
     - PlaygroundInit
     - PlaygroundTextEditor
     - SVGObjectInit
+    - SteamVRInputModule
     - TextEditorBehaviour
     - TitleScreenBehaviour
     - ToolbarBehaviour
+    - TranscriptInit
     - VRIDEController
     Oculus.VR.Editor.dll:
     - Assets.Oculus.VR.Editor.OVRPlatformToolSettings
+    Oculus.VR.dll:
+    - OVRCameraRig
+    - OVRDebugInfo
+    - OVRHeadsetEmulator
+    - OVRManager
+    - OVRPlayerController
+    - OVRRaycaster
+    - OVRSceneSampleController
+    - OVRScreenFade
     SteamVR.dll:
     - Valve.VR.Extras.SteamVR_LaserPointer
+    - Valve.VR.InteractionSystem.BodyCollider
+    - Valve.VR.InteractionSystem.ControllerButtonHints
+    - Valve.VR.InteractionSystem.ControllerHoverHighlight
+    - Valve.VR.InteractionSystem.DebugUI
+    - Valve.VR.InteractionSystem.FallbackCameraController
+    - Valve.VR.InteractionSystem.Hand
+    - Valve.VR.InteractionSystem.HandCollider
+    - Valve.VR.InteractionSystem.HandPhysics
+    - Valve.VR.InteractionSystem.InputModule
+    - Valve.VR.InteractionSystem.Player
+    - Valve.VR.InteractionSystem.RenderModel
+    - Valve.VR.InteractionSystem.SnapTurn
     - Valve.VR.InteractionSystem.Teleport
     - Valve.VR.InteractionSystem.TeleportArc
     - Valve.VR.InteractionSystem.TeleportArea
+    - Valve.VR.SteamVR_ActivateActionSetOnLoad
+    - Valve.VR.SteamVR_Behaviour
     - Valve.VR.SteamVR_Behaviour_Pose
     - Valve.VR.SteamVR_Behaviour_Skeleton
     - Valve.VR.SteamVR_ExternalCamera
+    - Valve.VR.SteamVR_Fade
+    - Valve.VR.SteamVR_Overlay
     - Valve.VR.SteamVR_PlayArea
+    - Valve.VR.SteamVR_Render
     - Valve.VR.SteamVR_RenderModel
     - Valve.VR.SteamVR_Settings
     - Valve.VR.SteamVR_Skeleton_Pose
     - Valve.VR.SteamVR_Skeleton_Poser
+    Unity.2D.Tilemap.Editor.dll:
+    - UnityEditor.Tilemaps.GridPaintingState
+    - UnityEditor.Tilemaps.GridPaletteBrushes
+    - UnityEditor.Tilemaps.GridPalettes
+    - UnityEditor.Tilemaps.SceneViewGridManager
+    - UnityEditor.Tilemaps.TileDragAndDropManager
+    Unity.Rider.Editor.dll:
+    - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro.dll:
     - TMPro.TMP_FontAsset
     - TMPro.TMP_InputField
     - TMPro.TMP_Settings
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
+    - TMPro.TextMeshPro
     - TMPro.TextMeshProUGUI
+    Unity.VectorGraphics.dll:
+    - SVGImage
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
     - UnityEditor.Graphs.AnimatorControllerTool
+    UnityEditor.TestRunner.dll:
+    - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
+    - UnityEditor.TestTools.TestRunner.TestListCacheData
+    - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.EventTrigger
@@ -57,10 +108,12 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.HorizontalLayoutGroup
     - UnityEngine.UI.Image
     - UnityEngine.UI.Mask
+    - UnityEngine.UI.Outline
     - UnityEngine.UI.RectMask2D
     - UnityEngine.UI.ScrollRect
     - UnityEngine.UI.Scrollbar
     - UnityEngine.UI.Text
+    - UnityEngine.UI.Toggle
     - UnityEngine.UI.VerticalLayoutGroup
   sceneClasses:
     Assets/Scenes/MainScene.unity:
@@ -84,6 +137,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 49
       Script: {instanceID: 0}
+    - Class: 54
+      Script: {instanceID: 0}
     - Class: 64
       Script: {instanceID: 0}
     - Class: 65
@@ -95,6 +150,8 @@ ScriptsOnlyBuild:
     - Class: 82
       Script: {instanceID: 0}
     - Class: 83
+      Script: {instanceID: 0}
+    - Class: 84
       Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
@@ -111,120 +168,206 @@ ScriptsOnlyBuild:
     - Class: 109
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9516}
+      Script: {instanceID: 11442}
     - Class: 114
-      Script: {instanceID: 9688}
+      Script: {instanceID: 11444}
     - Class: 114
-      Script: {instanceID: 9774}
+      Script: {instanceID: 11446}
     - Class: 114
-      Script: {instanceID: 9804}
+      Script: {instanceID: 11448}
     - Class: 114
-      Script: {instanceID: 9864}
+      Script: {instanceID: 11450}
     - Class: 114
-      Script: {instanceID: 9866}
+      Script: {instanceID: 11454}
     - Class: 114
-      Script: {instanceID: 9868}
-    - Class: 114
-      Script: {instanceID: 9872}
-    - Class: 114
-      Script: {instanceID: 9874}
-    - Class: 114
-      Script: {instanceID: 9878}
-    - Class: 114
-      Script: {instanceID: 9882}
-    - Class: 114
-      Script: {instanceID: 9886}
-    - Class: 114
-      Script: {instanceID: 9894}
-    - Class: 114
-      Script: {instanceID: 9910}
-    - Class: 114
-      Script: {instanceID: 9912}
-    - Class: 114
-      Script: {instanceID: 9914}
-    - Class: 114
-      Script: {instanceID: 9922}
-    - Class: 114
-      Script: {instanceID: 9924}
-    - Class: 114
-      Script: {instanceID: 9934}
-    - Class: 114
-      Script: {instanceID: 9960}
-    - Class: 114
-      Script: {instanceID: 10040}
-    - Class: 114
-      Script: {instanceID: 10148}
-    - Class: 114
-      Script: {instanceID: 10264}
-    - Class: 114
-      Script: {instanceID: 10274}
-    - Class: 114
-      Script: {instanceID: 10366}
-    - Class: 114
-      Script: {instanceID: 10534}
-    - Class: 114
-      Script: {instanceID: 10668}
-    - Class: 114
-      Script: {instanceID: 10718}
-    - Class: 114
-      Script: {instanceID: 11300}
+      Script: {instanceID: 11456}
     - Class: 114
       Script: {instanceID: 11458}
     - Class: 114
-      Script: {instanceID: 11740}
+      Script: {instanceID: 11512}
     - Class: 114
-      Script: {instanceID: 11762}
+      Script: {instanceID: 11556}
     - Class: 114
-      Script: {instanceID: 11826}
+      Script: {instanceID: 11616}
     - Class: 114
-      Script: {instanceID: 11840}
+      Script: {instanceID: 11796}
     - Class: 114
-      Script: {instanceID: 11846}
+      Script: {instanceID: 11832}
     - Class: 114
-      Script: {instanceID: 11978}
+      Script: {instanceID: 11876}
     - Class: 114
-      Script: {instanceID: 11988}
+      Script: {instanceID: 11910}
     - Class: 114
-      Script: {instanceID: 12016}
+      Script: {instanceID: 11914}
     - Class: 114
-      Script: {instanceID: 12036}
+      Script: {instanceID: 11956}
     - Class: 114
-      Script: {instanceID: 12180}
+      Script: {instanceID: 12026}
     - Class: 114
-      Script: {instanceID: 12190}
+      Script: {instanceID: 12046}
     - Class: 114
-      Script: {instanceID: 12212}
+      Script: {instanceID: 12070}
     - Class: 114
-      Script: {instanceID: 12224}
+      Script: {instanceID: 12116}
     - Class: 114
-      Script: {instanceID: 12494}
+      Script: {instanceID: 12138}
     - Class: 114
-      Script: {instanceID: 12514}
+      Script: {instanceID: 12172}
     - Class: 114
-      Script: {instanceID: 12630}
+      Script: {instanceID: 12206}
     - Class: 114
-      Script: {instanceID: 12690}
+      Script: {instanceID: 12210}
     - Class: 114
-      Script: {instanceID: 13020}
+      Script: {instanceID: 12322}
     - Class: 114
-      Script: {instanceID: 13096}
+      Script: {instanceID: 12338}
     - Class: 114
-      Script: {instanceID: 13118}
+      Script: {instanceID: 12388}
     - Class: 114
-      Script: {instanceID: 13124}
+      Script: {instanceID: 12450}
+    - Class: 114
+      Script: {instanceID: 12464}
+    - Class: 114
+      Script: {instanceID: 12542}
+    - Class: 114
+      Script: {instanceID: 12648}
+    - Class: 114
+      Script: {instanceID: 12676}
+    - Class: 114
+      Script: {instanceID: 12708}
+    - Class: 114
+      Script: {instanceID: 12782}
+    - Class: 114
+      Script: {instanceID: 12890}
+    - Class: 114
+      Script: {instanceID: 12956}
+    - Class: 114
+      Script: {instanceID: 13132}
+    - Class: 114
+      Script: {instanceID: 13306}
+    - Class: 114
+      Script: {instanceID: 13356}
+    - Class: 114
+      Script: {instanceID: 13402}
+    - Class: 114
+      Script: {instanceID: 13410}
+    - Class: 114
+      Script: {instanceID: 13446}
+    - Class: 114
+      Script: {instanceID: 13492}
+    - Class: 114
+      Script: {instanceID: 13610}
+    - Class: 114
+      Script: {instanceID: 13720}
+    - Class: 114
+      Script: {instanceID: 13964}
+    - Class: 114
+      Script: {instanceID: 14060}
+    - Class: 114
+      Script: {instanceID: 14092}
+    - Class: 114
+      Script: {instanceID: 14130}
+    - Class: 114
+      Script: {instanceID: 14196}
+    - Class: 114
+      Script: {instanceID: 14232}
+    - Class: 114
+      Script: {instanceID: 14372}
+    - Class: 114
+      Script: {instanceID: 14398}
+    - Class: 114
+      Script: {instanceID: 14438}
+    - Class: 114
+      Script: {instanceID: 14468}
+    - Class: 114
+      Script: {instanceID: 14472}
+    - Class: 114
+      Script: {instanceID: 14484}
+    - Class: 114
+      Script: {instanceID: 14502}
+    - Class: 114
+      Script: {instanceID: 14506}
+    - Class: 114
+      Script: {instanceID: 14508}
+    - Class: 114
+      Script: {instanceID: 14654}
+    - Class: 114
+      Script: {instanceID: 14666}
+    - Class: 114
+      Script: {instanceID: 14698}
+    - Class: 114
+      Script: {instanceID: 14720}
+    - Class: 114
+      Script: {instanceID: 14748}
+    - Class: 114
+      Script: {instanceID: 14816}
+    - Class: 114
+      Script: {instanceID: 14920}
+    - Class: 114
+      Script: {instanceID: 14936}
+    - Class: 114
+      Script: {instanceID: 14970}
+    - Class: 114
+      Script: {instanceID: 14980}
+    - Class: 114
+      Script: {instanceID: 14988}
+    - Class: 114
+      Script: {instanceID: 15084}
+    - Class: 114
+      Script: {instanceID: 15268}
+    - Class: 114
+      Script: {instanceID: 15304}
+    - Class: 114
+      Script: {instanceID: 15328}
+    - Class: 114
+      Script: {instanceID: 15432}
+    - Class: 114
+      Script: {instanceID: 15502}
+    - Class: 114
+      Script: {instanceID: 15576}
+    - Class: 114
+      Script: {instanceID: 15706}
+    - Class: 114
+      Script: {instanceID: 15790}
+    - Class: 114
+      Script: {instanceID: 15830}
+    - Class: 114
+      Script: {instanceID: 15878}
+    - Class: 114
+      Script: {instanceID: 15962}
+    - Class: 114
+      Script: {instanceID: 15966}
+    - Class: 114
+      Script: {instanceID: 15992}
+    - Class: 114
+      Script: {instanceID: 16010}
+    - Class: 114
+      Script: {instanceID: 16068}
+    - Class: 114
+      Script: {instanceID: 16112}
+    - Class: 114
+      Script: {instanceID: 16120}
+    - Class: 114
+      Script: {instanceID: 21582}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
       Script: {instanceID: 0}
+    - Class: 124
+      Script: {instanceID: 0}
     - Class: 128
       Script: {instanceID: 0}
     - Class: 135
+      Script: {instanceID: 0}
+    - Class: 136
       Script: {instanceID: 0}
     - Class: 137
       Script: {instanceID: 0}
     - Class: 143
       Script: {instanceID: 0}
     - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
       Script: {instanceID: 0}
     - Class: 212
       Script: {instanceID: 0}
@@ -239,6 +382,66 @@ ScriptsOnlyBuild:
     - Class: 258
       Script: {instanceID: 0}
   scriptHashData:
+  - hash:
+      serializedVersion: 2
+      Hash: 5f1752ed2092162f016c19510c28a8b9
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Button
+  - hash:
+      serializedVersion: 2
+      Hash: 89f9a1b4c64db9559e39f4a2e3bfaadd
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Image
+  - hash:
+      serializedVersion: 2
+      Hash: aeb62f729c52c814dec86c47dcac1471
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Text
+  - hash:
+      serializedVersion: 2
+      Hash: cc4274b586df3c02688bac01b88bd16c
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.EventSystems
+    className: EventSystem
+  - hash:
+      serializedVersion: 2
+      Hash: 5ad4aa237d47ac2bab17bacb672edf7a
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: VerticalLayoutGroup
+  - hash:
+      serializedVersion: 2
+      Hash: 0dbc3be398b4869a5c8d0d8481ee402c
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: LayoutElement
+  - hash:
+      serializedVersion: 2
+      Hash: 4bc4346a71a8df53a6b106f68ef3a190
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: CanvasScaler
+  - hash:
+      serializedVersion: 2
+      Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: ContentSizeFitter
+  - hash:
+      serializedVersion: 2
+      Hash: ae83e830e7a90c0aff918c4c2e520825
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: GraphicRaycaster
+  - hash:
+      serializedVersion: 2
+      Hash: 7072231382eb3c4871b3dd75ad0227e1
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Slider
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -277,7 +480,7 @@ ScriptsOnlyBuild:
     className: DestroyOnParticleSystemDeath
   - hash:
       serializedVersion: 2
-      Hash: 984dcc0ba3707b7691fbdca8ff508d28
+      Hash: c42672c997f8be6b1aa86a927ebea785
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SelectionCaret
@@ -313,10 +516,16 @@ ScriptsOnlyBuild:
     className: OVRMixedRealityCaptureSettings
   - hash:
       serializedVersion: 2
-      Hash: bf530eb47e6a86dcee1d42e40c3b7ac8
+      Hash: 626925ef558787b2d85c809198164d19
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_Dropdown
+  - hash:
+      serializedVersion: 2
+      Hash: 88e2c6f501bf5dead831a3e44c30de40
+    assemblyName: UnityEngine.Advertisements.dll
+    namespaceName: UnityEngine.Advertisements.Platform.Editor
+    className: BannerPlaceholder
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -337,7 +546,7 @@ ScriptsOnlyBuild:
     className: OculusSpatializerUnity
   - hash:
       serializedVersion: 2
-      Hash: 58c1c644b94aaa7f49a9eb6daa6ac291
+      Hash: c4a6d5610ab09ad85bf9b1a877b6b7c5
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem
     className: Throwable
@@ -383,6 +592,12 @@ ScriptsOnlyBuild:
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR
     className: SteamVR_CameraFlip
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.TestRunner.dll
+    namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
+    className: PlayerQuitHandler
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -469,10 +684,22 @@ ScriptsOnlyBuild:
     className: SoundEmitter
   - hash:
       serializedVersion: 2
-      Hash: 2e3c32232796ce04087e23116e6e516b
+      Hash: 499fd23433e68e265d153aa6b95d0047
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Scrollbar
+  - hash:
+      serializedVersion: 2
+      Hash: 681411c1571200071d2222211cff2127
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: NonVRPlayerMovement
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.Advertisements.dll
+    namespaceName: UnityEngine.Advertisements
+    className: Placeholder
   - hash:
       serializedVersion: 2
       Hash: ac10e5fe3455baf14336675170ed0bae
@@ -487,190 +714,10 @@ ScriptsOnlyBuild:
     className: SteamVR_LaserPointer
   - hash:
       serializedVersion: 2
-      Hash: 32c2e26363d3830b3fcd6735b46fef68
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: OculusSampleFramework
-    className: TrainButtonVisualController
-  - hash:
-      serializedVersion: 2
-      Hash: cf9f5cf2c3145a37ac07f00e50e460f9
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: AspectRatioFitter
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.EventSystems
-    className: BaseInput
-  - hash:
-      serializedVersion: 2
-      Hash: 516824a435828eadd660ef2f1658a48e
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Button
-  - hash:
-      serializedVersion: 2
-      Hash: 4bc4346a71a8df53a6b106f68ef3a190
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: CanvasScaler
-  - hash:
-      serializedVersion: 2
-      Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: ContentSizeFitter
-  - hash:
-      serializedVersion: 2
-      Hash: 0852116b29df10ce3f9156850d406521
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Dropdown
-  - hash:
-      serializedVersion: 2
-      Hash: cc4274b586df3c02688bac01b88bd16c
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.EventSystems
-    className: EventSystem
-  - hash:
-      serializedVersion: 2
-      Hash: 3f52d34ea17dfc771004b80f5d492445
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.EventSystems
-    className: EventTrigger
-  - hash:
-      serializedVersion: 2
-      Hash: ae83e830e7a90c0aff918c4c2e520825
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: GraphicRaycaster
-  - hash:
-      serializedVersion: 2
-      Hash: 7ab0e790220bdca831fdd886b339039d
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: GridLayoutGroup
-  - hash:
-      serializedVersion: 2
-      Hash: 5ad4aa237d47ac2bab17bacb672edf7a
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: HorizontalLayoutGroup
-  - hash:
-      serializedVersion: 2
-      Hash: 686dc5ae0550d5cc850c0d1dcce4c018
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Image
-  - hash:
-      serializedVersion: 2
-      Hash: 12e64d607873da15ad3f833620350d51
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: InputField
-  - hash:
-      serializedVersion: 2
-      Hash: 0dbc3be398b4869a5c8d0d8481ee402c
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: LayoutElement
-  - hash:
-      serializedVersion: 2
-      Hash: aba7b2852ef61d175dd9602e7723d5e5
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Mask
-  - hash:
-      serializedVersion: 2
-      Hash: caa533b001ae39b864ba8425019e2268
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Outline
-  - hash:
-      serializedVersion: 2
-      Hash: 18c222bef9ae745ce69ddde9b74337ca
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.EventSystems
-    className: Physics2DRaycaster
-  - hash:
-      serializedVersion: 2
-      Hash: 18c222bef9ae745ce69ddde9b74337ca
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.EventSystems
-    className: PhysicsRaycaster
-  - hash:
-      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: PositionAsUV1
-  - hash:
-      serializedVersion: 2
-      Hash: 92da9881aed190e8bb74661bcd74aa2c
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: RawImage
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: RectMask2D
-  - hash:
-      serializedVersion: 2
-      Hash: 06a330481ec400be50745bb7faf76bd0
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Scrollbar
-  - hash:
-      serializedVersion: 2
-      Hash: 97ace6213ad0f149b0917a4c669c6ca3
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: ScrollRect
-  - hash:
-      serializedVersion: 2
-      Hash: 8dc90e648ac06f43bdd31ac9fa8f4579
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Selectable
-  - hash:
-      serializedVersion: 2
-      Hash: caa533b001ae39b864ba8425019e2268
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Shadow
-  - hash:
-      serializedVersion: 2
-      Hash: 85c97bcc5f84eeb0999d75902803b99d
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Slider
-  - hash:
-      serializedVersion: 2
-      Hash: 748dd2a2a28da4e618912da5ac45684b
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.EventSystems
-    className: StandaloneInputModule
-  - hash:
-      serializedVersion: 2
-      Hash: fc108ce7d98c40ac0907e8ca7f500c76
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Text
-  - hash:
-      serializedVersion: 2
-      Hash: 3ab7272a8b7d3ea5a142e0c9b6aae63b
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Toggle
-  - hash:
-      serializedVersion: 2
-      Hash: 0fd6822f6177297bd0eb4d83cc7a9030
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: ToggleGroup
   - hash:
       serializedVersion: 2
       Hash: abf1930d8126d0b2e00e9449129a0190
@@ -679,10 +726,16 @@ ScriptsOnlyBuild:
     className: TouchInputModule
   - hash:
       serializedVersion: 2
-      Hash: 5ad4aa237d47ac2bab17bacb672edf7a
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: VerticalLayoutGroup
+      Hash: 32c2e26363d3830b3fcd6735b46fef68
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: OculusSampleFramework
+    className: TrainButtonVisualController
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.TestRunner.dll
+    namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
+    className: TestResultRendererCallback
   - hash:
       serializedVersion: 2
       Hash: b3bb7c40cede9849e7814d6093dcfcea
@@ -697,7 +750,7 @@ ScriptsOnlyBuild:
     className: SteamVR_LoadLevel
   - hash:
       serializedVersion: 2
-      Hash: 9e70ecf91466f07d9bd649be625cae52
+      Hash: 234235b9fb07320d11497e08a726cc56
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_InputField
@@ -733,18 +786,6 @@ ScriptsOnlyBuild:
     className: BoardPosition
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: UnityEngine.Advertisements.dll
-    namespaceName: UnityEngine.Advertisements
-    className: CallbackExecutor
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: UnityEngine.Advertisements.dll
-    namespaceName: UnityEngine.Advertisements.Editor
-    className: Placeholder
-  - hash:
-      serializedVersion: 2
       Hash: 49c73a89c6591b151c2f9fd8cf489125
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -769,205 +810,19 @@ ScriptsOnlyBuild:
     className: SteamVR_CameraMask
   - hash:
       serializedVersion: 2
-      Hash: d6361c97f7278bb96d5119a1aa89faeb
-    assemblyName: SteamVR.dll
-    namespaceName: Valve.VR
-    className: SteamVR_Settings
-  - hash:
-      serializedVersion: 2
-      Hash: cf9f5cf2c3145a37ac07f00e50e460f9
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: AspectRatioFitter
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.EventSystems
-    className: BaseInput
-  - hash:
-      serializedVersion: 2
-      Hash: 516824a435828eadd660ef2f1658a48e
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Button
-  - hash:
-      serializedVersion: 2
-      Hash: 4bc4346a71a8df53a6b106f68ef3a190
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: CanvasScaler
-  - hash:
-      serializedVersion: 2
-      Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: ContentSizeFitter
-  - hash:
-      serializedVersion: 2
-      Hash: 0852116b29df10ce3f9156850d406521
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Dropdown
-  - hash:
-      serializedVersion: 2
-      Hash: cc4274b586df3c02688bac01b88bd16c
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.EventSystems
-    className: EventSystem
-  - hash:
-      serializedVersion: 2
-      Hash: 3f52d34ea17dfc771004b80f5d492445
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.EventSystems
-    className: EventTrigger
-  - hash:
-      serializedVersion: 2
-      Hash: ae83e830e7a90c0aff918c4c2e520825
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: GraphicRaycaster
-  - hash:
-      serializedVersion: 2
       Hash: 7ab0e790220bdca831fdd886b339039d
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: GridLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: 5ad4aa237d47ac2bab17bacb672edf7a
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: HorizontalLayoutGroup
+      Hash: d6361c97f7278bb96d5119a1aa89faeb
+    assemblyName: SteamVR.dll
+    namespaceName: Valve.VR
+    className: SteamVR_Settings
   - hash:
       serializedVersion: 2
-      Hash: 686dc5ae0550d5cc850c0d1dcce4c018
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Image
-  - hash:
-      serializedVersion: 2
-      Hash: 12e64d607873da15ad3f833620350d51
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: InputField
-  - hash:
-      serializedVersion: 2
-      Hash: 0dbc3be398b4869a5c8d0d8481ee402c
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: LayoutElement
-  - hash:
-      serializedVersion: 2
-      Hash: aba7b2852ef61d175dd9602e7723d5e5
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Mask
-  - hash:
-      serializedVersion: 2
-      Hash: caa533b001ae39b864ba8425019e2268
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Outline
-  - hash:
-      serializedVersion: 2
-      Hash: 18c222bef9ae745ce69ddde9b74337ca
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.EventSystems
-    className: Physics2DRaycaster
-  - hash:
-      serializedVersion: 2
-      Hash: 18c222bef9ae745ce69ddde9b74337ca
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.EventSystems
-    className: PhysicsRaycaster
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: PositionAsUV1
-  - hash:
-      serializedVersion: 2
-      Hash: 92da9881aed190e8bb74661bcd74aa2c
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: RawImage
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: RectMask2D
-  - hash:
-      serializedVersion: 2
-      Hash: 06a330481ec400be50745bb7faf76bd0
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Scrollbar
-  - hash:
-      serializedVersion: 2
-      Hash: 97ace6213ad0f149b0917a4c669c6ca3
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: ScrollRect
-  - hash:
-      serializedVersion: 2
-      Hash: 8dc90e648ac06f43bdd31ac9fa8f4579
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Selectable
-  - hash:
-      serializedVersion: 2
-      Hash: caa533b001ae39b864ba8425019e2268
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Shadow
-  - hash:
-      serializedVersion: 2
-      Hash: 85c97bcc5f84eeb0999d75902803b99d
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Slider
-  - hash:
-      serializedVersion: 2
-      Hash: 748dd2a2a28da4e618912da5ac45684b
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.EventSystems
-    className: StandaloneInputModule
-  - hash:
-      serializedVersion: 2
-      Hash: fc108ce7d98c40ac0907e8ca7f500c76
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Text
-  - hash:
-      serializedVersion: 2
-      Hash: 3ab7272a8b7d3ea5a142e0c9b6aae63b
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Toggle
-  - hash:
-      serializedVersion: 2
-      Hash: 0fd6822f6177297bd0eb4d83cc7a9030
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: ToggleGroup
-  - hash:
-      serializedVersion: 2
-      Hash: abf1930d8126d0b2e00e9449129a0190
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.EventSystems
-    className: TouchInputModule
-  - hash:
-      serializedVersion: 2
-      Hash: 5ad4aa237d47ac2bab17bacb672edf7a
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: VerticalLayoutGroup
-  - hash:
-      serializedVersion: 2
-      Hash: 2c9a5b818c1a4aed228ba5ee4354210b
+      Hash: fa3f00233baad9e169d08186919d352b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BrowserTextEditor
@@ -991,7 +846,7 @@ ScriptsOnlyBuild:
     className: InputModule
   - hash:
       serializedVersion: 2
-      Hash: 1834077a69235486c45931f07f154641
+      Hash: 3ffeba0f723a4385ddb9431e1138b181
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR
     className: SteamVR_Behaviour_Boolean
@@ -1021,6 +876,12 @@ ScriptsOnlyBuild:
     className: CustomSkeletonHelper
   - hash:
       serializedVersion: 2
+      Hash: 18c222bef9ae745ce69ddde9b74337ca
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.EventSystems
+    className: PhysicsRaycaster
+  - hash:
+      serializedVersion: 2
       Hash: d29554da4f32756eaad6ec0d568c5648
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1033,13 +894,13 @@ ScriptsOnlyBuild:
     className: JoeJeffController
   - hash:
       serializedVersion: 2
-      Hash: 6a77bf8a6622108e73cfcd0356550328
+      Hash: a01f5fdb7bcdde54e45412c1be54d990
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem
     className: UIElement
   - hash:
       serializedVersion: 2
-      Hash: 5132a97adc3846f714ca5f388413e842
+      Hash: 6c1175fdedf30a9ad888a563cd5d43ce
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BrowserClass
@@ -1051,7 +912,7 @@ ScriptsOnlyBuild:
     className: TeleportAimHandlerParabolic
   - hash:
       serializedVersion: 2
-      Hash: b0057953a77cade956d66ead0b8730db
+      Hash: a201886f2695a3655f6a83476fb3ed22
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BrowserInit
@@ -1081,7 +942,7 @@ ScriptsOnlyBuild:
     className: OvrAvatarBase
   - hash:
       serializedVersion: 2
-      Hash: f08a111e17bb701f9c9ec57bb78d9920
+      Hash: bd3cf68c8964d3c66d1c43f4f98508c9
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: AnimationTrack
@@ -1103,6 +964,12 @@ ScriptsOnlyBuild:
     assemblyName: Oculus.Platform.dll
     namespaceName: Oculus.Platform.Samples.VrBoardGame
     className: GameBoard
+  - hash:
+      serializedVersion: 2
+      Hash: cf9f5cf2c3145a37ac07f00e50e460f9
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: AspectRatioFitter
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -1129,6 +996,12 @@ ScriptsOnlyBuild:
     className: OVROverlayMeshGenerator
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: RectMask2D
+  - hash:
+      serializedVersion: 2
       Hash: f567adef2b413f8c95c4f966001c7e25
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1141,7 +1014,7 @@ ScriptsOnlyBuild:
     className: NonVRPlayerCamera
   - hash:
       serializedVersion: 2
-      Hash: 00274a21279f5cb831ce20f895049e38
+      Hash: d941ab6dd93d37ffdf2277f2ea2375a0
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SubMeshUI
@@ -1153,13 +1026,19 @@ ScriptsOnlyBuild:
     className: SteamVR_IK
   - hash:
       serializedVersion: 2
-      Hash: 8f868257724aa315fed97c1e2effcde7
+      Hash: c233345314a54d04aeeef307bb7311fe
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR
     className: SteamVR_Behaviour_Vector2
   - hash:
       serializedVersion: 2
-      Hash: 780e8f682b3221346c034a6712a0fd25
+      Hash: 748dd2a2a28da4e618912da5ac45684b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CustomStandaloneInputModule
+  - hash:
+      serializedVersion: 2
+      Hash: 5ab533713adae59372fb3e10a585c186
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: AnimationPlayableAsset
@@ -1189,7 +1068,7 @@ ScriptsOnlyBuild:
     className: HandsManager
   - hash:
       serializedVersion: 2
-      Hash: 5fa7bda93fec3aec9c405f0d0c0226a2
+      Hash: 9ead72890624b9efdb33c285d8743fb5
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem.Sample
     className: RenderModelChangerUI
@@ -1201,7 +1080,7 @@ ScriptsOnlyBuild:
     className: OVRControllerHelper
   - hash:
       serializedVersion: 2
-      Hash: 66c1497c6969b4243ac7e80d28316aa4
+      Hash: cffe519b5f0ea047a807fc185d690c26
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR
     className: SteamVR_Behaviour_SkeletonCustom
@@ -1217,6 +1096,12 @@ ScriptsOnlyBuild:
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem.Sample
     className: Grenade
+  - hash:
+      serializedVersion: 2
+      Hash: aba7b2852ef61d175dd9602e7723d5e5
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Mask
   - hash:
       serializedVersion: 2
       Hash: 9337d9b49ef69a8f6b3c9e840a9d2fe6
@@ -1235,6 +1120,12 @@ ScriptsOnlyBuild:
     assemblyName: Oculus.VR.dll
     namespaceName: 
     className: OVRMesh
+  - hash:
+      serializedVersion: 2
+      Hash: caa533b001ae39b864ba8425019e2268
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Shadow
   - hash:
       serializedVersion: 2
       Hash: 1b67d4bb4648cb7d784398ebb0539b1b
@@ -1357,7 +1248,7 @@ ScriptsOnlyBuild:
     className: DistanceGrabber
   - hash:
       serializedVersion: 2
-      Hash: 69c3579751e3821bfb104a84def5d48a
+      Hash: ec65528c7c2c1b28fe26056267dcba4d
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR
     className: SteamVR_Behaviour_Vector3
@@ -1403,6 +1294,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: ControlTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 8dc90e648ac06f43bdd31ac9fa8f4579
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Selectable
   - hash:
       serializedVersion: 2
       Hash: 6ed0a296f1f1c9a2b22c6f8e635be7c9
@@ -1495,7 +1392,7 @@ ScriptsOnlyBuild:
     className: TeleportTargetHandlerPhysical
   - hash:
       serializedVersion: 2
-      Hash: d46bf02823d9fd3a7eaca4c32fd9b48e
+      Hash: 5f603031df4f412519943b04d1265c08
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem
     className: HapticRack
@@ -1543,7 +1440,7 @@ ScriptsOnlyBuild:
     className: SpawnAndAttachAfterControllerIsTracking
   - hash:
       serializedVersion: 2
-      Hash: 7d60b1fef3607377096713ebe110e9ab
+      Hash: 992a6e5b432e59db3adfded46591e434
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem
     className: InteractableHoverEvents
@@ -1621,6 +1518,12 @@ ScriptsOnlyBuild:
     className: DontDestroyOnLoad
   - hash:
       serializedVersion: 2
+      Hash: d4020bafcd3ccbb5601a6e6c8ac78be0
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: ScrollRect
+  - hash:
+      serializedVersion: 2
       Hash: 20ae459a0072025a05fde31a89b54ba3
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem.Sample
@@ -1645,7 +1548,13 @@ ScriptsOnlyBuild:
     className: MoviePlayerSampleControls
   - hash:
       serializedVersion: 2
-      Hash: 542e9f8b8ce59d4ec65aaa8f270c4df2
+      Hash: 079814d9ab87c9be6ccdf879ccf57930
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BrowserPackage
+  - hash:
+      serializedVersion: 2
+      Hash: 332290fe3e8a08b4913b85b9ed80c28f
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR
     className: SteamVR_Behaviour_Single
@@ -1795,7 +1704,7 @@ ScriptsOnlyBuild:
     className: LocomotionController
   - hash:
       serializedVersion: 2
-      Hash: 8d7be7dfc60946e7089918c75376a9a0
+      Hash: 9fb17494f9276942d0a411430ac67b24
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR
     className: SteamVR_Behaviour_Skeleton
@@ -1829,6 +1738,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: OculusSampleFramework
     className: InteractableToolsInputRouter
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.TestRunner.dll
+    namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
+    className: RemoteTestResultSender
   - hash:
       serializedVersion: 2
       Hash: ab9b3242e7f7cea8eb7d313db01cc29d
@@ -1897,6 +1812,12 @@ ScriptsOnlyBuild:
     className: OVRGrabbable
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.Monetization.dll
+    namespaceName: UnityEngine.Monetization
+    className: Placeholder
+  - hash:
+      serializedVersion: 2
       Hash: 9fce3d3ad5943924497902d7085db4c5
     assemblyName: Oculus.VR.dll
     namespaceName: 
@@ -1933,13 +1854,13 @@ ScriptsOnlyBuild:
     className: DestroyOnTriggerEnter
   - hash:
       serializedVersion: 2
-      Hash: fa28dcaf2a953dc88129d2d2dc6cbf43
+      Hash: 2f659d8f26d4563ee5f206d3a4bcb776
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem
     className: ItemPackageSpawner
   - hash:
       serializedVersion: 2
-      Hash: c22c6bb9b8cabad08031c937259e1661
+      Hash: 80d04b93d5036c4941f1dfda5dcc7202
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlaygroundTextEditor
@@ -1975,6 +1896,12 @@ ScriptsOnlyBuild:
     className: TeleportAimHandlerLaser
   - hash:
       serializedVersion: 2
+      Hash: f84d945e5e1ca985698660fc26e9657f
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: RawImage
+  - hash:
+      serializedVersion: 2
       Hash: f79d2161c56775fea247a430c491e86b
     assemblyName: Oculus.Platform.dll
     namespaceName: Oculus.Platform.Samples.VrVoiceChat
@@ -2005,7 +1932,7 @@ ScriptsOnlyBuild:
     className: OVRModeParms
   - hash:
       serializedVersion: 2
-      Hash: 452ac0d3d47bba3446dcaf87136a6af3
+      Hash: 11b56001a20d634e849cc15d9f2a6042
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MediaPlayerImage
@@ -2039,6 +1966,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: OVRTouchSample
     className: TouchController
+  - hash:
+      serializedVersion: 2
+      Hash: 51d42287a1b44d38ea646dd4df5b7045
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PackageWindow
   - hash:
       serializedVersion: 2
       Hash: c6c39ad48c140a867a97bff30ed415e8
@@ -2095,7 +2028,7 @@ ScriptsOnlyBuild:
     className: LocalPlayer
   - hash:
       serializedVersion: 2
-      Hash: f1b001dcf0f786a375c9ef019a1abfd4
+      Hash: 8491d6dc91856701b1cda4ed3dbaa6a0
     assemblyName: Unity.VectorGraphics.dll
     namespaceName: 
     className: SVGImage
@@ -2149,7 +2082,7 @@ ScriptsOnlyBuild:
     className: MouseLook
   - hash:
       serializedVersion: 2
-      Hash: e4ca86c38934f97abdff1f7cfcd09eac
+      Hash: 762e9e65889045960db2743e0b39b739
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlaygroundInit
@@ -2179,6 +2112,12 @@ ScriptsOnlyBuild:
     className: ButtonTriggerZone
   - hash:
       serializedVersion: 2
+      Hash: 783f593b9380cf72d0f7ebfd4a0d4bcd
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: InputField
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem.Sample
@@ -2191,7 +2130,7 @@ ScriptsOnlyBuild:
     className: OVRWaitCursor
   - hash:
       serializedVersion: 2
-      Hash: 3f8d7b92a6be3c715e55d5cfa7cc8384
+      Hash: c9a8b80298a116835b51ba1cf9284367
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: SignalReceiver
@@ -2225,6 +2164,12 @@ ScriptsOnlyBuild:
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR
     className: SteamVR_Behaviour
+  - hash:
+      serializedVersion: 2
+      Hash: 5ad4aa237d47ac2bab17bacb672edf7a
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: HorizontalLayoutGroup
   - hash:
       serializedVersion: 2
       Hash: 35a9693c388776aaf487636491a20f11
@@ -2275,6 +2220,12 @@ ScriptsOnlyBuild:
     className: ChaperoneInfo
   - hash:
       serializedVersion: 2
+      Hash: 18c222bef9ae745ce69ddde9b74337ca
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.EventSystems
+    className: Physics2DRaycaster
+  - hash:
+      serializedVersion: 2
       Hash: d94cf8f260d8c2d5fae1de5f4983b730
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.Extras
@@ -2305,49 +2256,13 @@ ScriptsOnlyBuild:
     className: OvrAvatarSettingsEditor
   - hash:
       serializedVersion: 2
-      Hash: 88cc9df3c6fc697bfbeacd24c0d6f2d7
-    assemblyName: UnityEngine.TestRunner.dll
-    namespaceName: UnityEngine.TestTools
-    className: BeforeAfterTestCommandState
-  - hash:
-      serializedVersion: 2
-      Hash: 88cc9df3c6fc697bfbeacd24c0d6f2d7
-    assemblyName: UnityEngine.TestRunner.dll
-    namespaceName: UnityEngine.TestTools
-    className: EnumerableSetUpTearDownCommandState
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: UnityEngine.TestRunner.dll
-    namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
-    className: PlayModeRunnerCallback
-  - hash:
-      serializedVersion: 2
-      Hash: 259d013faac28e8ba0aa2a7542273735
-    assemblyName: UnityEngine.TestRunner.dll
-    namespaceName: UnityEngine.TestTools.TestRunner
-    className: PlaymodeTestsController
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: UnityEngine.TestRunner.dll
-    namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
-    className: RemoteTestResultSender
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: UnityEngine.TestRunner.dll
-    namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
-    className: TestResultRendererCallback
-  - hash:
-      serializedVersion: 2
       Hash: 8302a05adec609c4b10f8b6cc3443e4c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PoseEditHelper
   - hash:
       serializedVersion: 2
-      Hash: d9aa78d36ef713c458d0586b2aaa0b81
+      Hash: 234e568b7e618d7c4c9c2cba046fc579
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR
     className: SteamVR_Behaviour_Pose
@@ -2437,6 +2352,12 @@ ScriptsOnlyBuild:
     className: WheelDust
   - hash:
       serializedVersion: 2
+      Hash: 12fa7c1eccfa3c78466e52284c585792
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: InitializeBehaviour
+  - hash:
+      serializedVersion: 2
       Hash: a6ded2673e2fb033edf3bf8af9c7c7dc
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -2479,7 +2400,7 @@ ScriptsOnlyBuild:
     className: EnableSwitch
   - hash:
       serializedVersion: 2
-      Hash: f99148f1517452a2d9529b89550f236d
+      Hash: 80d04b93d5036c4941f1dfda5dcc7202
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TextEditorBehaviour
@@ -2491,7 +2412,7 @@ ScriptsOnlyBuild:
     className: ToolbarBehaviour
   - hash:
       serializedVersion: 2
-      Hash: 3d6b3d2e1fe8d4b6d97e1d75339c3f9a
+      Hash: 5ffe9fc605b635c66264c1090e3433e7
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem
     className: ModalThrowable
@@ -2503,7 +2424,7 @@ ScriptsOnlyBuild:
     className: ONSPPropagationMaterial
   - hash:
       serializedVersion: 2
-      Hash: e7955f38fd8b741c288d788d0826638d
+      Hash: 88eb2f0b999cea2ffcdc67fb8c115479
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TitleScreenBehaviour
@@ -2515,7 +2436,7 @@ ScriptsOnlyBuild:
     className: OculusLook
   - hash:
       serializedVersion: 2
-      Hash: ee0cef6caaac8ae485bfa82f000f0f7b
+      Hash: 8001a5f7502aab37e42206da015e6914
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TextMeshProUGUI
@@ -2545,7 +2466,7 @@ ScriptsOnlyBuild:
     className: GazeTargetSpawner
   - hash:
       serializedVersion: 2
-      Hash: 516824a435828eadd660ef2f1658a48e
+      Hash: 5f1752ed2092162f016c19510c28a8b9
     assemblyName: Unity.Analytics.DataPrivacy.dll
     namespaceName: UnityEngine.Analytics
     className: DataPrivacyButton
@@ -2575,6 +2496,12 @@ ScriptsOnlyBuild:
     className: DebugUI
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.Advertisements.dll
+    namespaceName: UnityEngine.Advertisements.Utilities
+    className: ApplicationQuit
+  - hash:
+      serializedVersion: 2
       Hash: ce638e2dcac0548a4a3e456d5051c131
     assemblyName: Oculus.Platform.dll
     namespaceName: Oculus.Platform.Samples.VrHoops
@@ -2597,6 +2524,12 @@ ScriptsOnlyBuild:
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem
     className: ItemPackageReference
+  - hash:
+      serializedVersion: 2
+      Hash: 88cc9df3c6fc697bfbeacd24c0d6f2d7
+    assemblyName: UnityEngine.TestRunner.dll
+    namespaceName: UnityEngine.TestTools
+    className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -2629,7 +2562,13 @@ ScriptsOnlyBuild:
     className: BrowserObject
   - hash:
       serializedVersion: 2
-      Hash: f91cb688355a2c7124846064fa9b7918
+      Hash: b4c506fc77a5b341383e5c20c1e65ce6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: InspectorRow
+  - hash:
+      serializedVersion: 2
+      Hash: 96da068d974cf8acaa9fb2f198864139
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem
     className: ArcheryTarget
@@ -2731,6 +2670,12 @@ ScriptsOnlyBuild:
     className: VREyeRaycaster
   - hash:
       serializedVersion: 2
+      Hash: 12fa7c1eccfa3c78466e52284c585792
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TranscriptInit
+  - hash:
+      serializedVersion: 2
       Hash: dcc608e96ec2ac8ad8de1fc54d7d0b7a
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem.Sample
@@ -2743,7 +2688,7 @@ ScriptsOnlyBuild:
     className: TestScript
   - hash:
       serializedVersion: 2
-      Hash: 6ac223d1e09017fcb3e95f6e4eb2ea23
+      Hash: 65aa1eed000a6822a5aba6155c16e80a
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem
     className: CircularDrive
@@ -2761,7 +2706,7 @@ ScriptsOnlyBuild:
     className: TrainLocomotive
   - hash:
       serializedVersion: 2
-      Hash: 5372ed2ce39229b1ac910757999a8be2
+      Hash: 21d73eda81c18eacd2c91ad5dfaf2e32
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TextMeshPro
@@ -2803,6 +2748,18 @@ ScriptsOnlyBuild:
     className: Arrow
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.TestRunner.dll
+    namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
+    className: PlayModeRunnerCallback
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.EventSystems
+    className: BaseInput
+  - hash:
+      serializedVersion: 2
       Hash: 733d63e230e8b7a674b8bfd02525c480
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem
@@ -2827,6 +2784,12 @@ ScriptsOnlyBuild:
     className: TargetMeasurement
   - hash:
       serializedVersion: 2
+      Hash: caa533b001ae39b864ba8425019e2268
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Outline
+  - hash:
+      serializedVersion: 2
       Hash: a7089f9264d52603b4e6e5c1fd3d2696
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem
@@ -2839,10 +2802,34 @@ ScriptsOnlyBuild:
     className: TeleportTransitionBlink
   - hash:
       serializedVersion: 2
+      Hash: a63fc1a3b035e5a0b5839cd7f7b3086e
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.EventSystems
+    className: EventTrigger
+  - hash:
+      serializedVersion: 2
       Hash: 8649814970b42d345b89944b862453cc
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SubMesh
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.TestRunner.dll
+    namespaceName: UnityEngine.TestRunner.Utils
+    className: TestRunCallbackListener
+  - hash:
+      serializedVersion: 2
+      Hash: 4ef0f7d42cdb13479386e1f049c315aa
+    assemblyName: UnityEngine.TestRunner.dll
+    namespaceName: UnityEngine.TestTools.TestRunner
+    className: PlaymodeTestsController
+  - hash:
+      serializedVersion: 2
+      Hash: 2aeeec1b1a144c469cd2d37776bc2315
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Dropdown
   - hash:
       serializedVersion: 2
       Hash: 163c66cebee3ffd65522e6a24263575f
@@ -2869,16 +2856,28 @@ ScriptsOnlyBuild:
     className: OVRSkeleton
   - hash:
       serializedVersion: 2
-      Hash: ff495965b90ddfcb5013239e4fb90ab4
+      Hash: 76c41555f9d24adb07d0c29a3b66e0ae
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SVGObjectInit
+  - hash:
+      serializedVersion: 2
+      Hash: 748dd2a2a28da4e618912da5ac45684b
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.EventSystems
+    className: StandaloneInputModule
   - hash:
       serializedVersion: 2
       Hash: d287c185a119d79ff1e89b8a6a2ad8aa
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR
     className: SteamVR_Frustum
+  - hash:
+      serializedVersion: 2
+      Hash: aa88ae22474df55295327e4ee99e5a24
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Toggle
   - hash:
       serializedVersion: 2
       Hash: 8220b46879dc5e37db1b940c938f5744
@@ -2923,16 +2922,28 @@ ScriptsOnlyBuild:
     className: OVRLipSyncContextTextureFlip
   - hash:
       serializedVersion: 2
+      Hash: a325152ad9563ed900af221c132fea36
+    assemblyName: UnityEngine.Advertisements.dll
+    namespaceName: UnityEngine.Advertisements.Utilities
+    className: CoroutineExecutor
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DebugUISample
   - hash:
       serializedVersion: 2
-      Hash: d4e269977be1f3defb356f905fa4e950
+      Hash: 703280b2d191ab05e56f72627c3525aa
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: InspectorInit
+  - hash:
+      serializedVersion: 2
+      Hash: 0fd6822f6177297bd0eb4d83cc7a9030
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: ToggleGroup
   - hash:
       serializedVersion: 2
       Hash: 75cd39a1f6026e63f483b86039e2c4cb
@@ -2941,13 +2952,13 @@ ScriptsOnlyBuild:
     className: SteamVR_Camera
   - hash:
       serializedVersion: 2
-      Hash: 67f016b700462d665c4a07e674bfa76d
+      Hash: 34e7991a9252968fc267ed59fd9d9940
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem
     className: HoverButton
   - hash:
       serializedVersion: 2
-      Hash: f645024a5941f826301b558ada9a67ce
+      Hash: 18235af34262c9d1c806370a73196694
     assemblyName: Assembly-CSharp.dll
     namespaceName: OculusSampleFramework
     className: ButtonController
@@ -2959,17 +2970,17 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: cb9b3c30362f57947706d6de21d68daa
+      Hash: 27570f74373dd259574aed6b0e35ea34
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: VRIDEController
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 43c84647cc6ebcc9187b3db6136051db
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ClassWindow
   platform: 2
   scenePathNames:
   - Assets/Scenes/MainScene.unity
-  playerPath: C:/Users/VictorStefano/Desktop/VRIDE v0.6.2 (MacOS).app
+  playerPath: C:/Users/VictorStefano/Desktop/VRIDE.app

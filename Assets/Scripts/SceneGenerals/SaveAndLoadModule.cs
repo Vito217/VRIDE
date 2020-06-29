@@ -18,21 +18,18 @@ namespace SaveAndLoad
     {
         static string sessionPath = Application.persistentDataPath + "/session.data";
 
-        public static List<BrowserData> SerializeBrowsers(List<GameObject> browsers)
+        public static List<BrowserData> SerializeBrowsers(List<Browser> browsers)
         {
             List<BrowserData> browserList = new List<BrowserData>();
-            foreach(GameObject browser in browsers)
+            foreach(Browser browser in browsers)
             {
                 Vector3 pos = browser.transform.position;
                 Vector3 fwd = browser.transform.forward;
 
-                BrowserPackage lastPackage = browser.transform.Find(Instantiator.packagePath)
-                    .gameObject.GetComponent<PackageWindow>().last_selected_package;
-                string lastPackageName = lastPackage == null ? 
-                    "" : 
-                    lastPackage.name;
+                BrowserPackage lastPackage = browser.package_list.last_selected_package;
+                string lastPackageName = lastPackage == null ? "" : lastPackage.name;
 
-                Transform lastClass = browser.transform.Find(Instantiator.classPath + "/" + lastPackageName);
+                Transform lastClass = browser.class_list.Find(lastPackageName);
                 string lastClassName = lastClass == null ? 
                     "" : 
                     lastClass.gameObject.GetComponent<ClassWindow>().last_selected_class.name;
@@ -46,7 +43,7 @@ namespace SaveAndLoad
         {
             SystemData data = session.classesAndMethods;
             List<BrowserData> browsersData = session.browsers;
-            List<GameObject> browsers = new List<GameObject>();
+            List<Browser> browsers = new List<Browser>();
 
             foreach(BrowserData bdata in browsersData)
             {
@@ -54,27 +51,26 @@ namespace SaveAndLoad
                 Vector3 fwd = new Vector3(bdata.forward.x, bdata.forward.y, bdata.forward.z);
                 Vector3 final_pos = new Vector3(bdata.position.x, 2f, bdata.position.z);
 
-                BrowserInit browser = Instantiator.Browser(data) as BrowserInit;
-                browser.Initialize(pos, final_pos, fwd, player.gameObject);
-                browsers.Add(browser.gameObject);
+                Browser browser = Instantiator.Browser(data) as Browser;
+                browser.Initialize(pos, final_pos, fwd, player);
+                browsers.Add(browser);
 
-                Transform lsc = browser.transform.Find(Instantiator.classPath).Find(bdata.lastSelectedClass);
-                if (lsc != null && bdata.lastSelectedClass != "") lsc.gameObject.GetComponent<BrowserClass>().click();
+                //Transform lsc = browser.transform.Find(Instantiator.classPath).Find(bdata.lastSelectedClass);
+                //if (lsc != null && bdata.lastSelectedClass != "") lsc.gameObject.GetComponent<BrowserClass>().click();
 
                 InteractionLogger.Count("Browser");
             }
             player.browsers = browsers;
         }
 
-        public static List<PlaygroundData> SerializePlaygrounds(List<GameObject> playgrounds)
+        public static List<PlaygroundData> SerializePlaygrounds(List<Playground> playgrounds)
         {
             List<PlaygroundData> playgroundList = new List<PlaygroundData>();
-            foreach (GameObject playground in playgrounds)
+            foreach (Playground playground in playgrounds)
             {
                 Vector3 pos = playground.transform.position;
                 Vector3 fwd = playground.transform.forward;
-                string sourceCode = playground.transform.Find(Instantiator.editorPath)
-                    .gameObject.GetComponent<TMP_InputField>().text;
+                string sourceCode = playground.field.text;
                 playgroundList.Add(new PlaygroundData(pos, fwd, sourceCode));
             }
             return playgroundList;
@@ -83,33 +79,30 @@ namespace SaveAndLoad
         public static void DeserializePlaygrounds(Session session, VRIDEController player)
         {
             List<PlaygroundData> playgroundsData = session.playgrounds;
-            List<GameObject> playgrounds = new List<GameObject>();
+            List<Playground> playgrounds = new List<Playground>();
             foreach(PlaygroundData pdata in playgroundsData)
             {
                 Vector3 pos = new Vector3(pdata.position.x, 0f, pdata.position.z);
                 Vector3 fwd = new Vector3(pdata.forward.x, pdata.forward.y, pdata.forward.z);
                 Vector3 final_pos = new Vector3(pdata.position.x, 2f, pdata.position.z);
 
-                PlaygroundInit playground = Instantiator.Playground() as PlaygroundInit;
-                playground.Initialize(pos, final_pos, fwd, player.gameObject);
-                playground.transform.Find(Instantiator.editorPath).gameObject
-                    .GetComponent<TMP_InputField>().text = pdata.sourceCode;
-
-                playgrounds.Add(playground.gameObject);
-
+                Playground playground = Instantiator.Playground() as Playground;
+                playground.Initialize(pos, final_pos, fwd, player);
+                playground.field.text = pdata.sourceCode;
+                playgrounds.Add(playground);
                 InteractionLogger.Count("Playground");
             }
             player.playgrounds = playgrounds;
         }
 
-        public static List<InspectorData> SerializeInspectors(List<GameObject> inspectors)
+        public static List<InspectorData> SerializeInspectors(List<Inspector> inspectors)
         {
             List<InspectorData> inspectorList = new List<InspectorData>();
-            foreach (GameObject inspector in inspectors)
+            foreach (Inspector inspector in inspectors)
             {
                 Vector3 pos = inspector.transform.position;
                 Vector3 fwd = inspector.transform.forward;
-                string rows = inspector.GetComponent<InspectorInit>().data;
+                string rows = inspector.data;
                 inspectorList.Add(new InspectorData(pos, fwd, rows));
             }
             return inspectorList;
@@ -118,34 +111,33 @@ namespace SaveAndLoad
         public static void DeserializeInspectors(Session session, VRIDEController player)
         {
             List<InspectorData> inspectorsData = session.inspectors;
-            List<GameObject> inspectors = new List<GameObject>();
+            List<Inspector> inspectors = new List<Inspector>();
             foreach (InspectorData idata in inspectorsData)
             {
                 Vector3 pos = new Vector3(idata.position.x, 0f, idata.position.z);
                 Vector3 fwd = new Vector3(idata.forward.x, idata.forward.y, idata.forward.z);
                 Vector3 final_pos = new Vector3(idata.position.x, 2f, idata.position.z);
 
-                InspectorInit inspector = Instantiator.Inspector() as InspectorInit;
+                Inspector inspector = Instantiator.Inspector() as Inspector;
                 inspector.setContent(idata.rows);
-                inspector.Initialize(pos, final_pos, fwd, player.gameObject);
+                inspector.Initialize(pos, final_pos, fwd, player);
 
-                inspectors.Add(inspector.gameObject);
+                inspectors.Add(inspector);
 
                 InteractionLogger.Count("Inspector");
             }
             player.inspectors = inspectors;
         }
 
-        public static List<SVGData> SerializeGraphs(List<GameObject> svgs)
+        public static List<SVGData> SerializeGraphs(List<Graph> svgs)
         {
             List<SVGData> graphs = new List<SVGData>();
-            foreach (GameObject graph in svgs)
+            foreach (Graph graph in svgs)
             {
                 Vector3 pos = graph.transform.position;
                 Vector3 fwd = graph.transform.forward;
-                SVGObjectInit cmp = graph.GetComponent<SVGObjectInit>();
-                string raw_image = cmp.raw_image;
-                string type = cmp.type;
+                string raw_image = graph.raw_image;
+                string type = graph.type;
                 graphs.Add(new SVGData(pos, fwd, raw_image, type));
             }
             return graphs;
@@ -154,7 +146,7 @@ namespace SaveAndLoad
         public static void DeserializeGraphs(Session session, VRIDEController player)
         {
             List<SVGData> graphsData = session.graphs;
-            List<GameObject> graphs = new List<GameObject>();
+            List<Graph> graphs = new List<Graph>();
             foreach(SVGData gdata in graphsData)
             {
                 Vector3 pos = new Vector3(gdata.position.x, 0f, gdata.position.z);
@@ -164,11 +156,10 @@ namespace SaveAndLoad
                 string rawImage = gdata.rawImage;
                 string type = gdata.type;
 
-                SVGObjectInit graph = Instantiator.Graph() as SVGObjectInit;
+                Graph graph = Instantiator.Graph() as Graph;
                 graph.setSprite(rawImage, type);
-                graph.Initialize(pos, final_pos, fwd, player.gameObject);
-
-                graphs.Add(graph.gameObject);
+                graph.Initialize(pos, final_pos, fwd, player);
+                graphs.Add(graph);
 
                 InteractionLogger.Count("GraphObject");
             }
@@ -209,10 +200,10 @@ namespace SaveAndLoad
             else
             {
                 VRIDEController.data = new SystemData();
-                player.browsers = new List<GameObject>();
-                player.playgrounds = new List<GameObject>();
-                player.inspectors = new List<GameObject>();
-                player.graphs = new List<GameObject>();
+                player.browsers = new List<Browser>();
+                player.playgrounds = new List<Playground>();
+                player.inspectors = new List<Inspector>();
+                player.graphs = new List<Graph>();
             }
         }
     }

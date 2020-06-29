@@ -23,11 +23,11 @@ namespace InstantiatorModule
         public static Transform classMethodListPrefab = Resources.Load<Transform>(oldPrefabs + "ClassMethodList");
         public static ClassWindow packageClassListPrefab = Resources.Load<ClassWindow>(oldPrefabs + "PackageClassList");
         public static InspectorRow inspectorRowPrefab = Resources.Load<InspectorRow>(oldPrefabs + "InspectorRow");
-        public static InitializeBehaviour browserPrefab = Resources.Load<BrowserInit>(prefabs + "Browser");
-        public static InitializeBehaviour playgroundPrefab = Resources.Load<PlaygroundInit>(prefabs + "Playground");
-        public static InitializeBehaviour inspectorPrefab = Resources.Load<InspectorInit>(prefabs + "Inspector");
-        public static InitializeBehaviour svgPrefab = Resources.Load<SVGObjectInit>(prefabs + "GraphObject");
-        public static InitializeBehaviour transcriptPrefab = Resources.Load<TranscriptInit>(prefabs + "Transcript");
+        public static InitializeBehaviour browserPrefab = Resources.Load<Browser>(prefabs + "Browser");
+        public static InitializeBehaviour playgroundPrefab = Resources.Load<Playground>(prefabs + "Playground");
+        public static InitializeBehaviour inspectorPrefab = Resources.Load<Inspector>(prefabs + "Inspector");
+        public static InitializeBehaviour svgPrefab = Resources.Load<Graph>(prefabs + "GraphObject");
+        public static InitializeBehaviour transcriptPrefab = Resources.Load<Transcript>(prefabs + "Transcript");
 
         public static BrowserClass ClassObject(ClassWindow parentWindow, string className, TMP_InputField field,
             Transform methodList)
@@ -164,9 +164,13 @@ namespace InstantiatorModule
         public static InitializeBehaviour Transcript()
         {
             InitializeBehaviour t = UnityEngine.Object.Instantiate(transcriptPrefab);
-            t.transform.Find("Editor/Panel/InputField (TMP)").gameObject
-                    .GetComponent<TMP_InputField>().text = VRIDEController.transcriptContents;
+            t.gameObject.GetComponent<Transcript>().field.text = VRIDEController.transcriptContents;
             return t;
+        }
+
+        public static InspectorRow InspectorDataRow()
+        {
+            return UnityEngine.Object.Instantiate(inspectorRowPrefab);
         }
     }
 }
