@@ -101,6 +101,8 @@ The text highlightning is based on regular expressions. You can specify a list o
   <li>Browser Text Editor and Scrollable Windows: define classes or methods, and select them to see their sourcecode.</li>
   <li>Playground: writes code and prints its result.</li>
   <li>Inspector: inspect a variable and its value.</li>
+  <li>Some Roassal2 RTGraphs as SVG and PNG.</li>
+  <li>Desktop Mode controls (mouse + keyboard)</li>
 </ul>
 
 ## What is NOT entirely working (a.k.a. TODO)
@@ -115,22 +117,23 @@ The text highlightning is based on regular expressions. You can specify a list o
 ## List of Bugs
 
 <ul>
-  <li>The Pharo server must have a default author. Otherwise, if the user tries to define a method, the server will be waiting for an author. If the user selects the yet undefined method, the software will crash.</li>
   <li>Some details in the text editor, such as incorrect highlightning, coloring, blank spaces, etc.</li>
   <li>Not every SVG extracted from Roassal2 is compatible with Unity. In that case, an [Error] code wil be thrown.</li>
-  <li>Roassal2 Grapher as PNG is not correctly imported. Instead, it'll display a default question mark.</li>
+  <li>Transcript won't do "show:" correctly</li>
 </ul>
 
 ## Controls
 
 <ul>
   <li>Left Click: Select and Drag</li>
-  <li>Arrows: Move Player</li>
+  <li>Arrows/WASD: Move Player</li>
   <li>Mouse movement: Move Camera</li>
-  <li>Ctrl + G or Cmd + G: Execute (and print, only if you are in Playground)</li>
-  <li>Ctrl + H or Cmd + H: Inspect the selected variable (only in Playground)</li>
-  <li>Ctrl + Q or Cmd + Q: Invoke a new Browser</li>
-  <li>Ctrl + E or Cmd + E: Invoke a new Playground</li>
+  <li>Shift: Visible cursor mode</li>
+  <li>Ctrl/Cmd + P or F4: Print (Playground only)</li>
+  <li>Ctrl/Cmd + I or F5: Inspect the selected variable (Playground only)</li>
+  <li>Ctrl/Cmd + O + B or F1: Invoke a new Browser</li>
+  <li>Ctrl/Cmd + O + W or F2: Invoke a new Playground</li>
+  <li>Ctrl/Cmd + S or F6: Accept (Browser only)</li>
 </ul>
 
 ## Channel Log
@@ -139,12 +142,4 @@ The text highlightning is based on regular expressions. You can specify a list o
 
 ## Download
 
-<a href="https://mega.nz/file/VIYQTChT#-UR2-MGmffdcovX4cm85d-vqzqKn5yANCj1o3KziUAs">VRIDE v0.5.0 for Windows and Mac OS</a>
-
-<a href="https://mega.nz/file/BBxCWSYb#O5s8w5GpGbem4JQau2gtNxVZIajTBl4jl1c6uRsR0dE">VRIDE v0.6.0 for Windows</a>
-
-<a href="https://mega.nz/file/ZE52GaYS#3TFSERScRQXeQy_YOi5I12SaCnjWVJa7HRnLAOjkcTU">VRIDE v0.6.1 for Mac OS</a>
-
-<a href="https://mega.nz/file/tNxTFJ6a#_cgMoiHNFWSqyo8-j6eBDvZNrnoNZlaiQY9kFcMkJ9I">VRIDE v0.6.2 for Windows and Mac OS</a>
-
-<a href="https://mega.nz/file/0VohwBaA#lDNvk45Vy-W4lsha6ECdl4N-VjTBMQAzhaUnS7TP72s">VRIDE's Pharo 8.0 Image</a>
+<a href="https://github.com/Vito217/PharoVRIDE/releases">See Releases.</a>
