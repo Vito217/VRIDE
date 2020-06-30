@@ -2,7 +2,7 @@
 
 ## V0.7.0 (28/06/2020)
 <ul>
-  <li>Pharo Image included. You don't have to call Zinc anymore. VRIDE does it for you!</li>
+  <li>Pharo Image included. You don't have to call Zinc anymore. VRIDE does it for you! (Bash is required)</li>
   <li>Added log file with timestamps</li>
   <li>Added Browser Packages section</li>
   <li>Added cache System.</li>
