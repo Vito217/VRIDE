@@ -49,7 +49,7 @@ namespace SaveAndLoad
             {
                 Vector3 pos = new Vector3(bdata.position.x, 0f, bdata.position.z);
                 Vector3 fwd = new Vector3(bdata.forward.x, bdata.forward.y, bdata.forward.z);
-                Vector3 final_pos = new Vector3(bdata.position.x, 2f, bdata.position.z);
+                Vector3 final_pos = new Vector3(bdata.position.x, 2.25f, bdata.position.z);
 
                 Browser browser = Instantiator.Browser(data) as Browser;
                 browser.Initialize(pos, final_pos, fwd, player);

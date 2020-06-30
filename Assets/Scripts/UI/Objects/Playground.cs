@@ -146,7 +146,7 @@ public class Playground : InitializeBehaviour
     }
 
     public override void innerBehaviour() {
-        if (Input.anyKeyDown && field.isFocused)
+        if ((Input.anyKeyDown || Input.GetKeyUp(KeyCode.Backspace)) && field.isFocused)
         {
             bool leftCmd = Input.GetKey(KeyCode.LeftCommand);
             bool leftCtrl = Input.GetKey(KeyCode.LeftControl);

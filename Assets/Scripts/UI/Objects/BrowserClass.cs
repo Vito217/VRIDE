@@ -38,7 +38,8 @@ public class BrowserClass : BrowserObject
 
     public void onDeselectClass()
     {
-        method_list.SetActive(false);
+        if (method_list != null)
+            method_list.SetActive(false);
         Color newCol;
         if (ColorUtility.TryParseHtmlString("#FFFFFF", out newCol))
             GetComponent<TextMeshProUGUI>().color = newCol;

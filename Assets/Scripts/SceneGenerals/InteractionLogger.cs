@@ -104,24 +104,24 @@ namespace LoggingModule
         public static void RegisterCodeDefinition(string type, string code, string response)
         {
             writeLineToLog(
-                "[ " + DateTime.Now + " ] Defined " + type + " with code: " +
-                code + " and response: " + response
+                "[ " + DateTime.Now + " ] Defined " + type + " with code:\n" +
+                code + "\nand response:\n" + response
             );
         }
 
         public static void RegisterCodeExecution(string code, string response)
         {
             writeLineToLog(
-               "[ " + DateTime.Now + " ] Executed code: " +
-               code +  " with response: " + response
+               "[ " + DateTime.Now + " ] Executed code:\n" +
+               code +  "\nwith response:\n" + response
             );
         }
 
         public static void RegisterCodeInspection(string code, string response)
         {
             writeLineToLog(
-                "[ " + DateTime.Now + " ] Inspected variable: " + 
-                code + "with response: " + response
+                "[ " + DateTime.Now + " ] Inspected variable:\n" + 
+                code + "\nwith response:\n" + response
             );
         }
 

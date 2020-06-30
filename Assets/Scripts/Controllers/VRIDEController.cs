@@ -32,7 +32,7 @@ public class VRIDEController : MonoBehaviour
 
     void Start()
     {
-        //Pharo.Start();
+        Pharo.Start();
         SaveAndLoadModule.Load(this);
         InteractionLogger.SessionStart();
     }
