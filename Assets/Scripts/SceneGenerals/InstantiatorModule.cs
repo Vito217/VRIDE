@@ -30,7 +30,7 @@ namespace InstantiatorModule
         public static InitializeBehaviour transcriptPrefab = Resources.Load<Transcript>(prefabs + "Transcript");
 
         public static BrowserClass ClassObject(ClassWindow parentWindow, string className, TMP_InputField field,
-            Transform methodList)
+            Transform classSideMethodList, Transform instanceSideMethodList)
         {
             BrowserClass new_class = UnityEngine.Object.Instantiate(browserClassPrefab, parentWindow.transform, false);
             new_class.gameObject.GetComponent<TextMeshProUGUI>().text = className;
@@ -38,14 +38,15 @@ namespace InstantiatorModule
             new_class.name = className;
             new_class.field = field;
             new_class.parent_window = parentWindow;
-            new_class.method_list = methodList.gameObject;
+            new_class.classMethodList = classSideMethodList.gameObject;
+            new_class.instanceMethodList = instanceSideMethodList.gameObject;
             return new_class;
         }
 
         public static BrowserClass ClassObject(ClassWindow parentWindow, string className, TMP_InputField field,
-            Transform methodList, string sourceCode)
+            Transform classSideMethodList, Transform instanceSideMethodList, string sourceCode)
         {
-            BrowserClass new_class = ClassObject(parentWindow, className, field, methodList);
+            BrowserClass new_class = ClassObject(parentWindow, className, field, classSideMethodList, instanceSideMethodList);
             new_class.sourceCode = sourceCode;
             return new_class;
         }
@@ -112,12 +113,11 @@ namespace InstantiatorModule
             Transform classList = browser.transform.Find(classPath);
             TMP_InputField field = browser.transform.Find(editorPath).gameObject.GetComponent<TMP_InputField>();
             Transform methodList = browser.transform.Find(methodPath);
-
-            bool firstPack = true;
-            bool firstClass = true;
+            Transform classSideList = methodList.Find("ClassSide");
+            Transform instanceSideList = methodList.Find("InstanceSide");
 
             Dictionary<string, List<Tuple<string, string>>> packAndClasses = data.classes;
-            Dictionary<string, List<Tuple<string, string>>> classAndMethods = data.methodLists;
+            Dictionary<string, List<Tuple<string, string, string>>> classAndMethods = data.methodLists;
 
             foreach (KeyValuePair<string, List<Tuple<string, string>>> keyVal in packAndClasses)
             {
@@ -131,22 +131,25 @@ namespace InstantiatorModule
                     string className = classAndCode.Item1;
                     string classCode = classAndCode.Item2;
 
-                    Transform classMethodList = MethodListObject(methodList, className, field);
-                    BrowserClass c = ClassObject(packageClassList, className, field, classMethodList, classCode);
+                    Transform classSideMethodList = MethodListObject(classSideList, className, field);
+                    Transform instanceSideMethodList = MethodListObject(instanceSideList, className, field);
+                    BrowserClass c = ClassObject(packageClassList, className, field, classSideMethodList, 
+                        instanceSideMethodList, classCode);
 
-                    List<Tuple<string, string>> methods = data.methodLists[className];
+                    List<Tuple<string, string, string>> methods = data.methodLists[className];
 
-                    foreach (Tuple<string, string> methodAndCode in methods)
+                    foreach (Tuple<string, string, string> methodAndCode in methods)
                     {
                         string methodName = methodAndCode.Item1;
                         string methodCode = methodAndCode.Item2;
+                        string side = methodAndCode.Item3;
 
-                        BrowserMethod m = MethodObject(classMethodList, className, methodName, field, methodCode);
+                        if (side == "ClassSide")
+                            MethodObject(classSideMethodList, className, methodName, field, methodCode);
+                        else
+                            MethodObject(instanceSideMethodList, className, methodName, field, methodCode);
                     }
-
-                    if (firstClass) { c.click(); firstClass = false; }
                 }
-                if (firstPack) { pack.click(); firstPack = false; }
             }
             return browser;
         }

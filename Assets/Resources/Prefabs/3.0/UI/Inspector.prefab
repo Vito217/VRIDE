@@ -721,7 +721,9 @@ MonoBehaviour:
   - {fileID: 2845532331439216875}
   - {fileID: 4005358154720572609}
   inspector_content: {fileID: 7914714543499696956}
-  data: 
+  data: 'an OrderedCollection(''self=2'')
+
+'
 --- !u!1 &6644611211428635718
 GameObject:
   m_ObjectHideFlags: 0
@@ -1378,6 +1380,11 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 2150773298
       objectReference: {fileID: 0}
+    - target: {fileID: 2593645588151571547, guid: 7c48868681267d347acc7bcc874e21fb,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2593645588223636068, guid: 7c48868681267d347acc7bcc874e21fb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1533,6 +1540,11 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2593645588327724032, guid: 7c48868681267d347acc7bcc874e21fb,
+        type: 3}
+      propertyPath: m_text
+      value: "\"2\"\nself\u200B"
+      objectReference: {fileID: 0}
     - target: {fileID: 2593645588907822700, guid: 7c48868681267d347acc7bcc874e21fb,
         type: 3}
       propertyPath: m_OnSelect.m_PersistentCalls.m_Calls.Array.size
@@ -1597,6 +1609,13 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnDeselect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593645588907822700, guid: 7c48868681267d347acc7bcc874e21fb,
+        type: 3}
+      propertyPath: m_Text
+      value: '"2"
+
+        self'
       objectReference: {fileID: 0}
     - target: {fileID: 2593645588907822702, guid: 7c48868681267d347acc7bcc874e21fb,
         type: 3}

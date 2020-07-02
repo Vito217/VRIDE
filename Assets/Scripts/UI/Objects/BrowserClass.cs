@@ -8,7 +8,8 @@ using TMPro;
 public class BrowserClass : BrowserObject
 {
     public ClassWindow parent_window;
-    public GameObject method_list;
+    public GameObject classMethodList;
+    public GameObject instanceMethodList;
 
     void Start()
     {
@@ -29,8 +30,10 @@ public class BrowserClass : BrowserObject
         if(last_class != null)
             last_class.onDeselectClass();
         parent_window.setLastSelectedClass(this);
-        if(method_list != null)
-            method_list.SetActive(true);
+        if(classMethodList != null)
+            classMethodList.SetActive(true);
+        if (instanceMethodList != null)
+            instanceMethodList.SetActive(true);
         Color newCol;
         if (ColorUtility.TryParseHtmlString("#00FFFF", out newCol))
             GetComponent<TextMeshProUGUI>().color = newCol;
@@ -38,8 +41,10 @@ public class BrowserClass : BrowserObject
 
     public void onDeselectClass()
     {
-        if (method_list != null)
-            method_list.SetActive(false);
+        if (classMethodList != null)
+            classMethodList.SetActive(false);
+        if (instanceMethodList != null)
+            instanceMethodList.SetActive(false);
         Color newCol;
         if (ColorUtility.TryParseHtmlString("#FFFFFF", out newCol))
             GetComponent<TextMeshProUGUI>().color = newCol;

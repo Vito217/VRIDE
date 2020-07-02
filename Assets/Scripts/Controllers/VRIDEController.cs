@@ -76,7 +76,7 @@ public class VRIDEController : MonoBehaviour
             else if (f2 || ((leftCtrl || leftCmd) && o && w))
             {
                 Playground playground = Instantiator.Playground() as Playground;
-                playground.Initialize(newPos, newFinalPos, newForw, this);
+                playground.Initialize(newPos, new Vector3(newFinalPos.x, 2.125f, newFinalPos.z), newForw, this);
                 playgrounds.Add(playground);
                 InteractionLogger.Count("Playground");
             }

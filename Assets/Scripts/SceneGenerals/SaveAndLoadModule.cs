@@ -34,7 +34,9 @@ namespace SaveAndLoad
                     "" : 
                     lastClass.gameObject.GetComponent<ClassWindow>().last_selected_class.name;
 
-                browserList.Add(new BrowserData(pos, fwd, lastClassName, lastPackageName));
+                string lastSideName = browser.lastSelectedSide;
+
+                browserList.Add(new BrowserData(pos, fwd, lastClassName, lastPackageName, lastSideName));
             }
             return browserList;
         }
@@ -53,11 +55,22 @@ namespace SaveAndLoad
 
                 Browser browser = Instantiator.Browser(data) as Browser;
                 browser.Initialize(pos, final_pos, fwd, player);
+                Transform lsp = browser.package_list.transform.Find(bdata.lastSelectedPackage);
+                if (lsp != null && bdata.lastSelectedPackage != "")
+                {
+                    lsp.gameObject.GetComponent<BrowserPackage>().click();
+                    Transform lsc = browser.class_list.Find(bdata.lastSelectedPackage).Find(bdata.lastSelectedClass);
+                    if (lsc != null && bdata.lastSelectedClass != "")
+                    {
+                        lsc.gameObject.GetComponent<BrowserClass>().click();
+                    }
+                }
+                if (bdata.lastSelectedSide == "ClassSide")
+                    browser.onSelectClassSide();
+                else
+                    browser.onSelectInstanceSide();
+
                 browsers.Add(browser);
-
-                //Transform lsc = browser.transform.Find(Instantiator.classPath).Find(bdata.lastSelectedClass);
-                //if (lsc != null && bdata.lastSelectedClass != "") lsc.gameObject.GetComponent<BrowserClass>().click();
-
                 InteractionLogger.Count("Browser");
             }
             player.browsers = browsers;

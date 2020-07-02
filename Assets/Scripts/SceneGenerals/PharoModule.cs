@@ -67,20 +67,5 @@ namespace PharoModule
                 "tuples ."
             );
         }
-
-        /**
-        public static async Task<string> Transcript(string code)
-        {
-            return await Execute(
-                "t := " + code +"\n" +
-                "tuples := OrderedCollection new.\n" +
-                "tuples addLast: 'self=',(t value asString).\n" +
-                "t class instVarNames do: [ :each |\n" +
-                    "\ttuples addLast: (each asString),'=', ((t instVarNamed: each value) asString).\n" +
-                "].\n" +
-                "tuples ."
-            );
-        }
-        **/
     }
 }

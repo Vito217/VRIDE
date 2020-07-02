@@ -18,6 +18,11 @@ public class Browser : InitializeBehaviour
     public PackageWindow package_list;
     public Transform class_list;
     public Transform method_list;
+    public Transform classSideList;
+    public Transform instanceSideList;
+    public Toggle classSideToggle;
+    public Toggle instanceSideToggle;
+    public string lastSelectedSide = "InstanceSide";
 
     async void PharoDefine()
     {
@@ -51,10 +56,13 @@ public class Browser : InitializeBehaviour
             string currentPackage = package_list.getLastSelectedPackage().name;
             string currentClass = class_list.Find(currentPackage).gameObject
                 .GetComponent<ClassWindow>().getLastSelectedClass().name;
-            string method_code = currentClass + " compile: '" + clean_code.Replace("'", "''") + "'";
-            string responseString = await Pharo.Execute(method_code);
+
+            string method_code = lastSelectedSide == "ClassSide" ?
+                "(" + currentClass + " class) compile: '" + clean_code.Replace("'", "''") + "'" :
+                currentClass + " compile: '" + clean_code.Replace("'", "''") + "'";
 
             // Getting method name
+            string responseString = await Pharo.Execute(method_code);
             string methodName = Regex.Matches(clean_code, @"(\A(.*:?) )|(\A(.*:?)\n)")[0].Value;
             methodName = Regex.Replace(methodName, @"\n|\r|\t|\s", "");
             createOrUpdateMethod(currentClass, methodName, input_code);
@@ -91,8 +99,12 @@ public class Browser : InitializeBehaviour
         Transform package = class_list.Find(packageName);
         Transform existing_class = package.Find(className);
         BrowserClass new_class = !existing_class ?
-            Instantiator.ClassObject(package.GetComponent<ClassWindow>(), className, field,
-                Instantiator.MethodListObject(method_list, className, field)) :
+            Instantiator.ClassObject(
+                package.GetComponent<ClassWindow>(), 
+                className, 
+                field,
+                Instantiator.MethodListObject(classSideList, className, field),
+                Instantiator.MethodListObject(instanceSideList, className, field)) :
             existing_class.gameObject.GetComponent<BrowserClass>();
 
         //Updating class
@@ -100,7 +112,7 @@ public class Browser : InitializeBehaviour
         VRIDEController.data.classes[packageName].Add(new Tuple<string, string>(className, input_code));
 
         if (!VRIDEController.data.methodLists.ContainsKey(className))
-            VRIDEController.data.methodLists.Add(className, new List<Tuple<string, string>>());
+            VRIDEController.data.methodLists.Add(className, new List<Tuple<string, string, string>>());
 
         // Activating
         new_class.sourceCode = input_code;
@@ -112,19 +124,24 @@ public class Browser : InitializeBehaviour
     void createOrUpdateMethod(string className, string methodName, string input_code)
     {
         // Getting methods
-        Transform classMethodList = method_list.Find(className);
+        string side = classSideToggle.isOn ? "ClassSide" : "InstanceSide";
+        Transform classMethodList = method_list.Find(side + "/" + className);
         Transform existing_method = classMethodList.Find(methodName);
         BrowserMethod new_method = !existing_method ?
             Instantiator.MethodObject(classMethodList, className, methodName, field) :
             existing_method.gameObject.GetComponent<BrowserMethod>();
 
         // Updating method
-        VRIDEController.data.methodLists[className].Remove(new Tuple<string, string>(methodName, new_method.sourceCode));
-        VRIDEController.data.methodLists[className].Add(new Tuple<string, string>(methodName, input_code));
+        Tuple<string, string, string> oldElem = new Tuple<string, string, string>(methodName, new_method.sourceCode, side);
+        Tuple<string, string, string> newElem = new Tuple<string, string, string>(methodName, input_code, side);
+        VRIDEController.data.methodLists[className].Remove(oldElem);
+        VRIDEController.data.methodLists[className].Add(newElem);
 
         // Activating
         new_method.sourceCode = input_code;
-        //new_method.click();
+        new_method.click();
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(classMethodList.gameObject.GetComponent<RectTransform>());
     }
 
     public override void onSelect()
@@ -162,5 +179,51 @@ public class Browser : InitializeBehaviour
         player.browsers.Remove(this);
         InteractionLogger.Discount("Browser");
         Destroy(gameObject);
+    }
+
+    public void onSelectClassSide()
+    {
+        classSideToggle.isOn = true;
+        instanceSideToggle.isOn = false;
+        classSideList.gameObject.SetActive(true);
+        instanceSideList.gameObject.SetActive(false);
+        lastSelectedSide = "ClassSide";
+
+        Color white, skyBlue;
+        if (ColorUtility.TryParseHtmlString("#FFFFFF", out white) &&
+            ColorUtility.TryParseHtmlString("#00FFFF", out skyBlue))
+        {
+            var classSideColors = classSideToggle.colors;
+            var instSideColors = instanceSideToggle.colors;
+
+            classSideColors.normalColor = skyBlue;
+            instSideColors.normalColor = white;
+
+            classSideToggle.colors = classSideColors;
+            instanceSideToggle.colors = instSideColors;
+        }
+    }
+
+    public void onSelectInstanceSide()
+    {
+        classSideToggle.isOn = false;
+        instanceSideToggle.isOn = true;
+        classSideList.gameObject.SetActive(false);
+        instanceSideList.gameObject.SetActive(true);
+        lastSelectedSide = "InstanceSide";
+
+        Color white, skyBlue;
+        if (ColorUtility.TryParseHtmlString("#FFFFFF", out white) &&
+            ColorUtility.TryParseHtmlString("#00FFFF", out skyBlue))
+        {
+            var classSideColors = classSideToggle.colors;
+            var instSideColors = instanceSideToggle.colors;
+
+            classSideColors.normalColor = white;
+            instSideColors.normalColor = skyBlue;
+
+            classSideToggle.colors = classSideColors;
+            instanceSideToggle.colors = instSideColors;
+        }
     }
 }

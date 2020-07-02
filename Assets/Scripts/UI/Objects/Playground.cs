@@ -12,35 +12,29 @@ using PharoModule;
 using LoggingModule;
 using TMPro;
 using InstantiatorModule;
+using System.Security.Cryptography;
 
 public class Playground : InitializeBehaviour
 {
     private Graph view;
+    private Inspector insp;
 
     async void PharoDo()
     {
         string output = "";
         try
         {
-            /**
+            string selectedCode = getSelectedCode(cleanCode(field.text));
+
             // Getting Transcripts
-            foreach (Match m in Regex.Matches(selectedCode, @"Transcript\sshow:.*\."))
+            foreach (Match m in Regex.Matches(selectedCode, @"VRIDE\s*log:.*\."))
             {
-                string response = await Pharo.Transcript(m.Value);
-                response = Regex.Match(response, @"'stepContents=.*'\)").Value;
-                Debug.Log(response);
-                response = response.Replace("stepContents=", "").Replace("'", "").Replace(")", "");
+                string response = await Pharo.Print(m.Value);
+                response = response.Replace("'", "").Replace("\"", "");
                 VRIDEController.transcriptContents += response + "\n";
             }
-            foreach (GameObject t in player.GetComponent<VRIDEController>().transcripts)
-            {
-                t.transform.Find("Editor/Panel/InputField (TMP)").gameObject
-                    .GetComponent<TMP_InputField>().text = VRIDEController.transcriptContents;
-            }
-            **/
 
             // Execution
-            string selectedCode = getSelectedCode(cleanCode(field.text));
             string responseString = await Pharo.Print(selectedCode);
             if (Regex.Match(selectedCode, @"visualize(\s*)(asSVG|asPNG)(\s*)\.").Success)
             {
@@ -106,18 +100,21 @@ public class Playground : InitializeBehaviour
             string res = await Pharo.Inspect(selection);
             if (!Regex.Match(res, @"\[Error\](.*)").Success)
             {
-                float width = GetComponent<RectTransform>().sizeDelta.x;
-                Vector3 newWorldPos = transform.TransformPoint(new Vector3(1.6f * width, 0, 0));
-                Inspector new_inspector = Instantiator.Inspector() as Inspector;
-                player.inspectors.Add(new_inspector);
-                new_inspector.setContent(res);
-                new_inspector.Initialize(
-                    new Vector3(transform.position.x, 2, transform.position.z),
-                    new Vector3(newWorldPos.x, 2, newWorldPos.z),
-                    transform.forward,
-                    player
-                );
-                InteractionLogger.Count("Inspector");
+                if(insp == null)
+                {
+                    float width = GetComponent<RectTransform>().sizeDelta.x;
+                    Vector3 newWorldPos = transform.TransformPoint(new Vector3(width, 0, 0));
+                    insp = Instantiator.Inspector() as Inspector;
+                    player.inspectors.Add(insp);
+                    insp.Initialize(
+                        new Vector3(transform.position.x, 2, transform.position.z),
+                        new Vector3(newWorldPos.x, 2, newWorldPos.z),
+                        transform.forward,
+                        player
+                    );
+                    InteractionLogger.Count("Inspector");
+                }
+                insp.setContent(res);
             }
             else
                 output = " <color=#b32d00>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>";
@@ -130,6 +127,36 @@ public class Playground : InitializeBehaviour
         finally
         {
             field.text += output;
+        }
+    }
+
+    async void PharoBrowse()
+    {
+        string selection = getSelectedCode(cleanCode(field.text));
+        string packageName = "";
+        string className = "";
+        foreach (KeyValuePair<string, List<Tuple<string, string>>> keyVal in VRIDEController.data.classes)
+        {
+            packageName = keyVal.Key;
+            foreach (Tuple<string, string> t in keyVal.Value)
+            {
+                if (t.Item1 == selection)
+                {
+                    className = t.Item1;
+                    Browser b = Instantiator.Browser(VRIDEController.data) as Browser;
+                    b.package_list.transform.Find(packageName).gameObject.GetComponent<BrowserPackage>().click();
+                    b.class_list.Find(packageName).Find(className).gameObject.GetComponent<BrowserClass>().click();
+                    b.Initialize(
+                        transform.position,
+                        transform.position,
+                        transform.forward,
+                        player
+                    );
+                    break;
+                }
+            }
+            if(className != "")
+                break;
         }
     }
 
@@ -153,11 +180,13 @@ public class Playground : InitializeBehaviour
             bool f3 = Input.GetKeyDown(KeyCode.F3);
             bool f4 = Input.GetKeyDown(KeyCode.F4);
             bool f5 = Input.GetKeyDown(KeyCode.F5);
+            bool f8 = Input.GetKeyDown(KeyCode.F8);
             bool p = Input.GetKeyDown("p");
             bool d = Input.GetKeyDown("d");
             bool i = Input.GetKeyDown("i");
             bool c = Input.GetKeyDown("c");
             bool v = Input.GetKeyDown("v");
+            bool b = Input.GetKeyDown("b");
 
             if (!(leftCmd || leftCtrl || f3 || f4 || f5))
                 onChangeInput();
@@ -169,6 +198,8 @@ public class Playground : InitializeBehaviour
                     PharoPrint();
                 else if (((leftCmd || leftCtrl) && i) || f5)
                     PharoInspect();
+                else if (((leftCmd || leftCtrl) && b) || f8)
+                    PharoBrowse();
                 else if (((leftCmd || leftCtrl) && v) || ((leftCmd || leftCtrl) && c))
                     onChangeInput();
             }

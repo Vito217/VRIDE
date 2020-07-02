@@ -9,6 +9,7 @@ using UnityEngine.UI;
 using TMPro;
 using InstantiatorModule;
 using LoggingModule;
+using PharoModule;
 
 public class Inspector : InitializeBehaviour
 {
@@ -16,6 +17,14 @@ public class Inspector : InitializeBehaviour
     public string data;
 
     public void setContent(string response) {
+
+        // Reseting
+        field.text = "";
+        foreach (Transform child in inspector_content) { 
+            Destroy(child.gameObject); 
+        }
+
+        // Filling
         data = response;
         response = response.Replace("an OrderedCollection('", "");
         response = response.Replace("')", "");
@@ -23,7 +32,9 @@ public class Inspector : InitializeBehaviour
         {
             string[] pair = tuple.Replace("'", "").Split('=');
             InspectorRow new_row = Instantiator.InspectorDataRow();
-            new_row.setContent(pair[0], pair[1], inspector_content);
+            new_row.setContent(pair[0], pair[1], inspector_content, this);
+            if (pair[0] == "self")
+                field.text = "\"" + pair[1].Replace("\n", "") + "\"\n" + pair[0];
         }
     }
 
