@@ -135,15 +135,17 @@ public class Playground : InitializeBehaviour
         string selection = getSelectedCode(cleanCode(field.text));
         string packageName = "";
         string className = "";
-        foreach (KeyValuePair<string, List<Tuple<string, string>>> keyVal in VRIDEController.data.classes)
+        foreach (KeyValuePair<string, 
+                 Dictionary<string, Tuple<string, List<Tuple<string, string, string>>>>> 
+                 keyVal in VRIDEController.sysData.data)
         {
             packageName = keyVal.Key;
-            foreach (Tuple<string, string> t in keyVal.Value)
+            foreach (KeyValuePair<string, Tuple<string, List<Tuple<string, string, string>>>> t in keyVal.Value)
             {
-                if (t.Item1 == selection)
+                if (t.Key == selection)
                 {
-                    className = t.Item1;
-                    Browser b = Instantiator.Browser(VRIDEController.data) as Browser;
+                    className = t.Key;
+                    Browser b = Instantiator.Browser();
                     b.package_list.transform.Find(packageName).gameObject.GetComponent<BrowserPackage>().click();
                     b.class_list.Find(packageName).Find(className).gameObject.GetComponent<BrowserClass>().click();
                     b.Initialize(

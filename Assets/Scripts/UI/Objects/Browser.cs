@@ -24,6 +24,22 @@ public class Browser : InitializeBehaviour
     public Toggle instanceSideToggle;
     public string lastSelectedSide = "InstanceSide";
 
+    void Awake()
+    {
+        StartCoroutine(Coroutine());
+    }
+
+    IEnumerator Coroutine()
+    {
+        foreach (KeyValuePair<string, Dictionary<string, Tuple<string, List<Tuple<string, string, string>>>>>
+                 keyVal in VRIDEController.sysData.data)
+        {
+            Instantiator.PackageObject(package_list, keyVal.Key, field, null, this);
+        }
+        LayoutRebuilder.ForceRebuildLayoutImmediate(package_list.gameObject.GetComponent<RectTransform>());
+        yield return null;
+    }
+
     async void PharoDefine()
     {
         // Cleaning code from RichText
@@ -40,15 +56,6 @@ public class Browser : InitializeBehaviour
             // Getting or updating package
             createOrUpdatePackage(packageName);
             createOrUpdateClass(packageName, className, input_code);
-            foreach (GameObject b in GameObject.FindGameObjectsWithTag("Browser"))
-            {
-                Browser browser = b.GetComponent<Browser>();
-                if (browser != this)
-                {
-                    browser.createOrUpdatePackage(packageName);
-                    browser.createOrUpdateClass(packageName, className, input_code);
-                }
-            }
             InteractionLogger.RegisterCodeDefinition("class", clean_code, responseString);
         }
         else
@@ -65,13 +72,7 @@ public class Browser : InitializeBehaviour
             string responseString = await Pharo.Execute(method_code);
             string methodName = Regex.Matches(clean_code, @"(\A(.*:?) )|(\A(.*:?)\n)")[0].Value;
             methodName = Regex.Replace(methodName, @"\n|\r|\t|\s", "");
-            createOrUpdateMethod(currentClass, methodName, input_code);
-            foreach (GameObject b in GameObject.FindGameObjectsWithTag("Browser"))
-            {
-                Browser browser = b.GetComponent<Browser>();
-                if (browser != this)
-                    browser.createOrUpdateMethod(currentClass, methodName, input_code);
-            }
+            createOrUpdateMethod(currentPackage, currentClass, methodName, input_code);
             InteractionLogger.RegisterCodeDefinition("method", clean_code, responseString);
         }
     }
@@ -81,13 +82,14 @@ public class Browser : InitializeBehaviour
         // Getting package and its classes
         Transform existingPackage = package_list.transform.Find(packageName);
         BrowserPackage newPackage = !existingPackage ?
-            Instantiator.PackageObject(package_list, packageName, field,
-                Instantiator.ClassListObject(class_list, packageName, field)) :
+            Instantiator.PackageObject(package_list, packageName, field, null, this) :
             existingPackage.gameObject.GetComponent<BrowserPackage>();
 
         // Updating package
-        if (!VRIDEController.data.classes.ContainsKey(packageName))
-            VRIDEController.data.classes.Add(packageName, new List<Tuple<string, string>>());
+        if (!VRIDEController.sysData.data.ContainsKey(packageName))
+            VRIDEController.sysData.data.Add(
+                packageName, 
+                new Dictionary<string, Tuple<string, List<Tuple<string, string, string>>>>());
 
         // Activating
         newPackage.click();
@@ -99,20 +101,22 @@ public class Browser : InitializeBehaviour
         Transform package = class_list.Find(packageName);
         Transform existing_class = package.Find(className);
         BrowserClass new_class = !existing_class ?
-            Instantiator.ClassObject(
-                package.GetComponent<ClassWindow>(), 
-                className, 
-                field,
-                Instantiator.MethodListObject(classSideList, className, field),
-                Instantiator.MethodListObject(instanceSideList, className, field)) :
+            Instantiator.ClassObject(package.GetComponent<ClassWindow>(), className, field, 
+                null, null, input_code, this) :
             existing_class.gameObject.GetComponent<BrowserClass>();
 
         //Updating class
-        VRIDEController.data.classes[packageName].Remove(new Tuple<string, string>(className, new_class.sourceCode));
-        VRIDEController.data.classes[packageName].Add(new Tuple<string, string>(className, input_code));
-
-        if (!VRIDEController.data.methodLists.ContainsKey(className))
-            VRIDEController.data.methodLists.Add(className, new List<Tuple<string, string, string>>());
+        if (!VRIDEController.sysData.data[packageName].ContainsKey(className))
+            VRIDEController.sysData.data[packageName].Add(
+                className,
+                new Tuple<string, List<Tuple<string, string, string>>>(
+                    input_code, new List<Tuple<string, string, string>>()));
+        else
+        {
+            List<Tuple<string, string, string>> methods = VRIDEController.sysData.data[packageName][className].Item2;
+            VRIDEController.sysData.data[packageName][className] =
+                new Tuple<string, List<Tuple<string, string, string>>>(input_code, methods);
+        }
 
         // Activating
         new_class.sourceCode = input_code;
@@ -121,7 +125,7 @@ public class Browser : InitializeBehaviour
         LayoutRebuilder.ForceRebuildLayoutImmediate(package.gameObject.GetComponent<RectTransform>());
     }
 
-    void createOrUpdateMethod(string className, string methodName, string input_code)
+    void createOrUpdateMethod(string packageName, string className, string methodName, string input_code)
     {
         // Getting methods
         string side = classSideToggle.isOn ? "ClassSide" : "InstanceSide";
@@ -134,8 +138,8 @@ public class Browser : InitializeBehaviour
         // Updating method
         Tuple<string, string, string> oldElem = new Tuple<string, string, string>(methodName, new_method.sourceCode, side);
         Tuple<string, string, string> newElem = new Tuple<string, string, string>(methodName, input_code, side);
-        VRIDEController.data.methodLists[className].Remove(oldElem);
-        VRIDEController.data.methodLists[className].Add(newElem);
+        VRIDEController.sysData.data[packageName][className].Item2.Remove(oldElem);
+        VRIDEController.sysData.data[packageName][className].Item2.Add(newElem);
 
         // Activating
         new_method.sourceCode = input_code;

@@ -14,7 +14,7 @@ using LoggingModule;
 
 namespace SaveAndLoad
 {
-    public static class SaveAndLoadModule
+    public class SaveAndLoadModule : MonoBehaviour
     {
         static string sessionPath = Application.persistentDataPath + "/session.data";
 
@@ -43,7 +43,6 @@ namespace SaveAndLoad
 
         public static void DeserializeBrowsers(Session session, VRIDEController player)
         {
-            SystemData data = session.classesAndMethods;
             List<BrowserData> browsersData = session.browsers;
             List<Browser> browsers = new List<Browser>();
 
@@ -53,7 +52,7 @@ namespace SaveAndLoad
                 Vector3 fwd = new Vector3(bdata.forward.x, bdata.forward.y, bdata.forward.z);
                 Vector3 final_pos = new Vector3(bdata.position.x, 2.25f, bdata.position.z);
 
-                Browser browser = Instantiator.Browser(data) as Browser;
+                Browser browser = Instantiator.Browser() as Browser;
                 browser.Initialize(pos, final_pos, fwd, player);
                 Transform lsp = browser.package_list.transform.Find(bdata.lastSelectedPackage);
                 if (lsp != null && bdata.lastSelectedPackage != "")
@@ -182,7 +181,7 @@ namespace SaveAndLoad
         public static void Save(VRIDEController player)
         {
             Session s = new Session(
-                VRIDEController.data,
+                VRIDEController.sysData,
                 SerializeBrowsers(player.browsers),
                 SerializePlaygrounds(player.playgrounds),
                 SerializeInspectors(player.inspectors),
@@ -204,7 +203,7 @@ namespace SaveAndLoad
                 Session session = (Session) bf.Deserialize(file);
                 file.Close();
 
-                VRIDEController.data = session.classesAndMethods;
+                VRIDEController.sysData = session.classesAndMethods;
                 DeserializeBrowsers(session, player);
                 DeserializePlaygrounds(session, player);
                 DeserializeInspectors(session, player);
@@ -212,7 +211,7 @@ namespace SaveAndLoad
             }
             else
             {
-                VRIDEController.data = new SystemData();
+                VRIDEController.sysData = new SystemData();
                 player.browsers = new List<Browser>();
                 player.playgrounds = new List<Playground>();
                 player.inspectors = new List<Inspector>();

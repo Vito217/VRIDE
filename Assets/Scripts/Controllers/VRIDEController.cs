@@ -22,7 +22,7 @@ public class VRIDEController : MonoBehaviour
 {
     public Camera camera;
     public bool can_move = true;
-    public static SystemData data;
+    public static SystemData sysData;
     public static string transcriptContents = "";
     public List<Browser> browsers;
     public List<Playground> playgrounds;
@@ -30,11 +30,9 @@ public class VRIDEController : MonoBehaviour
     public List<Graph> graphs;
     public List<Transcript> transcripts;
 
-    void Start()
+    void Awake()
     {
-        Pharo.Start();
-        SaveAndLoadModule.Load(this);
-        InteractionLogger.SessionStart();
+        StartCoroutine(Coroutine());
     }
 
     // F1 : Browser
@@ -44,6 +42,16 @@ public class VRIDEController : MonoBehaviour
     // F5 : Inspect it
     // F6 : Accept
     // F7 : Transcript
+
+    IEnumerator Coroutine()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        yield return null;
+        Pharo.Start();
+        SaveAndLoadModule.Load(this);
+        InteractionLogger.SessionStart();
+    }
 
     void Update()
     {
@@ -61,14 +69,13 @@ public class VRIDEController : MonoBehaviour
         {
             Vector3 pos = transform.position;
             Vector3 forw = transform.forward;
-
             Vector3 newPos = new Vector3(pos.x + forw.x * 5f, 0f, pos.z + forw.z * 5f);
             Vector3 newFinalPos = new Vector3(newPos.x, 2f, newPos.z);
             Vector3 newForw = new Vector3(forw.x, 0, forw.z);
 
             if (f1 || ((leftCtrl || leftCmd) && o && b))
             {
-                Browser browser = Instantiator.Browser(data) as Browser;
+                Browser browser = Instantiator.Browser();
                 browser.Initialize(newPos, new Vector3(newFinalPos.x, 2.25f, newFinalPos.z), newForw, this);
                 browsers.Add(browser);
                 InteractionLogger.Count("Browser");
@@ -95,6 +102,6 @@ public class VRIDEController : MonoBehaviour
             Pharo.Execute("SmalltalkImage current snapshot: true andQuit: true.");
             InteractionLogger.SessionEnd();
             Application.Quit();
-        }  
+        }
     }
 }

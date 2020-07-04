@@ -9,6 +9,7 @@ public class BrowserObject : MonoBehaviour
     public string name;
     public string sourceCode;
     public TMP_InputField field;
+    public Browser theBrowser;
 
     public void click()
     {
