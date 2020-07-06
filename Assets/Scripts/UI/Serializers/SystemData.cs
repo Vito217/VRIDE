@@ -24,7 +24,7 @@ public class SystemData
         string res = await Pharo.Execute(code);
         res = Regex.Replace(res, @"#\(#|'|\)|\n", "");
         string[] packages = res.Split(new string[] { " #" }, StringSplitOptions.None);
-        foreach(string package in packages)
+        foreach (string package in packages)
         {
 
             if (data.ContainsKey(package))

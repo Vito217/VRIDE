@@ -16,7 +16,7 @@ namespace PharoModule
         public static string IP = "http://localhost:1701/repl";
         public static readonly HttpClient client = new HttpClient();
 
-        public static async void Start()
+        public static async Task Start()
         {
             string enginePath = Application.streamingAssetsPath + "/PharoEngine";
             string bashFile = (Application.platform == RuntimePlatform.WindowsPlayer ||

@@ -8,10 +8,14 @@ using PharoModule;
 using InstantiatorModule;
 using SaveAndLoad;
 using LoggingModule;
+using System.Threading.Tasks;
 
 public class TitleScreenBehaviour : MonoBehaviour
 {
     public GameObject text;
+    public Slider slider;
+    bool initializing = true;
+    float limit = 0.0f;
     private Dictionary<string, VRIDEController> dict;
 
     public VRIDEController htcplayer_prefab;
@@ -20,23 +24,33 @@ public class TitleScreenBehaviour : MonoBehaviour
     public VRIDEController nonvrplayer_prefab;
     public GameObject defaultEventSystem_prefab;
 
+    private VRIDEController player;
+
     //public GameObject oculusplayer_prefab;
     //public GameObject UIHelpers_prefab;
 
-    void Awake()
+    void Update()
     {
-        StartCoroutine(Coroutine());
+        if (initializing)
+            Load();
+
+        slider.value += (limit - slider.value) * 0.01f;
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Exit();
     }
 
-    IEnumerator Coroutine()
+    async void Load()
     {
-        dict = new Dictionary<string, VRIDEController>() {
-            { "" , nonvrplayer_prefab },
-            { "OpenVR", htcplayer_prefab }
-        };
+        initializing = false;
 
-        VRIDEController new_player = Instantiate(dict[XRSettings.loadedDeviceName]);
-        new_player.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
+        dict = new Dictionary<string, VRIDEController>() {
+                { "" , nonvrplayer_prefab },
+                { "OpenVR", htcplayer_prefab }
+            };
+
+        player = Instantiate(dict[XRSettings.loadedDeviceName]);
+        player.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
         if (XRSettings.loadedDeviceName == "OpenVR")
         {
             XRSettings.enabled = true;
@@ -44,10 +58,31 @@ public class TitleScreenBehaviour : MonoBehaviour
             Instantiate(teleporterPrefab);
         }
 
-        yield return new WaitForSeconds(3);
+        limit = 0.3f;
+
+        await Pharo.Start();
+
+        limit = 0.6f;
+
+        await SaveAndLoadModule.Load(player);
+
+        limit = 1.0f;
+
+        InteractionLogger.SessionStart();
+
+        await Task.Delay(5000);
+
+        slider.gameObject.SetActive(false);
+        text.SetActive(true);
         text.GetComponent<Text>().CrossFadeAlpha(0.0f, 3.0f, false);
         GetComponent<Image>().CrossFadeAlpha(0.0f, 3.0f, false);
-        yield return new WaitForSeconds(3);
-        gameObject.SetActive(false);
+    }
+
+    async void Exit()
+    {
+        await SaveAndLoadModule.Save(player);
+        Pharo.Execute("SmalltalkImage current snapshot: true andQuit: true.");
+        InteractionLogger.SessionEnd();
+        Application.Quit();
     }
 }

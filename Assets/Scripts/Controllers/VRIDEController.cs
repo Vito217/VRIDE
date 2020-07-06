@@ -48,9 +48,6 @@ public class VRIDEController : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         yield return null;
-        Pharo.Start();
-        SaveAndLoadModule.Load(this);
-        InteractionLogger.SessionStart();
     }
 
     void Update()
@@ -96,6 +93,7 @@ public class VRIDEController : MonoBehaviour
             }
         }
 
+        /**
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             SaveAndLoadModule.Save(this);
@@ -103,5 +101,6 @@ public class VRIDEController : MonoBehaviour
             InteractionLogger.SessionEnd();
             Application.Quit();
         }
+        **/
     }
 }
