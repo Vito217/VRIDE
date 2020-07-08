@@ -9,7 +9,6 @@ using Valve.VR.InteractionSystem;
 using LoggingModule;
 using SaveAndLoad;
 using PharoModule;
-using InstantiatorModule;
 using System.Text;
 using System.Xml.Linq;
 using System.Runtime.Serialization;
@@ -17,6 +16,7 @@ using System.Security.Cryptography;
 using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Threading.Tasks;
 
 public class VRIDEController : MonoBehaviour
 {
@@ -47,7 +47,7 @@ public class VRIDEController : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        yield return null;
+        yield return 0;
     }
 
     void Update()
@@ -71,36 +71,46 @@ public class VRIDEController : MonoBehaviour
             Vector3 newForw = new Vector3(forw.x, 0, forw.z);
 
             if (f1 || ((leftCtrl || leftCmd) && o && b))
-            {
-                Browser browser = Instantiator.Browser();
-                browser.Initialize(newPos, new Vector3(newFinalPos.x, 2.25f, newFinalPos.z), newForw, this);
-                browsers.Add(browser);
-                InteractionLogger.Count("Browser");
-            }
+                GenerateBrowser(newPos, newFinalPos, newForw);
             else if (f2 || ((leftCtrl || leftCmd) && o && w))
-            {
-                Playground playground = Instantiator.Playground() as Playground;
-                playground.Initialize(newPos, new Vector3(newFinalPos.x, 2.125f, newFinalPos.z), newForw, this);
-                playgrounds.Add(playground);
-                InteractionLogger.Count("Playground");
-            }
+                GeneratePlayground(newPos, newFinalPos, newForw);
             else if (f7 || ((leftCtrl || leftCmd) && o && t))
-            {
-                Transcript transcript = Instantiator.Transcript() as Transcript;
-                transcript.Initialize(newPos, newFinalPos, newForw, this);
-                transcripts.Add(transcript);
-                InteractionLogger.Count("Transcript");
-            }
+                GenerateTranscript(newPos, newFinalPos, newForw);
         }
 
-        /**
         if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            SaveAndLoadModule.Save(this);
-            Pharo.Execute("SmalltalkImage current snapshot: true andQuit: true.");
-            InteractionLogger.SessionEnd();
-            Application.Quit();
-        }
-        **/
+            Exit();
+    }
+
+    async void GenerateBrowser(Vector3 newPos, Vector3 newFinalPos, Vector3 newForw)
+    {
+        Browser browser = Instantiator.Instance.Browser();
+        browser.Initialize(newPos, new Vector3(newFinalPos.x, 2.25f, newFinalPos.z), newForw, this);
+        browsers.Add(browser);
+        InteractionLogger.Count("Browser");
+    }
+
+    async void GeneratePlayground(Vector3 newPos, Vector3 newFinalPos, Vector3 newForw)
+    {
+        Playground playground = Instantiator.Instance.Playground();
+        playground.Initialize(newPos, new Vector3(newFinalPos.x, 2.125f, newFinalPos.z), newForw, this);
+        playgrounds.Add(playground);
+        InteractionLogger.Count("Playground");
+    }
+
+    async void GenerateTranscript(Vector3 newPos, Vector3 newFinalPos, Vector3 newForw)
+    {
+        Transcript transcript = Instantiator.Instance.Transcript();
+        transcript.Initialize(newPos, newFinalPos, newForw, this);
+        transcripts.Add(transcript);
+        InteractionLogger.Count("Transcript");
+    }
+
+    async void Exit()
+    {
+        await SaveAndLoadModule.Save(this);
+        Pharo.Execute("SmalltalkImage current snapshot: true andQuit: true.");
+        InteractionLogger.SessionEnd();
+        Application.Quit();
     }
 }

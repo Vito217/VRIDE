@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
-using InstantiatorModule;
 
 public class BrowserClass : BrowserObject
 {
@@ -32,8 +31,8 @@ public class BrowserClass : BrowserObject
         if(last_class != null) last_class.onDeselectClass();
         parent_window.setLastSelectedClass(this);
 
-        classMethodList = Instantiator.MethodListObject(theBrowser.classSideList, name, field);
-        instanceMethodList = Instantiator.MethodListObject(theBrowser.instanceSideList, name, field);
+        classMethodList = Instantiator.Instance.MethodListObject(theBrowser.classSideList, name, field);
+        instanceMethodList = Instantiator.Instance.MethodListObject(theBrowser.instanceSideList, name, field);
 
         foreach (Tuple<string, string, string> methodAndCode in 
             VRIDEController.sysData.data[parent_window.gameObject.name][name].Item2)
@@ -43,9 +42,9 @@ public class BrowserClass : BrowserObject
             string side = methodAndCode.Item3;
 
             if (side == "ClassSide")
-                Instantiator.MethodObject(classMethodList, name, methodName, field, methodCode);
+                Instantiator.Instance.MethodObject(classMethodList, name, methodName, field, methodCode);
             else
-                Instantiator.MethodObject(instanceMethodList, name, methodName, field, methodCode);
+                Instantiator.Instance.MethodObject(instanceMethodList, name, methodName, field, methodCode);
         }
         LayoutRebuilder.ForceRebuildLayoutImmediate(classMethodList.gameObject.GetComponent<RectTransform>());
         LayoutRebuilder.ForceRebuildLayoutImmediate(instanceMethodList.gameObject.GetComponent<RectTransform>());

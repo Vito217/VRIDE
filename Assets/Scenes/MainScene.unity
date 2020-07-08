@@ -231,6 +231,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 265866721}
   m_CullTransparentMesh: 0
+--- !u!1 &352378831
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 352378833}
+  - component: {fileID: 352378832}
+  m_Layer: 0
+  m_Name: Instantiator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &352378832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352378831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4d07da6fde125b42b57763d6f82c61c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  browserClassPrefab: {fileID: 7862078543954827813, guid: 4178dfedea01eae41b2a2a6cca1c6968,
+    type: 3}
+  browserMethodPrefab: {fileID: 5731454875997350289, guid: 854592ea641d7e643ade32a3681bb9de,
+    type: 3}
+  browserPackagePrefab: {fileID: 5463317796979374861, guid: e07e8d5e051bf334bb2b93bd79deda0a,
+    type: 3}
+  classMethodListPrefab: {fileID: 8251592563098711619, guid: 85305bd961128dd48b7b3b50bc622259,
+    type: 3}
+  packageClassListPrefab: {fileID: 3783191822670517875, guid: ffd23869e0e81264ea661bef05d8f1cb,
+    type: 3}
+  inspectorRowPrefab: {fileID: 5975414933852068033, guid: f1b973ff977e44049983404d58ff2f45,
+    type: 3}
+  browserPrefab: {fileID: 5133777942143674253, guid: 98088061314bfa54cab46daa4c1bb778,
+    type: 3}
+  playgroundPrefab: {fileID: 4528608663118621400, guid: 450e17a1d9a87614e8aff7ea7d71181d,
+    type: 3}
+  inspectorPrefab: {fileID: 6847148747583720491, guid: 8edb5bebbffcf3341af87069bb0c36e6,
+    type: 3}
+  svgPrefab: {fileID: 8940273800307900992, guid: ec197222d023e764dad3752f71176000,
+    type: 3}
+  transcriptPrefab: {fileID: 2202359507917057684, guid: 91399c91e41a50c46b88f339e9d07cff,
+    type: 3}
+--- !u!4 &352378833
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352378831}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &638380848
 GameObject:
   m_ObjectHideFlags: 0
@@ -865,7 +930,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '<b>VR</b>IDE<size=16>v0.7.0</size> '
+  m_Text: '<b>VR</b>IDE<size=16>v0.8.0</size> '
 --- !u!222 &1484179218
 CanvasRenderer:
   m_ObjectHideFlags: 0

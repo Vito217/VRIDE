@@ -11,7 +11,6 @@ using SaveAndLoad;
 using PharoModule;
 using LoggingModule;
 using TMPro;
-using InstantiatorModule;
 using System.Security.Cryptography;
 
 public class Playground : InitializeBehaviour
@@ -43,7 +42,7 @@ public class Playground : InitializeBehaviour
                 {
                     float width = GetComponent<RectTransform>().sizeDelta.x;
                     float height = GetComponent<RectTransform>().sizeDelta.y;
-                    view = Instantiator.Graph() as Graph;
+                    view = Instantiator.Instance.Graph() as Graph;
                     player.graphs.Add(view);
                     view.Initialize(
                         transform.position,
@@ -104,7 +103,7 @@ public class Playground : InitializeBehaviour
                 {
                     float width = GetComponent<RectTransform>().sizeDelta.x;
                     Vector3 newWorldPos = transform.TransformPoint(new Vector3(width, 0, 0));
-                    insp = Instantiator.Inspector() as Inspector;
+                    insp = Instantiator.Instance.Inspector() as Inspector;
                     player.inspectors.Add(insp);
                     insp.Initialize(
                         new Vector3(transform.position.x, 2, transform.position.z),
@@ -135,8 +134,8 @@ public class Playground : InitializeBehaviour
         string selection = getSelectedCode(cleanCode(field.text));
         string packageName = "";
         string className = "";
-        foreach (KeyValuePair<string, 
-                 Dictionary<string, Tuple<string, List<Tuple<string, string, string>>>>> 
+        foreach (KeyValuePair<string,
+                 SortedDictionary<string, Tuple<string, List<Tuple<string, string, string>>>>> 
                  keyVal in VRIDEController.sysData.data)
         {
             packageName = keyVal.Key;
@@ -145,7 +144,7 @@ public class Playground : InitializeBehaviour
                 if (t.Key == selection)
                 {
                     className = t.Key;
-                    Browser b = Instantiator.Browser();
+                    Browser b = Instantiator.Instance.Browser();
                     b.package_list.transform.Find(packageName).gameObject.GetComponent<BrowserPackage>().click();
                     b.class_list.Find(packageName).Find(className).gameObject.GetComponent<BrowserClass>().click();
                     b.Initialize(

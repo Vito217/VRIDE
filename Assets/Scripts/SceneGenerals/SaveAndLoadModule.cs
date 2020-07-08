@@ -9,7 +9,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
-using InstantiatorModule;
 using LoggingModule;
 using AsyncSerializer;
 using System.Threading.Tasks;
@@ -44,7 +43,7 @@ namespace SaveAndLoad
             return browserList;
         }
 
-        public static void DeserializeBrowsers(Session session, VRIDEController player)
+        public static async void DeserializeBrowsers(Session session, VRIDEController player)
         {
             List<BrowserData> browsersData = session.browsers;
             List<Browser> browsers = new List<Browser>();
@@ -55,7 +54,7 @@ namespace SaveAndLoad
                 Vector3 fwd = new Vector3(bdata.forward.x, bdata.forward.y, bdata.forward.z);
                 Vector3 final_pos = new Vector3(bdata.position.x, 2.25f, bdata.position.z);
 
-                Browser browser = Instantiator.Browser() as Browser;
+                Browser browser = Instantiator.Instance.Browser();
                 browser.Initialize(pos, final_pos, fwd, player);
                 Transform lsp = browser.package_list.transform.Find(bdata.lastSelectedPackage);
                 if (lsp != null && bdata.lastSelectedPackage != "")
@@ -101,7 +100,7 @@ namespace SaveAndLoad
                 Vector3 fwd = new Vector3(pdata.forward.x, pdata.forward.y, pdata.forward.z);
                 Vector3 final_pos = new Vector3(pdata.position.x, 2f, pdata.position.z);
 
-                Playground playground = Instantiator.Playground() as Playground;
+                Playground playground = Instantiator.Instance.Playground();
                 playground.Initialize(pos, final_pos, fwd, player);
                 playground.field.text = pdata.sourceCode;
                 playgrounds.Add(playground);
@@ -133,7 +132,7 @@ namespace SaveAndLoad
                 Vector3 fwd = new Vector3(idata.forward.x, idata.forward.y, idata.forward.z);
                 Vector3 final_pos = new Vector3(idata.position.x, 2f, idata.position.z);
 
-                Inspector inspector = Instantiator.Inspector() as Inspector;
+                Inspector inspector = Instantiator.Instance.Inspector();
                 inspector.setContent(idata.rows);
                 inspector.Initialize(pos, final_pos, fwd, player);
 
@@ -171,7 +170,7 @@ namespace SaveAndLoad
                 string rawImage = gdata.rawImage;
                 string type = gdata.type;
 
-                Graph graph = Instantiator.Graph() as Graph;
+                Graph graph = Instantiator.Instance.Graph();
                 graph.setSprite(rawImage, type);
                 graph.Initialize(pos, final_pos, fwd, player);
                 graphs.Add(graph);
@@ -190,7 +189,6 @@ namespace SaveAndLoad
                 SerializeInspectors(player.inspectors),
                 SerializeGraphs(player.graphs)
             );
-            //if (File.Exists(sessionPath)) File.Delete(sessionPath);
             await AsynchronousSerializer.Serialize(sessionPath, s);
         }
 

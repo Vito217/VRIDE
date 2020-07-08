@@ -13,25 +13,19 @@ namespace AsyncSerializer
         public static async Task<Session> Deserialize(string sessionPath)
         {
             Session session = null;
-            await Task.Run(() =>
-            {
-                BinaryFormatter bf = new BinaryFormatter();
-                FileStream file = File.Open(sessionPath, FileMode.Open);
-                session = (Session) bf.Deserialize(file);
-                file.Close();
-            });
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(sessionPath, FileMode.Open);
+            await Task.Run(() => { session = (Session) bf.Deserialize(file); });
+            file.Close();
             return session;            
         }
 
         public static async Task Serialize(string sessionPath, Session s)
         {
-            await Task.Run(() =>
-            {
-                BinaryFormatter bf = new BinaryFormatter();
-                FileStream file = File.Create(sessionPath);
-                bf.Serialize(file, s);
-                file.Close();
-            });
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Create(sessionPath);
+            await Task.Run(() => { bf.Serialize(file, s); });
+            file.Close();
         }
     }
 }

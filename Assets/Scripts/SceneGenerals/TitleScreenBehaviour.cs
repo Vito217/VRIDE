@@ -5,7 +5,6 @@ using UnityEngine.UI;
 using UnityEngine.XR;
 using Valve.VR.InteractionSystem;
 using PharoModule;
-using InstantiatorModule;
 using SaveAndLoad;
 using LoggingModule;
 using System.Threading.Tasks;
@@ -16,6 +15,7 @@ public class TitleScreenBehaviour : MonoBehaviour
     public Slider slider;
     bool initializing = true;
     float limit = 0.0f;
+
     private Dictionary<string, VRIDEController> dict;
 
     public VRIDEController htcplayer_prefab;
@@ -24,10 +24,8 @@ public class TitleScreenBehaviour : MonoBehaviour
     public VRIDEController nonvrplayer_prefab;
     public GameObject defaultEventSystem_prefab;
 
-    private VRIDEController player;
-
-    //public GameObject oculusplayer_prefab;
-    //public GameObject UIHelpers_prefab;
+    // public GameObject oculusplayer_prefab;
+    // public GameObject UIHelpers_prefab;
 
     void Update()
     {
@@ -35,9 +33,6 @@ public class TitleScreenBehaviour : MonoBehaviour
             Load();
 
         slider.value += (limit - slider.value) * 0.01f;
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-            Exit();
     }
 
     async void Load()
@@ -49,7 +44,7 @@ public class TitleScreenBehaviour : MonoBehaviour
                 { "OpenVR", htcplayer_prefab }
             };
 
-        player = Instantiate(dict[XRSettings.loadedDeviceName]);
+        VRIDEController player = Instantiate(dict[XRSettings.loadedDeviceName]);
         player.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
         if (XRSettings.loadedDeviceName == "OpenVR")
         {
@@ -76,13 +71,5 @@ public class TitleScreenBehaviour : MonoBehaviour
         text.SetActive(true);
         text.GetComponent<Text>().CrossFadeAlpha(0.0f, 3.0f, false);
         GetComponent<Image>().CrossFadeAlpha(0.0f, 3.0f, false);
-    }
-
-    async void Exit()
-    {
-        await SaveAndLoadModule.Save(player);
-        Pharo.Execute("SmalltalkImage current snapshot: true andQuit: true.");
-        InteractionLogger.SessionEnd();
-        Application.Quit();
     }
 }

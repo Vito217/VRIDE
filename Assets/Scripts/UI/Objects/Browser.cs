@@ -11,7 +11,7 @@ using SaveAndLoad;
 using PharoModule;
 using LoggingModule;
 using TMPro;
-using InstantiatorModule;
+using System.Threading.Tasks;
 
 public class Browser : InitializeBehaviour
 {
@@ -23,22 +23,6 @@ public class Browser : InitializeBehaviour
     public Toggle classSideToggle;
     public Toggle instanceSideToggle;
     public string lastSelectedSide = "InstanceSide";
-
-    void Awake()
-    {
-        StartCoroutine(Coroutine());
-    }
-
-    IEnumerator Coroutine()
-    {
-        foreach (KeyValuePair<string, Dictionary<string, Tuple<string, List<Tuple<string, string, string>>>>>
-                 keyVal in VRIDEController.sysData.data)
-        {
-            Instantiator.PackageObject(package_list, keyVal.Key, field, null, this);
-        }
-        LayoutRebuilder.ForceRebuildLayoutImmediate(package_list.gameObject.GetComponent<RectTransform>());
-        yield return null;
-    }
 
     async void PharoDefine()
     {
@@ -77,19 +61,19 @@ public class Browser : InitializeBehaviour
         }
     }
 
-    void createOrUpdatePackage(string packageName)
+    async void createOrUpdatePackage(string packageName)
     {
         // Getting package and its classes
         Transform existingPackage = package_list.transform.Find(packageName);
         BrowserPackage newPackage = !existingPackage ?
-            Instantiator.PackageObject(package_list, packageName, field, null, this) :
+            Instantiator.Instance.PackageObject(package_list, packageName, field, null, this) :
             existingPackage.gameObject.GetComponent<BrowserPackage>();
 
         // Updating package
         if (!VRIDEController.sysData.data.ContainsKey(packageName))
             VRIDEController.sysData.data.Add(
                 packageName, 
-                new Dictionary<string, Tuple<string, List<Tuple<string, string, string>>>>());
+                new SortedDictionary<string, Tuple<string, List<Tuple<string, string, string>>>>());
 
         // Activating
         newPackage.click();
@@ -101,7 +85,7 @@ public class Browser : InitializeBehaviour
         Transform package = class_list.Find(packageName);
         Transform existing_class = package.Find(className);
         BrowserClass new_class = !existing_class ?
-            Instantiator.ClassObject(package.GetComponent<ClassWindow>(), className, field, 
+            Instantiator.Instance.ClassObject(package.GetComponent<ClassWindow>(), className, field, 
                 null, null, input_code, this) :
             existing_class.gameObject.GetComponent<BrowserClass>();
 
@@ -132,7 +116,7 @@ public class Browser : InitializeBehaviour
         Transform classMethodList = method_list.Find(side + "/" + className);
         Transform existing_method = classMethodList.Find(methodName);
         BrowserMethod new_method = !existing_method ?
-            Instantiator.MethodObject(classMethodList, className, methodName, field) :
+            Instantiator.Instance.MethodObject(classMethodList, className, methodName, field) :
             existing_method.gameObject.GetComponent<BrowserMethod>();
 
         // Updating method
@@ -160,7 +144,8 @@ public class Browser : InitializeBehaviour
         InteractionLogger.EndTimerFor("Browser");
     }
 
-    public override void innerBehaviour() {
+    public override void innerBehaviour() 
+    {
         if ((Input.anyKeyDown || Input.GetKeyUp(KeyCode.Backspace)) && field.isFocused)
         {
             bool leftCmd = Input.GetKey(KeyCode.LeftCommand);
@@ -175,6 +160,14 @@ public class Browser : InitializeBehaviour
                 if (((leftCmd || leftCtrl) && s) || f6)
                     PharoDefine();
             }
+        }
+    }
+
+    public override IEnumerator innerStart()
+    {
+        foreach (string key in VRIDEController.sysData.data.Keys)
+        {
+            yield return Instantiator.Instance.PackageObject(package_list, key, field, null, this);
         }
     }
 

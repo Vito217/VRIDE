@@ -10,8 +10,8 @@ using PharoModule;
 public class SystemData
 {
     //                Package            Class          Def               Method    SC     Side
-    public Dictionary<string, Dictionary<string, Tuple<string, List<Tuple<string, string, string>>>>> data =
-        new Dictionary<string, Dictionary<string, Tuple<string, List<Tuple<string, string, string>>>>>();
+    public SortedDictionary<string, SortedDictionary<string, Tuple<string, List<Tuple<string, string, string>>>>> data =
+        new SortedDictionary<string, SortedDictionary<string, Tuple<string, List<Tuple<string, string, string>>>>>();
 
     public SystemData()
     {
@@ -31,7 +31,7 @@ public class SystemData
                 continue;
 
             // New Package entry
-            data.Add(package, new Dictionary<string, Tuple<string, List<Tuple<string, string, string>>>>());
+            data.Add(package, new SortedDictionary<string, Tuple<string, List<Tuple<string, string, string>>>>());
 
             code = "(RPackageOrganizer packageOrganizer packageNamed: '" + package + "') classes asString .";
             res = await Pharo.Execute(code);
@@ -96,7 +96,7 @@ public class SystemData
     }
 
     public SystemData(
-        Dictionary<string, Dictionary<string, Tuple<string, List<Tuple<string, string, string>>>>> d)
+        SortedDictionary<string, SortedDictionary<string, Tuple<string, List<Tuple<string, string, string>>>>> d)
     {
         data = d;
     }

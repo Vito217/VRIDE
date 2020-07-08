@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
-using InstantiatorModule;
 
 public class BrowserPackage : BrowserObject
 {
@@ -18,13 +17,13 @@ public class BrowserPackage : BrowserObject
         if (lastPackage != null) lastPackage.onDeselectPackage();
         parentWindow.setLastSelectedPackage(this);
 
-        classList = Instantiator.ClassListObject(theBrowser.class_list, name, field);
+        classList = Instantiator.Instance.ClassListObject(theBrowser.class_list, name, field);
         foreach (KeyValuePair<string, Tuple<string, List<Tuple<string, string, string>>>>
                          keyVal in VRIDEController.sysData.data[name])
         {
             string className = keyVal.Key;
             string classCode = keyVal.Value.Item1;
-            BrowserClass c = Instantiator.ClassObject(classList, className, field, 
+            BrowserClass c = Instantiator.Instance.ClassObject(classList, className, field, 
                 null, null, classCode, theBrowser);
         }
         LayoutRebuilder.ForceRebuildLayoutImmediate(classList.gameObject.GetComponent<RectTransform>());

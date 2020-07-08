@@ -7,7 +7,6 @@ using UnityEngine;
 using System.Net.Http;
 using UnityEngine.UI;
 using TMPro;
-using InstantiatorModule;
 using LoggingModule;
 using PharoModule;
 
@@ -31,7 +30,7 @@ public class Inspector : InitializeBehaviour
         foreach (string tuple in response.Split(new string[] { "' '" }, StringSplitOptions.None))
         {
             string[] pair = tuple.Replace("'", "").Split('=');
-            InspectorRow new_row = Instantiator.InspectorDataRow();
+            InspectorRow new_row = Instantiator.Instance.InspectorDataRow();
             new_row.setContent(pair[0], pair[1], inspector_content, this);
             if (pair[0] == "self")
                 field.text = "\"" + pair[1].Replace("\n", "") + "\"\n" + pair[0];

@@ -30,9 +30,15 @@ public class InitializeBehaviour : MonoBehaviour
     private StringBuilder sb = new StringBuilder();
     private List<char> notAN = new List<char> { ' ', '\n', '\t', '\r' };
 
-    void Start()
+    void Awake()
     {
-        paintPanels();
+        StartCoroutine(Coroutine());
+    }
+
+    IEnumerator Coroutine()
+    {
+        yield return paintPanels();
+        yield return innerStart();
     }
 
     void Update()
@@ -155,16 +161,19 @@ public class InitializeBehaviour : MonoBehaviour
         player.can_move = true;
     }
 
-    public void paintPanels()
+    public IEnumerator paintPanels()
     {
         Color new_color = UnityEngine.Random.ColorHSV();
         foreach(Image i in panels)
         {
             i.color = new_color;
+            yield return 0;
         }
     }
 
     public virtual void innerBehaviour() { }
+
+    public virtual IEnumerator innerStart() { yield return null; }
 
     public virtual void onClose() { }
 
