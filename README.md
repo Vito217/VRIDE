@@ -136,6 +136,14 @@ The text highlightning is based on regular expressions. You can specify a list o
   <li>Ctrl/Cmd + S or F6: Accept (Browser only)</li>
 </ul>
 
+## Commands
+
+<ul>
+  <li> Roassal2
+    ```(a RTBuilder) visualize asSVG|asPNG...
+  </li>
+</ul>
+
 ## Channel Log
 
 <a href="https://github.com/Vito217/PharoVRIDE/blob/master/CHANGELOG.md">Click here to see the Channel Log</a>
