@@ -138,11 +138,10 @@ The text highlightning is based on regular expressions. You can specify a list o
 
 ## Commands
 
-<ul>
-  <li> Roassal2
-    ```(a RTBuilder) visualize asSVG|asPNG...
-  </li>
-</ul>
+### Roassal2
+```
+(a RTBuilder) visualize asSVG|asPNG
+...
 
 ## Channel Log
 
