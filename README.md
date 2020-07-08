@@ -136,12 +136,17 @@ The text highlightning is based on regular expressions. You can specify a list o
   <li>Ctrl/Cmd + S or F6: Accept (Browser only)</li>
 </ul>
 
-## Commands
+## Special Commands
 
 ### Roassal2
 ```
-(a RTBuilder) visualize asSVG|asPNG
-...
+<a RTBuilder> visualize asSVG .
+<a RTBuilder> visualize asPNG .
+```
+### Transcript
+```
+VRIDE log <code>.
+```
 
 ## Channel Log
 
