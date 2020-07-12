@@ -1,5 +1,12 @@
 # PharoVRIDE's Channel Log
 
+## V0.8.0 (07/07/2020)
+<ul>
+  <li>Added missing packages from Pharo image.</li>
+  <li>Added Class-Side and Instance-Side</li>
+  <li>Code refactoring</li>
+</ul>
+
 ## V0.7.0 (28/06/2020)
 <ul>
   <li>Pharo Image included. You don't have to call Zinc anymore. VRIDE does it for you! (Bash is required)</li>

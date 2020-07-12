@@ -133,8 +133,21 @@ The text highlightning is based on regular expressions. You can specify a list o
   <li>Ctrl/Cmd + I or F5: Inspect the selected variable (Playground only)</li>
   <li>Ctrl/Cmd + O + B or F1: Invoke a new Browser</li>
   <li>Ctrl/Cmd + O + W or F2: Invoke a new Playground</li>
+  <li>Ctrl/Cmd + O + T or F7: Invoke a new Transcript</li>
   <li>Ctrl/Cmd + S or F6: Accept (Browser only)</li>
 </ul>
+
+## Special Commands
+
+### Roassal2
+```
+<a RTBuilder> visualize asSVG .
+<a RTBuilder> visualize asPNG .
+```
+### Transcript
+```
+VRIDE log <code>.
+```
 
 ## Channel Log
 
