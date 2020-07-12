@@ -1,13 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.RegularExpressions;
-using UnityEngine;
-using System.Net.Http;
-using UnityEngine.UI;
-using Unity.VectorGraphics;
-using ImageUtils;
-using TMPro;
+﻿using ImageUtils;
 using LoggingModule;
 
 public class Graph : InitializeBehaviour

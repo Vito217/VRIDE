@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
@@ -12,7 +9,7 @@ public class BrowserClass : BrowserObject
     public Transform classMethodList;
     public Transform instanceMethodList;
 
-    void Start()
+    public override void innerStart()
     {
         if (sourceCode == "")
         {
@@ -24,22 +21,22 @@ public class BrowserClass : BrowserObject
         }
     }
 
-    public void onSelectClass()
+    public override void onSelect()
     {
         field.text = sourceCode;
-        BrowserClass last_class = parent_window.getLastSelectedClass();
-        if(last_class != null) last_class.onDeselectClass();
-        parent_window.setLastSelectedClass(this);
+        BrowserClass last_class = parent_window.getLastSelected() as BrowserClass;
+        if(last_class != null) last_class.onDeselect();
+        parent_window.setLastSelected(this);
 
         classMethodList = Instantiator.Instance.MethodListObject(theBrowser.classSideList, name, field);
         instanceMethodList = Instantiator.Instance.MethodListObject(theBrowser.instanceSideList, name, field);
 
-        foreach (Tuple<string, string, string> methodAndCode in 
-            VRIDEController.sysData.data[parent_window.gameObject.name][name].Item2)
+        foreach ((string methodName, string methodCode, string side) methodAndCode in 
+            VRIDEController.sysData.data[parent_window.gameObject.name][name].classMethods)
         {
-            string methodName = methodAndCode.Item1;
-            string methodCode = methodAndCode.Item2;
-            string side = methodAndCode.Item3;
+            string methodName = methodAndCode.methodName;
+            string methodCode = methodAndCode.methodCode;
+            string side = methodAndCode.side;
 
             if (side == "ClassSide")
                 Instantiator.Instance.MethodObject(classMethodList, name, methodName, field, methodCode);
@@ -54,7 +51,7 @@ public class BrowserClass : BrowserObject
             GetComponent<TextMeshProUGUI>().color = newCol;
     }
 
-    public void onDeselectClass()
+    public override void onDeselect()
     {
         Color newCol;
         if (classMethodList != null) Destroy(classMethodList.gameObject);

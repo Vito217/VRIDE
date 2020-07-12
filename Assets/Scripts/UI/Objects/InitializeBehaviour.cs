@@ -5,7 +5,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using System.Threading;
-using System.Net.Http;
 using UnityEngine.UI;
 using SaveAndLoad;
 using PharoModule;
@@ -74,7 +73,7 @@ public class InitializeBehaviour : MonoBehaviour
         initializing = true;
     }
 
-    public void onChangeInput()
+    public async void onChangeInput()
     {
         try
         {
@@ -109,10 +108,10 @@ public class InitializeBehaviour : MonoBehaviour
             field.text = text;
             field.caretPosition = last_caret_position;
         }
-        catch (Exception e)
+        catch
         {
-            SaveAndLoadModule.Save(player);
-            Pharo.Execute("SmalltalkImage current snapshot: true andQuit: true.");
+            await SaveAndLoadModule.Save(player);
+            await Pharo.Execute("SmalltalkImage current snapshot: true andQuit: true.");
             InteractionLogger.SessionEnd();
             Application.Quit();
         }

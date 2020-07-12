@@ -1,14 +1,7 @@
 ﻿using System;
 using System.IO;
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.Versioning;
-using System.Security.Cryptography;
-using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
-using TMPro;
 using LoggingModule;
 using AsyncSerializer;
 using System.Threading.Tasks;
@@ -28,13 +21,13 @@ namespace SaveAndLoad
                 Vector3 pos = browser.transform.position;
                 Vector3 fwd = browser.transform.forward;
 
-                BrowserPackage lastPackage = browser.package_list.last_selected_package;
+                BrowserPackage lastPackage = browser.package_list.last_selected as BrowserPackage;
                 string lastPackageName = lastPackage == null ? "" : lastPackage.name;
 
                 Transform lastClass = browser.class_list.Find(lastPackageName);
                 string lastClassName = lastClass == null ?
                     "" :
-                    lastClass.gameObject.GetComponent<ClassWindow>().last_selected_class.name;
+                    lastClass.gameObject.GetComponent<ClassWindow>().last_selected.name;
 
                 string lastSideName = browser.lastSelectedSide;
 
@@ -43,7 +36,7 @@ namespace SaveAndLoad
             return browserList;
         }
 
-        public static async void DeserializeBrowsers(Session session, VRIDEController player)
+        public static void DeserializeBrowsers(Session session, VRIDEController player)
         {
             List<BrowserData> browsersData = session.browsers;
             List<Browser> browsers = new List<Browser>();

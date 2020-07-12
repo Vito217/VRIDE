@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using LoggingModule;
-using System;
+﻿using LoggingModule;
 
 public class Transcript : InitializeBehaviour
 {

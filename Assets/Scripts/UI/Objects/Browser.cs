@@ -1,17 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 using System.Text.RegularExpressions;
 using UnityEngine;
-using System.Threading;
-using System.Net.Http;
 using UnityEngine.UI;
-using SaveAndLoad;
 using PharoModule;
 using LoggingModule;
-using TMPro;
-using System.Threading.Tasks;
 
 public class Browser : InitializeBehaviour
 {
@@ -44,9 +38,9 @@ public class Browser : InitializeBehaviour
         }
         else
         {
-            string currentPackage = package_list.getLastSelectedPackage().name;
+            string currentPackage = package_list.getLastSelected().name;
             string currentClass = class_list.Find(currentPackage).gameObject
-                .GetComponent<ClassWindow>().getLastSelectedClass().name;
+                .GetComponent<ClassWindow>().getLastSelected().name;
 
             string method_code = lastSelectedSide == "ClassSide" ?
                 "(" + currentClass + " class) compile: '" + clean_code.Replace("'", "''") + "'" :
@@ -73,7 +67,8 @@ public class Browser : InitializeBehaviour
         if (!VRIDEController.sysData.data.ContainsKey(packageName))
             VRIDEController.sysData.data.Add(
                 packageName, 
-                new SortedDictionary<string, Tuple<string, List<Tuple<string, string, string>>>>());
+                new SortedDictionary<string, (string classCode,
+                    List<(string methodName, string methodCode, string side)> classMethods)>());
 
         // Activating
         newPackage.click();
@@ -93,13 +88,13 @@ public class Browser : InitializeBehaviour
         if (!VRIDEController.sysData.data[packageName].ContainsKey(className))
             VRIDEController.sysData.data[packageName].Add(
                 className,
-                new Tuple<string, List<Tuple<string, string, string>>>(
-                    input_code, new List<Tuple<string, string, string>>()));
+                (input_code,
+                    new List<(string methodName, string methodCode, string side)>()));
         else
         {
-            List<Tuple<string, string, string>> methods = VRIDEController.sysData.data[packageName][className].Item2;
-            VRIDEController.sysData.data[packageName][className] =
-                new Tuple<string, List<Tuple<string, string, string>>>(input_code, methods);
+            List<(string methodName, string methodCode, string side)> methods 
+                = VRIDEController.sysData.data[packageName][className].classMethods;
+            VRIDEController.sysData.data[packageName][className] = (input_code, methods);
         }
 
         // Activating
@@ -120,10 +115,8 @@ public class Browser : InitializeBehaviour
             existing_method.gameObject.GetComponent<BrowserMethod>();
 
         // Updating method
-        Tuple<string, string, string> oldElem = new Tuple<string, string, string>(methodName, new_method.sourceCode, side);
-        Tuple<string, string, string> newElem = new Tuple<string, string, string>(methodName, input_code, side);
-        VRIDEController.sysData.data[packageName][className].Item2.Remove(oldElem);
-        VRIDEController.sysData.data[packageName][className].Item2.Add(newElem);
+        VRIDEController.sysData.data[packageName][className].classMethods.Remove((methodName, new_method.sourceCode, side));
+        VRIDEController.sysData.data[packageName][className].classMethods.Add((methodName, input_code, side));
 
         // Activating
         new_method.sourceCode = input_code;

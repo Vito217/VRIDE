@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using PharoModule;
@@ -9,9 +7,10 @@ using PharoModule;
 [System.Serializable]
 public class SystemData
 {
-    //                Package            Class          Def               Method    SC     Side
-    public SortedDictionary<string, SortedDictionary<string, Tuple<string, List<Tuple<string, string, string>>>>> data =
-        new SortedDictionary<string, SortedDictionary<string, Tuple<string, List<Tuple<string, string, string>>>>>();
+    public SortedDictionary<string, SortedDictionary<string, (string classCode, 
+        List<(string methodName, string methodCode, string side)> classMethods)>> data =
+       new SortedDictionary<string, SortedDictionary<string, (string classCode,
+        List<(string methodName, string methodCode, string side)> classMethods)>>();
 
     public SystemData()
     {
@@ -31,7 +30,8 @@ public class SystemData
                 continue;
 
             // New Package entry
-            data.Add(package, new SortedDictionary<string, Tuple<string, List<Tuple<string, string, string>>>>());
+            data.Add(package, new SortedDictionary<string, (string classCode,
+                List<(string methodName, string methodCode, string side)> classMethods)>());
 
             code = "(RPackageOrganizer packageOrganizer packageNamed: '" + package + "') classes asString .";
             res = await Pharo.Execute(code);
@@ -52,8 +52,8 @@ public class SystemData
                     classSourceCode = classSourceCode.Remove(classSourceCode.Length - 1, 1);
 
                     // New Class Entry
-                    data[package].Add(aClass, new Tuple<string, List<Tuple<string, string, string>>>(
-                        classSourceCode, new List<Tuple<string, string, string>>()));
+                    data[package].Add(aClass, (classSourceCode,
+                        new List<(string methodName, string methodCode, string side)>()));
 
                     string instanceSideCode = aClass + " methodDict keys asString .";
                     string classSideCode = "(" + aClass + " class) methodDict keys asString .";
@@ -71,7 +71,7 @@ public class SystemData
                             methodSourceCode = methodSourceCode.Remove(0, 1);
                             methodSourceCode = methodSourceCode.Remove(methodSourceCode.Length - 1, 1);
 
-                            data[package][aClass].Item2.Add(new Tuple<string, string, string>(
+                            data[package][aClass].classMethods.Add((
                                 instanceMethod, methodSourceCode, "InstanceSide"));
                         }
                     }
@@ -86,7 +86,7 @@ public class SystemData
                             methodSourceCode = methodSourceCode.Remove(0, 1);
                             methodSourceCode = methodSourceCode.Remove(methodSourceCode.Length - 1, 1);
 
-                            data[package][aClass].Item2.Add(new Tuple<string, string, string>(
+                            data[package][aClass].classMethods.Add((
                                 classMethod, methodSourceCode, "ClassSide"));
                         }
                     }
@@ -96,7 +96,8 @@ public class SystemData
     }
 
     public SystemData(
-        SortedDictionary<string, SortedDictionary<string, Tuple<string, List<Tuple<string, string, string>>>>> d)
+        SortedDictionary<string, SortedDictionary<string, (string classCode,
+        List<(string methodName, string methodCode, string side)> classMethods)>> d)
     {
         data = d;
     }

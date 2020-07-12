@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 using System.Text.RegularExpressions;
 using UnityEngine;
-using System.Threading;
-using System.Net.Http;
-using UnityEngine.UI;
-using SaveAndLoad;
 using PharoModule;
 using LoggingModule;
-using TMPro;
-using System.Security.Cryptography;
 
 public class Playground : InitializeBehaviour
 {
@@ -129,17 +121,20 @@ public class Playground : InitializeBehaviour
         }
     }
 
-    async void PharoBrowse()
+    void PharoBrowse()
     {
         string selection = getSelectedCode(cleanCode(field.text));
-        string packageName = "";
+        string packageName;
         string className = "";
         foreach (KeyValuePair<string,
-                 SortedDictionary<string, Tuple<string, List<Tuple<string, string, string>>>>> 
-                 keyVal in VRIDEController.sysData.data)
+                 SortedDictionary<string, (string classCode,
+                    List<(string methodName, string methodCode, string side)> classMethods)>> 
+                        keyVal in VRIDEController.sysData.data)
         {
             packageName = keyVal.Key;
-            foreach (KeyValuePair<string, Tuple<string, List<Tuple<string, string, string>>>> t in keyVal.Value)
+            foreach (KeyValuePair<string, (string classCode,
+                List<(string methodName, string methodCode, string side)> classMethods)> 
+                    t in keyVal.Value)
             {
                 if (t.Key == selection)
                 {

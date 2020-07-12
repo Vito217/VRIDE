@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Net.Http;
-using System.Net.Sockets;
 using System.Text;
 using System.Diagnostics;
 using UnityEngine;
-using System.Text.RegularExpressions;
 
 namespace PharoModule
 {
@@ -24,20 +19,22 @@ namespace PharoModule
                                    "c:/Windows/System32/bash.exe" :
                                    "/bin/bash";
 
-            var process = new Process()
-            {
-                StartInfo = new ProcessStartInfo
+            await Task.Run(() => {
+                var process = new Process()
                 {
-                    FileName = bashFile,
-                    WorkingDirectory = enginePath,
-                    Arguments = $"-c \"./pharo vride.image st server.st\"",
-                    RedirectStandardOutput = false,
-                    UseShellExecute = true,
-                    CreateNoWindow = true,
-                    WindowStyle = ProcessWindowStyle.Hidden,
-                }
-            };
-            process.Start();
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = bashFile,
+                        WorkingDirectory = enginePath,
+                        Arguments = $"-c \"./pharo vride.image st server.st\"",
+                        RedirectStandardOutput = false,
+                        UseShellExecute = true,
+                        CreateNoWindow = true,
+                        WindowStyle = ProcessWindowStyle.Hidden,
+                    }
+                };
+                process.Start();
+            });
         }
 
         public static async Task<string> Execute(string code)

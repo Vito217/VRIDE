@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using TMPro;
-using System.Threading.Tasks;
-
 
 public class Instantiator: MonoBehaviour
 {
@@ -136,4 +130,3 @@ public class Instantiator: MonoBehaviour
         return Instantiate(transcriptPrefab);
     }
 }
-

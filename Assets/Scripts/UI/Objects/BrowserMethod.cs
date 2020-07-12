@@ -1,13 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
-using TMPro;
-
-public class BrowserMethod : BrowserObject
+﻿public class BrowserMethod : BrowserObject
 {
-    void Start()
+    public override void innerStart()
     {
         if(sourceCode == "")
         {
@@ -18,7 +11,7 @@ public class BrowserMethod : BrowserObject
         }
     }
 
-    public void onSelectMethod()
+    public override void onSelect()
     {
         field.text = sourceCode;
     }

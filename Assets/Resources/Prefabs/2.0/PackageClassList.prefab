@@ -218,7 +218,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5953024196234585813}
-        m_MethodName: onSelectClass
+        m_MethodName: onSelect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -243,8 +243,10 @@ MonoBehaviour:
   name: 
   sourceCode: 
   field: {fileID: 0}
+  theBrowser: {fileID: 0}
   parent_window: {fileID: 3783191822670517875}
-  method_list: {fileID: 0}
+  classMethodList: {fileID: 0}
+  instanceMethodList: {fileID: 0}
 --- !u!1 &8324600446772265207
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,4 +376,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 316aaeffba51b2a4eb40ae4c36d73c42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  last_selected_class: {fileID: 0}
+  last_selected: {fileID: 0}

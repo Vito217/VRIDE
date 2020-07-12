@@ -1,22 +1,11 @@
-﻿using System;
-using System.IO;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using UnityEngine;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 using LoggingModule;
 using SaveAndLoad;
 using PharoModule;
-using System.Text;
-using System.Xml.Linq;
-using System.Runtime.Serialization;
-using System.Security.Cryptography;
-using System.Diagnostics;
-using System.Diagnostics.Eventing.Reader;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Threading.Tasks;
 
 public class VRIDEController : MonoBehaviour
 {
