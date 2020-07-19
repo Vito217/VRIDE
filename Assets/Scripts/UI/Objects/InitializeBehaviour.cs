@@ -20,7 +20,7 @@ public class InitializeBehaviour : MonoBehaviour
     public TextMeshProUGUI code;
     public TMP_InputField field;
     public VRIDEController player;
-    public List<Image> panels;
+    public Image panel;
 
     private bool dragging = false;
     private Vector3 rel_pos;
@@ -29,14 +29,14 @@ public class InitializeBehaviour : MonoBehaviour
     private StringBuilder sb = new StringBuilder();
     private List<char> notAN = new List<char> { ' ', '\n', '\t', '\r' };
 
-    void Awake()
+    void Start()
     {
         StartCoroutine(Coroutine());
     }
 
     IEnumerator Coroutine()
     {
-        yield return paintPanels();
+        paintPanels();
         yield return innerStart();
     }
 
@@ -160,14 +160,9 @@ public class InitializeBehaviour : MonoBehaviour
         player.can_move = true;
     }
 
-    public IEnumerator paintPanels()
+    void paintPanels()
     {
-        Color new_color = UnityEngine.Random.ColorHSV();
-        foreach(Image i in panels)
-        {
-            i.color = new_color;
-            yield return 0;
-        }
+        panel.color = UnityEngine.Random.ColorHSV();
     }
 
     public virtual void innerBehaviour() { }
