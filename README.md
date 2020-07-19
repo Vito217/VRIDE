@@ -146,7 +146,7 @@ The text highlightning is based on regular expressions. You can specify a list o
 ```
 ### Transcript
 ```
-VRIDE log <code>.
+VRIDE log: <code>.
 ```
 
 ## Channel Log
