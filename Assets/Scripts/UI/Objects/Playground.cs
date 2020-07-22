@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using PharoModule;
@@ -9,6 +10,45 @@ public class Playground : InitializeBehaviour
 {
     private Graph view;
     private Inspector insp;
+
+    void Update()
+    {
+        if (initializing)
+            initializeAnimation();
+        else if (dragging)
+            dragAction();
+        else if ((Input.anyKeyDown || Input.GetKeyUp(KeyCode.Backspace)) && field.isFocused)
+        {
+            bool leftCmd = Input.GetKey(KeyCode.LeftCommand);
+            bool leftCtrl = Input.GetKey(KeyCode.LeftControl);
+            bool f3 = Input.GetKeyDown(KeyCode.F3);
+            bool f4 = Input.GetKeyDown(KeyCode.F4);
+            bool f5 = Input.GetKeyDown(KeyCode.F5);
+            bool f8 = Input.GetKeyDown(KeyCode.F8);
+            bool p = Input.GetKeyDown("p");
+            bool d = Input.GetKeyDown("d");
+            bool i = Input.GetKeyDown("i");
+            bool c = Input.GetKeyDown("c");
+            bool v = Input.GetKeyDown("v");
+            bool b = Input.GetKeyDown("b");
+
+            if (!(leftCmd || leftCtrl || f3 || f4 || f5))
+                onChangeInput();
+            else
+                if (((leftCmd || leftCtrl) && d) || f3)
+                    PharoDo();
+                else if (((leftCmd || leftCtrl) && p) || f4)
+                    PharoPrint();
+                else if (((leftCmd || leftCtrl) && i) || f5)
+                    PharoInspect();
+                else if (((leftCmd || leftCtrl) && b) || f8)
+                    PharoBrowse();
+                else if (((leftCmd || leftCtrl) && v) || ((leftCmd || leftCtrl) && c))
+                    onChangeInput();
+                else
+                    onChangeInput();
+        }
+    }
 
     async void PharoDo()
     {
@@ -159,47 +199,15 @@ public class Playground : InitializeBehaviour
     public override void onSelect()
     {
         base.onSelect();
+        field.verticalScrollbar.interactable = true;
         InteractionLogger.StartTimerFor("Playground");
     }
 
     public override void onDeselect()
     {
         base.onDeselect();
+        field.verticalScrollbar.interactable = false;
         InteractionLogger.EndTimerFor("Playground");
-    }
-
-    public override void innerBehaviour() {
-        if ((Input.anyKeyDown || Input.GetKeyUp(KeyCode.Backspace)) && field.isFocused)
-        {
-            bool leftCmd = Input.GetKey(KeyCode.LeftCommand);
-            bool leftCtrl = Input.GetKey(KeyCode.LeftControl);
-            bool f3 = Input.GetKeyDown(KeyCode.F3);
-            bool f4 = Input.GetKeyDown(KeyCode.F4);
-            bool f5 = Input.GetKeyDown(KeyCode.F5);
-            bool f8 = Input.GetKeyDown(KeyCode.F8);
-            bool p = Input.GetKeyDown("p");
-            bool d = Input.GetKeyDown("d");
-            bool i = Input.GetKeyDown("i");
-            bool c = Input.GetKeyDown("c");
-            bool v = Input.GetKeyDown("v");
-            bool b = Input.GetKeyDown("b");
-
-            if (!(leftCmd || leftCtrl || f3 || f4 || f5))
-                onChangeInput();
-            else
-            {
-                if (((leftCmd || leftCtrl) && d) || f3)
-                    PharoDo();
-                else if (((leftCmd || leftCtrl) && p) || f4)
-                    PharoPrint();
-                else if (((leftCmd || leftCtrl) && i) || f5)
-                    PharoInspect();
-                else if (((leftCmd || leftCtrl) && b) || f8)
-                    PharoBrowse();
-                else if (((leftCmd || leftCtrl) && v) || ((leftCmd || leftCtrl) && c))
-                    onChangeInput();
-            }
-        }
     }
 
     public override void onClose()
@@ -207,5 +215,11 @@ public class Playground : InitializeBehaviour
         player.playgrounds.Remove(this);
         InteractionLogger.Discount("Playground");
         Destroy(gameObject);
+    }
+
+    public override IEnumerator Coroutine()
+    {
+        paintPanels();
+        yield return null;
     }
 }

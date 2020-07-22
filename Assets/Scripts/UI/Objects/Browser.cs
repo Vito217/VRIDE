@@ -18,6 +18,26 @@ public class Browser : InitializeBehaviour
     public Toggle instanceSideToggle;
     public string lastSelectedSide = "InstanceSide";
 
+    void Update()
+    {
+        if (initializing)
+            initializeAnimation();
+        else if (dragging)
+            dragAction();
+        else if ((Input.anyKeyDown || Input.GetKeyUp(KeyCode.Backspace)) && field.isFocused)
+        {
+            bool leftCmd = Input.GetKey(KeyCode.LeftCommand);
+            bool leftCtrl = Input.GetKey(KeyCode.LeftControl);
+            bool f6 = Input.GetKeyDown(KeyCode.F6);
+            bool s = Input.GetKeyDown("g");
+
+            if (!(leftCmd || leftCtrl || f6 || s))
+                onChangeInput();
+            else if (((leftCmd || leftCtrl) && s) || f6)
+                PharoDefine();
+        }
+    }
+
     async void PharoDefine()
     {
         // Cleaning code from RichText
@@ -111,7 +131,7 @@ public class Browser : InitializeBehaviour
         Transform classMethodList = method_list.Find(side + "/" + className);
         Transform existing_method = classMethodList.Find(methodName);
         BrowserMethod new_method = !existing_method ?
-            Instantiator.Instance.MethodObject(classMethodList, className, methodName, field) :
+            Instantiator.Instance.MethodObject(classMethodList, className, methodName, field, input_code, this) :
             existing_method.gameObject.GetComponent<BrowserMethod>();
 
         // Updating method
@@ -123,52 +143,6 @@ public class Browser : InitializeBehaviour
         new_method.click();
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(classMethodList.gameObject.GetComponent<RectTransform>());
-    }
-
-    public override void onSelect()
-    {
-        base.onSelect();
-        InteractionLogger.StartTimerFor("Browser");
-    }
-
-    public override void onDeselect()
-    {
-        base.onDeselect();
-        InteractionLogger.EndTimerFor("Browser");
-    }
-
-    public override void innerBehaviour() 
-    {
-        if ((Input.anyKeyDown || Input.GetKeyUp(KeyCode.Backspace)) && field.isFocused)
-        {
-            bool leftCmd = Input.GetKey(KeyCode.LeftCommand);
-            bool leftCtrl = Input.GetKey(KeyCode.LeftControl);
-            bool f6 = Input.GetKey(KeyCode.F6);
-            bool s = Input.GetKey("g");
-
-            if (!(leftCmd || leftCtrl || f6 || s))
-                onChangeInput();
-            else
-            {
-                if (((leftCmd || leftCtrl) && s) || f6)
-                    PharoDefine();
-            }
-        }
-    }
-
-    public override IEnumerator innerStart()
-    {
-        foreach (string key in VRIDEController.sysData.data.Keys)
-        {
-            yield return Instantiator.Instance.PackageObject(package_list, key, field, null, this);
-        }
-    }
-
-    public override void onClose()
-    {
-        player.browsers.Remove(this);
-        InteractionLogger.Discount("Browser");
-        Destroy(gameObject);
     }
 
     public void onSelectClassSide()
@@ -215,5 +189,36 @@ public class Browser : InitializeBehaviour
             classSideToggle.colors = classSideColors;
             instanceSideToggle.colors = instSideColors;
         }
+    }
+
+    public override void onSelect()
+    {
+        base.onSelect();
+        field.verticalScrollbar.interactable = true;
+        InteractionLogger.StartTimerFor("Browser");
+    }
+
+    public override void onDeselect()
+    {
+        base.onDeselect();
+        field.verticalScrollbar.interactable = false;
+        InteractionLogger.EndTimerFor("Browser");
+    }
+
+    public override IEnumerator Coroutine()
+    {
+        paintPanels();
+        //foreach (string key in VRIDEController.sysData.data.Keys)
+        //{
+        //    yield return Instantiator.Instance.PackageObject(package_list, key, field, null, this);
+        //}
+        yield return null;
+    }
+
+    public override void onClose()
+    {
+        player.browsers.Remove(this);
+        InteractionLogger.Discount("Browser");
+        Destroy(gameObject);
     }
 }

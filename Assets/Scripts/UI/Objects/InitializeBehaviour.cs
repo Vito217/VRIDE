@@ -11,7 +11,7 @@ using PharoModule;
 using LoggingModule;
 using TMPro;
 
-public class InitializeBehaviour : MonoBehaviour
+public abstract class InitializeBehaviour : MonoBehaviour
 {
     public float speed = 8.0f;
     public bool initializing = false;
@@ -22,35 +22,16 @@ public class InitializeBehaviour : MonoBehaviour
     public VRIDEController player;
     public Image panel;
 
-    private bool dragging = false;
-    private Vector3 rel_pos;
-    private Vector3 rel_fwd;
+    public bool dragging = false;
+    public Vector3 rel_pos;
+    public Vector3 rel_fwd;
 
-    private StringBuilder sb = new StringBuilder();
-    private List<char> notAN = new List<char> { ' ', '\n', '\t', '\r' };
+    public StringBuilder sb = new StringBuilder();
+    public List<char> notAN = new List<char> { ' ', '\n', '\t', '\r' };
 
     void Start()
     {
         StartCoroutine(Coroutine());
-    }
-
-    IEnumerator Coroutine()
-    {
-        paintPanels();
-        yield return innerStart();
-    }
-
-    void Update()
-    {
-        if (initializing)
-            initializeAnimation();
-        else
-        {
-            if (dragging)
-                dragAction();
-            else
-                innerBehaviour();
-        }
     }
 
     public void initializeAnimation()
@@ -64,24 +45,15 @@ public class InitializeBehaviour : MonoBehaviour
             initializing = false;
     }
 
-    public virtual void Initialize(Vector3 init_pos, Vector3 final_pos, Vector3 forward, VRIDEController p)
+    public void onChangeInput()
     {
-        player = p;
-        transform.position = init_pos;
-        transform.forward = forward;
-        new_pos = final_pos;
-        initializing = true;
-    }
-
-    public async void onChangeInput()
-    {
-        try
-        {
-            int last_caret_position = field.caretPosition;
+        //try
+        //{
+            //int last_caret_position = field.caretPosition;
             string text = field.text;
-            text = Regex.Replace(text, @"<color=#b32d00>|<color=#00ffffff>|</color>|<b>|</b>", "");
+            //text = Regex.Replace(text, @"<color=#b32d00>|<color=#00ffffff>|</color>|<b>|</b>", "");
             text = Regex.Replace(text, @"\t", "".PadRight(4));
-
+        /**
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
             {
                 int i;
@@ -93,6 +65,7 @@ public class InitializeBehaviour : MonoBehaviour
                 if ((i == -1) || (i >= 0 && text[i] == '.') || (pw_len > 0 && previous_word[0] == '#'))
                     last_caret_position += 1;
                 sb.Clear();
+                last_caret_position += 3;
             }
             bool tab_pressed = Input.GetKeyDown(KeyCode.Tab);
             if (tab_pressed)
@@ -101,20 +74,20 @@ public class InitializeBehaviour : MonoBehaviour
                 if (text[last_caret_position - 1] != ' ')
                     last_caret_position -= 1;
             }
-
-            text = Regex.Replace(text, @"(\A|\.\s*\n*\s*)([a-zA-Z0-9]+)(\s|\n)", "$1<b>$2</b>$3");
-            text = Regex.Replace(text, @"(\s|\n)(#)([a-zA-Z0-9]+)(\s|\n)", "$1<color=#00ffffff>$2$3</color>$4");
+        **/
+            //text = Regex.Replace(text, @"(\A|\.\s*\n*\s*)([a-zA-Z0-9]+)(\s|\n)", "$1<b>$2</b>$3");
+            //text = Regex.Replace(text, @"(\n?\s*)(#[a-zA-Z0-9]+)(\n?\s*)", "$1<color=#00ffffff>$2</color>$3");
 
             field.text = text;
-            field.caretPosition = last_caret_position;
-        }
-        catch
-        {
-            await SaveAndLoadModule.Save(player);
-            await Pharo.Execute("SmalltalkImage current snapshot: true andQuit: true.");
-            InteractionLogger.SessionEnd();
-            Application.Quit();
-        }
+            field.caretPosition += 3;
+        //}
+        //catch
+        //{
+        //    await SaveAndLoadModule.Save(player);
+        //    await Pharo.Execute("SmalltalkImage current snapshot: true andQuit: true.");
+        //    InteractionLogger.SessionEnd();
+        //    Application.Quit();
+        //}
     }
 
     public string cleanCode(string code)
@@ -150,26 +123,10 @@ public class InitializeBehaviour : MonoBehaviour
         }
     }
 
-    public virtual void onSelect()
-    {
-        player.can_move = false;
-    }
-
-    public virtual void onDeselect()
-    {
-        player.can_move = true;
-    }
-
-    void paintPanels()
+    public void paintPanels()
     {
         panel.color = UnityEngine.Random.ColorHSV();
     }
-
-    public virtual void innerBehaviour() { }
-
-    public virtual IEnumerator innerStart() { yield return null; }
-
-    public virtual void onClose() { }
 
     public void onDrag()
     {
@@ -185,7 +142,7 @@ public class InitializeBehaviour : MonoBehaviour
         InteractionLogger.EndTimerFor("WindowDragging");
     }
 
-    private void dragAction()
+    public void dragAction()
     {
         Vector3 new_pos = player.transform.TransformPoint(rel_pos);
         Vector3 new_forw = player.transform.TransformDirection(rel_fwd);
@@ -196,4 +153,28 @@ public class InitializeBehaviour : MonoBehaviour
         );
         transform.forward = new_forw;
     }
+
+    public virtual void Initialize(Vector3 init_pos, Vector3 final_pos,
+        Vector3 forward, VRIDEController p)
+    {
+        player = p;
+        transform.position = init_pos;
+        transform.forward = forward;
+        new_pos = final_pos;
+        initializing = true;
+    }
+
+    public virtual void onSelect()
+    {
+        player.can_move = false;
+    }
+
+    public virtual void onDeselect()
+    {
+        player.can_move = true;
+    }
+
+    public abstract void onClose();
+
+    public abstract IEnumerator Coroutine();
 }

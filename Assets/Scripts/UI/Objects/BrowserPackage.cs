@@ -15,14 +15,14 @@ public class BrowserPackage : BrowserObject
         if (lastPackage != null) lastPackage.onDeselect();
         parentWindow.setLastSelected(this);
 
-        classList = Instantiator.Instance.ClassListObject(theBrowser.class_list, name, field);
+        classList = Instantiator.Instance.ClassListObject(theBrowser.class_list, name, theBrowser);
         foreach (KeyValuePair<string, (string classCode, 
             List<(string methodName, string methodCode, string side)> classMethods)>
                 keyVal in VRIDEController.sysData.data[name])
         {
             string className = keyVal.Key;
             string classCode = keyVal.Value.classCode;
-            BrowserClass c = Instantiator.Instance.ClassObject(classList, className, field, 
+            BrowserClass c = Instantiator.Instance.ClassObject(classList, className, theBrowser.field, 
                 null, null, classCode, theBrowser);
         }
         LayoutRebuilder.ForceRebuildLayoutImmediate(classList.gameObject.GetComponent<RectTransform>());

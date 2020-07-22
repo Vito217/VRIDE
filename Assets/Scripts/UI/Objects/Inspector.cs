@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using LoggingModule;
 
@@ -6,6 +7,14 @@ public class Inspector : InitializeBehaviour
 {
     public Transform inspector_content;
     public string data;
+
+    void Update()
+    {
+        if (initializing)
+            initializeAnimation();
+        else if (dragging)
+            dragAction();
+    }
 
     public void setContent(string response) {
 
@@ -34,5 +43,11 @@ public class Inspector : InitializeBehaviour
         player.inspectors.Remove(this);
         InteractionLogger.Discount("Inspector");
         Destroy(gameObject);
+    }
+
+    public override IEnumerator Coroutine()
+    {
+        paintPanels();
+        yield return null;
     }
 }

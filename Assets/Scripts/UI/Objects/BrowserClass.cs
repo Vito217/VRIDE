@@ -23,29 +23,32 @@ public class BrowserClass : BrowserObject
 
     public override void onSelect()
     {
-        field.text = sourceCode;
+        theBrowser.field.text = sourceCode;
         BrowserClass last_class = parent_window.getLastSelected() as BrowserClass;
-        if(last_class != null) last_class.onDeselect();
+        if (last_class != null) last_class.onDeselect();
         parent_window.setLastSelected(this);
-
-        classMethodList = Instantiator.Instance.MethodListObject(theBrowser.classSideList, name, field);
-        instanceMethodList = Instantiator.Instance.MethodListObject(theBrowser.instanceSideList, name, field);
-
-        foreach ((string methodName, string methodCode, string side) methodAndCode in 
-            VRIDEController.sysData.data[parent_window.gameObject.name][name].classMethods)
+        if (name != "template")
         {
-            string methodName = methodAndCode.methodName;
-            string methodCode = methodAndCode.methodCode;
-            string side = methodAndCode.side;
+            classMethodList = Instantiator.Instance.MethodListObject(theBrowser.classSideList, name, theBrowser);
+            instanceMethodList = Instantiator.Instance.MethodListObject(theBrowser.instanceSideList, name, theBrowser);
 
-            if (side == "ClassSide")
-                Instantiator.Instance.MethodObject(classMethodList, name, methodName, field, methodCode);
-            else
-                Instantiator.Instance.MethodObject(instanceMethodList, name, methodName, field, methodCode);
+            foreach ((string methodName, string methodCode, string side) methodAndCode in
+                VRIDEController.sysData.data[parent_window.gameObject.name][name].classMethods)
+            {
+                string methodName = methodAndCode.methodName;
+                string methodCode = methodAndCode.methodCode;
+                string side = methodAndCode.side;
+
+                if (side == "ClassSide")
+                    Instantiator.Instance.MethodObject(classMethodList, name, methodName, 
+                        theBrowser.field, methodCode, theBrowser);
+                else
+                    Instantiator.Instance.MethodObject(instanceMethodList, name, methodName, 
+                        theBrowser.field, methodCode, theBrowser);
+            }
+            LayoutRebuilder.ForceRebuildLayoutImmediate(classMethodList.gameObject.GetComponent<RectTransform>());
+            LayoutRebuilder.ForceRebuildLayoutImmediate(instanceMethodList.gameObject.GetComponent<RectTransform>());
         }
-        LayoutRebuilder.ForceRebuildLayoutImmediate(classMethodList.gameObject.GetComponent<RectTransform>());
-        LayoutRebuilder.ForceRebuildLayoutImmediate(instanceMethodList.gameObject.GetComponent<RectTransform>());
-
         Color newCol;
         if (ColorUtility.TryParseHtmlString("#00FFFF", out newCol))
             GetComponent<TextMeshProUGUI>().color = newCol;

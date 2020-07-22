@@ -13,6 +13,6 @@
 
     public override void onSelect()
     {
-        field.text = sourceCode;
+        theBrowser.field.text = sourceCode;
     }
 }

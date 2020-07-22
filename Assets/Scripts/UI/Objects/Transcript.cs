@@ -1,7 +1,18 @@
 ﻿using LoggingModule;
+using System.Collections;
 
 public class Transcript : InitializeBehaviour
 {
+    void Update()
+    {
+        if (initializing)
+            initializeAnimation();
+        else if (dragging)
+            dragAction();
+        else
+            field.text = VRIDEController.transcriptContents;
+    }
+
     public override void onClose()
     {
         player.transcripts.Remove(this);
@@ -9,8 +20,9 @@ public class Transcript : InitializeBehaviour
         Destroy(gameObject);
     }
 
-    public override void innerBehaviour()
+    public override IEnumerator Coroutine()
     {
-        field.text = VRIDEController.transcriptContents;
+        paintPanels();
+        yield return null;
     }
 }

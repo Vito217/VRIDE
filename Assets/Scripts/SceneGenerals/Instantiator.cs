@@ -36,7 +36,7 @@ public class Instantiator: MonoBehaviour
         new_class.gameObject.GetComponent<TextMeshProUGUI>().text = className;
         new_class.gameObject.name = className;
         new_class.name = className;
-        new_class.field = field;
+        //new_class.field = field;
         new_class.parent_window = parentWindow;
         new_class.classMethodList = classSideMethodList;
         new_class.instanceMethodList = instanceSideMethodList;
@@ -52,32 +52,32 @@ public class Instantiator: MonoBehaviour
         return new_class;
     }
 
-    public BrowserPackage PackageObject(PackageWindow parentWindow, string packageName, TMP_InputField field,
-        ClassWindow classList, Browser browser)
+    public BrowserPackage PackageObject(PackageWindow parentWindow, string packageName, 
+        TMP_InputField field, ClassWindow classList, Browser browser)
     {
         BrowserPackage newPackage = Instantiate(browserPackagePrefab, parentWindow.transform, false);
         newPackage.gameObject.GetComponent<TextMeshProUGUI>().text = packageName;
         newPackage.gameObject.name = packageName;
         newPackage.name = packageName;
-        newPackage.field = field;
+        //newPackage.field = field;
         newPackage.parentWindow = parentWindow;
         newPackage.classList = classList;
         newPackage.theBrowser = browser;
         return newPackage;
     }
 
-    public ClassWindow ClassListObject(Transform classListContent, string packageName, TMP_InputField field)
+    public ClassWindow ClassListObject(Transform classListContent, string packageName, Browser browser)
     {
         ClassWindow newClassList = Instantiate(packageClassListPrefab, classListContent, false);
-        newClassList.transform.Find("template").gameObject.GetComponent<BrowserClass>().field = field;
+        newClassList.transform.Find("template").gameObject.GetComponent<BrowserClass>().theBrowser = browser;
         newClassList.name = packageName;
         return newClassList;
     }
 
-    public Transform MethodListObject(Transform methodListContent, string className, TMP_InputField field)
+    public Transform MethodListObject(Transform methodListContent, string className, Browser browser)
     {
         Transform new_method_list = Instantiate(classMethodListPrefab, methodListContent, false);
-        new_method_list.Find("template").gameObject.GetComponent<BrowserMethod>().field = field;
+        new_method_list.Find("template").gameObject.GetComponent<BrowserMethod>().theBrowser = browser;
         new_method_list.name = className;
         return new_method_list;
     }
@@ -88,15 +88,16 @@ public class Instantiator: MonoBehaviour
         BrowserMethod new_method = Instantiate(browserMethodPrefab, parentWindow, false);
         new_method.gameObject.GetComponent<TextMeshProUGUI>().text = methodName;
         new_method.gameObject.name = methodName;
-        new_method.field = field;
+        //new_method.field = field;
         return new_method;
     }
 
     public BrowserMethod MethodObject(Transform parentWindow, string className, string methodName,
-        TMP_InputField field, string sourceCode)
+        TMP_InputField field, string sourceCode, Browser browser)
     {
         BrowserMethod new_method = MethodObject(parentWindow, className, methodName, field);
         new_method.sourceCode = sourceCode;
+        new_method.theBrowser = browser;
         return new_method;
     }
 
