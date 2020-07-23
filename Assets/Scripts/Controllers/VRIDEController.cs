@@ -9,7 +9,6 @@ using PharoModule;
 
 public class VRIDEController : MonoBehaviour
 {
-    public Camera camera;
     public bool can_move = true;
     public static SystemData sysData;
     public static string transcriptContents = "";
@@ -56,7 +55,7 @@ public class VRIDEController : MonoBehaviour
             Vector3 pos = transform.position;
             Vector3 forw = transform.forward;
             Vector3 newPos = new Vector3(pos.x + forw.x * 5f, 0f, pos.z + forw.z * 5f);
-            Vector3 newFinalPos = new Vector3(newPos.x, 2f, newPos.z);
+            Vector3 newFinalPos = new Vector3(newPos.x, 2.25f, newPos.z);
             Vector3 newForw = new Vector3(forw.x, 0, forw.z);
 
             if (f1 || ((leftCtrl || leftCmd) && o && b))
@@ -71,23 +70,23 @@ public class VRIDEController : MonoBehaviour
             Exit();
     }
 
-    async void GenerateBrowser(Vector3 newPos, Vector3 newFinalPos, Vector3 newForw)
+    void GenerateBrowser(Vector3 newPos, Vector3 newFinalPos, Vector3 newForw)
     {
         Browser browser = Instantiator.Instance.Browser();
-        browser.Initialize(newPos, new Vector3(newFinalPos.x, 2.25f, newFinalPos.z), newForw, this);
+        browser.Initialize(newPos, newFinalPos, newForw, this);
         browsers.Add(browser);
         InteractionLogger.Count("Browser");
     }
 
-    async void GeneratePlayground(Vector3 newPos, Vector3 newFinalPos, Vector3 newForw)
+    void GeneratePlayground(Vector3 newPos, Vector3 newFinalPos, Vector3 newForw)
     {
         Playground playground = Instantiator.Instance.Playground();
-        playground.Initialize(newPos, new Vector3(newFinalPos.x, 2.125f, newFinalPos.z), newForw, this);
+        playground.Initialize(newPos, newFinalPos, newForw, this);
         playgrounds.Add(playground);
         InteractionLogger.Count("Playground");
     }
 
-    async void GenerateTranscript(Vector3 newPos, Vector3 newFinalPos, Vector3 newForw)
+    void GenerateTranscript(Vector3 newPos, Vector3 newFinalPos, Vector3 newForw)
     {
         Transcript transcript = Instantiator.Instance.Transcript();
         transcript.Initialize(newPos, newFinalPos, newForw, this);
@@ -98,7 +97,7 @@ public class VRIDEController : MonoBehaviour
     async void Exit()
     {
         await SaveAndLoadModule.Save(this);
-        Pharo.Execute("SmalltalkImage current snapshot: true andQuit: true.");
+        await Pharo.Execute("SmalltalkImage current snapshot: true andQuit: true.");
         InteractionLogger.SessionEnd();
         Application.Quit();
     }

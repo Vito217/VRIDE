@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using TMPro;
 
 public class BrowserPackage : BrowserObject
@@ -14,18 +11,7 @@ public class BrowserPackage : BrowserObject
         BrowserPackage lastPackage = parentWindow.getLastSelected() as BrowserPackage;
         if (lastPackage != null) lastPackage.onDeselect();
         parentWindow.setLastSelected(this);
-
         classList = Instantiator.Instance.ClassListObject(theBrowser.class_list, name, theBrowser);
-        foreach (KeyValuePair<string, (string classCode, 
-            List<(string methodName, string methodCode, string side)> classMethods)>
-                keyVal in VRIDEController.sysData.data[name])
-        {
-            string className = keyVal.Key;
-            string classCode = keyVal.Value.classCode;
-            BrowserClass c = Instantiator.Instance.ClassObject(classList, className, theBrowser.field, 
-                null, null, classCode, theBrowser);
-        }
-        LayoutRebuilder.ForceRebuildLayoutImmediate(classList.gameObject.GetComponent<RectTransform>());
 
         Color newCol;
         if (ColorUtility.TryParseHtmlString("#00FFFF", out newCol))

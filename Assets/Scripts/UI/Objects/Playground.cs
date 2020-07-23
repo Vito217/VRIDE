@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using PharoModule;
@@ -10,45 +9,6 @@ public class Playground : InitializeBehaviour
 {
     private Graph view;
     private Inspector insp;
-
-    void Update()
-    {
-        if (initializing)
-            initializeAnimation();
-        else if (dragging)
-            dragAction();
-        else if ((Input.anyKeyDown || Input.GetKeyUp(KeyCode.Backspace)) && field.isFocused)
-        {
-            bool leftCmd = Input.GetKey(KeyCode.LeftCommand);
-            bool leftCtrl = Input.GetKey(KeyCode.LeftControl);
-            bool f3 = Input.GetKeyDown(KeyCode.F3);
-            bool f4 = Input.GetKeyDown(KeyCode.F4);
-            bool f5 = Input.GetKeyDown(KeyCode.F5);
-            bool f8 = Input.GetKeyDown(KeyCode.F8);
-            bool p = Input.GetKeyDown("p");
-            bool d = Input.GetKeyDown("d");
-            bool i = Input.GetKeyDown("i");
-            bool c = Input.GetKeyDown("c");
-            bool v = Input.GetKeyDown("v");
-            bool b = Input.GetKeyDown("b");
-
-            if (!(leftCmd || leftCtrl || f3 || f4 || f5))
-                onChangeInput();
-            else
-                if (((leftCmd || leftCtrl) && d) || f3)
-                    PharoDo();
-                else if (((leftCmd || leftCtrl) && p) || f4)
-                    PharoPrint();
-                else if (((leftCmd || leftCtrl) && i) || f5)
-                    PharoInspect();
-                else if (((leftCmd || leftCtrl) && b) || f8)
-                    PharoBrowse();
-                else if (((leftCmd || leftCtrl) && v) || ((leftCmd || leftCtrl) && c))
-                    onChangeInput();
-                else
-                    onChangeInput();
-        }
-    }
 
     async void PharoDo()
     {
@@ -78,7 +38,7 @@ public class Playground : InitializeBehaviour
                     player.graphs.Add(view);
                     view.Initialize(
                         transform.position,
-                        transform.TransformPoint(new Vector3(-0.75f * width, -0.5f * height, 0)),
+                        transform.TransformPoint(new Vector3(-width, 0, 0)),
                         transform.forward,
                         player
                     );
@@ -138,8 +98,8 @@ public class Playground : InitializeBehaviour
                     insp = Instantiator.Instance.Inspector() as Inspector;
                     player.inspectors.Add(insp);
                     insp.Initialize(
-                        new Vector3(transform.position.x, 2, transform.position.z),
-                        new Vector3(newWorldPos.x, 2, newWorldPos.z),
+                        transform.position,
+                        newWorldPos,
                         transform.forward,
                         player
                     );
@@ -199,14 +159,12 @@ public class Playground : InitializeBehaviour
     public override void onSelect()
     {
         base.onSelect();
-        field.verticalScrollbar.interactable = true;
         InteractionLogger.StartTimerFor("Playground");
     }
 
     public override void onDeselect()
     {
         base.onDeselect();
-        field.verticalScrollbar.interactable = false;
         InteractionLogger.EndTimerFor("Playground");
     }
 
@@ -217,9 +175,38 @@ public class Playground : InitializeBehaviour
         Destroy(gameObject);
     }
 
-    public override IEnumerator Coroutine()
+    public override void innerBehaviour()
     {
-        paintPanels();
-        yield return null;
+        if ((Input.anyKeyDown || Input.GetKeyUp(KeyCode.Backspace)) && field.isFocused)
+        {
+            bool leftCmd = Input.GetKey(KeyCode.LeftCommand);
+            bool leftCtrl = Input.GetKey(KeyCode.LeftControl);
+            bool f3 = Input.GetKeyDown(KeyCode.F3);
+            bool f4 = Input.GetKeyDown(KeyCode.F4);
+            bool f5 = Input.GetKeyDown(KeyCode.F5);
+            bool f8 = Input.GetKeyDown(KeyCode.F8);
+            bool p = Input.GetKeyDown("p");
+            bool d = Input.GetKeyDown("d");
+            bool i = Input.GetKeyDown("i");
+            bool c = Input.GetKeyDown("c");
+            bool v = Input.GetKeyDown("v");
+            bool b = Input.GetKeyDown("b");
+
+            if (!(leftCmd || leftCtrl || f3 || f4 || f5))
+                onChangeInput();
+            else
+                if (((leftCmd || leftCtrl) && d) || f3)
+                PharoDo();
+            else if (((leftCmd || leftCtrl) && p) || f4)
+                PharoPrint();
+            else if (((leftCmd || leftCtrl) && i) || f5)
+                PharoInspect();
+            else if (((leftCmd || leftCtrl) && b) || f8)
+                PharoBrowse();
+            else if (((leftCmd || leftCtrl) && v) || ((leftCmd || leftCtrl) && c))
+                onChangeInput();
+            else
+                onChangeInput();
+        }
     }
 }

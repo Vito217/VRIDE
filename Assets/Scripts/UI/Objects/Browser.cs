@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
@@ -17,26 +16,6 @@ public class Browser : InitializeBehaviour
     public Toggle classSideToggle;
     public Toggle instanceSideToggle;
     public string lastSelectedSide = "InstanceSide";
-
-    void Update()
-    {
-        if (initializing)
-            initializeAnimation();
-        else if (dragging)
-            dragAction();
-        else if ((Input.anyKeyDown || Input.GetKeyUp(KeyCode.Backspace)) && field.isFocused)
-        {
-            bool leftCmd = Input.GetKey(KeyCode.LeftCommand);
-            bool leftCtrl = Input.GetKey(KeyCode.LeftControl);
-            bool f6 = Input.GetKeyDown(KeyCode.F6);
-            bool s = Input.GetKeyDown("g");
-
-            if (!(leftCmd || leftCtrl || f6 || s))
-                onChangeInput();
-            else if (((leftCmd || leftCtrl) && s) || f6)
-                PharoDefine();
-        }
-    }
 
     async void PharoDefine()
     {
@@ -75,7 +54,7 @@ public class Browser : InitializeBehaviour
         }
     }
 
-    async void createOrUpdatePackage(string packageName)
+    void createOrUpdatePackage(string packageName)
     {
         // Getting package and its classes
         Transform existingPackage = package_list.transform.Find(packageName);
@@ -194,25 +173,22 @@ public class Browser : InitializeBehaviour
     public override void onSelect()
     {
         base.onSelect();
-        field.verticalScrollbar.interactable = true;
         InteractionLogger.StartTimerFor("Browser");
     }
 
     public override void onDeselect()
     {
         base.onDeselect();
-        field.verticalScrollbar.interactable = false;
         InteractionLogger.EndTimerFor("Browser");
     }
 
-    public override IEnumerator Coroutine()
+    public override IEnumerator innerStart()
     {
-        paintPanels();
-        //foreach (string key in VRIDEController.sysData.data.Keys)
-        //{
-        //    yield return Instantiator.Instance.PackageObject(package_list, key, field, null, this);
-        //}
-        yield return null;
+        yield return base.innerStart();
+        foreach (string key in VRIDEController.sysData.data.Keys)
+        {
+            yield return Instantiator.Instance.PackageObject(package_list, key, field, null, this);
+        }
     }
 
     public override void onClose()
@@ -220,5 +196,21 @@ public class Browser : InitializeBehaviour
         player.browsers.Remove(this);
         InteractionLogger.Discount("Browser");
         Destroy(gameObject);
+    }
+
+    public override void innerBehaviour()
+    {
+        if ((Input.anyKeyDown || Input.GetKeyUp(KeyCode.Backspace)) && field.isFocused)
+        {
+            bool leftCmd = Input.GetKey(KeyCode.LeftCommand);
+            bool leftCtrl = Input.GetKey(KeyCode.LeftControl);
+            bool f6 = Input.GetKeyDown(KeyCode.F6);
+            bool s = Input.GetKeyDown("g");
+
+            if (!(leftCmd || leftCtrl || f6 || s))
+                onChangeInput();
+            else if (((leftCmd || leftCtrl) && s) || f6)
+                PharoDefine();
+        }
     }
 }

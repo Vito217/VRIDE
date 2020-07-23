@@ -45,6 +45,8 @@ namespace PharoModule
 
         public static async Task<string> Print(string code)
         {
+            if (!code.Contains("compile"))
+                code = "self class compiler evaluate: '" + code.Replace("'", "''") + "'";
             return await Execute(
                 "[" + code + "]\n" +
                     "\ton: Error\n" +

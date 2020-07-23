@@ -6,8 +6,8 @@ using TMPro;
 public class BrowserClass : BrowserObject
 {
     public ClassWindow parent_window;
-    public Transform classMethodList;
-    public Transform instanceMethodList;
+    public MethodWindow classMethodList;
+    public MethodWindow instanceMethodList;
 
     public override void innerStart()
     {
@@ -29,23 +29,14 @@ public class BrowserClass : BrowserObject
         parent_window.setLastSelected(this);
         if (name != "template")
         {
-            classMethodList = Instantiator.Instance.MethodListObject(theBrowser.classSideList, name, theBrowser);
-            instanceMethodList = Instantiator.Instance.MethodListObject(theBrowser.instanceSideList, name, theBrowser);
+            string package = parent_window.gameObject.name;
 
-            foreach ((string methodName, string methodCode, string side) methodAndCode in
-                VRIDEController.sysData.data[parent_window.gameObject.name][name].classMethods)
-            {
-                string methodName = methodAndCode.methodName;
-                string methodCode = methodAndCode.methodCode;
-                string side = methodAndCode.side;
+            classMethodList = Instantiator.Instance.MethodListObject(
+                theBrowser.classSideList, name, theBrowser, "ClassSide", package);
 
-                if (side == "ClassSide")
-                    Instantiator.Instance.MethodObject(classMethodList, name, methodName, 
-                        theBrowser.field, methodCode, theBrowser);
-                else
-                    Instantiator.Instance.MethodObject(instanceMethodList, name, methodName, 
-                        theBrowser.field, methodCode, theBrowser);
-            }
+            instanceMethodList = Instantiator.Instance.MethodListObject(
+                theBrowser.instanceSideList, name, theBrowser, "InstanceSide", package);
+
             LayoutRebuilder.ForceRebuildLayoutImmediate(classMethodList.gameObject.GetComponent<RectTransform>());
             LayoutRebuilder.ForceRebuildLayoutImmediate(instanceMethodList.gameObject.GetComponent<RectTransform>());
         }

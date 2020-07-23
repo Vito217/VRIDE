@@ -34,6 +34,22 @@ public abstract class InitializeBehaviour : MonoBehaviour
         StartCoroutine(Coroutine());
     }
 
+    public IEnumerator Coroutine()
+    {
+        panel.color = UnityEngine.Random.ColorHSV();
+        yield return innerStart();
+    }
+
+    void Update()
+    {
+        if (initializing)
+            initializeAnimation();
+        else if (dragging)
+            dragAction();
+        else
+            innerBehaviour();
+    }
+
     public void initializeAnimation()
     {
         transform.position = Vector3.MoveTowards(
@@ -45,15 +61,15 @@ public abstract class InitializeBehaviour : MonoBehaviour
             initializing = false;
     }
 
-    public void onChangeInput()
+    public async void onChangeInput()
     {
-        //try
-        //{
-            //int last_caret_position = field.caretPosition;
+        try
+        {
+            int last_caret_position = field.caretPosition;
             string text = field.text;
-            //text = Regex.Replace(text, @"<color=#b32d00>|<color=#00ffffff>|</color>|<b>|</b>", "");
+            text = Regex.Replace(text, @"<color=#b32d00>|<color=#00ffffff>|</color>|<b>|</b>", "");
             text = Regex.Replace(text, @"\t", "".PadRight(4));
-        /**
+        
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
             {
                 int i;
@@ -74,20 +90,19 @@ public abstract class InitializeBehaviour : MonoBehaviour
                 if (text[last_caret_position - 1] != ' ')
                     last_caret_position -= 1;
             }
-        **/
-            //text = Regex.Replace(text, @"(\A|\.\s*\n*\s*)([a-zA-Z0-9]+)(\s|\n)", "$1<b>$2</b>$3");
-            //text = Regex.Replace(text, @"(\n?\s*)(#[a-zA-Z0-9]+)(\n?\s*)", "$1<color=#00ffffff>$2</color>$3");
+            text = Regex.Replace(text, @"(\A|\.\s*\n*\s*)([a-zA-Z0-9]+)(\s|\n)", "$1<b>$2</b>$3");
+            text = Regex.Replace(text, @"(\n?\s*)(#[a-zA-Z0-9]+)(\n?\s*)", "$1<color=#00ffffff>$2</color>$3");
 
             field.text = text;
-            field.caretPosition += 3;
-        //}
-        //catch
-        //{
-        //    await SaveAndLoadModule.Save(player);
-        //    await Pharo.Execute("SmalltalkImage current snapshot: true andQuit: true.");
-        //    InteractionLogger.SessionEnd();
-        //    Application.Quit();
-        //}
+            field.caretPosition = last_caret_position;
+        }
+        catch
+        {
+            await SaveAndLoadModule.Save(player);
+            await Pharo.Execute("SmalltalkImage current snapshot: true andQuit: true.");
+            InteractionLogger.SessionEnd();
+            Application.Quit();
+        }
     }
 
     public string cleanCode(string code)
@@ -121,11 +136,6 @@ public abstract class InitializeBehaviour : MonoBehaviour
             return String.IsNullOrWhiteSpace(last) || String.IsNullOrEmpty(last) ?
                 penultimate : last;
         }
-    }
-
-    public void paintPanels()
-    {
-        panel.color = UnityEngine.Random.ColorHSV();
     }
 
     public void onDrag()
@@ -176,5 +186,9 @@ public abstract class InitializeBehaviour : MonoBehaviour
 
     public abstract void onClose();
 
-    public abstract IEnumerator Coroutine();
+    public virtual void innerBehaviour() { }
+
+    public virtual IEnumerator innerStart() {
+        yield return null;
+    }
 }
