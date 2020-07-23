@@ -21,6 +21,5 @@ public class MethodWindow : BrowserWindow
             }
             yield return null;
         }
-        
     }
 }

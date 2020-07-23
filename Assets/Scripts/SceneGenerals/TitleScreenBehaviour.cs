@@ -36,8 +36,6 @@ public class TitleScreenBehaviour : MonoBehaviour
 
     async void Load()
     {
-        initializing = false;
-
         dict = new Dictionary<string, VRIDEController>() {
                 { "" , nonvrplayer_prefab },
                 { "OpenVR", htcplayer_prefab }
@@ -51,6 +49,8 @@ public class TitleScreenBehaviour : MonoBehaviour
             GameObject.Find("/Ground").GetComponent<TeleportArea>().enabled = true;
             Instantiate(teleporterPrefab);
         }
+
+        initializing = false;
 
         limit = 0.3f;
 

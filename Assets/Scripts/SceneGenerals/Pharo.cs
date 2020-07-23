@@ -13,27 +13,35 @@ namespace PharoModule
 
         public static async Task Start()
         {
-            string enginePath = Application.streamingAssetsPath + "/PharoEngine";
-            string bashFile = (Application.platform == RuntimePlatform.WindowsPlayer ||
-                               Application.platform == RuntimePlatform.WindowsEditor) ?
-                                   "c:/Windows/System32/bash.exe" :
-                                   "/bin/bash";
-
             await Task.Run(() => {
-                var process = new Process()
+                try
                 {
-                    StartInfo = new ProcessStartInfo
+                    string enginePath = Application.streamingAssetsPath + "/PharoEngine";
+                    string bashFile = (Application.platform == RuntimePlatform.WindowsPlayer ||
+                                        Application.platform == RuntimePlatform.WindowsEditor) ?
+                                            "c:/Windows/System32/bash.exe" :
+                                            "/bin/bash";
+
+                    var process = new Process()
                     {
-                        FileName = bashFile,
-                        WorkingDirectory = enginePath,
-                        Arguments = $"-c \"./pharo vride.image st server.st\"",
-                        RedirectStandardOutput = false,
-                        UseShellExecute = true,
-                        CreateNoWindow = true,
-                        WindowStyle = ProcessWindowStyle.Hidden,
-                    }
-                };
-                process.Start();
+                        StartInfo = new ProcessStartInfo
+                        {
+                            FileName = bashFile,
+                            WorkingDirectory = enginePath,
+                            Arguments = $"-c \"./pharo vride.image st server.st\"",
+                            RedirectStandardOutput = false,
+                            UseShellExecute = true,
+                            CreateNoWindow = true,
+                            WindowStyle = ProcessWindowStyle.Hidden,
+                        }
+                    };
+                    process.Start();
+                }
+                catch
+                {
+                    UnityEngine.Debug.Log("Local server not found. Make sure you have " +
+                        "Pharo Launcher running.");
+                }
             });
         }
 

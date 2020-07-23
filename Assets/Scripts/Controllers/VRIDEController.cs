@@ -67,7 +67,12 @@ public class VRIDEController : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
-            Exit();
+        {
+            SaveAndLoadModule.Save(this);
+            Pharo.Execute("SmalltalkImage current snapshot: true andQuit: true.");
+            InteractionLogger.SessionEnd();
+            Application.Quit();
+        }
     }
 
     void GenerateBrowser(Vector3 newPos, Vector3 newFinalPos, Vector3 newForw)
@@ -92,13 +97,5 @@ public class VRIDEController : MonoBehaviour
         transcript.Initialize(newPos, newFinalPos, newForw, this);
         transcripts.Add(transcript);
         InteractionLogger.Count("Transcript");
-    }
-
-    async void Exit()
-    {
-        await SaveAndLoadModule.Save(this);
-        await Pharo.Execute("SmalltalkImage current snapshot: true andQuit: true.");
-        InteractionLogger.SessionEnd();
-        Application.Quit();
     }
 }

@@ -1,17 +1,19 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - Browser
     - BrowserClass
-    - BrowserInit
     - BrowserMethod
     - BrowserPackage
-    - BrowserTextEditor
     - CharacterCameraConstraint
     - ClassWindow
     - CustomStandaloneInputModule
-    - InspectorInit
+    - Graph
+    - Inspector
     - InspectorRow
+    - Instantiator
     - LightBehaviour
+    - MethodWindow
     - NonVRPlayerCamera
     - NonVRPlayerMovement
     - ONSPSettings
@@ -19,14 +21,10 @@ ScriptsOnlyBuild:
     - OvrAvatar
     - OvrAvatarLocalDriver
     - PackageWindow
-    - PlaygroundInit
-    - PlaygroundTextEditor
-    - SVGObjectInit
+    - Playground
     - SteamVRInputModule
-    - TextEditorBehaviour
     - TitleScreenBehaviour
-    - ToolbarBehaviour
-    - TranscriptInit
+    - Transcript
     - VRIDEController
     Oculus.VR.Editor.dll:
     - Assets.Oculus.VR.Editor.OVRPlatformToolSettings
@@ -112,6 +110,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.RectMask2D
     - UnityEngine.UI.ScrollRect
     - UnityEngine.UI.Scrollbar
+    - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
     - UnityEngine.UI.Toggle
     - UnityEngine.UI.VerticalLayoutGroup
@@ -168,187 +167,189 @@ ScriptsOnlyBuild:
     - Class: 109
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11442}
-    - Class: 114
-      Script: {instanceID: 11444}
-    - Class: 114
-      Script: {instanceID: 11446}
-    - Class: 114
-      Script: {instanceID: 11448}
-    - Class: 114
-      Script: {instanceID: 11450}
-    - Class: 114
       Script: {instanceID: 11454}
     - Class: 114
       Script: {instanceID: 11456}
     - Class: 114
       Script: {instanceID: 11458}
     - Class: 114
-      Script: {instanceID: 11512}
+      Script: {instanceID: 11460}
     - Class: 114
-      Script: {instanceID: 11556}
+      Script: {instanceID: 11462}
     - Class: 114
-      Script: {instanceID: 11616}
+      Script: {instanceID: 11464}
     - Class: 114
-      Script: {instanceID: 11796}
+      Script: {instanceID: 11468}
     - Class: 114
-      Script: {instanceID: 11832}
+      Script: {instanceID: 11470}
     - Class: 114
-      Script: {instanceID: 11876}
+      Script: {instanceID: 11472}
     - Class: 114
-      Script: {instanceID: 11910}
+      Script: {instanceID: 11474}
     - Class: 114
-      Script: {instanceID: 11914}
+      Script: {instanceID: 11526}
     - Class: 114
-      Script: {instanceID: 11956}
+      Script: {instanceID: 11570}
     - Class: 114
-      Script: {instanceID: 12026}
+      Script: {instanceID: 11630}
     - Class: 114
-      Script: {instanceID: 12046}
+      Script: {instanceID: 11810}
     - Class: 114
-      Script: {instanceID: 12070}
+      Script: {instanceID: 11846}
     - Class: 114
-      Script: {instanceID: 12116}
+      Script: {instanceID: 11890}
     - Class: 114
-      Script: {instanceID: 12138}
+      Script: {instanceID: 11928}
     - Class: 114
-      Script: {instanceID: 12172}
+      Script: {instanceID: 11970}
     - Class: 114
-      Script: {instanceID: 12206}
+      Script: {instanceID: 12042}
     - Class: 114
-      Script: {instanceID: 12210}
+      Script: {instanceID: 12062}
     - Class: 114
-      Script: {instanceID: 12322}
+      Script: {instanceID: 12086}
     - Class: 114
-      Script: {instanceID: 12338}
+      Script: {instanceID: 12132}
     - Class: 114
-      Script: {instanceID: 12388}
+      Script: {instanceID: 12154}
     - Class: 114
-      Script: {instanceID: 12450}
+      Script: {instanceID: 12220}
     - Class: 114
-      Script: {instanceID: 12464}
+      Script: {instanceID: 12224}
     - Class: 114
-      Script: {instanceID: 12542}
+      Script: {instanceID: 12336}
     - Class: 114
-      Script: {instanceID: 12648}
+      Script: {instanceID: 12352}
     - Class: 114
-      Script: {instanceID: 12676}
+      Script: {instanceID: 12404}
     - Class: 114
-      Script: {instanceID: 12708}
+      Script: {instanceID: 12466}
     - Class: 114
-      Script: {instanceID: 12782}
+      Script: {instanceID: 12480}
     - Class: 114
-      Script: {instanceID: 12890}
+      Script: {instanceID: 12560}
     - Class: 114
-      Script: {instanceID: 12956}
+      Script: {instanceID: 12666}
     - Class: 114
-      Script: {instanceID: 13132}
+      Script: {instanceID: 12694}
     - Class: 114
-      Script: {instanceID: 13306}
+      Script: {instanceID: 12726}
     - Class: 114
-      Script: {instanceID: 13356}
+      Script: {instanceID: 12800}
     - Class: 114
-      Script: {instanceID: 13402}
+      Script: {instanceID: 12908}
     - Class: 114
-      Script: {instanceID: 13410}
+      Script: {instanceID: 12974}
     - Class: 114
-      Script: {instanceID: 13446}
+      Script: {instanceID: 13150}
     - Class: 114
-      Script: {instanceID: 13492}
+      Script: {instanceID: 13326}
     - Class: 114
-      Script: {instanceID: 13610}
+      Script: {instanceID: 13376}
     - Class: 114
-      Script: {instanceID: 13720}
+      Script: {instanceID: 13422}
     - Class: 114
-      Script: {instanceID: 13964}
+      Script: {instanceID: 13430}
     - Class: 114
-      Script: {instanceID: 14060}
+      Script: {instanceID: 13458}
     - Class: 114
-      Script: {instanceID: 14092}
+      Script: {instanceID: 13488}
     - Class: 114
-      Script: {instanceID: 14130}
+      Script: {instanceID: 13534}
     - Class: 114
-      Script: {instanceID: 14196}
+      Script: {instanceID: 13652}
     - Class: 114
-      Script: {instanceID: 14232}
+      Script: {instanceID: 13654}
     - Class: 114
-      Script: {instanceID: 14372}
+      Script: {instanceID: 13764}
     - Class: 114
-      Script: {instanceID: 14398}
+      Script: {instanceID: 14102}
     - Class: 114
-      Script: {instanceID: 14438}
+      Script: {instanceID: 14134}
     - Class: 114
-      Script: {instanceID: 14468}
+      Script: {instanceID: 14172}
     - Class: 114
-      Script: {instanceID: 14472}
+      Script: {instanceID: 14240}
     - Class: 114
-      Script: {instanceID: 14484}
+      Script: {instanceID: 14276}
     - Class: 114
-      Script: {instanceID: 14502}
+      Script: {instanceID: 14416}
     - Class: 114
-      Script: {instanceID: 14506}
+      Script: {instanceID: 14442}
     - Class: 114
-      Script: {instanceID: 14508}
+      Script: {instanceID: 14482}
     - Class: 114
-      Script: {instanceID: 14654}
+      Script: {instanceID: 14512}
     - Class: 114
-      Script: {instanceID: 14666}
+      Script: {instanceID: 14516}
+    - Class: 114
+      Script: {instanceID: 14528}
+    - Class: 114
+      Script: {instanceID: 14546}
+    - Class: 114
+      Script: {instanceID: 14550}
+    - Class: 114
+      Script: {instanceID: 14552}
     - Class: 114
       Script: {instanceID: 14698}
     - Class: 114
-      Script: {instanceID: 14720}
+      Script: {instanceID: 14710}
     - Class: 114
-      Script: {instanceID: 14748}
+      Script: {instanceID: 14742}
     - Class: 114
-      Script: {instanceID: 14816}
+      Script: {instanceID: 14764}
     - Class: 114
-      Script: {instanceID: 14920}
+      Script: {instanceID: 14792}
     - Class: 114
-      Script: {instanceID: 14936}
+      Script: {instanceID: 14860}
     - Class: 114
-      Script: {instanceID: 14970}
+      Script: {instanceID: 15010}
     - Class: 114
-      Script: {instanceID: 14980}
+      Script: {instanceID: 15020}
     - Class: 114
-      Script: {instanceID: 14988}
+      Script: {instanceID: 15028}
     - Class: 114
-      Script: {instanceID: 15084}
+      Script: {instanceID: 15124}
     - Class: 114
-      Script: {instanceID: 15268}
+      Script: {instanceID: 15312}
     - Class: 114
-      Script: {instanceID: 15304}
+      Script: {instanceID: 15350}
     - Class: 114
-      Script: {instanceID: 15328}
+      Script: {instanceID: 15374}
     - Class: 114
-      Script: {instanceID: 15432}
+      Script: {instanceID: 15478}
     - Class: 114
-      Script: {instanceID: 15502}
+      Script: {instanceID: 15548}
     - Class: 114
-      Script: {instanceID: 15576}
+      Script: {instanceID: 15622}
     - Class: 114
-      Script: {instanceID: 15706}
+      Script: {instanceID: 15752}
     - Class: 114
-      Script: {instanceID: 15790}
+      Script: {instanceID: 15836}
     - Class: 114
-      Script: {instanceID: 15830}
+      Script: {instanceID: 15876}
     - Class: 114
-      Script: {instanceID: 15878}
+      Script: {instanceID: 15924}
     - Class: 114
-      Script: {instanceID: 15962}
-    - Class: 114
-      Script: {instanceID: 15966}
-    - Class: 114
-      Script: {instanceID: 15992}
+      Script: {instanceID: 16006}
     - Class: 114
       Script: {instanceID: 16010}
     - Class: 114
-      Script: {instanceID: 16068}
+      Script: {instanceID: 16036}
+    - Class: 114
+      Script: {instanceID: 16054}
     - Class: 114
       Script: {instanceID: 16112}
     - Class: 114
-      Script: {instanceID: 16120}
+      Script: {instanceID: 16156}
     - Class: 114
-      Script: {instanceID: 27614}
+      Script: {instanceID: 16164}
+    - Class: 114
+      Script: {instanceID: 20018}
+    - Class: 114
+      Script: {instanceID: 20978}
+    - Class: 114
+      Script: {instanceID: 20992}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -390,6 +391,12 @@ ScriptsOnlyBuild:
     className: Button
   - hash:
       serializedVersion: 2
+      Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: ContentSizeFitter
+  - hash:
+      serializedVersion: 2
       Hash: 89f9a1b4c64db9559e39f4a2e3bfaadd
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -426,10 +433,10 @@ ScriptsOnlyBuild:
     className: CanvasScaler
   - hash:
       serializedVersion: 2
-      Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
+      Hash: 499fd23433e68e265d153aa6b95d0047
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
-    className: ContentSizeFitter
+    className: Scrollbar
   - hash:
       serializedVersion: 2
       Hash: ae83e830e7a90c0aff918c4c2e520825
@@ -684,12 +691,6 @@ ScriptsOnlyBuild:
     className: SoundEmitter
   - hash:
       serializedVersion: 2
-      Hash: 499fd23433e68e265d153aa6b95d0047
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Scrollbar
-  - hash:
-      serializedVersion: 2
       Hash: 681411c1571200071d2222211cff2127
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -822,12 +823,6 @@ ScriptsOnlyBuild:
     className: SteamVR_Settings
   - hash:
       serializedVersion: 2
-      Hash: fa3f00233baad9e169d08186919d352b
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: BrowserTextEditor
-  - hash:
-      serializedVersion: 2
       Hash: 2a190070f6cdfa268969e6612ffdf745
     assemblyName: Oculus.VR.dll
     namespaceName: 
@@ -900,7 +895,7 @@ ScriptsOnlyBuild:
     className: UIElement
   - hash:
       serializedVersion: 2
-      Hash: 6c1175fdedf30a9ad888a563cd5d43ce
+      Hash: 585907ecebb8af7768ae07f3b770a408
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BrowserClass
@@ -912,10 +907,10 @@ ScriptsOnlyBuild:
     className: TeleportAimHandlerParabolic
   - hash:
       serializedVersion: 2
-      Hash: a201886f2695a3655f6a83476fb3ed22
+      Hash: ec7cf7b9f68c7d5116f80efbc37a444b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: BrowserInit
+    className: Browser
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -946,6 +941,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: AnimationTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 693496b9675c521175dc6a1285bc0cd7
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BrowserWindow
   - hash:
       serializedVersion: 2
       Hash: 025866bb53162ac1e71a1b207ceca793
@@ -1518,6 +1519,12 @@ ScriptsOnlyBuild:
     className: DontDestroyOnLoad
   - hash:
       serializedVersion: 2
+      Hash: 75430adc509e1ed87f6c0f1fb56b6809
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Instantiator
+  - hash:
+      serializedVersion: 2
       Hash: d4020bafcd3ccbb5601a6e6c8ac78be0
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -1548,7 +1555,7 @@ ScriptsOnlyBuild:
     className: MoviePlayerSampleControls
   - hash:
       serializedVersion: 2
-      Hash: 079814d9ab87c9be6ccdf879ccf57930
+      Hash: 1e38e484c7306dde51a8e67e7e6c5bf4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BrowserPackage
@@ -1600,6 +1607,12 @@ ScriptsOnlyBuild:
     assemblyName: Oculus.VR.dll
     namespaceName: 
     className: OVRScreenFade
+  - hash:
+      serializedVersion: 2
+      Hash: 71df43599a32007767bc9d8a27417190
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MethodWindow
   - hash:
       serializedVersion: 2
       Hash: fe9e00068283ef13b28a703001e08184
@@ -1860,12 +1873,6 @@ ScriptsOnlyBuild:
     className: ItemPackageSpawner
   - hash:
       serializedVersion: 2
-      Hash: 80d04b93d5036c4941f1dfda5dcc7202
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: PlaygroundTextEditor
-  - hash:
-      serializedVersion: 2
       Hash: 8f71d2ab3258f223c82a0616125cd43f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1932,6 +1939,12 @@ ScriptsOnlyBuild:
     className: OVRModeParms
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: SaveAndLoad
+    className: SaveAndLoadModule
+  - hash:
+      serializedVersion: 2
       Hash: 11b56001a20d634e849cc15d9f2a6042
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1968,7 +1981,7 @@ ScriptsOnlyBuild:
     className: TouchController
   - hash:
       serializedVersion: 2
-      Hash: 51d42287a1b44d38ea646dd4df5b7045
+      Hash: 693496b9675c521175dc6a1285bc0cd7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PackageWindow
@@ -2082,10 +2095,10 @@ ScriptsOnlyBuild:
     className: MouseLook
   - hash:
       serializedVersion: 2
-      Hash: 762e9e65889045960db2743e0b39b739
+      Hash: a8348038e4aa6e8f3c05fdd8b9473593
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: PlaygroundInit
+    className: Playground
   - hash:
       serializedVersion: 2
       Hash: 4c063458ca029e84d4f59c22fc3c5fca
@@ -2316,7 +2329,7 @@ ScriptsOnlyBuild:
     className: SteamVR_SphericalProjection
   - hash:
       serializedVersion: 2
-      Hash: 13a8ec0557bb6a7f313d68ed7145fa48
+      Hash: c8574e7fa655cd9a7c56fc53d884950c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BrowserMethod
@@ -2350,12 +2363,6 @@ ScriptsOnlyBuild:
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem.Sample
     className: WheelDust
-  - hash:
-      serializedVersion: 2
-      Hash: 12fa7c1eccfa3c78466e52284c585792
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: InitializeBehaviour
   - hash:
       serializedVersion: 2
       Hash: a6ded2673e2fb033edf3bf8af9c7c7dc
@@ -2400,18 +2407,6 @@ ScriptsOnlyBuild:
     className: EnableSwitch
   - hash:
       serializedVersion: 2
-      Hash: 80d04b93d5036c4941f1dfda5dcc7202
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: TextEditorBehaviour
-  - hash:
-      serializedVersion: 2
-      Hash: 180874664887523386a55e967c686c08
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ToolbarBehaviour
-  - hash:
-      serializedVersion: 2
       Hash: 5ffe9fc605b635c66264c1090e3433e7
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem
@@ -2424,7 +2419,7 @@ ScriptsOnlyBuild:
     className: ONSPPropagationMaterial
   - hash:
       serializedVersion: 2
-      Hash: 88eb2f0b999cea2ffcdc67fb8c115479
+      Hash: 42308d9985321e4fbfb7c0c31112d526
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TitleScreenBehaviour
@@ -2556,13 +2551,13 @@ ScriptsOnlyBuild:
     className: PanelHMDFollower
   - hash:
       serializedVersion: 2
-      Hash: 13a8ec0557bb6a7f313d68ed7145fa48
+      Hash: c8574e7fa655cd9a7c56fc53d884950c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BrowserObject
   - hash:
       serializedVersion: 2
-      Hash: b4c506fc77a5b341383e5c20c1e65ce6
+      Hash: 47455291c302a72b914d0aec99ceaec4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: InspectorRow
@@ -2670,10 +2665,10 @@ ScriptsOnlyBuild:
     className: VREyeRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 12fa7c1eccfa3c78466e52284c585792
+      Hash: a8348038e4aa6e8f3c05fdd8b9473593
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: TranscriptInit
+    className: Transcript
   - hash:
       serializedVersion: 2
       Hash: dcc608e96ec2ac8ad8de1fc54d7d0b7a
@@ -2856,10 +2851,10 @@ ScriptsOnlyBuild:
     className: OVRSkeleton
   - hash:
       serializedVersion: 2
-      Hash: 76c41555f9d24adb07d0c29a3b66e0ae
+      Hash: f9fef01cf99df8ebce36ad522fe3e4d2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: SVGObjectInit
+    className: Graph
   - hash:
       serializedVersion: 2
       Hash: 748dd2a2a28da4e618912da5ac45684b
@@ -2934,10 +2929,10 @@ ScriptsOnlyBuild:
     className: DebugUISample
   - hash:
       serializedVersion: 2
-      Hash: 703280b2d191ab05e56f72627c3525aa
+      Hash: c3c5690437f5d0cf890d4f188cb0ac89
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: InspectorInit
+    className: Inspector
   - hash:
       serializedVersion: 2
       Hash: 0fd6822f6177297bd0eb4d83cc7a9030
@@ -2970,17 +2965,17 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: 27570f74373dd259574aed6b0e35ea34
+      Hash: 03ce3a9401e19a8b4596d75b86bb4125
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: VRIDEController
   - hash:
       serializedVersion: 2
-      Hash: 43c84647cc6ebcc9187b3db6136051db
+      Hash: 693496b9675c521175dc6a1285bc0cd7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ClassWindow
   platform: 19
   scenePathNames:
   - Assets/Scenes/MainScene.unity
-  playerPath: C:/Users/VictorStefano/Desktop/VRIDE/PharoVRIDE.exe
+  playerPath: C:/Users/VictorStefano/Desktop/VRIDE v0.8.1 Win 10/PharoVRIDE.exe
