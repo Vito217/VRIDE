@@ -1,5 +1,22 @@
 # PharoVRIDE's Channel Log
 
+## V0.8.2 (30/07/2020)
+<ul>
+  <li>Changed log.txt location.</li>
+  <li>Turned off text highlighting due to malfunctions after recent Unity updates.</li>
+  <li>Turned off internal Pharo server due to compatibility issues with other platforms.</li>
+  <li>Fixed inspector's text editor bug.</li>
+  <li>Made some code improvements.</li>
+</ul>
+
+## V0.8.1 (24/07/2020)
+<ul>
+  <li>Fixed package, class and method creation.</li>
+  <li>Fixed UI layouts.</li>
+  <li>Fixed text editor bugs.</li>
+  <li>Fixed Esc button.</li>
+</ul>
+
 ## V0.8.0 (07/07/2020)
 <ul>
   <li>Added missing packages from Pharo image.</li>
@@ -9,7 +26,7 @@
 
 ## V0.7.0 (28/06/2020)
 <ul>
-  <li>Pharo Image included. You don't have to call Zinc anymore. VRIDE does it for you! (Bash is required)</li>
+  <li>Pharo Image included. You don't have to call Zinc anymore. VRIDE does it for you!</li>
   <li>Added log file with timestamps</li>
   <li>Added Browser Packages section</li>
   <li>Added cache System.</li>
