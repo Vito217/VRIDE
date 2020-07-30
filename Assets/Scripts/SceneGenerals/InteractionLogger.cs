@@ -61,10 +61,10 @@ namespace LoggingModule
         {
             try
             {
-                using (StreamWriter w = File.AppendText(persistentPath))
-                {
-                    w.WriteLine(line);
-                }
+                //using (StreamWriter w = File.AppendText(persistentPath))
+                //{
+                //    w.WriteLine(line);
+                //}
                 using (StreamWriter w = File.AppendText(streamingPath))
                 {
                     w.WriteLine(line);
