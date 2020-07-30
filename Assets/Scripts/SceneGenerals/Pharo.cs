@@ -18,7 +18,7 @@ namespace PharoModule
                 try
                 {
                     string enginePath = Path.Combine(Application.streamingAssetsPath, "PharoEngine");
-                    string arguments = $"vride.image st server.st";
+                    string arguments = $"Pharo.image st server.st";
                     string executable = "";
 
                     if (Application.platform == RuntimePlatform.WindowsPlayer ||
@@ -27,7 +27,7 @@ namespace PharoModule
                         if (File.Exists("c:/Windows/System32/bash.exe"))
                         {
                             executable = "c:/Windows/System32/bash.exe";
-                            arguments = $"-c \"./pharo vride.image st server.st\"";
+                            arguments = $"-c \"./pharo Pharo.image st server.st\"";
                         }
                         else
                         {
