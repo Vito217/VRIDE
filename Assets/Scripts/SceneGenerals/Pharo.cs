@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Text;
 using System.Diagnostics;
+using System.IO;
 using UnityEngine;
 
 namespace PharoModule
@@ -16,19 +17,41 @@ namespace PharoModule
             await Task.Run(() => {
                 try
                 {
-                    string enginePath = Application.streamingAssetsPath + "/PharoEngine";
-                    string bashFile = (Application.platform == RuntimePlatform.WindowsPlayer ||
-                                        Application.platform == RuntimePlatform.WindowsEditor) ?
-                                            "c:/Windows/System32/bash.exe" :
-                                            "/bin/bash";
+                    string enginePath = Path.Combine(Application.streamingAssetsPath, "PharoEngine");
+                    string arguments = $"vride.image st server.st";
+                    string executable = "";
+
+                    if (Application.platform == RuntimePlatform.WindowsPlayer ||
+                        Application.platform == RuntimePlatform.WindowsEditor)
+                    {
+                        if (File.Exists("c:/Windows/System32/bash.exe"))
+                        {
+                            executable = "c:/Windows/System32/bash.exe";
+                            arguments = $"-c \"./pharo vride.image st server.st\"";
+                        }
+                        else
+                        {
+                            executable = Path.Combine(".", "pharo-vm-win10", "Pharo");
+                        }
+                    }
+                    else if (Application.platform == RuntimePlatform.OSXPlayer ||
+                        Application.platform == RuntimePlatform.OSXEditor)
+                    {
+                        executable = Path.Combine(".", "pharo-vm-macosx", "Pharo.app", "Contents", 
+                            "MacOS", "Pharo");
+                    }
+                    else
+                    {
+                        executable = Path.Combine(".", "pharo");
+                    }
 
                     var process = new Process()
                     {
                         StartInfo = new ProcessStartInfo
                         {
-                            FileName = bashFile,
+                            FileName = executable,
                             WorkingDirectory = enginePath,
-                            Arguments = $"-c \"./pharo vride.image st server.st\"",
+                            Arguments = arguments,
                             RedirectStandardOutput = false,
                             UseShellExecute = true,
                             CreateNoWindow = true,

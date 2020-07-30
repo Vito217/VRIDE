@@ -17,5 +17,6 @@ public class ClassWindow : BrowserWindow
 
             yield return null;
         }
+        yield return base.Coroutine();
     }
 }

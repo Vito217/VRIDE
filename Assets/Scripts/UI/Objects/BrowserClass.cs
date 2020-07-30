@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using TMPro;
 
 public class BrowserClass : BrowserObject
@@ -14,7 +12,7 @@ public class BrowserClass : BrowserObject
         if (sourceCode == "")
         {
             sourceCode =
-                "<b>Object</b> subclass: #NameOfSubclass\n" +
+                "Object subclass: #NameOfSubclass\n" +
                     "    instanceVariableNames: ''\n" +
                     "    classVariableNames: ''\n" +
                     "    package: 'MyPackage'";
@@ -37,8 +35,8 @@ public class BrowserClass : BrowserObject
             instanceMethodList = Instantiator.Instance.MethodListObject(
                 theBrowser.instanceSideList, name, theBrowser, "InstanceSide", package);
 
-            LayoutRebuilder.ForceRebuildLayoutImmediate(classMethodList.gameObject.GetComponent<RectTransform>());
-            LayoutRebuilder.ForceRebuildLayoutImmediate(instanceMethodList.gameObject.GetComponent<RectTransform>());
+            //LayoutRebuilder.ForceRebuildLayoutImmediate(classMethodList.gameObject.GetComponent<RectTransform>());
+            //LayoutRebuilder.ForceRebuildLayoutImmediate(instanceMethodList.gameObject.GetComponent<RectTransform>());
         }
         Color newCol;
         if (ColorUtility.TryParseHtmlString("#00FFFF", out newCol))

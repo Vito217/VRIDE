@@ -5,7 +5,7 @@
         if(sourceCode == "")
         {
             sourceCode =
-                "<b>messageSelectorAndArgumentNames</b>\n" +
+                "messageSelectorAndArgumentNames\n" +
                     "    | temporary variable names |\n" +
                     "    statements";
         }

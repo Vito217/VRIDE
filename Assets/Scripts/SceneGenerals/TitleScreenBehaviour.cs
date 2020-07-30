@@ -54,7 +54,7 @@ public class TitleScreenBehaviour : MonoBehaviour
 
         limit = 0.3f;
 
-        await Pharo.Start();
+        //await Pharo.Start();
 
         limit = 0.6f;
 

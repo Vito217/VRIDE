@@ -54,11 +54,25 @@ namespace LoggingModule
             { "TranscriptInteraction" , null }
         };
 
+        static string persistentPath = Path.Combine(Application.persistentDataPath, "log.txt");
+        static string streamingPath = Path.Combine(Application.streamingAssetsPath, "log.txt");
+
         public static void writeLineToLog(string line)
         {
-            using (StreamWriter w = File.AppendText(Application.persistentDataPath + "/log.txt"))
+            try
             {
-                w.WriteLine(line);
+                using (StreamWriter w = File.AppendText(persistentPath))
+                {
+                    w.WriteLine(line);
+                }
+                using (StreamWriter w = File.AppendText(streamingPath))
+                {
+                    w.WriteLine(line);
+                }
+            }
+            catch
+            {
+
             }
         }
 

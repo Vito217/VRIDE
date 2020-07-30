@@ -26,8 +26,8 @@ public abstract class InitializeBehaviour : MonoBehaviour
     public Vector3 rel_pos;
     public Vector3 rel_fwd;
 
-    public StringBuilder sb = new StringBuilder();
-    public List<char> notAN = new List<char> { ' ', '\n', '\t', '\r' };
+    StringBuilder sb = new StringBuilder();
+    List<char> notAN = new List<char> { ' ', '\n', '\t', '\r' };
 
     void Start()
     {
@@ -44,10 +44,12 @@ public abstract class InitializeBehaviour : MonoBehaviour
     {
         if (initializing)
             initializeAnimation();
-        else if (dragging)
-            dragAction();
         else
+        {
+            if (dragging)
+                dragAction();
             innerBehaviour();
+        }
     }
 
     public void initializeAnimation()
@@ -65,43 +67,43 @@ public abstract class InitializeBehaviour : MonoBehaviour
     {
         try
         {
-            int last_caret_position = field.caretPosition;
+            /**
             string text = field.text;
             text = Regex.Replace(text, @"<color=#b32d00>|<color=#00ffffff>|</color>|<b>|</b>", "");
             text = Regex.Replace(text, @"\t", "".PadRight(4));
-        
+
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
             {
                 int i;
-                for (i = last_caret_position - 1; i >= 0 && !notAN.Contains(text[i]); i--)
+                for (i = field.caretPosition - 1; i >= 0 && !notAN.Contains(text[i]); i--)
                     sb.Insert(0, text[i].ToString(), 1);
                 string previous_word = sb.ToString();
                 int pw_len = previous_word.Length;
                 for (i = i; i >= 0 && notAN.Contains(text[i]); i--) { }
                 if ((i == -1) || (i >= 0 && text[i] == '.') || (pw_len > 0 && previous_word[0] == '#'))
-                    last_caret_position += 1;
+                    field.caretPosition += 1;
                 sb.Clear();
-                last_caret_position += 3;
             }
-            bool tab_pressed = Input.GetKeyDown(KeyCode.Tab);
-            if (tab_pressed)
+
+            if (Input.GetKeyDown(KeyCode.Tab))
             {
-                last_caret_position += 4;
-                if (text[last_caret_position - 1] != ' ')
-                    last_caret_position -= 1;
+                field.caretPosition += 4;
+                if (text[field.caretPosition - 1] != ' ')
+                    field.caretPosition -= 1;
             }
+
             text = Regex.Replace(text, @"(\A|\.\s*\n*\s*)([a-zA-Z0-9]+)(\s|\n)", "$1<b>$2</b>$3");
             text = Regex.Replace(text, @"(\n?\s*)(#[a-zA-Z0-9]+)(\n?\s*)", "$1<color=#00ffffff>$2</color>$3");
 
             field.text = text;
-            field.caretPosition = last_caret_position;
+            **/
         }
         catch
         {
-            await SaveAndLoadModule.Save(player);
-            await Pharo.Execute("SmalltalkImage current snapshot: true andQuit: true.");
-            InteractionLogger.SessionEnd();
-            Application.Quit();
+            //await SaveAndLoadModule.Save(player);
+            //await Pharo.Execute("SmalltalkImage current snapshot: true andQuit: true.");
+            //InteractionLogger.SessionEnd();
+            //Application.Quit();
         }
     }
 

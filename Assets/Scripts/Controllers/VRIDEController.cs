@@ -45,7 +45,7 @@ public class VRIDEController : MonoBehaviour
         bool f1 = Input.GetKeyDown(KeyCode.F1);
         bool f2 = Input.GetKeyDown(KeyCode.F2);
         bool f7 = Input.GetKeyDown(KeyCode.F7);
-        bool o = Input.GetKeyDown("o");
+        bool o = Input.GetKey("o");
         bool b = Input.GetKeyDown("b");
         bool w = Input.GetKeyDown("w");
         bool t = Input.GetKeyDown("t");
@@ -69,7 +69,8 @@ public class VRIDEController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             SaveAndLoadModule.Save(this);
-            Pharo.Execute("SmalltalkImage current snapshot: true andQuit: true.");
+            //Pharo.Execute("SmalltalkImage current snapshot: true andQuit: true.");
+            Pharo.Execute("SmalltalkImage current snapshot: true andQuit: false.");
             InteractionLogger.SessionEnd();
             Application.Quit();
         }

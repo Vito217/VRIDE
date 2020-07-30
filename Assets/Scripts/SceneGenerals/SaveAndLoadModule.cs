@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
 using LoggingModule;
@@ -10,8 +9,8 @@ namespace SaveAndLoad
 {
     public class SaveAndLoadModule : MonoBehaviour
     {
-        static string sessionPath = Application.persistentDataPath + "/session.data";
-        static string baseDataPath = Application.streamingAssetsPath + "/BaseData/session.data";
+        static string sessionPath = Path.Combine(Application.persistentDataPath, "session.data");
+        static string baseDataPath = Path.Combine(Application.streamingAssetsPath, "BaseData", "session.data");
 
         public static List<BrowserData> SerializeBrowsers(List<Browser> browsers)
         {

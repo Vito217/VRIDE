@@ -18,43 +18,66 @@ public class Playground : InitializeBehaviour
             string selectedCode = getSelectedCode(cleanCode(field.text));
 
             // Getting Transcripts
-            foreach (Match m in Regex.Matches(selectedCode, @"VRIDE\s*log:.*\."))
+            foreach (Match m in Regex.Matches(selectedCode, @"VRIDE[\n\s]+log:(.*)\."))
             {
-                string response = await Pharo.Print(m.Value);
+                string response = await Pharo.Print(m.Groups[1].Value);
                 response = response.Replace("'", "").Replace("\"", "");
                 VRIDEController.transcriptContents += response + "\n";
             }
 
-            // Execution
-            string responseString = await Pharo.Print(selectedCode);
-            if (Regex.Match(selectedCode, @"visualize(\s*)(asSVG|asPNG)(\s*)\.").Success)
+            string pattern = @"(\A|[\n\s]+)([a-zA-Z0-9]+)[\n\s]+visualize[\n\s]+(asSVG|asPNG)[\n\s]+?\.";
+            MatchCollection matches = Regex.Matches(selectedCode, pattern);
+            if (matches.Count > 0)
             {
-                string type = Regex.Match(selectedCode, @"visualize(\s*)asSVG(\s*)\.").Success ? "SVG" : "PNG";
-                if (view == null)
+                string var = matches[matches.Count - 1].Groups[2].Value;
+                string type = matches[matches.Count - 1].Groups[3].Value.Substring(2);
+
+                string exporter = (type == "PNG") ?
+                    " RTPNGExporter new builder: (" + var + " view); fileName: 'img.png'; exportToFile. " :
+                    " RTSVGExporter new view: (" + var + " view); fileName: 'img.svg'; exportToFile. ";
+
+                string finalCode = 
+                    exporter +
+                    "(FileLocator workingDirectory / 'img." + type.ToLower() + "') " + 
+                        "binaryReadStreamDo:[ :stream | stream upToEnd ].";
+
+                selectedCode = Regex.Replace(selectedCode, pattern, finalCode);
+
+                // Execution
+                string responseString = await Pharo.Print(selectedCode);
+                if (!responseString.Contains("[Error]"))
                 {
-                    float width = GetComponent<RectTransform>().sizeDelta.x;
-                    float height = GetComponent<RectTransform>().sizeDelta.y;
-                    view = Instantiator.Instance.Graph() as Graph;
-                    player.graphs.Add(view);
-                    view.Initialize(
-                        transform.position,
-                        transform.TransformPoint(new Vector3(-width, 0, 0)),
-                        transform.forward,
-                        player
-                    );
-                    InteractionLogger.Count("GraphObject");
+                    if (view == null)
+                    {
+                        float width = GetComponent<RectTransform>().sizeDelta.x;
+                        float height = GetComponent<RectTransform>().sizeDelta.y;
+                        view = Instantiator.Instance.Graph() as Graph;
+                        player.graphs.Add(view);
+                        view.Initialize(
+                            transform.position,
+                            transform.TransformPoint(new Vector3(-width, 0, 0)),
+                            transform.forward,
+                            player
+                        );
+                        InteractionLogger.Count("GraphObject");
+                    }
+                    view.setSprite(responseString, type);
                 }
-                view.setSprite(responseString, type);
+                else
+                {
+                    output = " ->" + responseString.Remove(responseString.LastIndexOf("\n"), 1);
+                }
+                InteractionLogger.RegisterCodeExecution(selectedCode, responseString);
             }
             else
             {
                 PharoInspect();
             }
-            InteractionLogger.RegisterCodeExecution(selectedCode, responseString);
         }
         catch (Exception e)
         {
-            output = " <color=#b32d00>[Error] " + e.Message + "</color>";
+            //output = " <color=#b32d00>[Error] " + e.Message + "</color>";
+            output = " ->[Error] " + e.Message;
         }
         finally
         {
@@ -69,12 +92,14 @@ public class Playground : InitializeBehaviour
         {
             string selection = getSelectedCode(cleanCode(field.text));
             string res = await Pharo.Print(selection);
-            output = " <color=#b32d00>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>";
+            //output = " <color=#b32d00>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>";
+            output = " ->" + res.Remove(res.LastIndexOf("\n"), 1);
             InteractionLogger.RegisterCodeExecution(selection, res);
         }
         catch (Exception e)
         {
-            output = " <color=#b32d00>[Error] " + e.Message + "</color>";
+            //output = " <color=#b32d00>[Error] " + e.Message + "</color>";
+            output = " ->[Error] " + e.Message;
         }
         finally
         {
@@ -89,7 +114,7 @@ public class Playground : InitializeBehaviour
         {
             string selection = getSelectedCode(cleanCode(field.text));
             string res = await Pharo.Inspect(selection);
-            if (!Regex.Match(res, @"\[Error\](.*)").Success)
+            if (!res.Contains("[Error]"))
             {
                 if(insp == null)
                 {
@@ -108,12 +133,17 @@ public class Playground : InitializeBehaviour
                 insp.setContent(res);
             }
             else
-                output = " <color=#b32d00>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>";
+            {
+                //output = " <color=#b32d00>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>";
+                output = " ->" + res.Remove(res.LastIndexOf("\n"), 1);
+            }
+
             InteractionLogger.RegisterCodeInspection(selection, res);
         }
         catch (Exception e)
         {
-            output = " <color=#b32d00>[Error] " + e.Message + "</color>";
+            //output = " <color=#b32d00>[Error] " + e.Message + "</color>";
+            output = " ->[Error] " + e.Message;
         }
         finally
         {
@@ -177,7 +207,7 @@ public class Playground : InitializeBehaviour
 
     public override void innerBehaviour()
     {
-        if ((Input.anyKeyDown || Input.GetKeyUp(KeyCode.Backspace)) && field.isFocused)
+        if (Input.anyKeyDown && field.isFocused)
         {
             bool leftCmd = Input.GetKey(KeyCode.LeftCommand);
             bool leftCtrl = Input.GetKey(KeyCode.LeftControl);

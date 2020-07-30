@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BrowserWindow : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class BrowserWindow : MonoBehaviour
     }
 
     public virtual IEnumerator Coroutine() {
+        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
         yield return null;
     }
 }

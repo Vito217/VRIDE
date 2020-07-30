@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.IO;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
@@ -19,39 +21,66 @@ public class Browser : InitializeBehaviour
 
     async void PharoDefine()
     {
-        // Cleaning code from RichText
-        string input_code = field.text;
-        string clean_code = cleanCode(input_code);
-
-        if (clean_code.Contains("subclass"))
+        string output = "";
+        try
         {
-            string responseString = await Pharo.Execute(clean_code);
+            // Cleaning code from RichText
+            string input_code = field.text;
+            string clean_code = cleanCode(input_code);
 
-            string packageName = Regex.Matches(clean_code, @"package:\s'(.*)'")[0].Groups[1].Value;
-            string className = Regex.Matches(clean_code, @"\s#(.*)(\s|\n)")[0].Groups[1].Value;
+            if (clean_code.Contains("subclass"))
+            {
+                string responseString = await Pharo.Execute(clean_code);
+                if (!responseString.Contains("[Error]"))
+                {
+                    string packageName = Regex.Matches(clean_code, @"package:\s*'(.*)'")[0].Groups[1].Value;
+                    string className = Regex.Matches(clean_code, @"\s#(.*)(\s|\n)")[0].Groups[1].Value;
 
-            // Getting or updating package
-            createOrUpdatePackage(packageName);
-            createOrUpdateClass(packageName, className, input_code);
-            InteractionLogger.RegisterCodeDefinition("class", clean_code, responseString);
+                    // Getting or updating package
+                    createOrUpdatePackage(packageName);
+                    createOrUpdateClass(packageName, className, input_code);
+                    package_list.transform.Find(packageName).gameObject.GetComponent<BrowserPackage>().click();
+                }
+                else
+                {
+                    output = " ->" + responseString.Remove(responseString.LastIndexOf("\n"), 1);
+                }
+                InteractionLogger.RegisterCodeDefinition("class", clean_code, responseString);
+            }
+            else
+            {
+                string currentPackage = package_list.getLastSelected().name;
+                string currentClass = class_list.Find(currentPackage).gameObject
+                    .GetComponent<ClassWindow>().getLastSelected().name;
+
+                string method_code = lastSelectedSide == "ClassSide" ?
+                    "(" + currentClass + " class) compile: '" + clean_code.Replace("'", "''") + "'" :
+                    currentClass + " compile: '" + clean_code.Replace("'", "''") + "'";
+
+                // Getting method name
+                string responseString = await Pharo.Execute(method_code);
+                if (!responseString.Contains("[Error]"))
+                {
+                    string methodName = new StringReader(clean_code).ReadLine().Replace("\n", "");
+                    methodName = Regex.Replace(methodName, @"(.*:)\s*[a-zA-Z0-9]+[\n\s]+", "$1");
+                    createOrUpdateMethod(currentPackage, currentClass, methodName, input_code);
+                    class_list.Find(currentPackage+"/"+currentClass).gameObject.GetComponent<BrowserClass>().click();
+                }
+                else
+                {
+                    output = " ->" + responseString.Remove(responseString.LastIndexOf("\n"), 1);
+                }
+                InteractionLogger.RegisterCodeDefinition("method", clean_code, responseString);
+            }
         }
-        else
+        catch (Exception e)
         {
-            string currentPackage = package_list.getLastSelected().name;
-            string currentClass = class_list.Find(currentPackage).gameObject
-                .GetComponent<ClassWindow>().getLastSelected().name;
-
-            string method_code = lastSelectedSide == "ClassSide" ?
-                "(" + currentClass + " class) compile: '" + clean_code.Replace("'", "''") + "'" :
-                currentClass + " compile: '" + clean_code.Replace("'", "''") + "'";
-
-            // Getting method name
-            string responseString = await Pharo.Execute(method_code);
-            string methodName = Regex.Matches(clean_code, @"(\A(.*:?) )|(\A(.*:?)\n)")[0].Value;
-            methodName = Regex.Replace(methodName, @"\n|\r|\t|\s", "");
-            createOrUpdateMethod(currentPackage, currentClass, methodName, input_code);
-            InteractionLogger.RegisterCodeDefinition("method", clean_code, responseString);
+            output = " ->[Error] " + e.Message;
         }
+        finally
+        {
+            field.text += output;
+        }        
     }
 
     void createOrUpdatePackage(string packageName)
@@ -68,21 +97,10 @@ public class Browser : InitializeBehaviour
                 packageName, 
                 new SortedDictionary<string, (string classCode,
                     List<(string methodName, string methodCode, string side)> classMethods)>());
-
-        // Activating
-        newPackage.click();
     }
 
     void createOrUpdateClass(string packageName, string className, string input_code)
     {
-        // Getting class and its methods
-        Transform package = class_list.Find(packageName);
-        Transform existing_class = package.Find(className);
-        BrowserClass new_class = !existing_class ?
-            Instantiator.Instance.ClassObject(package.GetComponent<ClassWindow>(), className, field, 
-                null, null, input_code, this) :
-            existing_class.gameObject.GetComponent<BrowserClass>();
-
         //Updating class
         if (!VRIDEController.sysData.data[packageName].ContainsKey(className))
             VRIDEController.sysData.data[packageName].Add(
@@ -95,12 +113,6 @@ public class Browser : InitializeBehaviour
                 = VRIDEController.sysData.data[packageName][className].classMethods;
             VRIDEController.sysData.data[packageName][className] = (input_code, methods);
         }
-
-        // Activating
-        new_class.sourceCode = input_code;
-        new_class.click();
-
-        LayoutRebuilder.ForceRebuildLayoutImmediate(package.gameObject.GetComponent<RectTransform>());
     }
 
     void createOrUpdateMethod(string packageName, string className, string methodName, string input_code)
@@ -109,19 +121,15 @@ public class Browser : InitializeBehaviour
         string side = classSideToggle.isOn ? "ClassSide" : "InstanceSide";
         Transform classMethodList = method_list.Find(side + "/" + className);
         Transform existing_method = classMethodList.Find(methodName);
-        BrowserMethod new_method = !existing_method ?
-            Instantiator.Instance.MethodObject(classMethodList, className, methodName, field, input_code, this) :
-            existing_method.gameObject.GetComponent<BrowserMethod>();
 
         // Updating method
-        VRIDEController.sysData.data[packageName][className].classMethods.Remove((methodName, new_method.sourceCode, side));
+        if (existing_method)
+        {
+            BrowserMethod m = existing_method.gameObject.GetComponent<BrowserMethod>();
+            VRIDEController.sysData.data[packageName][className].classMethods
+                .Remove((methodName, m.sourceCode, side));
+        }
         VRIDEController.sysData.data[packageName][className].classMethods.Add((methodName, input_code, side));
-
-        // Activating
-        new_method.sourceCode = input_code;
-        new_method.click();
-
-        LayoutRebuilder.ForceRebuildLayoutImmediate(classMethodList.gameObject.GetComponent<RectTransform>());
     }
 
     public void onSelectClassSide()
@@ -200,12 +208,12 @@ public class Browser : InitializeBehaviour
 
     public override void innerBehaviour()
     {
-        if ((Input.anyKeyDown || Input.GetKeyUp(KeyCode.Backspace)) && field.isFocused)
+        if (Input.anyKeyDown && field.isFocused)
         {
             bool leftCmd = Input.GetKey(KeyCode.LeftCommand);
             bool leftCtrl = Input.GetKey(KeyCode.LeftControl);
             bool f6 = Input.GetKeyDown(KeyCode.F6);
-            bool s = Input.GetKeyDown("g");
+            bool s = Input.GetKeyDown("s");
 
             if (!(leftCmd || leftCtrl || f6 || s))
                 onChangeInput();

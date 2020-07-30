@@ -1,20 +1,20 @@
 THERE_BE_DRAGONS_HERE
-Pharo cannot locate the sources file named /mnt/c/Users/VictorStefano/vride_pharo_image/Pharo8.0-32bit-5173b02.sources.
+Pharo cannot locate the sources file named C:\Users\VictorStefano\Documents\Unity Projects\PharoVRIDE\Assets\StreamingAssets\PharoEngine\Pharo8.0-32bit-5173b02.sources.
 
 Please check that the file is named properly and is in the
 same directory as this image.
-14 June 2020 10:48:32.471146 pm
+28 July 2020 4:17:21.288577 pm
 
-VM: unix - x86_64 - linux-gnu - CoInterpreter * VMMaker-CompatibleUserName.1580983506 uuid: 7aff73cb-5a2e-5002-a356-37de4e762a49 Feb 12 2020
-StackToRegisterMappingCogit * VMMaker-CompatibleUserName.1580983506 uuid: 7aff73cb-5a2e-5002-a356-37de4e762a49 Feb 12 2020
-VM: 202002121043 https://github.com/pharo-project/opensmalltalk-vm.git Date: Wed Feb 12 11:43:20 2020 CommitHash: 52202d8 Plugins: 202002121043 https://github.com/pharo-project/opensmalltalk-vm.git
+VM: Win32 - X64 - 6.2 - CoInterpreter VMMaker.oscog-eem.2509 uuid: 91e81f64-95de-4914-a960-8f842be3a194 Sep 13 2019
+StackToRegisterMappingCogit VMMaker.oscog-eem.2509 uuid: 91e81f64-95de-4914-a960-8f842be3a194 Sep 13 2019
+VM: 201907031441-pharo Guille@DESKTOP-MG6660L:projects/vm7/opensmalltalk-vm Date: Wed Jul 3 16:41:39 2019 CommitHash: 4e4c5b5a0 Plugins: 201907031441-pharo Guille@DESKTOP-MG6660L:projects/vm7/opensmalltalk-vm
 
 Image: Pharo8.0.0 [Build information: Pharo-8.0.0+build.1134.sha.5173b0271894727189f261cb9eb9beaa3db3f205 (64 Bit)]
 
 StartupUIManager>>inform:
 	Receiver: a StartupUIManager
 	Arguments and temporary variables: 
-		arg1: 	'Pharo cannot locate the sources file named /mnt/c/Users/VictorStefano/vr...etc...
+		arg1: 	'Pharo cannot locate the sources file named C:\Users\VictorStefano\Docume...etc...
 		tmp1: 	ni
 	Receiver's instance variables: 
 		doNotQuitOnRestart: 	false
@@ -24,7 +24,7 @@ StartupUIManager>>inform:
 PharoFilesOpener(Object)>>inform:
 	Receiver: a PharoFilesOpener
 	Arguments and temporary variables: 
-		arg1: 	'Pharo cannot locate the sources file named /mnt/c/Users/VictorStefano/vr...etc..
+		arg1: 	'Pharo cannot locate the sources file named C:\Users\VictorStefano\Docume...etc..
 	Receiver's instance variables: 
 		shouldInformAboutReadOnlyChanges: 	nil
 
@@ -35,7 +35,7 @@ PharoFilesOpener>>inform:withRef:
 		arg1: 	'Pharo cannot locate &fileRef.
 
 Please check that the file is named prope...etc...
-		arg2: 	'the sources file named /mnt/c/Users/VictorStefano/vride_pharo_image/Phar...etc..
+		arg2: 	'the sources file named C:\Users\VictorStefano\Documents\Unity Projects\P...etc..
 	Receiver's instance variables: 
 		shouldInformAboutReadOnlyChanges: 	nil
 
@@ -46,7 +46,7 @@ PharoFilesOpener>>inform:withSourceRef:
 		arg1: 	'Pharo cannot locate &fileRef.
 
 Please check that the file is named prope...etc...
-		arg2: 	'/mnt/c/Users/VictorStefano/vride_pharo_image/Pharo8.0-32bit-5173b02.sour...etc..
+		arg2: 	'C:\Users\VictorStefano\Documents\Unity Projects\PharoVRIDE\Assets\Stream...etc..
 	Receiver's instance variables: 
 		shouldInformAboutReadOnlyChanges: 	nil
 
@@ -64,7 +64,7 @@ Please check that the file is named prope...etc..
 PharoFilesOpener>>sourcesFileOrNil
 	Receiver: a PharoFilesOpener
 	Arguments and temporary variables: 
-		tmp1: 	SourceFile(/mnt/c/Users/VictorStefano/vride_pharo_image/Pharo8.0-32bit-51...etc..
+		tmp1: 	SourceFile(C:\Users\VictorStefano\Documents\Unity Projects\PharoVRIDE\Ass...etc..
 	Receiver's instance variables: 
 		shouldInformAboutReadOnlyChanges: 	nil
 
@@ -125,7 +125,7 @@ ClassSessionHandler>>startup:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-14T22:48:32.252732-04:00
+		creationTime: 	2020-07-28T16:17:20.713577-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -142,7 +142,7 @@ ClassSessionHandler>>startup:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-14T22:48:32.252732-04:00
+		creationTime: 	2020-07-28T16:17:20.713577-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -173,7 +173,7 @@ BlockClosure>>on:do:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-14T22:48:32.252732-04:00
+		creationTime: 	2020-07-28T16:17:20.713577-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -193,7 +193,7 @@ WorkingSession>>runList:do:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-14T22:48:32.252732-04:00
+		creationTime: 	2020-07-28T16:17:20.713577-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -205,7 +205,7 @@ WorkingSession>>runStartup:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-14T22:48:32.252732-04:00
+		creationTime: 	2020-07-28T16:17:20.713577-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -217,7 +217,7 @@ WorkingSession>>start:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-14T22:48:32.252732-04:00
+		creationTime: 	2020-07-28T16:17:20.713577-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -298,30 +298,23 @@ tmp1 signal ] in SessionManager>>snapshot:andQuit:
 Processor terminateActive ] in BlockClosure>>newProcess
 -------------------------------------------------------------------------------
 
-
-===============================================================================
-Notice: Pharo cannot locate the sources file named /mnt/c/Users/VictorStefano/vride_pharo_image/Pharo8.0-32bit-5173b02.sources.
-
-Please check that the file is named properly and is in the
-same directory as this image.
-===============================================================================
 THERE_BE_DRAGONS_HERE
-Pharo cannot locate the sources file named /mnt/c/Users/VictorStefano/vride_pharo_image/Pharo8.0-32bit-5173b02.sources.
+Pharo cannot locate the sources file named C:\Users\VictorStefano\Documents\Unity Projects\PharoVRIDE\Assets\StreamingAssets\PharoEngine\Pharo8.0-32bit-5173b02.sources.
 
 Please check that the file is named properly and is in the
 same directory as this image.
-14 June 2020 11:19:00.826351 pm
+28 July 2020 4:21:21.227797 pm
 
-VM: unix - x86_64 - linux-gnu - CoInterpreter * VMMaker-CompatibleUserName.1580983506 uuid: 7aff73cb-5a2e-5002-a356-37de4e762a49 Feb 12 2020
-StackToRegisterMappingCogit * VMMaker-CompatibleUserName.1580983506 uuid: 7aff73cb-5a2e-5002-a356-37de4e762a49 Feb 12 2020
-VM: 202002121043 https://github.com/pharo-project/opensmalltalk-vm.git Date: Wed Feb 12 11:43:20 2020 CommitHash: 52202d8 Plugins: 202002121043 https://github.com/pharo-project/opensmalltalk-vm.git
+VM: Win32 - X64 - 6.2 - CoInterpreter VMMaker.oscog-eem.2509 uuid: 91e81f64-95de-4914-a960-8f842be3a194 Sep 13 2019
+StackToRegisterMappingCogit VMMaker.oscog-eem.2509 uuid: 91e81f64-95de-4914-a960-8f842be3a194 Sep 13 2019
+VM: 201907031441-pharo Guille@DESKTOP-MG6660L:projects/vm7/opensmalltalk-vm Date: Wed Jul 3 16:41:39 2019 CommitHash: 4e4c5b5a0 Plugins: 201907031441-pharo Guille@DESKTOP-MG6660L:projects/vm7/opensmalltalk-vm
 
 Image: Pharo8.0.0 [Build information: Pharo-8.0.0+build.1134.sha.5173b0271894727189f261cb9eb9beaa3db3f205 (64 Bit)]
 
 StartupUIManager>>inform:
 	Receiver: a StartupUIManager
 	Arguments and temporary variables: 
-		arg1: 	'Pharo cannot locate the sources file named /mnt/c/Users/VictorStefano/vr...etc...
+		arg1: 	'Pharo cannot locate the sources file named C:\Users\VictorStefano\Docume...etc...
 		tmp1: 	ni
 	Receiver's instance variables: 
 		doNotQuitOnRestart: 	false
@@ -331,7 +324,7 @@ StartupUIManager>>inform:
 PharoFilesOpener(Object)>>inform:
 	Receiver: a PharoFilesOpener
 	Arguments and temporary variables: 
-		arg1: 	'Pharo cannot locate the sources file named /mnt/c/Users/VictorStefano/vr...etc..
+		arg1: 	'Pharo cannot locate the sources file named C:\Users\VictorStefano\Docume...etc..
 	Receiver's instance variables: 
 		shouldInformAboutReadOnlyChanges: 	nil
 
@@ -342,7 +335,7 @@ PharoFilesOpener>>inform:withRef:
 		arg1: 	'Pharo cannot locate &fileRef.
 
 Please check that the file is named prope...etc...
-		arg2: 	'the sources file named /mnt/c/Users/VictorStefano/vride_pharo_image/Phar...etc..
+		arg2: 	'the sources file named C:\Users\VictorStefano\Documents\Unity Projects\P...etc..
 	Receiver's instance variables: 
 		shouldInformAboutReadOnlyChanges: 	nil
 
@@ -353,7 +346,7 @@ PharoFilesOpener>>inform:withSourceRef:
 		arg1: 	'Pharo cannot locate &fileRef.
 
 Please check that the file is named prope...etc...
-		arg2: 	'/mnt/c/Users/VictorStefano/vride_pharo_image/Pharo8.0-32bit-5173b02.sour...etc..
+		arg2: 	'C:\Users\VictorStefano\Documents\Unity Projects\PharoVRIDE\Assets\Stream...etc..
 	Receiver's instance variables: 
 		shouldInformAboutReadOnlyChanges: 	nil
 
@@ -371,7 +364,7 @@ Please check that the file is named prope...etc..
 PharoFilesOpener>>sourcesFileOrNil
 	Receiver: a PharoFilesOpener
 	Arguments and temporary variables: 
-		tmp1: 	SourceFile(/mnt/c/Users/VictorStefano/vride_pharo_image/Pharo8.0-32bit-51...etc..
+		tmp1: 	SourceFile(C:\Users\VictorStefano\Documents\Unity Projects\PharoVRIDE\Ass...etc..
 	Receiver's instance variables: 
 		shouldInformAboutReadOnlyChanges: 	nil
 
@@ -432,7 +425,7 @@ ClassSessionHandler>>startup:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-14T23:19:00.623433-04:00
+		creationTime: 	2020-07-28T16:21:21.029797-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -449,7 +442,7 @@ ClassSessionHandler>>startup:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-14T23:19:00.623433-04:00
+		creationTime: 	2020-07-28T16:21:21.029797-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -480,7 +473,7 @@ BlockClosure>>on:do:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-14T23:19:00.623433-04:00
+		creationTime: 	2020-07-28T16:21:21.029797-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -500,7 +493,7 @@ WorkingSession>>runList:do:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-14T23:19:00.623433-04:00
+		creationTime: 	2020-07-28T16:21:21.029797-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -512,7 +505,7 @@ WorkingSession>>runStartup:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-14T23:19:00.623433-04:00
+		creationTime: 	2020-07-28T16:21:21.029797-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -524,7 +517,7 @@ WorkingSession>>start:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-14T23:19:00.623433-04:00
+		creationTime: 	2020-07-28T16:21:21.029797-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -532,7 +525,7 @@ SessionManager>>launchSnapshot:andQuit:
 	Receiver: a SessionManager
 	Arguments and temporary variables: 
 		arg1: 	true
-		arg2: 	false
+		arg2: 	true
 		tmp1: 	true
 		tmp2: 	tru
 	Receiver's instance variables: 
@@ -605,326 +598,12 @@ tmp1 signal ] in SessionManager>>snapshot:andQuit:
 Processor terminateActive ] in BlockClosure>>newProcess
 -------------------------------------------------------------------------------
 
-
-===============================================================================
-Notice: Pharo cannot locate the sources file named /mnt/c/Users/VictorStefano/vride_pharo_image/Pharo8.0-32bit-5173b02.sources.
-
-Please check that the file is named properly and is in the
-same directory as this image.
-===============================================================================
-THERE_BE_DRAGONS_HERE
-Pharo cannot locate the sources file named /mnt/c/Users/VictorStefano/vride_pharo_image/Pharo8.0-32bit-5173b02.sources.
-
-Please check that the file is named properly and is in the
-same directory as this image.
-14 June 2020 11:21:25.835391 pm
-
-VM: unix - x86_64 - linux-gnu - CoInterpreter * VMMaker-CompatibleUserName.1580983506 uuid: 7aff73cb-5a2e-5002-a356-37de4e762a49 Feb 12 2020
-StackToRegisterMappingCogit * VMMaker-CompatibleUserName.1580983506 uuid: 7aff73cb-5a2e-5002-a356-37de4e762a49 Feb 12 2020
-VM: 202002121043 https://github.com/pharo-project/opensmalltalk-vm.git Date: Wed Feb 12 11:43:20 2020 CommitHash: 52202d8 Plugins: 202002121043 https://github.com/pharo-project/opensmalltalk-vm.git
-
-Image: Pharo8.0.0 [Build information: Pharo-8.0.0+build.1134.sha.5173b0271894727189f261cb9eb9beaa3db3f205 (64 Bit)]
-
-StartupUIManager>>inform:
-	Receiver: a StartupUIManager
-	Arguments and temporary variables: 
-		arg1: 	'Pharo cannot locate the sources file named /mnt/c/Users/VictorStefano/vr...etc...
-		tmp1: 	ni
-	Receiver's instance variables: 
-		doNotQuitOnRestart: 	false
-		uiManager: 	nil
-
-
-PharoFilesOpener(Object)>>inform:
-	Receiver: a PharoFilesOpener
-	Arguments and temporary variables: 
-		arg1: 	'Pharo cannot locate the sources file named /mnt/c/Users/VictorStefano/vr...etc..
-	Receiver's instance variables: 
-		shouldInformAboutReadOnlyChanges: 	nil
-
-
-PharoFilesOpener>>inform:withRef:
-	Receiver: a PharoFilesOpener
-	Arguments and temporary variables: 
-		arg1: 	'Pharo cannot locate &fileRef.
-
-Please check that the file is named prope...etc...
-		arg2: 	'the sources file named /mnt/c/Users/VictorStefano/vride_pharo_image/Phar...etc..
-	Receiver's instance variables: 
-		shouldInformAboutReadOnlyChanges: 	nil
-
-
-PharoFilesOpener>>inform:withSourceRef:
-	Receiver: a PharoFilesOpener
-	Arguments and temporary variables: 
-		arg1: 	'Pharo cannot locate &fileRef.
-
-Please check that the file is named prope...etc...
-		arg2: 	'/mnt/c/Users/VictorStefano/vride_pharo_image/Pharo8.0-32bit-5173b02.sour...etc..
-	Receiver's instance variables: 
-		shouldInformAboutReadOnlyChanges: 	nil
-
-
-PharoFilesOpener>>informCannotLocateSources
-	Receiver: a PharoFilesOpener
-	Arguments and temporary variables: 
-		tmp1: 	'Pharo cannot locate &fileRef.
-
-Please check that the file is named prope...etc..
-	Receiver's instance variables: 
-		shouldInformAboutReadOnlyChanges: 	nil
-
-
-PharoFilesOpener>>sourcesFileOrNil
-	Receiver: a PharoFilesOpener
-	Arguments and temporary variables: 
-		tmp1: 	SourceFile(/mnt/c/Users/VictorStefano/vride_pharo_image/Pharo8.0-32bit-51...etc..
-	Receiver's instance variables: 
-		shouldInformAboutReadOnlyChanges: 	nil
-
-
-SourceFileArray>>ensureOpen
-	Receiver: a SourceFileArray
-	Arguments and temporary variables: 
-		tmp1: 	nil
-		tmp2: 	ni
-	Receiver's instance variables: 
-		files: 	#(nil nil)
-		readOnlyQueue: 	SharedQueue with 0 items
-		flushChanges: 	true
-
-
-SmalltalkImage>>openSourceFiles
-	Receiver: Smalltalk
-	Arguments and temporary variables: 
-
-	Receiver's instance variables: 
-		globals: 	a SystemDictionary(lots of globals)
-		specialObjectsArray: 	an Array(nil false true #Processor->Processor Bitmap Small...etc...
-		vm: 	a VirtualMachine
-
-
-SourceFileArray class>>startUp:
-	Receiver: SourceFileArray
-	Arguments and temporary variables: 
-		arg1: 	tru
-	Receiver's instance variables: 
-		superclass: 	Object
-		methodDict: 	a MethodDictionary(#changeRecordsFor:->SourceFileArray>>#changeReco...etc...
-		format: 	65539
-		layout: 	a FixedLayout
-		organization: 	a ClassOrganization
-		subclasses: 	nil
-		name: 	#SourceFileArray
-		classPool: 	a Dictionary()
-		sharedPools: 	an OrderedCollection()
-		environment: 	a SystemDictionary(lots of globals)
-		category: 	#'System-Sources-Sources'
-
-
-ClassSessionHandler>>startup:
-	Receiver: a ClassSessionHandler(SourceFileArray)
-	Arguments and temporary variables: 
-		arg1: 	tru
-	Receiver's instance variables: 
-		registeredClassName: 	#SourceFileArray
-
-
-[ :arg2 | arg2 startup: arg1 ] in WorkingSession>>runStartup:
-	Receiver: a WorkingSession
-	Arguments and temporary variables: 
-		arg1: 	true
-		arg2: 	a ClassSessionHandler(SourceFileArray
-	Receiver's instance variables: 
-		manager: 	a SessionManager
-		deferredStartupActions: 	an OrderedCollection([ self new activate ])
-		id: 	nil
-		creationTime: 	2020-06-14T23:21:25.624633-04:00
-		properties: 	a Dictionary(#accessMode->#readWrite )
-
-
-[ arg2 value: arg3 ] in [ :arg3 | 
-[ arg2 value: arg3 ]
-	on: Exception
-	do: [ :arg4 | self errorHandler handleError: arg4 ] ] in WorkingSession>>runList:do:
-	Receiver: a WorkingSession
-	Arguments and temporary variables: 
-		arg1: 	an Array(a ClassSessionHandler(SmallInteger) a ClassSessionHandler(Sessio...etc...
-		arg2: 	[ :arg2 | arg2 startup: arg1 ]
-		arg3: 	a ClassSessionHandler(SourceFileArray
-	Receiver's instance variables: 
-		manager: 	a SessionManager
-		deferredStartupActions: 	an OrderedCollection([ self new activate ])
-		id: 	nil
-		creationTime: 	2020-06-14T23:21:25.624633-04:00
-		properties: 	a Dictionary(#accessMode->#readWrite )
-
-
-BlockClosure>>on:do:
-	Receiver: [ arg2 value: arg3 ]
-	Arguments and temporary variables: 
-		arg1: 	Exception
-		arg2: 	[ :arg4 | self errorHandler handleError: arg4 
-	Receiver's instance variables: 
-		outerContext: 	[ :arg3 | 
-[ arg2 value: arg3 ]
-	on: Exception
-	do: [ :arg4 | sel...etc...
-		startpc: 	69
-		numArgs: 	0
-
-
-[ :arg3 | 
-[ arg2 value: arg3 ]
-	on: Exception
-	do: [ :arg4 | self errorHandler handleError: arg4 ] ] in WorkingSession>>runList:do:
-	Receiver: a WorkingSession
-	Arguments and temporary variables: 
-		arg1: 	an Array(a ClassSessionHandler(SmallInteger) a ClassSessionHandler(Sessio...etc...
-		arg2: 	[ :arg2 | arg2 startup: arg1 ]
-		arg3: 	a ClassSessionHandler(SourceFileArray
-	Receiver's instance variables: 
-		manager: 	a SessionManager
-		deferredStartupActions: 	an OrderedCollection([ self new activate ])
-		id: 	nil
-		creationTime: 	2020-06-14T23:21:25.624633-04:00
-		properties: 	a Dictionary(#accessMode->#readWrite )
-
-
-Array(SequenceableCollection)>>do:
-	Receiver: an Array(a ClassSessionHandler(SmallInteger) a ClassSessionHandler(SessionAccessModeResolv...etc...
-	Arguments and temporary variables: 
-<<error during printing>
-	Receiver's instance variables: 
-an Array(a ClassSessionHandler(SmallInteger) a ClassSessionHandler(SessionAccessModeResolv...etc...
-
-WorkingSession>>runList:do:
-	Receiver: a WorkingSession
-	Arguments and temporary variables: 
-		arg1: 	an Array(a ClassSessionHandler(SmallInteger) a ClassSessionHandler(Sessio...etc...
-		arg2: 	[ :arg2 | arg2 startup: arg1 
-	Receiver's instance variables: 
-		manager: 	a SessionManager
-		deferredStartupActions: 	an OrderedCollection([ self new activate ])
-		id: 	nil
-		creationTime: 	2020-06-14T23:21:25.624633-04:00
-		properties: 	a Dictionary(#accessMode->#readWrite )
-
-
-WorkingSession>>runStartup:
-	Receiver: a WorkingSession
-	Arguments and temporary variables: 
-		arg1: 	tru
-	Receiver's instance variables: 
-		manager: 	a SessionManager
-		deferredStartupActions: 	an OrderedCollection([ self new activate ])
-		id: 	nil
-		creationTime: 	2020-06-14T23:21:25.624633-04:00
-		properties: 	a Dictionary(#accessMode->#readWrite )
-
-
-WorkingSession>>start:
-	Receiver: a WorkingSession
-	Arguments and temporary variables: 
-		arg1: 	tru
-	Receiver's instance variables: 
-		manager: 	a SessionManager
-		deferredStartupActions: 	an OrderedCollection([ self new activate ])
-		id: 	nil
-		creationTime: 	2020-06-14T23:21:25.624633-04:00
-		properties: 	a Dictionary(#accessMode->#readWrite )
-
-
-SessionManager>>launchSnapshot:andQuit:
-	Receiver: a SessionManager
-	Arguments and temporary variables: 
-		arg1: 	true
-		arg2: 	false
-		tmp1: 	true
-		tmp2: 	tru
-	Receiver's instance variables: 
-		currentSession: 	a WorkingSession
-		categories: 	an OrderedCollection(a SessionCategory(System) a SessionCategory(Ne...etc...
-		guiCategory: 	a SessionCategory(Graphical User Interface)
-		toolsCategory: 	a SessionCategory(Tools)
-		networkCategory: 	a SessionCategory(Network)
-		systemCategory: 	a SessionCategory(System)
-		userCategory: 	a SessionCategory(User)
-
-
-[ tmp3 := self launchSnapshot: arg1 andQuit: arg2.
-tmp1 signal ] in SessionManager>>snapshot:andQuit:
-	Receiver: a SessionManager
-	Arguments and temporary variables: 
-<<error during printing>
-	Receiver's instance variables: 
-		currentSession: 	a WorkingSession
-		categories: 	an OrderedCollection(a SessionCategory(System) a SessionCategory(Ne...etc...
-		guiCategory: 	a SessionCategory(Graphical User Interface)
-		toolsCategory: 	a SessionCategory(Tools)
-		networkCategory: 	a SessionCategory(Network)
-		systemCategory: 	a SessionCategory(System)
-		userCategory: 	a SessionCategory(User)
-
-
-[ self value.
-Processor terminateActive ] in BlockClosure>>newProcess
-	Receiver: [ tmp3 := self launchSnapshot: arg1 andQuit: arg2.
-tmp1 signal ]
-	Arguments and temporary variables: 
-
-	Receiver's instance variables: 
-		outerContext: 	SessionManager>>snapshot:andQuit:
-		startpc: 	135
-		numArgs: 	0
-
-
-
---- The full stack ---
-StartupUIManager>>inform:
-PharoFilesOpener(Object)>>inform:
-PharoFilesOpener>>inform:withRef:
-PharoFilesOpener>>inform:withSourceRef:
-PharoFilesOpener>>informCannotLocateSources
-PharoFilesOpener>>sourcesFileOrNil
-SourceFileArray>>ensureOpen
-SmalltalkImage>>openSourceFiles
-SourceFileArray class>>startUp:
-ClassSessionHandler>>startup:
-[ :arg2 | arg2 startup: arg1 ] in WorkingSession>>runStartup:
-[ arg2 value: arg3 ] in [ :arg3 | 
-[ arg2 value: arg3 ]
-	on: Exception
-	do: [ :arg4 | self errorHandler handleError: arg4 ] ] in WorkingSession>>runList:do:
-BlockClosure>>on:do:
-[ :arg3 | 
-[ arg2 value: arg3 ]
-	on: Exception
-	do: [ :arg4 | self errorHandler handleError: arg4 ] ] in WorkingSession>>runList:do:
-Array(SequenceableCollection)>>do:
-WorkingSession>>runList:do:
-WorkingSession>>runStartup:
-WorkingSession>>start:
-SessionManager>>launchSnapshot:andQuit:
-[ tmp3 := self launchSnapshot: arg1 andQuit: arg2.
-tmp1 signal ] in SessionManager>>snapshot:andQuit:
-[ self value.
-Processor terminateActive ] in BlockClosure>>newProcess
--------------------------------------------------------------------------------
-
-
-===============================================================================
-Notice: Pharo cannot locate the sources file named /mnt/c/Users/VictorStefano/vride_pharo_image/Pharo8.0-32bit-5173b02.sources.
-
-Please check that the file is named properly and is in the
-same directory as this image.
-===============================================================================
 THERE_BE_DRAGONS_HERE
 Pharo cannot locate the sources file named /mnt/c/Users/VictorStefano/Documents/Unity Projects/PharoVRIDE/Assets/StreamingAssets/PharoEngine/Pharo8.0-32bit-5173b02.sources.
 
 Please check that the file is named properly and is in the
 same directory as this image.
-22 June 2020 7:28:39.677055 pm
+29 July 2020 1:23:19.154656 am
 
 VM: unix - x86_64 - linux-gnu - CoInterpreter * VMMaker-CompatibleUserName.1580983506 uuid: 7aff73cb-5a2e-5002-a356-37de4e762a49 Feb 12 2020
 StackToRegisterMappingCogit * VMMaker-CompatibleUserName.1580983506 uuid: 7aff73cb-5a2e-5002-a356-37de4e762a49 Feb 12 2020
@@ -1046,7 +725,7 @@ ClassSessionHandler>>startup:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-22T19:28:39.360676-04:00
+		creationTime: 	2020-07-29T01:23:18.734359-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -1063,7 +742,7 @@ ClassSessionHandler>>startup:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-22T19:28:39.360676-04:00
+		creationTime: 	2020-07-29T01:23:18.734359-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -1094,7 +773,7 @@ BlockClosure>>on:do:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-22T19:28:39.360676-04:00
+		creationTime: 	2020-07-29T01:23:18.734359-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -1114,7 +793,7 @@ WorkingSession>>runList:do:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-22T19:28:39.360676-04:00
+		creationTime: 	2020-07-29T01:23:18.734359-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -1126,7 +805,7 @@ WorkingSession>>runStartup:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-22T19:28:39.360676-04:00
+		creationTime: 	2020-07-29T01:23:18.734359-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -1138,7 +817,7 @@ WorkingSession>>start:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-22T19:28:39.360676-04:00
+		creationTime: 	2020-07-29T01:23:18.734359-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -1231,7 +910,7 @@ Pharo cannot locate the sources file named /mnt/c/Users/VictorStefano/Documents/
 
 Please check that the file is named properly and is in the
 same directory as this image.
-22 June 2020 7:50:10.409158 pm
+29 July 2020 12:40:18.915973 pm
 
 VM: unix - x86_64 - linux-gnu - CoInterpreter * VMMaker-CompatibleUserName.1580983506 uuid: 7aff73cb-5a2e-5002-a356-37de4e762a49 Feb 12 2020
 StackToRegisterMappingCogit * VMMaker-CompatibleUserName.1580983506 uuid: 7aff73cb-5a2e-5002-a356-37de4e762a49 Feb 12 2020
@@ -1353,7 +1032,7 @@ ClassSessionHandler>>startup:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-22T19:50:10.259619-04:00
+		creationTime: 	2020-07-29T12:40:18.215576-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -1370,7 +1049,7 @@ ClassSessionHandler>>startup:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-22T19:50:10.259619-04:00
+		creationTime: 	2020-07-29T12:40:18.215576-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -1401,7 +1080,7 @@ BlockClosure>>on:do:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-22T19:50:10.259619-04:00
+		creationTime: 	2020-07-29T12:40:18.215576-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -1421,7 +1100,7 @@ WorkingSession>>runList:do:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-22T19:50:10.259619-04:00
+		creationTime: 	2020-07-29T12:40:18.215576-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -1433,7 +1112,7 @@ WorkingSession>>runStartup:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-22T19:50:10.259619-04:00
+		creationTime: 	2020-07-29T12:40:18.215576-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -1445,7 +1124,7 @@ WorkingSession>>start:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-22T19:50:10.259619-04:00
+		creationTime: 	2020-07-29T12:40:18.215576-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -1538,7 +1217,7 @@ Pharo cannot locate the sources file named /mnt/c/Users/VictorStefano/Documents/
 
 Please check that the file is named properly and is in the
 same directory as this image.
-23 June 2020 3:22:27.343181 pm
+29 July 2020 12:58:29.761354 pm
 
 VM: unix - x86_64 - linux-gnu - CoInterpreter * VMMaker-CompatibleUserName.1580983506 uuid: 7aff73cb-5a2e-5002-a356-37de4e762a49 Feb 12 2020
 StackToRegisterMappingCogit * VMMaker-CompatibleUserName.1580983506 uuid: 7aff73cb-5a2e-5002-a356-37de4e762a49 Feb 12 2020
@@ -1660,7 +1339,7 @@ ClassSessionHandler>>startup:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-23T15:22:27.120155-04:00
+		creationTime: 	2020-07-29T12:58:29.074524-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -1677,7 +1356,7 @@ ClassSessionHandler>>startup:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-23T15:22:27.120155-04:00
+		creationTime: 	2020-07-29T12:58:29.074524-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -1708,7 +1387,7 @@ BlockClosure>>on:do:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-23T15:22:27.120155-04:00
+		creationTime: 	2020-07-29T12:58:29.074524-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -1728,7 +1407,7 @@ WorkingSession>>runList:do:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-23T15:22:27.120155-04:00
+		creationTime: 	2020-07-29T12:58:29.074524-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -1740,7 +1419,7 @@ WorkingSession>>runStartup:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-23T15:22:27.120155-04:00
+		creationTime: 	2020-07-29T12:58:29.074524-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -1752,7 +1431,7 @@ WorkingSession>>start:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-23T15:22:27.120155-04:00
+		creationTime: 	2020-07-29T12:58:29.074524-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -1845,7 +1524,7 @@ Pharo cannot locate the sources file named /mnt/c/Users/VictorStefano/Documents/
 
 Please check that the file is named properly and is in the
 same directory as this image.
-23 June 2020 3:22:51.29195 pm
+29 July 2020 4:37:39.995538 pm
 
 VM: unix - x86_64 - linux-gnu - CoInterpreter * VMMaker-CompatibleUserName.1580983506 uuid: 7aff73cb-5a2e-5002-a356-37de4e762a49 Feb 12 2020
 StackToRegisterMappingCogit * VMMaker-CompatibleUserName.1580983506 uuid: 7aff73cb-5a2e-5002-a356-37de4e762a49 Feb 12 2020
@@ -1967,7 +1646,7 @@ ClassSessionHandler>>startup:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-23T15:22:51.201694-04:00
+		creationTime: 	2020-07-29T16:37:39.614276-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -1984,7 +1663,7 @@ ClassSessionHandler>>startup:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-23T15:22:51.201694-04:00
+		creationTime: 	2020-07-29T16:37:39.614276-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -2015,7 +1694,7 @@ BlockClosure>>on:do:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-23T15:22:51.201694-04:00
+		creationTime: 	2020-07-29T16:37:39.614276-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -2035,7 +1714,7 @@ WorkingSession>>runList:do:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-23T15:22:51.201694-04:00
+		creationTime: 	2020-07-29T16:37:39.614276-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -2047,7 +1726,7 @@ WorkingSession>>runStartup:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-23T15:22:51.201694-04:00
+		creationTime: 	2020-07-29T16:37:39.614276-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -2059,7 +1738,7 @@ WorkingSession>>start:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-23T15:22:51.201694-04:00
+		creationTime: 	2020-07-29T16:37:39.614276-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -2152,7 +1831,7 @@ Pharo cannot locate the sources file named /mnt/c/Users/VictorStefano/Documents/
 
 Please check that the file is named properly and is in the
 same directory as this image.
-23 June 2020 3:26:23.260701 pm
+29 July 2020 4:47:25.372911 pm
 
 VM: unix - x86_64 - linux-gnu - CoInterpreter * VMMaker-CompatibleUserName.1580983506 uuid: 7aff73cb-5a2e-5002-a356-37de4e762a49 Feb 12 2020
 StackToRegisterMappingCogit * VMMaker-CompatibleUserName.1580983506 uuid: 7aff73cb-5a2e-5002-a356-37de4e762a49 Feb 12 2020
@@ -2274,7 +1953,7 @@ ClassSessionHandler>>startup:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-23T15:26:23.098284-04:00
+		creationTime: 	2020-07-29T16:47:25.093322-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -2291,7 +1970,7 @@ ClassSessionHandler>>startup:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-23T15:26:23.098284-04:00
+		creationTime: 	2020-07-29T16:47:25.093322-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -2322,7 +2001,7 @@ BlockClosure>>on:do:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-23T15:26:23.098284-04:00
+		creationTime: 	2020-07-29T16:47:25.093322-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -2342,7 +2021,7 @@ WorkingSession>>runList:do:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-23T15:26:23.098284-04:00
+		creationTime: 	2020-07-29T16:47:25.093322-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -2354,7 +2033,7 @@ WorkingSession>>runStartup:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-23T15:26:23.098284-04:00
+		creationTime: 	2020-07-29T16:47:25.093322-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -2366,7 +2045,7 @@ WorkingSession>>start:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-23T15:26:23.098284-04:00
+		creationTime: 	2020-07-29T16:47:25.093322-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -2459,7 +2138,7 @@ Pharo cannot locate the sources file named /mnt/c/Users/VictorStefano/Documents/
 
 Please check that the file is named properly and is in the
 same directory as this image.
-23 June 2020 3:26:58.396659 pm
+29 July 2020 5:08:50.174818 pm
 
 VM: unix - x86_64 - linux-gnu - CoInterpreter * VMMaker-CompatibleUserName.1580983506 uuid: 7aff73cb-5a2e-5002-a356-37de4e762a49 Feb 12 2020
 StackToRegisterMappingCogit * VMMaker-CompatibleUserName.1580983506 uuid: 7aff73cb-5a2e-5002-a356-37de4e762a49 Feb 12 2020
@@ -2581,7 +2260,7 @@ ClassSessionHandler>>startup:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-23T15:26:58.283379-04:00
+		creationTime: 	2020-07-29T17:08:49.749048-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -2598,7 +2277,7 @@ ClassSessionHandler>>startup:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-23T15:26:58.283379-04:00
+		creationTime: 	2020-07-29T17:08:49.749048-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -2629,7 +2308,7 @@ BlockClosure>>on:do:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-23T15:26:58.283379-04:00
+		creationTime: 	2020-07-29T17:08:49.749048-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -2649,7 +2328,7 @@ WorkingSession>>runList:do:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-23T15:26:58.283379-04:00
+		creationTime: 	2020-07-29T17:08:49.749048-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -2661,7 +2340,7 @@ WorkingSession>>runStartup:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-23T15:26:58.283379-04:00
+		creationTime: 	2020-07-29T17:08:49.749048-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -2673,7 +2352,7 @@ WorkingSession>>start:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-23T15:26:58.283379-04:00
+		creationTime: 	2020-07-29T17:08:49.749048-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -2766,7 +2445,7 @@ Pharo cannot locate the sources file named /mnt/c/Users/VictorStefano/Documents/
 
 Please check that the file is named properly and is in the
 same directory as this image.
-25 June 2020 3:37:44.715867 pm
+29 July 2020 5:16:50.961473 pm
 
 VM: unix - x86_64 - linux-gnu - CoInterpreter * VMMaker-CompatibleUserName.1580983506 uuid: 7aff73cb-5a2e-5002-a356-37de4e762a49 Feb 12 2020
 StackToRegisterMappingCogit * VMMaker-CompatibleUserName.1580983506 uuid: 7aff73cb-5a2e-5002-a356-37de4e762a49 Feb 12 2020
@@ -2888,7 +2567,7 @@ ClassSessionHandler>>startup:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-25T15:37:44.472659-04:00
+		creationTime: 	2020-07-29T17:16:50.250322-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -2905,7 +2584,7 @@ ClassSessionHandler>>startup:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-25T15:37:44.472659-04:00
+		creationTime: 	2020-07-29T17:16:50.250322-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -2936,7 +2615,7 @@ BlockClosure>>on:do:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-25T15:37:44.472659-04:00
+		creationTime: 	2020-07-29T17:16:50.250322-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -2956,7 +2635,7 @@ WorkingSession>>runList:do:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-25T15:37:44.472659-04:00
+		creationTime: 	2020-07-29T17:16:50.250322-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -2968,7 +2647,7 @@ WorkingSession>>runStartup:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-25T15:37:44.472659-04:00
+		creationTime: 	2020-07-29T17:16:50.250322-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 
@@ -2980,314 +2659,7 @@ WorkingSession>>start:
 		manager: 	a SessionManager
 		deferredStartupActions: 	an OrderedCollection([ self new activate ])
 		id: 	nil
-		creationTime: 	2020-06-25T15:37:44.472659-04:00
-		properties: 	a Dictionary(#accessMode->#readWrite )
-
-
-SessionManager>>launchSnapshot:andQuit:
-	Receiver: a SessionManager
-	Arguments and temporary variables: 
-		arg1: 	true
-		arg2: 	true
-		tmp1: 	true
-		tmp2: 	tru
-	Receiver's instance variables: 
-		currentSession: 	a WorkingSession
-		categories: 	an OrderedCollection(a SessionCategory(System) a SessionCategory(Ne...etc...
-		guiCategory: 	a SessionCategory(Graphical User Interface)
-		toolsCategory: 	a SessionCategory(Tools)
-		networkCategory: 	a SessionCategory(Network)
-		systemCategory: 	a SessionCategory(System)
-		userCategory: 	a SessionCategory(User)
-
-
-[ tmp3 := self launchSnapshot: arg1 andQuit: arg2.
-tmp1 signal ] in SessionManager>>snapshot:andQuit:
-	Receiver: a SessionManager
-	Arguments and temporary variables: 
-<<error during printing>
-	Receiver's instance variables: 
-		currentSession: 	a WorkingSession
-		categories: 	an OrderedCollection(a SessionCategory(System) a SessionCategory(Ne...etc...
-		guiCategory: 	a SessionCategory(Graphical User Interface)
-		toolsCategory: 	a SessionCategory(Tools)
-		networkCategory: 	a SessionCategory(Network)
-		systemCategory: 	a SessionCategory(System)
-		userCategory: 	a SessionCategory(User)
-
-
-[ self value.
-Processor terminateActive ] in BlockClosure>>newProcess
-	Receiver: [ tmp3 := self launchSnapshot: arg1 andQuit: arg2.
-tmp1 signal ]
-	Arguments and temporary variables: 
-
-	Receiver's instance variables: 
-		outerContext: 	SessionManager>>snapshot:andQuit:
-		startpc: 	135
-		numArgs: 	0
-
-
-
---- The full stack ---
-StartupUIManager>>inform:
-PharoFilesOpener(Object)>>inform:
-PharoFilesOpener>>inform:withRef:
-PharoFilesOpener>>inform:withSourceRef:
-PharoFilesOpener>>informCannotLocateSources
-PharoFilesOpener>>sourcesFileOrNil
-SourceFileArray>>ensureOpen
-SmalltalkImage>>openSourceFiles
-SourceFileArray class>>startUp:
-ClassSessionHandler>>startup:
-[ :arg2 | arg2 startup: arg1 ] in WorkingSession>>runStartup:
-[ arg2 value: arg3 ] in [ :arg3 | 
-[ arg2 value: arg3 ]
-	on: Exception
-	do: [ :arg4 | self errorHandler handleError: arg4 ] ] in WorkingSession>>runList:do:
-BlockClosure>>on:do:
-[ :arg3 | 
-[ arg2 value: arg3 ]
-	on: Exception
-	do: [ :arg4 | self errorHandler handleError: arg4 ] ] in WorkingSession>>runList:do:
-Array(SequenceableCollection)>>do:
-WorkingSession>>runList:do:
-WorkingSession>>runStartup:
-WorkingSession>>start:
-SessionManager>>launchSnapshot:andQuit:
-[ tmp3 := self launchSnapshot: arg1 andQuit: arg2.
-tmp1 signal ] in SessionManager>>snapshot:andQuit:
-[ self value.
-Processor terminateActive ] in BlockClosure>>newProcess
--------------------------------------------------------------------------------
-
-
-===============================================================================
-Notice: Pharo cannot locate the sources file named /mnt/c/Users/VictorStefano/Documents/Unity Projects/PharoVRIDE/Assets/StreamingAssets/PharoEngine/Pharo8.0-32bit-5173b02.sources.
-
-Please check that the file is named properly and is in the
-same directory as this image.
-===============================================================================
-THERE_BE_DRAGONS_HERE
-Pharo cannot locate the sources file named /mnt/c/Users/VictorStefano/Documents/Unity Projects/PharoVRIDE/Assets/StreamingAssets/PharoEngine/Pharo8.0-32bit-5173b02.sources.
-
-Please check that the file is named properly and is in the
-same directory as this image.
-25 June 2020 3:38:20.688593 pm
-
-VM: unix - x86_64 - linux-gnu - CoInterpreter * VMMaker-CompatibleUserName.1580983506 uuid: 7aff73cb-5a2e-5002-a356-37de4e762a49 Feb 12 2020
-StackToRegisterMappingCogit * VMMaker-CompatibleUserName.1580983506 uuid: 7aff73cb-5a2e-5002-a356-37de4e762a49 Feb 12 2020
-VM: 202002121043 https://github.com/pharo-project/opensmalltalk-vm.git Date: Wed Feb 12 11:43:20 2020 CommitHash: 52202d8 Plugins: 202002121043 https://github.com/pharo-project/opensmalltalk-vm.git
-
-Image: Pharo8.0.0 [Build information: Pharo-8.0.0+build.1134.sha.5173b0271894727189f261cb9eb9beaa3db3f205 (64 Bit)]
-
-StartupUIManager>>inform:
-	Receiver: a StartupUIManager
-	Arguments and temporary variables: 
-		arg1: 	'Pharo cannot locate the sources file named /mnt/c/Users/VictorStefano/Do...etc...
-		tmp1: 	ni
-	Receiver's instance variables: 
-		doNotQuitOnRestart: 	false
-		uiManager: 	nil
-
-
-PharoFilesOpener(Object)>>inform:
-	Receiver: a PharoFilesOpener
-	Arguments and temporary variables: 
-		arg1: 	'Pharo cannot locate the sources file named /mnt/c/Users/VictorStefano/Do...etc..
-	Receiver's instance variables: 
-		shouldInformAboutReadOnlyChanges: 	nil
-
-
-PharoFilesOpener>>inform:withRef:
-	Receiver: a PharoFilesOpener
-	Arguments and temporary variables: 
-		arg1: 	'Pharo cannot locate &fileRef.
-
-Please check that the file is named prope...etc...
-		arg2: 	'the sources file named /mnt/c/Users/VictorStefano/Documents/Unity Projec...etc..
-	Receiver's instance variables: 
-		shouldInformAboutReadOnlyChanges: 	nil
-
-
-PharoFilesOpener>>inform:withSourceRef:
-	Receiver: a PharoFilesOpener
-	Arguments and temporary variables: 
-		arg1: 	'Pharo cannot locate &fileRef.
-
-Please check that the file is named prope...etc...
-		arg2: 	'/mnt/c/Users/VictorStefano/Documents/Unity Projects/PharoVRIDE/Assets/St...etc..
-	Receiver's instance variables: 
-		shouldInformAboutReadOnlyChanges: 	nil
-
-
-PharoFilesOpener>>informCannotLocateSources
-	Receiver: a PharoFilesOpener
-	Arguments and temporary variables: 
-		tmp1: 	'Pharo cannot locate &fileRef.
-
-Please check that the file is named prope...etc..
-	Receiver's instance variables: 
-		shouldInformAboutReadOnlyChanges: 	nil
-
-
-PharoFilesOpener>>sourcesFileOrNil
-	Receiver: a PharoFilesOpener
-	Arguments and temporary variables: 
-		tmp1: 	SourceFile(/mnt/c/Users/VictorStefano/Documents/Unity Projects/PharoVRIDE...etc..
-	Receiver's instance variables: 
-		shouldInformAboutReadOnlyChanges: 	nil
-
-
-SourceFileArray>>ensureOpen
-	Receiver: a SourceFileArray
-	Arguments and temporary variables: 
-		tmp1: 	nil
-		tmp2: 	ni
-	Receiver's instance variables: 
-		files: 	#(nil nil)
-		readOnlyQueue: 	SharedQueue with 0 items
-		flushChanges: 	true
-
-
-SmalltalkImage>>openSourceFiles
-	Receiver: Smalltalk
-	Arguments and temporary variables: 
-
-	Receiver's instance variables: 
-		globals: 	a SystemDictionary(lots of globals)
-		specialObjectsArray: 	an Array(nil false true #Processor->Processor Bitmap Small...etc...
-		vm: 	a VirtualMachine
-
-
-SourceFileArray class>>startUp:
-	Receiver: SourceFileArray
-	Arguments and temporary variables: 
-		arg1: 	tru
-	Receiver's instance variables: 
-		superclass: 	Object
-		methodDict: 	a MethodDictionary(#changeRecordsFor:->SourceFileArray>>#changeReco...etc...
-		format: 	65539
-		layout: 	a FixedLayout
-		organization: 	a ClassOrganization
-		subclasses: 	nil
-		name: 	#SourceFileArray
-		classPool: 	a Dictionary()
-		sharedPools: 	an OrderedCollection()
-		environment: 	a SystemDictionary(lots of globals)
-		category: 	#'System-Sources-Sources'
-
-
-ClassSessionHandler>>startup:
-	Receiver: a ClassSessionHandler(SourceFileArray)
-	Arguments and temporary variables: 
-		arg1: 	tru
-	Receiver's instance variables: 
-		registeredClassName: 	#SourceFileArray
-
-
-[ :arg2 | arg2 startup: arg1 ] in WorkingSession>>runStartup:
-	Receiver: a WorkingSession
-	Arguments and temporary variables: 
-		arg1: 	true
-		arg2: 	a ClassSessionHandler(SourceFileArray
-	Receiver's instance variables: 
-		manager: 	a SessionManager
-		deferredStartupActions: 	an OrderedCollection([ self new activate ])
-		id: 	nil
-		creationTime: 	2020-06-25T15:38:20.578592-04:00
-		properties: 	a Dictionary(#accessMode->#readWrite )
-
-
-[ arg2 value: arg3 ] in [ :arg3 | 
-[ arg2 value: arg3 ]
-	on: Exception
-	do: [ :arg4 | self errorHandler handleError: arg4 ] ] in WorkingSession>>runList:do:
-	Receiver: a WorkingSession
-	Arguments and temporary variables: 
-		arg1: 	an Array(a ClassSessionHandler(SmallInteger) a ClassSessionHandler(Sessio...etc...
-		arg2: 	[ :arg2 | arg2 startup: arg1 ]
-		arg3: 	a ClassSessionHandler(SourceFileArray
-	Receiver's instance variables: 
-		manager: 	a SessionManager
-		deferredStartupActions: 	an OrderedCollection([ self new activate ])
-		id: 	nil
-		creationTime: 	2020-06-25T15:38:20.578592-04:00
-		properties: 	a Dictionary(#accessMode->#readWrite )
-
-
-BlockClosure>>on:do:
-	Receiver: [ arg2 value: arg3 ]
-	Arguments and temporary variables: 
-		arg1: 	Exception
-		arg2: 	[ :arg4 | self errorHandler handleError: arg4 
-	Receiver's instance variables: 
-		outerContext: 	[ :arg3 | 
-[ arg2 value: arg3 ]
-	on: Exception
-	do: [ :arg4 | sel...etc...
-		startpc: 	69
-		numArgs: 	0
-
-
-[ :arg3 | 
-[ arg2 value: arg3 ]
-	on: Exception
-	do: [ :arg4 | self errorHandler handleError: arg4 ] ] in WorkingSession>>runList:do:
-	Receiver: a WorkingSession
-	Arguments and temporary variables: 
-		arg1: 	an Array(a ClassSessionHandler(SmallInteger) a ClassSessionHandler(Sessio...etc...
-		arg2: 	[ :arg2 | arg2 startup: arg1 ]
-		arg3: 	a ClassSessionHandler(SourceFileArray
-	Receiver's instance variables: 
-		manager: 	a SessionManager
-		deferredStartupActions: 	an OrderedCollection([ self new activate ])
-		id: 	nil
-		creationTime: 	2020-06-25T15:38:20.578592-04:00
-		properties: 	a Dictionary(#accessMode->#readWrite )
-
-
-Array(SequenceableCollection)>>do:
-	Receiver: an Array(a ClassSessionHandler(SmallInteger) a ClassSessionHandler(SessionAccessModeResolv...etc...
-	Arguments and temporary variables: 
-<<error during printing>
-	Receiver's instance variables: 
-an Array(a ClassSessionHandler(SmallInteger) a ClassSessionHandler(SessionAccessModeResolv...etc...
-
-WorkingSession>>runList:do:
-	Receiver: a WorkingSession
-	Arguments and temporary variables: 
-		arg1: 	an Array(a ClassSessionHandler(SmallInteger) a ClassSessionHandler(Sessio...etc...
-		arg2: 	[ :arg2 | arg2 startup: arg1 
-	Receiver's instance variables: 
-		manager: 	a SessionManager
-		deferredStartupActions: 	an OrderedCollection([ self new activate ])
-		id: 	nil
-		creationTime: 	2020-06-25T15:38:20.578592-04:00
-		properties: 	a Dictionary(#accessMode->#readWrite )
-
-
-WorkingSession>>runStartup:
-	Receiver: a WorkingSession
-	Arguments and temporary variables: 
-		arg1: 	tru
-	Receiver's instance variables: 
-		manager: 	a SessionManager
-		deferredStartupActions: 	an OrderedCollection([ self new activate ])
-		id: 	nil
-		creationTime: 	2020-06-25T15:38:20.578592-04:00
-		properties: 	a Dictionary(#accessMode->#readWrite )
-
-
-WorkingSession>>start:
-	Receiver: a WorkingSession
-	Arguments and temporary variables: 
-		arg1: 	tru
-	Receiver's instance variables: 
-		manager: 	a SessionManager
-		deferredStartupActions: 	an OrderedCollection([ self new activate ])
-		id: 	nil
-		creationTime: 	2020-06-25T15:38:20.578592-04:00
+		creationTime: 	2020-07-29T17:16:50.250322-04:00
 		properties: 	a Dictionary(#accessMode->#readWrite )
 
 

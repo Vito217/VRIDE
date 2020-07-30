@@ -21,5 +21,6 @@ public class MethodWindow : BrowserWindow
             }
             yield return null;
         }
+        yield return base.Coroutine();
     }
 }
