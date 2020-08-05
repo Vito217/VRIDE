@@ -198,9 +198,10 @@ namespace SaveAndLoad
             }
             else
             {
-                Session session = await AsynchronousSerializer.Deserialize(baseDataPath);
+                //Session session = await AsynchronousSerializer.Deserialize(baseDataPath);
 
-                VRIDEController.sysData = session.classesAndMethods;
+                //VRIDEController.sysData = session.classesAndMethods;
+                VRIDEController.sysData = new SystemData();
                 player.browsers = new List<Browser>();
                 player.playgrounds = new List<Playground>();
                 player.inspectors = new List<Inspector>();

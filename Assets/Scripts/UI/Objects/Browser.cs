@@ -21,6 +21,7 @@ public class Browser : InitializeBehaviour
 
     async void PharoDefine()
     {
+        DeactivateTemporarily();
         string output = "";
         try
         {
@@ -80,7 +81,8 @@ public class Browser : InitializeBehaviour
         finally
         {
             field.text += output;
-        }        
+        }
+        Reactivate();
     }
 
     void createOrUpdatePackage(string packageName)
@@ -208,7 +210,7 @@ public class Browser : InitializeBehaviour
 
     public override void innerBehaviour()
     {
-        if (Input.anyKeyDown && field.isFocused)
+        if (Input.anyKeyDown && field.isFocused && !loadingWheel.active)
         {
             bool leftCmd = Input.GetKey(KeyCode.LeftCommand);
             bool leftCtrl = Input.GetKey(KeyCode.LeftControl);

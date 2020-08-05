@@ -14,7 +14,7 @@ public class SystemData
 
     public SystemData()
     {
-        retrieveSystemData();
+        //retrieveSystemData();
     }
 
     public async void retrieveSystemData()

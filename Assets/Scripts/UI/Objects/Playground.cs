@@ -12,6 +12,7 @@ public class Playground : InitializeBehaviour
 
     async void PharoDo()
     {
+        DeactivateTemporarily();
         string output = "";
         try
         {
@@ -83,10 +84,12 @@ public class Playground : InitializeBehaviour
         {
             field.text += output;
         }
+        Reactivate();
     }
 
     async void PharoPrint()
     {
+        DeactivateTemporarily();
         string output = "";
         try
         {
@@ -105,10 +108,12 @@ public class Playground : InitializeBehaviour
         {
             field.text += output;
         }
+        Reactivate();
     }
 
     async void PharoInspect()
     {
+        DeactivateTemporarily();
         string output = "";
         try
         {
@@ -149,6 +154,7 @@ public class Playground : InitializeBehaviour
         {
             field.text += output;
         }
+        Reactivate();
     }
 
     void PharoBrowse()
@@ -207,7 +213,7 @@ public class Playground : InitializeBehaviour
 
     public override void innerBehaviour()
     {
-        if (Input.anyKeyDown && field.isFocused)
+        if (Input.anyKeyDown && field.isFocused && !loadingWheel.active)
         {
             bool leftCmd = Input.GetKey(KeyCode.LeftCommand);
             bool leftCtrl = Input.GetKey(KeyCode.LeftControl);

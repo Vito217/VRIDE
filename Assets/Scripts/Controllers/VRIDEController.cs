@@ -6,6 +6,7 @@ using Valve.VR.InteractionSystem;
 using LoggingModule;
 using SaveAndLoad;
 using PharoModule;
+//using Microsoft.CognitiveServices.Speech;
 
 public class VRIDEController : MonoBehaviour
 {
@@ -70,7 +71,6 @@ public class VRIDEController : MonoBehaviour
         {
             SaveAndLoadModule.Save(this);
             //Pharo.Execute("SmalltalkImage current snapshot: true andQuit: true.");
-            Pharo.Execute("SmalltalkImage current snapshot: true andQuit: false.");
             InteractionLogger.SessionEnd();
             Application.Quit();
         }

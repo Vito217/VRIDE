@@ -20,6 +20,7 @@ public abstract class InitializeBehaviour : MonoBehaviour
     public TextMeshProUGUI code;
     public TMP_InputField field;
     public VRIDEController player;
+    public GameObject loadingWheel;
     public Image panel;
 
     public bool dragging = false;
@@ -164,6 +165,16 @@ public abstract class InitializeBehaviour : MonoBehaviour
             0.15f
         );
         transform.forward = new_forw;
+    }
+
+    public void DeactivateTemporarily()
+    {
+        loadingWheel.SetActive(true);
+    }
+
+    public void Reactivate()
+    {
+        loadingWheel.SetActive(false);
     }
 
     public virtual void Initialize(Vector3 init_pos, Vector3 final_pos,
