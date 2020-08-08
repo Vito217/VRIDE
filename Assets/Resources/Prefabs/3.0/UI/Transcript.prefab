@@ -215,11 +215,11 @@ MonoBehaviour:
   code: {fileID: 6945062915613269256}
   field: {fileID: 5517324446377372436}
   player: {fileID: 0}
+  loadingWheel: {fileID: 0}
   panel: {fileID: 9141360250174672290}
   dragging: 0
   rel_pos: {x: 0, y: 0, z: 0}
   rel_fwd: {x: 0, y: 0, z: 0}
-  notAN: 20000a0009000d00
 --- !u!223 &6877927472131900574
 Canvas:
   m_ObjectHideFlags: 0
@@ -962,6 +962,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 689609217813546471, guid: 49284f16fccc7ef49bc9c625b19f6c36,
+        type: 3}
+      propertyPath: m_GlobalPointSize
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 2089797138330010477, guid: 49284f16fccc7ef49bc9c625b19f6c36,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -992,6 +997,16 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2693525693033378811, guid: 49284f16fccc7ef49bc9c625b19f6c36,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693525693033378811, guid: 49284f16fccc7ef49bc9c625b19f6c36,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 5564021669224696513, guid: 49284f16fccc7ef49bc9c625b19f6c36,
         type: 3}
       propertyPath: m_Name
@@ -1021,6 +1036,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342872902111208537, guid: 49284f16fccc7ef49bc9c625b19f6c36,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342872902111208537, guid: 49284f16fccc7ef49bc9c625b19f6c36,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49284f16fccc7ef49bc9c625b19f6c36, type: 3}

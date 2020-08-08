@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Net.Http;
 using System.Text;
 using System.Diagnostics;
@@ -15,7 +16,8 @@ namespace PharoModule
         public static async Task Start()
         {
             await Task.Run(() => {
-                try
+                //client.Timeout = TimeSpan.FromSeconds(20);
+                /**try
                 {
                     string enginePath = Path.Combine(Application.streamingAssetsPath, "PharoEngine");
                     string arguments = $"Pharo.image st server.st";
@@ -64,24 +66,25 @@ namespace PharoModule
                 {
                     UnityEngine.Debug.Log("Local server not found. Make sure you have " +
                         "Pharo Launcher running.");
-                }
+                }**/
             });
         }
 
         public static async Task<string> Execute(string code)
         {
             var request = await client.PostAsync(IP, new StringContent(code, Encoding.UTF8));
-            return await request.Content.ReadAsStringAsync(); ;
+            return await request.Content.ReadAsStringAsync();
         }
 
         public static async Task<string> Print(string code)
         {
             if (!code.Contains("compile"))
                 code = "self class compiler evaluate: '" + code.Replace("'", "''") + "'";
+
             return await Execute(
                 "[" + code + "]\n" +
-                    "\ton: Error\n" +
-                    "\tdo: [:e | '[Error] ' , (e message lookupClass name), ': ' , (e messageText)]."
+                    "\ton: Exception\n" +
+                    "\tdo: [:e | e traceCr]."
             );
         }
 

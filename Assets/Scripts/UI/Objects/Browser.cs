@@ -44,7 +44,7 @@ public class Browser : InitializeBehaviour
                 }
                 else
                 {
-                    output = " ->" + responseString.Remove(responseString.LastIndexOf("\n"), 1);
+                    output = " -> " + responseString.Remove(responseString.LastIndexOf("\n"), 1);
                 }
                 InteractionLogger.RegisterCodeDefinition("class", clean_code, responseString);
             }
@@ -69,14 +69,14 @@ public class Browser : InitializeBehaviour
                 }
                 else
                 {
-                    output = " ->" + responseString.Remove(responseString.LastIndexOf("\n"), 1);
+                    output = " -> " + responseString.Remove(responseString.LastIndexOf("\n"), 1);
                 }
                 InteractionLogger.RegisterCodeDefinition("method", clean_code, responseString);
             }
         }
         catch (Exception e)
         {
-            output = " ->[Error] " + e.Message;
+            output = " -> [Error] " + e.Message;
         }
         finally
         {
