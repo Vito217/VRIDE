@@ -9,8 +9,9 @@ namespace SaveAndLoad
 {
     public class SaveAndLoadModule : MonoBehaviour
     {
+        private static bool inEditor = Application.isEditor;
         static string sessionPath = Path.Combine(Application.persistentDataPath, "session.data");
-        static string baseDataPath = Path.Combine(Application.streamingAssetsPath, "BaseData", "session.data");
+        static string baseDataPath = Path.Combine(Application.persistentDataPath, "BaseData", "session.data");
 
         public static List<BrowserData> SerializeBrowsers(List<Browser> browsers)
         {
@@ -174,38 +175,50 @@ namespace SaveAndLoad
 
         public static async Task Save(VRIDEController player)
         {
-            Session s = new Session(
-                VRIDEController.sysData,
-                SerializeBrowsers(player.browsers),
-                SerializePlaygrounds(player.playgrounds),
-                SerializeInspectors(player.inspectors),
-                SerializeGraphs(player.graphs)
-            );
-            await AsynchronousSerializer.Serialize(sessionPath, s);
+            if (!inEditor)
+            {
+                if (!Directory.Exists(Application.persistentDataPath))
+                    Directory.CreateDirectory(Application.persistentDataPath);
+
+                Session s = new Session(
+                    VRIDEController.sysData,
+                    SerializeBrowsers(player.browsers),
+                    SerializePlaygrounds(player.playgrounds),
+                    SerializeInspectors(player.inspectors),
+                    SerializeGraphs(player.graphs)
+                );
+                await AsynchronousSerializer.Serialize(sessionPath, s);
+            }
         }
 
         public static async Task Load(VRIDEController player)
         {
-            if (File.Exists(sessionPath))
+            if (!inEditor)
             {
-                Session session = await AsynchronousSerializer.Deserialize(sessionPath);
+                if (!Directory.Exists(Application.persistentDataPath))
+                    Directory.CreateDirectory(Application.persistentDataPath);
 
-                VRIDEController.sysData = session.classesAndMethods;
-                DeserializeBrowsers(session, player);
-                DeserializePlaygrounds(session, player);
-                DeserializeInspectors(session, player);
-                DeserializeGraphs(session, player);
-            }
-            else
-            {
-                //Session session = await AsynchronousSerializer.Deserialize(baseDataPath);
+                if (File.Exists(sessionPath))
+                {
+                    Session session = await AsynchronousSerializer.Deserialize(sessionPath);
 
-                //VRIDEController.sysData = session.classesAndMethods;
-                VRIDEController.sysData = new SystemData();
-                player.browsers = new List<Browser>();
-                player.playgrounds = new List<Playground>();
-                player.inspectors = new List<Inspector>();
-                player.graphs = new List<Graph>();
+                    VRIDEController.sysData = session.classesAndMethods;
+                    DeserializeBrowsers(session, player);
+                    DeserializePlaygrounds(session, player);
+                    DeserializeInspectors(session, player);
+                    DeserializeGraphs(session, player);
+                }
+                else
+                {
+                    //Session session = await AsynchronousSerializer.Deserialize(baseDataPath);
+
+                    //VRIDEController.sysData = session.classesAndMethods;
+                    VRIDEController.sysData = new SystemData();
+                    player.browsers = new List<Browser>();
+                    player.playgrounds = new List<Playground>();
+                    player.inspectors = new List<Inspector>();
+                    player.graphs = new List<Graph>();
+                }
             }
         }
     }

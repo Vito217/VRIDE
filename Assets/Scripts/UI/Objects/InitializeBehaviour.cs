@@ -162,7 +162,7 @@ public abstract class InitializeBehaviour : MonoBehaviour
         transform.position = Vector3.MoveTowards(
             transform.position,
             new_pos,
-            0.15f
+            0.5f
         );
         transform.forward = new_forw;
     }

@@ -57,7 +57,7 @@ namespace LoggingModule
         };
 
         static string persistentPath = Path.Combine(Application.persistentDataPath, "log.txt");
-        static string streamingPath = Path.Combine(Application.streamingAssetsPath, "log.txt");
+        static string streamingPath = Path.Combine(Application.persistentDataPath, "log.txt");
 
         public static void writeLineToLog(string line)
         {
@@ -65,6 +65,8 @@ namespace LoggingModule
             {
                 try
                 {
+                    if (!Directory.Exists(Application.persistentDataPath))
+                        Directory.CreateDirectory(Application.persistentDataPath);
                     string path = usePersistentPath ? persistentPath : streamingPath;
                     using (StreamWriter w = File.AppendText(path))
                         w.WriteLine(line);

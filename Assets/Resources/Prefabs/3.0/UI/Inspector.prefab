@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -618,7 +618,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 6973555645725529352}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99999577
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1032,8 +1032,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7531032927146713190}
   m_HandleRect: {fileID: 8478698156533844246}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.99998367
+  m_Value: 0
+  m_Size: 0.99993473
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1230,7 +1230,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -0.0018032014, y: 0.000016050004}
+  m_AnchoredPosition: {x: -0.0005647398, y: 0.0034851672}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &5415179773984579621
@@ -1399,7 +1399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -1877,6 +1877,11 @@ PrefabInstance:
       propertyPath: m_OnDeselect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: onDeselect
       objectReference: {fileID: 0}
+    - target: {fileID: 689609217813546471, guid: 49284f16fccc7ef49bc9c625b19f6c36,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2089797138330010477, guid: 49284f16fccc7ef49bc9c625b19f6c36,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1956,6 +1961,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3896850900960241868, guid: 49284f16fccc7ef49bc9c625b19f6c36,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4356369130551961711, guid: 49284f16fccc7ef49bc9c625b19f6c36,
         type: 3}
