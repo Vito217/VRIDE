@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
@@ -19,12 +20,17 @@ public class Playground : InitializeBehaviour
             string selectedCode = getSelectedCode(cleanCode(field.text));
 
             // Getting Transcripts
-            foreach (Match m in Regex.Matches(selectedCode, @"VRIDE[\n\s]+log:(.*)\."))
-            {
+            foreach (Match m in Regex.Matches(selectedCode,
+                @"VRIDE[\n\s]+log:[\n\s\t]+(.*)(\.|\s*\Z)"))
+            { 
                 string response = await Pharo.Print(m.Groups[1].Value);
                 response = response.Replace("'", "").Replace("\"", "");
                 VRIDEController.transcriptContents += response + "\n";
             }
+            selectedCode = Regex.Replace(selectedCode, 
+                @"VRIDE[\n\s]+log:[\n\s\t]+(.*)(\.|\s*\Z)", "");
+
+            Debug.Log(selectedCode);
 
             string pattern = @"(\A|[\n\s]+)([a-zA-Z0-9]+)[\n\s]+visualize[\n\s]+(asSVG|asPNG)[\n\s]+?\.";
             MatchCollection matches = Regex.Matches(selectedCode, pattern);
@@ -70,9 +76,10 @@ public class Playground : InitializeBehaviour
                 }
                 InteractionLogger.RegisterCodeExecution(selectedCode, responseString);
             }
-            else
+            else if(!(Regex.Match(selectedCode, @"(\A[\n\t\s]+\Z)").Success || 
+                selectedCode == ""))
             {
-                PharoInspect();
+                await PharoInspect();
             }
         }
         catch (Exception e)
@@ -94,6 +101,17 @@ public class Playground : InitializeBehaviour
         try
         {
             string selection = getSelectedCode(cleanCode(field.text));
+
+            foreach (Match m in Regex.Matches(selection,
+                @"VRIDE[\n\s]+log:[\n\s\t]+(.*)(\.|\s*\Z)"))
+            {
+                string response = await Pharo.Print(m.Groups[1].Value);
+                response = response.Replace("'", "").Replace("\"", "");
+                VRIDEController.transcriptContents += response + "\n";
+            }
+            selection = Regex.Replace(selection,
+                @"VRIDE[\n\s]+log:[\n\s\t]+(.*)(\.|\s*\Z)", "");
+
             string res = await Pharo.Print(selection);
             //output = " <color=#b32d00>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>";
             output = " -> " + res.Remove(res.LastIndexOf("\n"), 1);
@@ -111,7 +129,7 @@ public class Playground : InitializeBehaviour
         Reactivate();
     }
 
-    async void PharoInspect()
+    async Task PharoInspect()
     {
         DeactivateTemporarily();
         string output = "";
@@ -119,7 +137,7 @@ public class Playground : InitializeBehaviour
         {
             string selection = getSelectedCode(cleanCode(field.text));
             string res = await Pharo.Inspect(selection);
-            if (!res.Contains("[Error]"))
+            if (res.Contains("OrderedCollection"))
             {
                 if(insp == null)
                 {

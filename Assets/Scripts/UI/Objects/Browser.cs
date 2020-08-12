@@ -31,12 +31,15 @@ public class Browser : InitializeBehaviour
 
             if (clean_code.Contains("subclass"))
             {
-                string responseString = await Pharo.Execute(clean_code);
-                if (!responseString.Contains("[Error]"))
-                {
-                    string packageName = Regex.Matches(clean_code, @"package:\s*'(.*)'")[0].Groups[1].Value;
-                    string className = Regex.Matches(clean_code, @"\s#(.*)(\s|\n)")[0].Groups[1].Value;
+                string className = Regex.Matches(clean_code, @"\s#(.*)(\s|\n)")[0].Groups[1].Value;
+                string packageName = Regex.Matches(clean_code, @"package:\s*'(.*)'")[0].Groups[1].Value;
+                if (String.IsNullOrWhiteSpace(className) ||
+                    String.IsNullOrWhiteSpace(packageName))
+                    throw new Exception("Must specify a class and a package");
 
+                string responseString = await Pharo.Print(clean_code);
+                if (responseString.Contains(className))
+                {
                     // Getting or updating package
                     createOrUpdatePackage(packageName);
                     createOrUpdateClass(packageName, className, input_code);
@@ -59,10 +62,10 @@ public class Browser : InitializeBehaviour
                     currentClass + " compile: '" + clean_code.Replace("'", "''") + "'";
 
                 // Getting method name
-                string responseString = await Pharo.Execute(method_code);
-                if (!responseString.Contains("[Error]"))
+                string methodName = new StringReader(clean_code).ReadLine().Replace("\n", "");
+                string responseString = await Pharo.Print(method_code);
+                if (responseString.Contains(methodName))
                 {
-                    string methodName = new StringReader(clean_code).ReadLine().Replace("\n", "");
                     methodName = Regex.Replace(methodName, @"(.*:)\s*[a-zA-Z0-9]+[\n\s]+", "$1");
                     createOrUpdateMethod(currentPackage, currentClass, methodName, input_code);
                     class_list.Find(currentPackage+"/"+currentClass).gameObject.GetComponent<BrowserClass>().click();
@@ -89,9 +92,8 @@ public class Browser : InitializeBehaviour
     {
         // Getting package and its classes
         Transform existingPackage = package_list.transform.Find(packageName);
-        BrowserPackage newPackage = !existingPackage ?
-            Instantiator.Instance.PackageObject(package_list, packageName, field, null, this) :
-            existingPackage.gameObject.GetComponent<BrowserPackage>();
+        if (!existingPackage)
+            Instantiator.Instance.PackageObject(package_list, packageName, field, null, this);
 
         // Updating package
         if (!VRIDEController.sysData.data.ContainsKey(packageName))

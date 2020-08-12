@@ -90,7 +90,9 @@ namespace PharoModule
 
         public static async Task<string> Inspect(string code)
         {
-            return await Print(
+            return await Print
+            (
+                "| res tuples |\n" +
                 "res := [" + code + "] value .\n" +
                 "tuples := OrderedCollection new.\n" +
                 "tuples addLast: 'self=',(res value asString).\n" +
