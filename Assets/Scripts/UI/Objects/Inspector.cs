@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using LoggingModule;
+using SaveAndLoad;
 
 public class Inspector : InitializeBehaviour
 {
@@ -35,7 +36,7 @@ public class Inspector : InitializeBehaviour
 
     public override void onClose()
     {
-        player.inspectors.Remove(this);
+        SaveAndLoadModule.inspectors.Remove(this);
         InteractionLogger.Discount("Inspector");
         Destroy(gameObject);
     }

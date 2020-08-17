@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using PharoModule;
 using LoggingModule;
+using SaveAndLoad;
 
 public class Playground : InitializeBehaviour
 {
@@ -25,7 +26,7 @@ public class Playground : InitializeBehaviour
             { 
                 string response = await Pharo.Print(m.Groups[1].Value);
                 response = response.Replace("'", "").Replace("\"", "");
-                VRIDEController.transcriptContents += response + "\n";
+                SaveAndLoadModule.transcriptContents += response + "\n";
             }
             selectedCode = Regex.Replace(selectedCode, 
                 @"VRIDE[\n\s]+log:[\n\s\t]+(.*)(\.|\s*\Z)", "");
@@ -52,14 +53,14 @@ public class Playground : InitializeBehaviour
 
                 // Execution
                 string responseString = await Pharo.Print(selectedCode);
-                if (!responseString.Contains("[Error]"))
+                if (Regex.Match(responseString, @"\[[0-9\s]+\]").Success)
                 {
                     if (view == null)
                     {
                         float width = GetComponent<RectTransform>().sizeDelta.x;
                         float height = GetComponent<RectTransform>().sizeDelta.y;
                         view = Instantiator.Instance.Graph() as Graph;
-                        player.graphs.Add(view);
+                        SaveAndLoadModule.graphs.Add(view);
                         view.Initialize(
                             transform.position,
                             transform.TransformPoint(new Vector3(-width, 0, 0)),
@@ -107,7 +108,7 @@ public class Playground : InitializeBehaviour
             {
                 string response = await Pharo.Print(m.Groups[1].Value);
                 response = response.Replace("'", "").Replace("\"", "");
-                VRIDEController.transcriptContents += response + "\n";
+                SaveAndLoadModule.transcriptContents += response + "\n";
             }
             selection = Regex.Replace(selection,
                 @"VRIDE[\n\s]+log:[\n\s\t]+(.*)(\.|\s*\Z)", "");
@@ -144,7 +145,7 @@ public class Playground : InitializeBehaviour
                     float width = GetComponent<RectTransform>().sizeDelta.x;
                     Vector3 newWorldPos = transform.TransformPoint(new Vector3(width, 0, 0));
                     insp = Instantiator.Instance.Inspector() as Inspector;
-                    player.inspectors.Add(insp);
+                    SaveAndLoadModule.inspectors.Add(insp);
                     insp.Initialize(
                         transform.position,
                         newWorldPos,
@@ -183,7 +184,7 @@ public class Playground : InitializeBehaviour
         foreach (KeyValuePair<string,
                  SortedDictionary<string, (string classCode,
                     List<(string methodName, string methodCode, string side)> classMethods)>> 
-                        keyVal in VRIDEController.sysData.data)
+                        keyVal in SaveAndLoadModule.sysData.data)
         {
             packageName = keyVal.Key;
             foreach (KeyValuePair<string, (string classCode,
@@ -224,7 +225,7 @@ public class Playground : InitializeBehaviour
 
     public override void onClose()
     {
-        player.playgrounds.Remove(this);
+        SaveAndLoadModule.playgrounds.Remove(this);
         InteractionLogger.Discount("Playground");
         Destroy(gameObject);
     }

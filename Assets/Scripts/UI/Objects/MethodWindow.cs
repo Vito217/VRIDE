@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using SaveAndLoad;
 using System.Collections.Generic;
 
 public class MethodWindow : BrowserWindow
@@ -9,7 +10,7 @@ public class MethodWindow : BrowserWindow
     public override IEnumerator Coroutine()
     {
         foreach ((string methodName, string methodCode, string side) methodAndCode in
-                VRIDEController.sysData.data[package][name].classMethods)
+                SaveAndLoadModule.sysData.data[package][name].classMethods)
         {
             if (side == methodAndCode.side)
             {

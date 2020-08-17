@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using UnityEngine;
 using PharoModule;
 
@@ -17,6 +18,18 @@ public class SystemData
         //retrieveSystemData();
     }
 
+    public async Task LoadData(SortedDictionary<string, SortedDictionary<string, (string classCode,
+        List<(string methodName, string methodCode, string side)> classMethods)>> newData)
+    {
+        await Task.Run(() => {
+            foreach (KeyValuePair<string, SortedDictionary<string, (string classCode,
+                List<(string methodName, string methodCode, string side)> classMethods)>> pair in newData)
+            {
+                if (!data.ContainsKey(pair.Key))
+                    data.Add(pair.Key, pair.Value);
+            }
+        });
+    }
     public async void retrieveSystemData()
     {
         string code = "RPackageOrganizer packageOrganizer packageNames .";
@@ -35,7 +48,7 @@ public class SystemData
 
             code = "(RPackageOrganizer packageOrganizer packageNamed: '" + package + "') classes asString .";
             res = await Pharo.Execute(code);
-            Debug.Log(res);
+            //Debug.Log(res);
             res = Regex.Replace(res, @"(a Set\()|\)|'|#|\n", "");
             string[] classesList = res.Split(' ');
             if (classesList.Length > 0 && classesList[0] != "")

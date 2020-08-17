@@ -6,18 +6,10 @@ using Valve.VR.InteractionSystem;
 using LoggingModule;
 using SaveAndLoad;
 using PharoModule;
-//using Microsoft.CognitiveServices.Speech;
 
 public class VRIDEController : MonoBehaviour
 {
     public bool can_move = true;
-    public static SystemData sysData;
-    public static string transcriptContents = "";
-    public List<Browser> browsers;
-    public List<Playground> playgrounds;
-    public List<Inspector> inspectors;
-    public List<Graph> graphs;
-    public List<Transcript> transcripts;
 
     void Awake()
     {
@@ -80,7 +72,7 @@ public class VRIDEController : MonoBehaviour
     {
         Browser browser = Instantiator.Instance.Browser();
         browser.Initialize(newPos, newFinalPos, newForw, this);
-        browsers.Add(browser);
+        SaveAndLoadModule.browsers.Add(browser);
         InteractionLogger.Count("Browser");
     }
 
@@ -88,7 +80,7 @@ public class VRIDEController : MonoBehaviour
     {
         Playground playground = Instantiator.Instance.Playground();
         playground.Initialize(newPos, newFinalPos, newForw, this);
-        playgrounds.Add(playground);
+        SaveAndLoadModule.playgrounds.Add(playground);
         InteractionLogger.Count("Playground");
     }
 
@@ -96,7 +88,7 @@ public class VRIDEController : MonoBehaviour
     {
         Transcript transcript = Instantiator.Instance.Transcript();
         transcript.Initialize(newPos, newFinalPos, newForw, this);
-        transcripts.Add(transcript);
+        SaveAndLoadModule.transcripts.Add(transcript);
         InteractionLogger.Count("Transcript");
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using SaveAndLoad;
 
 public class ClassWindow : BrowserWindow
 {
@@ -7,7 +8,7 @@ public class ClassWindow : BrowserWindow
     {
         foreach (KeyValuePair<string, (string classCode,
             List<(string methodName, string methodCode, string side)> classMethods)>
-                keyVal in VRIDEController.sysData.data[name])
+                keyVal in SaveAndLoadModule.sysData.data[name])
         {
             string className = keyVal.Key;
             string classCode = keyVal.Value.classCode;

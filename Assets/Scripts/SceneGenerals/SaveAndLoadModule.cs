@@ -11,7 +11,15 @@ namespace SaveAndLoad
     {
         private static bool inEditor = Application.isEditor;
         static string sessionPath = Path.Combine(Application.persistentDataPath, "session.data");
-        static string baseDataPath = Path.Combine(Application.persistentDataPath, "BaseData", "session.data");
+        static string baseDataPath = Path.Combine(Application.streamingAssetsPath, "BaseData", "session.data");
+
+        public static SystemData sysData;
+        public static string transcriptContents = "";
+        public static List<Browser> browsers = new List<Browser>();
+        public static List<Playground> playgrounds = new List<Playground>();
+        public static List<Inspector> inspectors = new List<Inspector>();
+        public static List<Graph> graphs = new List<Graph>();
+        public static List<Transcript> transcripts = new List<Transcript>();
 
         public static List<BrowserData> SerializeBrowsers(List<Browser> browsers)
         {
@@ -21,14 +29,15 @@ namespace SaveAndLoad
                 Vector3 pos = browser.transform.position;
                 Vector3 fwd = browser.transform.forward;
 
+                string lastPackageName = "", lastClassName = "";
                 BrowserPackage lastPackage = browser.package_list.last_selected as BrowserPackage;
-                string lastPackageName = lastPackage == null ? "" : lastPackage.name;
-
-                Transform lastClass = browser.class_list.Find(lastPackageName);
-                string lastClassName = lastClass == null ?
-                    "" :
-                    lastClass.gameObject.GetComponent<ClassWindow>().last_selected.name;
-
+                if(lastPackage != null)
+                {
+                    lastPackageName = lastPackage.name;
+                    Transform lastClass = browser.class_list.Find(lastPackageName);
+                    if(lastClass != null)
+                        lastClassName = lastClass.gameObject.GetComponent<ClassWindow>().last_selected.name;
+                }
                 string lastSideName = browser.lastSelectedSide;
 
                 browserList.Add(new BrowserData(pos, fwd, lastClassName, lastPackageName, lastSideName));
@@ -39,7 +48,6 @@ namespace SaveAndLoad
         public static void DeserializeBrowsers(Session session, VRIDEController player)
         {
             List<BrowserData> browsersData = session.browsers;
-            List<Browser> browsers = new List<Browser>();
 
             foreach (BrowserData bdata in browsersData)
             {
@@ -67,7 +75,6 @@ namespace SaveAndLoad
                 browsers.Add(browser);
                 InteractionLogger.Count("Browser");
             }
-            player.browsers = browsers;
         }
 
         public static List<PlaygroundData> SerializePlaygrounds(List<Playground> playgrounds)
@@ -86,7 +93,7 @@ namespace SaveAndLoad
         public static void DeserializePlaygrounds(Session session, VRIDEController player)
         {
             List<PlaygroundData> playgroundsData = session.playgrounds;
-            List<Playground> playgrounds = new List<Playground>();
+
             foreach (PlaygroundData pdata in playgroundsData)
             {
                 Vector3 pos = new Vector3(pdata.position.x, 0f, pdata.position.z);
@@ -99,7 +106,6 @@ namespace SaveAndLoad
                 playgrounds.Add(playground);
                 InteractionLogger.Count("Playground");
             }
-            player.playgrounds = playgrounds;
         }
 
         public static List<InspectorData> SerializeInspectors(List<Inspector> inspectors)
@@ -118,7 +124,7 @@ namespace SaveAndLoad
         public static void DeserializeInspectors(Session session, VRIDEController player)
         {
             List<InspectorData> inspectorsData = session.inspectors;
-            List<Inspector> inspectors = new List<Inspector>();
+
             foreach (InspectorData idata in inspectorsData)
             {
                 Vector3 pos = new Vector3(idata.position.x, 0f, idata.position.z);
@@ -133,7 +139,6 @@ namespace SaveAndLoad
 
                 InteractionLogger.Count("Inspector");
             }
-            player.inspectors = inspectors;
         }
 
         public static List<SVGData> SerializeGraphs(List<Graph> svgs)
@@ -153,7 +158,7 @@ namespace SaveAndLoad
         public static void DeserializeGraphs(Session session, VRIDEController player)
         {
             List<SVGData> graphsData = session.graphs;
-            List<Graph> graphs = new List<Graph>();
+
             foreach (SVGData gdata in graphsData)
             {
                 Vector3 pos = new Vector3(gdata.position.x, 0f, gdata.position.z);
@@ -170,7 +175,6 @@ namespace SaveAndLoad
 
                 InteractionLogger.Count("GraphObject");
             }
-            player.graphs = graphs;
         }
 
         public static async Task Save(VRIDEController player)
@@ -181,11 +185,11 @@ namespace SaveAndLoad
                     Directory.CreateDirectory(Application.persistentDataPath);
 
                 Session s = new Session(
-                    VRIDEController.sysData,
-                    SerializeBrowsers(player.browsers),
-                    SerializePlaygrounds(player.playgrounds),
-                    SerializeInspectors(player.inspectors),
-                    SerializeGraphs(player.graphs)
+                    sysData,
+                    SerializeBrowsers(browsers),
+                    SerializePlaygrounds(playgrounds),
+                    SerializeInspectors(inspectors),
+                    SerializeGraphs(graphs)
                 );
                 await AsynchronousSerializer.Serialize(sessionPath, s);
             }
@@ -201,23 +205,11 @@ namespace SaveAndLoad
                 if (File.Exists(sessionPath))
                 {
                     Session session = await AsynchronousSerializer.Deserialize(sessionPath);
-
-                    VRIDEController.sysData = session.classesAndMethods;
+                    await sysData.LoadData(session.classesAndMethods.data);
                     DeserializeBrowsers(session, player);
                     DeserializePlaygrounds(session, player);
                     DeserializeInspectors(session, player);
                     DeserializeGraphs(session, player);
-                }
-                else
-                {
-                    //Session session = await AsynchronousSerializer.Deserialize(baseDataPath);
-
-                    //VRIDEController.sysData = session.classesAndMethods;
-                    VRIDEController.sysData = new SystemData();
-                    player.browsers = new List<Browser>();
-                    player.playgrounds = new List<Playground>();
-                    player.inspectors = new List<Inspector>();
-                    player.graphs = new List<Graph>();
                 }
             }
         }

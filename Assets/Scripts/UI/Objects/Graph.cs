@@ -1,5 +1,6 @@
 ﻿using ImageUtils;
 using LoggingModule;
+using SaveAndLoad;
 
 public class Graph : InitializeBehaviour
 {
@@ -18,7 +19,7 @@ public class Graph : InitializeBehaviour
 
     public override void onClose()
     {
-        player.graphs.Remove(this);
+        SaveAndLoadModule.graphs.Remove(this);
         InteractionLogger.Discount("GraphObject");
         Destroy(gameObject);
     }

@@ -12,7 +12,7 @@ namespace LoggingModule
         public static DateTime sessionEnd;
 
         private static bool inEditor = Application.isEditor;
-        private static bool usePersistentPath = false;
+        private static bool usePersistentPath = true;
         public static float totalSessionTime = 0.0f;
 
         private static Dictionary<string, int> counters = new Dictionary<string, int>() {
@@ -57,7 +57,7 @@ namespace LoggingModule
         };
 
         static string persistentPath = Path.Combine(Application.persistentDataPath, "log.txt");
-        static string streamingPath = Path.Combine(Application.persistentDataPath, "log.txt");
+        static string streamingPath = Path.Combine(Application.streamingAssetsPath, "log.txt");
 
         public static void writeLineToLog(string line)
         {
@@ -67,6 +67,7 @@ namespace LoggingModule
                 {
                     if (!Directory.Exists(Application.persistentDataPath))
                         Directory.CreateDirectory(Application.persistentDataPath);
+
                     string path = usePersistentPath ? persistentPath : streamingPath;
                     using (StreamWriter w = File.AppendText(path))
                         w.WriteLine(line);

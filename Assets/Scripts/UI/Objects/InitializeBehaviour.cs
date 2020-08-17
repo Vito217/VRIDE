@@ -159,9 +159,17 @@ public abstract class InitializeBehaviour : MonoBehaviour
     {
         Vector3 new_pos = player.transform.TransformPoint(rel_pos);
         Vector3 new_forw = player.transform.TransformDirection(rel_fwd);
+        Vector3 globalMousePos = Camera.main.ScreenToWorldPoint(
+            new Vector3(
+                Input.mousePosition.x,
+                Input.mousePosition.y,
+                Vector3.Distance(player.transform.position, transform.position)
+            )
+        );
+
         transform.position = Vector3.MoveTowards(
             transform.position,
-            new_pos,
+            globalMousePos,
             0.5f
         );
         transform.forward = new_forw;

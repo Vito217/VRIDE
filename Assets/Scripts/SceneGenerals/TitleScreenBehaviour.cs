@@ -55,7 +55,7 @@ public class TitleScreenBehaviour : MonoBehaviour
         limit = 0.3f;
 
         await Pharo.Start();
-        await Task.Delay(15000);
+        //await Task.Delay(15000);
 
         limit = 0.6f;
 

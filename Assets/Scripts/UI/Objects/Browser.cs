@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
 using PharoModule;
+using SaveAndLoad;
 using LoggingModule;
 
 public class Browser : InitializeBehaviour
@@ -96,8 +97,8 @@ public class Browser : InitializeBehaviour
             Instantiator.Instance.PackageObject(package_list, packageName, field, null, this);
 
         // Updating package
-        if (!VRIDEController.sysData.data.ContainsKey(packageName))
-            VRIDEController.sysData.data.Add(
+        if (!SaveAndLoadModule.sysData.data.ContainsKey(packageName))
+            SaveAndLoadModule.sysData.data.Add(
                 packageName, 
                 new SortedDictionary<string, (string classCode,
                     List<(string methodName, string methodCode, string side)> classMethods)>());
@@ -106,16 +107,16 @@ public class Browser : InitializeBehaviour
     void createOrUpdateClass(string packageName, string className, string input_code)
     {
         //Updating class
-        if (!VRIDEController.sysData.data[packageName].ContainsKey(className))
-            VRIDEController.sysData.data[packageName].Add(
+        if (!SaveAndLoadModule.sysData.data[packageName].ContainsKey(className))
+            SaveAndLoadModule.sysData.data[packageName].Add(
                 className,
                 (input_code,
                     new List<(string methodName, string methodCode, string side)>()));
         else
         {
             List<(string methodName, string methodCode, string side)> methods 
-                = VRIDEController.sysData.data[packageName][className].classMethods;
-            VRIDEController.sysData.data[packageName][className] = (input_code, methods);
+                = SaveAndLoadModule.sysData.data[packageName][className].classMethods;
+            SaveAndLoadModule.sysData.data[packageName][className] = (input_code, methods);
         }
     }
 
@@ -130,10 +131,10 @@ public class Browser : InitializeBehaviour
         if (existing_method)
         {
             BrowserMethod m = existing_method.gameObject.GetComponent<BrowserMethod>();
-            VRIDEController.sysData.data[packageName][className].classMethods
+            SaveAndLoadModule.sysData.data[packageName][className].classMethods
                 .Remove((methodName, m.sourceCode, side));
         }
-        VRIDEController.sysData.data[packageName][className].classMethods.Add((methodName, input_code, side));
+        SaveAndLoadModule.sysData.data[packageName][className].classMethods.Add((methodName, input_code, side));
     }
 
     public void onSelectClassSide()
@@ -197,7 +198,7 @@ public class Browser : InitializeBehaviour
     public override IEnumerator innerStart()
     {
         yield return base.innerStart();
-        foreach (string key in VRIDEController.sysData.data.Keys)
+        foreach (string key in SaveAndLoadModule.sysData.data.Keys)
         {
             yield return Instantiator.Instance.PackageObject(package_list, key, field, null, this);
         }
@@ -205,7 +206,7 @@ public class Browser : InitializeBehaviour
 
     public override void onClose()
     {
-        player.browsers.Remove(this);
+        SaveAndLoadModule.browsers.Remove(this);
         InteractionLogger.Discount("Browser");
         Destroy(gameObject);
     }

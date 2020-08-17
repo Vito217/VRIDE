@@ -72,7 +72,17 @@ namespace PharoModule
 
         public static async Task<string> Execute(string code)
         {
-            var request = await client.PostAsync(IP, new StringContent(code, Encoding.UTF8));
+            var request = await client.PostAsync
+            (
+                IP, 
+                new StringContent
+                (
+                    "[" + code + "]\n" +
+                        "\ton: Exception\n" +
+                        "\tdo: [:e | e traceCr].", 
+                    Encoding.UTF8
+                )
+            );
             return await request.Content.ReadAsStringAsync();
         }
 
@@ -81,11 +91,7 @@ namespace PharoModule
             if (!code.Contains("compile"))
                 code = "self class compiler evaluate: '" + code.Replace("'", "''") + "'";
 
-            return await Execute(
-                "[" + code + "]\n" +
-                    "\ton: Exception\n" +
-                    "\tdo: [:e | e traceCr]."
-            );
+            return await Execute(code);
         }
 
         public static async Task<string> Inspect(string code)
