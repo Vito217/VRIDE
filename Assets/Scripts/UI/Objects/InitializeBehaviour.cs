@@ -26,6 +26,7 @@ public abstract class InitializeBehaviour : MonoBehaviour
     public bool dragging = false;
     public Vector3 rel_pos;
     public Vector3 rel_fwd;
+    public float dist;
 
     StringBuilder sb = new StringBuilder();
     List<char> notAN = new List<char> { ' ', '\n', '\t', '\r' };
@@ -37,6 +38,7 @@ public abstract class InitializeBehaviour : MonoBehaviour
 
     public IEnumerator Coroutine()
     {
+
         panel.color = UnityEngine.Random.ColorHSV();
         yield return innerStart();
     }
@@ -146,6 +148,7 @@ public abstract class InitializeBehaviour : MonoBehaviour
         dragging = true;
         rel_pos = player.transform.InverseTransformPoint(transform.position);
         rel_fwd = player.transform.InverseTransformDirection(transform.forward);
+        dist = Vector3.Distance(player.transform.position, transform.position);
         InteractionLogger.StartTimerFor("WindowDragging");
     }
 
@@ -163,7 +166,7 @@ public abstract class InitializeBehaviour : MonoBehaviour
             new Vector3(
                 Input.mousePosition.x,
                 Input.mousePosition.y,
-                Vector3.Distance(player.transform.position, transform.position)
+                dist
             )
         );
 
@@ -186,9 +189,10 @@ public abstract class InitializeBehaviour : MonoBehaviour
     }
 
     public virtual void Initialize(Vector3 init_pos, Vector3 final_pos,
-        Vector3 forward, VRIDEController p)
+        Vector3 forward)
     {
-        player = p;
+        player = GameObject.FindGameObjectWithTag("Player")
+            .GetComponent<VRIDEController>();
         transform.position = init_pos;
         transform.forward = forward;
         new_pos = final_pos;

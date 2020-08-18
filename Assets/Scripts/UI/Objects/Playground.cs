@@ -64,8 +64,7 @@ public class Playground : InitializeBehaviour
                         view.Initialize(
                             transform.position,
                             transform.TransformPoint(new Vector3(-width, 0, 0)),
-                            transform.forward,
-                            player
+                            transform.forward
                         );
                         InteractionLogger.Count("GraphObject");
                     }
@@ -149,8 +148,7 @@ public class Playground : InitializeBehaviour
                     insp.Initialize(
                         transform.position,
                         newWorldPos,
-                        transform.forward,
-                        player
+                        transform.forward
                     );
                     InteractionLogger.Count("Inspector");
                 }
@@ -200,8 +198,7 @@ public class Playground : InitializeBehaviour
                     b.Initialize(
                         transform.position,
                         transform.position,
-                        transform.forward,
-                        player
+                        transform.forward
                     );
                     break;
                 }

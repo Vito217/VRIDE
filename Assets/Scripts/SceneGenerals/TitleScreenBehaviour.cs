@@ -59,7 +59,7 @@ public class TitleScreenBehaviour : MonoBehaviour
 
         limit = 0.6f;
 
-        await SaveAndLoadModule.Load(player);
+        await SaveAndLoadModule.Load();
 
         limit = 1.0f;
 

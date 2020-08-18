@@ -13,17 +13,17 @@ namespace SaveAndLoad
         static string sessionPath = Path.Combine(Application.persistentDataPath, "session.data");
         static string baseDataPath = Path.Combine(Application.streamingAssetsPath, "BaseData", "session.data");
 
-        public static SystemData sysData;
         public static string transcriptContents = "";
+        public static SystemData sysData = new SystemData();
         public static List<Browser> browsers = new List<Browser>();
         public static List<Playground> playgrounds = new List<Playground>();
         public static List<Inspector> inspectors = new List<Inspector>();
         public static List<Graph> graphs = new List<Graph>();
         public static List<Transcript> transcripts = new List<Transcript>();
 
-        public static List<BrowserData> SerializeBrowsers(List<Browser> browsers)
+        public static List<BrowserData> SerializeBrowsers()
         {
-            List<BrowserData> browserList = new List<BrowserData>();
+            List<BrowserData> browsersData = new List<BrowserData>();
             foreach (Browser browser in browsers)
             {
                 Vector3 pos = browser.transform.position;
@@ -40,12 +40,12 @@ namespace SaveAndLoad
                 }
                 string lastSideName = browser.lastSelectedSide;
 
-                browserList.Add(new BrowserData(pos, fwd, lastClassName, lastPackageName, lastSideName));
+                browsersData.Add(new BrowserData(pos, fwd, lastClassName, lastPackageName, lastSideName));
             }
-            return browserList;
+            return browsersData;
         }
 
-        public static void DeserializeBrowsers(Session session, VRIDEController player)
+        public static void DeserializeBrowsers(Session session)
         {
             List<BrowserData> browsersData = session.browsers;
 
@@ -56,7 +56,7 @@ namespace SaveAndLoad
                 Vector3 final_pos = new Vector3(bdata.position.x, 2.25f, bdata.position.z);
 
                 Browser browser = Instantiator.Instance.Browser();
-                browser.Initialize(pos, final_pos, fwd, player);
+                browser.Initialize(pos, final_pos, fwd);
                 Transform lsp = browser.package_list.transform.Find(bdata.lastSelectedPackage);
                 if (lsp != null && bdata.lastSelectedPackage != "")
                 {
@@ -77,20 +77,20 @@ namespace SaveAndLoad
             }
         }
 
-        public static List<PlaygroundData> SerializePlaygrounds(List<Playground> playgrounds)
+        public static List<PlaygroundData> SerializePlaygrounds()
         {
-            List<PlaygroundData> playgroundList = new List<PlaygroundData>();
+            List<PlaygroundData> playgroundsData = new List<PlaygroundData>();
             foreach (Playground playground in playgrounds)
             {
                 Vector3 pos = playground.transform.position;
                 Vector3 fwd = playground.transform.forward;
                 string sourceCode = playground.field.text;
-                playgroundList.Add(new PlaygroundData(pos, fwd, sourceCode));
+                playgroundsData.Add(new PlaygroundData(pos, fwd, sourceCode));
             }
-            return playgroundList;
+            return playgroundsData;
         }
 
-        public static void DeserializePlaygrounds(Session session, VRIDEController player)
+        public static void DeserializePlaygrounds(Session session)
         {
             List<PlaygroundData> playgroundsData = session.playgrounds;
 
@@ -101,27 +101,27 @@ namespace SaveAndLoad
                 Vector3 final_pos = new Vector3(pdata.position.x, 2f, pdata.position.z);
 
                 Playground playground = Instantiator.Instance.Playground();
-                playground.Initialize(pos, final_pos, fwd, player);
+                playground.Initialize(pos, final_pos, fwd);
                 playground.field.text = pdata.sourceCode;
                 playgrounds.Add(playground);
                 InteractionLogger.Count("Playground");
             }
         }
 
-        public static List<InspectorData> SerializeInspectors(List<Inspector> inspectors)
+        public static List<InspectorData> SerializeInspectors()
         {
-            List<InspectorData> inspectorList = new List<InspectorData>();
+            List<InspectorData> inspectorsData = new List<InspectorData>();
             foreach (Inspector inspector in inspectors)
             {
                 Vector3 pos = inspector.transform.position;
                 Vector3 fwd = inspector.transform.forward;
                 string rows = inspector.data;
-                inspectorList.Add(new InspectorData(pos, fwd, rows));
+                inspectorsData.Add(new InspectorData(pos, fwd, rows));
             }
-            return inspectorList;
+            return inspectorsData;
         }
 
-        public static void DeserializeInspectors(Session session, VRIDEController player)
+        public static void DeserializeInspectors(Session session)
         {
             List<InspectorData> inspectorsData = session.inspectors;
 
@@ -133,7 +133,7 @@ namespace SaveAndLoad
 
                 Inspector inspector = Instantiator.Instance.Inspector();
                 inspector.setContent(idata.rows);
-                inspector.Initialize(pos, final_pos, fwd, player);
+                inspector.Initialize(pos, final_pos, fwd);
 
                 inspectors.Add(inspector);
 
@@ -141,21 +141,21 @@ namespace SaveAndLoad
             }
         }
 
-        public static List<SVGData> SerializeGraphs(List<Graph> svgs)
+        public static List<SVGData> SerializeGraphs()
         {
-            List<SVGData> graphs = new List<SVGData>();
-            foreach (Graph graph in svgs)
+            List<SVGData> graphsData = new List<SVGData>();
+            foreach (Graph graph in graphs)
             {
                 Vector3 pos = graph.transform.position;
                 Vector3 fwd = graph.transform.forward;
                 string raw_image = graph.raw_image;
                 string type = graph.type;
-                graphs.Add(new SVGData(pos, fwd, raw_image, type));
+                graphsData.Add(new SVGData(pos, fwd, raw_image, type));
             }
-            return graphs;
+            return graphsData;
         }
 
-        public static void DeserializeGraphs(Session session, VRIDEController player)
+        public static void DeserializeGraphs(Session session)
         {
             List<SVGData> graphsData = session.graphs;
 
@@ -170,14 +170,14 @@ namespace SaveAndLoad
 
                 Graph graph = Instantiator.Instance.Graph();
                 graph.setSprite(rawImage, type);
-                graph.Initialize(pos, final_pos, fwd, player);
+                graph.Initialize(pos, final_pos, fwd);
                 graphs.Add(graph);
 
                 InteractionLogger.Count("GraphObject");
             }
         }
 
-        public static async Task Save(VRIDEController player)
+        public static async Task Save()
         {
             if (!inEditor)
             {
@@ -186,16 +186,16 @@ namespace SaveAndLoad
 
                 Session s = new Session(
                     sysData,
-                    SerializeBrowsers(browsers),
-                    SerializePlaygrounds(playgrounds),
-                    SerializeInspectors(inspectors),
-                    SerializeGraphs(graphs)
+                    SerializeBrowsers(),
+                    SerializePlaygrounds(),
+                    SerializeInspectors(),
+                    SerializeGraphs()
                 );
                 await AsynchronousSerializer.Serialize(sessionPath, s);
             }
         }
 
-        public static async Task Load(VRIDEController player)
+        public static async Task Load()
         {
             if (!inEditor)
             {
@@ -206,10 +206,10 @@ namespace SaveAndLoad
                 {
                     Session session = await AsynchronousSerializer.Deserialize(sessionPath);
                     await sysData.LoadData(session.classesAndMethods.data);
-                    DeserializeBrowsers(session, player);
-                    DeserializePlaygrounds(session, player);
-                    DeserializeInspectors(session, player);
-                    DeserializeGraphs(session, player);
+                    DeserializeBrowsers(session);
+                    DeserializePlaygrounds(session);
+                    DeserializeInspectors(session);
+                    DeserializeGraphs(session);
                 }
             }
         }

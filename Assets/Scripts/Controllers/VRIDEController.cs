@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 using LoggingModule;
@@ -61,17 +62,19 @@ public class VRIDEController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SaveAndLoadModule.Save(this);
+            SaveAndLoadModule.Save();
             //Pharo.Execute("SmalltalkImage current snapshot: true andQuit: true.");
             InteractionLogger.SessionEnd();
             Application.Quit();
         }
+
+        
     }
 
     void GenerateBrowser(Vector3 newPos, Vector3 newFinalPos, Vector3 newForw)
     {
         Browser browser = Instantiator.Instance.Browser();
-        browser.Initialize(newPos, newFinalPos, newForw, this);
+        browser.Initialize(newPos, newFinalPos, newForw);
         SaveAndLoadModule.browsers.Add(browser);
         InteractionLogger.Count("Browser");
     }
@@ -79,7 +82,7 @@ public class VRIDEController : MonoBehaviour
     void GeneratePlayground(Vector3 newPos, Vector3 newFinalPos, Vector3 newForw)
     {
         Playground playground = Instantiator.Instance.Playground();
-        playground.Initialize(newPos, newFinalPos, newForw, this);
+        playground.Initialize(newPos, newFinalPos, newForw);
         SaveAndLoadModule.playgrounds.Add(playground);
         InteractionLogger.Count("Playground");
     }
@@ -87,7 +90,7 @@ public class VRIDEController : MonoBehaviour
     void GenerateTranscript(Vector3 newPos, Vector3 newFinalPos, Vector3 newForw)
     {
         Transcript transcript = Instantiator.Instance.Transcript();
-        transcript.Initialize(newPos, newFinalPos, newForw, this);
+        transcript.Initialize(newPos, newFinalPos, newForw);
         SaveAndLoadModule.transcripts.Add(transcript);
         InteractionLogger.Count("Transcript");
     }
