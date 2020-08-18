@@ -1,5 +1,17 @@
 # PharoVRIDE's Channel Log
 
+## V0.9.1 (17/08/2020)
+* Moved sysData to SaveAndLoadModule.cs
+* Added vertical window movement.
+* Fixed some Playground bugs related to Roassal2.
+
+NOTE: Due to implementantion issues, all local variables must ALWAYS be declared before using them.
+
+## V0.9.0 (13/08/2020)
+* Now the User can specify the IP they will connect to.
+* Fixed a bug that appeared when the User dragged a window.
+* Fixed log file and session file locations.
+
 ## V0.8.2 (30/07/2020)
 <ul>
   <li>Changed log.txt location.</li>
