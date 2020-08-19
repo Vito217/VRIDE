@@ -7,6 +7,8 @@ using Valve.VR.InteractionSystem;
 using LoggingModule;
 using SaveAndLoad;
 using PharoModule;
+using NAudio;
+using Google.Cloud.Speech;
 
 public class VRIDEController : MonoBehaviour
 {

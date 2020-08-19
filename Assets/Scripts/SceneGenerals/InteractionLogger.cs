@@ -14,6 +14,9 @@ namespace LoggingModule
         private static bool inEditor = Application.isEditor;
         private static bool usePersistentPath = true;
         public static float totalSessionTime = 0.0f;
+        static string filename = "VRIDE_log.txt";
+        static string persistentPath = Path.Combine(Application.persistentDataPath, filename);
+        static string streamingPath = Path.Combine(Application.streamingAssetsPath, filename);
 
         private static Dictionary<string, int> counters = new Dictionary<string, int>() {
             { "totalOpenedBrowsers" , 0 },
@@ -55,9 +58,6 @@ namespace LoggingModule
             { "WindowDraggingInteraction" , null },
             { "TranscriptInteraction" , null }
         };
-
-        static string persistentPath = Path.Combine(Application.persistentDataPath, "log.txt");
-        static string streamingPath = Path.Combine(Application.streamingAssetsPath, "log.txt");
 
         public static void writeLineToLog(string line)
         {

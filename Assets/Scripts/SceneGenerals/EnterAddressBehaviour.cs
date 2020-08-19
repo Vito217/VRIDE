@@ -26,8 +26,8 @@ public class EnterAddressBehaviour : MonoBehaviour
         {
             loadingWheel.SetActive(true);
             Pharo.IP = line;
-            string res = await Pharo.Execute("Object new .");
-            if (!res.Contains("an Object"))
+            string res = await Pharo.Execute("Author uniqueInstance fullName: 'Default'.");
+            if (!res.Contains("an Author"))
                 throw new Exception("Not a Pharo response");
             SceneManager.LoadSceneAsync("MainScene");
         }

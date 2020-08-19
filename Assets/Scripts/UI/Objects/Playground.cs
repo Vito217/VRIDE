@@ -31,8 +31,6 @@ public class Playground : InitializeBehaviour
             selectedCode = Regex.Replace(selectedCode, 
                 @"VRIDE[\n\s]+log:[\n\s\t]+(.*)(\.|\s*\Z)", "");
 
-            Debug.Log(selectedCode);
-
             string pattern = @"(\A|[\n\s]+)([a-zA-Z0-9]+)[\n\s]+visualize[\n\s]+(asSVG|asPNG)[\n\s]+?\.";
             MatchCollection matches = Regex.Matches(selectedCode, pattern);
             if (matches.Count > 0)

@@ -34,9 +34,13 @@ public class Browser : InitializeBehaviour
             {
                 string className = Regex.Matches(clean_code, @"\s#(.*)(\s|\n)")[0].Groups[1].Value;
                 string packageName = Regex.Matches(clean_code, @"package:\s*'(.*)'")[0].Groups[1].Value;
+                
                 if (String.IsNullOrWhiteSpace(className) ||
                     String.IsNullOrWhiteSpace(packageName))
                     throw new Exception("Must specify a class and a package");
+
+                if (className[0].ToString().ToUpper() != className[0].ToString())
+                    throw new Exception("First character must be uppercase");
 
                 string responseString = await Pharo.Print(clean_code);
                 if (responseString.Contains(className))
@@ -63,12 +67,11 @@ public class Browser : InitializeBehaviour
                     currentClass + " compile: '" + clean_code.Replace("'", "''") + "'";
 
                 // Getting method name
-                string methodName = new StringReader(clean_code).ReadLine().Replace("\n", "");
                 string responseString = await Pharo.Print(method_code);
-                if (responseString.Contains(methodName))
+
+                if (responseString.Contains("#"))
                 {
-                    methodName = Regex.Replace(methodName, @"(.*:)\s*[a-zA-Z0-9]+[\n\s]+", "$1");
-                    createOrUpdateMethod(currentPackage, currentClass, methodName, input_code);
+                    createOrUpdateMethod(currentPackage, currentClass, responseString.Replace("#", ""), input_code);
                     class_list.Find(currentPackage+"/"+currentClass).gameObject.GetComponent<BrowserClass>().click();
                 }
                 else
