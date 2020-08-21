@@ -34,9 +34,9 @@ namespace SaveAndLoad
                 if(lastPackage != null)
                 {
                     lastPackageName = lastPackage.name;
-                    Transform lastClass = browser.class_list.Find(lastPackageName);
+                    BrowserClass lastClass = browser.class_list.getLastSelected() as BrowserClass;
                     if(lastClass != null)
-                        lastClassName = lastClass.gameObject.GetComponent<ClassWindow>().last_selected.name;
+                        lastClassName = lastClass.name;
                 }
                 string lastSideName = browser.lastSelectedSide;
 
@@ -61,10 +61,10 @@ namespace SaveAndLoad
                 if (lsp != null && bdata.lastSelectedPackage != "")
                 {
                     lsp.gameObject.GetComponent<BrowserPackage>().click();
-                    Transform lsc = browser.class_list.Find(bdata.lastSelectedPackage).Find(bdata.lastSelectedClass);
-                    if (lsc != null && bdata.lastSelectedClass != "")
+                    BrowserClass lsc = browser.class_list.getLastSelected() as BrowserClass;
+                    if (lsc != null)
                     {
-                        lsc.gameObject.GetComponent<BrowserClass>().click();
+                        lsc.click();
                     }
                 }
                 if (bdata.lastSelectedSide == "ClassSide")

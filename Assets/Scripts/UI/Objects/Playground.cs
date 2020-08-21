@@ -192,7 +192,7 @@ public class Playground : InitializeBehaviour
                     className = t.Key;
                     Browser b = Instantiator.Instance.Browser();
                     b.package_list.transform.Find(packageName).gameObject.GetComponent<BrowserPackage>().click();
-                    b.class_list.Find(packageName).Find(className).gameObject.GetComponent<BrowserClass>().click();
+                    b.class_list.transform.Find(className).gameObject.GetComponent<BrowserClass>().click();
                     b.Initialize(
                         transform.position,
                         transform.position,

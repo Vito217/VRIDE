@@ -1,43 +1,52 @@
 ﻿using UnityEngine;
+using PharoModule;
+using System;
 using TMPro;
 
 public class BrowserClass : BrowserObject
 {
-    public ClassWindow parent_window;
-    public MethodWindow classMethodList;
-    public MethodWindow instanceMethodList;
-
-    public override void innerStart()
+    public override async void onSelect()
     {
-        if (sourceCode == "")
+        BrowserClass last_class = 
+            theBrowser.class_list.getLastSelected() as BrowserClass;
+        if (last_class != null) last_class.onDeselect();
+
+        if (name != "template")
         {
-            sourceCode =
+            if (theBrowser.classSideToggle.isOn)
+            {
+                theBrowser.classSideList.gameObject.SetActive(true);
+                theBrowser.instanceSideList.gameObject.SetActive(false);
+            }
+            else
+            {
+                theBrowser.classSideList.gameObject.SetActive(false);
+                theBrowser.instanceSideList.gameObject.SetActive(true);
+            }
+
+            try
+            {
+                theBrowser.field.text = await Pharo.Execute(name + " definition .");
+                theBrowser.class_list.setLastSelected(this);
+                theBrowser.classSideList.Load();
+                theBrowser.instanceSideList.Load();
+            }
+            catch (Exception e)
+            {
+                theBrowser.field.text += " -> [Error] " + e.Message;
+            }
+        }
+        else
+        {
+            theBrowser.classSideList.gameObject.SetActive(false);
+            theBrowser.instanceSideList.gameObject.SetActive(false);
+            theBrowser.field.text = 
                 "Object subclass: #NameOfSubclass\n" +
                     "    instanceVariableNames: ''\n" +
                     "    classVariableNames: ''\n" +
                     "    package: 'MyPackage'";
         }
-    }
 
-    public override void onSelect()
-    {
-        theBrowser.field.text = sourceCode;
-        BrowserClass last_class = parent_window.getLastSelected() as BrowserClass;
-        if (last_class != null) last_class.onDeselect();
-        parent_window.setLastSelected(this);
-        if (name != "template")
-        {
-            string package = parent_window.gameObject.name;
-
-            classMethodList = Instantiator.Instance.MethodListObject(
-                theBrowser.classSideList, name, theBrowser, "ClassSide", package);
-
-            instanceMethodList = Instantiator.Instance.MethodListObject(
-                theBrowser.instanceSideList, name, theBrowser, "InstanceSide", package);
-
-            //LayoutRebuilder.ForceRebuildLayoutImmediate(classMethodList.gameObject.GetComponent<RectTransform>());
-            //LayoutRebuilder.ForceRebuildLayoutImmediate(instanceMethodList.gameObject.GetComponent<RectTransform>());
-        }
         Color newCol;
         if (ColorUtility.TryParseHtmlString("#00FFFF", out newCol))
             GetComponent<TextMeshProUGUI>().color = newCol;
@@ -45,9 +54,15 @@ public class BrowserClass : BrowserObject
 
     public override void onDeselect()
     {
+        foreach(Transform child in theBrowser.classSideList.transform)
+            if (child.gameObject.name != "template") 
+                Destroy(child.gameObject);
+
+        foreach (Transform child in theBrowser.instanceSideList.transform)
+            if (child.gameObject.name != "template")
+                Destroy(child.gameObject);
+
         Color newCol;
-        if (classMethodList != null) Destroy(classMethodList.gameObject);
-        if (instanceMethodList != null) Destroy(instanceMethodList.gameObject);
         if (ColorUtility.TryParseHtmlString("#FFFFFF", out newCol))
             GetComponent<TextMeshProUGUI>().color = newCol;
     }

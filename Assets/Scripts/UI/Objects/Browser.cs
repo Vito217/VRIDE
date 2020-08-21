@@ -12,10 +12,9 @@ using LoggingModule;
 public class Browser : InitializeBehaviour
 {
     public PackageWindow package_list;
-    public Transform class_list;
-    public Transform method_list;
-    public Transform classSideList;
-    public Transform instanceSideList;
+    public ClassWindow class_list;
+    public MethodWindow classSideList;
+    public MethodWindow instanceSideList;
     public Toggle classSideToggle;
     public Toggle instanceSideToggle;
     public string lastSelectedSide = "InstanceSide";
@@ -59,8 +58,7 @@ public class Browser : InitializeBehaviour
             else
             {
                 string currentPackage = package_list.getLastSelected().name;
-                string currentClass = class_list.Find(currentPackage).gameObject
-                    .GetComponent<ClassWindow>().getLastSelected().name;
+                string currentClass = class_list.getLastSelected().name;
 
                 string method_code = lastSelectedSide == "ClassSide" ?
                     "(" + currentClass + " class) compile: '" + clean_code.Replace("'", "''") + "'" :
@@ -72,7 +70,7 @@ public class Browser : InitializeBehaviour
                 if (responseString.Contains("#"))
                 {
                     createOrUpdateMethod(currentPackage, currentClass, responseString.Replace("#", ""), input_code);
-                    class_list.Find(currentPackage+"/"+currentClass).gameObject.GetComponent<BrowserClass>().click();
+                    class_list.getLastSelected().click();
                 }
                 else
                 {
@@ -97,7 +95,7 @@ public class Browser : InitializeBehaviour
         // Getting package and its classes
         Transform existingPackage = package_list.transform.Find(packageName);
         if (!existingPackage)
-            Instantiator.Instance.PackageObject(package_list, packageName, field, null, this);
+            Instantiator.Instance.PackageObject(package_list, packageName, null, this);
 
         // Updating package
         if (!SaveAndLoadModule.sysData.data.ContainsKey(packageName))
@@ -126,26 +124,23 @@ public class Browser : InitializeBehaviour
     void createOrUpdateMethod(string packageName, string className, string methodName, string input_code)
     {
         // Getting methods
-        string side = classSideToggle.isOn ? "ClassSide" : "InstanceSide";
-        Transform classMethodList = method_list.Find(side + "/" + className);
-        Transform existing_method = classMethodList.Find(methodName);
+        MethodWindow side = classSideToggle.isOn ? classSideList : instanceSideList;
+        Transform existing_method = side.transform.Find(methodName);
 
         // Updating method
         if (existing_method)
         {
             BrowserMethod m = existing_method.gameObject.GetComponent<BrowserMethod>();
-            SaveAndLoadModule.sysData.data[packageName][className].classMethods
-                .Remove((methodName, m.sourceCode, side));
+            //SaveAndLoadModule.sysData.data[packageName][className].classMethods
+            //    .Remove((methodName, m.sourceCode, side));
         }
-        SaveAndLoadModule.sysData.data[packageName][className].classMethods.Add((methodName, input_code, side));
+        //SaveAndLoadModule.sysData.data[packageName][className].classMethods.Add((methodName, input_code, side));
     }
 
     public void onSelectClassSide()
     {
         classSideToggle.isOn = true;
         instanceSideToggle.isOn = false;
-        classSideList.gameObject.SetActive(true);
-        instanceSideList.gameObject.SetActive(false);
         lastSelectedSide = "ClassSide";
 
         Color white, skyBlue;
@@ -161,14 +156,19 @@ public class Browser : InitializeBehaviour
             classSideToggle.colors = classSideColors;
             instanceSideToggle.colors = instSideColors;
         }
+
+        if (classSideList.gameObject.active
+            || instanceSideList.gameObject.active)
+        {
+            classSideList.gameObject.SetActive(true);
+            instanceSideList.gameObject.SetActive(false);
+        }
     }
 
     public void onSelectInstanceSide()
     {
         classSideToggle.isOn = false;
         instanceSideToggle.isOn = true;
-        classSideList.gameObject.SetActive(false);
-        instanceSideList.gameObject.SetActive(true);
         lastSelectedSide = "InstanceSide";
 
         Color white, skyBlue;
@@ -184,6 +184,13 @@ public class Browser : InitializeBehaviour
             classSideToggle.colors = classSideColors;
             instanceSideToggle.colors = instSideColors;
         }
+
+        if(classSideList.gameObject.active
+            || instanceSideList.gameObject.active)
+        {
+            classSideList.gameObject.SetActive(false);
+            instanceSideList.gameObject.SetActive(true);
+        }
     }
 
     public override void onSelect()
@@ -196,15 +203,6 @@ public class Browser : InitializeBehaviour
     {
         base.onDeselect();
         InteractionLogger.EndTimerFor("Browser");
-    }
-
-    public override IEnumerator innerStart()
-    {
-        yield return base.innerStart();
-        foreach (string key in SaveAndLoadModule.sysData.data.Keys)
-        {
-            yield return Instantiator.Instance.PackageObject(package_list, key, field, null, this);
-        }
     }
 
     public override void onClose()

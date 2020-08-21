@@ -1,18 +1,44 @@
-﻿public class BrowserMethod : BrowserObject
+﻿using PharoModule;
+using System;
+
+public class BrowserMethod : BrowserObject
 {
-    public override void innerStart()
+    public override async void onSelect()
     {
-        if(sourceCode == "")
+        theBrowser.field.text = sourceCode;
+
+        if (name != "template")
         {
-            sourceCode =
+            string code = "";
+            string aClass = theBrowser.class_list.getLastSelected().name;
+            if (theBrowser.classSideToggle.isOn)
+            {
+                theBrowser.classSideList.gameObject.SetActive(true);
+                theBrowser.instanceSideList.gameObject.SetActive(false);
+                code = "((" + aClass + " class)>>#" + name + ") sourceCode .";
+            }
+            else
+            {
+                theBrowser.classSideList.gameObject.SetActive(false);
+                theBrowser.instanceSideList.gameObject.SetActive(true);
+                code = "(" + aClass + ">>#" + name + ") sourceCode .";
+            }
+
+            try
+            {
+                theBrowser.field.text = await Pharo.Execute(code);
+            }
+            catch (Exception e)
+            {
+                theBrowser.field.text += " -> [Error] " + e.Message;
+            }
+        }
+        else
+        {
+            theBrowser.field.text =
                 "messageSelectorAndArgumentNames\n" +
                     "    | temporary variable names |\n" +
                     "    statements";
         }
-    }
-
-    public override void onSelect()
-    {
-        theBrowser.field.text = sourceCode;
     }
 }

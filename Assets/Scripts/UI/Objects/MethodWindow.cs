@@ -1,5 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using SaveAndLoad;
+using PharoModule;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class MethodWindow : BrowserWindow
@@ -7,21 +13,27 @@ public class MethodWindow : BrowserWindow
     public string package;
     public string side;
 
-    public override IEnumerator Coroutine()
+    public async void Load()
     {
-        foreach ((string methodName, string methodCode, string side) methodAndCode in
-                SaveAndLoadModule.sysData.data[package][name].classMethods)
-        {
-            if (side == methodAndCode.side)
-            {
-                string methodName = methodAndCode.methodName;
-                string methodCode = methodAndCode.methodCode;
+        theBrowser.DeactivateTemporarily();
+        string code = "", res = "";
+        string className = theBrowser.class_list.getLastSelected().name;
+        string[] methods = null;
 
-                Instantiator.Instance.MethodObject(transform, name, methodName,
-                    theBrowser.field, methodCode, theBrowser);                
-            }
-            yield return null;
+        await Task.Run(async () => {
+            code = side == "ClassSide" ?
+                "(" + className + " class) methodDict keys asString ." :
+                className + " methodDict keys asString .";
+            res = await Pharo.Execute(code);
+            methods = Regex.Replace(res, @"'|\(|\)|#|\n", "").Split(' ');
+            Array.Sort(methods, StringComparer.InvariantCulture);
+        });
+        foreach(string method in methods)
+        {
+            Instantiator.Instance.MethodObject(transform, className, method,
+                    theBrowser.field, "", theBrowser);
         }
-        yield return base.Coroutine();
+        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
+        theBrowser.Reactivate();
     }
 }

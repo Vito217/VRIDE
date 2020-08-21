@@ -1,23 +1,38 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using SaveAndLoad;
+using PharoModule;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class ClassWindow : BrowserWindow
 {
-    public override IEnumerator Coroutine()
+    public async void Load()
     {
-        foreach (KeyValuePair<string, (string classCode,
-            List<(string methodName, string methodCode, string side)> classMethods)>
-                keyVal in SaveAndLoadModule.sysData.data[name])
+        theBrowser.DeactivateTemporarily();
+
+        string package = "", code = "", res = "";
+        string[] classes = null;
+
+        await Task.Run(async () => {
+            package = theBrowser.package_list.getLastSelected().name;
+            code = "(RPackageOrganizer packageOrganizer packageNamed: '" + package + "') classes asString .";
+            res = await Pharo.Execute(code);
+            res = Regex.Replace(res, @"(a Set\()|\)|'|#|\n", "");
+            classes = res.Split(' ');
+            Array.Sort(classes, StringComparer.InvariantCulture);
+        });
+
+        if (classes.Length > 0 && classes[0] != "")
         {
-            string className = keyVal.Key;
-            string classCode = keyVal.Value.classCode;
-
-            Instantiator.Instance.ClassObject(this, className, theBrowser.field,
-                null, null, classCode, theBrowser);
-
-            yield return null;
+            foreach (string aClass in classes) if (aClass != "class")
+                Instantiator.Instance.ClassObject(this, aClass, theBrowser.field,
+                    null, null, "", theBrowser);
         }
-        yield return base.Coroutine();
+        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
+        theBrowser.Reactivate();
     }
 }

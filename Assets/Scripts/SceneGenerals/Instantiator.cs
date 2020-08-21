@@ -36,9 +36,9 @@ public class Instantiator: MonoBehaviour
         new_class.gameObject.GetComponent<TextMeshProUGUI>().text = className;
         new_class.gameObject.name = className;
         new_class.name = className;
-        new_class.parent_window = parentWindow;
-        new_class.classMethodList = classSideMethodList;
-        new_class.instanceMethodList = instanceSideMethodList;
+        //new_class.parent_window = parentWindow;
+        //new_class.classMethodList = classSideMethodList;
+        //new_class.instanceMethodList = instanceSideMethodList;
         return new_class;
     }
 
@@ -52,14 +52,14 @@ public class Instantiator: MonoBehaviour
     }
 
     public BrowserPackage PackageObject(PackageWindow parentWindow, string packageName, 
-        TMP_InputField field, ClassWindow classList, Browser browser)
+        ClassWindow classList, Browser browser)
     {
         BrowserPackage newPackage = Instantiate(browserPackagePrefab, parentWindow.transform, false);
         newPackage.gameObject.GetComponent<TextMeshProUGUI>().text = packageName;
         newPackage.gameObject.name = packageName;
         newPackage.name = packageName;
-        newPackage.parentWindow = parentWindow;
-        newPackage.classList = classList;
+        //newPackage.parentWindow = parentWindow;
+        //newPackage.classList = classList;
         newPackage.theBrowser = browser;
         return newPackage;
     }
