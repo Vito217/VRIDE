@@ -108,8 +108,6 @@ The text highlightning is based on regular expressions. You can specify a list o
 ## What is NOT entirely working (a.k.a. TODO)
 
 <ul>
-  <li>Full logging and error/crash handlers.</li>
-  <li>Full graphical visualizations of the executed code.</li>
   <li>Calling stored classes (they won't reappear when the software is closed)</li>
   <li>A list of bugs (shown below).</li>
 </ul>
@@ -119,7 +117,6 @@ The text highlightning is based on regular expressions. You can specify a list o
 <ul>
   <li>Some details in the text editor, such as incorrect highlightning, coloring, blank spaces, etc.</li>
   <li>Not every SVG extracted from Roassal2 is compatible with Unity. In that case, an [Error] code wil be thrown.</li>
-  <li>Transcript won't do "show:" correctly</li>
 </ul>
 
 ## Controls
