@@ -73,7 +73,7 @@ public class PharoRequests
 }
 ```
 
-Pharo will warn you that there may be linebreaks inside your Pharo code, but it will work anyways (at least on my Windows machine).
+Pharo will warn you that there may be linebreaks inside your Pharo code, but it will work anyways.
 
 ![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-04-22-(7).png)
 
