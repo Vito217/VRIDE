@@ -1,7 +1,5 @@
 ﻿using System;
-using System.IO;
 using System.Collections;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,11 +11,10 @@ public class Browser : InitializeBehaviour
 {
     public PackageWindow package_list;
     public ClassWindow class_list;
-    public MethodWindow classSideList;
-    public MethodWindow instanceSideList;
-    public Toggle classSideToggle;
-    public Toggle instanceSideToggle;
-    public string lastSelectedSide = "InstanceSide";
+    public MethodWindow methodList;
+    public Toggle classSideToggle, instanceSideToggle;
+    public Color white, skyBlue;
+    private bool loadingPackages = true;
 
     async void PharoDefine()
     {
@@ -34,8 +31,8 @@ public class Browser : InitializeBehaviour
                 string className = Regex.Matches(clean_code, @"\s#(.*)(\s|\n)")[0].Groups[1].Value;
                 string packageName = Regex.Matches(clean_code, @"package:\s*'(.*)'")[0].Groups[1].Value;
                 
-                if (String.IsNullOrWhiteSpace(className) ||
-                    String.IsNullOrWhiteSpace(packageName))
+                if (string.IsNullOrWhiteSpace(className) ||
+                    string.IsNullOrWhiteSpace(packageName))
                     throw new Exception("Must specify a class and a package");
 
                 if (className[0].ToString().ToUpper() != className[0].ToString())
@@ -46,7 +43,6 @@ public class Browser : InitializeBehaviour
                 {
                     // Getting or updating package
                     createOrUpdatePackage(packageName);
-                    createOrUpdateClass(packageName, className, input_code);
                     package_list.transform.Find(packageName).gameObject.GetComponent<BrowserPackage>().click();
                 }
                 else
@@ -60,22 +56,14 @@ public class Browser : InitializeBehaviour
                 string currentPackage = package_list.getLastSelected().name;
                 string currentClass = class_list.getLastSelected().name;
 
-                string method_code = lastSelectedSide == "ClassSide" ?
+                string method_code = classSideToggle.isOn ?
                     "(" + currentClass + " class) compile: '" + clean_code.Replace("'", "''") + "'" :
                     currentClass + " compile: '" + clean_code.Replace("'", "''") + "'";
 
                 // Getting method name
                 string responseString = await Pharo.Print(method_code);
-
-                if (responseString.Contains("#"))
-                {
-                    createOrUpdateMethod(currentPackage, currentClass, responseString.Replace("#", ""), input_code);
-                    class_list.getLastSelected().click();
-                }
-                else
-                {
-                    output = " -> " + responseString.Remove(responseString.LastIndexOf("\n"), 1);
-                }
+                if (responseString.Contains("#")) class_list.getLastSelected().click();
+                else output = " -> " + responseString.Remove(responseString.LastIndexOf("\n"), 1);
                 InteractionLogger.RegisterCodeDefinition("method", clean_code, responseString);
             }
         }
@@ -92,76 +80,27 @@ public class Browser : InitializeBehaviour
 
     void createOrUpdatePackage(string packageName)
     {
-        // Getting package and its classes
         Transform existingPackage = package_list.transform.Find(packageName);
         if (!existingPackage)
-            Instantiator.Instance.PackageObject(package_list, packageName, null, this);
-
-        // Updating package
-        if (!SaveAndLoadModule.sysData.data.ContainsKey(packageName))
-            SaveAndLoadModule.sysData.data.Add(
-                packageName, 
-                new SortedDictionary<string, (string classCode,
-                    List<(string methodName, string methodCode, string side)> classMethods)>());
-    }
-
-    void createOrUpdateClass(string packageName, string className, string input_code)
-    {
-        //Updating class
-        if (!SaveAndLoadModule.sysData.data[packageName].ContainsKey(className))
-            SaveAndLoadModule.sysData.data[packageName].Add(
-                className,
-                (input_code,
-                    new List<(string methodName, string methodCode, string side)>()));
-        else
-        {
-            List<(string methodName, string methodCode, string side)> methods 
-                = SaveAndLoadModule.sysData.data[packageName][className].classMethods;
-            SaveAndLoadModule.sysData.data[packageName][className] = (input_code, methods);
-        }
-    }
-
-    void createOrUpdateMethod(string packageName, string className, string methodName, string input_code)
-    {
-        // Getting methods
-        MethodWindow side = classSideToggle.isOn ? classSideList : instanceSideList;
-        Transform existing_method = side.transform.Find(methodName);
-
-        // Updating method
-        if (existing_method)
-        {
-            BrowserMethod m = existing_method.gameObject.GetComponent<BrowserMethod>();
-            //SaveAndLoadModule.sysData.data[packageName][className].classMethods
-            //    .Remove((methodName, m.sourceCode, side));
-        }
-        //SaveAndLoadModule.sysData.data[packageName][className].classMethods.Add((methodName, input_code, side));
+            Instantiator.Instance.PackageObject(packageName, this);
     }
 
     public void onSelectClassSide()
     {
         classSideToggle.isOn = true;
         instanceSideToggle.isOn = false;
-        lastSelectedSide = "ClassSide";
 
-        Color white, skyBlue;
-        if (ColorUtility.TryParseHtmlString("#FFFFFF", out white) &&
-            ColorUtility.TryParseHtmlString("#00FFFF", out skyBlue))
+        var classSideColors = classSideToggle.colors;
+        var instSideColors = instanceSideToggle.colors;
+        classSideColors.normalColor = skyBlue;
+        instSideColors.normalColor = white;
+        classSideToggle.colors = classSideColors;
+        instanceSideToggle.colors = instSideColors;
+
+        if (methodList.gameObject.activeSelf)
         {
-            var classSideColors = classSideToggle.colors;
-            var instSideColors = instanceSideToggle.colors;
-
-            classSideColors.normalColor = skyBlue;
-            instSideColors.normalColor = white;
-
-            classSideToggle.colors = classSideColors;
-            instanceSideToggle.colors = instSideColors;
-        }
-
-        if (classSideList.gameObject.active
-            || instanceSideList.gameObject.active)
-        {
-            classSideList.gameObject.SetActive(true);
-            instanceSideList.gameObject.SetActive(false);
+            DeactivateTemporarily();
+            methodList.Load();
         }
     }
 
@@ -169,27 +108,18 @@ public class Browser : InitializeBehaviour
     {
         classSideToggle.isOn = false;
         instanceSideToggle.isOn = true;
-        lastSelectedSide = "InstanceSide";
 
-        Color white, skyBlue;
-        if (ColorUtility.TryParseHtmlString("#FFFFFF", out white) &&
-            ColorUtility.TryParseHtmlString("#00FFFF", out skyBlue))
+        var classSideColors = classSideToggle.colors;
+        var instSideColors = instanceSideToggle.colors;
+        classSideColors.normalColor = white;
+        instSideColors.normalColor = skyBlue;
+        classSideToggle.colors = classSideColors;
+        instanceSideToggle.colors = instSideColors;
+
+        if (methodList.gameObject.activeSelf)
         {
-            var classSideColors = classSideToggle.colors;
-            var instSideColors = instanceSideToggle.colors;
-
-            classSideColors.normalColor = white;
-            instSideColors.normalColor = skyBlue;
-
-            classSideToggle.colors = classSideColors;
-            instanceSideToggle.colors = instSideColors;
-        }
-
-        if(classSideList.gameObject.active
-            || instanceSideList.gameObject.active)
-        {
-            classSideList.gameObject.SetActive(false);
-            instanceSideList.gameObject.SetActive(true);
+            DeactivateTemporarily();
+            methodList.Load();
         }
     }
 
@@ -212,9 +142,23 @@ public class Browser : InitializeBehaviour
         Destroy(gameObject);
     }
 
+    public override IEnumerator innerStart()
+    {
+        ColorUtility.TryParseHtmlString("#FFFFFF", out white);
+        yield return null;
+        ColorUtility.TryParseHtmlString("#00FFFF", out skyBlue);
+        yield return base.innerStart();
+    }
+
     public override void innerBehaviour()
     {
-        if (Input.anyKeyDown && field.isFocused && !loadingWheel.active)
+        if (loadingPackages)
+        {
+            loadingPackages = false;
+            DeactivateTemporarily();
+            package_list.Load();
+        }
+        else if (Input.anyKeyDown && field.isFocused && !loadingWheel.activeSelf)
         {
             bool leftCmd = Input.GetKey(KeyCode.LeftCommand);
             bool leftCtrl = Input.GetKey(KeyCode.LeftControl);

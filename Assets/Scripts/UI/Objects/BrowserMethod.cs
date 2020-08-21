@@ -1,32 +1,27 @@
 ﻿using PharoModule;
 using System;
+using TMPro;
 
 public class BrowserMethod : BrowserObject
 {
     public override async void onSelect()
     {
-        theBrowser.field.text = sourceCode;
-
+        theBrowser.DeactivateTemporarily();
+        GetComponent<TextMeshProUGUI>().color = theBrowser.skyBlue;
+        BrowserMethod last = theBrowser.methodList.getLastSelected() as BrowserMethod;
+        if (last != null) last.onDeselect();
+        theBrowser.methodList.setLastSelected(this);
         if (name != "template")
         {
-            string code = "";
             string aClass = theBrowser.class_list.getLastSelected().name;
-            if (theBrowser.classSideToggle.isOn)
-            {
-                theBrowser.classSideList.gameObject.SetActive(true);
-                theBrowser.instanceSideList.gameObject.SetActive(false);
-                code = "((" + aClass + " class)>>#" + name + ") sourceCode .";
-            }
-            else
-            {
-                theBrowser.classSideList.gameObject.SetActive(false);
-                theBrowser.instanceSideList.gameObject.SetActive(true);
-                code = "(" + aClass + ">>#" + name + ") sourceCode .";
-            }
-
+            string code = theBrowser.classSideToggle.isOn ?
+                "((" + aClass + " class)>>#" + name + ") sourceCode ." :
+                "(" + aClass + ">>#" + name + ") sourceCode .";
             try
             {
-                theBrowser.field.text = await Pharo.Execute(code);
+                string sourceCode = await Pharo.Execute(code);
+                sourceCode = sourceCode.Substring(1, sourceCode.Length - 3);
+                theBrowser.field.text = sourceCode;
             }
             catch (Exception e)
             {
@@ -40,5 +35,11 @@ public class BrowserMethod : BrowserObject
                     "    | temporary variable names |\n" +
                     "    statements";
         }
+        theBrowser.Reactivate();
+    }
+
+    public override void onDeselect()
+    {
+        GetComponent<TextMeshProUGUI>().color = theBrowser.white;
     }
 }

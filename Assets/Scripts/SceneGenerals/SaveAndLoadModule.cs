@@ -11,10 +11,8 @@ namespace SaveAndLoad
     {
         private static bool inEditor = Application.isEditor;
         static string sessionPath = Path.Combine(Application.persistentDataPath, "session.data");
-        static string baseDataPath = Path.Combine(Application.streamingAssetsPath, "BaseData", "session.data");
-
+        
         public static string transcriptContents = "";
-        public static SystemData sysData = new SystemData();
         public static List<Browser> browsers = new List<Browser>();
         public static List<Playground> playgrounds = new List<Playground>();
         public static List<Inspector> inspectors = new List<Inspector>();
@@ -38,7 +36,7 @@ namespace SaveAndLoad
                     if(lastClass != null)
                         lastClassName = lastClass.name;
                 }
-                string lastSideName = browser.lastSelectedSide;
+                string lastSideName = browser.classSideToggle.isOn ? "ClassSide" : "InstanceSide";
 
                 browsersData.Add(new BrowserData(pos, fwd, lastClassName, lastPackageName, lastSideName));
             }
@@ -185,7 +183,6 @@ namespace SaveAndLoad
                     Directory.CreateDirectory(Application.persistentDataPath);
 
                 Session s = new Session(
-                    sysData,
                     SerializeBrowsers(),
                     SerializePlaygrounds(),
                     SerializeInspectors(),
@@ -205,7 +202,6 @@ namespace SaveAndLoad
                 if (File.Exists(sessionPath))
                 {
                     Session session = await AsynchronousSerializer.Deserialize(sessionPath);
-                    await sysData.LoadData(session.classesAndMethods.data);
                     DeserializeBrowsers(session);
                     DeserializePlaygrounds(session);
                     DeserializeInspectors(session);

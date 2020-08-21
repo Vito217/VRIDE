@@ -13,20 +13,19 @@ using TMPro;
 
 public abstract class InitializeBehaviour : MonoBehaviour
 {
-    public float speed = 8.0f;
-    public bool initializing = false;
-    public Vector3 new_pos;
-
     public TextMeshProUGUI code;
     public TMP_InputField field;
     public VRIDEController player;
     public GameObject loadingWheel;
     public Image panel;
 
-    public bool dragging = false;
-    public Vector3 rel_pos;
-    public Vector3 rel_fwd;
-    public float dist;
+    bool dragging = false;
+    bool initializing = false;
+    Vector3 new_pos;
+    Vector3 rel_pos;
+    Vector3 rel_fwd;
+    float dist;
+    float speed = 8.0f;
 
     StringBuilder sb = new StringBuilder();
     List<char> notAN = new List<char> { ' ', '\n', '\t', '\r' };
@@ -38,7 +37,6 @@ public abstract class InitializeBehaviour : MonoBehaviour
 
     public IEnumerator Coroutine()
     {
-
         panel.color = UnityEngine.Random.ColorHSV();
         yield return innerStart();
     }

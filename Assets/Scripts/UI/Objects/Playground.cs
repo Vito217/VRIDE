@@ -172,7 +172,7 @@ public class Playground : InitializeBehaviour
         Reactivate();
     }
 
-    void PharoBrowse()
+    /**void PharoBrowse()
     {
         string selection = getSelectedCode(cleanCode(field.text));
         string packageName;
@@ -204,7 +204,7 @@ public class Playground : InitializeBehaviour
             if(className != "")
                 break;
         }
-    }
+    }**/
 
     public override void onSelect()
     {
@@ -227,7 +227,7 @@ public class Playground : InitializeBehaviour
 
     public override void innerBehaviour()
     {
-        if (Input.anyKeyDown && field.isFocused && !loadingWheel.active)
+        if (Input.anyKeyDown && field.isFocused && !loadingWheel.activeSelf)
         {
             bool leftCmd = Input.GetKey(KeyCode.LeftCommand);
             bool leftCtrl = Input.GetKey(KeyCode.LeftControl);
@@ -251,8 +251,8 @@ public class Playground : InitializeBehaviour
                 PharoPrint();
             else if (((leftCmd || leftCtrl) && i) || f5)
                 PharoInspect();
-            else if (((leftCmd || leftCtrl) && b) || f8)
-                PharoBrowse();
+            //else if (((leftCmd || leftCtrl) && b) || f8)
+            //    PharoBrowse();
             else if (((leftCmd || leftCtrl) && v) || ((leftCmd || leftCtrl) && c))
                 onChangeInput();
             else
