@@ -1,5 +1,9 @@
 # PharoVRIDE's Channel Log
 
+## V0.9.2 (18/08/2020)
+* Fixed bug that didn't show new methods with arguments.
+* Improved title screen graphics.
+
 ## V0.9.1 (17/08/2020)
 * Moved sysData to SaveAndLoadModule.cs
 * Added vertical window movement.
