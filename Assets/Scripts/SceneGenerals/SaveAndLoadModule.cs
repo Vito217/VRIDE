@@ -32,7 +32,7 @@ namespace SaveAndLoad
                 if(lastPackage != null)
                 {
                     lastPackageName = lastPackage.name;
-                    BrowserClass lastClass = browser.class_list.getLastSelected() as BrowserClass;
+                    BrowserClass lastClass = browser.class_list.last_selected as BrowserClass;
                     if(lastClass != null)
                         lastClassName = lastClass.name;
                 }
@@ -59,7 +59,7 @@ namespace SaveAndLoad
                 if (lsp != null && bdata.lastSelectedPackage != "")
                 {
                     lsp.gameObject.GetComponent<BrowserPackage>().click();
-                    BrowserClass lsc = browser.class_list.getLastSelected() as BrowserClass;
+                    BrowserClass lsc = browser.class_list.last_selected as BrowserClass;
                     if (lsc != null)
                     {
                         lsc.click();

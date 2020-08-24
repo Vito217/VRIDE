@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class BrowserObject : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class BrowserObject : MonoBehaviour
 
     void Start()
     {
-        innerStart();
+        GetComponent<TextMeshProUGUI>().text = name;
     }
 
     public void click()
@@ -15,9 +16,11 @@ public class BrowserObject : MonoBehaviour
         GetComponent<Button>().onClick.Invoke();
     }
 
-    public virtual void innerStart() { }
+    public virtual void onSelect() {
+        GetComponent<TextMeshProUGUI>().color = theBrowser.skyBlue;
+    }
 
-    public virtual void onSelect() { }
-
-    public virtual void onDeselect() { }
+    public void onDeselect() {
+        GetComponent<TextMeshProUGUI>().color = theBrowser.white;
+    }
 }

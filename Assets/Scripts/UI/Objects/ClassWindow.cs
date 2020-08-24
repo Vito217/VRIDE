@@ -2,41 +2,29 @@
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using PharoModule;
-using UnityEngine;
-using UnityEngine.UI;
 
 public class ClassWindow : BrowserWindow
 {
-    public override async void Load()
+    public override async Task InnerQuery(string key)
     {
-        string package = "", code = "", res = "";
-        string[] classes = null;
-        try
-        {
-            package = theBrowser.package_list.getLastSelected().name;
-            await Task.Run(async () => {
-                code = "(RPackageOrganizer packageOrganizer packageNamed: '" + package + "') classes asString .";
-                res = await Pharo.Execute(code);
-                res = Regex.Replace(res, @"(a Set\()|\)|'|#|\n", "");
-                classes = res.Split(' ');
-                Array.Sort(classes, StringComparer.InvariantCulture);
-            });
+        await Task.Run(async () => {
+            string code = "(RPackageOrganizer packageOrganizer packageNamed: '" 
+                + key + "') classes asString .";
+            string res = await Pharo.Execute(code);
+            res = Regex.Replace(res, @"(a Set\()|\)|'|#|\n", "");
+            contents = res.Split(' ');
+            Array.Sort(contents, StringComparer.InvariantCulture);
+        });
+    }
 
-            foreach (Transform child in transform)
-                if (child.gameObject.name != "template")
-                    Destroy(child.gameObject);
+    public override void InnerFill(string content)
+    {
+        if (content != "class" && !String.IsNullOrWhiteSpace(content))
+            Instantiator.Instance.ClassObject(content, theBrowser);
+    }
 
-            if (classes.Length > 0)
-                foreach (string aClass in classes) 
-                    if (aClass != "class" && !String.IsNullOrWhiteSpace(aClass))
-                        Instantiator.Instance.ClassObject(aClass, theBrowser);
-
-            LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
-        }
-        catch (Exception e)
-        {
-            theBrowser.field.text += " -> [Error] " + e.Message;
-        }
-        theBrowser.Reactivate();
+    public override string QueryKey()
+    {
+        return theBrowser.package_list.last_selected.name;
     }
 }

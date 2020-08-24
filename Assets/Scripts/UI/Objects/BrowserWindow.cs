@@ -1,18 +1,86 @@
-﻿using System.Collections;
+﻿using System;
+using System.Threading.Tasks;
 using UnityEngine;
 
-public class BrowserWindow : MonoBehaviour
+public abstract class BrowserWindow : MonoBehaviour
 {
     public Browser theBrowser;
     public BrowserObject last_selected = null;
 
-    void Start() { StartCoroutine(Coroutine()); }
+    bool step1 = false;
+    bool step2 = false;
+    bool step3 = false;
+    int index = 0;
+    protected string[] contents;
 
-    public BrowserObject getLastSelected() { return last_selected; }
+    private int framesToWait = 2;
+    private int currentFrame = 0;
 
-    public void setLastSelected(BrowserObject o) { last_selected = o; }
+    void Update()
+    {
+        if (step1) Clean();
+        else if (step2) Query();
+        else if (step3) Fill();
+    }
 
-    public virtual IEnumerator Coroutine() { yield return null; }
+    public void Clean()
+    {
+        if (transform.childCount > 0)
+            Destroy(transform.GetChild(0).gameObject);
+        else
+        {
+            step1 = false;
+            step2 = true;
+        }
+    }
 
-    public virtual void Load() { }
+    public void Query()
+    {
+        step2 = false;
+        index = 0;
+        BeginQuery();
+    }
+
+    public async void BeginQuery()
+    {
+        try
+        {
+            await InnerQuery(QueryKey());            
+            step3 = true;
+        }
+        catch (Exception e)
+        {
+            theBrowser.field.text += " -> [Error] " + e.Message;
+        }
+        theBrowser.Reactivate();
+    }
+
+    public void Fill()
+    {
+        try
+        {
+            if(currentFrame == 0)
+            {
+                InnerFill(contents[index]);
+                index++;
+            }
+            currentFrame = (currentFrame + 1) % framesToWait;
+        }
+        catch
+        {
+            step3 = false;
+        }
+    }
+
+    public void Load() 
+    {
+        theBrowser.DeactivateTemporarily();
+        step1 = true; 
+    }
+
+    public abstract string QueryKey();
+
+    public abstract Task InnerQuery(string key);
+
+    public abstract void InnerFill(string content);
 }

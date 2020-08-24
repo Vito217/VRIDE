@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using TMPro;
 
 public class Instantiator: MonoBehaviour
 {
@@ -31,8 +30,7 @@ public class Instantiator: MonoBehaviour
     {
         BrowserClass new_class = Instantiate(
             browserClassPrefab, browser.class_list.transform, false);
-        new_class.gameObject.GetComponent<TextMeshProUGUI>().text = className;
-        new_class.gameObject.name = className;
+        new_class.name = className;
         new_class.theBrowser = browser;
         return new_class;
     }
@@ -41,8 +39,7 @@ public class Instantiator: MonoBehaviour
     {
         BrowserPackage newPackage = Instantiate(
             browserPackagePrefab, browser.package_list.transform, false);
-        newPackage.gameObject.GetComponent<TextMeshProUGUI>().text = packageName;
-        newPackage.gameObject.name = packageName;
+        newPackage.name = packageName;
         newPackage.theBrowser = browser;
         return newPackage;
     }
@@ -51,8 +48,7 @@ public class Instantiator: MonoBehaviour
     {
         BrowserMethod new_method = Instantiate(
             browserMethodPrefab, browser.methodList.transform, false);
-        new_method.gameObject.GetComponent<TextMeshProUGUI>().text = methodName;
-        new_method.gameObject.name = methodName;
+        new_method.name = methodName;
         new_method.theBrowser = browser;
         return new_method;
     }

@@ -1,42 +1,29 @@
 ﻿using System;
-using System.Collections;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using PharoModule;
-using UnityEngine;
-using UnityEngine.UI;
 
 public class PackageWindow : BrowserWindow
 {
-    public override async void Load()
+    public override async Task InnerQuery(string key)
     {
-        string code = "", res = "";
-        string[] packages = null;
-        try
-        {
-            await Task.Run(async () => {
-                code = "RPackageOrganizer packageOrganizer packageNames .";
-                res = await Pharo.Execute(code);
-                res = Regex.Replace(res, @"#\(#|'|\)|\n", "");
-                packages = res.Split(new string[] { " #" }, StringSplitOptions.None);
-                Array.Sort(packages, StringComparer.InvariantCulture);
-            });
+        await Task.Run(async () => {
+            string code = "RPackageOrganizer packageOrganizer packageNames .";
+            string res = await Pharo.Execute(code);
+            res = Regex.Replace(res, @"a SortedCollection\(#|#\(#|'|\)|\n", "");
+            contents = res.Split(new string[] { " #" }, StringSplitOptions.None);
+            Array.Sort(contents, StringComparer.InvariantCulture);
+        });
+    }
 
-            foreach (Transform child in transform)
-                if (child.gameObject.name != "template")
-                    Destroy(child.gameObject);
+    public override void InnerFill(string content)
+    {
+        if (!string.IsNullOrWhiteSpace(content))
+            Instantiator.Instance.PackageObject(content, theBrowser);
+    }
 
-            if (packages.Length > 0)
-                foreach (string package in packages)
-                    if(!string.IsNullOrWhiteSpace(package))
-                        Instantiator.Instance.PackageObject(package, theBrowser);
-
-            LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
-        }
-        catch (Exception e)
-        {
-            theBrowser.field.text += " -> [Error] " + e.Message;
-        }
-        theBrowser.Reactivate();
+    public override string QueryKey()
+    {
+        return null;
     }
 }

@@ -1,19 +1,18 @@
 ﻿using PharoModule;
 using System;
-using TMPro;
 
 public class BrowserMethod : BrowserObject
 {
     public override async void onSelect()
     {
+        base.onSelect();
         theBrowser.DeactivateTemporarily();
-        GetComponent<TextMeshProUGUI>().color = theBrowser.skyBlue;
-        BrowserMethod last = theBrowser.methodList.getLastSelected() as BrowserMethod;
-        if (last != null) last.onDeselect();
-        theBrowser.methodList.setLastSelected(this);
+        if (theBrowser.methodList.last_selected != null)
+            theBrowser.methodList.last_selected.onDeselect();
+        theBrowser.methodList.last_selected = this;
         if (name != "template")
         {
-            string aClass = theBrowser.class_list.getLastSelected().name;
+            string aClass = theBrowser.class_list.last_selected.name;
             string code = theBrowser.classSideToggle.isOn ?
                 "((" + aClass + " class)>>#" + name + ") sourceCode ." :
                 "(" + aClass + ">>#" + name + ") sourceCode .";
@@ -36,10 +35,5 @@ public class BrowserMethod : BrowserObject
                     "    statements";
         }
         theBrowser.Reactivate();
-    }
-
-    public override void onDeselect()
-    {
-        GetComponent<TextMeshProUGUI>().color = theBrowser.white;
     }
 }

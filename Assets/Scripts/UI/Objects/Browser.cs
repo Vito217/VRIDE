@@ -53,8 +53,8 @@ public class Browser : InitializeBehaviour
             }
             else
             {
-                string currentPackage = package_list.getLastSelected().name;
-                string currentClass = class_list.getLastSelected().name;
+                string currentPackage = package_list.last_selected.name;
+                string currentClass = class_list.last_selected.name;
 
                 string method_code = classSideToggle.isOn ?
                     "(" + currentClass + " class) compile: '" + clean_code.Replace("'", "''") + "'" :
@@ -62,7 +62,7 @@ public class Browser : InitializeBehaviour
 
                 // Getting method name
                 string responseString = await Pharo.Print(method_code);
-                if (responseString.Contains("#")) class_list.getLastSelected().click();
+                if (responseString.Contains("#")) class_list.last_selected.click();
                 else output = " -> " + responseString.Remove(responseString.LastIndexOf("\n"), 1);
                 InteractionLogger.RegisterCodeDefinition("method", clean_code, responseString);
             }
@@ -98,10 +98,7 @@ public class Browser : InitializeBehaviour
         instanceSideToggle.colors = instSideColors;
 
         if (methodList.gameObject.activeSelf)
-        {
-            DeactivateTemporarily();
             methodList.Load();
-        }
     }
 
     public void onSelectInstanceSide()
@@ -117,10 +114,7 @@ public class Browser : InitializeBehaviour
         instanceSideToggle.colors = instSideColors;
 
         if (methodList.gameObject.activeSelf)
-        {
-            DeactivateTemporarily();
             methodList.Load();
-        }
     }
 
     public override void onSelect()
@@ -155,7 +149,7 @@ public class Browser : InitializeBehaviour
         if (loadingPackages)
         {
             loadingPackages = false;
-            DeactivateTemporarily();
+            //DeactivateTemporarily();
             package_list.Load();
         }
         else if (Input.anyKeyDown && field.isFocused && !loadingWheel.activeSelf)

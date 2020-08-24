@@ -1,18 +1,14 @@
-﻿using UnityEngine;
-using PharoModule;
-using System.Text.RegularExpressions;
+﻿using PharoModule;
 using System;
-using TMPro;
 
 public class BrowserClass : BrowserObject
 {
     public override async void onSelect()
     {
-        theBrowser.DeactivateTemporarily();
-        GetComponent<TextMeshProUGUI>().color = theBrowser.skyBlue;
-        BrowserClass last = theBrowser.class_list.getLastSelected() as BrowserClass;
-        if (last != null) last.onDeselect();
-        theBrowser.class_list.setLastSelected(this);
+        base.onSelect();
+        if (theBrowser.class_list.last_selected != null)
+            theBrowser.class_list.last_selected.onDeselect();
+        theBrowser.class_list.last_selected = this;
         if (name != "template")
         {
             try
@@ -26,7 +22,6 @@ public class BrowserClass : BrowserObject
             catch (Exception e)
             {
                 theBrowser.field.text += " -> [Error] " + e.Message;
-                theBrowser.Reactivate();
             }
         }
         else
@@ -37,12 +32,6 @@ public class BrowserClass : BrowserObject
                     "    instanceVariableNames: ''\n" +
                     "    classVariableNames: ''\n" +
                     "    package: 'MyPackage'";
-            theBrowser.Reactivate();
         }
-    }
-
-    public override void onDeselect()
-    {
-        GetComponent<TextMeshProUGUI>().color = theBrowser.white;
     }
 }
