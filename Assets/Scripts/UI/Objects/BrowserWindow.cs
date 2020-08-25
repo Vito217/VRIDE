@@ -25,8 +25,12 @@ public abstract class BrowserWindow : MonoBehaviour
 
     public void Clean()
     {
-        if (transform.childCount > 0)
-            Destroy(transform.GetChild(0).gameObject);
+        if (transform.childCount > 1)
+        {
+            GameObject child = transform.GetChild(1).gameObject;
+            if(child.name != "template")
+                Destroy(child);
+        } 
         else
         {
             step1 = false;
