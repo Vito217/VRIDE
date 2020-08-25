@@ -1,5 +1,8 @@
 # PharoVRIDE's Channel Log
 
+## V0.9.3 (25/08/2020)
+* Improved performance while loading packages from the image.
+
 ## V0.9.2 (18/08/2020)
 * Fixed bug that didn't show new methods with arguments.
 * Improved title screen graphics.
