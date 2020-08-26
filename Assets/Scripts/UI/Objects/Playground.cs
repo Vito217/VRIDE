@@ -37,19 +37,28 @@ public class Playground : InitializeBehaviour
             {
                 string var = matches[matches.Count - 1].Groups[2].Value;
                 string type = matches[matches.Count - 1].Groups[3].Value.Substring(2);
+                string lowerType = type.ToLower();
+                string exporter;
 
-                string exporter = (type == "PNG") ?
-                    " RTPNGExporter new builder: (" + var + " view); fileName: 'img.png'; exportToFile. " :
-                    " RTSVGExporter new view: (" + var + " view); fileName: 'img.svg'; exportToFile. ";
+                if(Regex.Match(selectedCode, @"RS.*[\s\t\n]+new").Success)
+                    exporter =
+                        " self openFile: (self canvas " + lowerType + "Exporter " +
+                            "noFixedShapes; " +
+                            "fileName: 'img." + lowerType + "'; " +
+                            "export) asFileReference. ";
+                else
+                    exporter =
+                        " RT" + type + "Exporter new " +
+                            (type == "PNG" ? "builder" : "view") + ": (" + var + " view); " +
+                            "fileName: 'img." + lowerType + "'; " +
+                            "exportToFile. ";   
 
-                string finalCode = 
-                    exporter +
-                    "(FileLocator workingDirectory / 'img." + type.ToLower() + "') " + 
-                        "binaryReadStreamDo:[ :stream | stream upToEnd ].";
+                string finalCode =
+                        exporter +
+                        "(FileLocator workingDirectory / 'img." + type.ToLower() + "') " +
+                            "binaryReadStreamDo:[ :stream | stream upToEnd ].";
 
                 selectedCode = Regex.Replace(selectedCode, pattern, finalCode);
-
-                // Execution
                 string responseString = await Pharo.Print(selectedCode);
                 if (Regex.Match(responseString, @"\[[0-9\s]+\]").Success)
                 {
