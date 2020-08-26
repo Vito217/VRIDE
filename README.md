@@ -3,7 +3,7 @@ A Virtual Reality Interactive Development Environment made in Unity that support
 
 <i><b>Note:</b> This is still an early WIP, so there could be lot of features missing</i>
 
-![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-04-22-(1).png)
+![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-07-15.png)
 
 ## What is PharoVRIDE?
 
