@@ -170,6 +170,7 @@ GameObject:
   - component: {fileID: 2484148667206162255}
   - component: {fileID: 6581973040779940891}
   - component: {fileID: 8192731733404803148}
+  - component: {fileID: 2952986862606302362}
   m_Layer: 0
   m_Name: Transcript
   m_TagString: Transcript
@@ -209,17 +210,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 928114fda0795574daa8498d639908e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
-  initializing: 0
-  new_pos: {x: 0, y: 0, z: 0}
   code: {fileID: 6945062915613269256}
   field: {fileID: 5517324446377372436}
   player: {fileID: 0}
   loadingWheel: {fileID: 0}
   panel: {fileID: 9141360250174672290}
-  dragging: 0
-  rel_pos: {x: 0, y: 0, z: 0}
-  rel_fwd: {x: 0, y: 0, z: 0}
 --- !u!223 &6877927472131900574
 Canvas:
   m_ObjectHideFlags: 0
@@ -288,6 +283,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 876944620325929771}
   m_CullTransparentMesh: 0
+--- !u!114 &2952986862606302362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876944620325929771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d518a00ceacb57f4d94b3cc806d60f40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
 --- !u!1 &903777686569549383
 GameObject:
   m_ObjectHideFlags: 0

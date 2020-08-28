@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR;
+using UnityEngine.EventSystems;
 using Valve.VR.InteractionSystem;
 using PharoModule;
 using SaveAndLoad;
@@ -18,11 +19,10 @@ public class TitleScreenBehaviour : MonoBehaviour
     private Dictionary<string, VRIDEController> dict;
 
     public VRIDEController htcplayer_prefab;
-    public GameObject teleporterPrefab;
-
     public VRIDEController nonvrplayer_prefab;
-    public GameObject defaultEventSystem_prefab;
-
+    public CustomStandaloneInputModule csim;
+    public StandaloneInputModule sim;
+    public TeleportArea ground;
     // public GameObject oculusplayer_prefab;
     // public GameObject UIHelpers_prefab;
 
@@ -46,8 +46,9 @@ public class TitleScreenBehaviour : MonoBehaviour
         if (XRSettings.loadedDeviceName == "OpenVR")
         {
             XRSettings.enabled = true;
-            GameObject.Find("/Ground").GetComponent<TeleportArea>().enabled = true;
-            Instantiate(teleporterPrefab);
+            ground.enabled = true;
+            csim.enabled = false;
+            sim.enabled = true;
         }
 
         initializing = false;
@@ -55,7 +56,6 @@ public class TitleScreenBehaviour : MonoBehaviour
         limit = 0.3f;
 
         await Pharo.Start();
-        //await Task.Delay(15000);
 
         limit = 0.6f;
 

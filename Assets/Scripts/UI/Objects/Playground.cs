@@ -22,33 +22,34 @@ public class Playground : InitializeBehaviour
 
             // Getting Transcripts
             foreach (Match m in Regex.Matches(selectedCode,
-                @"VRIDE[\n\s]+log:[\n\s\t]+(.*)(\.|\s*\Z)"))
+                @"VRIDE[\n\s\t]+log:[\n\s\t]+(.*)(\.|\Z)"))
             { 
                 string response = await Pharo.Print(m.Groups[1].Value);
                 response = response.Replace("'", "").Replace("\"", "");
                 SaveAndLoadModule.transcriptContents += response + "\n";
             }
-            selectedCode = Regex.Replace(selectedCode, 
-                @"VRIDE[\n\s]+log:[\n\s\t]+(.*)(\.|\s*\Z)", "");
+            selectedCode = Regex.Replace(selectedCode,
+                @"VRIDE[\n\s\t]+log:[\n\s\t]+(.*)(\.|\Z)", "");
 
-            string pattern = @"(\A|[\n\s]+)([a-zA-Z0-9]+)[\n\s]+visualize[\n\s]+(asSVG|asPNG)[\n\s]+?\.";
+            string pattern =
+                @"(\A|\.)[\n\t\s]*([a-zA-Z0-9]+)[\n\s\t]+visualize[\n\s\t]+as(SVG|PNG)[\n\s\t]*\.";
             MatchCollection matches = Regex.Matches(selectedCode, pattern);
             if (matches.Count > 0)
             {
                 string var = matches[matches.Count - 1].Groups[2].Value;
-                string type = matches[matches.Count - 1].Groups[3].Value.Substring(2);
+                string type = matches[matches.Count - 1].Groups[3].Value;
                 string lowerType = type.ToLower();
                 string exporter;
 
                 if(Regex.Match(selectedCode, @"RS.*[\s\t\n]+new").Success)
                     exporter =
-                        " self openFile: (self canvas " + lowerType + "Exporter " +
+                        ". " + var + " canvas " + lowerType + "Exporter " +
                             "noFixedShapes; " +
                             "fileName: 'img." + lowerType + "'; " +
-                            "export) asFileReference. ";
+                            "export. ";
                 else
                     exporter =
-                        " RT" + type + "Exporter new " +
+                        ". RT" + type + "Exporter new " +
                             (type == "PNG" ? "builder" : "view") + ": (" + var + " view); " +
                             "fileName: 'img." + lowerType + "'; " +
                             "exportToFile. ";   

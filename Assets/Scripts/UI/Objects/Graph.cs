@@ -8,6 +8,8 @@ public class Graph : InitializeBehaviour
     public string raw_image;
     public string type;
 
+    void Start() { }
+
     public void setSprite(string raw, string tp)
     {
         raw_image = raw;

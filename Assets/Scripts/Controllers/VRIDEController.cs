@@ -49,7 +49,7 @@ public class VRIDEController : MonoBehaviour
         if (f1 || f2 || f7 || leftCmd || leftCtrl)
         {
             Vector3 pos = transform.position;
-            Vector3 forw = transform.forward;
+            Vector3 forw = Camera.main.transform.forward;
             Vector3 newPos = new Vector3(pos.x + forw.x * 5f, 0f, pos.z + forw.z * 5f);
             Vector3 newFinalPos = new Vector3(newPos.x, 2.25f, newPos.z);
             Vector3 newForw = new Vector3(forw.x, 0, forw.z);
@@ -69,8 +69,6 @@ public class VRIDEController : MonoBehaviour
             InteractionLogger.SessionEnd();
             Application.Quit();
         }
-
-        
     }
 
     void GenerateBrowser(Vector3 newPos, Vector3 newFinalPos, Vector3 newForw)
