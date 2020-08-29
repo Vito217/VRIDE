@@ -1,11 +1,13 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using LoggingModule;
+using SaveAndLoad;
 using UnityEngine;
+using HTC.UnityPlugin.Vive;
+
+using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
-using LoggingModule;
-using SaveAndLoad;
 using PharoModule;
 using NAudio;
 using Google.Cloud.Speech;
@@ -13,6 +15,13 @@ using Google.Cloud.Speech;
 public class VRIDEController : MonoBehaviour
 {
     public bool can_move = true;
+    public GameObject menu;
+
+    Vector3 pos;
+    Vector3 forw;
+    Vector3 newPos;
+    Vector3 newFinalPos;
+    Vector3 newForw;
 
     void Awake()
     {
@@ -36,8 +45,14 @@ public class VRIDEController : MonoBehaviour
 
     void Update()
     {
+        // HTC VIVE
+        bool menuButton = 
+            ViveInput.GetPressDownEx(HandRole.RightHand, ControllerButton.Menu);
+        
+        // KeyBoard
         bool leftCmd = Input.GetKey(KeyCode.LeftCommand);
         bool leftCtrl = Input.GetKey(KeyCode.LeftControl);
+        bool esc = Input.GetKeyDown(KeyCode.Escape);
         bool f1 = Input.GetKeyDown(KeyCode.F1);
         bool f2 = Input.GetKeyDown(KeyCode.F2);
         bool f7 = Input.GetKeyDown(KeyCode.F7);
@@ -45,53 +60,84 @@ public class VRIDEController : MonoBehaviour
         bool b = Input.GetKeyDown("b");
         bool w = Input.GetKeyDown("w");
         bool t = Input.GetKeyDown("t");
+        bool f9 = Input.GetKeyDown(KeyCode.F9);
 
-        if (f1 || f2 || f7 || leftCmd || leftCtrl)
+        pos = transform.position;
+        forw = Camera.main.transform.forward;
+        newPos = new Vector3(pos.x + forw.x * 5f, 0f, pos.z + forw.z * 5f);
+        newFinalPos = new Vector3(newPos.x, 2.25f, newPos.z);
+        newForw = new Vector3(forw.x, 0, forw.z);
+
+        if (f1 || f2 || f7 || leftCmd || leftCtrl || esc || f9 || menuButton)
         {
-            Vector3 pos = transform.position;
-            Vector3 forw = Camera.main.transform.forward;
-            Vector3 newPos = new Vector3(pos.x + forw.x * 5f, 0f, pos.z + forw.z * 5f);
-            Vector3 newFinalPos = new Vector3(newPos.x, 2.25f, newPos.z);
-            Vector3 newForw = new Vector3(forw.x, 0, forw.z);
-
             if (f1 || ((leftCtrl || leftCmd) && o && b))
-                GenerateBrowser(newPos, newFinalPos, newForw);
+                GenerateBrowser();
             else if (f2 || ((leftCtrl || leftCmd) && o && w))
-                GeneratePlayground(newPos, newFinalPos, newForw);
+                GeneratePlayground();
             else if (f7 || ((leftCtrl || leftCmd) && o && t))
-                GenerateTranscript(newPos, newFinalPos, newForw);
+                GenerateTranscript();
+            else if (menuButton || f9)
+                ChangeMenuState();
+            else if (esc)
+                Exit();
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            SaveAndLoadModule.Save();
-            //Pharo.Execute("SmalltalkImage current snapshot: true andQuit: true.");
-            InteractionLogger.SessionEnd();
-            Application.Quit();
-        }
+        menu.transform.forward = newForw;
+        menu.transform.position = Vector3.MoveTowards(
+            menu.transform.position,
+            newFinalPos,
+            1.0f
+        );
     }
 
-    void GenerateBrowser(Vector3 newPos, Vector3 newFinalPos, Vector3 newForw)
+    public void GenerateBrowser()
     {
         Browser browser = Instantiator.Instance.Browser();
         browser.Initialize(newPos, newFinalPos, newForw);
         SaveAndLoadModule.browsers.Add(browser);
         InteractionLogger.Count("Browser");
+        DeactivateMenu();
     }
 
-    void GeneratePlayground(Vector3 newPos, Vector3 newFinalPos, Vector3 newForw)
+    public void GeneratePlayground()
     {
         Playground playground = Instantiator.Instance.Playground();
         playground.Initialize(newPos, newFinalPos, newForw);
         SaveAndLoadModule.playgrounds.Add(playground);
         InteractionLogger.Count("Playground");
+        DeactivateMenu();
     }
 
-    void GenerateTranscript(Vector3 newPos, Vector3 newFinalPos, Vector3 newForw)
+    public void GenerateTranscript()
     {
         Transcript transcript = Instantiator.Instance.Transcript();
         transcript.Initialize(newPos, newFinalPos, newForw);
         SaveAndLoadModule.transcripts.Add(transcript);
         InteractionLogger.Count("Transcript");
+        DeactivateMenu();
+    }
+
+    public void ChangeMenuState()
+    {
+        menu.SetActive(!menu.activeSelf);
+    }
+
+    public void ActivateMenu()
+    {
+        menu.SetActive(true);
+    }
+
+    public void DeactivateMenu()
+    {
+        menu.SetActive(false);
+    }
+
+    public void Exit()
+    {
+        //Pharo.Execute("SmalltalkImage current snapshot: true andQuit: true.");
+
+        SaveAndLoadModule.Save();
+        InteractionLogger.SessionEnd();
+        Application.Quit();
     }
 }

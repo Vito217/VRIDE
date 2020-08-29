@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using PharoModule;
 using LoggingModule;
 using SaveAndLoad;
@@ -23,7 +24,7 @@ public class Playground : InitializeBehaviour
             // Getting Transcripts
             foreach (Match m in Regex.Matches(selectedCode,
                 @"VRIDE[\n\s\t]+log:[\n\s\t]+(.*)(\.|\Z)"))
-            { 
+            {
                 string response = await Pharo.Print(m.Groups[1].Value);
                 response = response.Replace("'", "").Replace("\"", "");
                 SaveAndLoadModule.transcriptContents += response + "\n";
@@ -41,7 +42,7 @@ public class Playground : InitializeBehaviour
                 string lowerType = type.ToLower();
                 string exporter;
 
-                if(Regex.Match(selectedCode, @"RS.*[\s\t\n]+new").Success)
+                if (Regex.Match(selectedCode, @"RS.*[\s\t\n]+new").Success)
                     exporter =
                         ". " + var + " canvas " + lowerType + "Exporter " +
                             "noFixedShapes; " +
@@ -52,7 +53,7 @@ public class Playground : InitializeBehaviour
                         ". RT" + type + "Exporter new " +
                             (type == "PNG" ? "builder" : "view") + ": (" + var + " view); " +
                             "fileName: 'img." + lowerType + "'; " +
-                            "exportToFile. ";   
+                            "exportToFile. ";
 
                 string finalCode =
                         exporter +
@@ -84,7 +85,7 @@ public class Playground : InitializeBehaviour
                 }
                 InteractionLogger.RegisterCodeExecution(selectedCode, responseString);
             }
-            else if(!(Regex.Match(selectedCode, @"(\A[\n\t\s]+\Z)").Success || 
+            else if (!(Regex.Match(selectedCode, @"(\A[\n\t\s]+\Z)").Success ||
                 selectedCode == ""))
             {
                 await PharoInspect();
@@ -147,7 +148,7 @@ public class Playground : InitializeBehaviour
             string res = await Pharo.Inspect(selection);
             if (res.Contains("OrderedCollection"))
             {
-                if(insp == null)
+                if (insp == null)
                 {
                     float width = GetComponent<RectTransform>().sizeDelta.x;
                     Vector3 newWorldPos = transform.TransformPoint(new Vector3(width, 0, 0));
@@ -216,15 +217,15 @@ public class Playground : InitializeBehaviour
         }
     }**/
 
-    public override void onSelect()
+    public override void OnSelect(BaseEventData data)
     {
-        base.onSelect();
+        base.OnSelect(data);
         InteractionLogger.StartTimerFor("Playground");
     }
 
-    public override void onDeselect()
+    public override void OnDeselect(BaseEventData data)
     {
-        base.onDeselect();
+        base.OnDeselect(data);
         InteractionLogger.EndTimerFor("Playground");
     }
 

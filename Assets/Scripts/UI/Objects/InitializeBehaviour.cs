@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using System.Threading;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using SaveAndLoad;
 using PharoModule;
 using LoggingModule;
@@ -72,7 +73,6 @@ public abstract class InitializeBehaviour : MonoBehaviour
             string text = field.text;
             text = Regex.Replace(text, @"<color=#b32d00>|<color=#00ffffff>|</color>|<b>|</b>", "");
             text = Regex.Replace(text, @"\t", "".PadRight(4));
-
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
             {
                 int i;
@@ -85,17 +85,14 @@ public abstract class InitializeBehaviour : MonoBehaviour
                     field.caretPosition += 1;
                 sb.Clear();
             }
-
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 field.caretPosition += 4;
                 if (text[field.caretPosition - 1] != ' ')
                     field.caretPosition -= 1;
             }
-
             text = Regex.Replace(text, @"(\A|\.\s*\n*\s*)([a-zA-Z0-9]+)(\s|\n)", "$1<b>$2</b>$3");
             text = Regex.Replace(text, @"(\n?\s*)(#[a-zA-Z0-9]+)(\n?\s*)", "$1<color=#00ffffff>$2</color>$3");
-
             field.text = text;
             **/
         }
@@ -141,16 +138,18 @@ public abstract class InitializeBehaviour : MonoBehaviour
         }
     }
 
-    public void onDrag()
+    public void OnDrag(BaseEventData data)
     {
         dragging = true;
+        player = data.currentInputModule.transform.parent
+            .gameObject.GetComponent<VRIDEController>();
         rel_pos = player.transform.InverseTransformPoint(transform.position);
         rel_fwd = player.transform.InverseTransformDirection(transform.forward);
         dist = Vector3.Distance(player.transform.position, transform.position);
         InteractionLogger.StartTimerFor("WindowDragging");
     }
 
-    public void onEndDrag()
+    public void OnEndDrag()
     {
         dragging = false;
         InteractionLogger.EndTimerFor("WindowDragging");
@@ -189,21 +188,23 @@ public abstract class InitializeBehaviour : MonoBehaviour
     public virtual void Initialize(Vector3 init_pos, Vector3 final_pos,
         Vector3 forward)
     {
-        player = GameObject.FindGameObjectWithTag("Player")
-            .GetComponent<VRIDEController>();
         transform.position = init_pos;
         transform.forward = forward;
         new_pos = final_pos;
         initializing = true;
     }
 
-    public virtual void onSelect()
+    public virtual void OnSelect(BaseEventData data)
     {
+        player = data.currentInputModule.transform.parent
+            .gameObject.GetComponent<VRIDEController>();
         player.can_move = false;
     }
 
-    public virtual void onDeselect()
+    public virtual void OnDeselect(BaseEventData data)
     {
+        player = data.currentInputModule.transform.parent
+            .gameObject.GetComponent<VRIDEController>();
         player.can_move = true;
     }
 
@@ -211,7 +212,8 @@ public abstract class InitializeBehaviour : MonoBehaviour
 
     public virtual void innerBehaviour() { }
 
-    public virtual IEnumerator innerStart() {
+    public virtual IEnumerator innerStart()
+    {
         yield return null;
     }
 }

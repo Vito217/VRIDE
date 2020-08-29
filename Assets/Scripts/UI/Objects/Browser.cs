@@ -3,6 +3,7 @@ using System.Collections;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using PharoModule;
 using SaveAndLoad;
 using LoggingModule;
@@ -30,7 +31,7 @@ public class Browser : InitializeBehaviour
             {
                 string className = Regex.Matches(clean_code, @"\s#(.*)(\s|\n)")[0].Groups[1].Value;
                 string packageName = Regex.Matches(clean_code, @"package:\s*'(.*)'")[0].Groups[1].Value;
-                
+
                 if (string.IsNullOrWhiteSpace(className) ||
                     string.IsNullOrWhiteSpace(packageName))
                     throw new Exception("Must specify a class and a package");
@@ -117,15 +118,15 @@ public class Browser : InitializeBehaviour
             methodList.Load();
     }
 
-    public override void onSelect()
+    public override void OnSelect(BaseEventData data)
     {
-        base.onSelect();
+        base.OnSelect(data);
         InteractionLogger.StartTimerFor("Browser");
     }
 
-    public override void onDeselect()
+    public override void OnDeselect(BaseEventData data)
     {
-        base.onDeselect();
+        base.OnDeselect(data);
         InteractionLogger.EndTimerFor("Browser");
     }
 

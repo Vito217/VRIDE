@@ -20,8 +20,6 @@ public class TitleScreenBehaviour : MonoBehaviour
 
     public VRIDEController htcplayer_prefab;
     public VRIDEController nonvrplayer_prefab;
-    public CustomStandaloneInputModule csim;
-    public StandaloneInputModule sim;
     public TeleportArea ground;
     // public GameObject oculusplayer_prefab;
     // public GameObject UIHelpers_prefab;
@@ -47,8 +45,6 @@ public class TitleScreenBehaviour : MonoBehaviour
         {
             XRSettings.enabled = true;
             ground.enabled = true;
-            csim.enabled = false;
-            sim.enabled = true;
         }
 
         initializing = false;
