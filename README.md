@@ -132,6 +132,7 @@ The text highlightning is based on regular expressions. You can specify a list o
   <li>Ctrl/Cmd + O + W or F2: Invoke a new Playground</li>
   <li>Ctrl/Cmd + O + T or F7: Invoke a new Transcript</li>
   <li>Ctrl/Cmd + S or F6: Accept (Browser only)</li>
+  <li>F9: Open Menu</li>
 </ul>
 
 ## Special Commands
