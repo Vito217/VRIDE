@@ -1,5 +1,11 @@
 # PharoVRIDE's Channel Log
 
+## V0.10.0 (29/08/2020)
+* Added VIVE Input Utility plugin.
+* VR controls optimized for HTC VIVE.
+* Added Roassal3 compatibility (only for PNG images).
+* Some code refactoring.
+
 ## V0.9.3 (25/08/2020)
 * Improved performance while loading packages from the image.
 
