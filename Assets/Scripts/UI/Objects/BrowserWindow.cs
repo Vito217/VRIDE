@@ -23,29 +23,23 @@ public abstract class BrowserWindow : MonoBehaviour
         else if (step3) Fill();
     }
 
-    public void Clean()
+    void Clean()
     {
-        if (transform.childCount > 1)
-        {
-            GameObject child = transform.GetChild(1).gameObject;
-            if(child.name != "template")
-                Destroy(child);
-        } 
-        else
-        {
-            step1 = false;
-            step2 = true;
-        }
+        foreach (Transform child in transform) 
+            if (child.gameObject.name != "template")
+                Destroy(child.gameObject);
+        step1 = false;
+        step2 = true;
     }
 
-    public void Query()
+    void Query()
     {
         step2 = false;
         index = 0;
         BeginQuery();
     }
 
-    public async void BeginQuery()
+    async void BeginQuery()
     {
         try
         {
@@ -59,7 +53,7 @@ public abstract class BrowserWindow : MonoBehaviour
         theBrowser.Reactivate();
     }
 
-    public void Fill()
+    void Fill()
     {
         try
         {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using PharoModule;
@@ -13,6 +14,8 @@ public class ClassWindow : BrowserWindow
             string res = await Pharo.Execute(code);
             res = Regex.Replace(res, @"(a Set\()|\)|'|#|\n", "");
             contents = res.Split(' ');
+            if (!String.IsNullOrWhiteSpace(theBrowser.classFilter.text))
+                contents = contents.Where(s => s.StartsWith(theBrowser.classFilter.text)).ToArray();
             Array.Sort(contents, StringComparer.InvariantCulture);
         });
     }

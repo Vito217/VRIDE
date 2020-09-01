@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 using PharoModule;
 using SaveAndLoad;
 using LoggingModule;
+using TMPro;
 
 public class Browser : InitializeBehaviour
 {
@@ -15,6 +16,9 @@ public class Browser : InitializeBehaviour
     public MethodWindow methodList;
     public Toggle classSideToggle, instanceSideToggle;
     public Color white, skyBlue;
+    public TMP_InputField packageFilter;
+    public TMP_InputField classFilter;
+    public TMP_InputField methodFilter;
     private bool loadingPackages = true;
 
     async void PharoDefine()

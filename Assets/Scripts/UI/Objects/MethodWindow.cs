@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using PharoModule;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
@@ -13,6 +14,8 @@ public class MethodWindow : BrowserWindow
                 key + " methodDict keys asString .";
             string res = await Pharo.Execute(code);
             contents = Regex.Replace(res, @"'|\(|\)|#|\n", "").Split(' ');
+            if (!String.IsNullOrWhiteSpace(theBrowser.methodFilter.text))
+                contents = contents.Where(s => s.StartsWith(theBrowser.methodFilter.text)).ToArray();
             Array.Sort(contents, StringComparer.InvariantCulture);
         });
     }
