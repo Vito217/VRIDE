@@ -1,5 +1,8 @@
 # PharoVRIDE's Channel Log
 
+## V0.10.1 (01/09/2020)
+* Added package, class and method filters.
+
 ## V0.10.0 (29/08/2020)
 * Added VIVE Input Utility plugin.
 * VR controls optimized for HTC VIVE.
