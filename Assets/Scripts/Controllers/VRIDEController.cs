@@ -4,17 +4,10 @@ using SaveAndLoad;
 using UnityEngine;
 using HTC.UnityPlugin.Vive;
 
-using System.Collections.Generic;
-using UnityEngine.EventSystems;
-using Valve.VR;
-using Valve.VR.InteractionSystem;
-using PharoModule;
-using NAudio;
-using Google.Cloud.Speech;
-
 public class VRIDEController : MonoBehaviour
 {
     public bool can_move = true;
+    public VRKeyboard keyboard;
     public GameObject menu;
 
     Vector3 pos;

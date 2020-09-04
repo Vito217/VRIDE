@@ -19,6 +19,7 @@ public abstract class InitializeBehaviour : MonoBehaviour
     public VRIDEController player;
     public GameObject loadingWheel;
     public Image panel;
+    public int lastCaretPosition = 0;
 
     bool dragging = false;
     bool initializing = false;

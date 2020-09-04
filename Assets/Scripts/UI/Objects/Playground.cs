@@ -220,6 +220,7 @@ public class Playground : InitializeBehaviour
     public override void OnSelect(BaseEventData data)
     {
         base.OnSelect(data);
+        player.keyboard.window = this;
         InteractionLogger.StartTimerFor("Playground");
     }
 
@@ -238,36 +239,40 @@ public class Playground : InitializeBehaviour
 
     public override void innerBehaviour()
     {
-        if (Input.anyKeyDown && field.isFocused && !loadingWheel.activeSelf)
+        if (field.isFocused)
         {
-            bool leftCmd = Input.GetKey(KeyCode.LeftCommand);
-            bool leftCtrl = Input.GetKey(KeyCode.LeftControl);
-            bool f3 = Input.GetKeyDown(KeyCode.F3);
-            bool f4 = Input.GetKeyDown(KeyCode.F4);
-            bool f5 = Input.GetKeyDown(KeyCode.F5);
-            bool f8 = Input.GetKeyDown(KeyCode.F8);
-            bool p = Input.GetKeyDown("p");
-            bool d = Input.GetKeyDown("d");
-            bool i = Input.GetKeyDown("i");
-            bool c = Input.GetKeyDown("c");
-            bool v = Input.GetKeyDown("v");
-            bool b = Input.GetKeyDown("b");
+            if (Input.anyKeyDown && !loadingWheel.activeSelf)
+            {
+                bool leftCmd = Input.GetKey(KeyCode.LeftCommand);
+                bool leftCtrl = Input.GetKey(KeyCode.LeftControl);
+                bool f3 = Input.GetKeyDown(KeyCode.F3);
+                bool f4 = Input.GetKeyDown(KeyCode.F4);
+                bool f5 = Input.GetKeyDown(KeyCode.F5);
+                bool f8 = Input.GetKeyDown(KeyCode.F8);
+                bool p = Input.GetKeyDown("p");
+                bool d = Input.GetKeyDown("d");
+                bool i = Input.GetKeyDown("i");
+                bool c = Input.GetKeyDown("c");
+                bool v = Input.GetKeyDown("v");
+                bool b = Input.GetKeyDown("b");
 
-            if (!(leftCmd || leftCtrl || f3 || f4 || f5))
-                onChangeInput();
-            else
-                if (((leftCmd || leftCtrl) && d) || f3)
-                PharoDo();
-            else if (((leftCmd || leftCtrl) && p) || f4)
-                PharoPrint();
-            else if (((leftCmd || leftCtrl) && i) || f5)
-                PharoInspect();
-            //else if (((leftCmd || leftCtrl) && b) || f8)
-            //    PharoBrowse();
-            else if (((leftCmd || leftCtrl) && v) || ((leftCmd || leftCtrl) && c))
-                onChangeInput();
-            else
-                onChangeInput();
+                if (!(leftCmd || leftCtrl || f3 || f4 || f5))
+                    onChangeInput();
+                else
+                    if (((leftCmd || leftCtrl) && d) || f3)
+                    PharoDo();
+                else if (((leftCmd || leftCtrl) && p) || f4)
+                    PharoPrint();
+                else if (((leftCmd || leftCtrl) && i) || f5)
+                    PharoInspect();
+                //else if (((leftCmd || leftCtrl) && b) || f8)
+                //    PharoBrowse();
+                else if (((leftCmd || leftCtrl) && v) || ((leftCmd || leftCtrl) && c))
+                    onChangeInput();
+                else
+                    onChangeInput();
+            }
+            lastCaretPosition = field.caretPosition;
         }
     }
 }
