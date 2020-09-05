@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class BrowserObject : MonoBehaviour
@@ -13,7 +14,7 @@ public class BrowserObject : MonoBehaviour
 
     public void click()
     {
-        GetComponent<Button>().onClick.Invoke();
+        onSelect();
     }
 
     public virtual void onSelect() {
@@ -22,5 +23,17 @@ public class BrowserObject : MonoBehaviour
 
     public void onDeselect() {
         GetComponent<TextMeshProUGUI>().color = theBrowser.white;
+    }
+
+    public void onEnterPointer()
+    {
+        if(!(GetComponent<TextMeshProUGUI>().color == theBrowser.skyBlue))
+            GetComponent<TextMeshProUGUI>().color = theBrowser.gray;
+    }
+
+    public void onExitPointer()
+    {
+        if (!(GetComponent<TextMeshProUGUI>().color == theBrowser.skyBlue))
+            GetComponent<TextMeshProUGUI>().color = theBrowser.white;
     }
 }

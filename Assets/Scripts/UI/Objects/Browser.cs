@@ -15,7 +15,7 @@ public class Browser : InitializeBehaviour
     public ClassWindow class_list;
     public MethodWindow methodList;
     public Toggle classSideToggle, instanceSideToggle;
-    public Color white, skyBlue;
+    public Color white, skyBlue, gray;
     public TMP_InputField packageFilter;
     public TMP_InputField classFilter;
     public TMP_InputField methodFilter;
@@ -146,6 +146,8 @@ public class Browser : InitializeBehaviour
         ColorUtility.TryParseHtmlString("#FFFFFF", out white);
         yield return null;
         ColorUtility.TryParseHtmlString("#00FFFF", out skyBlue);
+        yield return null;
+        ColorUtility.TryParseHtmlString("#9D9D9D", out gray);
         yield return base.innerStart();
     }
 
@@ -154,7 +156,6 @@ public class Browser : InitializeBehaviour
         if (loadingPackages)
         {
             loadingPackages = false;
-            //DeactivateTemporarily();
             package_list.Load();
         }
         else if (Input.anyKeyDown && field.isFocused && !loadingWheel.activeSelf)
