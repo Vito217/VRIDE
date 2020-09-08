@@ -21,13 +21,13 @@ public abstract class InitializeBehaviour : MonoBehaviour
     public Image panel;
     public int lastCaretPosition = 0;
 
-    bool dragging = false;
+    //bool dragging = false;
     bool initializing = false;
     Vector3 new_pos;
     Vector3 rel_pos;
     Vector3 rel_fwd;
-    float dist;
-    float speed = 8.0f;
+    float dist = 5f;
+    float speed = 8f;
 
     StringBuilder sb = new StringBuilder();
     List<char> notAN = new List<char> { ' ', '\n', '\t', '\r' };
@@ -49,8 +49,8 @@ public abstract class InitializeBehaviour : MonoBehaviour
             initializeAnimation();
         else
         {
-            if (dragging)
-                dragAction();
+            //if (dragging)
+            //    dragAction();
             innerBehaviour();
         }
     }
@@ -141,37 +141,37 @@ public abstract class InitializeBehaviour : MonoBehaviour
 
     public void OnDrag(BaseEventData data)
     {
-        dragging = true;
+        //dragging = true;
         player = data.currentInputModule.transform.parent
             .gameObject.GetComponent<VRIDEController>();
         rel_pos = player.transform.InverseTransformPoint(transform.position);
         rel_fwd = player.transform.InverseTransformDirection(transform.forward);
-        dist = Vector3.Distance(player.transform.position, transform.position);
         InteractionLogger.StartTimerFor("WindowDragging");
     }
 
-    public void OnEndDrag()
+    public void OnEndDrag(BaseEventData data)
     {
-        dragging = false;
+        //dragging = false;
         InteractionLogger.EndTimerFor("WindowDragging");
     }
 
-    public void dragAction()
+    public void dragAction(BaseEventData data)
     {
+        PointerEventData pdata = data as PointerEventData;
         Vector3 new_pos = player.transform.TransformPoint(rel_pos);
         Vector3 new_forw = player.transform.TransformDirection(rel_fwd);
-        Vector3 globalMousePos = Camera.main.ScreenToWorldPoint(
+        Vector3 globalPointerPos = Camera.main.ScreenToWorldPoint(
             new Vector3(
-                Input.mousePosition.x,
-                Input.mousePosition.y,
+                pdata.position.x,
+                pdata.position.y,
                 dist
             )
         );
 
         transform.position = Vector3.MoveTowards(
             transform.position,
-            globalMousePos,
-            0.5f
+            globalPointerPos,
+            1f
         );
         transform.forward = new_forw;
     }
@@ -199,6 +199,7 @@ public abstract class InitializeBehaviour : MonoBehaviour
     {
         player = data.currentInputModule.transform.parent
             .gameObject.GetComponent<VRIDEController>();
+        //player.keyboard.gameObject.SetActive(true);
         player.can_move = false;
     }
 
@@ -206,6 +207,7 @@ public abstract class InitializeBehaviour : MonoBehaviour
     {
         player = data.currentInputModule.transform.parent
             .gameObject.GetComponent<VRIDEController>();
+        //player.keyboard.gameObject.SetActive(false);
         player.can_move = true;
     }
 

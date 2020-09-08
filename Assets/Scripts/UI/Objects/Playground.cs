@@ -13,7 +13,7 @@ public class Playground : InitializeBehaviour
     private Graph view;
     private Inspector insp;
 
-    async void PharoDo()
+    public async void PharoDo()
     {
         DeactivateTemporarily();
         string output = "";
@@ -103,7 +103,7 @@ public class Playground : InitializeBehaviour
         Reactivate();
     }
 
-    async void PharoPrint()
+    public async void PharoPrint()
     {
         DeactivateTemporarily();
         string output = "";
@@ -138,7 +138,7 @@ public class Playground : InitializeBehaviour
         Reactivate();
     }
 
-    async Task PharoInspect()
+    public async Task PharoInspect()
     {
         DeactivateTemporarily();
         string output = "";

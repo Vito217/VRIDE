@@ -277,6 +277,7 @@ MonoBehaviour:
   player: {fileID: 0}
   loadingWheel: {fileID: 8301894938099840451}
   panel: {fileID: 8320477055588778828}
+  lastCaretPosition: 0
 --- !u!223 &4662173126992698469
 Canvas:
   m_ObjectHideFlags: 0
@@ -1326,7 +1327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 2
+  - eventID: 13
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -1341,13 +1342,28 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - eventID: 3
+  - eventID: 5
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4528608663118621400}
+          m_MethodName: dragAction
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 14
     callback:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 4528608663118621400}
           m_MethodName: OnEndDrag
-          m_Mode: 1
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

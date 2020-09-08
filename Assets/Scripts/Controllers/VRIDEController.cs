@@ -41,7 +41,9 @@ public class VRIDEController : MonoBehaviour
         // HTC VIVE
         bool menuButton = 
             ViveInput.GetPressDownEx(HandRole.RightHand, ControllerButton.Menu);
-        
+        bool leftMenuButton =
+            ViveInput.GetPressDownEx(HandRole.LeftHand, ControllerButton.Menu);
+
         // KeyBoard
         bool leftCmd = Input.GetKey(KeyCode.LeftCommand);
         bool leftCtrl = Input.GetKey(KeyCode.LeftControl);
@@ -49,19 +51,21 @@ public class VRIDEController : MonoBehaviour
         bool f1 = Input.GetKeyDown(KeyCode.F1);
         bool f2 = Input.GetKeyDown(KeyCode.F2);
         bool f7 = Input.GetKeyDown(KeyCode.F7);
+        bool f9 = Input.GetKeyDown(KeyCode.F9);
+        bool f10 = Input.GetKeyDown(KeyCode.F10);
         bool o = Input.GetKey("o");
         bool b = Input.GetKeyDown("b");
         bool w = Input.GetKeyDown("w");
         bool t = Input.GetKeyDown("t");
-        bool f9 = Input.GetKeyDown(KeyCode.F9);
 
         pos = transform.position;
         forw = Camera.main.transform.forward;
-        newPos = new Vector3(pos.x + forw.x * 5f, 0f, pos.z + forw.z * 5f);
+        newPos = new Vector3(pos.x + forw.x * 4f, 0f, pos.z + forw.z * 4f);
         newFinalPos = new Vector3(newPos.x, 2.25f, newPos.z);
         newForw = new Vector3(forw.x, 0, forw.z);
 
-        if (f1 || f2 || f7 || leftCmd || leftCtrl || esc || f9 || menuButton)
+        if (f1 || f2 || f7 || leftCmd || leftCtrl 
+            || esc || f9 || f10 || menuButton || leftMenuButton)
         {
             if (f1 || ((leftCtrl || leftCmd) && o && b))
                 GenerateBrowser();
@@ -71,8 +75,8 @@ public class VRIDEController : MonoBehaviour
                 GenerateTranscript();
             else if (menuButton || f9)
                 ChangeMenuState();
-            else if (esc)
-                Exit();
+            else if (leftMenuButton || f10)
+                ChangeKeyboardState();
         }
 
         menu.transform.forward = newForw;
@@ -113,6 +117,11 @@ public class VRIDEController : MonoBehaviour
     public void ChangeMenuState()
     {
         menu.SetActive(!menu.activeSelf);
+    }
+
+    public void ChangeKeyboardState()
+    {
+        keyboard.gameObject.SetActive(!keyboard.gameObject.activeSelf);
     }
 
     public void ActivateMenu()

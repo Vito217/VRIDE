@@ -21,7 +21,7 @@ public class Browser : InitializeBehaviour
     public TMP_InputField methodFilter;
     private bool loadingPackages = true;
 
-    async void PharoDefine()
+    public async void PharoDefine()
     {
         DeactivateTemporarily();
         string output = "";
@@ -125,6 +125,7 @@ public class Browser : InitializeBehaviour
     public override void OnSelect(BaseEventData data)
     {
         base.OnSelect(data);
+        player.keyboard.window = this;
         InteractionLogger.StartTimerFor("Browser");
     }
 
@@ -158,17 +159,21 @@ public class Browser : InitializeBehaviour
             loadingPackages = false;
             package_list.Load();
         }
-        else if (Input.anyKeyDown && field.isFocused && !loadingWheel.activeSelf)
+        else if (field.isFocused)
         {
-            bool leftCmd = Input.GetKey(KeyCode.LeftCommand);
-            bool leftCtrl = Input.GetKey(KeyCode.LeftControl);
-            bool f6 = Input.GetKeyDown(KeyCode.F6);
-            bool s = Input.GetKeyDown("s");
+            if (Input.anyKeyDown && !loadingWheel.activeSelf)
+            {
+                bool leftCmd = Input.GetKey(KeyCode.LeftCommand);
+                bool leftCtrl = Input.GetKey(KeyCode.LeftControl);
+                bool f6 = Input.GetKeyDown(KeyCode.F6);
+                bool s = Input.GetKeyDown("s");
 
-            if (!(leftCmd || leftCtrl || f6 || s))
-                onChangeInput();
-            else if (((leftCmd || leftCtrl) && s) || f6)
-                PharoDefine();
+                if (!(leftCmd || leftCtrl || f6 || s))
+                    onChangeInput();
+                else if (((leftCmd || leftCtrl) && s) || f6)
+                    PharoDefine();
+            }
+            lastCaretPosition = field.caretPosition;
         }
     }
 }

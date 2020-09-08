@@ -8,6 +8,12 @@ public class Shift : VRKey
 
     public void OnClick()
     {
+        int lcp = 0;
+        if (keyboard.window != null)
+        {
+            lcp = keyboard.window.lastCaretPosition;
+            keyboard.window.field.ActivateInputField();
+        }
         name = name == "shift" ? "SHIFT" : "shift";
         visibleText.text = name;
         if (name == "SHIFT")
@@ -44,5 +50,6 @@ public class Shift : VRKey
                 letter.visibleText.text = letter.name;
             }
         }
+        if (keyboard.window != null) keyboard.window.field.caretPosition = lcp;
     }
 }
