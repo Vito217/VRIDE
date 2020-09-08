@@ -7,7 +7,6 @@ using HTC.UnityPlugin.Vive;
 public class VRIDEController : MonoBehaviour
 {
     public bool can_move = true;
-    public VRKeyboard keyboard;
     public GameObject menu;
 
     Vector3 pos;
@@ -40,8 +39,7 @@ public class VRIDEController : MonoBehaviour
     {
         // HTC VIVE
         bool menuButton = 
-            ViveInput.GetPressDownEx(HandRole.RightHand, ControllerButton.Menu);
-        bool leftMenuButton =
+            ViveInput.GetPressDownEx(HandRole.RightHand, ControllerButton.Menu) ||
             ViveInput.GetPressDownEx(HandRole.LeftHand, ControllerButton.Menu);
 
         // KeyBoard
@@ -52,7 +50,6 @@ public class VRIDEController : MonoBehaviour
         bool f2 = Input.GetKeyDown(KeyCode.F2);
         bool f7 = Input.GetKeyDown(KeyCode.F7);
         bool f9 = Input.GetKeyDown(KeyCode.F9);
-        bool f10 = Input.GetKeyDown(KeyCode.F10);
         bool o = Input.GetKey("o");
         bool b = Input.GetKeyDown("b");
         bool w = Input.GetKeyDown("w");
@@ -61,11 +58,11 @@ public class VRIDEController : MonoBehaviour
         pos = transform.position;
         forw = Camera.main.transform.forward;
         newPos = new Vector3(pos.x + forw.x * 4f, 0f, pos.z + forw.z * 4f);
-        newFinalPos = new Vector3(newPos.x, 2.25f, newPos.z);
+        newFinalPos = new Vector3(newPos.x, 3f, newPos.z);
         newForw = new Vector3(forw.x, 0, forw.z);
 
         if (f1 || f2 || f7 || leftCmd || leftCtrl 
-            || esc || f9 || f10 || menuButton || leftMenuButton)
+            || esc || f9 || menuButton)
         {
             if (f1 || ((leftCtrl || leftCmd) && o && b))
                 GenerateBrowser();
@@ -73,18 +70,9 @@ public class VRIDEController : MonoBehaviour
                 GeneratePlayground();
             else if (f7 || ((leftCtrl || leftCmd) && o && t))
                 GenerateTranscript();
-            else if (menuButton || f9)
+            else if (f9 || menuButton)
                 ChangeMenuState();
-            else if (leftMenuButton || f10)
-                ChangeKeyboardState();
         }
-
-        menu.transform.forward = newForw;
-        menu.transform.position = Vector3.MoveTowards(
-            menu.transform.position,
-            newFinalPos,
-            1.0f
-        );
     }
 
     public void GenerateBrowser()
@@ -117,16 +105,6 @@ public class VRIDEController : MonoBehaviour
     public void ChangeMenuState()
     {
         menu.SetActive(!menu.activeSelf);
-    }
-
-    public void ChangeKeyboardState()
-    {
-        keyboard.gameObject.SetActive(!keyboard.gameObject.activeSelf);
-    }
-
-    public void ActivateMenu()
-    {
-        menu.SetActive(true);
     }
 
     public void DeactivateMenu()

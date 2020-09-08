@@ -7,8 +7,14 @@ public class SpecialChars : VRKey
     public List<GameObject> letterRows;
     public List<GameObject> specialCharRows;
 
-    public void OnClick()
+    public override void OnClick()
     {
+        int lcp = 0;
+        if (keyboard.window != null && !keyboard.window.loadingWheel.activeSelf)
+        {
+            lcp = keyboard.window.lastCaretPosition;
+            keyboard.window.field.ActivateInputField();
+        }
         if (name == "ABC")
         {
             foreach (GameObject row in specialCharRows) row.SetActive(false);
@@ -23,5 +29,7 @@ public class SpecialChars : VRKey
             name = "ABC";
             visibleText.text = "ABC";
         }
+        if (keyboard.window != null && !keyboard.window.loadingWheel.activeSelf)
+            keyboard.window.field.caretPosition = lcp;
     }
 }

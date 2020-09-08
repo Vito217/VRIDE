@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class DoItKey : VRKey
 {
-    public void OnClick()
+    public override void OnClick()
     {
-        if (keyboard.window != null)
+        if (keyboard.window != null && !keyboard.window.loadingWheel.activeSelf)
         {
             try
             {

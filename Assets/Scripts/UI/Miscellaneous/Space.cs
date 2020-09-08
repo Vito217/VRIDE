@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Space : VRKey
 {
-    public void OnClick()
+    public override void OnClick()
     {
-        if (keyboard.window != null)
+        if (keyboard.window != null && !keyboard.window.loadingWheel.activeSelf)
         {
             int lcp = keyboard.window.lastCaretPosition;
             keyboard.window.field.ActivateInputField();

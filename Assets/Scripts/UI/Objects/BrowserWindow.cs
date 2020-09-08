@@ -25,6 +25,7 @@ public abstract class BrowserWindow : MonoBehaviour
 
     void Clean()
     {
+        transform.localPosition = new Vector3(0f, 0f, 0f);
         foreach (Transform child in transform) 
             if (child.gameObject.name != "template")
                 Destroy(child.gameObject);

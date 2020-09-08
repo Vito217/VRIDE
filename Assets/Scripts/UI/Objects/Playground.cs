@@ -220,7 +220,6 @@ public class Playground : InitializeBehaviour
     public override void OnSelect(BaseEventData data)
     {
         base.OnSelect(data);
-        player.keyboard.window = this;
         InteractionLogger.StartTimerFor("Playground");
     }
 
