@@ -8,6 +8,7 @@ using PharoModule;
 using SaveAndLoad;
 using LoggingModule;
 using System.Threading.Tasks;
+using HTC.UnityPlugin.Vive;
 
 public class TitleScreenBehaviour : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class TitleScreenBehaviour : MonoBehaviour
 
     public VRIDEController htcplayer_prefab;
     public VRIDEController nonvrplayer_prefab;
-    public TeleportArea ground;
+    public Teleportable ground;
     // public GameObject oculusplayer_prefab;
     // public GameObject UIHelpers_prefab;
 
@@ -40,11 +41,12 @@ public class TitleScreenBehaviour : MonoBehaviour
             };
 
         VRIDEController player = Instantiate(dict[XRSettings.loadedDeviceName]);
-        player.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
+        //player.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
         if (XRSettings.loadedDeviceName == "OpenVR")
         {
             XRSettings.enabled = true;
-            ground.enabled = true;
+            ground.target = player.transform;
+            ground.pivot = player.transform.Find("ViveCameraRig/Camera");
         }
 
         initializing = false;
