@@ -1,5 +1,12 @@
 # PharoVRIDE's Channel Log
 
+## V0.11.1 (10/09/2020)
+* Fixed Vive Teleporting
+
+## V0.11.0 (08/09/2020)
+* Added a virtual keyboard.
+* Fixed minor bugs.
+
 ## V0.10.2 (04/09/2020)
 * Fixed player position.
 
