@@ -12,7 +12,7 @@ using PharoModule;
 using LoggingModule;
 using TMPro;
 
-public abstract class InitializeBehaviour : MonoBehaviour
+public class InitializeBehaviour : MonoBehaviour
 {
     public TextMeshProUGUI code;
     public TMP_InputField field;
@@ -39,7 +39,7 @@ public abstract class InitializeBehaviour : MonoBehaviour
 
     public IEnumerator Coroutine()
     {
-        panel.color = UnityEngine.Random.ColorHSV();
+        if(panel != null) panel.color = UnityEngine.Random.ColorHSV();
         yield return innerStart();
     }
 
@@ -197,9 +197,9 @@ public abstract class InitializeBehaviour : MonoBehaviour
 
     public virtual void OnSelect(BaseEventData data)
     {
+        field = data.selectedObject.GetComponent<TMP_InputField>();
         player = data.currentInputModule.transform.parent
             .gameObject.GetComponent<VRIDEController>();
-        //player.keyboard.gameObject.SetActive(true);
         player.can_move = false;
     }
 
@@ -207,11 +207,10 @@ public abstract class InitializeBehaviour : MonoBehaviour
     {
         player = data.currentInputModule.transform.parent
             .gameObject.GetComponent<VRIDEController>();
-        //player.keyboard.gameObject.SetActive(false);
         player.can_move = true;
     }
 
-    public abstract void onClose();
+    public virtual void onClose() { }
 
     public virtual void innerBehaviour() { }
 

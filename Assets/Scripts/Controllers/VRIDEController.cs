@@ -7,13 +7,13 @@ using HTC.UnityPlugin.Vive;
 public class VRIDEController : MonoBehaviour
 {
     public bool can_move = true;
-    public GameObject menu;
 
     Vector3 pos;
     Vector3 forw;
     Vector3 newPos;
     Vector3 newFinalPos;
     Vector3 newForw;
+    VRIDEMenu menu;
 
     void Awake()
     {
@@ -37,6 +37,9 @@ public class VRIDEController : MonoBehaviour
 
     void Update()
     {
+        transform.position = new Vector3(
+            transform.position.x, .5f, transform.position.z);
+
         // HTC VIVE
         bool menuButton = 
             ViveInput.GetPressDownEx(HandRole.RightHand, ControllerButton.Menu) ||
@@ -57,8 +60,8 @@ public class VRIDEController : MonoBehaviour
 
         pos = transform.position;
         forw = Camera.main.transform.forward;
-        newPos = new Vector3(pos.x + forw.x * 4f, 0f, pos.z + forw.z * 4f);
-        newFinalPos = new Vector3(newPos.x, 3f, newPos.z);
+        newPos = new Vector3(pos.x + forw.x * .5f, 0f, pos.z + forw.z * .5f);
+        newFinalPos = new Vector3(newPos.x, .5f, newPos.z);
         newForw = new Vector3(forw.x, 0, forw.z);
 
         if (f1 || f2 || f7 || leftCmd || leftCtrl 
@@ -71,7 +74,7 @@ public class VRIDEController : MonoBehaviour
             else if (f7 || ((leftCtrl || leftCmd) && o && t))
                 GenerateTranscript();
             else if (f9 || menuButton)
-                ChangeMenuState();
+                GenerateMenu();
         }
     }
 
@@ -81,7 +84,7 @@ public class VRIDEController : MonoBehaviour
         browser.Initialize(newPos, newFinalPos, newForw);
         SaveAndLoadModule.browsers.Add(browser);
         InteractionLogger.Count("Browser");
-        DeactivateMenu();
+        if (menu != null) Destroy(menu.gameObject);
     }
 
     public void GeneratePlayground()
@@ -90,7 +93,7 @@ public class VRIDEController : MonoBehaviour
         playground.Initialize(newPos, newFinalPos, newForw);
         SaveAndLoadModule.playgrounds.Add(playground);
         InteractionLogger.Count("Playground");
-        DeactivateMenu();
+        if (menu != null) Destroy(menu.gameObject);
     }
 
     public void GenerateTranscript()
@@ -99,23 +102,23 @@ public class VRIDEController : MonoBehaviour
         transcript.Initialize(newPos, newFinalPos, newForw);
         SaveAndLoadModule.transcripts.Add(transcript);
         InteractionLogger.Count("Transcript");
-        DeactivateMenu();
+        if (menu != null) Destroy(menu.gameObject);
     }
 
-    public void ChangeMenuState()
+    public void GenerateMenu()
     {
-        menu.SetActive(!menu.activeSelf);
-    }
-
-    public void DeactivateMenu()
-    {
-        menu.SetActive(false);
+        if (menu != null) Destroy(menu.gameObject);
+        menu = Instantiator.Instance.Menu();
+        menu.Reset();
+        menu.playgroundGenerator.onClick.AddListener(GeneratePlayground);
+        menu.browserGenerator.onClick.AddListener(GenerateBrowser);
+        menu.transcriptGenerator.onClick.AddListener(GenerateTranscript);
+        menu.quit.onClick.AddListener(Exit);
+        menu.Initialize(newPos, newFinalPos, newForw);
     }
 
     public void Exit()
     {
-        //Pharo.Execute("SmalltalkImage current snapshot: true andQuit: true.");
-
         SaveAndLoadModule.Save();
         InteractionLogger.SessionEnd();
         Application.Quit();

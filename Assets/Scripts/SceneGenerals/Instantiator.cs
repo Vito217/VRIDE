@@ -11,6 +11,7 @@ public class Instantiator: MonoBehaviour
     public Inspector inspectorPrefab;
     public Graph svgPrefab;
     public Transcript transcriptPrefab;
+    public VRIDEMenu menuPrefab;
 
     private static Instantiator _instance;
     public static Instantiator Instance
@@ -81,5 +82,10 @@ public class Instantiator: MonoBehaviour
     public Transcript Transcript()
     {
         return Instantiate(transcriptPrefab);
+    }
+
+    public VRIDEMenu Menu()
+    {
+        return Instantiate(menuPrefab);
     }
 }

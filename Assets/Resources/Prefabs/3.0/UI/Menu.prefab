@@ -942,6 +942,7 @@ GameObject:
   - component: {fileID: 4647494072284787311}
   - component: {fileID: 6684891134596406923}
   - component: {fileID: 3559917534477848125}
+  - component: {fileID: 6663584331874351175}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -958,14 +959,14 @@ RectTransform:
   m_GameObject: {fileID: 5962890223279887360}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.001, y: 0.001, z: 0.001}
   m_Children:
   - {fileID: 8622047975730949286}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 533, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1042,6 +1043,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
+--- !u!114 &6663584331874351175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5962890223279887360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd938cebe89e54488e7fdf4c184fe87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  code: {fileID: 0}
+  field: {fileID: 0}
+  player: {fileID: 0}
+  loadingWheel: {fileID: 0}
+  panel: {fileID: 0}
+  lastCaretPosition: 0
+  playgroundGenerator: {fileID: 4623672713788436143}
+  browserGenerator: {fileID: 9192950925776641475}
+  transcriptGenerator: {fileID: 1304519993886448680}
+  quit: {fileID: 6980020565952858305}
 --- !u!1 &8033645439510394338
 GameObject:
   m_ObjectHideFlags: 0
