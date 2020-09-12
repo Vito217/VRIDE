@@ -21,7 +21,6 @@ public class InitializeBehaviour : MonoBehaviour
     public Image panel;
     public int lastCaretPosition = 0;
 
-    //bool dragging = false;
     bool initializing = false;
     Vector3 new_pos;
     Vector3 rel_pos;
@@ -48,11 +47,7 @@ public class InitializeBehaviour : MonoBehaviour
         if (initializing)
             initializeAnimation();
         else
-        {
-            //if (dragging)
-            //    dragAction();
             innerBehaviour();
-        }
     }
 
     public void initializeAnimation()
@@ -141,39 +136,18 @@ public class InitializeBehaviour : MonoBehaviour
 
     public void OnDrag(BaseEventData data)
     {
-        //dragging = true;
         player = data.currentInputModule.transform.parent
             .gameObject.GetComponent<VRIDEController>();
-        rel_pos = player.transform.InverseTransformPoint(transform.position);
-        rel_fwd = player.transform.InverseTransformDirection(transform.forward);
+        transform.SetParent(player.dragPivot);
         InteractionLogger.StartTimerFor("WindowDragging");
     }
 
     public void OnEndDrag(BaseEventData data)
     {
-        //dragging = false;
+        new_pos = player.dragPivot.TransformPoint(transform.localPosition);
+        transform.SetParent(null);
+        transform.position = new_pos;
         InteractionLogger.EndTimerFor("WindowDragging");
-    }
-
-    public void dragAction(BaseEventData data)
-    {
-        PointerEventData pdata = data as PointerEventData;
-        Vector3 new_pos = player.transform.TransformPoint(rel_pos);
-        Vector3 new_forw = player.transform.TransformDirection(rel_fwd);
-        Vector3 globalPointerPos = Camera.main.ScreenToWorldPoint(
-            new Vector3(
-                pdata.position.x,
-                pdata.position.y,
-                dist
-            )
-        );
-
-        transform.position = Vector3.MoveTowards(
-            transform.position,
-            globalPointerPos,
-            1f
-        );
-        transform.forward = new_forw;
     }
 
     public void DeactivateTemporarily()

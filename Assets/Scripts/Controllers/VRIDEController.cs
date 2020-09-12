@@ -7,6 +7,7 @@ using HTC.UnityPlugin.Vive;
 public class VRIDEController : MonoBehaviour
 {
     public bool can_move = true;
+    public Transform dragPivot;
 
     Vector3 pos;
     Vector3 forw;
