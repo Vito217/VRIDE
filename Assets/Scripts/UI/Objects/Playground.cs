@@ -22,16 +22,18 @@ public class Playground : InitializeBehaviour
             string selectedCode = getSelectedCode(cleanCode(field.text));
 
             // Getting Transcripts
-            foreach (Match m in Regex.Matches(selectedCode,
-                @"VRIDE[\n\s\t]+log:[\n\s\t]+(.*)(\.|\Z)"))
+            string transcriptPattern =
+                @"(VRIDE[\n\s\t]+log:[\n\s\t]+|Transcript[\n\s\t]+show:[\n\s\t]+)(.*)(\.|\Z)";
+            foreach (Match m in Regex.Matches(selectedCode, transcriptPattern))
             {
-                string response = await Pharo.Print(m.Groups[1].Value);
+                string response = await Pharo.Print(m.Groups[2].Value);
                 response = response.Replace("'", "").Replace("\"", "");
                 SaveAndLoadModule.transcriptContents += response + "\n";
             }
-            selectedCode = Regex.Replace(selectedCode,
-                @"VRIDE[\n\s\t]+log:[\n\s\t]+(.*)(\.|\Z)", "");
+            selectedCode = Regex.Replace(selectedCode, transcriptPattern, "");
 
+            // Roassal
+            /*
             string pattern =
                 @"(\A|\.)[\n\t\s]*([a-zA-Z0-9]+)[\n\s\t]+visualize[\n\s\t]+as(SVG|PNG)[\n\s\t]*\.";
             MatchCollection matches = Regex.Matches(selectedCode, pattern);
@@ -71,7 +73,6 @@ public class Playground : InitializeBehaviour
                         view = Instantiator.Instance.Graph() as Graph;
                         SaveAndLoadModule.graphs.Add(view);
                         view.Initialize(
-                            transform.position,
                             transform.TransformPoint(new Vector3(-width, 0, 0)),
                             transform.forward
                         );
@@ -85,8 +86,42 @@ public class Playground : InitializeBehaviour
                 }
                 InteractionLogger.RegisterCodeExecution(selectedCode, responseString);
             }
-            else if (!(Regex.Match(selectedCode, @"(\A[\n\t\s]+\Z)").Success ||
-                selectedCode == ""))
+            */
+            MatchCollection matches = Regex.Matches(selectedCode,
+                @"([a-zA-Z0-9]+)([\n\s\t]*)(:=)([\n\s\t]*)((?!Example)((RS|RT).*))([\n\s\t]+)(new)([\n\s\t]*)(\.)");
+            if (matches.Count > 0)
+            {
+                string type = "PNG";
+                string responseString = await TryGetImageFile(matches, "PNG", selectedCode);
+                if(!Regex.Match(responseString, @"\[[0-9\s]+\]").Success)
+                {
+                    type = "SVG";
+                    responseString = await TryGetImageFile(matches, "SVG", selectedCode);
+                }
+
+                if (Regex.Match(responseString, @"\[[0-9\s]+\]").Success)
+                {
+                    if (view == null)
+                    {
+                        float width = GetComponent<RectTransform>().sizeDelta.x;
+                        float height = GetComponent<RectTransform>().sizeDelta.y;
+                        view = Instantiator.Instance.Graph() as Graph;
+                        SaveAndLoadModule.graphs.Add(view);
+                        view.Initialize(
+                            transform.TransformPoint(new Vector3(-width, 0, 0)),
+                            transform.forward
+                        );
+                        InteractionLogger.Count("GraphObject");
+                    }
+                    view.setSprite(responseString, type);
+                }
+                else
+                {
+                    output = " -> " + responseString.Remove(responseString.LastIndexOf("\n"), 1);
+                }
+                InteractionLogger.RegisterCodeExecution(selectedCode, responseString);
+            }
+            else if (!String.IsNullOrWhiteSpace(selectedCode))
             {
                 await PharoInspect();
             }
@@ -155,7 +190,6 @@ public class Playground : InitializeBehaviour
                     insp = Instantiator.Instance.Inspector() as Inspector;
                     SaveAndLoadModule.inspectors.Add(insp);
                     insp.Initialize(
-                        transform.position,
                         newWorldPos,
                         transform.forward
                     );
@@ -273,5 +307,41 @@ public class Playground : InitializeBehaviour
             }
             lastCaretPosition = field.caretPosition;
         }
+    }
+
+    async Task<String> TryGetImageFile(MatchCollection matches, string type, string selectedCode)
+    {
+        string var = matches[0].Groups[1].Value;
+        string lowerType = type.ToLower();
+        string exporter;
+        if (selectedCode.Contains("RS"))
+            exporter =
+                ". " + var + " canvas " + lowerType + "Exporter " +
+                    "noFixedShapes; " +
+                    "fileName: 'img." + lowerType + "'; " +
+                    "export. ";
+        else
+            exporter =
+                ". RT" + type + "Exporter new " +
+                    (type == "PNG" ? "builder" : "view") + ": (" + var + " view); " +
+                    "fileName: 'img." + lowerType + "'; " +
+                    "exportToFile. ";
+
+        string finalCode =
+                exporter +
+                "(FileLocator workingDirectory / 'img." + type.ToLower() + "') " +
+                    "binaryReadStreamDo:[ :stream | stream upToEnd ].";
+
+        selectedCode = Regex.Replace(
+            selectedCode, 
+            $@"(\.)([\n\t\s]*)(\^)?([\n\t\s]*){var}([\n\t\s]+view)?([\n\t\s]*)(\.|\Z)", 
+            finalCode
+        );
+
+        Debug.Log(var);
+        Debug.Log(selectedCode);
+
+        string res = await Pharo.Print(selectedCode);
+        return res;
     }
 }

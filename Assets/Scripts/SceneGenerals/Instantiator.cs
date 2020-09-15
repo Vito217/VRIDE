@@ -7,6 +7,7 @@ public class Instantiator: MonoBehaviour
     public BrowserPackage browserPackagePrefab;
     public RoassalClass roassalClassPrefab;
     public RoassalMethod roassalMethodPrefab;
+    public RoassalExamples roassalExamplesPrefab;
     public InspectorRow inspectorRowPrefab;
     public Browser browserPrefab;
     public Playground playgroundPrefab;
@@ -107,5 +108,10 @@ public class Instantiator: MonoBehaviour
     public VRIDEMenu Menu()
     {
         return Instantiate(menuPrefab);
+    }
+
+    public RoassalExamples RoassalExamples()
+    {
+        return Instantiate(roassalExamplesPrefab);
     }
 }

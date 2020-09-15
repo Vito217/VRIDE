@@ -54,7 +54,7 @@ namespace SaveAndLoad
                 Vector3 final_pos = new Vector3(bdata.position.x, 2.25f, bdata.position.z);
 
                 Browser browser = Instantiator.Instance.Browser();
-                browser.Initialize(pos, final_pos, fwd);
+                browser.Initialize(final_pos, fwd);
                 Transform lsp = browser.package_list.transform.Find(bdata.lastSelectedPackage);
                 if (lsp != null && bdata.lastSelectedPackage != "")
                 {
@@ -99,7 +99,7 @@ namespace SaveAndLoad
                 Vector3 final_pos = new Vector3(pdata.position.x, 2f, pdata.position.z);
 
                 Playground playground = Instantiator.Instance.Playground();
-                playground.Initialize(pos, final_pos, fwd);
+                playground.Initialize(final_pos, fwd);
                 playground.field.text = pdata.sourceCode;
                 playgrounds.Add(playground);
                 InteractionLogger.Count("Playground");
@@ -131,7 +131,7 @@ namespace SaveAndLoad
 
                 Inspector inspector = Instantiator.Instance.Inspector();
                 inspector.setContent(idata.rows);
-                inspector.Initialize(pos, final_pos, fwd);
+                inspector.Initialize(final_pos, fwd);
 
                 inspectors.Add(inspector);
 
@@ -168,7 +168,7 @@ namespace SaveAndLoad
 
                 Graph graph = Instantiator.Instance.Graph();
                 graph.setSprite(rawImage, type);
-                graph.Initialize(pos, final_pos, fwd);
+                graph.Initialize(final_pos, fwd);
                 graphs.Add(graph);
 
                 InteractionLogger.Count("GraphObject");

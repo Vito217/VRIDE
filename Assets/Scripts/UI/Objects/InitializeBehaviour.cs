@@ -21,7 +21,6 @@ public class InitializeBehaviour : MonoBehaviour
     public Image panel;
     public int lastCaretPosition = 0;
 
-    bool initializing = false;
     Vector3 new_pos;
     Vector3 rel_pos;
     Vector3 rel_fwd;
@@ -44,21 +43,9 @@ public class InitializeBehaviour : MonoBehaviour
 
     void Update()
     {
-        if (initializing)
-            initializeAnimation();
-        else
-            innerBehaviour();
-    }
-
-    public void initializeAnimation()
-    {
-        transform.position = Vector3.MoveTowards(
-            transform.position,
-            new_pos,
-            speed
-        );
-        if (transform.position == new_pos)
-            initializing = false;
+        transform.forward = new Vector3(
+            transform.forward.x, 0f, transform.forward.z);
+        innerBehaviour();
     }
 
     public async void onChangeInput()
@@ -160,13 +147,10 @@ public class InitializeBehaviour : MonoBehaviour
         loadingWheel.SetActive(false);
     }
 
-    public virtual void Initialize(Vector3 init_pos, Vector3 final_pos,
-        Vector3 forward)
+    public virtual void Initialize(Vector3 final_pos, Vector3 forward)
     {
-        transform.position = init_pos;
+        transform.position = final_pos;
         transform.forward = forward;
-        new_pos = final_pos;
-        initializing = true;
     }
 
     public virtual void OnSelect(BaseEventData data)

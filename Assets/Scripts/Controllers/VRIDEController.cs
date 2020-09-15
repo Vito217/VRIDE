@@ -53,6 +53,7 @@ public class VRIDEController : MonoBehaviour
         bool f1 = Input.GetKeyDown(KeyCode.F1);
         bool f2 = Input.GetKeyDown(KeyCode.F2);
         bool f7 = Input.GetKeyDown(KeyCode.F7);
+        bool f8 = Input.GetKeyDown(KeyCode.F8);
         bool f9 = Input.GetKeyDown(KeyCode.F9);
         bool o = Input.GetKey("o");
         bool b = Input.GetKeyDown("b");
@@ -66,7 +67,7 @@ public class VRIDEController : MonoBehaviour
         newForw = new Vector3(forw.x, 0, forw.z);
 
         if (f1 || f2 || f7 || leftCmd || leftCtrl 
-            || esc || f9 || menuButton)
+            || esc || f8 || f9 || menuButton)
         {
             if (f1 || ((leftCtrl || leftCmd) && o && b))
                 GenerateBrowser();
@@ -74,6 +75,8 @@ public class VRIDEController : MonoBehaviour
                 GeneratePlayground();
             else if (f7 || ((leftCtrl || leftCmd) && o && t))
                 GenerateTranscript();
+            else if (f8)
+                GenerateRoassalExamples();
             else if (f9 || menuButton)
                 GenerateMenu();
         }
@@ -82,7 +85,7 @@ public class VRIDEController : MonoBehaviour
     public void GenerateBrowser()
     {
         Browser browser = Instantiator.Instance.Browser();
-        browser.Initialize(newPos, newFinalPos, newForw);
+        browser.Initialize(newFinalPos, newForw);
         SaveAndLoadModule.browsers.Add(browser);
         InteractionLogger.Count("Browser");
         if (menu != null) Destroy(menu.gameObject);
@@ -91,7 +94,7 @@ public class VRIDEController : MonoBehaviour
     public void GeneratePlayground()
     {
         Playground playground = Instantiator.Instance.Playground();
-        playground.Initialize(newPos, newFinalPos, newForw);
+        playground.Initialize(newFinalPos, newForw);
         SaveAndLoadModule.playgrounds.Add(playground);
         InteractionLogger.Count("Playground");
         if (menu != null) Destroy(menu.gameObject);
@@ -100,22 +103,33 @@ public class VRIDEController : MonoBehaviour
     public void GenerateTranscript()
     {
         Transcript transcript = Instantiator.Instance.Transcript();
-        transcript.Initialize(newPos, newFinalPos, newForw);
+        transcript.Initialize(newFinalPos, newForw);
         SaveAndLoadModule.transcripts.Add(transcript);
         InteractionLogger.Count("Transcript");
         if (menu != null) Destroy(menu.gameObject);
     }
 
+    public void GenerateRoassalExamples()
+    {
+        RoassalExamples re = Instantiator.Instance.RoassalExamples();
+        re.Initialize(newFinalPos, newForw);
+        if (menu != null) Destroy(menu.gameObject);
+    }
+
     public void GenerateMenu()
     {
-        if (menu != null) Destroy(menu.gameObject);
-        menu = Instantiator.Instance.Menu();
-        menu.Reset();
-        menu.playgroundGenerator.onClick.AddListener(GeneratePlayground);
-        menu.browserGenerator.onClick.AddListener(GenerateBrowser);
-        menu.transcriptGenerator.onClick.AddListener(GenerateTranscript);
-        menu.quit.onClick.AddListener(Exit);
-        menu.Initialize(newPos, newFinalPos, newForw);
+        if (menu != null) 
+            Destroy(menu.gameObject);
+        else
+        {
+            menu = Instantiator.Instance.Menu();
+            menu.Reset();
+            menu.playgroundGenerator.onClick.AddListener(GeneratePlayground);
+            menu.browserGenerator.onClick.AddListener(GenerateBrowser);
+            menu.transcriptGenerator.onClick.AddListener(GenerateTranscript);
+            menu.quit.onClick.AddListener(Exit);
+            menu.Initialize(newFinalPos, newForw);
+        }
     }
 
     public void Exit()
