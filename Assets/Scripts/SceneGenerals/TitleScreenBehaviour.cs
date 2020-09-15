@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR;
@@ -21,7 +22,7 @@ public class TitleScreenBehaviour : MonoBehaviour
 
     public VRIDEController htcplayer_prefab;
     public VRIDEController nonvrplayer_prefab;
-    public Teleportable ground;
+    public GameObject ground;
     // public GameObject oculusplayer_prefab;
     // public GameObject UIHelpers_prefab;
 
@@ -35,19 +36,31 @@ public class TitleScreenBehaviour : MonoBehaviour
 
     async void Load()
     {
-        dict = new Dictionary<string, VRIDEController>() {
-                { "" , nonvrplayer_prefab },
-                { "OpenVR", htcplayer_prefab }
-            };
-
-        VRIDEController player = Instantiate(dict[XRSettings.loadedDeviceName]);
-        //player.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
-        if (XRSettings.loadedDeviceName == "OpenVR")
+        VRIDEController player;
+        if (XRSettings.loadedDeviceName.Contains("OpenVR"))
         {
             XRSettings.enabled = true;
-            ground.target = player.transform;
-            ground.pivot = player.transform.Find("ViveCameraRig/Camera");
+            List<InputDevice> inputDevices = new List<InputDevice>();
+            InputDevices.GetDevices(inputDevices);
+            foreach (InputDevice device in inputDevices) if (device.isValid)
+            {
+                if(Regex.Match(device.name, @"VIVE|Vive|vive|HTC|htc").Success ||
+                    Regex.Match(device.manufacturer, @"VIVE|Vive|vive|HTC|htc").Success)
+                {
+                    player = Instantiate(htcplayer_prefab);
+                    ground.AddComponent<Teleportable>();
+                    ground.GetComponent<Teleportable>().target = player.transform;
+                    ground.GetComponent<Teleportable>().pivot = player.transform.Find("ViveCameraRig/Camera");
+                }
+                break;
+            }
         }
+        else if (XRSettings.loadedDeviceName.Contains("Oculus"))
+        {
+            XRSettings.enabled = true;
+        }
+        else
+            player = Instantiate(nonvrplayer_prefab);
 
         initializing = false;
 

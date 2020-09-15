@@ -5,6 +5,8 @@ public class Instantiator: MonoBehaviour
     public BrowserClass browserClassPrefab;
     public BrowserMethod browserMethodPrefab;
     public BrowserPackage browserPackagePrefab;
+    public RoassalClass roassalClassPrefab;
+    public RoassalMethod roassalMethodPrefab;
     public InspectorRow inspectorRowPrefab;
     public Browser browserPrefab;
     public Playground playgroundPrefab;
@@ -51,6 +53,24 @@ public class Instantiator: MonoBehaviour
             browserMethodPrefab, browser.methodList.transform, false);
         new_method.name = methodName;
         new_method.theBrowser = browser;
+        return new_method;
+    }
+
+    public RoassalClass RoassalClassObject(string className, RoassalExamples roassal)
+    {
+        RoassalClass new_class = Instantiate(
+            roassalClassPrefab, roassal.class_list.transform, false);
+        new_class.name = className;
+        new_class.roassal = roassal;
+        return new_class;
+    }
+
+    public RoassalMethod RoassalMethodObject(string methodName, RoassalExamples roassal)
+    {
+        RoassalMethod new_method = Instantiate(
+            roassalMethodPrefab, roassal.methodList.transform, false);
+        new_method.name = methodName;
+        new_method.roassal = roassal;
         return new_method;
     }
 
