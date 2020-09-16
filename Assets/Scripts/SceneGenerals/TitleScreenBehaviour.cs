@@ -21,10 +21,10 @@ public class TitleScreenBehaviour : MonoBehaviour
     private Dictionary<string, VRIDEController> dict;
 
     public VRIDEController htcplayer_prefab;
+    public VRIDEController openVRPlayerPrefab;
     public VRIDEController nonvrplayer_prefab;
+    public VRIDEController oculusplayer_prefab;
     public GameObject ground;
-    // public GameObject oculusplayer_prefab;
-    // public GameObject UIHelpers_prefab;
 
     void Update()
     {
@@ -37,7 +37,8 @@ public class TitleScreenBehaviour : MonoBehaviour
     async void Load()
     {
         VRIDEController player;
-        if (XRSettings.loadedDeviceName.Contains("OpenVR"))
+        if (XRSettings.loadedDeviceName.Contains("OpenVR") ||
+            XRSettings.loadedDeviceName.Contains("Oculus"))
         {
             XRSettings.enabled = true;
             List<InputDevice> inputDevices = new List<InputDevice>();
@@ -54,10 +55,6 @@ public class TitleScreenBehaviour : MonoBehaviour
                 }
                 break;
             }
-        }
-        else if (XRSettings.loadedDeviceName.Contains("Oculus"))
-        {
-            XRSettings.enabled = true;
         }
         else
             player = Instantiate(nonvrplayer_prefab);

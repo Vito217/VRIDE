@@ -123,10 +123,10 @@ public class VRIDEController : MonoBehaviour
         else
         {
             menu = Instantiator.Instance.Menu();
-            menu.Reset();
             menu.playgroundGenerator.onClick.AddListener(GeneratePlayground);
             menu.browserGenerator.onClick.AddListener(GenerateBrowser);
             menu.transcriptGenerator.onClick.AddListener(GenerateTranscript);
+            menu.roassalGenerator.onClick.AddListener(GenerateRoassalExamples);
             menu.quit.onClick.AddListener(Exit);
             menu.Initialize(newFinalPos, newForw);
         }

@@ -103,17 +103,17 @@ public class Playground : InitializeBehaviour
                 {
                     if (view == null)
                     {
-                        float width = GetComponent<RectTransform>().sizeDelta.x;
-                        float height = GetComponent<RectTransform>().sizeDelta.y;
                         view = Instantiator.Instance.Graph() as Graph;
                         SaveAndLoadModule.graphs.Add(view);
-                        view.Initialize(
-                            transform.TransformPoint(new Vector3(-width, 0, 0)),
-                            transform.forward
-                        );
                         InteractionLogger.Count("GraphObject");
                     }
                     view.setSprite(responseString, type);
+                    float width = GetComponent<RectTransform>().sizeDelta.x;
+                    view.Initialize(
+                        transform.TransformPoint(new Vector3(
+                            -0.5f * (width + view.GetComponent<RectTransform>().sizeDelta.x), 0, 0)),
+                        transform.forward
+                    );
                 }
                 else
                 {
@@ -337,9 +337,6 @@ public class Playground : InitializeBehaviour
             $@"(\.)([\n\t\s]*)(\^)?([\n\t\s]*){var}([\n\t\s]+view)?([\n\t\s]*)(\.|\Z)", 
             finalCode
         );
-
-        Debug.Log(var);
-        Debug.Log(selectedCode);
 
         string res = await Pharo.Print(selectedCode);
         return res;

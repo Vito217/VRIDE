@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
+using PharoModule;
 
 public class RoassalMethod : RoassalObject
 {
@@ -15,7 +18,22 @@ public class RoassalMethod : RoassalObject
         // Load a visualization
         string aClass = roassal.class_list.last_selected.name;
         string code = "(" + aClass + ">>#" + name + ") sourceCode .";
+        try
+        {
+            string sourceCode = await Pharo.Execute(code);
+            sourceCode = sourceCode.Substring(1, sourceCode.Length - 3);
+            sourceCode = Regex.Replace(
+                sourceCode, @"\A([a-zA-Z0-9\n\s\t<>:']*)(\|.*\|)", "$2");
 
+            Playground playground = Instantiator.Instance.Playground();
+            playground.Initialize(roassal.transform.position, roassal.transform.forward);
+            playground.field.text = sourceCode;
+        }
+        catch (Exception e)
+        {
+            //theBrowser.field.text += " -> [Error] " + e.Message;
+        }
         roassal.Reactivate();
+        Destroy(roassal.gameObject);
     }
 }

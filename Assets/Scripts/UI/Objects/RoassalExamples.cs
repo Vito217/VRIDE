@@ -27,4 +27,9 @@ public class RoassalExamples : InitializeBehaviour
             class_list.Load();
         }
     }
+
+    public override void onClose()
+    {
+        Destroy(gameObject);
+    }
 }

@@ -25,7 +25,8 @@ public class RClassesWindow : RWindow
                     res = Regex.Replace(res, @"(a Set\()|\)|'|#|\n", "");
                     string[] classes = res.Split(' ');
                     foreach(string aClass in classes)
-                        if (Regex.Match(aClass, @"RT.*Example|RS.*Examples").Success)
+                        if (Regex.Match(aClass, @"RT.*Example|RS.*Examples").Success &&
+                            !aClass.Contains("Abstract"))
                             classList.Add(aClass);
                 }
             }

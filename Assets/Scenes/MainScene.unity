@@ -511,7 +511,7 @@ MonoBehaviour:
     type: 3}
   nonvrplayer_prefab: {fileID: 4322277974984207995, guid: 427120dfbebe8bc45b9d827386531b23,
     type: 3}
-  ground: {fileID: 0}
+  ground: {fileID: 1743808469}
 --- !u!114 &702363776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -940,7 +940,6 @@ GameObject:
   - component: {fileID: 1743808472}
   - component: {fileID: 1743808471}
   - component: {fileID: 1743808470}
-  - component: {fileID: 1743808474}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Ground
@@ -1023,32 +1022,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1743808474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1743808469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f753025abc16bb45bbc83939f863bfb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  pivot: {fileID: 0}
-  fadeDuration: 0.3
-  primaryTeleportButton: 0
-  secondaryTeleportButton: 2
-  _teleportButton: 1
-  triggeredType: 0
-  m_reticleMaterial: {fileID: 2100000, guid: 3320905fb6f6bd54297f26399d87c525, type: 2}
-  rotateToHitObjectFront: 0
-  teleportToHitObjectPivot: 0
-  useSteamVRFade: 1
-  onBeforeTeleport:
-    m_PersistentCalls:
-      m_Calls: []
-  onAfterTeleport:
-    m_PersistentCalls:
-      m_Calls: []
