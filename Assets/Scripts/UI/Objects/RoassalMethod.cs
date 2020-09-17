@@ -11,6 +11,7 @@ public class RoassalMethod : RoassalObject
     {
         base.onSelect();
         roassal.DeactivateTemporarily();
+        roassal.logText.text = "";
         if (roassal.methodList.last_selected != null)
             roassal.methodList.last_selected.onDeselect();
         roassal.methodList.last_selected = this;
@@ -28,12 +29,12 @@ public class RoassalMethod : RoassalObject
             Playground playground = Instantiator.Instance.Playground();
             playground.Initialize(roassal.transform.position, roassal.transform.forward);
             playground.field.text = sourceCode;
+            Destroy(roassal.gameObject);
         }
         catch (Exception e)
         {
-            //theBrowser.field.text += " -> [Error] " + e.Message;
+            roassal.logText.text = "<color=#C63737>[Error] " + e.Message + "</color>";
+            roassal.Reactivate();
         }
-        roassal.Reactivate();
-        Destroy(roassal.gameObject);
     }
 }

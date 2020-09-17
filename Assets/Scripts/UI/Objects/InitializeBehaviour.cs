@@ -15,6 +15,7 @@ using TMPro;
 public class InitializeBehaviour : MonoBehaviour
 {
     public TextMeshProUGUI code;
+    public TextMeshProUGUI logText;
     public TMP_InputField field;
     public VRIDEController player;
     public GameObject loadingWheel;

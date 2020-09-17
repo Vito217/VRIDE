@@ -124,6 +124,7 @@ public class NativeVideoPlayer
     static Handler handler;
 
     static volatile boolean isPlaying;
+    static volatile int currentPlaybackState;
 
     static volatile long duration;
 
@@ -364,6 +365,7 @@ public class NativeVideoPlayer
                     public void onPlayerStateChanged(boolean playWhenReady, int playbackState)
                     {
                         isPlaying = playWhenReady && (playbackState == Player.STATE_READY || playbackState == Player.STATE_BUFFERING);
+                        currentPlaybackState = playbackState;
 
                         updatePlaybackState();
                     }
@@ -503,6 +505,11 @@ public class NativeVideoPlayer
     public static boolean getIsPlaying()
     {
         return isPlaying;
+    }
+
+    public static int getCurrentPlaybackState()
+    {
+        return currentPlaybackState;
     }
 
     public static long getDuration()

@@ -47,6 +47,7 @@ public abstract class RWindow : MonoBehaviour
         }
         catch (Exception e)
         {
+            roassal.logText.text = "<color=#C63737>[Error] " + e.Message + "</color>";
         }
         roassal.Reactivate();
     }

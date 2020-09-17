@@ -24,7 +24,7 @@ public class Browser : InitializeBehaviour
     public async void PharoDefine()
     {
         DeactivateTemporarily();
-        string output = "";
+        logText.text = "";
         try
         {
             // Cleaning code from RichText
@@ -52,7 +52,8 @@ public class Browser : InitializeBehaviour
                 }
                 else
                 {
-                    output = " -> " + responseString.Remove(responseString.LastIndexOf("\n"), 1);
+                    logText.text =
+                        "<color=#C63737>"+responseString.Remove(responseString.LastIndexOf("\n"), 1)+"</color>";
                 }
                 InteractionLogger.RegisterCodeDefinition("class", clean_code, responseString);
             }
@@ -67,18 +68,21 @@ public class Browser : InitializeBehaviour
 
                 // Getting method name
                 string responseString = await Pharo.Print(method_code);
-                if (responseString.Contains("#")) class_list.last_selected.click();
-                else output = " -> " + responseString.Remove(responseString.LastIndexOf("\n"), 1);
+                if (responseString.Contains("#"))
+                {
+                    class_list.last_selected.click();
+                }
+                else
+                {
+                    logText.text =
+                        "<color=#C63737>"+responseString.Remove(responseString.LastIndexOf("\n"), 1)+"</color>";
+                }
                 InteractionLogger.RegisterCodeDefinition("method", clean_code, responseString);
             }
         }
         catch (Exception e)
         {
-            output = " -> [Error] " + e.Message;
-        }
-        finally
-        {
-            field.text += output;
+            logText.text = "<color=#C63737>[Error] " + e.Message + "</color>";
         }
         Reactivate();
     }

@@ -7,6 +7,7 @@ public class BrowserMethod : BrowserObject
     {
         base.onSelect();
         theBrowser.DeactivateTemporarily();
+        theBrowser.logText.text = "";
         if (theBrowser.methodList.last_selected != null)
             theBrowser.methodList.last_selected.onDeselect();
         theBrowser.methodList.last_selected = this;
@@ -24,7 +25,7 @@ public class BrowserMethod : BrowserObject
             }
             catch (Exception e)
             {
-                theBrowser.field.text += " -> [Error] " + e.Message;
+                theBrowser.logText.text = "<color=#C63737>[Error] " + e.Message + "</color>";
             }
         }
         else

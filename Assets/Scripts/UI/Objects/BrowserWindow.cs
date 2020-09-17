@@ -49,7 +49,7 @@ public abstract class BrowserWindow : MonoBehaviour
         }
         catch (Exception e)
         {
-            theBrowser.field.text += " -> [Error] " + e.Message;
+            theBrowser.logText.text = "<color=#C63737>[Error] " + e.Message + "</color>";
         }
         theBrowser.Reactivate();
     }
@@ -74,6 +74,7 @@ public abstract class BrowserWindow : MonoBehaviour
     public void Load() 
     {
         theBrowser.DeactivateTemporarily();
+        theBrowser.logText.text = "";
         step1 = true; 
     }
 

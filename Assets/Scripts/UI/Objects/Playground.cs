@@ -16,7 +16,7 @@ public class Playground : InitializeBehaviour
     public async void PharoDo()
     {
         DeactivateTemporarily();
-        string output = "";
+        logText.text = "";
         try
         {
             string selectedCode = getSelectedCode(cleanCode(field.text));
@@ -117,7 +117,8 @@ public class Playground : InitializeBehaviour
                 }
                 else
                 {
-                    output = " -> " + responseString.Remove(responseString.LastIndexOf("\n"), 1);
+                    logText.text = 
+                        "<color=#C63737>"+responseString.Remove(responseString.LastIndexOf("\n"), 1)+"</color>";
                 }
                 InteractionLogger.RegisterCodeExecution(selectedCode, responseString);
             }
@@ -129,11 +130,7 @@ public class Playground : InitializeBehaviour
         catch (Exception e)
         {
             //output = " <color=#b32d00>[Error] " + e.Message + "</color>";
-            output = " -> [Error] " + e.Message;
-        }
-        finally
-        {
-            field.text += output;
+            logText.text = "<color=#C63737>[Error] " + e.Message + "</color>";
         }
         Reactivate();
     }
@@ -141,7 +138,7 @@ public class Playground : InitializeBehaviour
     public async void PharoPrint()
     {
         DeactivateTemporarily();
-        string output = "";
+        logText.text = "";
         try
         {
             string selection = getSelectedCode(cleanCode(field.text));
@@ -158,17 +155,17 @@ public class Playground : InitializeBehaviour
 
             string res = await Pharo.Print(selection);
             //output = " <color=#b32d00>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>";
-            output = " -> " + res.Remove(res.LastIndexOf("\n"), 1);
+
+            logText.text = Regex.Match(res, @"Error|Exception|Notification").Success ?
+                "<color=#C63737>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>" :
+                res.Remove(res.LastIndexOf("\n"), 1);
+
             InteractionLogger.RegisterCodeExecution(selection, res);
         }
         catch (Exception e)
         {
             //output = " <color=#b32d00>[Error] " + e.Message + "</color>";
-            output = " -> [Error] " + e.Message;
-        }
-        finally
-        {
-            field.text += output;
+            logText.text = "<color=#C63737>[Error] " + e.Message + "</color>";
         }
         Reactivate();
     }
@@ -176,7 +173,7 @@ public class Playground : InitializeBehaviour
     public async Task PharoInspect()
     {
         DeactivateTemporarily();
-        string output = "";
+        logText.text = "";
         try
         {
             string selection = getSelectedCode(cleanCode(field.text));
@@ -200,7 +197,8 @@ public class Playground : InitializeBehaviour
             else
             {
                 //output = " <color=#b32d00>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>";
-                output = " -> " + res.Remove(res.LastIndexOf("\n"), 1);
+                logText.text = 
+                    "<color=#C63737>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>";
             }
 
             InteractionLogger.RegisterCodeInspection(selection, res);
@@ -208,11 +206,7 @@ public class Playground : InitializeBehaviour
         catch (Exception e)
         {
             //output = " <color=#b32d00>[Error] " + e.Message + "</color>";
-            output = " -> [Error] " + e.Message;
-        }
-        finally
-        {
-            field.text += output;
+            logText.text = "<color=#C63737>[Error] " + e.Message + "</color>";
         }
         Reactivate();
     }

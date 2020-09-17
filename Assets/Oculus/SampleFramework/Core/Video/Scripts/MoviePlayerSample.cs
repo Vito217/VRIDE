@@ -46,7 +46,8 @@ public class MoviePlayerSample : MonoBehaviour
     {
         Mono,
         TopBottom,
-        LeftRight
+        LeftRight,
+        BottomTop
     }
 
     /// <summary>
@@ -115,16 +116,22 @@ public class MoviePlayerSample : MonoBehaviour
             {
                 case VideoStereo.LeftRight:
                     // set source matrices for left/right
-                    sourceLeft = new Rect(0, 0, 0.5f, 1.0f);
-                    sourceRight = new Rect(0.5f, 0, 0.5f, 1.0f);
+                    sourceLeft  = new Rect(0.0f, 0.0f, 0.5f, 1.0f);
+                    sourceRight = new Rect(0.5f, 0.0f, 0.5f, 1.0f);
                     break;
                 case VideoStereo.TopBottom:
                     // set source matrices for top/bottom
-                    sourceLeft = new Rect(0, 0, 1.0f, 0.5f);
-                    sourceRight = new Rect(0, 0.5f, 1.0f, 0.5f);
+                    sourceLeft  = new Rect(0.0f, 0.5f, 1.0f, 0.5f);
+                    sourceRight = new Rect(0.0f, 0.0f, 1.0f, 0.5f);
+                    break;
+                case VideoStereo.BottomTop:
+                    // set source matrices for top/bottom
+                    sourceLeft  = new Rect(0.0f, 0.0f, 1.0f, 0.5f);
+                    sourceRight = new Rect(0.0f, 0.5f, 1.0f, 0.5f);
                     break;
             }
 
+            overlay.invertTextureRects = false;
             overlay.SetSrcDestRects(sourceLeft, DisplayMono ? sourceLeft : sourceRight, destRect, destRect);
 
             _LastDisplayMono = DisplayMono;

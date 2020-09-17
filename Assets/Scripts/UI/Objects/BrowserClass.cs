@@ -21,7 +21,7 @@ public class BrowserClass : BrowserObject
             }
             catch (Exception e)
             {
-                theBrowser.field.text += " -> [Error] " + e.Message;
+                theBrowser.logText.text = "<color=#C63737>[Error] " + e.Message + "</color>";
             }
         }
         else
