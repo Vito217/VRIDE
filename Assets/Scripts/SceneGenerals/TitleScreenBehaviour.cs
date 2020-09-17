@@ -23,7 +23,6 @@ public class TitleScreenBehaviour : MonoBehaviour
     public VRIDEController htcplayer_prefab;
     public VRIDEController openVRPlayerPrefab;
     public VRIDEController nonvrplayer_prefab;
-    public VRIDEController oculusplayer_prefab;
     public GameObject ground;
 
     void Update()
@@ -52,6 +51,11 @@ public class TitleScreenBehaviour : MonoBehaviour
                     ground.AddComponent<Teleportable>();
                     ground.GetComponent<Teleportable>().target = player.transform;
                     ground.GetComponent<Teleportable>().pivot = player.transform.Find("ViveCameraRig/Camera");
+                }
+                else
+                {
+                    player = Instantiate(openVRPlayerPrefab);
+                    ground.AddComponent<TeleportArea>();
                 }
                 break;
             }

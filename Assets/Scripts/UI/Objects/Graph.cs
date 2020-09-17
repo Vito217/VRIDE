@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using ImageUtils;
 using LoggingModule;
 using SaveAndLoad;
+using Unity.VectorGraphics;
 
 public class Graph : InitializeBehaviour
 {
