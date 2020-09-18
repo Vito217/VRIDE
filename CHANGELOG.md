@@ -1,6 +1,6 @@
 # PharoVRIDE's Channel Log
 
-##V0.12.0 (18/09/2020)
+## V0.12.0 (18/09/2020)
 * Added Roassal 2 and 3 examples. You can see them on the menu.
 * Now you can use "Transcript show:" to log into the VRIDE log window
 * It is possible to create a Roassal view by just calling the "view" property (Roassal2) or "canvas" property (Roassal3). PNG will be the default format by now.
