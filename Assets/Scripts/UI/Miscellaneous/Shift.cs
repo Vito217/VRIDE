@@ -12,7 +12,7 @@ public class Shift : VRKey
         if (keyboard.window != null && !keyboard.window.loadingWheel.activeSelf)
         {
             lcp = keyboard.window.lastCaretPosition;
-            keyboard.window.field.ActivateInputField();
+            keyboard.window.keyboardTarget.ActivateInputField();
         }
         name = name == "shift" ? "SHIFT" : "shift";
         visibleText.text = name;
@@ -51,6 +51,6 @@ public class Shift : VRKey
             }
         }
         if (keyboard.window != null && !keyboard.window.loadingWheel.activeSelf) 
-            keyboard.window.field.caretPosition = lcp;
+            keyboard.window.keyboardTarget.caretPosition = lcp;
     }
 }

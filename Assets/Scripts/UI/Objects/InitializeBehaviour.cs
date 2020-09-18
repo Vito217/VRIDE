@@ -17,6 +17,7 @@ public class InitializeBehaviour : MonoBehaviour
     public TextMeshProUGUI code;
     public TMP_InputField logText;
     public TMP_InputField field;
+    public TMP_InputField keyboardTarget;
     public VRIDEController player;
     public GameObject loadingWheel;
     public Image panel;
@@ -156,7 +157,6 @@ public class InitializeBehaviour : MonoBehaviour
 
     public virtual void OnSelect(BaseEventData data)
     {
-        field = data.selectedObject.GetComponent<TMP_InputField>();
         player = data.currentInputModule.transform.parent
             .gameObject.GetComponent<VRIDEController>();
         player.can_move = false;

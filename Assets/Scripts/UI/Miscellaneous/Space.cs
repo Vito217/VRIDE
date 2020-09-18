@@ -9,12 +9,12 @@ public class Space : VRKey
         if (keyboard.window != null && !keyboard.window.loadingWheel.activeSelf)
         {
             int lcp = keyboard.window.lastCaretPosition;
-            keyboard.window.field.ActivateInputField();
-            keyboard.window.field.text = keyboard.window.field.text.Insert(
+            keyboard.window.keyboardTarget.ActivateInputField();
+            keyboard.window.keyboardTarget.text = keyboard.window.keyboardTarget.text.Insert(
                 lcp,
                 " "
             );
-            keyboard.window.field.caretPosition = lcp + 1;
+            keyboard.window.keyboardTarget.caretPosition = lcp + 1;
         }
     }
 }

@@ -11,9 +11,9 @@ public class Supr : VRKey
             try
             {
                 int lcp = keyboard.window.lastCaretPosition;
-                keyboard.window.field.ActivateInputField();
-                keyboard.window.field.caretPosition = lcp;
-                keyboard.window.field.text = keyboard.window.field.text.Remove(lcp, 1);
+                keyboard.window.keyboardTarget.ActivateInputField();
+                keyboard.window.keyboardTarget.caretPosition = lcp;
+                keyboard.window.keyboardTarget.text = keyboard.window.keyboardTarget.text.Remove(lcp, 1);
             }
             catch { }
         }

@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 using PharoModule;
 using LoggingModule;
 using SaveAndLoad;
+using TMPro;
 
 public class Playground : InitializeBehaviour
 {
@@ -248,6 +249,7 @@ public class Playground : InitializeBehaviour
     public override void OnSelect(BaseEventData data)
     {
         base.OnSelect(data);
+        keyboardTarget = data.selectedObject.GetComponent<TMP_InputField>();
         InteractionLogger.StartTimerFor("Playground");
     }
 
@@ -266,7 +268,7 @@ public class Playground : InitializeBehaviour
 
     public override void innerBehaviour()
     {
-        if (field.isFocused)
+        if (field.isFocused || keyboardTarget.isFocused)
         {
             if (Input.anyKeyDown && !loadingWheel.activeSelf)
             {
@@ -299,7 +301,7 @@ public class Playground : InitializeBehaviour
                 else
                     onChangeInput();
             }
-            lastCaretPosition = field.caretPosition;
+            lastCaretPosition = keyboardTarget.caretPosition;
         }
     }
 

@@ -129,6 +129,7 @@ public class Browser : InitializeBehaviour
     public override void OnSelect(BaseEventData data)
     {
         base.OnSelect(data);
+        keyboardTarget = data.selectedObject.GetComponent<TMP_InputField>();
         InteractionLogger.StartTimerFor("Browser");
     }
 
@@ -162,7 +163,7 @@ public class Browser : InitializeBehaviour
             loadingPackages = false;
             package_list.Load();
         }
-        else if (field.isFocused)
+        else if (field.isFocused || keyboardTarget.isFocused)
         {
             if (Input.anyKeyDown && !loadingWheel.activeSelf)
             {
@@ -176,7 +177,7 @@ public class Browser : InitializeBehaviour
                 else if (((leftCmd || leftCtrl) && s) || f6)
                     PharoDefine();
             }
-            lastCaretPosition = field.caretPosition;
+            lastCaretPosition = keyboardTarget.caretPosition;
         }
     }
 }

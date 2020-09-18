@@ -13,7 +13,7 @@ public class SpecialChars : VRKey
         if (keyboard.window != null && !keyboard.window.loadingWheel.activeSelf)
         {
             lcp = keyboard.window.lastCaretPosition;
-            keyboard.window.field.ActivateInputField();
+            keyboard.window.keyboardTarget.ActivateInputField();
         }
         if (name == "ABC")
         {
@@ -30,6 +30,6 @@ public class SpecialChars : VRKey
             visibleText.text = "ABC";
         }
         if (keyboard.window != null && !keyboard.window.loadingWheel.activeSelf)
-            keyboard.window.field.caretPosition = lcp;
+            keyboard.window.keyboardTarget.caretPosition = lcp;
     }
 }
