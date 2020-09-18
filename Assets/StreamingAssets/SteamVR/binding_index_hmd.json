@@ -1,27 +1,25 @@
 {
-  "alias_info": {},
+  "controller_type": "indexhmd",
+  "description": "",
+  "name": "index hmd defaults",
   "bindings": {
     "/actions/default": {
       "chords": [],
-      "haptics": [],
-      "poses": [],
-      "skeleton": [],
       "sources": [
         {
+          "path": "/user/head/proximity",
+          "mode": "button",
+          "parameters": {},
           "inputs": {
             "click": {
               "output": "/actions/default/in/headsetonhead"
             }
-          },
-          "mode": "button",
-          "path": "/user/head/proximity"
+          }
         }
-      ]
+      ],
+      "poses": [],
+      "haptics": [],
+      "skeleton": []
     }
-  },
-  "controller_type": "indexhmd",
-  "description": "",
-  "name": "index hmd defaults",
-  "options": {},
-  "simulated_actions": []
+  }
 }

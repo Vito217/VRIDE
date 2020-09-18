@@ -55,6 +55,90 @@ namespace Valve.VR
         
         private static SteamVR_Action_Pose p_mixedreality_ExternalCamera;
         
+        private static SteamVR_Action_Boolean p_htc_viu_viu_press_00;
+        
+        private static SteamVR_Action_Boolean p_htc_viu_viu_press_01;
+        
+        private static SteamVR_Action_Boolean p_htc_viu_viu_press_02;
+        
+        private static SteamVR_Action_Boolean p_htc_viu_viu_press_03;
+        
+        private static SteamVR_Action_Boolean p_htc_viu_viu_press_04;
+        
+        private static SteamVR_Action_Boolean p_htc_viu_viu_press_05;
+        
+        private static SteamVR_Action_Boolean p_htc_viu_viu_press_06;
+        
+        private static SteamVR_Action_Boolean p_htc_viu_viu_press_07;
+        
+        private static SteamVR_Action_Boolean p_htc_viu_viu_press_31;
+        
+        private static SteamVR_Action_Boolean p_htc_viu_viu_press_32;
+        
+        private static SteamVR_Action_Boolean p_htc_viu_viu_press_33;
+        
+        private static SteamVR_Action_Boolean p_htc_viu_viu_press_34;
+        
+        private static SteamVR_Action_Boolean p_htc_viu_viu_press_35;
+        
+        private static SteamVR_Action_Boolean p_htc_viu_viu_touch_00;
+        
+        private static SteamVR_Action_Boolean p_htc_viu_viu_touch_01;
+        
+        private static SteamVR_Action_Boolean p_htc_viu_viu_touch_02;
+        
+        private static SteamVR_Action_Boolean p_htc_viu_viu_touch_03;
+        
+        private static SteamVR_Action_Boolean p_htc_viu_viu_touch_04;
+        
+        private static SteamVR_Action_Boolean p_htc_viu_viu_touch_05;
+        
+        private static SteamVR_Action_Boolean p_htc_viu_viu_touch_06;
+        
+        private static SteamVR_Action_Boolean p_htc_viu_viu_touch_07;
+        
+        private static SteamVR_Action_Boolean p_htc_viu_viu_touch_31;
+        
+        private static SteamVR_Action_Boolean p_htc_viu_viu_touch_32;
+        
+        private static SteamVR_Action_Boolean p_htc_viu_viu_touch_33;
+        
+        private static SteamVR_Action_Boolean p_htc_viu_viu_touch_34;
+        
+        private static SteamVR_Action_Boolean p_htc_viu_viu_touch_35;
+        
+        private static SteamVR_Action_Single p_htc_viu_viu_axis_0x;
+        
+        private static SteamVR_Action_Single p_htc_viu_viu_axis_0y;
+        
+        private static SteamVR_Action_Single p_htc_viu_viu_axis_1x;
+        
+        private static SteamVR_Action_Single p_htc_viu_viu_axis_1y;
+        
+        private static SteamVR_Action_Single p_htc_viu_viu_axis_2x;
+        
+        private static SteamVR_Action_Single p_htc_viu_viu_axis_2y;
+        
+        private static SteamVR_Action_Single p_htc_viu_viu_axis_3x;
+        
+        private static SteamVR_Action_Single p_htc_viu_viu_axis_3y;
+        
+        private static SteamVR_Action_Single p_htc_viu_viu_axis_4x;
+        
+        private static SteamVR_Action_Single p_htc_viu_viu_axis_4y;
+        
+        private static SteamVR_Action_Vector2 p_htc_viu_viu_axis_0xy;
+        
+        private static SteamVR_Action_Vector2 p_htc_viu_viu_axis_1xy;
+        
+        private static SteamVR_Action_Vector2 p_htc_viu_viu_axis_2xy;
+        
+        private static SteamVR_Action_Vector2 p_htc_viu_viu_axis_3xy;
+        
+        private static SteamVR_Action_Vector2 p_htc_viu_viu_axis_4xy;
+        
+        private static SteamVR_Action_Vibration p_htc_viu_viu_vib_01;
+        
         public static SteamVR_Action_Boolean default_InteractUI
         {
             get
@@ -207,6 +291,342 @@ namespace Valve.VR
             }
         }
         
+        public static SteamVR_Action_Boolean htc_viu_viu_press_00
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_press_00.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean htc_viu_viu_press_01
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_press_01.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean htc_viu_viu_press_02
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_press_02.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean htc_viu_viu_press_03
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_press_03.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean htc_viu_viu_press_04
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_press_04.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean htc_viu_viu_press_05
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_press_05.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean htc_viu_viu_press_06
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_press_06.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean htc_viu_viu_press_07
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_press_07.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean htc_viu_viu_press_31
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_press_31.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean htc_viu_viu_press_32
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_press_32.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean htc_viu_viu_press_33
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_press_33.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean htc_viu_viu_press_34
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_press_34.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean htc_viu_viu_press_35
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_press_35.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean htc_viu_viu_touch_00
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_touch_00.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean htc_viu_viu_touch_01
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_touch_01.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean htc_viu_viu_touch_02
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_touch_02.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean htc_viu_viu_touch_03
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_touch_03.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean htc_viu_viu_touch_04
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_touch_04.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean htc_viu_viu_touch_05
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_touch_05.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean htc_viu_viu_touch_06
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_touch_06.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean htc_viu_viu_touch_07
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_touch_07.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean htc_viu_viu_touch_31
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_touch_31.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean htc_viu_viu_touch_32
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_touch_32.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean htc_viu_viu_touch_33
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_touch_33.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean htc_viu_viu_touch_34
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_touch_34.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean htc_viu_viu_touch_35
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_touch_35.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Single htc_viu_viu_axis_0x
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_axis_0x.GetCopy<SteamVR_Action_Single>();
+            }
+        }
+        
+        public static SteamVR_Action_Single htc_viu_viu_axis_0y
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_axis_0y.GetCopy<SteamVR_Action_Single>();
+            }
+        }
+        
+        public static SteamVR_Action_Single htc_viu_viu_axis_1x
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_axis_1x.GetCopy<SteamVR_Action_Single>();
+            }
+        }
+        
+        public static SteamVR_Action_Single htc_viu_viu_axis_1y
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_axis_1y.GetCopy<SteamVR_Action_Single>();
+            }
+        }
+        
+        public static SteamVR_Action_Single htc_viu_viu_axis_2x
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_axis_2x.GetCopy<SteamVR_Action_Single>();
+            }
+        }
+        
+        public static SteamVR_Action_Single htc_viu_viu_axis_2y
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_axis_2y.GetCopy<SteamVR_Action_Single>();
+            }
+        }
+        
+        public static SteamVR_Action_Single htc_viu_viu_axis_3x
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_axis_3x.GetCopy<SteamVR_Action_Single>();
+            }
+        }
+        
+        public static SteamVR_Action_Single htc_viu_viu_axis_3y
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_axis_3y.GetCopy<SteamVR_Action_Single>();
+            }
+        }
+        
+        public static SteamVR_Action_Single htc_viu_viu_axis_4x
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_axis_4x.GetCopy<SteamVR_Action_Single>();
+            }
+        }
+        
+        public static SteamVR_Action_Single htc_viu_viu_axis_4y
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_axis_4y.GetCopy<SteamVR_Action_Single>();
+            }
+        }
+        
+        public static SteamVR_Action_Vector2 htc_viu_viu_axis_0xy
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_axis_0xy.GetCopy<SteamVR_Action_Vector2>();
+            }
+        }
+        
+        public static SteamVR_Action_Vector2 htc_viu_viu_axis_1xy
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_axis_1xy.GetCopy<SteamVR_Action_Vector2>();
+            }
+        }
+        
+        public static SteamVR_Action_Vector2 htc_viu_viu_axis_2xy
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_axis_2xy.GetCopy<SteamVR_Action_Vector2>();
+            }
+        }
+        
+        public static SteamVR_Action_Vector2 htc_viu_viu_axis_3xy
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_axis_3xy.GetCopy<SteamVR_Action_Vector2>();
+            }
+        }
+        
+        public static SteamVR_Action_Vector2 htc_viu_viu_axis_4xy
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_axis_4xy.GetCopy<SteamVR_Action_Vector2>();
+            }
+        }
+        
+        public static SteamVR_Action_Vibration htc_viu_viu_vib_01
+        {
+            get
+            {
+                return SteamVR_Actions.p_htc_viu_viu_vib_01.GetCopy<SteamVR_Action_Vibration>();
+            }
+        }
+        
         private static void InitializeActionArrays()
         {
             Valve.VR.SteamVR_Input.actions = new Valve.VR.SteamVR_Action[] {
@@ -228,7 +648,49 @@ namespace Valve.VR
                     SteamVR_Actions.buggy_Throttle,
                     SteamVR_Actions.buggy_Brake,
                     SteamVR_Actions.buggy_Reset,
-                    SteamVR_Actions.mixedreality_ExternalCamera};
+                    SteamVR_Actions.mixedreality_ExternalCamera,
+                    SteamVR_Actions.htc_viu_viu_press_00,
+                    SteamVR_Actions.htc_viu_viu_press_01,
+                    SteamVR_Actions.htc_viu_viu_press_02,
+                    SteamVR_Actions.htc_viu_viu_press_03,
+                    SteamVR_Actions.htc_viu_viu_press_04,
+                    SteamVR_Actions.htc_viu_viu_press_05,
+                    SteamVR_Actions.htc_viu_viu_press_06,
+                    SteamVR_Actions.htc_viu_viu_press_07,
+                    SteamVR_Actions.htc_viu_viu_press_31,
+                    SteamVR_Actions.htc_viu_viu_press_32,
+                    SteamVR_Actions.htc_viu_viu_press_33,
+                    SteamVR_Actions.htc_viu_viu_press_34,
+                    SteamVR_Actions.htc_viu_viu_press_35,
+                    SteamVR_Actions.htc_viu_viu_touch_00,
+                    SteamVR_Actions.htc_viu_viu_touch_01,
+                    SteamVR_Actions.htc_viu_viu_touch_02,
+                    SteamVR_Actions.htc_viu_viu_touch_03,
+                    SteamVR_Actions.htc_viu_viu_touch_04,
+                    SteamVR_Actions.htc_viu_viu_touch_05,
+                    SteamVR_Actions.htc_viu_viu_touch_06,
+                    SteamVR_Actions.htc_viu_viu_touch_07,
+                    SteamVR_Actions.htc_viu_viu_touch_31,
+                    SteamVR_Actions.htc_viu_viu_touch_32,
+                    SteamVR_Actions.htc_viu_viu_touch_33,
+                    SteamVR_Actions.htc_viu_viu_touch_34,
+                    SteamVR_Actions.htc_viu_viu_touch_35,
+                    SteamVR_Actions.htc_viu_viu_axis_0x,
+                    SteamVR_Actions.htc_viu_viu_axis_0y,
+                    SteamVR_Actions.htc_viu_viu_axis_1x,
+                    SteamVR_Actions.htc_viu_viu_axis_1y,
+                    SteamVR_Actions.htc_viu_viu_axis_2x,
+                    SteamVR_Actions.htc_viu_viu_axis_2y,
+                    SteamVR_Actions.htc_viu_viu_axis_3x,
+                    SteamVR_Actions.htc_viu_viu_axis_3y,
+                    SteamVR_Actions.htc_viu_viu_axis_4x,
+                    SteamVR_Actions.htc_viu_viu_axis_4y,
+                    SteamVR_Actions.htc_viu_viu_axis_0xy,
+                    SteamVR_Actions.htc_viu_viu_axis_1xy,
+                    SteamVR_Actions.htc_viu_viu_axis_2xy,
+                    SteamVR_Actions.htc_viu_viu_axis_3xy,
+                    SteamVR_Actions.htc_viu_viu_axis_4xy,
+                    SteamVR_Actions.htc_viu_viu_vib_01};
             Valve.VR.SteamVR_Input.actionsIn = new Valve.VR.ISteamVR_Action_In[] {
                     SteamVR_Actions.default_InteractUI,
                     SteamVR_Actions.default_Teleport,
@@ -247,11 +709,54 @@ namespace Valve.VR
                     SteamVR_Actions.buggy_Throttle,
                     SteamVR_Actions.buggy_Brake,
                     SteamVR_Actions.buggy_Reset,
-                    SteamVR_Actions.mixedreality_ExternalCamera};
+                    SteamVR_Actions.mixedreality_ExternalCamera,
+                    SteamVR_Actions.htc_viu_viu_press_00,
+                    SteamVR_Actions.htc_viu_viu_press_01,
+                    SteamVR_Actions.htc_viu_viu_press_02,
+                    SteamVR_Actions.htc_viu_viu_press_03,
+                    SteamVR_Actions.htc_viu_viu_press_04,
+                    SteamVR_Actions.htc_viu_viu_press_05,
+                    SteamVR_Actions.htc_viu_viu_press_06,
+                    SteamVR_Actions.htc_viu_viu_press_07,
+                    SteamVR_Actions.htc_viu_viu_press_31,
+                    SteamVR_Actions.htc_viu_viu_press_32,
+                    SteamVR_Actions.htc_viu_viu_press_33,
+                    SteamVR_Actions.htc_viu_viu_press_34,
+                    SteamVR_Actions.htc_viu_viu_press_35,
+                    SteamVR_Actions.htc_viu_viu_touch_00,
+                    SteamVR_Actions.htc_viu_viu_touch_01,
+                    SteamVR_Actions.htc_viu_viu_touch_02,
+                    SteamVR_Actions.htc_viu_viu_touch_03,
+                    SteamVR_Actions.htc_viu_viu_touch_04,
+                    SteamVR_Actions.htc_viu_viu_touch_05,
+                    SteamVR_Actions.htc_viu_viu_touch_06,
+                    SteamVR_Actions.htc_viu_viu_touch_07,
+                    SteamVR_Actions.htc_viu_viu_touch_31,
+                    SteamVR_Actions.htc_viu_viu_touch_32,
+                    SteamVR_Actions.htc_viu_viu_touch_33,
+                    SteamVR_Actions.htc_viu_viu_touch_34,
+                    SteamVR_Actions.htc_viu_viu_touch_35,
+                    SteamVR_Actions.htc_viu_viu_axis_0x,
+                    SteamVR_Actions.htc_viu_viu_axis_0y,
+                    SteamVR_Actions.htc_viu_viu_axis_1x,
+                    SteamVR_Actions.htc_viu_viu_axis_1y,
+                    SteamVR_Actions.htc_viu_viu_axis_2x,
+                    SteamVR_Actions.htc_viu_viu_axis_2y,
+                    SteamVR_Actions.htc_viu_viu_axis_3x,
+                    SteamVR_Actions.htc_viu_viu_axis_3y,
+                    SteamVR_Actions.htc_viu_viu_axis_4x,
+                    SteamVR_Actions.htc_viu_viu_axis_4y,
+                    SteamVR_Actions.htc_viu_viu_axis_0xy,
+                    SteamVR_Actions.htc_viu_viu_axis_1xy,
+                    SteamVR_Actions.htc_viu_viu_axis_2xy,
+                    SteamVR_Actions.htc_viu_viu_axis_3xy,
+                    SteamVR_Actions.htc_viu_viu_axis_4xy};
             Valve.VR.SteamVR_Input.actionsOut = new Valve.VR.ISteamVR_Action_Out[] {
-                    SteamVR_Actions.default_Haptic};
+                    SteamVR_Actions.default_Haptic,
+                    SteamVR_Actions.htc_viu_viu_vib_01};
             Valve.VR.SteamVR_Input.actionsVibration = new Valve.VR.SteamVR_Action_Vibration[] {
-                    SteamVR_Actions.default_Haptic};
+                    SteamVR_Actions.default_Haptic,
+                    SteamVR_Actions.htc_viu_viu_vib_01};
             Valve.VR.SteamVR_Input.actionsPose = new Valve.VR.SteamVR_Action_Pose[] {
                     SteamVR_Actions.default_Pose,
                     SteamVR_Actions.mixedreality_ExternalCamera};
@@ -265,13 +770,54 @@ namespace Valve.VR
                     SteamVR_Actions.default_SnapTurnRight,
                     SteamVR_Actions.platformer_Jump,
                     SteamVR_Actions.buggy_Brake,
-                    SteamVR_Actions.buggy_Reset};
+                    SteamVR_Actions.buggy_Reset,
+                    SteamVR_Actions.htc_viu_viu_press_00,
+                    SteamVR_Actions.htc_viu_viu_press_01,
+                    SteamVR_Actions.htc_viu_viu_press_02,
+                    SteamVR_Actions.htc_viu_viu_press_03,
+                    SteamVR_Actions.htc_viu_viu_press_04,
+                    SteamVR_Actions.htc_viu_viu_press_05,
+                    SteamVR_Actions.htc_viu_viu_press_06,
+                    SteamVR_Actions.htc_viu_viu_press_07,
+                    SteamVR_Actions.htc_viu_viu_press_31,
+                    SteamVR_Actions.htc_viu_viu_press_32,
+                    SteamVR_Actions.htc_viu_viu_press_33,
+                    SteamVR_Actions.htc_viu_viu_press_34,
+                    SteamVR_Actions.htc_viu_viu_press_35,
+                    SteamVR_Actions.htc_viu_viu_touch_00,
+                    SteamVR_Actions.htc_viu_viu_touch_01,
+                    SteamVR_Actions.htc_viu_viu_touch_02,
+                    SteamVR_Actions.htc_viu_viu_touch_03,
+                    SteamVR_Actions.htc_viu_viu_touch_04,
+                    SteamVR_Actions.htc_viu_viu_touch_05,
+                    SteamVR_Actions.htc_viu_viu_touch_06,
+                    SteamVR_Actions.htc_viu_viu_touch_07,
+                    SteamVR_Actions.htc_viu_viu_touch_31,
+                    SteamVR_Actions.htc_viu_viu_touch_32,
+                    SteamVR_Actions.htc_viu_viu_touch_33,
+                    SteamVR_Actions.htc_viu_viu_touch_34,
+                    SteamVR_Actions.htc_viu_viu_touch_35};
             Valve.VR.SteamVR_Input.actionsSingle = new Valve.VR.SteamVR_Action_Single[] {
                     SteamVR_Actions.default_Squeeze,
-                    SteamVR_Actions.buggy_Throttle};
+                    SteamVR_Actions.buggy_Throttle,
+                    SteamVR_Actions.htc_viu_viu_axis_0x,
+                    SteamVR_Actions.htc_viu_viu_axis_0y,
+                    SteamVR_Actions.htc_viu_viu_axis_1x,
+                    SteamVR_Actions.htc_viu_viu_axis_1y,
+                    SteamVR_Actions.htc_viu_viu_axis_2x,
+                    SteamVR_Actions.htc_viu_viu_axis_2y,
+                    SteamVR_Actions.htc_viu_viu_axis_3x,
+                    SteamVR_Actions.htc_viu_viu_axis_3y,
+                    SteamVR_Actions.htc_viu_viu_axis_4x,
+                    SteamVR_Actions.htc_viu_viu_axis_4y};
             Valve.VR.SteamVR_Input.actionsVector2 = new Valve.VR.SteamVR_Action_Vector2[] {
                     SteamVR_Actions.platformer_Move,
-                    SteamVR_Actions.buggy_Steering};
+                    SteamVR_Actions.buggy_Steering,
+                    SteamVR_Actions.htc_viu_viu_axis_0xy,
+                    SteamVR_Actions.htc_viu_viu_axis_1xy,
+                    SteamVR_Actions.htc_viu_viu_axis_2xy,
+                    SteamVR_Actions.htc_viu_viu_axis_3xy,
+                    SteamVR_Actions.htc_viu_viu_axis_4xy};
             Valve.VR.SteamVR_Input.actionsVector3 = new Valve.VR.SteamVR_Action_Vector3[0];
             Valve.VR.SteamVR_Input.actionsSkeleton = new Valve.VR.SteamVR_Action_Skeleton[] {
                     SteamVR_Actions.default_SkeletonLeftHand,
@@ -290,7 +836,48 @@ namespace Valve.VR
                     SteamVR_Actions.buggy_Steering,
                     SteamVR_Actions.buggy_Throttle,
                     SteamVR_Actions.buggy_Brake,
-                    SteamVR_Actions.buggy_Reset};
+                    SteamVR_Actions.buggy_Reset,
+                    SteamVR_Actions.htc_viu_viu_press_00,
+                    SteamVR_Actions.htc_viu_viu_press_01,
+                    SteamVR_Actions.htc_viu_viu_press_02,
+                    SteamVR_Actions.htc_viu_viu_press_03,
+                    SteamVR_Actions.htc_viu_viu_press_04,
+                    SteamVR_Actions.htc_viu_viu_press_05,
+                    SteamVR_Actions.htc_viu_viu_press_06,
+                    SteamVR_Actions.htc_viu_viu_press_07,
+                    SteamVR_Actions.htc_viu_viu_press_31,
+                    SteamVR_Actions.htc_viu_viu_press_32,
+                    SteamVR_Actions.htc_viu_viu_press_33,
+                    SteamVR_Actions.htc_viu_viu_press_34,
+                    SteamVR_Actions.htc_viu_viu_press_35,
+                    SteamVR_Actions.htc_viu_viu_touch_00,
+                    SteamVR_Actions.htc_viu_viu_touch_01,
+                    SteamVR_Actions.htc_viu_viu_touch_02,
+                    SteamVR_Actions.htc_viu_viu_touch_03,
+                    SteamVR_Actions.htc_viu_viu_touch_04,
+                    SteamVR_Actions.htc_viu_viu_touch_05,
+                    SteamVR_Actions.htc_viu_viu_touch_06,
+                    SteamVR_Actions.htc_viu_viu_touch_07,
+                    SteamVR_Actions.htc_viu_viu_touch_31,
+                    SteamVR_Actions.htc_viu_viu_touch_32,
+                    SteamVR_Actions.htc_viu_viu_touch_33,
+                    SteamVR_Actions.htc_viu_viu_touch_34,
+                    SteamVR_Actions.htc_viu_viu_touch_35,
+                    SteamVR_Actions.htc_viu_viu_axis_0x,
+                    SteamVR_Actions.htc_viu_viu_axis_0y,
+                    SteamVR_Actions.htc_viu_viu_axis_1x,
+                    SteamVR_Actions.htc_viu_viu_axis_1y,
+                    SteamVR_Actions.htc_viu_viu_axis_2x,
+                    SteamVR_Actions.htc_viu_viu_axis_2y,
+                    SteamVR_Actions.htc_viu_viu_axis_3x,
+                    SteamVR_Actions.htc_viu_viu_axis_3y,
+                    SteamVR_Actions.htc_viu_viu_axis_4x,
+                    SteamVR_Actions.htc_viu_viu_axis_4y,
+                    SteamVR_Actions.htc_viu_viu_axis_0xy,
+                    SteamVR_Actions.htc_viu_viu_axis_1xy,
+                    SteamVR_Actions.htc_viu_viu_axis_2xy,
+                    SteamVR_Actions.htc_viu_viu_axis_3xy,
+                    SteamVR_Actions.htc_viu_viu_axis_4xy};
         }
         
         private static void PreInitActions()
@@ -314,6 +901,48 @@ namespace Valve.VR
             SteamVR_Actions.p_buggy_Brake = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/buggy/in/Brake")));
             SteamVR_Actions.p_buggy_Reset = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/buggy/in/Reset")));
             SteamVR_Actions.p_mixedreality_ExternalCamera = ((SteamVR_Action_Pose)(SteamVR_Action.Create<SteamVR_Action_Pose>("/actions/mixedreality/in/ExternalCamera")));
+            SteamVR_Actions.p_htc_viu_viu_press_00 = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/htc_viu/in/viu_press_00")));
+            SteamVR_Actions.p_htc_viu_viu_press_01 = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/htc_viu/in/viu_press_01")));
+            SteamVR_Actions.p_htc_viu_viu_press_02 = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/htc_viu/in/viu_press_02")));
+            SteamVR_Actions.p_htc_viu_viu_press_03 = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/htc_viu/in/viu_press_03")));
+            SteamVR_Actions.p_htc_viu_viu_press_04 = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/htc_viu/in/viu_press_04")));
+            SteamVR_Actions.p_htc_viu_viu_press_05 = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/htc_viu/in/viu_press_05")));
+            SteamVR_Actions.p_htc_viu_viu_press_06 = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/htc_viu/in/viu_press_06")));
+            SteamVR_Actions.p_htc_viu_viu_press_07 = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/htc_viu/in/viu_press_07")));
+            SteamVR_Actions.p_htc_viu_viu_press_31 = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/htc_viu/in/viu_press_31")));
+            SteamVR_Actions.p_htc_viu_viu_press_32 = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/htc_viu/in/viu_press_32")));
+            SteamVR_Actions.p_htc_viu_viu_press_33 = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/htc_viu/in/viu_press_33")));
+            SteamVR_Actions.p_htc_viu_viu_press_34 = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/htc_viu/in/viu_press_34")));
+            SteamVR_Actions.p_htc_viu_viu_press_35 = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/htc_viu/in/viu_press_35")));
+            SteamVR_Actions.p_htc_viu_viu_touch_00 = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/htc_viu/in/viu_touch_00")));
+            SteamVR_Actions.p_htc_viu_viu_touch_01 = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/htc_viu/in/viu_touch_01")));
+            SteamVR_Actions.p_htc_viu_viu_touch_02 = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/htc_viu/in/viu_touch_02")));
+            SteamVR_Actions.p_htc_viu_viu_touch_03 = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/htc_viu/in/viu_touch_03")));
+            SteamVR_Actions.p_htc_viu_viu_touch_04 = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/htc_viu/in/viu_touch_04")));
+            SteamVR_Actions.p_htc_viu_viu_touch_05 = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/htc_viu/in/viu_touch_05")));
+            SteamVR_Actions.p_htc_viu_viu_touch_06 = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/htc_viu/in/viu_touch_06")));
+            SteamVR_Actions.p_htc_viu_viu_touch_07 = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/htc_viu/in/viu_touch_07")));
+            SteamVR_Actions.p_htc_viu_viu_touch_31 = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/htc_viu/in/viu_touch_31")));
+            SteamVR_Actions.p_htc_viu_viu_touch_32 = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/htc_viu/in/viu_touch_32")));
+            SteamVR_Actions.p_htc_viu_viu_touch_33 = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/htc_viu/in/viu_touch_33")));
+            SteamVR_Actions.p_htc_viu_viu_touch_34 = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/htc_viu/in/viu_touch_34")));
+            SteamVR_Actions.p_htc_viu_viu_touch_35 = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/htc_viu/in/viu_touch_35")));
+            SteamVR_Actions.p_htc_viu_viu_axis_0x = ((SteamVR_Action_Single)(SteamVR_Action.Create<SteamVR_Action_Single>("/actions/htc_viu/in/viu_axis_0x")));
+            SteamVR_Actions.p_htc_viu_viu_axis_0y = ((SteamVR_Action_Single)(SteamVR_Action.Create<SteamVR_Action_Single>("/actions/htc_viu/in/viu_axis_0y")));
+            SteamVR_Actions.p_htc_viu_viu_axis_1x = ((SteamVR_Action_Single)(SteamVR_Action.Create<SteamVR_Action_Single>("/actions/htc_viu/in/viu_axis_1x")));
+            SteamVR_Actions.p_htc_viu_viu_axis_1y = ((SteamVR_Action_Single)(SteamVR_Action.Create<SteamVR_Action_Single>("/actions/htc_viu/in/viu_axis_1y")));
+            SteamVR_Actions.p_htc_viu_viu_axis_2x = ((SteamVR_Action_Single)(SteamVR_Action.Create<SteamVR_Action_Single>("/actions/htc_viu/in/viu_axis_2x")));
+            SteamVR_Actions.p_htc_viu_viu_axis_2y = ((SteamVR_Action_Single)(SteamVR_Action.Create<SteamVR_Action_Single>("/actions/htc_viu/in/viu_axis_2y")));
+            SteamVR_Actions.p_htc_viu_viu_axis_3x = ((SteamVR_Action_Single)(SteamVR_Action.Create<SteamVR_Action_Single>("/actions/htc_viu/in/viu_axis_3x")));
+            SteamVR_Actions.p_htc_viu_viu_axis_3y = ((SteamVR_Action_Single)(SteamVR_Action.Create<SteamVR_Action_Single>("/actions/htc_viu/in/viu_axis_3y")));
+            SteamVR_Actions.p_htc_viu_viu_axis_4x = ((SteamVR_Action_Single)(SteamVR_Action.Create<SteamVR_Action_Single>("/actions/htc_viu/in/viu_axis_4x")));
+            SteamVR_Actions.p_htc_viu_viu_axis_4y = ((SteamVR_Action_Single)(SteamVR_Action.Create<SteamVR_Action_Single>("/actions/htc_viu/in/viu_axis_4y")));
+            SteamVR_Actions.p_htc_viu_viu_axis_0xy = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/htc_viu/in/viu_axis_0xy")));
+            SteamVR_Actions.p_htc_viu_viu_axis_1xy = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/htc_viu/in/viu_axis_1xy")));
+            SteamVR_Actions.p_htc_viu_viu_axis_2xy = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/htc_viu/in/viu_axis_2xy")));
+            SteamVR_Actions.p_htc_viu_viu_axis_3xy = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/htc_viu/in/viu_axis_3xy")));
+            SteamVR_Actions.p_htc_viu_viu_axis_4xy = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/htc_viu/in/viu_axis_4xy")));
+            SteamVR_Actions.p_htc_viu_viu_vib_01 = ((SteamVR_Action_Vibration)(SteamVR_Action.Create<SteamVR_Action_Vibration>("/actions/htc_viu/out/viu_vib_01")));
         }
     }
 }
