@@ -1,5 +1,8 @@
 # PharoVRIDE's Channel Log
 
+## V0.12.1 (18/09/2020)
+* Fixed collisions
+
 ## V0.12.0 (18/09/2020)
 * Added Roassal 2 and 3 examples. You can see them on the menu.
 * Now you can use "Transcript show:" to log into the VRIDE log window
