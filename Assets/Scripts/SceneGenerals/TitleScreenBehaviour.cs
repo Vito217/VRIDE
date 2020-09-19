@@ -36,28 +36,17 @@ public class TitleScreenBehaviour : MonoBehaviour
     async void Load()
     {
         VRIDEController player;
-        if (XRSettings.loadedDeviceName.Contains("OpenVR") ||
-            XRSettings.loadedDeviceName.Contains("Oculus"))
+        List<InputDevice> inputDevices = new List<InputDevice>();
+        InputDevices.GetDevices(inputDevices);
+        if (inputDevices.Count > 0)
         {
             XRSettings.enabled = true;
-            List<InputDevice> inputDevices = new List<InputDevice>();
-            InputDevices.GetDevices(inputDevices);
             foreach (InputDevice device in inputDevices) if (device.isValid)
             {
-                if(Regex.Match(device.name, @"VIVE|Vive|vive|HTC|htc").Success ||
-                    Regex.Match(device.manufacturer, @"VIVE|Vive|vive|HTC|htc").Success)
-                {
-                    player = Instantiate(htcplayer_prefab);
-                    ground.AddComponent<Teleportable>();
-                    ground.GetComponent<Teleportable>().target = player.transform;
-                    ground.GetComponent<Teleportable>().pivot = player.transform.Find("ViveCameraRig/Camera");
-                }
-                else
-                {
-                    player = Instantiate(openVRPlayerPrefab);
-                    ground.AddComponent<TeleportArea>();
-                }
-                break;
+                player = Instantiate(htcplayer_prefab);
+                ground.AddComponent<Teleportable>();
+                ground.GetComponent<Teleportable>().target = player.transform;
+                ground.GetComponent<Teleportable>().pivot = player.transform.Find("ViveCameraRig/Camera");
             }
         }
         else
