@@ -20,6 +20,7 @@ public class InitializeBehaviour : MonoBehaviour
     public TMP_InputField keyboardTarget;
     public VRIDEController player;
     public GameObject loadingWheel;
+    public List<GameObject> Keyboards;
     public Image panel;
     public int lastCaretPosition = 0;
 
@@ -28,6 +29,7 @@ public class InitializeBehaviour : MonoBehaviour
     Vector3 rel_fwd;
     float dist = 5f;
     float speed = 8f;
+    int keyboardsIndex = 0;
 
     StringBuilder sb = new StringBuilder();
     List<char> notAN = new List<char> { ' ', '\n', '\t', '\r' };
@@ -147,6 +149,13 @@ public class InitializeBehaviour : MonoBehaviour
     public void Reactivate()
     {
         loadingWheel.SetActive(false);
+    }
+
+    public void ChangeKeyboard()
+    {
+        Keyboards[keyboardsIndex].SetActive(false);
+        keyboardsIndex = (keyboardsIndex + 1) % Keyboards.Count;
+        Keyboards[keyboardsIndex].SetActive(true);
     }
 
     public virtual void Initialize(Vector3 final_pos, Vector3 forward)

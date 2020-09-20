@@ -19,6 +19,6 @@ public class VRKeyboard : MonoBehaviour
         transform.position = new Vector3(
             transform.position.x, globalPositionY, transform.position.z);
         transform.localRotation = Quaternion.Euler(
-            45, 0, 0);
+            75, 0, 0);
     }
 }
