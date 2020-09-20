@@ -1,5 +1,8 @@
 # PharoVRIDE's Channel Log
 
+## V0.12.2 (19/09/2020)
+* Using Vive Input Utility as the main Camera Rig.
+
 ## V0.12.1 (18/09/2020)
 * Fixed collisions
 
