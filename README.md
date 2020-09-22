@@ -102,13 +102,14 @@ The text highlightning is based on regular expressions. You can specify a list o
   <li>Playground: writes code and prints its result.</li>
   <li>Inspector: inspect a variable and its value.</li>
   <li>Some Roassal2 RTGraphs as SVG and PNG.</li>
+  <li>Some Roassal3 RSCanvas as PNG.</li>
   <li>Desktop Mode controls (mouse + keyboard)</li>
+  <li>VR Mode controls for HTC VIVE</li>
 </ul>
 
 ## What is NOT entirely working (a.k.a. TODO)
 
 <ul>
-  <li>Calling stored classes (they won't reappear when the software is closed)</li>
   <li>A list of bugs (shown below).</li>
 </ul>
 
@@ -116,36 +117,27 @@ The text highlightning is based on regular expressions. You can specify a list o
 
 <ul>
   <li>Some details in the text editor, such as incorrect highlightning, coloring, blank spaces, etc.</li>
-  <li>Not every SVG extracted from Roassal2 is compatible with Unity. In that case, an [Error] code wil be thrown.</li>
+  <li>Not every SVG extracted from Roassal2 and Roassal3 is compatible with Unity. In that case, an [Error] code wil be thrown.</li>
 </ul>
 
 ## Controls
 
 <ul>
-  <li>Left Click: Select and Drag</li>
-  <li>Arrows/WASD: Move Player</li>
-  <li>Mouse movement: Move Camera</li>
-  <li>Shift: Visible cursor mode</li>
+  <li>Left Click or VR Pointer click: Select and Drag</li>
+  <li>Arrows/WASD: Move Player (Desktop Mode)</li>
+  <li>Mouse movement: Move Camera (Desktop Mode)</li>
+  <li>Shift: Visible cursor mode (Desktop Mode)</li>
   <li>Ctrl/Cmd + P or F4: Print (Playground only)</li>
   <li>Ctrl/Cmd + I or F5: Inspect the selected variable (Playground only)</li>
   <li>Ctrl/Cmd + O + B or F1: Invoke a new Browser</li>
   <li>Ctrl/Cmd + O + W or F2: Invoke a new Playground</li>
   <li>Ctrl/Cmd + O + T or F7: Invoke a new Transcript</li>
   <li>Ctrl/Cmd + S or F6: Accept (Browser only)</li>
-  <li>F9: Open Menu</li>
+  <li>F9 or VR controller manu button: Open Menu</li>
 </ul>
 
-## Special Commands
-
-### Roassal2
-```
-<a RTBuilder> visualize asSVG .
-<a RTBuilder> visualize asPNG .
-```
-### Transcript
-```
-VRIDE log: <code>.
-```
+## External Resources
+* <a href="https://github.com/rjth/Punchkeyboard">Jonathan Ravasz' PunchKeyboard</a>
 
 ## Channel Log
 
