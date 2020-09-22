@@ -135,17 +135,8 @@ The text highlightning is based on regular expressions. You can specify a list o
   <li>F9: Open Menu</li>
 </ul>
 
-## Special Commands
-
-### Roassal2
-```
-<a RTBuilder> visualize asSVG .
-<a RTBuilder> visualize asPNG .
-```
-### Transcript
-```
-VRIDE log: <code>.
-```
+## External Resources
+* <a href="https://github.com/rjth/Punchkeyboard">Jonathan Ravasz' PunchKeyboard</a>
 
 ## Channel Log
 
