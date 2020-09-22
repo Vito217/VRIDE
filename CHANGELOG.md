@@ -1,5 +1,11 @@
 # PharoVRIDE's Channel Log
 
+## V0.13.0 (21/09/2020)
+* Added PunchKeyboard by Jonathan Ravasz.
+* Added an About section.
+* User can now change between VRIDE Keyboard or PunchKeyboard.
+* Both keyboards have collision detection.
+
 ## V0.12.2 (19/09/2020)
 * Using Vive Input Utility as the main Camera Rig.
 
