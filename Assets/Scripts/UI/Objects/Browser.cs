@@ -19,6 +19,7 @@ public class Browser : InitializeBehaviour
     public TMP_InputField packageFilter;
     public TMP_InputField classFilter;
     public TMP_InputField methodFilter;
+    public AutocompleteWordPicker wordPicker;
     private bool loadingPackages = true;
 
     public async void PharoDefine()
@@ -130,6 +131,7 @@ public class Browser : InitializeBehaviour
     {
         base.OnSelect(data);
         keyboardTarget = data.selectedObject.GetComponent<TMP_InputField>();
+        wordPicker.TextField = keyboardTarget;
         InteractionLogger.StartTimerFor("Browser");
     }
 

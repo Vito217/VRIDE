@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
 using System.Linq;
+using TMPro;
 //using WindowsInput;
 //using NewtonVR;
 
@@ -12,11 +13,11 @@ public class TextFieldBehaviour : MonoBehaviour, ISelectHandler
 	public NGramGenerator NGramHandler;
 	//public NVRButton Space;
 
-	private InputField inputField;
+	private TMP_InputField inputField;
 
 	void Start()
 	{
-		inputField = gameObject.GetComponent<InputField>();
+		inputField = gameObject.GetComponent<TMP_InputField>();
 	}
 
 	public void OnSelect(BaseEventData eventData)

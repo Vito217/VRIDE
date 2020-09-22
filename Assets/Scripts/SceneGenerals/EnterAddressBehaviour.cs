@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class EnterAddressBehaviour : MonoBehaviour
 {
     public TMP_InputField input;
-    public GameObject loadingWheel;
+    public GameObject loadingWheel, aboutSection, mainSection;
     public TextMeshProUGUI errorText;
 
     void Start()
@@ -41,5 +41,11 @@ public class EnterAddressBehaviour : MonoBehaviour
     public void OnExit()
     {
         Application.Quit();
+    }
+
+    public void AboutSection()
+    {
+        mainSection.SetActive(!mainSection.activeSelf);
+        aboutSection.SetActive(!aboutSection.activeSelf);
     }
 }

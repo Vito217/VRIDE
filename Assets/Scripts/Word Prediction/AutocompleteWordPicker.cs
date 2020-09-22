@@ -5,10 +5,11 @@ using UnityEngine.UI;
 using System.Linq;
 using System.Text;
 using System;
+using TMPro;
 
 public class AutocompleteWordPicker : MonoBehaviour
 {
-	public InputField TextField;
+	public TMP_InputField TextField;
 	public NGramGenerator WordPredictor;
 
 	public void ReplaceWord(string correctWord)
