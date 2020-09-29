@@ -33,8 +33,11 @@ public class Graph : InitializeBehaviour
 
     public override void onClose()
     {
-        SaveAndLoadModule.graphs.Remove(this);
-        InteractionLogger.Discount("GraphObject");
-        Destroy(gameObject);
+        if (loadingWheel == null || !loadingWheel.activeSelf)
+        {
+            SaveAndLoadModule.graphs.Remove(this);
+            InteractionLogger.Discount("GraphObject");
+            Destroy(gameObject);
+        }
     }
 }

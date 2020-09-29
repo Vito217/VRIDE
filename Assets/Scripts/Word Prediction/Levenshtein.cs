@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
 
@@ -68,25 +69,31 @@ public class Levenshtein : MonoBehaviour
 		}
 	}
 
-	public void RunAutoComplete(string input)
+	public async void RunAutoComplete(string input)
 	{
 		if(input.Length > 0)
 		{
-			char[] lastChar = input.Substring(input.Length - 1).ToCharArray();	
-			string lastWord = input.Split(' ').Last ();
-			char[] firstCharOfLastWord = lastWord.Substring(0).ToCharArray();
-			if (firstCharOfLastWord.Length >= 1)
-			{
-				if (firstCharOfLastWord[0].ToString().Any(char.IsUpper))
-				{
-					isFirstLetterUpper = true;
-				}
-				else
-				{
-					isFirstLetterUpper = false;
-				}
+			char[] lastChar = null;
+			string lastWord = null;
+			char[] firstCharOfLastWord = null;
 
-			}
+			await Task.Run(() => {
+				lastChar = input.Substring(input.Length - 1).ToCharArray();
+				lastWord = input.Split(' ').Last();
+				firstCharOfLastWord = lastWord.Substring(0).ToCharArray();
+				if (firstCharOfLastWord.Length >= 1)
+				{
+					if (firstCharOfLastWord[0].ToString().Any(char.IsUpper))
+					{
+						isFirstLetterUpper = true;
+					}
+					else
+					{
+						isFirstLetterUpper = false;
+					}
+
+				}
+			});
 			if(!char.IsWhiteSpace(lastChar[0]))
 			{
 				if(lastWord.Length < maxWordLength)
@@ -94,26 +101,29 @@ public class Levenshtein : MonoBehaviour
 					if (input.Length >= 0)
 					{
 						Dictionary<int, int> dict = new Dictionary<int, int> ();
+						List<int> distanceOrder = new List<int>();
 
-						for (int i = 0; i < corpus.Count; i++)
-						{
-							int cost = LevenshteinDistance.Compute (lastWord.ToLower(), corpus[i]);
-							if (cost >= minLevenshteinCost && cost <= maxLevenshteinCost)
+						await Task.Run(() => {
+							for (int i = 0; i < corpus.Count; i++)
 							{
-								dict.Add (i, cost);
+								int cost = LevenshteinDistance.Compute(lastWord.ToLower(), corpus[i]);
+								if (cost >= minLevenshteinCost && cost <= maxLevenshteinCost)
+								{
+									dict.Add(i, cost);
+								}
 							}
-						}
 
-						if (lastWord.All (char.IsUpper))
-						{
-							isUppercase = true;
-						}
-						if (lastWord.Any (char.IsLower))
-						{
-							isUppercase = false;
-						}
+							if (lastWord.All(char.IsUpper))
+							{
+								isUppercase = true;
+							}
+							if (lastWord.Any(char.IsLower))
+							{
+								isUppercase = false;
+							}
 
-						List<int> distanceOrder = dict.OrderBy (kp => kp.Value).Select (kp => kp.Key).ToList ();
+							distanceOrder = dict.OrderBy(kp => kp.Value).Select(kp => kp.Key).ToList();
+						});
 
 						for (int i = 0; i < distanceOrder.Count; i++)
 						{

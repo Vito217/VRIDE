@@ -60,10 +60,12 @@ public class VRIDEController : MonoBehaviour
         bool w = Input.GetKeyDown("w");
         bool t = Input.GetKeyDown("t");
 
-        pos = transform.position;
+        pos = Camera.main.transform.position;
         forw = Camera.main.transform.forward;
-        newPos = new Vector3(pos.x + forw.x * .5f, 0f, pos.z + forw.z * .5f);
-        newFinalPos = new Vector3(newPos.x, .5f, newPos.z);
+        newFinalPos = new Vector3(
+            pos.x + forw.x * .5f, 
+            pos.y, 
+            pos.z + forw.z * .5f);
         newForw = new Vector3(forw.x, 0, forw.z);
 
         if (f1 || f2 || f7 || leftCmd || leftCtrl 

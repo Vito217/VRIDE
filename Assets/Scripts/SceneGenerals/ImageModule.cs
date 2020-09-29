@@ -42,7 +42,7 @@ namespace ImageUtils
 
         public static Sprite ImportSVG(string responseString)
         {
-            string path = Application.persistentDataPath + @"\temp.svg";
+            string path = Application.persistentDataPath + @"\temp";
             File.WriteAllBytes(
                 path,
                 toByteArray(responseString, @"#|\[|\]|\n|( 0)*")

@@ -143,9 +143,12 @@ public class Browser : InitializeBehaviour
 
     public override void onClose()
     {
-        SaveAndLoadModule.browsers.Remove(this);
-        InteractionLogger.Discount("Browser");
-        Destroy(gameObject);
+        if (loadingWheel == null || !loadingWheel.activeSelf)
+        {
+            SaveAndLoadModule.browsers.Remove(this);
+            InteractionLogger.Discount("Browser");
+            Destroy(gameObject);
+        }
     }
 
     public override IEnumerator innerStart()

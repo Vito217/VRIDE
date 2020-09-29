@@ -36,8 +36,11 @@ public class Inspector : InitializeBehaviour
 
     public override void onClose()
     {
-        SaveAndLoadModule.inspectors.Remove(this);
-        InteractionLogger.Discount("Inspector");
-        Destroy(gameObject);
+        if (loadingWheel == null || !loadingWheel.activeSelf)
+        {
+            SaveAndLoadModule.inspectors.Remove(this);
+            InteractionLogger.Discount("Inspector");
+            Destroy(gameObject);
+        }
     }
 }

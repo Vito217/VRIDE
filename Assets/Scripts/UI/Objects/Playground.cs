@@ -11,7 +11,7 @@ using PharoModule;
 using LoggingModule;
 using SaveAndLoad;
 using TMPro;
-using AFrameToGameObject;
+using AFrameModule;
 
 public class Playground : InitializeBehaviour
 {
@@ -24,7 +24,7 @@ public class Playground : InitializeBehaviour
         logText.text = "";
         try
         {
-            string selectedCode = getSelectedCode(cleanCode(field.text));
+            string selectedCode = getSelectedCode(cleanCode(field.text), false);
 
             // Getting Transcripts
             string transcriptPattern =
@@ -100,13 +100,13 @@ public class Playground : InitializeBehaviour
                 Match match = matches[0];
                 if (match.Value.Contains("RS"))
                 {
-                    //res = await TryGetImageFile(match, "aFrame", selectedCode);
-                    //if (res.Contains("<html>"))
-                    //{
-                    //    AFrameToGameObject.AFrameToGameObject.Convert(res);
-                    //}
-                    //else
-                    //{
+                    res = await TryGetImageFile(match, "aFrame", selectedCode);
+                    if (res.Contains("<html>"))
+                    {
+                        AFrameToGameObject.Convert(res);
+                    }
+                    else
+                    {
                         //res = await TryGetImageFile(match, "svg", selectedCode);
                         //if (Regex.Match(res, @"\[[0-9\s]+\]").Success)
                         //    GenerateView(res, "SVG");
@@ -118,7 +118,7 @@ public class Playground : InitializeBehaviour
                             else
                                 throw new Exception("Couldn't export view.");
                         //}
-                    //}
+                    }
                 }
                 else if (match.Value.Contains("RT"))
                 {
@@ -160,7 +160,7 @@ public class Playground : InitializeBehaviour
         logText.text = "";
         try
         {
-            string selection = getSelectedCode(cleanCode(field.text));
+            string selection = getSelectedCode(cleanCode(field.text), false);
 
             foreach (Match m in Regex.Matches(selection,
                 @"VRIDE[\n\s]+log:[\n\s\t]+(.*)(\.|\s*\Z)"))
@@ -195,7 +195,7 @@ public class Playground : InitializeBehaviour
         logText.text = "";
         try
         {
-            string selection = getSelectedCode(cleanCode(field.text));
+            string selection = getSelectedCode(cleanCode(field.text), false);
             string res = await Pharo.Inspect(selection);
             if (res.Contains("OrderedCollection"))
             {
@@ -279,9 +279,12 @@ public class Playground : InitializeBehaviour
 
     public override void onClose()
     {
-        SaveAndLoadModule.playgrounds.Remove(this);
-        InteractionLogger.Discount("Playground");
-        Destroy(gameObject);
+        if (loadingWheel == null || !loadingWheel.activeSelf)
+        {
+            SaveAndLoadModule.playgrounds.Remove(this);
+            InteractionLogger.Discount("Playground");
+            Destroy(gameObject);
+        }
     }
 
     public override void innerBehaviour()
@@ -342,7 +345,7 @@ public class Playground : InitializeBehaviour
 
         string finalCode =
                 exporter +
-                "(FileLocator workingDirectory / 'temp." + type + "') "
+                "(FileLocator workingDirectory / 'temp." + (type == "aFrame" ? "html" : type) + "') "
                     + (type == "aFrame" ? "r" : "binaryR") + "eadStreamDo:[ :stream | stream upToEnd ].";
 
         selectedCode = Regex.Replace(

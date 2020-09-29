@@ -97,7 +97,7 @@ public class InitializeBehaviour : MonoBehaviour
         return Regex.Replace(code, @"<color=#b32d00>|<color=#00ffffff>|</color>|<b>|</b>", "");
     }
 
-    public string getSelectedCode(string clean_code)
+    public string getSelectedCode(string clean_code, bool includesEmpty)
     {
         int start = field.selectionAnchorPosition;
         int end = field.caretPosition;
@@ -105,7 +105,7 @@ public class InitializeBehaviour : MonoBehaviour
             start = Interlocked.Exchange(ref end, start);
         int selection_length = end - start;
         string selection = clean_code.Substring(start, selection_length);
-        if (selection == "")
+        if (!includesEmpty && selection == "")
             return clean_code;
         return selection;
     }
