@@ -174,9 +174,9 @@ public class Browser : InitializeBehaviour
                 bool f6 = Input.GetKeyDown(KeyCode.F6);
                 bool s = Input.GetKeyDown("s");
 
-                if (!(leftCmd || leftCtrl || f6 || s))
-                    onChangeInput();
-                else if (((leftCmd || leftCtrl) && s) || f6)
+                //if (!(leftCmd || leftCtrl || f6 || s))
+                //    onChangeInput();
+                if (((leftCmd || leftCtrl) && s) || f6)
                     PharoDefine();
             }
             lastCaretPosition = keyboardTarget.caretPosition;

@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.IO;
+using System.Globalization;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
@@ -8,6 +11,7 @@ using PharoModule;
 using LoggingModule;
 using SaveAndLoad;
 using TMPro;
+using AFrameToGameObject;
 
 public class Playground : InitializeBehaviour
 {
@@ -92,36 +96,50 @@ public class Playground : InitializeBehaviour
                 @"([a-zA-Z0-9]+)([\n\s\t]*)(:=)([\n\s\t]*)((?!Example)((RS|RT).*))([\n\s\t]+)(new)([\n\s\t]*)(\.)");
             if (matches.Count > 0)
             {
-                string type = "PNG";
-                string responseString = await TryGetImageFile(matches, "PNG", selectedCode);
-                if(!Regex.Match(responseString, @"\[[0-9\s]+\]").Success)
+                string res = "";
+                Match match = matches[0];
+                if (match.Value.Contains("RS"))
                 {
-                    type = "SVG";
-                    responseString = await TryGetImageFile(matches, "SVG", selectedCode);
+                    //res = await TryGetImageFile(match, "aFrame", selectedCode);
+                    //if (res.Contains("<html>"))
+                    //{
+                    //    AFrameToGameObject.AFrameToGameObject.Convert(res);
+                    //}
+                    //else
+                    //{
+                        //res = await TryGetImageFile(match, "svg", selectedCode);
+                        //if (Regex.Match(res, @"\[[0-9\s]+\]").Success)
+                        //    GenerateView(res, "SVG");
+                        //else
+                        //{
+                            res = await TryGetImageFile(match, "png", selectedCode);
+                            if (Regex.Match(res, @"\[[0-9\s]+\]").Success)
+                                GenerateView(res, "PNG");
+                            else
+                                throw new Exception("Couldn't export view.");
+                        //}
+                    //}
                 }
-
-                if (Regex.Match(responseString, @"\[[0-9\s]+\]").Success)
+                else if (match.Value.Contains("RT"))
                 {
-                    if (view == null)
-                    {
-                        view = Instantiator.Instance.Graph() as Graph;
-                        SaveAndLoadModule.graphs.Add(view);
-                        InteractionLogger.Count("GraphObject");
-                    }
-                    view.setSprite(responseString, type);
-                    float width = GetComponent<RectTransform>().sizeDelta.x;
-                    view.Initialize(
-                        transform.TransformPoint(new Vector3(
-                            -0.5f * (width + view.GetComponent<RectTransform>().sizeDelta.x), 0, 0)),
-                        transform.forward
-                    );
+                    //res = await TryGetImageFile(match, "svg", selectedCode);
+                    //if (Regex.Match(res, @"\[[0-9\s]+\]").Success)
+                    //    GenerateView(res, "SVG");
+                    //else
+                    //{
+                        res = await TryGetImageFile(match, "png", selectedCode);
+                        if (Regex.Match(res, @"\[[0-9\s]+\]").Success)
+                            GenerateView(res, "PNG");
+                        else
+                            throw new Exception("Couldn't export view.");
+                    //}
                 }
                 else
                 {
                     logText.text = 
-                        "<color=#C63737>"+responseString.Remove(responseString.LastIndexOf("\n"), 1)+"</color>";
+                        "<color=#C63737>"+res.Remove(res.LastIndexOf("\n"), 1)+"</color>";
                 }
-                InteractionLogger.RegisterCodeExecution(selectedCode, responseString);
+                InteractionLogger.RegisterCodeExecution(selectedCode, res);
             }
             else if (!String.IsNullOrWhiteSpace(selectedCode))
             {
@@ -285,10 +303,9 @@ public class Playground : InitializeBehaviour
                 bool v = Input.GetKeyDown("v");
                 bool b = Input.GetKeyDown("b");
 
-                if (!(leftCmd || leftCtrl || f3 || f4 || f5))
-                    onChangeInput();
-                else
-                    if (((leftCmd || leftCtrl) && d) || f3)
+                //if (!(leftCmd || leftCtrl || f3 || f4 || f5))
+                //    onChangeInput();
+                if (((leftCmd || leftCtrl) && d) || f3)
                     PharoDo();
                 else if (((leftCmd || leftCtrl) && p) || f4)
                     PharoPrint();
@@ -296,37 +313,37 @@ public class Playground : InitializeBehaviour
                     PharoInspect();
                 //else if (((leftCmd || leftCtrl) && b) || f8)
                 //    PharoBrowse();
-                else if (((leftCmd || leftCtrl) && v) || ((leftCmd || leftCtrl) && c))
-                    onChangeInput();
-                else
-                    onChangeInput();
+                //else if (((leftCmd || leftCtrl) && v) || ((leftCmd || leftCtrl) && c))
+                //    onChangeInput();
+                //else
+                //    onChangeInput();
             }
             lastCaretPosition = keyboardTarget.caretPosition;
         }
     }
 
-    async Task<String> TryGetImageFile(MatchCollection matches, string type, string selectedCode)
+    async Task<String> TryGetImageFile(Match match, string type, string selectedCode)
     {
-        string var = matches[0].Groups[1].Value;
-        string lowerType = type.ToLower();
+        string var = match.Groups[1].Value;
+        string upperType = type.ToUpper();
         string exporter;
         if (selectedCode.Contains("RS"))
             exporter =
-                ". " + var + " canvas " + lowerType + "Exporter " +
+                ". " + var + " canvas " + type + "Exporter " +
                     "noFixedShapes; " +
-                    "fileName: 'img." + lowerType + "'; " +
+                    "fileName: 'temp'; " +
                     "export. ";
         else
             exporter =
-                ". RT" + type + "Exporter new " +
-                    (type == "PNG" ? "builder" : "view") + ": (" + var + " view); " +
-                    "fileName: 'img." + lowerType + "'; " +
+                ". RT" + upperType + "Exporter new " +
+                    (type == "png" ? "builder" : "view") + ": (" + var + " view); " +
+                    "fileName: 'temp'; " +
                     "exportToFile. ";
 
         string finalCode =
                 exporter +
-                "(FileLocator workingDirectory / 'img." + type.ToLower() + "') " +
-                    "binaryReadStreamDo:[ :stream | stream upToEnd ].";
+                "(FileLocator workingDirectory / 'temp." + type + "') "
+                    + (type == "aFrame" ? "r" : "binaryR") + "eadStreamDo:[ :stream | stream upToEnd ].";
 
         selectedCode = Regex.Replace(
             selectedCode, 
@@ -336,5 +353,22 @@ public class Playground : InitializeBehaviour
 
         string res = await Pharo.Print(selectedCode);
         return res;
+    }
+
+    void GenerateView(string responseString, string type)
+    {
+        if (view == null)
+        {
+            view = Instantiator.Instance.Graph() as Graph;
+            SaveAndLoadModule.graphs.Add(view);
+            InteractionLogger.Count("GraphObject");
+        }
+        view.setSprite(responseString, type);
+        float width = GetComponent<RectTransform>().sizeDelta.x;
+        view.Initialize(
+            transform.TransformPoint(new Vector3(
+                -0.5f * (width + view.GetComponent<RectTransform>().sizeDelta.x), 0, 0)),
+            transform.forward
+        );
     }
 }

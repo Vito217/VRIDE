@@ -34,7 +34,7 @@ namespace ImageUtils
             return arr;
         }
 
-        private static byte[] toByteArray(string responseString, string pattern)
+        public static byte[] toByteArray(string responseString, string pattern)
         {
             responseString = Regex.Replace(responseString, pattern, "");
             return responseString.Split(' ').Select(x => Byte.Parse(x, NumberStyles.Integer, null)).ToArray();
@@ -42,7 +42,7 @@ namespace ImageUtils
 
         public static Sprite ImportSVG(string responseString)
         {
-            string path = Application.persistentDataPath + @"\temp";
+            string path = Application.persistentDataPath + @"\temp.svg";
             File.WriteAllBytes(
                 path,
                 toByteArray(responseString, @"#|\[|\]|\n|( 0)*")

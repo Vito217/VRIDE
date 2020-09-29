@@ -41,13 +41,10 @@ public class TitleScreenBehaviour : MonoBehaviour
         if (inputDevices.Count > 0)
         {
             XRSettings.enabled = true;
-            foreach (InputDevice device in inputDevices) if (device.isValid)
-            {
-                player = Instantiate(htcplayer_prefab);
-                ground.AddComponent<Teleportable>();
-                ground.GetComponent<Teleportable>().target = player.transform;
-                ground.GetComponent<Teleportable>().pivot = player.transform.Find("ViveCameraRig/Camera");
-            }
+            player = Instantiate(htcplayer_prefab);
+            ground.AddComponent<Teleportable>();
+            ground.GetComponent<Teleportable>().target = player.transform;
+            ground.GetComponent<Teleportable>().pivot = player.transform.Find("ViveCameraRig/Camera");
         }
         else
             player = Instantiate(nonvrplayer_prefab);
