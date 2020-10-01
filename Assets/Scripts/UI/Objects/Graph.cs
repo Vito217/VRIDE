@@ -10,8 +10,8 @@ public class Graph : InitializeBehaviour
     public SVGImage graph_panel;
     public string raw_image;
     public string type;
-    float width;
-    float height;
+    //float width;
+    //float height;
 
     void Start() { }
 
@@ -23,12 +23,12 @@ public class Graph : InitializeBehaviour
             ImageModule.ImportSVG(raw) :
             ImageModule.ImportPNG(raw);
 
-        width = graph_panel.sprite.texture.width;
-        height = graph_panel.sprite.texture.height;
+        //width = graph_panel.sprite.texture.width;
+        //height = graph_panel.sprite.texture.height;
 
-        var sd = GetComponent<RectTransform>().sizeDelta;
-        sd.x = width * sd.y / height;
-        GetComponent<RectTransform>().sizeDelta = sd;
+        //var sd = GetComponent<RectTransform>().sizeDelta;
+        //sd.x = width * sd.y / height;
+        //GetComponent<RectTransform>().sizeDelta = sd;
     }
 
     public override void onClose()

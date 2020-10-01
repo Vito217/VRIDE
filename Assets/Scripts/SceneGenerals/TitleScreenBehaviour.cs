@@ -45,6 +45,8 @@ public class TitleScreenBehaviour : MonoBehaviour
             ground.AddComponent<Teleportable>();
             ground.GetComponent<Teleportable>().target = player.transform;
             ground.GetComponent<Teleportable>().pivot = player.transform.Find("ViveCameraRig/Camera");
+            player.transform.Find("ViveCameraRig/RightHand").gameObject.AddComponent<CapsuleCollider>();
+            player.transform.Find("ViveCameraRig/LefttHand").gameObject.AddComponent<CapsuleCollider>();
         }
         else
             player = Instantiate(nonvrplayer_prefab);

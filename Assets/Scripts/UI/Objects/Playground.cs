@@ -12,6 +12,7 @@ using UnityEngine.EventSystems;
 using PharoModule;
 using LoggingModule;
 using SaveAndLoad;
+using ImageUtils;
 using TMPro;
 using AFrameModule;
 
@@ -104,6 +105,7 @@ public class Playground : InitializeBehaviour
                 if (match.Value.Contains("RS"))
                 {
                     res = await TryGetImageFile(match, "aFrame", selectedCode);
+                    string resPNG = await TryGetImageFile(match, "png", selectedCode);
                     if (res.Contains("<html>"))
                     {
                         string aframe = "";
@@ -122,7 +124,7 @@ public class Playground : InitializeBehaviour
                             typeof(InitializeBehaviour), typeof(EventTrigger));
                         aFrameCanvas.GetComponent<Canvas>().renderMode = RenderMode.WorldSpace;
                         aFrameCanvas.GetComponent<RectTransform>().sizeDelta = new Vector2(2f, 2f);
-                        aFrameCanvas.transform.localScale = new Vector3(.3f, .3f, .3f); ;
+                        aFrameCanvas.transform.localScale = new Vector3(.2f, .2f, .2f); ;
 
                         GameObject aFramePanel = new GameObject("Panel", typeof(RectTransform), typeof(CanvasRenderer));
                         aFramePanel.transform.SetParent(aFrameCanvas.transform, false);
@@ -293,59 +295,79 @@ public class Playground : InitializeBehaviour
 
                         aFramePanel.transform.localPosition = new Vector3(-0.5f, -1f, 0f);
 
+                        // Adding Drag functions
                         EventTrigger trigger = aFrameCanvas.GetComponent<EventTrigger>();
                         InitializeBehaviour ib = aFrameCanvas.GetComponent<InitializeBehaviour>();
 
+                        // OnPointerDown -> OnDrag
                         EventTrigger.Entry entry = new EventTrigger.Entry();
                         entry.eventID = EventTriggerType.PointerDown;
                         entry.callback.AddListener((data) => { ib.OnDrag(data); });
                         trigger.triggers.Add(entry);
 
+                        // OnPointerUp -> OnEndDrag
                         EventTrigger.Entry entryTwo = new EventTrigger.Entry();
                         entryTwo.eventID = EventTriggerType.PointerUp;
                         entryTwo.callback.AddListener((data) => { ib.OnEndDrag(data); });
                         trigger.triggers.Add(entryTwo);
 
+                        // Setting Mixed Shader Channels
                         aFrameCanvas.GetComponent<Canvas>().additionalShaderChannels =
                             AdditionalCanvasShaderChannels.TexCoord1 |
                             AdditionalCanvasShaderChannels.Normal |
                             AdditionalCanvasShaderChannels.Tangent;
 
+                        // Setting width and height that match with its PNG equivalent
+                        Sprite tempSp = ImageModule.ImportPNG(resPNG);
+                        float pngWidth = tempSp.texture.width;
+                        float pngHeight = tempSp.texture.height;
+                        var sdlt = aFrameCanvas.GetComponent<RectTransform>().sizeDelta;
+                        sdlt.x = pngWidth * sdlt.y / pngHeight;
+                        aFrameCanvas.GetComponent<RectTransform>().sizeDelta = sdlt;
+
+                        // Positioning
                         float width = GetComponent<RectTransform>().sizeDelta.x;
                         aFrameCanvas.GetComponent<InitializeBehaviour>().Initialize(
                             transform.TransformPoint(new Vector3(
-                                -1f * (width + aFrameCanvas.GetComponent<RectTransform>().sizeDelta.x), 0, 0)),
+                                -0.5f * (width + aFrameCanvas.GetComponent<RectTransform>().sizeDelta.x), 0, 0)),
                             transform.forward
                         );
                     }
                     else
                     {
-                        //res = await TryGetImageFile(match, "svg", selectedCode);
-                        //if (Regex.Match(res, @"\[[0-9\s]+\]").Success)
-                        //    GenerateView(res, "SVG");
-                        //else
-                        //{
-                            res = await TryGetImageFile(match, "png", selectedCode);
+                        try
+                        {
+                            res = await TryGetImageFile(match, "svg", selectedCode);
                             if (Regex.Match(res, @"\[[0-9\s]+\]").Success)
-                                GenerateView(res, "PNG");
+                                GenerateView(res, "SVG", resPNG);
+                        }
+                        catch
+                        {
+                            res = resPNG;
+                            if (Regex.Match(res, @"\[[0-9\s]+\]").Success)
+                                GenerateView(res, "PNG", resPNG);
                             else
                                 throw new Exception("Couldn't export view.");
-                        //}
+                        }
                     }
                 }
                 else if (match.Value.Contains("RT"))
                 {
-                //    res = await TryGetImageFile(match, "svg", selectedCode);
-                //    if (Regex.Match(res, @"\[[0-9\s]+\]").Success)
-                //        GenerateView(res, "SVG");
-                //    else
-                //    {
-                        res = await TryGetImageFile(match, "png", selectedCode);
+                    string resPNG = await TryGetImageFile(match, "png", selectedCode);
+                    try
+                    {
+                        res = await TryGetImageFile(match, "svg", selectedCode);
                         if (Regex.Match(res, @"\[[0-9\s]+\]").Success)
-                            GenerateView(res, "PNG");
+                            GenerateView(res, "SVG", resPNG);
+                    }
+                    catch
+                    {
+                        res = resPNG;
+                        if (Regex.Match(res, @"\[[0-9\s]+\]").Success)
+                            GenerateView(res, "PNG", resPNG);
                         else
                             throw new Exception("Couldn't export view.");
-                //    }
+                    }
                 }
                 else
                 {
@@ -572,7 +594,7 @@ public class Playground : InitializeBehaviour
         return res;
     }
 
-    void GenerateView(string responseString, string type)
+    void GenerateView(string responseString, string type, string rawPNG)
     {
         if (view == null)
         {
@@ -581,6 +603,14 @@ public class Playground : InitializeBehaviour
             InteractionLogger.Count("GraphObject");
         }
         view.setSprite(responseString, type);
+
+        Sprite tempSp = ImageModule.ImportPNG(rawPNG);
+        float pngWidth = tempSp.texture.width;
+        float pngHeight = tempSp.texture.height;
+        var sd = view.GetComponent<RectTransform>().sizeDelta;
+        sd.x = pngWidth * sd.y / pngHeight;
+        view.GetComponent<RectTransform>().sizeDelta = sd;
+
         float width = GetComponent<RectTransform>().sizeDelta.x;
         view.Initialize(
             transform.TransformPoint(new Vector3(
