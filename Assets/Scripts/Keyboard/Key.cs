@@ -53,7 +53,8 @@ public class Key : MonoBehaviour
 		constrainedPosition = initialLocalPosition;
 		constrainedRotation = initialLocalRotation;
 
-		keySoundController = transform.parent.root.gameObject.GetComponent<KeySoundController> ();
+		keySoundController = transform.parent.parent.parent.parent.parent
+			.gameObject.GetComponent<KeySoundController> ();
 
 		SwitchKeycapCharCase ();
 	}

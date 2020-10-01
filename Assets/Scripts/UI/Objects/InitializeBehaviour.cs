@@ -127,6 +127,13 @@ public class InitializeBehaviour : MonoBehaviour
 
     public void OnDrag(BaseEventData data)
     {
+        Debug.Log("Dragging");
+        try
+        {
+            GetComponent<Canvas>().worldCamera =
+                ((PointerEventData)data).enterEventCamera;
+        }
+        catch { }
         player = data.currentInputModule.transform.parent
             .gameObject.GetComponent<VRIDEController>();
         transform.SetParent(player.dragPivot);
@@ -166,6 +173,12 @@ public class InitializeBehaviour : MonoBehaviour
 
     public virtual void OnSelect(BaseEventData data)
     {
+        try
+        {
+            GetComponent<Canvas>().worldCamera =
+                ((PointerEventData)data).enterEventCamera;
+        }
+        catch { }
         player = data.currentInputModule.transform.parent
             .gameObject.GetComponent<VRIDEController>();
         player.can_move = false;

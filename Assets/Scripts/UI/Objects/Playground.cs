@@ -6,6 +6,8 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityEngine.UI;
+using HTC.UnityPlugin.Pointer3D;
 using UnityEngine.EventSystems;
 using PharoModule;
 using LoggingModule;
@@ -17,6 +19,7 @@ public class Playground : InitializeBehaviour
 {
     private Graph view;
     private Inspector insp;
+    public AutocompleteWordPicker wordPicker;
 
     public async void PharoDo()
     {
@@ -103,7 +106,217 @@ public class Playground : InitializeBehaviour
                     res = await TryGetImageFile(match, "aFrame", selectedCode);
                     if (res.Contains("<html>"))
                     {
-                        AFrameToGameObject.Convert(res);
+                        string aframe = "";
+                        MatchCollection texts = null;
+                        MatchCollection geometries = null;
+
+                        await Task.Run(() => {
+                            aframe = res.Split(new string[] { "</html>" }, StringSplitOptions.None)[0];
+                            texts = Regex.Matches(aframe, "<a-entity(.*)text=\"(.*)\" >");
+                            geometries = Regex.Matches(aframe, "<a-entity(.*)geometry=\"(.*)\" >");
+                        });
+
+                        // Base canvas
+                        GameObject aFrameCanvas = new GameObject("AFrame", typeof(Canvas), typeof(CanvasScaler),
+                            typeof(GraphicRaycaster), typeof(CanvasRaycastTarget),
+                            typeof(InitializeBehaviour), typeof(EventTrigger));
+                        aFrameCanvas.GetComponent<Canvas>().renderMode = RenderMode.WorldSpace;
+                        aFrameCanvas.GetComponent<RectTransform>().sizeDelta = new Vector2(2f, 2f);
+                        aFrameCanvas.transform.localScale = new Vector3(.3f, .3f, .3f); ;
+
+                        GameObject aFramePanel = new GameObject("Panel", typeof(RectTransform), typeof(CanvasRenderer));
+                        aFramePanel.transform.SetParent(aFrameCanvas.transform, false);
+
+                        foreach (Match m in texts)
+                        {
+                            string tag = m.Value;
+                            string value = "";
+                            Match posMatch = null;
+                            Match rotMatch = null;
+                            Match widthMatch = null;
+                            Match colorMatch = null;
+
+                            await Task.Run(() => {
+                                value = Regex.Match(tag, @"value: ([a-zA-Z0-9-.\s]+)(;|"")").Groups[1].Value;
+                                posMatch = Regex.Match(tag, @"position=""([0-9-.\s]+)""");
+                                rotMatch = Regex.Match(tag, @"rotation=""([0-9-.\s]+)""");
+                                widthMatch = Regex.Match(tag, @"width: ([0-9-.]+)(;|"")");
+                                colorMatch = Regex.Match(tag, @"color: ([#0-9A-Z]+)(;|"")");
+                            });
+                            
+                            // A text object
+                            GameObject text = new GameObject(
+                                value,
+                                typeof(TextMeshProUGUI),
+                                typeof(ContentSizeFitter));
+                            text.transform.SetParent(aFramePanel.transform, false);
+
+                            if (posMatch.Success)
+                            {
+                                string[] p = posMatch.Groups[1].Value.Split(' ');
+                                Vector3 position = new Vector3(
+                                    float.Parse(p[0], CultureInfo.InvariantCulture),
+                                    float.Parse(p[1], CultureInfo.InvariantCulture),
+                                    float.Parse(p[2], CultureInfo.InvariantCulture));
+                                text.transform.localPosition = position;
+                            }
+
+                            if (rotMatch.Success)
+                            {
+                                string[] r = rotMatch.Groups[1].Value.Split(' ');
+                                Quaternion rotation = Quaternion.Euler(
+                                    float.Parse(r[0], CultureInfo.InvariantCulture),
+                                    float.Parse(r[1], CultureInfo.InvariantCulture),
+                                    float.Parse(r[2], CultureInfo.InvariantCulture));
+                                text.transform.localRotation = rotation;
+                            }
+
+                            ContentSizeFitter fitter = text.GetComponent<ContentSizeFitter>();
+                            fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+
+                            if (widthMatch.Success)
+                            {
+                                var sd = text.GetComponent<RectTransform>().sizeDelta;
+                                sd.x = float.Parse(widthMatch.Groups[1].Value, CultureInfo.InvariantCulture);
+                                text.GetComponent<RectTransform>().sizeDelta = sd;
+                            }
+
+                            if (colorMatch.Success)
+                            {
+                                TextMeshProUGUI textComponent = text.GetComponent<TextMeshProUGUI>();
+                                textComponent.text =
+                                    "<size=0.1><color=" + colorMatch.Groups[1].Value + ">" + value + "</color></size>";
+                            }
+
+                        }
+
+                        foreach (Match m in geometries)
+                        {
+                            string tag = m.Value;
+                            string primitive = "";
+                            Match posMatch = null;
+                            Match rotMatch = null;
+                            Match widthMatch = null;
+                            Match heightMatch = null;
+                            Match depthMatch = null;
+                            Match colorMatch = null;
+                            Match metalMatch = null;
+                            Match glossMatch = null;
+
+                            await Task.Run(() => {
+                                primitive = Regex.Match(tag, @"primitive: ([a-zA-Z]+)(;|"")").Groups[1].Value;
+                                posMatch = Regex.Match(tag, @"position=""([0-9-.\s]+)""");
+                                rotMatch = Regex.Match(tag, @"rotation=""([0-9-.\s]+)""");
+                                widthMatch = Regex.Match(tag, @"width: ([0-9.]+) ;");
+                                heightMatch = Regex.Match(tag, @"height: ([0-9.]+);");
+                                depthMatch = Regex.Match(tag, @"depth: ([0-9.]+);");
+                                colorMatch = Regex.Match(tag, @"color: ([#0-9A-Z]+)(;|"")");
+                                metalMatch = Regex.Match(tag, @"metalness: ([0-9.]+)(;|"")");
+                                glossMatch = Regex.Match(tag, @"roughness: ([0-9.]+)(;|"")");
+                            });
+
+                            GameObject ob;
+                            switch (primitive)
+                            {
+                                case "cube":
+                                    ob = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                                    UnityEngine.Object.Destroy(ob.GetComponent<BoxCollider>());
+                                    break;
+                                case "cylinder":
+                                    ob = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+                                    UnityEngine.Object.Destroy(ob.GetComponent<CapsuleCollider>());
+                                    break;
+                                case "capsule":
+                                    ob = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+                                    UnityEngine.Object.Destroy(ob.GetComponent<CapsuleCollider>());
+                                    break;
+                                case "plane":
+                                    ob = GameObject.CreatePrimitive(PrimitiveType.Plane);
+                                    UnityEngine.Object.Destroy(ob.GetComponent<MeshCollider>());
+                                    break;
+                                case "quad":
+                                    ob = GameObject.CreatePrimitive(PrimitiveType.Quad);
+                                    UnityEngine.Object.Destroy(ob.GetComponent<MeshCollider>());
+                                    break;
+                                case "sphere":
+                                    ob = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                                    UnityEngine.Object.Destroy(ob.GetComponent<SphereCollider>());
+                                    break;
+                                default:
+                                    ob = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                                    UnityEngine.Object.Destroy(ob.GetComponent<BoxCollider>());
+                                    break;
+                            }
+                            ob.AddComponent<RectTransform>();
+                            ob.AddComponent<CanvasRenderer>();
+                            ob.transform.SetParent(aFramePanel.transform, false);
+
+                            if (posMatch.Success)
+                            {
+                                string[] p = posMatch.Groups[1].Value.Split(' ');
+                                Vector3 position = new Vector3(
+                                    float.Parse(p[0], CultureInfo.InvariantCulture),
+                                    float.Parse(p[1], CultureInfo.InvariantCulture),
+                                    float.Parse(p[2], CultureInfo.InvariantCulture));
+                                ob.transform.localPosition = position;
+                            }
+
+                            if (rotMatch.Success)
+                            {
+                                string[] r = rotMatch.Groups[1].Value.Split(' ');
+                                Quaternion rotation = Quaternion.Euler(
+                                    float.Parse(r[0], CultureInfo.InvariantCulture),
+                                    float.Parse(r[1], CultureInfo.InvariantCulture),
+                                    float.Parse(r[2], CultureInfo.InvariantCulture));
+                                ob.transform.localRotation = rotation;
+                            }
+
+                            if (widthMatch.Success)
+                            {
+                                Vector3 scale = new Vector3(
+                                    float.Parse(widthMatch.Groups[1].Value, CultureInfo.InvariantCulture),
+                                    float.Parse(heightMatch.Groups[1].Value, CultureInfo.InvariantCulture),
+                                    float.Parse(depthMatch.Groups[1].Value, CultureInfo.InvariantCulture));
+                                ob.transform.localScale = scale;
+                            }
+
+                            if (colorMatch.Success)
+                            {
+                                Color c;
+                                ColorUtility.TryParseHtmlString(colorMatch.Groups[1].Value, out c);
+                                Material material = ob.GetComponent<Renderer>().material;
+                                material.color = c;
+                                material.SetFloat("_Glossiness", 1f - float.Parse(glossMatch.Groups[1].Value, CultureInfo.InvariantCulture));
+                                material.SetFloat("_Metallic", float.Parse(metalMatch.Groups[1].Value, CultureInfo.InvariantCulture));
+                            }
+                        }
+
+                        aFramePanel.transform.localPosition = new Vector3(-0.5f, -1f, 0f);
+
+                        EventTrigger trigger = aFrameCanvas.GetComponent<EventTrigger>();
+                        InitializeBehaviour ib = aFrameCanvas.GetComponent<InitializeBehaviour>();
+
+                        EventTrigger.Entry entry = new EventTrigger.Entry();
+                        entry.eventID = EventTriggerType.PointerDown;
+                        entry.callback.AddListener((data) => { ib.OnDrag(data); });
+                        trigger.triggers.Add(entry);
+
+                        EventTrigger.Entry entryTwo = new EventTrigger.Entry();
+                        entryTwo.eventID = EventTriggerType.PointerUp;
+                        entryTwo.callback.AddListener((data) => { ib.OnEndDrag(data); });
+                        trigger.triggers.Add(entryTwo);
+
+                        aFrameCanvas.GetComponent<Canvas>().additionalShaderChannels =
+                            AdditionalCanvasShaderChannels.TexCoord1 |
+                            AdditionalCanvasShaderChannels.Normal |
+                            AdditionalCanvasShaderChannels.Tangent;
+
+                        float width = GetComponent<RectTransform>().sizeDelta.x;
+                        aFrameCanvas.GetComponent<InitializeBehaviour>().Initialize(
+                            transform.TransformPoint(new Vector3(
+                                -1f * (width + aFrameCanvas.GetComponent<RectTransform>().sizeDelta.x), 0, 0)),
+                            transform.forward
+                        );
                     }
                     else
                     {
@@ -122,17 +335,17 @@ public class Playground : InitializeBehaviour
                 }
                 else if (match.Value.Contains("RT"))
                 {
-                    //res = await TryGetImageFile(match, "svg", selectedCode);
-                    //if (Regex.Match(res, @"\[[0-9\s]+\]").Success)
-                    //    GenerateView(res, "SVG");
-                    //else
-                    //{
+                //    res = await TryGetImageFile(match, "svg", selectedCode);
+                //    if (Regex.Match(res, @"\[[0-9\s]+\]").Success)
+                //        GenerateView(res, "SVG");
+                //    else
+                //    {
                         res = await TryGetImageFile(match, "png", selectedCode);
                         if (Regex.Match(res, @"\[[0-9\s]+\]").Success)
                             GenerateView(res, "PNG");
                         else
                             throw new Exception("Couldn't export view.");
-                    //}
+                //    }
                 }
                 else
                 {
@@ -268,6 +481,7 @@ public class Playground : InitializeBehaviour
     {
         base.OnSelect(data);
         keyboardTarget = data.selectedObject.GetComponent<TMP_InputField>();
+        wordPicker.TextField = keyboardTarget;
         InteractionLogger.StartTimerFor("Playground");
     }
 
@@ -334,13 +548,13 @@ public class Playground : InitializeBehaviour
             exporter =
                 ". " + var + " canvas " + type + "Exporter " +
                     "noFixedShapes; " +
-                    "fileName: 'temp'; " +
+                    "fileName: 'temp." + (type == "aFrame" ? "html" : type) + "'; " +
                     "export. ";
         else
             exporter =
                 ". RT" + upperType + "Exporter new " +
                     (type == "png" ? "builder" : "view") + ": (" + var + " view); " +
-                    "fileName: 'temp'; " +
+                    "fileName: 'temp." + (type == "aFrame" ? "html" : type) + "'; " +
                     "exportToFile. ";
 
         string finalCode =
