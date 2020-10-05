@@ -1,6 +1,10 @@
 # PharoVRIDE's Channel Log
 
-## V0.14.0(01/10/2020)
+## V0.14.1 (02/10/2020)
+* AFrame lines working properly.
+* Fixed AFrame dragging
+
+## V0.14.0 (01/10/2020)
 * Added AFrame exporter for Roassal3 (only primitives and text working by now)
 * The execution order for every exporter is as follows: AFrame -> SVG -> PNG
 * Using capsule colliders on hand controllers.
