@@ -1,5 +1,9 @@
 # PharoVRIDE's Channel Log
 
+## V0.14.2 (05/10/2020)
+* Fixed AFrame size.
+* Reduced capsule collider radius.
+
 ## V0.14.1 (02/10/2020)
 * AFrame lines working properly.
 * Fixed AFrame dragging
