@@ -60,6 +60,10 @@ public class Playground : InitializeBehaviour
                             MatchCollection texts = null;
                             MatchCollection geometries = null;
                             MatchCollection lines = null;
+                            float maxX = float.MinValue;
+                            float maxY = float.MinValue;
+                            float minX = float.MaxValue;
+                            float minY = float.MaxValue;
 
                             await Task.Run(() => {
                                 aframe = res.Split(new string[] { "</html>" }, StringSplitOptions.None)[0];
@@ -79,8 +83,8 @@ public class Playground : InitializeBehaviour
                                 typeof(InitializeBehaviour));
 
                             aFrameCanvas.GetComponent<Canvas>().renderMode = RenderMode.WorldSpace;
-                            aFrameCanvas.GetComponent<RectTransform>().sizeDelta = new Vector2(2f, 2f);
-                            aFrameCanvas.transform.localScale = new Vector3(.2f, .2f, .2f); ;
+                            //aFrameCanvas.GetComponent<RectTransform>().sizeDelta = new Vector2(2f, 2f);
+                            //aFrameCanvas.transform.localScale = new Vector3(.2f, .2f, .2f); ;
 
                             GameObject aFramePanel = new GameObject(
                                 "Panel", 
@@ -106,7 +110,6 @@ public class Playground : InitializeBehaviour
                                     colorMatch = Regex.Match(tag, @"color: ([#0-9A-Z]+)(;|"")");
                                 });
 
-                                // A text object
                                 GameObject text = new GameObject(
                                     value,
                                     typeof(TextMeshProUGUI),
@@ -151,6 +154,11 @@ public class Playground : InitializeBehaviour
                                         "<size=0.1><color=" + colorMatch.Groups[1].Value + ">" + value + "</color></size>";
                                 }
 
+                                // Update width and height
+                                maxX = Math.Max(maxX, text.transform.localPosition.x);
+                                maxY = Math.Max(maxY, text.transform.localPosition.y);
+                                minX = Math.Min(minX, text.transform.localPosition.x);
+                                minY = Math.Min(minY, text.transform.localPosition.y);
                             }
 
                             foreach (Match m in geometries)
@@ -249,12 +257,16 @@ public class Playground : InitializeBehaviour
                                     material.SetFloat("_Glossiness", 1f - float.Parse(glossMatch.Groups[1].Value, CultureInfo.InvariantCulture));
                                     material.SetFloat("_Metallic", float.Parse(metalMatch.Groups[1].Value, CultureInfo.InvariantCulture));
                                 }
+
+                                // Update width and height
+                                maxX = Math.Max(maxX, ob.transform.localPosition.x);
+                                maxY = Math.Max(maxY, ob.transform.localPosition.y);
+                                minX = Math.Min(minX, ob.transform.localPosition.x);
+                                minY = Math.Min(minY, ob.transform.localPosition.y);
                             }
 
                             foreach (Match m in lines)
                             {
-                                //Debug.Log("Drawing Lines");
-
                                 string tag = m.Value;
                                 Match startMatch = null;
                                 Match endMatch = null;
@@ -297,9 +309,30 @@ public class Playground : InitializeBehaviour
                                 line.transform.localPosition = lineCenter;
                                 line.transform.localRotation = Quaternion.Euler(0f, 0f, degrees);
                                 line.transform.localScale = new Vector3(mag, .02f, .02f);
+
+                                // Update width and height
+                                maxX = Math.Max(maxX, line.transform.localPosition.x);
+                                maxY = Math.Max(maxY, line.transform.localPosition.y);
+                                minX = Math.Min(minX, line.transform.localPosition.x); 
+                                minY = Math.Min(minY, line.transform.localPosition.y);
                             }
 
+                            float finalWidth = Math.Abs(maxX - minX);
+                            float finalHeight = Math.Abs(maxY - minY);
+                            float finalScale = (GetComponent<RectTransform>().sizeDelta.y / finalHeight) * 0.001f;
+
                             aFramePanel.transform.localPosition = new Vector3(-0.5f, -1f, 0f);
+                            aFrameCanvas.GetComponent<RectTransform>().sizeDelta = new Vector2(finalWidth, finalHeight);
+                            aFrameCanvas.transform.localScale = new Vector3(finalScale, finalScale, finalScale);
+
+                            // Positioning
+                            aFrameCanvas.GetComponent<InitializeBehaviour>().Initialize(
+                                transform.TransformPoint(
+                                    new Vector3(
+                                        -(GetComponent<RectTransform>().sizeDelta.x + 
+                                                finalWidth * finalScale), 0f, 0f)),
+                                transform.forward
+                            );
 
                             // Adding Drag functions
                             EventTrigger trigger = aFrameCanvas.GetComponent<EventTrigger>();
@@ -316,38 +349,6 @@ public class Playground : InitializeBehaviour
                             entryTwo.eventID = EventTriggerType.PointerUp;
                             entryTwo.callback.AddListener((data) => { ib.OnEndDrag(data); });
                             trigger.triggers.Add(entryTwo);
-
-                            // Setting Mixed Shader Channels
-                            aFrameCanvas.GetComponent<Canvas>().additionalShaderChannels =
-                                AdditionalCanvasShaderChannels.TexCoord1 |
-                                AdditionalCanvasShaderChannels.Normal |
-                                AdditionalCanvasShaderChannels.Tangent;
-
-                            //Debug.Log("AFrame is finished");
-
-                            //Debug.Log("Setting width and height");
-
-                            // Setting width and height that match with its PNG equivalent
-                            Sprite tempSp = ImageModule.ImportPNG(resPNG);
-                            float pngWidth = tempSp.texture.width;
-                            float pngHeight = tempSp.texture.height;
-                            var sdlt = aFrameCanvas.GetComponent<RectTransform>().sizeDelta;
-                            sdlt.x = pngWidth * sdlt.y / pngHeight;
-                            aFrameCanvas.GetComponent<RectTransform>().sizeDelta = sdlt;
-
-                            //Debug.Log("Height and width are finished");
-
-                            //Debug.Log("Positioning");
-
-                            // Positioning
-                            float width = GetComponent<RectTransform>().sizeDelta.x;
-                            aFrameCanvas.GetComponent<InitializeBehaviour>().Initialize(
-                                transform.TransformPoint(new Vector3(
-                                    -1f * (width + aFrameCanvas.GetComponent<RectTransform>().sizeDelta.x), 0, 0)),
-                                transform.forward
-                            );
-
-                            //Debug.Log("Positioning finished");
 
                             goto Reactivation;
                         }
