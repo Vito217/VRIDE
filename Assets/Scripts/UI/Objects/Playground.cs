@@ -14,7 +14,6 @@ using LoggingModule;
 using SaveAndLoad;
 using ImageUtils;
 using TMPro;
-using AFrameModule;
 
 public class Playground : InitializeBehaviour
 {
@@ -83,8 +82,6 @@ public class Playground : InitializeBehaviour
                                 typeof(InitializeBehaviour));
 
                             aFrameCanvas.GetComponent<Canvas>().renderMode = RenderMode.WorldSpace;
-                            //aFrameCanvas.GetComponent<RectTransform>().sizeDelta = new Vector2(2f, 2f);
-                            //aFrameCanvas.transform.localScale = new Vector3(.2f, .2f, .2f); ;
 
                             GameObject aFramePanel = new GameObject(
                                 "Panel", 
@@ -580,12 +577,14 @@ public class Playground : InitializeBehaviour
 
     public override void innerBehaviour()
     {
-        if (field.isFocused || keyboardTarget.isFocused)
+        if (keyboardTarget.isFocused)
         {
             if (Input.anyKeyDown && !loadingWheel.activeSelf)
             {
-                bool leftCmd = Input.GetKey(KeyCode.LeftCommand);
-                bool leftCtrl = Input.GetKey(KeyCode.LeftControl);
+                bool cmd = Input.GetKey(KeyCode.LeftCommand) ||
+                           Input.GetKey(KeyCode.LeftControl) ||
+                           Input.GetKey(KeyCode.RightControl);
+
                 bool f3 = Input.GetKeyDown(KeyCode.F3);
                 bool f4 = Input.GetKeyDown(KeyCode.F4);
                 bool f5 = Input.GetKeyDown(KeyCode.F5);
@@ -599,12 +598,14 @@ public class Playground : InitializeBehaviour
 
                 //if (!(leftCmd || leftCtrl || f3 || f4 || f5))
                 //    onChangeInput();
-                if (((leftCmd || leftCtrl) && d) || f3)
+
+                if ((cmd && d) || f3)
                     PharoDo();
-                else if (((leftCmd || leftCtrl) && p) || f4)
+                else if ((cmd && p) || f4)
                     PharoPrint();
-                else if (((leftCmd || leftCtrl) && i) || f5)
+                else if ((cmd && i) || f5)
                     PharoInspect();
+
                 //else if (((leftCmd || leftCtrl) && b) || f8)
                 //    PharoBrowse();
                 //else if (((leftCmd || leftCtrl) && v) || ((leftCmd || leftCtrl) && c))

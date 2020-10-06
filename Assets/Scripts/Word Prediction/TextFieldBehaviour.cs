@@ -41,9 +41,9 @@ public class TextFieldBehaviour : MonoBehaviour, ISelectHandler
 		yield return null;
 
 		//Scroll the view with the last character
-		inputField.MoveTextEnd(true);
+		//inputField.MoveTextEnd(true);
 		//Change the caret pos to the end of the text
-		inputField.caretPosition = inputField.text.Length;
+		//inputField.caretPosition = inputField.text.Length;
 
 		originalTextColor.a = 1f;
 		inputField.selectionColor = originalTextColor;

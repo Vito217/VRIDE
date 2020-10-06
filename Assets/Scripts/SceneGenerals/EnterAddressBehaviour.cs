@@ -26,7 +26,7 @@ public class EnterAddressBehaviour : MonoBehaviour
         {
             loadingWheel.SetActive(true);
             Pharo.IP = line;
-            string res = await Pharo.Execute("Author uniqueInstance fullName: 'Default'.");
+            string res = await Pharo.Execute("Author uniqueInstance fullName: 'VRIDE User'.");
             if (!res.Contains("an Author"))
                 throw new Exception("Not a Pharo response");
             SceneManager.LoadSceneAsync("MainScene");

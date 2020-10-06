@@ -38,43 +38,20 @@ public class VRIDEController : MonoBehaviour
 
     void Update()
     {
-        transform.position = new Vector3(
-            transform.position.x, .5f, transform.position.z);
+        transform.position = new Vector3(transform.position.x, .5f, transform.position.z);
 
         // HTC VIVE
+        bool menuButton = ViveInput.GetPressDownEx(HandRole.RightHand, ControllerButton.Menu) || 
+                          ViveInput.GetPressDownEx(HandRole.LeftHand, ControllerButton.Menu);
 
-        // Right Hand
-        bool rightMenuButton = ViveInput.GetPressDownEx(HandRole.RightHand, ControllerButton.Menu);
-        bool rightAKey = ViveInput.GetPressDownEx(HandRole.RightHand, ControllerButton.AKey) ||
-                         ViveInput.GetPressDownEx(HandRole.RightHand, ControllerButton.AKeyTouch);
-        bool rightBKey = ViveInput.GetPressDownEx(HandRole.RightHand, ControllerButton.BKey);
-        bool rightTrigger = ViveInput.GetPressDownEx(HandRole.RightHand, ControllerButton.Trigger) ||
-                            ViveInput.GetPressDownEx(HandRole.RightHand, ControllerButton.TriggerTouch);
-        bool rightPad = ViveInput.GetPressDownEx(HandRole.RightHand, ControllerButton.Pad) ||
-                        ViveInput.GetPressDownEx(HandRole.RightHand, ControllerButton.PadTouch);
-        bool rightBumper = ViveInput.GetPressDownEx(HandRole.RightHand, ControllerButton.Bumper) ||
-                           ViveInput.GetPressDownEx(HandRole.RightHand, ControllerButton.BumperTouch);
-
-        bool usingRightHand = rightAKey || rightBKey || rightTrigger || rightPad || rightBumper;
-
-        // Left Hand
-        bool leftMenuButton = ViveInput.GetPressDownEx(HandRole.LeftHand, ControllerButton.Menu);
-        bool leftAKey = ViveInput.GetPressDownEx(HandRole.LeftHand, ControllerButton.AKey) ||
-                         ViveInput.GetPressDownEx(HandRole.LeftHand, ControllerButton.AKeyTouch);
-        bool leftBKey = ViveInput.GetPressDownEx(HandRole.LeftHand, ControllerButton.BKey);
-        bool leftTrigger = ViveInput.GetPressDownEx(HandRole.LeftHand, ControllerButton.Trigger) ||
-                            ViveInput.GetPressDownEx(HandRole.LeftHand, ControllerButton.TriggerTouch);
-        bool leftPad = ViveInput.GetPressDownEx(HandRole.LeftHand, ControllerButton.Pad) ||
-                        ViveInput.GetPressDownEx(HandRole.LeftHand, ControllerButton.PadTouch);
-        bool leftBumper = ViveInput.GetPressDownEx(HandRole.LeftHand, ControllerButton.Bumper) ||
-                           ViveInput.GetPressDownEx(HandRole.LeftHand, ControllerButton.BumperTouch);
-
-        bool usingLeftHand = leftAKey || leftBKey || leftTrigger || leftPad || leftBumper;
+        bool leftTrigger = ViveInput.GetPressDownEx(HandRole.LeftHand, ControllerButton.Trigger);
+        bool rightTrigger = ViveInput.GetPressDownEx(HandRole.RightHand, ControllerButton.Trigger);
 
         // KeyBoard
-        bool leftCmd = Input.GetKey(KeyCode.LeftCommand);
-        bool leftCtrl = Input.GetKey(KeyCode.LeftControl);
-        bool esc = Input.GetKeyDown(KeyCode.Escape);
+        bool cmd = Input.GetKey(KeyCode.LeftCommand) ||
+                   Input.GetKey(KeyCode.LeftControl) ||
+                   Input.GetKey(KeyCode.RightControl);
+
         bool f1 = Input.GetKeyDown(KeyCode.F1);
         bool f2 = Input.GetKeyDown(KeyCode.F2);
         bool f7 = Input.GetKeyDown(KeyCode.F7);
@@ -93,25 +70,24 @@ public class VRIDEController : MonoBehaviour
             pos.z + forw.z * .5f);
         newForw = new Vector3(forw.x, 0, forw.z);
 
-        if (f1 || f2 || f7 || leftCmd || leftCtrl
-            || esc || f8 || f9 || rightMenuButton || leftMenuButton)
+        if (f1 || f2 || f7 || cmd || f8 || f9 || 
+            menuButton || rightTrigger || leftTrigger)
         {
-            if (f1 || ((leftCtrl || leftCmd) && o && b))
+            if (f1 || (cmd && o && b))
                 GenerateBrowser();
-            else if (f2 || ((leftCtrl || leftCmd) && o && w))
+            else if (f2 || (cmd && o && w))
                 GeneratePlayground();
-            else if (f7 || ((leftCtrl || leftCmd) && o && t))
+            else if (f7 || (cmd && o && t))
                 GenerateTranscript();
             else if (f8)
                 GenerateRoassalExamples();
-            else if (f9 || rightMenuButton || leftMenuButton)
+            else if (f9 || menuButton)
                 GenerateMenu();
+            else if (leftTrigger)
+                dragPivot = transform.Find("ViveControllers/Left");
+            else if (rightTrigger)
+                dragPivot = transform.Find("ViveControllers/Right");
         }
-
-        if (usingLeftHand)
-            dragPivot = transform.Find("ViveCameraRig/LeftHand");
-        else if (usingRightHand)
-            dragPivot = transform.Find("ViveCameraRig/RightHand");
     }
 
     public void GenerateBrowser()

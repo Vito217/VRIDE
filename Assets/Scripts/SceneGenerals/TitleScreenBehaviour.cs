@@ -41,14 +41,18 @@ public class TitleScreenBehaviour : MonoBehaviour
         if (inputDevices.Count > 0)
         {
             XRSettings.enabled = true;
-            player = Instantiate(htcplayer_prefab);
+
+            //player = Instantiate(htcplayer_prefab);
+            player = Instantiate(openVRPlayerPrefab);
+
             ground.AddComponent<Teleportable>();
             ground.GetComponent<Teleportable>().target = player.transform;
-            ground.GetComponent<Teleportable>().pivot = player.transform.Find("ViveCameraRig/Camera");
-            player.transform.Find("ViveCameraRig/RightHand").gameObject.AddComponent<CapsuleCollider>();
-            player.transform.Find("ViveCameraRig/LefttHand").gameObject.AddComponent<CapsuleCollider>();
-            player.transform.Find("ViveCameraRig/RightHand").gameObject.GetComponent<CapsuleCollider>().radius = .1f;
-            player.transform.Find("ViveCameraRig/LefttHand").gameObject.GetComponent<CapsuleCollider>().radius = .1f;
+            ground.GetComponent<Teleportable>().pivot = player.transform.Find("Camera");
+
+            //player.transform.Find("ViveCameraRig/RightHand").gameObject.AddComponent<CapsuleCollider>();
+            //player.transform.Find("ViveCameraRig/LefttHand").gameObject.AddComponent<CapsuleCollider>();
+            //player.transform.Find("ViveCameraRig/RightHand").gameObject.GetComponent<CapsuleCollider>().radius = .1f;
+            //player.transform.Find("ViveCameraRig/LefttHand").gameObject.GetComponent<CapsuleCollider>().radius = .1f;
         }
         else
             player = Instantiate(nonvrplayer_prefab);

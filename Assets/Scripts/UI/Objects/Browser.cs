@@ -172,14 +172,17 @@ public class Browser : InitializeBehaviour
         {
             if (Input.anyKeyDown && !loadingWheel.activeSelf)
             {
-                bool leftCmd = Input.GetKey(KeyCode.LeftCommand);
-                bool leftCtrl = Input.GetKey(KeyCode.LeftControl);
+                bool cmd = Input.GetKey(KeyCode.LeftCommand) ||
+                           Input.GetKey(KeyCode.LeftControl) ||
+                           Input.GetKey(KeyCode.RightControl);
+
                 bool f6 = Input.GetKeyDown(KeyCode.F6);
                 bool s = Input.GetKeyDown("s");
 
                 //if (!(leftCmd || leftCtrl || f6 || s))
                 //    onChangeInput();
-                if (((leftCmd || leftCtrl) && s) || f6)
+
+                if ((cmd && s) || f6)
                     PharoDefine();
             }
             lastCaretPosition = keyboardTarget.caretPosition;
