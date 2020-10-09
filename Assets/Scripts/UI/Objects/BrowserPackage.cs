@@ -8,6 +8,8 @@
         theBrowser.package_list.last_selected = this;
         theBrowser.class_list.gameObject.SetActive(true);
         theBrowser.methodList.gameObject.SetActive(false);
+        theBrowser.classFilter.interactable = true;
+        theBrowser.methodFilter.interactable = false;
         theBrowser.class_list.Load();
     }
 }

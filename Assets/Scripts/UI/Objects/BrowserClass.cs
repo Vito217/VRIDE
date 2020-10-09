@@ -17,6 +17,7 @@ public class BrowserClass : BrowserObject
                 string sourceCode = await Pharo.Execute(name + " definition .");
                 sourceCode = sourceCode.Substring(1, sourceCode.Length - 3);
                 theBrowser.field.text = sourceCode;
+                theBrowser.methodFilter.interactable = true;
                 theBrowser.methodList.Load();
             }
             catch (Exception e)
