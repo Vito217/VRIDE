@@ -138,6 +138,7 @@ The text highlightning is based on regular expressions. You can specify a list o
 
 ## External Resources
 * <a href="https://github.com/rjth/Punchkeyboard">Jonathan Ravasz' PunchKeyboard</a>
+* <a href="https://assetstore.unity.com/packages/2d/textures-materials/sky/allsky-free-10-sky-skybox-set-146014">Richard Whitelock's AllSkyFree</a>
 
 ## Channel Log
 

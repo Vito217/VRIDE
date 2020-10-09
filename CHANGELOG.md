@@ -1,5 +1,12 @@
 # PharoVRIDE's Channel Log
 
+## V0.14.3 (08/10/2020)
+* Fixed some playground and browser bugs.
+* Fixed many AFrame layout issues.
+* Using VIU ViveRig as the main camera.
+* Improved some UI elements.
+* Add new skyboxes (created by Richard Whitelock)
+
 ## V0.14.2 (05/10/2020)
 * Fixed AFrame size.
 * Reduced capsule collider radius.
