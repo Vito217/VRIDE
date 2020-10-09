@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,60 +11,84 @@ namespace AFrameModule
 {
     public static class AFrameToGameObject
     {
-        public static GameObject Convert(String aframe)
+        public static (GameObject canvas, float width, float height) Convert(String aframe)
         {
             aframe = aframe.Split(new string[] { "</html>" }, StringSplitOptions.None)[0];
+            MatchCollection texts = Regex.Matches(aframe, "<a-entity(.*)text=\"(.*)\"(.*)>");
+            MatchCollection geometries = Regex.Matches(aframe, "<a-entity(.*)geometry=\"(.*)\"(.*)>");
+            MatchCollection lines = Regex.Matches(aframe, "<a-entity(.*)line=\"(.*)\"(.*)>");
+            MatchCollection boxes = Regex.Matches(aframe, "<a-box(.*)>");
+            MatchCollection spheres = Regex.Matches(aframe, "<a-sphere(.*)>");
+            MatchCollection cylinders = Regex.Matches(aframe, "<a-cylinder(.*)>");
+            MatchCollection planes = Regex.Matches(aframe, "<a-plane(.*)>");
+
+            Vector3 pivot = GetNearestObjectToOrigin(aframe);
+            float maxX = float.MinValue;
+            float maxY = float.MinValue;
+            float minX = float.MaxValue;
+            float minY = float.MaxValue;
 
             // Base canvas
-            GameObject canvas = new GameObject("AFrame", typeof(Canvas), typeof(CanvasScaler),
-                typeof(GraphicRaycaster), typeof(CanvasRaycastTarget),
-                typeof(InitializeBehaviour), typeof(EventTrigger));
-            canvas.GetComponent<Canvas>().renderMode = RenderMode.WorldSpace;
-            canvas.GetComponent<RectTransform>().sizeDelta = new Vector2(2f, 2f);
-            canvas.transform.localScale = new Vector3(.3f, .3f, .3f); ;
+            GameObject aFrameCanvas = new GameObject(
+                "AFrame",
+                typeof(Canvas),
+                typeof(CanvasScaler),
+                typeof(GraphicRaycaster),
+                typeof(CanvasRaycastTarget),
+                typeof(EventTrigger),
+                typeof(InitializeBehaviour));
 
-            GameObject panel = new GameObject("Panel", typeof(RectTransform), typeof(CanvasRenderer));
-            panel.transform.SetParent(canvas.transform, false);
+            aFrameCanvas.GetComponent<Canvas>().renderMode = RenderMode.WorldSpace;
 
-            foreach (Match m in Regex.Matches(aframe,
-                "<a-entity(.*)text=\"(.*)\" >"))
+            GameObject aFramePanel = new GameObject(
+                "Panel",
+                typeof(RectTransform),
+                typeof(CanvasRenderer));
+
+            aFramePanel.transform.SetParent(aFrameCanvas.transform, false);
+            aFramePanel.GetComponent<RectTransform>().pivot = Vector2.zero;
+            aFramePanel.GetComponent<RectTransform>().anchorMin = Vector2.zero;
+            aFramePanel.GetComponent<RectTransform>().anchorMax = Vector2.zero;
+
+            foreach (Match m in texts)
             {
                 string tag = m.Value;
                 string value = Regex.Match(tag, @"value: ([a-zA-Z0-9-.\s]+)(;|"")").Groups[1].Value;
+                Match posMatch = Regex.Match(tag, @"position=""([0-9-.\s]+)""");
+                Match rotMatch = Regex.Match(tag, @"rotation=""([0-9-.\s]+)""");
+                Match widthMatch = widthMatch = Regex.Match(tag, @"width: ([0-9-.]+)(;|"")");
+                Match colorMatch = colorMatch = Regex.Match(tag, @"color: ([#0-9A-Z]+)(;|"")");
 
-                // A text object
                 GameObject text = new GameObject(
-                    value, 
+                    value,
                     typeof(TextMeshProUGUI),
                     typeof(ContentSizeFitter));
-                text.transform.SetParent(panel.transform, false);
 
-                Match posMatch = Regex.Match(tag, @"position=""([0-9-.\s]+)""");
+                text.transform.SetParent(aFramePanel.transform, false);
+
                 if (posMatch.Success)
                 {
-                    string[] p = posMatch.Groups[1].Value.Split(' ');
-                    Vector3 position = new Vector3(
-                        float.Parse(p[0], CultureInfo.InvariantCulture),
-                        float.Parse(p[1], CultureInfo.InvariantCulture),
-                        float.Parse(p[2], CultureInfo.InvariantCulture));
-                    text.transform.localPosition = position;
+                    float[] coords = Array.ConvertAll(
+                        posMatch.Groups[1].Value.Split(' '),
+                        i => float.Parse(i, CultureInfo.InvariantCulture));
+
+                    text.transform.localPosition =
+                        new Vector3(coords[0], coords[1], coords[2]) - pivot;
                 }
 
-                Match rotMatch = Regex.Match(tag, @"rotation=""([0-9-.\s]+)""");
                 if (rotMatch.Success)
                 {
-                    string[] r = rotMatch.Groups[1].Value.Split(' ');
-                    Quaternion rotation = Quaternion.Euler(
-                        float.Parse(r[0], CultureInfo.InvariantCulture),
-                        float.Parse(r[1], CultureInfo.InvariantCulture),
-                        float.Parse(r[2], CultureInfo.InvariantCulture));
-                    text.transform.localRotation = rotation;
+                    float[] coords = Array.ConvertAll(
+                        rotMatch.Groups[1].Value.Split(' '),
+                        i => float.Parse(i, CultureInfo.InvariantCulture));
+
+                    text.transform.localRotation = 
+                        Quaternion.Euler(coords[0], coords[1], coords[2]);
                 }
 
                 ContentSizeFitter fitter = text.GetComponent<ContentSizeFitter>();
                 fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
 
-                Match widthMatch = Regex.Match(tag, @"width: ([0-9-.]+)(;|"")");
                 if (widthMatch.Success)
                 {
                     var sd = text.GetComponent<RectTransform>().sizeDelta;
@@ -73,84 +96,87 @@ namespace AFrameModule
                     text.GetComponent<RectTransform>().sizeDelta = sd;
                 }
 
-                Match colorMatch = Regex.Match(tag, @"color: ([#0-9A-Z]+)(;|"")");
                 if (colorMatch.Success)
                 {
                     TextMeshProUGUI textComponent = text.GetComponent<TextMeshProUGUI>();
                     textComponent.text =
                         "<size=0.1><color=" + colorMatch.Groups[1].Value + ">" + value + "</color></size>";
                 }
-                                           
+
+                // Update width and height
+                Vector2 size = text.GetComponent<RectTransform>().sizeDelta;
+
+                maxX = Math.Max(maxX, text.transform.localPosition.x + size.x);
+                maxY = Math.Max(maxY, text.transform.localPosition.y + size.y);
+                minX = Math.Min(minX, text.transform.localPosition.x - size.x);
+                minY = Math.Min(minY, text.transform.localPosition.y - size.y);
             }
 
-            foreach (Match m in Regex.Matches(aframe,
-                "<a-entity(.*)geometry=\"(.*)\" >"))
+            foreach (Match m in geometries)
             {
                 string tag = m.Value;
+                if (tag.Contains("src: #floor;"))
+                    continue;
+
                 string primitive = Regex.Match(tag, @"primitive: ([a-zA-Z]+)(;|"")").Groups[1].Value;
+                Match posMatch = Regex.Match(tag, @"position=""([0-9-.\s]+)""");
+                Match rotMatch = Regex.Match(tag, @"rotation=""([0-9-.\s]+)""");
+                Match widthMatch = Regex.Match(tag, @"width: ([0-9.]+) ;");
+                Match heightMatch = Regex.Match(tag, @"height: ([0-9.]+);");
+                Match depthMatch = Regex.Match(tag, @"depth: ([0-9.]+);");
+                Match colorMatch = Regex.Match(tag, @"color: ([#0-9A-Z]+)(;|"")");
+                Match metalMatch = Regex.Match(tag, @"metalness: ([0-9.]+)(;|"")");
+                Match glossMatch = Regex.Match(tag, @"roughness: ([0-9.]+)(;|"")");
 
                 GameObject ob;
                 switch (primitive)
                 {
                     case "cube":
                         ob = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        UnityEngine.Object.Destroy(ob.GetComponent<BoxCollider>());
                         break;
                     case "cylinder":
                         ob = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
-                        UnityEngine.Object.Destroy(ob.GetComponent<CapsuleCollider>());
                         break;
                     case "capsule":
                         ob = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-                        UnityEngine.Object.Destroy(ob.GetComponent<CapsuleCollider>());
                         break;
                     case "plane":
                         ob = GameObject.CreatePrimitive(PrimitiveType.Plane);
-                        UnityEngine.Object.Destroy(ob.GetComponent<MeshCollider>());
                         break;
                     case "quad":
                         ob = GameObject.CreatePrimitive(PrimitiveType.Quad);
-                        UnityEngine.Object.Destroy(ob.GetComponent<MeshCollider>());
                         break;
                     case "sphere":
                         ob = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                        UnityEngine.Object.Destroy(ob.GetComponent<SphereCollider>());
                         break;
                     default:
                         ob = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        UnityEngine.Object.Destroy(ob.GetComponent<BoxCollider>());
                         break;
                 }
-                ob.AddComponent<RectTransform>();
-                ob.AddComponent<CanvasRenderer>();
-                ob.transform.SetParent(panel.transform, false);
+                ob.tag = "Key";
+                ob.transform.SetParent(aFramePanel.transform, false);
 
-                Match posMatch = Regex.Match(tag, @"position=""([0-9-.\s]+)""");
                 if (posMatch.Success)
                 {
-                    string[] p = posMatch.Groups[1].Value.Split(' ');
-                    Vector3 position = new Vector3(
-                        float.Parse(p[0], CultureInfo.InvariantCulture),
-                        float.Parse(p[1], CultureInfo.InvariantCulture),
-                        float.Parse(p[2], CultureInfo.InvariantCulture));
-                    ob.transform.localPosition = position;
+                    float[] coords = Array.ConvertAll(
+                        posMatch.Groups[1].Value.Split(' '),
+                        i => float.Parse(i, CultureInfo.InvariantCulture));
+
+                    ob.transform.localPosition =
+                        new Vector3(coords[0], coords[1], coords[2]) - pivot;
                 }
 
-                Match rotMatch = Regex.Match(tag, @"rotation=""([0-9-.\s]+)""");
                 if (rotMatch.Success)
                 {
-                    string[] r = rotMatch.Groups[1].Value.Split(' ');
-                    Quaternion rotation = Quaternion.Euler(
-                        float.Parse(r[0], CultureInfo.InvariantCulture),
-                        float.Parse(r[1], CultureInfo.InvariantCulture),
-                        float.Parse(r[2], CultureInfo.InvariantCulture));
-                    ob.transform.localRotation = rotation;
+                    float[] coords = Array.ConvertAll(
+                        rotMatch.Groups[1].Value.Split(' '),
+                        i => float.Parse(i, CultureInfo.InvariantCulture));
+
+                    ob.transform.localRotation =
+                        Quaternion.Euler(coords[0], coords[1], coords[2]);
                 }
 
-                Match widthMatch = Regex.Match(tag, @"width: ([0-9.]+) ;");
-                Match heightMatch = Regex.Match(tag, @"height: ([0-9.]+);");
-                Match depthMatch = Regex.Match(tag, @"depth: ([0-9.]+);");
-                if (widthMatch.Success)
+                if (widthMatch.Success && heightMatch.Success && depthMatch.Success)
                 {
                     Vector3 scale = new Vector3(
                         float.Parse(widthMatch.Groups[1].Value, CultureInfo.InvariantCulture),
@@ -159,73 +185,448 @@ namespace AFrameModule
                     ob.transform.localScale = scale;
                 }
 
+                if (colorMatch.Success || glossMatch.Success || metalMatch.Success)
+                {
+                    Material material = ob.GetComponent<Renderer>().material;
+
+                    if (colorMatch.Success)
+                    {
+                        Color c;
+                        ColorUtility.TryParseHtmlString(colorMatch.Groups[1].Value, out c);
+                        material.color = c;
+                    }
+
+                    if (glossMatch.Success)
+                    {
+                        material.SetFloat(
+                            "_Glossiness",
+                            1f - float.Parse(glossMatch.Groups[1].Value,
+                            CultureInfo.InvariantCulture));
+                    }
+
+                    if (metalMatch.Success)
+                    {
+                        material.SetFloat(
+                            "_Metallic",
+                            float.Parse(metalMatch.Groups[1].Value,
+                            CultureInfo.InvariantCulture));
+                    }
+                }
+
+                // Update width and height
+                Vector3 size = ob.transform.localScale;
+
+                maxX = Math.Max(maxX, ob.transform.localPosition.x + size.x);
+                maxY = Math.Max(maxY, ob.transform.localPosition.y + size.y);
+                minX = Math.Min(minX, ob.transform.localPosition.x - size.x);
+                minY = Math.Min(minY, ob.transform.localPosition.y - size.y);
+            }
+
+            foreach (Match m in lines)
+            {
+                string tag = m.Value;
+                Match startMatch = Regex.Match(tag, @"start: ([0-9-.\s]+)(;|"")");
+                Match endMatch = Regex.Match(tag, @"end: ([0-9-.\s]+)(;|"")");
                 Match colorMatch = Regex.Match(tag, @"color: ([#0-9A-Z]+)(;|"")");
-                Match metalMatch = Regex.Match(tag, @"metalness: ([0-9.]+)(;|"")");
-                Match glossMatch = Regex.Match(tag, @"roughness: ([0-9.]+)(;|"")");
+
+                GameObject line = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                line.name = "Line";
+                line.transform.SetParent(aFramePanel.transform, false);
+
+                if (startMatch.Success && endMatch.Success)
+                {
+                    float[] s = Array.ConvertAll(
+                        startMatch.Groups[1].Value.Split(' '),
+                        i => float.Parse(i, CultureInfo.InvariantCulture));
+
+                    float[] e = Array.ConvertAll(
+                        endMatch.Groups[1].Value.Split(' '),
+                        i => float.Parse(i, CultureInfo.InvariantCulture));
+
+                    Vector3 start = new Vector3(s[0], s[1], s[2]);
+                    Vector3 end = new Vector3(e[0], e[1], e[2]);
+
+                    Vector3 lineCenter = (start + end) * 0.5f;
+                    Vector3 lineDir = end - start;
+                    Vector3 baseVector = new Vector3(1f, 0f, 0f);
+                    float mag = lineDir.magnitude;
+                    float degrees = Vector3.SignedAngle(baseVector, lineDir, new Vector3(0f, 0f, 1f));
+
+                    line.transform.localPosition = lineCenter - pivot;
+                    line.transform.localRotation = Quaternion.Euler(0f, 0f, degrees);
+                    line.transform.localScale = new Vector3(mag, .02f, .02f);
+                }
+
                 if (colorMatch.Success)
                 {
                     Color c;
                     ColorUtility.TryParseHtmlString(colorMatch.Groups[1].Value, out c);
-                    Material material = ob.GetComponent<Renderer>().material;
+                    Material material = line.GetComponent<Renderer>().material;
                     material.color = c;
-                    material.SetFloat("_Glossiness", 1f - float.Parse(glossMatch.Groups[1].Value, CultureInfo.InvariantCulture));
-                    material.SetFloat("_Metallic", float.Parse(metalMatch.Groups[1].Value, CultureInfo.InvariantCulture));
-                }                
+                }
+
+                // Update width and height
+                Vector3 size = line.transform.localScale;
+
+                maxX = Math.Max(maxX, line.transform.localPosition.x + size.x);
+                maxY = Math.Max(maxY, line.transform.localPosition.y + size.y);
+                minX = Math.Min(minX, line.transform.localPosition.x - size.x);
+                minY = Math.Min(minY, line.transform.localPosition.y - size.y);
             }
-            /**foreach (Match m in Regex.Matches(aframe,
-                "<a-entity line=\"start: (.*); end: (.*); color: (.*)\">"))
+
+            foreach (Match m in boxes)
             {
-                try
+                string tag = m.Value;
+                Match posMatch = Regex.Match(tag, @"position=""([0-9-.\s]+)""");
+                Match rotMatch = Regex.Match(tag, @"rotation=""([0-9-.\s]+)""");
+                Match colorMatch = Regex.Match(tag, @"color=""([#0-9A-Z]+)""");
+                Match widthMatch = Regex.Match(tag, @"width=""([0-9.]+)""");
+                Match heightMatch = Regex.Match(tag, @"height=""([0-9.]+)""");
+                Match depthMatch = Regex.Match(tag, @"depth=""([0-9.]+)""");
+                Match metalMatch = Regex.Match(tag, @"metalness=""([0-9.]+)""");
+                Match glossMatch = Regex.Match(tag, @"roughness=""([0-9.]+)""");
+
+                GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                ob.tag = "Key";
+                ob.transform.SetParent(aFramePanel.transform, false);
+
+                if (posMatch.Success)
                 {
-                    GameObject line = new GameObject("Line", typeof(LineRenderer));
-                    line.transform.SetParent(panel.transform, false);
-                    LineRenderer lr = line.GetComponent<LineRenderer>();
-                    string[] p1 = m.Groups[1].Value.Split(' ');
-                    string[] p2 = m.Groups[2].Value.Split(' ');
+                    float[] coords = Array.ConvertAll(
+                        posMatch.Groups[1].Value.Split(' '),
+                        i => float.Parse(i, CultureInfo.InvariantCulture));
 
-                    Vector3 start = new Vector3(
-                        float.Parse(p1[0], CultureInfo.InvariantCulture),
-                        float.Parse(p1[1], CultureInfo.InvariantCulture),
-                        float.Parse(p1[2], CultureInfo.InvariantCulture));
-
-                    Vector3 end = new Vector3(
-                        float.Parse(p2[0], CultureInfo.InvariantCulture),
-                        float.Parse(p2[1], CultureInfo.InvariantCulture),
-                        float.Parse(p2[2], CultureInfo.InvariantCulture));
-
-                    lr.SetPosition(0, start);
-                    lr.SetPosition(1, end);
-                    Color c;
-                    ColorUtility.TryParseHtmlString(m.Groups[3].Value, out c);
-                    lr.startColor = c; lr.endColor = c;
+                    ob.transform.localPosition =
+                        new Vector3(coords[0], coords[1], coords[2]) - pivot;
                 }
-                catch
+
+                if (rotMatch.Success)
                 {
+                    float[] coords = Array.ConvertAll(
+                        rotMatch.Groups[1].Value.Split(' '),
+                        i => float.Parse(i, CultureInfo.InvariantCulture));
 
+                    ob.transform.localRotation =
+                        Quaternion.Euler(coords[0], coords[1], coords[2]);
                 }
-            }**/
 
-            panel.transform.localPosition = new Vector3(-0.5f, -1f, 0f);
+                if (widthMatch.Success && heightMatch.Success && depthMatch.Success)
+                {
+                    Vector3 scale = new Vector3(
+                        float.Parse(widthMatch.Groups[1].Value, CultureInfo.InvariantCulture),
+                        float.Parse(heightMatch.Groups[1].Value, CultureInfo.InvariantCulture),
+                        float.Parse(depthMatch.Groups[1].Value, CultureInfo.InvariantCulture));
+                    ob.transform.localScale = scale;
+                }
 
-            EventTrigger trigger = canvas.GetComponent<EventTrigger>();
-            InitializeBehaviour ib = canvas.GetComponent<InitializeBehaviour>();
+                if (colorMatch.Success || glossMatch.Success || metalMatch.Success)
+                {
+                    Material material = ob.GetComponent<Renderer>().material;
 
-            EventTrigger.Entry entry = new EventTrigger.Entry();
-            entry.eventID = EventTriggerType.PointerDown;
-            entry.callback.AddListener((data) => { ib.OnDrag(data); });
-            trigger.triggers.Add(entry);
+                    if (colorMatch.Success)
+                    {
+                        Color c;
+                        ColorUtility.TryParseHtmlString(colorMatch.Groups[1].Value, out c);
+                        material.color = c;
+                    }
 
-            EventTrigger.Entry entryTwo = new EventTrigger.Entry();
-            entryTwo.eventID = EventTriggerType.PointerUp;
-            entryTwo.callback.AddListener((data) => { ib.OnEndDrag(data); });
-            trigger.triggers.Add(entryTwo);
+                    if (glossMatch.Success)
+                    {
+                        material.SetFloat(
+                            "_Glossiness",
+                            1f - float.Parse(glossMatch.Groups[1].Value,
+                            CultureInfo.InvariantCulture));
+                    }
 
-            canvas.GetComponent<Canvas>().additionalShaderChannels =
-                AdditionalCanvasShaderChannels.TexCoord1 |
-                AdditionalCanvasShaderChannels.Normal |
-                AdditionalCanvasShaderChannels.Tangent;
+                    if (metalMatch.Success)
+                    {
+                        material.SetFloat(
+                            "_Metallic",
+                            float.Parse(metalMatch.Groups[1].Value,
+                            CultureInfo.InvariantCulture));
+                    }
+                }
 
-            return canvas;
+                // Update width and height
+                Vector3 size = ob.transform.localScale;
+
+                maxX = Math.Max(maxX, ob.transform.localPosition.x + size.x);
+                maxY = Math.Max(maxY, ob.transform.localPosition.y + size.y);
+                minX = Math.Min(minX, ob.transform.localPosition.x - size.x);
+                minY = Math.Min(minY, ob.transform.localPosition.y - size.y);
+            }
+
+            foreach (Match m in spheres)
+            {
+                string tag = m.Value;
+                Match posMatch = Regex.Match(tag, @"position=""([0-9-.\s]+)""");
+                Match colorMatch = Regex.Match(tag, @"color=""([#0-9A-Z]+)""");
+                Match metalMatch = Regex.Match(tag, @"metalness=""([0-9.]+)""");
+                Match glossMatch = Regex.Match(tag, @"roughness=""([0-9.]+)""");
+                Match radiusMatch = Regex.Match(tag, @"radius=""([0-9.]+)""");
+
+                GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                ob.tag = "Key";
+                //ob.AddComponent<RectTransform>();
+                //ob.AddComponent<CanvasRenderer>();
+                ob.transform.SetParent(aFramePanel.transform, false);
+
+                if (posMatch.Success)
+                {
+                    float[] coords = Array.ConvertAll(
+                        posMatch.Groups[1].Value.Split(' '),
+                        i => float.Parse(i, CultureInfo.InvariantCulture));
+
+                    ob.transform.localPosition =
+                        new Vector3(coords[0], coords[1], coords[2]) - pivot;
+                }
+
+                if (radiusMatch.Success)
+                {
+                    float radius = float.Parse(
+                        radiusMatch.Groups[1].Value,
+                        CultureInfo.InvariantCulture);
+
+                    Vector3 scale = new Vector3(radius, radius, radius);
+                    ob.transform.localScale = scale;
+                }
+
+                if(colorMatch.Success || glossMatch.Success || metalMatch.Success)
+                {
+                    Material material = ob.GetComponent<Renderer>().material;
+                    
+                    if (colorMatch.Success)
+                    {
+                        Color c;
+                        ColorUtility.TryParseHtmlString(colorMatch.Groups[1].Value, out c);
+                        material.color = c;
+                    }
+
+                    if (glossMatch.Success)
+                    {
+                        material.SetFloat(
+                            "_Glossiness", 
+                            1f - float.Parse(glossMatch.Groups[1].Value, 
+                            CultureInfo.InvariantCulture));
+                    }
+
+                    if (metalMatch.Success)
+                    {
+                        material.SetFloat(
+                            "_Metallic", 
+                            float.Parse(metalMatch.Groups[1].Value, 
+                            CultureInfo.InvariantCulture));
+                    }
+                }
+
+                // Update width and height
+                Vector3 size = ob.transform.localScale;
+
+                maxX = Math.Max(maxX, ob.transform.localPosition.x + size.x);
+                maxY = Math.Max(maxY, ob.transform.localPosition.y + size.y);
+                minX = Math.Min(minX, ob.transform.localPosition.x - size.x);
+                minY = Math.Min(minY, ob.transform.localPosition.y - size.y);
+            }
+
+            foreach (Match m in cylinders)
+            {
+                string tag = m.Value;
+                Match posMatch = Regex.Match(tag, @"position=""([0-9-.\s]+)""");
+                Match colorMatch = Regex.Match(tag, @"color=""([#0-9A-Z]+)""");
+                Match metalMatch = Regex.Match(tag, @"metalness=""([0-9.]+)""");
+                Match glossMatch = Regex.Match(tag, @"roughness=""([0-9.]+)""");
+                Match radiusMatch = Regex.Match(tag, @"radius=""([0-9.]+)""");
+                Match heightMatch = Regex.Match(tag, @"height=""([0-9.]+)""");
+                Match rotMatch = Regex.Match(tag, @"rotation=""([0-9-.\s]+)""");
+
+                GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                ob.tag = "Key";
+                ob.transform.SetParent(aFramePanel.transform, false);
+
+                if (posMatch.Success)
+                {
+                    float[] coords = Array.ConvertAll(
+                        posMatch.Groups[1].Value.Split(' '),
+                        i => float.Parse(i, CultureInfo.InvariantCulture));
+
+                    ob.transform.localPosition =
+                        new Vector3(coords[0], coords[1], coords[2]) - pivot;
+                }
+
+                if (rotMatch.Success)
+                {
+                    float[] coords = Array.ConvertAll(
+                        rotMatch.Groups[1].Value.Split(' '),
+                        i => float.Parse(i, CultureInfo.InvariantCulture));
+
+                    ob.transform.localRotation =
+                        Quaternion.Euler(coords[0], coords[1], coords[2]);
+                }
+
+                if (radiusMatch.Success && heightMatch.Success)
+                {
+                    float radius = float.Parse(
+                        radiusMatch.Groups[1].Value,
+                        CultureInfo.InvariantCulture);
+
+                    float h = float.Parse(
+                        heightMatch.Groups[1].Value,
+                        CultureInfo.InvariantCulture);
+
+                    Vector3 scale = new Vector3(radius, h, radius);
+                    ob.transform.localScale = scale;
+                }
+
+                if (colorMatch.Success || glossMatch.Success || metalMatch.Success)
+                {
+                    Material material = ob.GetComponent<Renderer>().material;
+
+                    if (colorMatch.Success)
+                    {
+                        Color c;
+                        ColorUtility.TryParseHtmlString(colorMatch.Groups[1].Value, out c);
+                        material.color = c;
+                    }
+
+                    if (glossMatch.Success)
+                    {
+                        material.SetFloat(
+                            "_Glossiness",
+                            1f - float.Parse(glossMatch.Groups[1].Value,
+                            CultureInfo.InvariantCulture));
+                    }
+
+                    if (metalMatch.Success)
+                    {
+                        material.SetFloat(
+                            "_Metallic",
+                            float.Parse(metalMatch.Groups[1].Value,
+                            CultureInfo.InvariantCulture));
+                    }
+                }
+
+                // Update width and height
+                Vector3 size = ob.transform.localScale;
+
+                maxX = Math.Max(maxX, ob.transform.localPosition.x + size.x);
+                maxY = Math.Max(maxY, ob.transform.localPosition.y + size.y);
+                minX = Math.Min(minX, ob.transform.localPosition.x - size.x);
+                minY = Math.Min(minY, ob.transform.localPosition.y - size.y);
+            }
+
+            foreach (Match m in planes)
+            {
+                string tag = m.Value;
+                Match posMatch = Regex.Match(tag, @"position=""([0-9-.\s]+)""");
+                Match rotMatch = Regex.Match(tag, @"rotation=""([0-9-.\s]+)""");
+                Match colorMatch = Regex.Match(tag, @"color=""([#0-9A-Z]+)""");
+                Match widthMatch = Regex.Match(tag, @"width=""([0-9.]+)""");
+                Match heightMatch = Regex.Match(tag, @"height=""([0-9.]+)""");
+                Match metalMatch = Regex.Match(tag, @"metalness=""([0-9.]+)""");
+                Match glossMatch = Regex.Match(tag, @"roughness=""([0-9.]+)""");
+
+                GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                ob.tag = "Key";
+                ob.transform.SetParent(aFramePanel.transform, false);
+
+                if (posMatch.Success)
+                {
+                    float[] coords = Array.ConvertAll(
+                        posMatch.Groups[1].Value.Split(' '),
+                        i => float.Parse(i, CultureInfo.InvariantCulture));
+
+                    ob.transform.localPosition =
+                        new Vector3(coords[0], coords[1], coords[2]) - pivot;
+                }
+
+                if (rotMatch.Success)
+                {
+                    float[] coords = Array.ConvertAll(
+                        rotMatch.Groups[1].Value.Split(' '),
+                        i => float.Parse(i, CultureInfo.InvariantCulture));
+
+                    ob.transform.localRotation =
+                        Quaternion.Euler(coords[0], coords[1], coords[2]);
+                }
+
+                if (widthMatch.Success && heightMatch.Success)
+                {
+                    Vector3 scale = new Vector3(
+                        float.Parse(widthMatch.Groups[1].Value, CultureInfo.InvariantCulture),
+                        ob.transform.localScale.y,
+                        float.Parse(heightMatch.Groups[1].Value, CultureInfo.InvariantCulture));
+                    ob.transform.localScale = scale;
+                }
+
+                if (colorMatch.Success || glossMatch.Success || metalMatch.Success)
+                {
+                    Material material = ob.GetComponent<Renderer>().material;
+
+                    if (colorMatch.Success)
+                    {
+                        Color c;
+                        ColorUtility.TryParseHtmlString(colorMatch.Groups[1].Value, out c);
+                        material.color = c;
+                    }
+
+                    if (glossMatch.Success)
+                    {
+                        material.SetFloat(
+                            "_Glossiness",
+                            1f - float.Parse(glossMatch.Groups[1].Value,
+                            CultureInfo.InvariantCulture));
+                    }
+
+                    if (metalMatch.Success)
+                    {
+                        material.SetFloat(
+                            "_Metallic",
+                            float.Parse(metalMatch.Groups[1].Value,
+                            CultureInfo.InvariantCulture));
+                    }
+                }
+
+                // Update width and height
+                Vector3 size = ob.transform.localScale;
+
+                maxX = Math.Max(maxX, ob.transform.localPosition.x + size.x);
+                maxY = Math.Max(maxY, ob.transform.localPosition.y + size.y);
+                minX = Math.Min(minX, ob.transform.localPosition.x - size.x);
+                minY = Math.Min(minY, ob.transform.localPosition.y - size.y);
+            }
+
+            float width = Math.Abs(maxX - minX);
+            float height = Math.Abs(maxY - minY);
+
+            //aFramePanel.transform.localPosition = new Vector3(-0.5f, -1f, 0f);
+            aFrameCanvas.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
+            aFramePanel.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
+
+            return (aFrameCanvas, width, height);
+        }
+
+        private static Vector3 GetNearestObjectToOrigin(string aFrame)
+        {
+            float minMagnitude = float.MaxValue;
+            Vector3 pivot = Vector3.zero;
+            MatchCollection c = Regex.Matches(aFrame,
+                @"(start|end|position)(:\s|="")([0-9-.\s]+)(;|"")");
+
+            foreach(Match m in c)
+            {
+                float[] coords = 
+                    Array.ConvertAll(
+                        m.Groups[3].Value.Split(' '), 
+                        i => float.Parse(i, CultureInfo.InvariantCulture));
+
+                Vector3 pos = new Vector3(coords[0], coords[1], coords[2]);
+                if (pos.sqrMagnitude < minMagnitude && pos != Vector3.zero)
+                {
+                    minMagnitude = pos.sqrMagnitude;
+                    pivot = pos;
+                }
+            }
+            return pivot;
         }
     }
 }

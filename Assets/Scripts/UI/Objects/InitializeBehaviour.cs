@@ -23,6 +23,7 @@ public class InitializeBehaviour : MonoBehaviour
     public List<GameObject> Keyboards;
     public Image panel;
     public int lastCaretPosition = 0;
+    public int lastAnchorPosition = 0;
 
     Vector3 new_pos;
     Vector3 rel_pos;
@@ -101,13 +102,9 @@ public class InitializeBehaviour : MonoBehaviour
     {
         int start = field.selectionAnchorPosition;
         int end = field.caretPosition;
-        if (end < start)
-            start = Interlocked.Exchange(ref end, start);
-        int selection_length = end - start;
-        string selection = clean_code.Substring(start, selection_length);
-        if (!includesEmpty && selection == "")
-            return clean_code;
-        return selection;
+        if (end < start) start = Interlocked.Exchange(ref end, start);
+        string selection = clean_code.Substring(start, end - start);
+        return !includesEmpty && selection == "" ? clean_code : selection;
     }
 
     public string getLastLineOfCode(string clean_code)
@@ -127,22 +124,15 @@ public class InitializeBehaviour : MonoBehaviour
 
     public void OnDrag(BaseEventData data)
     {
-        Debug.Log("Dragging");
-        try
-        {
-            GetComponent<Canvas>().worldCamera =
-                ((PointerEventData)data).enterEventCamera;
-        }
-        catch { }
-        player = data.currentInputModule.transform.parent
-            .gameObject.GetComponent<VRIDEController>();
-        transform.SetParent(player.dragPivot);
+        Camera theCamera = ((PointerEventData)data).enterEventCamera;
+        VRIDEController thePlayer = theCamera.transform.root.gameObject.GetComponent<VRIDEController>();
+        transform.SetParent(thePlayer.dragPivot);
         InteractionLogger.StartTimerFor("WindowDragging");
     }
 
     public void OnEndDrag(BaseEventData data)
     {
-        new_pos = player.dragPivot.TransformPoint(transform.localPosition);
+        new_pos = transform.parent.TransformPoint(transform.localPosition);
         transform.SetParent(null);
         transform.position = new_pos;
         InteractionLogger.EndTimerFor("WindowDragging");
@@ -163,6 +153,12 @@ public class InitializeBehaviour : MonoBehaviour
         Keyboards[keyboardsIndex].SetActive(false);
         keyboardsIndex = (keyboardsIndex + 1) % Keyboards.Count;
         Keyboards[keyboardsIndex].SetActive(true);
+    }
+
+    public void KeepActiveOnSlide()
+    {
+        keyboardTarget.ActivateInputField();
+        keyboardTarget.caretPosition = lastCaretPosition;
     }
 
     public virtual void Initialize(Vector3 final_pos, Vector3 forward)
