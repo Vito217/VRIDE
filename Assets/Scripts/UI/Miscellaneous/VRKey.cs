@@ -13,7 +13,8 @@ public class VRKey : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag != "Key")
+        if (collision.gameObject.tag != "Key" &&
+            collision.gameObject.tag != "AFrame")
         {
             Color c;
             ColorUtility.TryParseHtmlString("#8C8C8C", out c);

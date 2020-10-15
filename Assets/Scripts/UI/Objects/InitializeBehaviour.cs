@@ -187,7 +187,7 @@ public class InitializeBehaviour : MonoBehaviour
         player.can_move = true;
     }
 
-    public virtual void onClose() { }
+    public virtual void onClose() { Destroy(gameObject); }
 
     public virtual void innerBehaviour() { }
 

@@ -15,6 +15,7 @@ public class Instantiator: MonoBehaviour
     public Graph svgPrefab;
     public Transcript transcriptPrefab;
     public VRIDEMenu menuPrefab;
+    public GameObject aframePrefab;
 
     private static Instantiator _instance;
     public static Instantiator Instance
@@ -113,5 +114,10 @@ public class Instantiator: MonoBehaviour
     public RoassalExamples RoassalExamples()
     {
         return Instantiate(roassalExamplesPrefab);
+    }
+
+    public GameObject AFrame()
+    {
+        return Instantiate(aframePrefab);
     }
 }

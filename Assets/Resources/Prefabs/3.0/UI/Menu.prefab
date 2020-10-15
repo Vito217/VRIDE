@@ -1162,7 +1162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d518a00ceacb57f4d94b3cc806d60f40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
+  m_IgnoreReversedGraphics: 0
 --- !u!114 &6663584331874351175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1176,11 +1176,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   code: {fileID: 0}
+  logText: {fileID: 0}
   field: {fileID: 0}
+  keyboardTarget: {fileID: 0}
   player: {fileID: 0}
   loadingWheel: {fileID: 0}
+  Keyboards: []
   panel: {fileID: 0}
   lastCaretPosition: 0
+  lastAnchorPosition: 0
   playgroundGenerator: {fileID: 4623672713788436143}
   browserGenerator: {fileID: 9192950925776641475}
   transcriptGenerator: {fileID: 1304519993886448680}

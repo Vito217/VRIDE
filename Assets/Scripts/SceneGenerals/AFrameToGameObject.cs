@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using UnityEngine;
@@ -22,6 +23,8 @@ namespace AFrameModule
             MatchCollection cylinders = Regex.Matches(aframe, "<a-cylinder(.*)>");
             MatchCollection planes = Regex.Matches(aframe, "<a-plane(.*)>");
 
+            Dictionary<Vector3, GameObject> geoMapping = new Dictionary<Vector3, GameObject>();
+
             Vector3 pivot = GetNearestObjectToOrigin(aframe);
             float maxX = float.MinValue;
             float maxY = float.MinValue;
@@ -29,26 +32,8 @@ namespace AFrameModule
             float minY = float.MaxValue;
 
             // Base canvas
-            GameObject aFrameCanvas = new GameObject(
-                "AFrame",
-                typeof(Canvas),
-                typeof(CanvasScaler),
-                typeof(GraphicRaycaster),
-                typeof(CanvasRaycastTarget),
-                typeof(EventTrigger),
-                typeof(InitializeBehaviour));
-
-            aFrameCanvas.GetComponent<Canvas>().renderMode = RenderMode.WorldSpace;
-
-            GameObject aFramePanel = new GameObject(
-                "Panel",
-                typeof(RectTransform),
-                typeof(CanvasRenderer));
-
-            aFramePanel.transform.SetParent(aFrameCanvas.transform, false);
-            aFramePanel.GetComponent<RectTransform>().pivot = Vector2.zero;
-            aFramePanel.GetComponent<RectTransform>().anchorMin = Vector2.zero;
-            aFramePanel.GetComponent<RectTransform>().anchorMax = Vector2.zero;
+            GameObject aFrameCanvas = Instantiator.Instance.AFrame();
+            GameObject aFramePanel = aFrameCanvas.transform.Find("Panel").gameObject;
 
             foreach (Match m in texts)
             {
@@ -63,7 +48,7 @@ namespace AFrameModule
                     value,
                     typeof(TextMeshProUGUI),
                     typeof(ContentSizeFitter));
-
+                text.tag = "AFrame";
                 text.transform.SetParent(aFramePanel.transform, false);
 
                 if (posMatch.Success)
@@ -153,7 +138,9 @@ namespace AFrameModule
                         ob = GameObject.CreatePrimitive(PrimitiveType.Cube);
                         break;
                 }
-                ob.tag = "Key";
+                ob.tag = "AFrame";
+                ob.AddComponent<AFrameGeometry>();
+                ob.AddComponent<EventTrigger>();
                 ob.transform.SetParent(aFramePanel.transform, false);
 
                 if (posMatch.Success)
@@ -220,58 +207,25 @@ namespace AFrameModule
                 maxY = Math.Max(maxY, ob.transform.localPosition.y + size.y);
                 minX = Math.Min(minX, ob.transform.localPosition.x - size.x);
                 minY = Math.Min(minY, ob.transform.localPosition.y - size.y);
-            }
 
-            foreach (Match m in lines)
-            {
-                string tag = m.Value;
-                Match startMatch = Regex.Match(tag, @"start: ([0-9-.\s]+)(;|"")");
-                Match endMatch = Regex.Match(tag, @"end: ([0-9-.\s]+)(;|"")");
-                Match colorMatch = Regex.Match(tag, @"color: ([#0-9A-Z]+)(;|"")");
+                if (!geoMapping.ContainsKey(ob.transform.localPosition))
+                    geoMapping.Add(ob.transform.localPosition, ob);
 
-                GameObject line = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                line.name = "Line";
-                line.transform.SetParent(aFramePanel.transform, false);
+                // Adding Drag functions
+                EventTrigger trigger = ob.GetComponent<EventTrigger>();
+                AFrameGeometry afg = ob.GetComponent<AFrameGeometry>();
 
-                if (startMatch.Success && endMatch.Success)
-                {
-                    float[] s = Array.ConvertAll(
-                        startMatch.Groups[1].Value.Split(' '),
-                        i => float.Parse(i, CultureInfo.InvariantCulture));
+                // OnPointerDown -> OnDrag
+                EventTrigger.Entry entry = new EventTrigger.Entry();
+                entry.eventID = EventTriggerType.PointerDown;
+                entry.callback.AddListener((data) => { afg.OnDrag(data); });
+                trigger.triggers.Add(entry);
 
-                    float[] e = Array.ConvertAll(
-                        endMatch.Groups[1].Value.Split(' '),
-                        i => float.Parse(i, CultureInfo.InvariantCulture));
-
-                    Vector3 start = new Vector3(s[0], s[1], s[2]);
-                    Vector3 end = new Vector3(e[0], e[1], e[2]);
-
-                    Vector3 lineCenter = (start + end) * 0.5f;
-                    Vector3 lineDir = end - start;
-                    Vector3 baseVector = new Vector3(1f, 0f, 0f);
-                    float mag = lineDir.magnitude;
-                    float degrees = Vector3.SignedAngle(baseVector, lineDir, new Vector3(0f, 0f, 1f));
-
-                    line.transform.localPosition = lineCenter - pivot;
-                    line.transform.localRotation = Quaternion.Euler(0f, 0f, degrees);
-                    line.transform.localScale = new Vector3(mag, .02f, .02f);
-                }
-
-                if (colorMatch.Success)
-                {
-                    Color c;
-                    ColorUtility.TryParseHtmlString(colorMatch.Groups[1].Value, out c);
-                    Material material = line.GetComponent<Renderer>().material;
-                    material.color = c;
-                }
-
-                // Update width and height
-                Vector3 size = line.transform.localScale;
-
-                maxX = Math.Max(maxX, line.transform.localPosition.x + size.x);
-                maxY = Math.Max(maxY, line.transform.localPosition.y + size.y);
-                minX = Math.Min(minX, line.transform.localPosition.x - size.x);
-                minY = Math.Min(minY, line.transform.localPosition.y - size.y);
+                // OnPointerUp -> OnEndDrag
+                EventTrigger.Entry entryTwo = new EventTrigger.Entry();
+                entryTwo.eventID = EventTriggerType.PointerUp;
+                entryTwo.callback.AddListener((data) => { afg.OnEndDrag(data); });
+                trigger.triggers.Add(entryTwo);
             }
 
             foreach (Match m in boxes)
@@ -287,7 +241,8 @@ namespace AFrameModule
                 Match glossMatch = Regex.Match(tag, @"roughness=""([0-9.]+)""");
 
                 GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                ob.tag = "Key";
+                ob.tag = "AFrame";
+                ob.AddComponent<AFrameGeometry>();
                 ob.transform.SetParent(aFramePanel.transform, false);
 
                 if (posMatch.Success)
@@ -354,6 +309,9 @@ namespace AFrameModule
                 maxY = Math.Max(maxY, ob.transform.localPosition.y + size.y);
                 minX = Math.Min(minX, ob.transform.localPosition.x - size.x);
                 minY = Math.Min(minY, ob.transform.localPosition.y - size.y);
+
+                if (!geoMapping.ContainsKey(ob.transform.localPosition))
+                    geoMapping.Add(ob.transform.localPosition, ob);
             }
 
             foreach (Match m in spheres)
@@ -366,9 +324,8 @@ namespace AFrameModule
                 Match radiusMatch = Regex.Match(tag, @"radius=""([0-9.]+)""");
 
                 GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                ob.tag = "Key";
-                //ob.AddComponent<RectTransform>();
-                //ob.AddComponent<CanvasRenderer>();
+                ob.tag = "AFrame";
+                ob.AddComponent<AFrameGeometry>();
                 ob.transform.SetParent(aFramePanel.transform, false);
 
                 if (posMatch.Success)
@@ -426,6 +383,9 @@ namespace AFrameModule
                 maxY = Math.Max(maxY, ob.transform.localPosition.y + size.y);
                 minX = Math.Min(minX, ob.transform.localPosition.x - size.x);
                 minY = Math.Min(minY, ob.transform.localPosition.y - size.y);
+
+                if (!geoMapping.ContainsKey(ob.transform.localPosition))
+                    geoMapping.Add(ob.transform.localPosition, ob);
             }
 
             foreach (Match m in cylinders)
@@ -440,7 +400,8 @@ namespace AFrameModule
                 Match rotMatch = Regex.Match(tag, @"rotation=""([0-9-.\s]+)""");
 
                 GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                ob.tag = "Key";
+                ob.tag = "AFrame";
+                ob.AddComponent<AFrameGeometry>();
                 ob.transform.SetParent(aFramePanel.transform, false);
 
                 if (posMatch.Success)
@@ -512,6 +473,9 @@ namespace AFrameModule
                 maxY = Math.Max(maxY, ob.transform.localPosition.y + size.y);
                 minX = Math.Min(minX, ob.transform.localPosition.x - size.x);
                 minY = Math.Min(minY, ob.transform.localPosition.y - size.y);
+
+                if (!geoMapping.ContainsKey(ob.transform.localPosition))
+                    geoMapping.Add(ob.transform.localPosition, ob);
             }
 
             foreach (Match m in planes)
@@ -526,7 +490,8 @@ namespace AFrameModule
                 Match glossMatch = Regex.Match(tag, @"roughness=""([0-9.]+)""");
 
                 GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                ob.tag = "Key";
+                ob.tag = "AFrame";
+                ob.AddComponent<AFrameGeometry>();
                 ob.transform.SetParent(aFramePanel.transform, false);
 
                 if (posMatch.Success)
@@ -593,12 +558,68 @@ namespace AFrameModule
                 maxY = Math.Max(maxY, ob.transform.localPosition.y + size.y);
                 minX = Math.Min(minX, ob.transform.localPosition.x - size.x);
                 minY = Math.Min(minY, ob.transform.localPosition.y - size.y);
+
+                if (!geoMapping.ContainsKey(ob.transform.localPosition))
+                    geoMapping.Add(ob.transform.localPosition, ob);
+            }
+
+            foreach (Match m in lines)
+            {
+                string tag = m.Value;
+                Match startMatch = Regex.Match(tag, @"start: ([0-9-.\s]+)(;|"")");
+                Match endMatch = Regex.Match(tag, @"end: ([0-9-.\s]+)(;|"")");
+                Match colorMatch = Regex.Match(tag, @"color: ([#0-9A-Z]+)(;|"")");
+
+                GameObject line = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                line.name = "Line";
+                line.tag = "AFrame";
+                line.AddComponent<AFrameLine>();
+                line.transform.SetParent(aFramePanel.transform, false);
+
+                if (startMatch.Success && endMatch.Success)
+                {
+                    float[] s = Array.ConvertAll(
+                        startMatch.Groups[1].Value.Split(' '),
+                        i => float.Parse(i, CultureInfo.InvariantCulture));
+
+                    float[] e = Array.ConvertAll(
+                        endMatch.Groups[1].Value.Split(' '),
+                        i => float.Parse(i, CultureInfo.InvariantCulture));
+
+                    Vector3 start = new Vector3(s[0], s[1], s[2]) - pivot;
+                    Vector3 end = new Vector3(e[0], e[1], e[2]) - pivot;
+
+                    AFrameLine afl = line.GetComponent<AFrameLine>();
+                    afl.start = aFramePanel.transform.TransformPoint(start);
+                    afl.end = aFramePanel.transform.TransformPoint(end);
+
+                    if (geoMapping.ContainsKey(start))
+                         geoMapping.TryGetValue(start, out afl.startObject);
+
+                    if (geoMapping.ContainsKey(end))
+                         geoMapping.TryGetValue(end, out afl.endObject);
+                }
+
+                if (colorMatch.Success)
+                {
+                    Color c;
+                    ColorUtility.TryParseHtmlString(colorMatch.Groups[1].Value, out c);
+                    Material material = line.GetComponent<Renderer>().material;
+                    material.color = c;
+                }
+
+                // Update width and height
+                Vector3 size = line.transform.localScale;
+
+                maxX = Math.Max(maxX, line.transform.localPosition.x + size.x);
+                maxY = Math.Max(maxY, line.transform.localPosition.y + size.y);
+                minX = Math.Min(minX, line.transform.localPosition.x - size.x);
+                minY = Math.Min(minY, line.transform.localPosition.y - size.y);
             }
 
             float width = Math.Abs(maxX - minX);
             float height = Math.Abs(maxY - minY);
 
-            //aFramePanel.transform.localPosition = new Vector3(-0.5f, -1f, 0f);
             aFrameCanvas.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
             aFramePanel.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
 

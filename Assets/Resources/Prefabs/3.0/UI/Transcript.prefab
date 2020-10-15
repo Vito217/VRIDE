@@ -254,11 +254,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   code: {fileID: 6945062915613269256}
+  logText: {fileID: 0}
   field: {fileID: 5517324446377372436}
+  keyboardTarget: {fileID: 0}
   player: {fileID: 0}
   loadingWheel: {fileID: 0}
+  Keyboards: []
   panel: {fileID: 9141360250174672290}
   lastCaretPosition: 0
+  lastAnchorPosition: 0
 --- !u!223 &6877927472131900574
 Canvas:
   m_ObjectHideFlags: 0
@@ -339,7 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d518a00ceacb57f4d94b3cc806d60f40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
+  m_IgnoreReversedGraphics: 0
 --- !u!1 &903777686569549383
 GameObject:
   m_ObjectHideFlags: 0

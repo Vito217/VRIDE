@@ -55,7 +55,10 @@ public class Playground : InitializeBehaviour
                             float finalWidth = t.w;
                             float finalHeight = t.h;
                             float finalScale = (GetComponent<RectTransform>().sizeDelta.y / finalHeight) * 0.001f;
+                            float finalToolbarScale = 0.001f / finalScale;
                             aFrameCanvas.transform.localScale = new Vector3(finalScale, finalScale, finalScale);
+                            aFrameCanvas.transform.Find("Panel/Toolbar").localScale = new Vector3(
+                                finalToolbarScale, finalToolbarScale, finalToolbarScale);
 
                             float scaledWidth = finalWidth * finalScale;
                             float scaledHeight = finalHeight * finalScale;
@@ -73,22 +76,6 @@ public class Playground : InitializeBehaviour
                                 aFramePos,
                                 transform.forward
                             );
-
-                            // Adding Drag functions
-                            EventTrigger trigger = aFrameCanvas.GetComponent<EventTrigger>();
-                            InitializeBehaviour ib = aFrameCanvas.GetComponent<InitializeBehaviour>();
-
-                            // OnPointerDown -> OnDrag
-                            EventTrigger.Entry entry = new EventTrigger.Entry();
-                            entry.eventID = EventTriggerType.PointerDown;
-                            entry.callback.AddListener((data) => { ib.OnDrag(data); });
-                            trigger.triggers.Add(entry);
-
-                            // OnPointerUp -> OnEndDrag
-                            EventTrigger.Entry entryTwo = new EventTrigger.Entry();
-                            entryTwo.eventID = EventTriggerType.PointerUp;
-                            entryTwo.callback.AddListener((data) => { ib.OnEndDrag(data); });
-                            trigger.triggers.Add(entryTwo);
 
                             goto Reactivation;
                         }

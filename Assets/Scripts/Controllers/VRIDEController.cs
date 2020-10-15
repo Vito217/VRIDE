@@ -84,9 +84,9 @@ public class VRIDEController : MonoBehaviour
             else if (f9 || menuButton)
                 GenerateMenu();
             else if (leftTrigger)
-                dragPivot = transform.Find("ViveControllers/Left");
+                dragPivot = transform.Find("ViveCameraRig/LeftHand");
             else if (rightTrigger)
-                dragPivot = transform.Find("ViveControllers/Right");
+                dragPivot = transform.Find("ViveCameraRig/RightHand");
         }
     }
 
