@@ -13,18 +13,20 @@ public class AFrameLine : MonoBehaviour
     void Update()
     {
         if (startObject != null)
-            start = startObject.transform.position;
+            start = transform.parent.InverseTransformPoint(
+                startObject.transform.position);
 
         if (endObject != null)
-            end = endObject.transform.position;
+            end = transform.parent.InverseTransformPoint(
+                endObject.transform.position);
 
         Vector3 lineDir = end - start;
         Vector3 baseDir = new Vector3(lineDir.x, start.y, lineDir.z);
         Vector3 center = (start + end) * 0.5f;
-        float mag = lineDir.magnitude / (transform.parent.parent.localScale.x);
+        float mag = lineDir.magnitude;
 
-        transform.position = center;
+        transform.localPosition = center;
         transform.localScale = new Vector3(.02f, .02f, mag);
-        transform.LookAt(endObject.transform);
+        transform.LookAt(transform.parent.TransformPoint(end));
     }
 }

@@ -24,6 +24,7 @@ namespace AFrameModule
             MatchCollection planes = Regex.Matches(aframe, "<a-plane(.*)>");
 
             Dictionary<Vector3, GameObject> geoMapping = new Dictionary<Vector3, GameObject>();
+            Dictionary<Vector3, GameObject> lineMapping = new Dictionary<Vector3, GameObject>();
 
             Vector3 pivot = GetNearestObjectToOrigin(aframe);
             float maxX = float.MinValue;
@@ -139,8 +140,7 @@ namespace AFrameModule
                         break;
                 }
                 ob.tag = "AFrame";
-                ob.AddComponent<AFrameGeometry>();
-                ob.AddComponent<EventTrigger>();
+                MakeGeometryInteractable(ob);
                 ob.transform.SetParent(aFramePanel.transform, false);
 
                 if (posMatch.Success)
@@ -211,21 +211,7 @@ namespace AFrameModule
                 if (!geoMapping.ContainsKey(ob.transform.localPosition))
                     geoMapping.Add(ob.transform.localPosition, ob);
 
-                // Adding Drag functions
-                EventTrigger trigger = ob.GetComponent<EventTrigger>();
-                AFrameGeometry afg = ob.GetComponent<AFrameGeometry>();
-
-                // OnPointerDown -> OnDrag
-                EventTrigger.Entry entry = new EventTrigger.Entry();
-                entry.eventID = EventTriggerType.PointerDown;
-                entry.callback.AddListener((data) => { afg.OnDrag(data); });
-                trigger.triggers.Add(entry);
-
-                // OnPointerUp -> OnEndDrag
-                EventTrigger.Entry entryTwo = new EventTrigger.Entry();
-                entryTwo.eventID = EventTriggerType.PointerUp;
-                entryTwo.callback.AddListener((data) => { afg.OnEndDrag(data); });
-                trigger.triggers.Add(entryTwo);
+                MakeGeometryDraggable(ob);
             }
 
             foreach (Match m in boxes)
@@ -242,7 +228,7 @@ namespace AFrameModule
 
                 GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Cube);
                 ob.tag = "AFrame";
-                ob.AddComponent<AFrameGeometry>();
+                MakeGeometryInteractable(ob);
                 ob.transform.SetParent(aFramePanel.transform, false);
 
                 if (posMatch.Success)
@@ -313,21 +299,7 @@ namespace AFrameModule
                 if (!geoMapping.ContainsKey(ob.transform.localPosition))
                     geoMapping.Add(ob.transform.localPosition, ob);
 
-                // Adding Drag functions
-                EventTrigger trigger = ob.GetComponent<EventTrigger>();
-                AFrameGeometry afg = ob.GetComponent<AFrameGeometry>();
-
-                // OnPointerDown -> OnDrag
-                EventTrigger.Entry entry = new EventTrigger.Entry();
-                entry.eventID = EventTriggerType.PointerDown;
-                entry.callback.AddListener((data) => { afg.OnDrag(data); });
-                trigger.triggers.Add(entry);
-
-                // OnPointerUp -> OnEndDrag
-                EventTrigger.Entry entryTwo = new EventTrigger.Entry();
-                entryTwo.eventID = EventTriggerType.PointerUp;
-                entryTwo.callback.AddListener((data) => { afg.OnEndDrag(data); });
-                trigger.triggers.Add(entryTwo);
+                MakeGeometryDraggable(ob);
             }
 
             foreach (Match m in spheres)
@@ -339,9 +311,9 @@ namespace AFrameModule
                 Match glossMatch = Regex.Match(tag, @"roughness=""([0-9.]+)""");
                 Match radiusMatch = Regex.Match(tag, @"radius=""([0-9.]+)""");
 
-                GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 ob.tag = "AFrame";
-                ob.AddComponent<AFrameGeometry>();
+                MakeGeometryInteractable(ob);
                 ob.transform.SetParent(aFramePanel.transform, false);
 
                 if (posMatch.Success)
@@ -403,21 +375,7 @@ namespace AFrameModule
                 if (!geoMapping.ContainsKey(ob.transform.localPosition))
                     geoMapping.Add(ob.transform.localPosition, ob);
 
-                // Adding Drag functions
-                EventTrigger trigger = ob.GetComponent<EventTrigger>();
-                AFrameGeometry afg = ob.GetComponent<AFrameGeometry>();
-
-                // OnPointerDown -> OnDrag
-                EventTrigger.Entry entry = new EventTrigger.Entry();
-                entry.eventID = EventTriggerType.PointerDown;
-                entry.callback.AddListener((data) => { afg.OnDrag(data); });
-                trigger.triggers.Add(entry);
-
-                // OnPointerUp -> OnEndDrag
-                EventTrigger.Entry entryTwo = new EventTrigger.Entry();
-                entryTwo.eventID = EventTriggerType.PointerUp;
-                entryTwo.callback.AddListener((data) => { afg.OnEndDrag(data); });
-                trigger.triggers.Add(entryTwo);
+                MakeGeometryDraggable(ob);
             }
 
             foreach (Match m in cylinders)
@@ -431,9 +389,9 @@ namespace AFrameModule
                 Match heightMatch = Regex.Match(tag, @"height=""([0-9.]+)""");
                 Match rotMatch = Regex.Match(tag, @"rotation=""([0-9-.\s]+)""");
 
-                GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
                 ob.tag = "AFrame";
-                ob.AddComponent<AFrameGeometry>();
+                MakeGeometryInteractable(ob);
                 ob.transform.SetParent(aFramePanel.transform, false);
 
                 if (posMatch.Success)
@@ -509,21 +467,7 @@ namespace AFrameModule
                 if (!geoMapping.ContainsKey(ob.transform.localPosition))
                     geoMapping.Add(ob.transform.localPosition, ob);
 
-                // Adding Drag functions
-                EventTrigger trigger = ob.GetComponent<EventTrigger>();
-                AFrameGeometry afg = ob.GetComponent<AFrameGeometry>();
-
-                // OnPointerDown -> OnDrag
-                EventTrigger.Entry entry = new EventTrigger.Entry();
-                entry.eventID = EventTriggerType.PointerDown;
-                entry.callback.AddListener((data) => { afg.OnDrag(data); });
-                trigger.triggers.Add(entry);
-
-                // OnPointerUp -> OnEndDrag
-                EventTrigger.Entry entryTwo = new EventTrigger.Entry();
-                entryTwo.eventID = EventTriggerType.PointerUp;
-                entryTwo.callback.AddListener((data) => { afg.OnEndDrag(data); });
-                trigger.triggers.Add(entryTwo);
+                MakeGeometryDraggable(ob);
             }
 
             foreach (Match m in planes)
@@ -537,9 +481,9 @@ namespace AFrameModule
                 Match metalMatch = Regex.Match(tag, @"metalness=""([0-9.]+)""");
                 Match glossMatch = Regex.Match(tag, @"roughness=""([0-9.]+)""");
 
-                GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Plane);
                 ob.tag = "AFrame";
-                ob.AddComponent<AFrameGeometry>();
+                MakeGeometryInteractable(ob);
                 ob.transform.SetParent(aFramePanel.transform, false);
 
                 if (posMatch.Success)
@@ -610,21 +554,7 @@ namespace AFrameModule
                 if (!geoMapping.ContainsKey(ob.transform.localPosition))
                     geoMapping.Add(ob.transform.localPosition, ob);
 
-                // Adding Drag functions
-                EventTrigger trigger = ob.GetComponent<EventTrigger>();
-                AFrameGeometry afg = ob.GetComponent<AFrameGeometry>();
-
-                // OnPointerDown -> OnDrag
-                EventTrigger.Entry entry = new EventTrigger.Entry();
-                entry.eventID = EventTriggerType.PointerDown;
-                entry.callback.AddListener((data) => { afg.OnDrag(data); });
-                trigger.triggers.Add(entry);
-
-                // OnPointerUp -> OnEndDrag
-                EventTrigger.Entry entryTwo = new EventTrigger.Entry();
-                entryTwo.eventID = EventTriggerType.PointerUp;
-                entryTwo.callback.AddListener((data) => { afg.OnEndDrag(data); });
-                trigger.triggers.Add(entryTwo);
+                MakeGeometryDraggable(ob);
             }
 
             foreach (Match m in lines)
@@ -650,18 +580,81 @@ namespace AFrameModule
                         endMatch.Groups[1].Value.Split(' '),
                         i => float.Parse(i, CultureInfo.InvariantCulture));
 
+                    // Local positions
                     Vector3 start = new Vector3(s[0], s[1], s[2]) - pivot;
                     Vector3 end = new Vector3(e[0], e[1], e[2]) - pivot;
 
                     AFrameLine afl = line.GetComponent<AFrameLine>();
-                    afl.start = aFramePanel.transform.TransformPoint(start);
-                    afl.end = aFramePanel.transform.TransformPoint(end);
+                    afl.start = start;
+                    afl.end = end;
 
+                    // Mapping intersections with geometries
+
+                    // If there is a geometry at the local start point
+                    // Use it as the start object
                     if (geoMapping.ContainsKey(start))
                          geoMapping.TryGetValue(start, out afl.startObject);
+                    else
+                    {
+                        // If not
+                        // We check if there is another line whose start/end point
+                        // overlaps its start
+                        if (lineMapping.ContainsKey(start))
+                        {
+                            // It is connected to another line.
+                            // Then, we create a node
+                            GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                            ob.tag = "AFrame";
+                            MakeGeometryInteractable(ob);
+                            ob.transform.SetParent(aFramePanel.transform, false);
+                            ob.transform.localScale = new Vector3(.04f, .04f, .04f);
+                            ob.transform.localPosition = afl.start;
+                            geoMapping.Add(start, ob);
+                            MakeGeometryDraggable(ob);
+
+                            // Both lines must share the same node
+                            GameObject intersec;
+                            lineMapping.TryGetValue(start, out intersec);
+                            AFrameLine nearLine = intersec.GetComponent<AFrameLine>();
+                            afl.startObject = ob;
+                            if (nearLine.start == afl.start)
+                                nearLine.startObject = ob;
+                            else
+                                nearLine.endObject = ob;
+                        }
+                        else
+                            lineMapping.Add(start, line);
+                    }
 
                     if (geoMapping.ContainsKey(end))
                          geoMapping.TryGetValue(end, out afl.endObject);
+                    else
+                    {
+                        if (lineMapping.ContainsKey(end))
+                        {
+                            // It is connected to another line
+                            GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                            ob.tag = "AFrame";
+                            MakeGeometryInteractable(ob);
+                            ob.transform.SetParent(aFramePanel.transform, false);
+                            ob.transform.localScale = new Vector3(.04f, .04f, .04f);
+                            ob.transform.localPosition = afl.end;
+                            geoMapping.Add(end, ob);
+                            MakeGeometryDraggable(ob);
+
+                            // Both lines must share the same node
+                            GameObject intersec;
+                            lineMapping.TryGetValue(end, out intersec);
+                            AFrameLine nearLine = intersec.GetComponent<AFrameLine>();
+                            afl.endObject = ob;
+                            if (nearLine.start == afl.end)
+                                nearLine.startObject = ob;
+                            else
+                                nearLine.endObject = ob;
+                        }
+                        else
+                            lineMapping.Add(end, line);
+                    }
                 }
 
                 if (colorMatch.Success)
@@ -712,6 +705,36 @@ namespace AFrameModule
                 }
             }
             return pivot;
+        }
+
+        private static void MakeGeometryInteractable(GameObject ob)
+        {
+            ob.AddComponent<AFrameGeometry>();
+            ob.AddComponent<EventTrigger>();
+            ob.AddComponent<GraphicRaycaster>();
+            ob.AddComponent<CanvasRaycastTarget>();
+            ob.GetComponent<RectTransform>().pivot = Vector2.zero;
+            ob.GetComponent<RectTransform>().anchorMin = Vector2.zero;
+            ob.GetComponent<RectTransform>().anchorMax = Vector2.zero;
+        }
+
+        private static void MakeGeometryDraggable(GameObject ob)
+        {
+            // Adding Drag functions
+            EventTrigger trigger = ob.GetComponent<EventTrigger>();
+            AFrameGeometry afg = ob.GetComponent<AFrameGeometry>();
+
+            // OnPointerDown -> OnDrag
+            EventTrigger.Entry entry = new EventTrigger.Entry();
+            entry.eventID = EventTriggerType.PointerDown;
+            entry.callback.AddListener((data) => { afg.OnDrag(data); });
+            trigger.triggers.Add(entry);
+
+            // OnPointerUp -> OnEndDrag
+            EventTrigger.Entry entryTwo = new EventTrigger.Entry();
+            entryTwo.eventID = EventTriggerType.PointerUp;
+            entryTwo.callback.AddListener((data) => { afg.OnEndDrag(data); });
+            trigger.triggers.Add(entryTwo);
         }
     }
 }
