@@ -312,6 +312,22 @@ namespace AFrameModule
 
                 if (!geoMapping.ContainsKey(ob.transform.localPosition))
                     geoMapping.Add(ob.transform.localPosition, ob);
+
+                // Adding Drag functions
+                EventTrigger trigger = ob.GetComponent<EventTrigger>();
+                AFrameGeometry afg = ob.GetComponent<AFrameGeometry>();
+
+                // OnPointerDown -> OnDrag
+                EventTrigger.Entry entry = new EventTrigger.Entry();
+                entry.eventID = EventTriggerType.PointerDown;
+                entry.callback.AddListener((data) => { afg.OnDrag(data); });
+                trigger.triggers.Add(entry);
+
+                // OnPointerUp -> OnEndDrag
+                EventTrigger.Entry entryTwo = new EventTrigger.Entry();
+                entryTwo.eventID = EventTriggerType.PointerUp;
+                entryTwo.callback.AddListener((data) => { afg.OnEndDrag(data); });
+                trigger.triggers.Add(entryTwo);
             }
 
             foreach (Match m in spheres)
@@ -386,6 +402,22 @@ namespace AFrameModule
 
                 if (!geoMapping.ContainsKey(ob.transform.localPosition))
                     geoMapping.Add(ob.transform.localPosition, ob);
+
+                // Adding Drag functions
+                EventTrigger trigger = ob.GetComponent<EventTrigger>();
+                AFrameGeometry afg = ob.GetComponent<AFrameGeometry>();
+
+                // OnPointerDown -> OnDrag
+                EventTrigger.Entry entry = new EventTrigger.Entry();
+                entry.eventID = EventTriggerType.PointerDown;
+                entry.callback.AddListener((data) => { afg.OnDrag(data); });
+                trigger.triggers.Add(entry);
+
+                // OnPointerUp -> OnEndDrag
+                EventTrigger.Entry entryTwo = new EventTrigger.Entry();
+                entryTwo.eventID = EventTriggerType.PointerUp;
+                entryTwo.callback.AddListener((data) => { afg.OnEndDrag(data); });
+                trigger.triggers.Add(entryTwo);
             }
 
             foreach (Match m in cylinders)
@@ -476,6 +508,22 @@ namespace AFrameModule
 
                 if (!geoMapping.ContainsKey(ob.transform.localPosition))
                     geoMapping.Add(ob.transform.localPosition, ob);
+
+                // Adding Drag functions
+                EventTrigger trigger = ob.GetComponent<EventTrigger>();
+                AFrameGeometry afg = ob.GetComponent<AFrameGeometry>();
+
+                // OnPointerDown -> OnDrag
+                EventTrigger.Entry entry = new EventTrigger.Entry();
+                entry.eventID = EventTriggerType.PointerDown;
+                entry.callback.AddListener((data) => { afg.OnDrag(data); });
+                trigger.triggers.Add(entry);
+
+                // OnPointerUp -> OnEndDrag
+                EventTrigger.Entry entryTwo = new EventTrigger.Entry();
+                entryTwo.eventID = EventTriggerType.PointerUp;
+                entryTwo.callback.AddListener((data) => { afg.OnEndDrag(data); });
+                trigger.triggers.Add(entryTwo);
             }
 
             foreach (Match m in planes)
@@ -561,6 +609,22 @@ namespace AFrameModule
 
                 if (!geoMapping.ContainsKey(ob.transform.localPosition))
                     geoMapping.Add(ob.transform.localPosition, ob);
+
+                // Adding Drag functions
+                EventTrigger trigger = ob.GetComponent<EventTrigger>();
+                AFrameGeometry afg = ob.GetComponent<AFrameGeometry>();
+
+                // OnPointerDown -> OnDrag
+                EventTrigger.Entry entry = new EventTrigger.Entry();
+                entry.eventID = EventTriggerType.PointerDown;
+                entry.callback.AddListener((data) => { afg.OnDrag(data); });
+                trigger.triggers.Add(entry);
+
+                // OnPointerUp -> OnEndDrag
+                EventTrigger.Entry entryTwo = new EventTrigger.Entry();
+                entryTwo.eventID = EventTriggerType.PointerUp;
+                entryTwo.callback.AddListener((data) => { afg.OnEndDrag(data); });
+                trigger.triggers.Add(entryTwo);
             }
 
             foreach (Match m in lines)
