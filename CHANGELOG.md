@@ -1,5 +1,10 @@
 # PharoVRIDE's Channel Log
 
+## V0.15.0 (15/10/2020)
+* Fixed dragging for AFrames and their primitives,
+* Reduced size of VIVE colliders.
+* Fixed some bugs in the text editors. 
+
 ## V0.14.3 (08/10/2020)
 * Fixed some playground and browser bugs.
 * Fixed many AFrame layout issues.
