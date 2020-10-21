@@ -150,9 +150,15 @@ public class InitializeBehaviour : MonoBehaviour
 
     public void ChangeKeyboard()
     {
-        Keyboards[keyboardsIndex].SetActive(false);
+        Keyboards[keyboardsIndex].GetComponent<VRKeyboard>().hidden = true;
+        if (Keyboards[keyboardsIndex].name == "Virtual Keyboard")
+            Keyboards[keyboardsIndex].SetActive(false);
+
         keyboardsIndex = (keyboardsIndex + 1) % Keyboards.Count;
-        Keyboards[keyboardsIndex].SetActive(true);
+
+        Keyboards[keyboardsIndex].GetComponent<VRKeyboard>().hidden = false;
+        if (Keyboards[keyboardsIndex].name == "Virtual Keyboard")
+            Keyboards[keyboardsIndex].SetActive(true);
     }
 
     public void KeepActiveOnSlide()

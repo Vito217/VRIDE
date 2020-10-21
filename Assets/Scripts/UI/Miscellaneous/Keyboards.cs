@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Keyboards : MonoBehaviour
 {
-    private float globalPositionY = 0f;
+    //private float globalPositionY = 0f;
 
     void Start()
     {
-        globalPositionY = transform.position.y;
+        //globalPositionY = transform.position.y;
     }
 
     void Update()
     {
-        transform.position = new Vector3(
-            transform.position.x, globalPositionY, transform.position.z);
+        //transform.position = new Vector3(
+        //    transform.position.x, globalPositionY, transform.position.z);
         transform.localRotation = Quaternion.Euler(
             0, 0, 0);
     }

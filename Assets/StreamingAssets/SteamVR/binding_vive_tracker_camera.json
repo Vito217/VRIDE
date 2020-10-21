@@ -1,22 +1,21 @@
 {
-  "controller_type": "vive_tracker_camera",
-  "description": "",
-  "name": "tracker_forcamera",
   "bindings": {
     "/actions/mixedreality": {
       "chords": [],
-      "sources": [],
-      "poses": [
-        {
-          "output": "/actions/mixedreality/in/ExternalCamera",
-          "path": "/user/camera/pose/raw"
-        }
-      ],
+      "poses": [],
       "haptics": [],
+      "sources": [],
       "skeleton": []
     },
     "/actions/htc_viu": {
       "chords": [],
+      "poses": [],
+      "haptics": [
+        {
+          "output": "/actions/htc_viu/out/viu_vib_01",
+          "path": "/user/camera/output/haptic"
+        }
+      ],
       "sources": [
         {
           "path": "/user/camera/input/power",
@@ -69,14 +68,10 @@
           }
         }
       ],
-      "poses": [],
-      "haptics": [
-        {
-          "output": "/actions/htc_viu/out/viu_vib_01",
-          "path": "/user/camera/output/haptic"
-        }
-      ],
       "skeleton": []
     }
-  }
+  },
+  "controller_type": "vive_tracker_camera",
+  "description": "",
+  "name": "tracker_forcamera"
 }

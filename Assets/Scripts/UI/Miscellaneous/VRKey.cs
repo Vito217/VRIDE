@@ -9,12 +9,17 @@ public class VRKey : MonoBehaviour
     public VRKeyboard keyboard;
     public TextMeshProUGUI visibleText;
 
+    void Start()
+    {
+        tag = "Key";
+    }
+
     public virtual void OnClick() { }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag != "Key" &&
-            collision.gameObject.tag != "AFrame")
+        if (collision.gameObject.tag != "AFrame" &&
+            collision.gameObject.tag != "Key")
         {
             Color c;
             ColorUtility.TryParseHtmlString("#8C8C8C", out c);
@@ -27,7 +32,8 @@ public class VRKey : MonoBehaviour
 
     void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag != "Key")
+        if (collision.gameObject.tag != "AFrame" &&
+            collision.gameObject.tag != "Key")
         {
             Color c;
             ColorUtility.TryParseHtmlString("#000000", out c);

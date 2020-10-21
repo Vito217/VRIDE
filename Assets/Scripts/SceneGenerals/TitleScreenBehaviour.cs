@@ -3,8 +3,8 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR;
+using UnityEngine.XR.Management;
 using UnityEngine.EventSystems;
-using Valve.VR.InteractionSystem;
 using PharoModule;
 using SaveAndLoad;
 using LoggingModule;
@@ -38,9 +38,15 @@ public class TitleScreenBehaviour : MonoBehaviour
         VRIDEController player;
         List<InputDevice> inputDevices = new List<InputDevice>();
         InputDevices.GetDevices(inputDevices);
-        if (inputDevices.Count > 0)
+
+        var xrSettings = XRGeneralSettings.Instance;
+        var xrManager = xrSettings.Manager;
+        var xrLoader = xrManager.activeLoader;
+        Debug.Log(xrLoader.name);
+
+        if (xrLoader != null)
         {
-            XRSettings.enabled = true;
+            xrManager.StartSubsystems();
 
             player = Instantiate(htcplayer_prefab);
             //player = Instantiate(openVRPlayerPrefab);

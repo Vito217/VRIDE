@@ -65,9 +65,9 @@ public class VRIDEController : MonoBehaviour
         pos = Camera.main.transform.position;
         forw = Camera.main.transform.forward;
         newFinalPos = new Vector3(
-            pos.x + forw.x * .5f, 
-            pos.y, 
-            pos.z + forw.z * .5f);
+            pos.x + forw.x * .8f, 
+            .9f * pos.y, 
+            pos.z + forw.z * .8f);
         newForw = new Vector3(forw.x, 0, forw.z);
 
         if (f1 || f2 || f7 || cmd || f8 || f9 || 

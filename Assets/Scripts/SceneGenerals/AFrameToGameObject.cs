@@ -607,7 +607,7 @@ namespace AFrameModule
                             ob.tag = "AFrame";
                             MakeGeometryInteractable(ob);
                             ob.transform.SetParent(aFramePanel.transform, false);
-                            ob.transform.localScale = new Vector3(.04f, .04f, .04f);
+                            ob.transform.localScale = new Vector3(.06f, .06f, .06f);
                             ob.transform.localPosition = afl.start;
                             geoMapping.Add(start, ob);
                             MakeGeometryDraggable(ob);
@@ -637,7 +637,7 @@ namespace AFrameModule
                             ob.tag = "AFrame";
                             MakeGeometryInteractable(ob);
                             ob.transform.SetParent(aFramePanel.transform, false);
-                            ob.transform.localScale = new Vector3(.04f, .04f, .04f);
+                            ob.transform.localScale = new Vector3(.06f, .06f, .06f);
                             ob.transform.localPosition = afl.end;
                             geoMapping.Add(end, ob);
                             MakeGeometryDraggable(ob);
