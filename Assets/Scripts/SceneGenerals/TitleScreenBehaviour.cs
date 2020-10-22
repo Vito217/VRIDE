@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR;
 using UnityEngine.XR.Management;
-using UnityEngine.EventSystems;
 using PharoModule;
 using SaveAndLoad;
 using LoggingModule;
@@ -15,8 +13,8 @@ public class TitleScreenBehaviour : MonoBehaviour
 {
     public GameObject text;
     public Slider slider;
-    bool initializing = true;
     float limit = 0.0f;
+    bool initializing = true;
 
     private Dictionary<string, VRIDEController> dict;
 
@@ -28,41 +26,26 @@ public class TitleScreenBehaviour : MonoBehaviour
     void Update()
     {
         if (initializing)
-            Load();
-
+            Init();
         slider.value += (limit - slider.value) * 0.01f;
     }
 
-    async void Load()
+    async void Init()
     {
-        VRIDEController player;
-        List<InputDevice> inputDevices = new List<InputDevice>();
-        InputDevices.GetDevices(inputDevices);
-
-        var xrSettings = XRGeneralSettings.Instance;
-        var xrManager = xrSettings.Manager;
-        var xrLoader = xrManager.activeLoader;
-        Debug.Log(xrLoader.name);
-
-        if (xrLoader != null)
-        {
-            xrManager.StartSubsystems();
-
-            player = Instantiate(htcplayer_prefab);
-            //player = Instantiate(openVRPlayerPrefab);
-
-            ground.AddComponent<Teleportable>();
-            ground.GetComponent<Teleportable>().target = player.transform;
-            ground.GetComponent<Teleportable>().pivot = player.transform.Find("ViveCameraRig/Camera");
-        }
-        else
-            player = Instantiate(nonvrplayer_prefab);
-
         initializing = false;
+
+        // VR PLAYER
+        VRIDEController player = Instantiate(htcplayer_prefab);
+        ground.AddComponent<Teleportable>();
+        ground.GetComponent<Teleportable>().target = player.transform;
+        ground.GetComponent<Teleportable>().pivot = player.transform.Find("ViveCameraRig/Camera");
+        
+        // NON VR PLAYER
+        //Instantiate(nonvrplayer_prefab);
 
         limit = 0.3f;
 
-        await Pharo.Start();
+        await Pharo.Start();   
 
         limit = 0.6f;
 
@@ -78,5 +61,9 @@ public class TitleScreenBehaviour : MonoBehaviour
         text.SetActive(true);
         text.GetComponent<Text>().CrossFadeAlpha(0.0f, 3.0f, false);
         GetComponent<Image>().CrossFadeAlpha(0.0f, 3.0f, false);
+
+        await Task.Delay(3000);
+        
+        gameObject.SetActive(false);
     }
 }

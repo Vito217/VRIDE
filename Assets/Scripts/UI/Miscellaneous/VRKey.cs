@@ -12,6 +12,10 @@ public class VRKey : MonoBehaviour
     void Start()
     {
         tag = "Key";
+        GetComponent<BoxCollider>().size = new Vector3(
+            GetComponent<BoxCollider>().size.x,
+            GetComponent<BoxCollider>().size.y,
+            2f);
     }
 
     public virtual void OnClick() { }
