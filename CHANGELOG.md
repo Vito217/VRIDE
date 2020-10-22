@@ -1,5 +1,11 @@
 # PharoVRIDE's Channel Log
 
+## V0.16.0 (22/10/2020)
+* Upgraded to Unity 2020.1.10f1
+* Improved some UI elements.
+* Fixed incorrect text parsing on server requests.
+* Fixed bad keycode mapping on Punchkeyboard.
+
 ## V0.15.0 (15/10/2020)
 * Fixed dragging for AFrames and their primitives,
 * Reduced size of VIVE colliders.
