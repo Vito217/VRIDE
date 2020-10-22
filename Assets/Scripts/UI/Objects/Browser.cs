@@ -34,8 +34,8 @@ public class Browser : InitializeBehaviour
 
             if (clean_code.Contains("subclass"))
             {
-                string className = Regex.Matches(clean_code, @"\s#(.*)(\s|\n)")[0].Groups[1].Value;
-                string packageName = Regex.Matches(clean_code, @"package:\s*('|""|'')(.*)('|""|'')")[0].Groups[2].Value;
+                string className = Regex.Matches(clean_code, @"\s#([a-zA-Z]+)(\s|\n)")[0].Groups[1].Value;
+                string packageName = Regex.Matches(clean_code, @"package:(\s*)('|""|'')([a-zA-Z\s-]+)('|""|'')")[0].Groups[3].Value;
 
                 if (string.IsNullOrWhiteSpace(className) ||
                     string.IsNullOrWhiteSpace(packageName))
@@ -44,9 +44,10 @@ public class Browser : InitializeBehaviour
                 if (className[0].ToString().ToUpper() != className[0].ToString())
                     throw new Exception("First character must be uppercase");
 
-                clean_code = Regex.Replace(clean_code, @"(instanceVariableNames:\s*)('|""|'')(.*)('|""|'')", "$1'$3'");
-                clean_code = Regex.Replace(clean_code, @"(classVariableNames:\s*)('|""|'')(.*)('|""|'')", "$1'$3'");
-                clean_code = Regex.Replace(clean_code, @"(package:\s*)('|""|'')(.*)('|""|'')", "$1'$3'");
+                clean_code = Regex.Replace(clean_code, @"(instanceVariableNames:)(\s*)('|""|'')([a-zA-Z\s]*)('|""|'')(\s|\n)", "$1$2'$4'$6");
+                clean_code = Regex.Replace(clean_code, @"(classVariableNames:)(\s*)('|""|'')([a-zA-Z\s]*)('|""|'')(\s|\n)", "$1$2'$4'$6");
+                clean_code = Regex.Replace(clean_code, @"(package:)(\s*)('|""|'')([a-zA-Z\s-]+)('|""|'')(\s|\n|\Z)", "$1$2'$4'$6");
+
                 string responseString = await Pharo.Print(clean_code);
                 if (responseString.Contains(className))
                 {

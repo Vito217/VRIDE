@@ -150,6 +150,9 @@ public class InitializeBehaviour : MonoBehaviour
 
     public void ChangeKeyboard()
     {
+        keyboardTarget.ActivateInputField();
+        keyboardTarget.caretPosition = lastCaretPosition;
+
         Keyboards[keyboardsIndex].GetComponent<VRKeyboard>().hidden = true;
         if (Keyboards[keyboardsIndex].name == "Virtual Keyboard")
             Keyboards[keyboardsIndex].SetActive(false);

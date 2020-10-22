@@ -1,6 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 using UnityEngine;
 using UnityEngine.UI;
+using WindowsInput;
 
 public class Key : MonoBehaviour
 {
@@ -53,7 +58,7 @@ public class Key : MonoBehaviour
 		constrainedPosition = initialLocalPosition;
 		constrainedRotation = initialLocalRotation;
 
-		keySoundController = transform.parent.parent.parent.parent.parent
+		keySoundController = transform.root.Find("Keyboards/Punchkeyboard")
 			.gameObject.GetComponent<KeySoundController> ();
 
 		SwitchKeycapCharCase ();
@@ -78,11 +83,32 @@ public class Key : MonoBehaviour
 				keyPressed ();
 				if (symbolSwitch)
 				{
-					keycodeAdder.SimulateAlternateKeyPress ();
+					if (name.Contains("Space") ||
+						name.Contains("Backspace") ||
+						name.Contains("Return") ||
+						name.Contains("Shift") ||
+						name.Contains("Symbol"))
+
+						keycodeAdder.SimulateAlternateKeyPress();
+
+					else
+
+						WriteStringToTarget();
 				}
 				else
 				{
-					keycodeAdder.SimulateKeyPress ();
+                    if (name.Contains("Space") ||
+						name.Contains("Backspace") ||
+						name.Contains("Return") ||
+						name.Contains("Shift") ||
+						name.Contains("Symbol"))
+                    
+						keycodeAdder.SimulateKeyPress();
+					
+                    else
+                    
+						WriteStringToTarget();
+					
 				}
 				keySoundController.StartKeySound (this.gameObject.transform);
 				checkForButton = false;
@@ -153,6 +179,20 @@ public class Key : MonoBehaviour
 			keyCapText.text = KeyCapChar;
 			keyCapText.text = KeyCapChar.ToLower ();
 			symbolSwitch = false;
+		}
+	}
+
+	private void WriteStringToTarget()
+    {
+		InitializeBehaviour window =
+							transform.root.gameObject.GetComponent<InitializeBehaviour>();
+		if (!window.loadingWheel.activeSelf)
+		{
+			int lcp = window.lastCaretPosition;
+			window.keyboardTarget.ActivateInputField();
+			window.keyboardTarget.text =
+				window.keyboardTarget.text.Insert(lcp, keyCapText.text);
+			window.keyboardTarget.caretPosition = lcp + 1;
 		}
 	}
 }

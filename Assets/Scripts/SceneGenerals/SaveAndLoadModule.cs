@@ -49,9 +49,8 @@ namespace SaveAndLoad
 
             foreach (BrowserData bdata in browsersData)
             {
-                Vector3 pos = new Vector3(bdata.position.x, 0f, bdata.position.z);
                 Vector3 fwd = new Vector3(bdata.forward.x, bdata.forward.y, bdata.forward.z);
-                Vector3 final_pos = new Vector3(bdata.position.x, 2.25f, bdata.position.z);
+                Vector3 final_pos = new Vector3(bdata.position.x, bdata.position.y, bdata.position.z);
 
                 Browser browser = Instantiator.Instance.Browser();
                 browser.Initialize(final_pos, fwd);
@@ -94,9 +93,8 @@ namespace SaveAndLoad
 
             foreach (PlaygroundData pdata in playgroundsData)
             {
-                Vector3 pos = new Vector3(pdata.position.x, 0f, pdata.position.z);
                 Vector3 fwd = new Vector3(pdata.forward.x, pdata.forward.y, pdata.forward.z);
-                Vector3 final_pos = new Vector3(pdata.position.x, 2f, pdata.position.z);
+                Vector3 final_pos = new Vector3(pdata.position.x, pdata.position.y, pdata.position.z);
 
                 Playground playground = Instantiator.Instance.Playground();
                 playground.Initialize(final_pos, fwd);
@@ -125,9 +123,8 @@ namespace SaveAndLoad
 
             foreach (InspectorData idata in inspectorsData)
             {
-                Vector3 pos = new Vector3(idata.position.x, 0f, idata.position.z);
                 Vector3 fwd = new Vector3(idata.forward.x, idata.forward.y, idata.forward.z);
-                Vector3 final_pos = new Vector3(idata.position.x, 2f, idata.position.z);
+                Vector3 final_pos = new Vector3(idata.position.x, idata.position.y, idata.position.z);
 
                 Inspector inspector = Instantiator.Instance.Inspector();
                 inspector.setContent(idata.rows);
@@ -159,9 +156,8 @@ namespace SaveAndLoad
 
             foreach (SVGData gdata in graphsData)
             {
-                Vector3 pos = new Vector3(gdata.position.x, 0f, gdata.position.z);
                 Vector3 fwd = new Vector3(gdata.forward.x, gdata.forward.y, gdata.forward.z);
-                Vector3 final_pos = new Vector3(gdata.position.x, 2f, gdata.position.z);
+                Vector3 final_pos = new Vector3(gdata.position.x, gdata.position.y, gdata.position.z);
 
                 string rawImage = gdata.rawImage;
                 string type = gdata.type;
