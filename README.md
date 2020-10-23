@@ -122,19 +122,29 @@ The text highlightning is based on regular expressions. You can specify a list o
 
 ## Controls
 
+### Desktop Mode
+
 <ul>
-  <li>Left Click or VR Pointer click: Select and Drag</li>
-  <li>Arrows/WASD: Move Player (Desktop Mode)</li>
-  <li>Mouse movement: Move Camera (Desktop Mode)</li>
-  <li>Shift: Visible cursor mode (Desktop Mode)</li>
+  <li>Left Click: Select and Drag</li>
+  <li>Arrows/WASD: Move Player</li>
+  <li>Mouse movement: Move Camera</li>
+  <li>Shift: Visible cursor mode</li>
   <li>Ctrl/Cmd + P or F4: Print (Playground only)</li>
   <li>Ctrl/Cmd + I or F5: Inspect the selected variable (Playground only)</li>
   <li>Ctrl/Cmd + O + B or F1: Invoke a new Browser</li>
   <li>Ctrl/Cmd + O + W or F2: Invoke a new Playground</li>
   <li>Ctrl/Cmd + O + T or F7: Invoke a new Transcript</li>
   <li>Ctrl/Cmd + S or F6: Accept (Browser only)</li>
-  <li>F9 or VR controller manu button: Open Menu</li>
+  <li>F9: Open Menu</li>
 </ul>
+
+### VR Mode: HTC VIVE Cosmos
+
+* X or A: Open Menu.
+* Left/Right trigger: Pointer Click/Drag.
+* Left/Right Stick press: Teleport.
+
+All previous commands can be executed using the VR and physical keyboards.
 
 ## External Resources
 * <a href="https://github.com/rjth/Punchkeyboard">Jonathan Ravasz' PunchKeyboard</a>
