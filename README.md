@@ -147,3 +147,32 @@ The text highlightning is based on regular expressions. You can specify a list o
 ## Download
 
 <a href="https://github.com/Vito217/PharoVRIDE/releases">See Releases.</a>
+
+## Installation and Setup
+
+Before opening the application, make sure you have your Pharo image ready. Open Pharo launcher and execute the following code:
+
+```
+ZnReadEvalPrintDelegate startInServerOn: 1701.
+
+Author uniqueInstance fullName: 'VRIDE User'.
+
+Metacello new
+    baseline: 'Roassal3';
+    repository: 'github://ObjectProfile/Roassal3';
+    load.    
+    
+Metacello new
+    baseline: 'Roassal3Exporters';
+    repository: 'github://ObjectProfile/Roassal3Exporters';
+    load.
+
+Metacello new
+    baseline: 'Roassal3Exporters';
+    repository: 'github://ObjectProfile/Roassal3Exporters';
+    load: 'AFrame'.
+```
+
+Now open PharoVRIDE. On your computer screen you will see a field asking for the IP address of your Pharo server. If you are running on localhost just as shown in the previous script, press the Enter button to proceed.
+
+Finally, put on your VR headset, and try some stuff!
