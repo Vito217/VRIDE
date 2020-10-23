@@ -146,18 +146,6 @@ The text highlightning is based on regular expressions. You can specify a list o
 
 All previous commands can be executed using the VR and physical keyboards.
 
-## External Resources
-* <a href="https://github.com/rjth/Punchkeyboard">Jonathan Ravasz' PunchKeyboard</a>
-* <a href="https://assetstore.unity.com/packages/2d/textures-materials/sky/allsky-free-10-sky-skybox-set-146014">Richard Whitelock's AllSkyFree</a>
-
-## Channel Log
-
-<a href="https://github.com/Vito217/PharoVRIDE/blob/master/CHANGELOG.md">Click here to see the Channel Log</a>
-
-## Download
-
-<a href="https://github.com/Vito217/PharoVRIDE/releases">See Releases.</a>
-
 ## Installation and Setup
 
 Before opening the application, make sure you have your Pharo image ready. Open Pharo launcher and execute the following code:
@@ -186,3 +174,16 @@ Metacello new
 Now open PharoVRIDE. On your computer screen you will see a field asking for the IP address of your Pharo server. If you are running on localhost just as shown in the previous script, press the Enter button to proceed.
 
 Finally, put on your VR headset, and try some stuff!
+
+
+## External Resources
+* <a href="https://github.com/rjth/Punchkeyboard">Jonathan Ravasz' PunchKeyboard</a>
+* <a href="https://assetstore.unity.com/packages/2d/textures-materials/sky/allsky-free-10-sky-skybox-set-146014">Richard Whitelock's AllSkyFree</a>
+
+## Channel Log
+
+<a href="https://github.com/Vito217/PharoVRIDE/blob/master/CHANGELOG.md">Click here to see the Channel Log</a>
+
+## Download
+
+<a href="https://github.com/Vito217/PharoVRIDE/releases">See Releases.</a>
