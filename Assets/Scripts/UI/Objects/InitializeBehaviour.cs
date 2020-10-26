@@ -20,10 +20,13 @@ public class InitializeBehaviour : MonoBehaviour
     public TMP_InputField keyboardTarget;
     public VRIDEController player;
     public GameObject loadingWheel;
+    public GameObject keyboardsGameObject;
     public List<GameObject> Keyboards;
     public Image panel;
     public int lastCaretPosition = 0;
     public int lastAnchorPosition = 0;
+    public float sizeVariance = 20;
+    public float scaleVariance = .2f;
 
     Vector3 new_pos;
     Vector3 rel_pos;
@@ -194,6 +197,56 @@ public class InitializeBehaviour : MonoBehaviour
         player = data.currentInputModule.transform.parent
             .gameObject.GetComponent<VRIDEController>();
         player.can_move = true;
+    }
+
+    public virtual void HorizontalExpand()
+    {
+        transform.Find("Panel").gameObject.GetComponent<RectTransform>().sizeDelta += new Vector2(sizeVariance, 0f);
+        if (loadingWheel != null)
+            loadingWheel.GetComponent<RectTransform>().sizeDelta += new Vector2(sizeVariance, 0f);
+    }
+
+    public virtual void VerticalExpand()
+    {
+        transform.Find("Panel").gameObject.GetComponent<RectTransform>().sizeDelta += new Vector2(0f, sizeVariance);
+        if (loadingWheel != null)    
+            loadingWheel.GetComponent<RectTransform>().sizeDelta += new Vector2(0f, sizeVariance);
+        if (keyboardsGameObject != null)
+            keyboardsGameObject.transform.localPosition -= new Vector3(0f, sizeVariance, 0f);
+    }
+
+    public virtual void HorizontalContract()
+    {
+        transform.Find("Panel").gameObject.GetComponent<RectTransform>().sizeDelta -= new Vector2(sizeVariance, 0f);
+        if (loadingWheel != null)
+            loadingWheel.GetComponent<RectTransform>().sizeDelta -= new Vector2(sizeVariance, 0f);
+    }
+
+    public virtual void VerticalContract()
+    {
+        transform.Find("Panel").gameObject.GetComponent<RectTransform>().sizeDelta -= new Vector2(0f, sizeVariance);
+        if (loadingWheel != null)
+            loadingWheel.GetComponent<RectTransform>().sizeDelta -= new Vector2(0f, sizeVariance);
+        if (keyboardsGameObject != null)
+            keyboardsGameObject.transform.localPosition += new Vector3(0f, sizeVariance, 0f);
+    }
+
+    public virtual void IncreaseScale()
+    {
+        transform.Find("Panel").gameObject.GetComponent<RectTransform>().localScale += new Vector3(scaleVariance, scaleVariance, scaleVariance);
+        if (loadingWheel != null)
+            loadingWheel.GetComponent<RectTransform>().localScale += new Vector3(scaleVariance, scaleVariance, scaleVariance);
+        if (keyboardsGameObject != null)
+            keyboardsGameObject.transform.localPosition -= new Vector3(0f, 50f, 0f);
+    }
+
+    public virtual void DecreaseScale()
+    {
+        transform.Find("Panel").gameObject.GetComponent<RectTransform>().localScale -= new Vector3(scaleVariance, scaleVariance, scaleVariance);
+        if (loadingWheel != null)
+            loadingWheel.GetComponent<RectTransform>().localScale -= new Vector3(scaleVariance, scaleVariance, scaleVariance);
+        if (keyboardsGameObject != null)
+            keyboardsGameObject.transform.localPosition += new Vector3(0f, 50f, 0f);
     }
 
     public virtual void onClose() { Destroy(gameObject); }
