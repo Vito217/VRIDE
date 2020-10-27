@@ -22,6 +22,7 @@ public class TitleScreenBehaviour : MonoBehaviour
     public VRIDEController openVRPlayerPrefab;
     public VRIDEController nonvrplayer_prefab;
     public GameObject ground;
+    public Material finalMaterial;
 
     void Update()
     {
@@ -35,10 +36,10 @@ public class TitleScreenBehaviour : MonoBehaviour
         initializing = false;
 
         // VR PLAYER
-        VRIDEController player = Instantiate(htcplayer_prefab);
-        ground.AddComponent<Teleportable>();
-        ground.GetComponent<Teleportable>().target = player.transform;
-        ground.GetComponent<Teleportable>().pivot = player.transform.Find("ViveCameraRig/Camera");
+        //VRIDEController player = Instantiate(htcplayer_prefab);
+        //ground.AddComponent<Teleportable>();
+        //ground.GetComponent<Teleportable>().target = player.transform;
+        //ground.GetComponent<Teleportable>().pivot = player.transform.Find("ViveCameraRig/Camera");
         
         // NON VR PLAYER
         //Instantiate(nonvrplayer_prefab);
@@ -63,7 +64,9 @@ public class TitleScreenBehaviour : MonoBehaviour
         GetComponent<Image>().CrossFadeAlpha(0.0f, 3.0f, false);
 
         await Task.Delay(3000);
-        
+
+        ground.GetComponent<Renderer>().material = finalMaterial;
+
         gameObject.SetActive(false);
     }
 }

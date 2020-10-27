@@ -251,7 +251,10 @@ public class InitializeBehaviour : MonoBehaviour
 
     public virtual void onClose() { Destroy(gameObject); }
 
-    public virtual void innerBehaviour() { }
+    public virtual void innerBehaviour() {
+        if (keyboardTarget != null)
+            lastCaretPosition = keyboardTarget.caretPosition;
+    }
 
     public virtual IEnumerator innerStart()
     {
