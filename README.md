@@ -27,6 +27,9 @@ Just like Pharo's System Browser, you can use the text editor to create your own
 ![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-04-22-(2).png)
 ![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-04-22-(3).png)
 
+![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-05-02_(1).png)
+![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-05-02.png)
+
 ### The Playground
 Once you've defined your own objects, or if you just want to play with some basic operations, write some code using the playground's text editor. Depending on the shorcut you use, you can either execute your code or print the result after selecting a statement.
 
