@@ -1,5 +1,9 @@
 # PharoVRIDE's Channel Log
 
+## V0.17.0 (27/10/2020)
+* Added buttons for resizing and scaling.
+* Added support for Oculus Android.
+
 ## V0.16.0 (22/10/2020)
 * Upgraded to Unity 2020.1.10f1
 * Improved some UI elements.
@@ -148,9 +152,6 @@ NOTE: Due to implementantion issues, all local variables must ALWAYS be declared
 * Now you can invoke as many instances of browsers and playgrounds as you want (see the Controls section in the README file)
 * Text Highlighting was improved
 * Prefabs now have colored borders
-
-![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-05-02_(1).png)
-![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-05-02.png)
 
 ## V0.2.1 (29/04/2020)
 * Improved Prefabs
