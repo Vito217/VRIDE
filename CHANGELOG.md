@@ -1,5 +1,9 @@
 # PharoVRIDE's Channel Log
 
+## V0.18.0 (29/10/2020)
+* Improved Keyboard layout. Now each window will have just one keyboard instead of two. The Do, Print, Inspect, Accept, Copy and Paste buttons are now part of PunchKeyboard as a UI Panel. Tab and Delete buttons where added.
+* Fixed minor bugs.
+
 ## V0.17.0 (27/10/2020)
 * Added buttons for resizing and scaling.
 * Added support for Oculus Android.
