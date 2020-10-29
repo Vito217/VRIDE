@@ -309,6 +309,13 @@ public class Playground : InitializeBehaviour
     {
         if (keyboardTarget.isFocused)
         {
+            if (fromUIClick)
+            {
+                fromUIClick = false;
+                keyboardTarget.caretPosition = lastCaretPosition;
+                keyboardTarget.selectionAnchorPosition = lastAnchorPosition;
+            }
+
             if (Input.anyKeyDown && !loadingWheel.activeSelf)
             {
                 bool cmd = Input.GetKey(KeyCode.LeftCommand) ||

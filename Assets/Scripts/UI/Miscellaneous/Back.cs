@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading;
-using UnityEngine;
 
 public class Back : VRKey
 {
@@ -20,6 +17,9 @@ public class Back : VRKey
                     keyboard.window.keyboardTarget.text = 
                         keyboard.window.keyboardTarget.text.Remove(lcp - 1, 1);
                     keyboard.window.keyboardTarget.caretPosition = lcp - 1;
+                    keyboard.window.keyboardTarget.selectionAnchorPosition = lap - 1;
+                    keyboard.window.lastCaretPosition = lcp - 1;
+                    keyboard.window.lastAnchorPosition = lap - 1;
                 }
                 else
                 {
@@ -27,7 +27,11 @@ public class Back : VRKey
                     keyboard.window.keyboardTarget.text = 
                         keyboard.window.keyboardTarget.text.Remove(Math.Min(lcp, lap), lcp - lap);
                     keyboard.window.keyboardTarget.caretPosition = Math.Min(lcp, lap);
+                    keyboard.window.keyboardTarget.selectionAnchorPosition = Math.Min(lcp, lap);
+                    keyboard.window.lastCaretPosition = Math.Min(lcp, lap);
+                    keyboard.window.lastAnchorPosition = Math.Min(lcp, lap);
                 }
+                keyboard.window.fromUIClick = true;
             }
             catch { }
         }

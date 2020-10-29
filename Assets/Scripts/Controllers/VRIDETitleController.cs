@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using HTC.UnityPlugin.Vive;
 
@@ -7,7 +6,7 @@ public class VRIDETitleController : MonoBehaviour
 {
     public Transform dragPivot;
 
-    void Awake()
+    void Start()
     {
         StartCoroutine(Coroutine());
     }
@@ -21,10 +20,15 @@ public class VRIDETitleController : MonoBehaviour
 
     void Update()
     {
+        InnerBehaviour();
+    }
+
+    public virtual void InnerBehaviour()
+    {
         transform.position = new Vector3(transform.position.x, .5f, transform.position.z);
 
-        bool leftTrigger = ViveInput.GetPressDownEx(HandRole.LeftHand, ControllerButton.Trigger);
-        bool rightTrigger = ViveInput.GetPressDownEx(HandRole.RightHand, ControllerButton.Trigger);
+        bool leftTrigger = ViveInput.GetPressDownEx(HandRole.LeftHand, ControllerButton.TriggerTouch);
+        bool rightTrigger = ViveInput.GetPressDownEx(HandRole.RightHand, ControllerButton.TriggerTouch);
 
         if (leftTrigger)
             dragPivot = transform.Find("ViveCameraRig/LeftHand");

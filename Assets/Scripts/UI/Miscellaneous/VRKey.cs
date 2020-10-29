@@ -15,7 +15,7 @@ public class VRKey : MonoBehaviour
         GetComponent<BoxCollider>().size = new Vector3(
             GetComponent<BoxCollider>().size.x,
             GetComponent<BoxCollider>().size.y,
-            1f);
+            .5f);
     }
 
     public virtual void OnClick() { }

@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections;
-using System.Runtime.InteropServices;
-using System.Text.RegularExpressions;
-using System.Windows.Forms;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
-using WindowsInput;
 
 public class Key : MonoBehaviour
 {
@@ -184,15 +180,23 @@ public class Key : MonoBehaviour
 
 	private void WriteStringToTarget()
     {
-		InitializeBehaviour window =
-							transform.root.gameObject.GetComponent<InitializeBehaviour>();
+		InitializeBehaviour window = transform.root.gameObject.GetComponent<InitializeBehaviour>();
 		if (!window.loadingWheel.activeSelf)
 		{
 			int lcp = window.lastCaretPosition;
+			int lap = window.lastAnchorPosition;
 			window.keyboardTarget.ActivateInputField();
-			window.keyboardTarget.text =
-				window.keyboardTarget.text.Insert(lcp, keyCapText.text);
+			if(lcp != lap)
+            {
+				if (lcp < lap) lap = Interlocked.Exchange(ref lcp, lap);
+				window.keyboardTarget.text = window.keyboardTarget.text.Remove(Math.Min(lcp, lap), lcp - lap);
+				window.keyboardTarget.caretPosition = Math.Min(lcp, lap);
+			}
+			window.keyboardTarget.text = window.keyboardTarget.text.Insert(lcp, keyCapText.text);
 			window.keyboardTarget.caretPosition = lcp + 1;
+			window.keyboardTarget.selectionAnchorPosition = lcp + 1;
+			window.lastCaretPosition = lcp + 1;
+			window.lastAnchorPosition = lcp + 1;
 		}
 	}
 }

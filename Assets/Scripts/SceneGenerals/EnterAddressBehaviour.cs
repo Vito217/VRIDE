@@ -9,9 +9,12 @@ public class EnterAddressBehaviour : MonoBehaviour
     public TMP_InputField input;
     public GameObject loadingWheel, aboutSection, mainSection;
     public TextMeshProUGUI errorText;
+    public Transform playerCamera;
 
     void Start()
     {
+        transform.position = new Vector3(
+            transform.localPosition.x, playerCamera.position.y + 1f, transform.position.z);
         input.onSubmit.AddListener(OnSubmit);
     }
 

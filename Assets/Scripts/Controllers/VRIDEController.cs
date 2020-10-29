@@ -1,93 +1,22 @@
-﻿using System.Collections;
-using LoggingModule;
+﻿using LoggingModule;
 using SaveAndLoad;
 using UnityEngine;
 using HTC.UnityPlugin.Vive;
 
-public class VRIDEController : MonoBehaviour
+public class VRIDEController : VRIDETitleController
 {
     public bool can_move = true;
-    public Transform dragPivot;
+    public GameObject quad;
 
     Vector3 pos;
     Vector3 forw;
-    Vector3 newPos;
     Vector3 newFinalPos;
     Vector3 newForw;
     VRIDEMenu menu;
 
-    void Awake()
-    {
-        StartCoroutine(Coroutine());
-    }
-
-    // F1 : Browser
-    // F2 : Playground
-    // F3 : Do it
-    // F4 : Print it
-    // F5 : Inspect it
-    // F6 : Accept
-    // F7 : Transcript
-
-    IEnumerator Coroutine()
-    {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        yield return 0;
-    }
-
     void Update()
     {
-        transform.position = new Vector3(transform.position.x, .5f, transform.position.z);
-
-        // HTC VIVE
-        bool menuButton = ViveInput.GetPressDownEx(HandRole.RightHand, ControllerButton.Menu) || 
-                          ViveInput.GetPressDownEx(HandRole.LeftHand, ControllerButton.Menu);
-
-        bool leftTrigger = ViveInput.GetPressDownEx(HandRole.LeftHand, ControllerButton.Trigger);
-        bool rightTrigger = ViveInput.GetPressDownEx(HandRole.RightHand, ControllerButton.Trigger);
-
-        // KeyBoard
-        bool cmd = Input.GetKey(KeyCode.LeftCommand) ||
-                   Input.GetKey(KeyCode.LeftControl) ||
-                   Input.GetKey(KeyCode.RightControl);
-
-        bool f1 = Input.GetKeyDown(KeyCode.F1);
-        bool f2 = Input.GetKeyDown(KeyCode.F2);
-        bool f7 = Input.GetKeyDown(KeyCode.F7);
-        bool f8 = Input.GetKeyDown(KeyCode.F8);
-        bool f9 = Input.GetKeyDown(KeyCode.F9);
-        bool o = Input.GetKey("o");
-        bool b = Input.GetKeyDown("b");
-        bool w = Input.GetKeyDown("w");
-        bool t = Input.GetKeyDown("t");
-
-        pos = Camera.main.transform.position;
-        forw = Camera.main.transform.forward;
-        newFinalPos = new Vector3(
-            pos.x + forw.x * .8f, 
-            .9f * pos.y, 
-            pos.z + forw.z * .8f);
-        newForw = new Vector3(forw.x, 0, forw.z);
-
-        if (f1 || f2 || f7 || cmd || f8 || f9 || 
-            menuButton || rightTrigger || leftTrigger)
-        {
-            if (f1 || (cmd && o && b))
-                GenerateBrowser();
-            else if (f2 || (cmd && o && w))
-                GeneratePlayground();
-            else if (f7 || (cmd && o && t))
-                GenerateTranscript();
-            else if (f8)
-                GenerateRoassalExamples();
-            else if (f9 || menuButton)
-                GenerateMenu();
-            else if (leftTrigger)
-                dragPivot = transform.Find("ViveCameraRig/LeftHand");
-            else if (rightTrigger)
-                dragPivot = transform.Find("ViveCameraRig/RightHand");
-        }
+        InnerBehaviour();
     }
 
     public void GenerateBrowser()
@@ -145,5 +74,50 @@ public class VRIDEController : MonoBehaviour
         SaveAndLoadModule.Save();
         InteractionLogger.SessionEnd();
         Application.Quit();
+    }
+
+    public override void InnerBehaviour()
+    {
+        // HTC VIVE
+        bool menuButton = ViveInput.GetPressDownEx(HandRole.RightHand, ControllerButton.Menu) ||
+                          ViveInput.GetPressDownEx(HandRole.LeftHand, ControllerButton.Menu);
+
+        // KeyBoard
+        bool cmd = Input.GetKey(KeyCode.LeftCommand) ||
+                   Input.GetKey(KeyCode.LeftControl) ||
+                   Input.GetKey(KeyCode.RightControl);
+
+        bool f1 = Input.GetKeyDown(KeyCode.F1);
+        bool f2 = Input.GetKeyDown(KeyCode.F2);
+        bool f7 = Input.GetKeyDown(KeyCode.F7);
+        bool f8 = Input.GetKeyDown(KeyCode.F8);
+        bool f9 = Input.GetKeyDown(KeyCode.F9);
+        bool o = Input.GetKey("o");
+        bool b = Input.GetKeyDown("b");
+        bool w = Input.GetKeyDown("w");
+        bool t = Input.GetKeyDown("t");
+
+        pos = Camera.main.transform.position;
+        forw = Camera.main.transform.forward;
+        newFinalPos = new Vector3(
+            pos.x + forw.x * .8f,
+            .9f * pos.y,
+            pos.z + forw.z * .8f);
+        newForw = new Vector3(forw.x, 0, forw.z);
+
+        if (f1 || f2 || f7 || cmd || f8 || f9 || menuButton)
+        {
+            if (f1 || (cmd && o && b))
+                GenerateBrowser();
+            else if (f2 || (cmd && o && w))
+                GeneratePlayground();
+            else if (f7 || (cmd && o && t))
+                GenerateTranscript();
+            else if (f8)
+                GenerateRoassalExamples();
+            else if (f9 || menuButton)
+                GenerateMenu();
+        }
+        base.InnerBehaviour();
     }
 }

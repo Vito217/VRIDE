@@ -8,13 +8,17 @@ public class Tab : VRKey
     {
         if (keyboard.window != null && !keyboard.window.loadingWheel.activeSelf)
         {
-            int lcp = keyboard.window.lastCaretPosition;
+            int lcp = Mathf.Min(keyboard.window.lastCaretPosition, keyboard.window.lastAnchorPosition);
             keyboard.window.keyboardTarget.ActivateInputField();
             keyboard.window.keyboardTarget.text = keyboard.window.keyboardTarget.text.Insert(
                 lcp,
                 "    "
             );
             keyboard.window.keyboardTarget.caretPosition = lcp + 4;
+            keyboard.window.keyboardTarget.selectionAnchorPosition = lcp + 4;
+            keyboard.window.lastCaretPosition = lcp + 4;
+            keyboard.window.lastAnchorPosition = lcp + 4;
+            keyboard.window.fromUIClick = true;
         }
     }
 }

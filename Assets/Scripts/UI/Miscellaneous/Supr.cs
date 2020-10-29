@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading;
-using UnityEngine;
 
 public class Supr : VRKey
 {
@@ -18,7 +15,10 @@ public class Supr : VRKey
                 if (lcp == lap)
                 {
                     keyboard.window.keyboardTarget.caretPosition = lcp;
+                    keyboard.window.keyboardTarget.selectionAnchorPosition = lap;
                     keyboard.window.keyboardTarget.text = keyboard.window.keyboardTarget.text.Remove(lcp, 1);
+                    keyboard.window.lastCaretPosition = lcp;
+                    keyboard.window.lastAnchorPosition = lap;
                 }
                 else
                 {
@@ -26,7 +26,11 @@ public class Supr : VRKey
                     keyboard.window.keyboardTarget.text =
                         keyboard.window.keyboardTarget.text.Remove(Math.Min(lcp, lap), lcp - lap);
                     keyboard.window.keyboardTarget.caretPosition = Math.Min(lcp, lap);
+                    keyboard.window.keyboardTarget.selectionAnchorPosition = Math.Min(lcp, lap);
+                    keyboard.window.lastCaretPosition = Math.Min(lcp, lap);
+                    keyboard.window.lastAnchorPosition = Math.Min(lcp, lap);
                 }
+                keyboard.window.fromUIClick = true;
             }
             catch { }
         }

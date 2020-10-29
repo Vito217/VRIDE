@@ -1,14 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
+﻿using UnityEngine;
 
 public class VRKeyboard : MonoBehaviour
 {
     public InitializeBehaviour window;
     public bool hidden;
-    private Vector3 originalPosition;
+    Vector3 originalPosition;
 
     void Start()
     {

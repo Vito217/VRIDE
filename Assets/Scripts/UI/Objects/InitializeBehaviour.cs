@@ -27,6 +27,7 @@ public class InitializeBehaviour : MonoBehaviour
     public int lastAnchorPosition = 0;
     public float sizeVariance = 20;
     public float scaleVariance = .2f;
+    public bool fromUIClick = false;
 
     Vector3 new_pos;
     Vector3 rel_pos;
@@ -153,9 +154,6 @@ public class InitializeBehaviour : MonoBehaviour
 
     public void ChangeKeyboard()
     {
-        keyboardTarget.ActivateInputField();
-        keyboardTarget.caretPosition = lastCaretPosition;
-
         Keyboards[keyboardsIndex].GetComponent<VRKeyboard>().hidden = true;
         if (Keyboards[keyboardsIndex].name == "Virtual Keyboard")
             Keyboards[keyboardsIndex].SetActive(false);
@@ -165,12 +163,18 @@ public class InitializeBehaviour : MonoBehaviour
         Keyboards[keyboardsIndex].GetComponent<VRKeyboard>().hidden = false;
         if (Keyboards[keyboardsIndex].name == "Virtual Keyboard")
             Keyboards[keyboardsIndex].SetActive(true);
+
+        keyboardTarget.ActivateInputField();
+        //keyboardTarget.caretPosition = lastCaretPosition;
+        //keyboardTarget.selectionAnchorPosition = lastAnchorPosition;
+        fromUIClick = true;
     }
 
     public void KeepActiveOnSlide()
     {
         keyboardTarget.ActivateInputField();
         keyboardTarget.caretPosition = lastCaretPosition;
+        keyboardTarget.selectionAnchorPosition = lastAnchorPosition;
     }
 
     public virtual void Initialize(Vector3 final_pos, Vector3 forward)
@@ -252,8 +256,11 @@ public class InitializeBehaviour : MonoBehaviour
     public virtual void onClose() { Destroy(gameObject); }
 
     public virtual void innerBehaviour() {
-        if (keyboardTarget != null)
+        if (keyboardTarget != null && keyboardTarget.isFocused)
+        {
             lastCaretPosition = keyboardTarget.caretPosition;
+            lastAnchorPosition = keyboardTarget.selectionAnchorPosition;
+        }
     }
 
     public virtual IEnumerator innerStart()
