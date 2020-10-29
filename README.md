@@ -175,7 +175,13 @@ Metacello new
     load: 'AFrame'.
 ```
 
-Now open PharoVRIDE. On your computer screen you will see a field asking for the IP address of your Pharo server. If you are running on localhost just as shown in the previous script, press the Enter button to proceed.
+Now open PharoVRIDE. Right into the first scene, you will see a field asking for the IP address of your Pharo server. It must be as follows:
+
+```
+http://<Host name or IP Address>:<Port>/repl
+```
+
+If you are running on localhost just as shown in the previous script, press the Enter button to proceed.
 
 Finally, put on your VR headset, and try some stuff!
 
