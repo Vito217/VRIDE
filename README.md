@@ -126,7 +126,7 @@ The text highlightning is based on regular expressions. You can specify a list o
 
 ## Controls
 
-### Desktop Mode
+### Keyboard
 
 <ul>
   <li>Left Click: Select and Drag</li>
@@ -142,11 +142,11 @@ The text highlightning is based on regular expressions. You can specify a list o
   <li>F9: Open Menu</li>
 </ul>
 
-### VR Mode: HTC VIVE Cosmos
+### HTC VIVE Cosmos
 
-* X or A: Open Menu.
+* Y or B: Open Menu.
 * Left/Right trigger: Pointer Click/Drag.
-* Left/Right Stick press: Teleport.
+* Left/Right stick press: Teleport.
 
 All previous commands can be executed using the VR and physical keyboards.
 
