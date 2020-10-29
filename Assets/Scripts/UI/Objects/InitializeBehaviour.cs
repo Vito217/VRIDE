@@ -57,10 +57,10 @@ public class InitializeBehaviour : MonoBehaviour
         innerBehaviour();
     }
 
-    public async void onChangeInput()
-    {
-        try
-        {
+    //public async void onChangeInput()
+    //{
+    //    try
+    //    {
             /**
             string text = field.text;
             text = Regex.Replace(text, @"<color=#b32d00>|<color=#00ffffff>|</color>|<b>|</b>", "");
@@ -87,20 +87,20 @@ public class InitializeBehaviour : MonoBehaviour
             text = Regex.Replace(text, @"(\n?\s*)(#[a-zA-Z0-9]+)(\n?\s*)", "$1<color=#00ffffff>$2</color>$3");
             field.text = text;
             **/
-        }
-        catch
-        {
+    //    }
+    //    catch
+    //    {
             //await SaveAndLoadModule.Save(player);
             //await Pharo.Execute("SmalltalkImage current snapshot: true andQuit: true.");
             //InteractionLogger.SessionEnd();
             //Application.Quit();
-        }
-    }
+    //    }
+    //}
 
-    public string cleanCode(string code)
-    {
-        return Regex.Replace(code, @"<color=#b32d00>|<color=#00ffffff>|</color>|<b>|</b>", "");
-    }
+    //public string cleanCode(string code)
+    //{
+    //    return Regex.Replace(code, @"<color=#b32d00>|<color=#00ffffff>|</color>|<b>|</b>", "");
+    //}
 
     public string getSelectedCode(string clean_code, bool includesEmpty)
     {
@@ -150,24 +150,6 @@ public class InitializeBehaviour : MonoBehaviour
     public void Reactivate()
     {
         loadingWheel.SetActive(false);
-    }
-
-    public void ChangeKeyboard()
-    {
-        Keyboards[keyboardsIndex].GetComponent<VRKeyboard>().hidden = true;
-        if (Keyboards[keyboardsIndex].name == "Virtual Keyboard")
-            Keyboards[keyboardsIndex].SetActive(false);
-
-        keyboardsIndex = (keyboardsIndex + 1) % Keyboards.Count;
-
-        Keyboards[keyboardsIndex].GetComponent<VRKeyboard>().hidden = false;
-        if (Keyboards[keyboardsIndex].name == "Virtual Keyboard")
-            Keyboards[keyboardsIndex].SetActive(true);
-
-        keyboardTarget.ActivateInputField();
-        //keyboardTarget.caretPosition = lastCaretPosition;
-        //keyboardTarget.selectionAnchorPosition = lastAnchorPosition;
-        fromUIClick = true;
     }
 
     public void KeepActiveOnSlide()

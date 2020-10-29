@@ -83,7 +83,9 @@ public class Key : MonoBehaviour
 						name.Contains("Backspace") ||
 						name.Contains("Return") ||
 						name.Contains("Shift") ||
-						name.Contains("Symbol"))
+						name.Contains("Symbol") ||
+						name.Contains("Tab") ||
+						name.Contains("Del"))
 
 						keycodeAdder.SimulateAlternateKeyPress();
 
@@ -97,7 +99,9 @@ public class Key : MonoBehaviour
 						name.Contains("Backspace") ||
 						name.Contains("Return") ||
 						name.Contains("Shift") ||
-						name.Contains("Symbol"))
+						name.Contains("Symbol") ||
+						name.Contains("Tab") ||
+						name.Contains("Del"))
                     
 						keycodeAdder.SimulateKeyPress();
 					
@@ -173,7 +177,7 @@ public class Key : MonoBehaviour
 		else
 		{
 			keyCapText.text = KeyCapChar;
-			keyCapText.text = KeyCapChar.ToLower ();
+			keyCapText.text = KeyCapChar.ToLower();
 			symbolSwitch = false;
 		}
 	}
@@ -191,6 +195,7 @@ public class Key : MonoBehaviour
 				if (lcp < lap) lap = Interlocked.Exchange(ref lcp, lap);
 				window.keyboardTarget.text = window.keyboardTarget.text.Remove(Math.Min(lcp, lap), lcp - lap);
 				window.keyboardTarget.caretPosition = Math.Min(lcp, lap);
+				lcp = Math.Min(lcp, lap);
 			}
 			window.keyboardTarget.text = window.keyboardTarget.text.Insert(lcp, keyCapText.text);
 			window.keyboardTarget.caretPosition = lcp + 1;

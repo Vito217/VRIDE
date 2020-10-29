@@ -30,7 +30,7 @@ public class Browser : InitializeBehaviour
         {
             // Cleaning code from RichText
             string input_code = field.text;
-            string clean_code = cleanCode(input_code);
+            string clean_code = input_code;
 
             if (clean_code.Contains("subclass"))
             {

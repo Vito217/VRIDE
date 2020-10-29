@@ -22,7 +22,7 @@ public class Playground : InitializeBehaviour
         logText.text = "";
         try
         {
-            string selectedCode = getSelectedCode(cleanCode(field.text), false);
+            string selectedCode = getSelectedCode(field.text, false);
 
             // Getting Transcripts
             string transcriptPattern =
@@ -177,7 +177,7 @@ public class Playground : InitializeBehaviour
         logText.text = "";
         try
         {
-            string selection = getSelectedCode(cleanCode(field.text), false);
+            string selection = getSelectedCode(field.text, false);
 
             foreach (Match m in Regex.Matches(selection,
                 @"VRIDE[\n\s]+log:[\n\s\t]+(.*)(\.|\s*\Z)"))
@@ -212,7 +212,7 @@ public class Playground : InitializeBehaviour
         logText.text = "";
         try
         {
-            string selection = getSelectedCode(cleanCode(field.text), false);
+            string selection = getSelectedCode(field.text, false);
             string res = await Pharo.Inspect(selection);
             if (res.Contains("OrderedCollection"))
             {
