@@ -1,6 +1,6 @@
 # PharoVRIDE's Channel Log
 
-## V0.18.1 (03/11/2020)
+## V0.18.1 (04/11/2020)
 * Added window that shows the tasks that will be used during the test.
 * Fixed some lightning issues.
 
