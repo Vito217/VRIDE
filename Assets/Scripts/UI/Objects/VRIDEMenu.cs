@@ -9,5 +9,6 @@ public class VRIDEMenu : InitializeBehaviour
     public Button browserGenerator;
     public Button transcriptGenerator;
     public Button roassalGenerator;
+    public Button taskGenerator;
     public Button quit;
 }

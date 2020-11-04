@@ -57,8 +57,8 @@ public class Playground : InitializeBehaviour
                             float finalScale = (GetComponent<RectTransform>().sizeDelta.y / finalHeight) * 0.001f;
                             float finalToolbarScale = 0.001f / finalScale;
                             aFrameCanvas.transform.localScale = new Vector3(finalScale, finalScale, finalScale);
-                            aFrameCanvas.transform.Find("Panel/Toolbar").localScale = new Vector3(
-                                finalToolbarScale, finalToolbarScale, finalToolbarScale);
+                            aFrameCanvas.transform.Find("Panel/Toolbar").localScale = 
+                                new Vector3(finalToolbarScale, finalToolbarScale, finalToolbarScale);
 
                             float scaledWidth = finalWidth * finalScale;
                             float scaledHeight = finalHeight * finalScale;

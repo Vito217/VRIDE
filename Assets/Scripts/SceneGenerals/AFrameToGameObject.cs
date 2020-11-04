@@ -680,6 +680,9 @@ namespace AFrameModule
             aFrameCanvas.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
             aFramePanel.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
 
+            //Transform aFrameBar = aFrameCanvas.transform.Find("Panel/Toolbar");
+            //aFrameBar.localPosition = new Vector3(aFrameBar.localPosition.x, maxY, 0f);
+
             return (aFrameCanvas, width, height);
         }
 
@@ -716,6 +719,7 @@ namespace AFrameModule
             ob.GetComponent<RectTransform>().pivot = Vector2.zero;
             ob.GetComponent<RectTransform>().anchorMin = Vector2.zero;
             ob.GetComponent<RectTransform>().anchorMax = Vector2.zero;
+            ob.GetComponent<RectTransform>().sizeDelta = Vector2.zero;
         }
 
         private static void MakeGeometryDraggable(GameObject ob)

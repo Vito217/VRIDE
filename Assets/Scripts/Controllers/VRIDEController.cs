@@ -13,6 +13,7 @@ public class VRIDEController : VRIDETitleController
     Vector3 newFinalPos;
     Vector3 newForw;
     VRIDEMenu menu;
+    GameObject taskList;
 
     void Update()
     {
@@ -53,6 +54,13 @@ public class VRIDEController : VRIDETitleController
         if (menu != null) Destroy(menu.gameObject);
     }
 
+    public void GenerateTaskList()
+    {
+        if(taskList == null) taskList = Instantiator.Instance.TaskList();
+        taskList.GetComponent<InitializeBehaviour>().Initialize(newFinalPos, newForw);
+        if (menu != null) Destroy(menu.gameObject);
+    }
+
     public void GenerateMenu()
     {
         if (menu != null) 
@@ -64,6 +72,7 @@ public class VRIDEController : VRIDETitleController
             menu.browserGenerator.onClick.AddListener(GenerateBrowser);
             menu.transcriptGenerator.onClick.AddListener(GenerateTranscript);
             menu.roassalGenerator.onClick.AddListener(GenerateRoassalExamples);
+            menu.taskGenerator.onClick.AddListener(GenerateTaskList);
             menu.quit.onClick.AddListener(Exit);
             menu.Initialize(newFinalPos, newForw);
         }
@@ -78,6 +87,8 @@ public class VRIDEController : VRIDETitleController
 
     public override void InnerBehaviour()
     {
+        base.InnerBehaviour();
+
         // HTC VIVE
         bool menuButton = ViveInput.GetPressDownEx(HandRole.RightHand, ControllerButton.Menu) ||
                           ViveInput.GetPressDownEx(HandRole.LeftHand, ControllerButton.Menu);
@@ -118,6 +129,5 @@ public class VRIDEController : VRIDETitleController
             else if (f9 || menuButton)
                 GenerateMenu();
         }
-        base.InnerBehaviour();
     }
 }

@@ -15,6 +15,7 @@ public class Instantiator: MonoBehaviour
     public Graph svgPrefab;
     public Transcript transcriptPrefab;
     public VRIDEMenu menuPrefab;
+    public GameObject taskListPrefab;
     public GameObject aframePrefab;
 
     private static Instantiator _instance;
@@ -119,5 +120,10 @@ public class Instantiator: MonoBehaviour
     public GameObject AFrame()
     {
         return Instantiate(aframePrefab);
+    }
+
+    public GameObject TaskList()
+    {
+        return Instantiate(taskListPrefab);
     }
 }

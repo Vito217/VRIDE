@@ -25,8 +25,6 @@ public class VRIDETitleController : MonoBehaviour
 
     public virtual void InnerBehaviour()
     {
-        transform.position = new Vector3(transform.position.x, .5f, transform.position.z);
-
         bool leftTrigger = ViveInput.GetPressDownEx(HandRole.LeftHand, ControllerButton.TriggerTouch);
         bool rightTrigger = ViveInput.GetPressDownEx(HandRole.RightHand, ControllerButton.TriggerTouch);
 
