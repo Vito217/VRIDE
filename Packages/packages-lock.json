@@ -111,6 +111,15 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.xr.arsubsystems": {
+      "version": "3.1.3",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.subsystemregistration": "1.0.6"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.xr.interaction.toolkit": {
       "version": "0.9.4-preview",
       "depth": 0,
@@ -118,6 +127,15 @@
       "dependencies": {
         "com.unity.ugui": "1.0.0",
         "com.unity.xr.legacyinputhelpers": "1.3.11"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.xr.interactionsubsystems": {
+      "version": "1.0.1",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.subsystemregistration": "1.0.5"
       },
       "url": "https://packages.unity.com"
     },
@@ -139,7 +157,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.mock-hmd": {
-      "version": "1.1.3-preview.1",
+      "version": "1.2.0-preview.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -154,6 +172,17 @@
       "dependencies": {
         "com.unity.xr.management": "3.0.6",
         "com.unity.ugui": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.xr.windowsmr": {
+      "version": "3.3.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.xr.management": "3.0.6",
+        "com.unity.xr.interactionsubsystems": "1.0.1",
+        "com.unity.xr.arsubsystems": "3.0.2"
       },
       "url": "https://packages.unity.com"
     },
