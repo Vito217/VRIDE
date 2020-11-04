@@ -126,7 +126,7 @@ The text highlightning is based on regular expressions. You can specify a list o
 
 ## Controls
 
-### Desktop Mode
+### Keyboard
 
 <ul>
   <li>Left Click: Select and Drag</li>
@@ -142,11 +142,11 @@ The text highlightning is based on regular expressions. You can specify a list o
   <li>F9: Open Menu</li>
 </ul>
 
-### VR Mode: HTC VIVE Cosmos
+### HTC VIVE Cosmos
 
-* X or A: Open Menu.
+* Y or B: Open Menu.
 * Left/Right trigger: Pointer Click/Drag.
-* Left/Right Stick press: Teleport.
+* Left/Right stick press: Teleport.
 
 All previous commands can be executed using the VR and physical keyboards.
 
@@ -175,7 +175,13 @@ Metacello new
     load: 'AFrame'.
 ```
 
-Now open PharoVRIDE. On your computer screen you will see a field asking for the IP address of your Pharo server. If you are running on localhost just as shown in the previous script, press the Enter button to proceed.
+Now open PharoVRIDE. Right into the first scene, you will see a field asking for the IP address of your Pharo server. It must be as follows:
+
+```
+http://<Host name or IP Address>:<Port>/repl
+```
+
+If you are running on localhost just as shown in the previous script, press the Enter button to proceed.
 
 Finally, put on your VR headset, and try some stuff!
 
