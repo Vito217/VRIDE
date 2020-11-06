@@ -79,8 +79,7 @@ public class Key : MonoBehaviour
 				keyPressed ();
 				if (symbolSwitch)
 				{
-					if (name.Contains("Space") ||
-						name.Contains("Backspace") ||
+					if (name.Contains("Backspace") ||
 						name.Contains("Return") ||
 						name.Contains("Shift") ||
 						name.Contains("Symbol") ||
@@ -95,8 +94,7 @@ public class Key : MonoBehaviour
 				}
 				else
 				{
-                    if (name.Contains("Space") ||
-						name.Contains("Backspace") ||
+                    if (name.Contains("Backspace") ||
 						name.Contains("Return") ||
 						name.Contains("Shift") ||
 						name.Contains("Symbol") ||

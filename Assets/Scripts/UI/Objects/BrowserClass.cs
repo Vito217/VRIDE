@@ -28,6 +28,7 @@ public class BrowserClass : BrowserObject
         else
         {
             theBrowser.methodList.gameObject.SetActive(false);
+            theBrowser.methodFilter.interactable = false;
             theBrowser.field.text = 
                 "Object subclass: #NameOfSubclass\n" +
                     "    instanceVariableNames: ''\n" +

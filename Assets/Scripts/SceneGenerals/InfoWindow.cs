@@ -9,7 +9,8 @@ public class InfoWindow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector3(
-            transform.position.x, playerCamera.position.y + 1f, transform.position.z);
+        if(playerCamera != null)
+            transform.position = new Vector3(
+                transform.position.x, playerCamera.position.y + 1f, transform.position.z);
     }
 }

@@ -47,6 +47,13 @@ public class InitializeBehaviour : MonoBehaviour
     public IEnumerator Coroutine()
     {
         if(panel != null) panel.color = UnityEngine.Random.ColorHSV();
+        if (keyboardTarget != null) 
+        {
+            lastCaretPosition = keyboardTarget.text.Length;
+            lastAnchorPosition = lastCaretPosition;
+            keyboardTarget.caretPosition = lastCaretPosition;
+            keyboardTarget.selectionAnchorPosition = lastAnchorPosition;
+        } 
         yield return innerStart();
     }
 
