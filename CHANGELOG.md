@@ -1,5 +1,9 @@
 # PharoVRIDE's Channel Log
 
+## V0.18.1 (04/11/2020)
+* Added window that shows the tasks that will be used during the test.
+* Fixed some lightning issues.
+
 ## V0.18.0 (29/10/2020)
 * Improved Keyboard layout. Now each window will have just one keyboard instead of two. The Do, Print, Inspect, Accept, Copy and Paste buttons are now part of PunchKeyboard as a UI Panel. Tab and Delete buttons where added.
 * Fixed minor bugs.
