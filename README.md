@@ -173,7 +173,7 @@ Metacello new
     load: 'AFrame'.
 ```
 
-THis code does a full installation of Roassal3 and sets up the author. Next, you must run a Pharo ZincHTTP server. Run the following code:
+This code does a full installation of Roassal3 and sets up the author. Next, you must run a Pharo ZincHTTP server. Run the following code:
 
 ```
 ZnReadEvalPrintDelegate startInServerOn: 1701.
