@@ -4,6 +4,9 @@ using TMPro;
 using PharoModule;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Used for checking connection with the Pharo server
+/// </summary>
 public class EnterAddressBehaviour : MonoBehaviour
 {
     public TMP_InputField input;
@@ -20,6 +23,10 @@ public class EnterAddressBehaviour : MonoBehaviour
         OnSubmit(input.text);
     }
 
+    /// <summary>
+    /// Sends a ping to the given IP
+    /// </summary>
+    /// <param name="line">IP Address</param>
     public async void OnSubmit(string line)
     {
         try
@@ -41,11 +48,5 @@ public class EnterAddressBehaviour : MonoBehaviour
     public void OnExit()
     {
         Application.Quit();
-    }
-
-    public void AboutSection()
-    {
-        mainSection.SetActive(!mainSection.activeSelf);
-        aboutSection.SetActive(!aboutSection.activeSelf);
     }
 }

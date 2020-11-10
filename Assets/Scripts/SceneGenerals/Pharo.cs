@@ -1,22 +1,27 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Net.Http;
 using System.Text;
-using System.Diagnostics;
-using System.IO;
-using UnityEngine;
 
+/// <summary>
+/// Tools for Pharo requests
+/// </summary>
 namespace PharoModule
 {
+    /// <summary>
+    /// Sends Pharo requests to the server
+    /// </summary>
     public static class Pharo
     {
         public static string IP = "http://localhost:1701/repl";
         public static readonly HttpClient client = new HttpClient();
 
+        /// <summary>
+        /// Starts a local Pharo server as a background task (EXPERIMENTAL)
+        /// </summary>
+        /// <returns></returns>
         public static async Task Start()
         {
             await Task.Run(() => {
-                //client.Timeout = TimeSpan.FromSeconds(20);
                 /**try
                 {
                     string enginePath = Path.Combine(Application.streamingAssetsPath, "PharoEngine");
@@ -70,6 +75,11 @@ namespace PharoModule
             });
         }
 
+        /// <summary>
+        /// Sends a pice of code to execute
+        /// </summary>
+        /// <param name="code">The code</param>
+        /// <returns>Response string</returns>
         public static async Task<string> Execute(string code)
         {
             var request = await client.PostAsync
@@ -86,6 +96,11 @@ namespace PharoModule
             return await request.Content.ReadAsStringAsync();
         }
 
+        /// <summary>
+        /// Sends a pice of code to execute and print
+        /// </summary>
+        /// <param name="code">The code</param>
+        /// <returns>Response string</returns>
         public static async Task<string> Print(string code)
         {
             if (!code.Contains("compile"))
@@ -94,6 +109,11 @@ namespace PharoModule
             return await Execute(code);
         }
 
+        /// <summary>
+        /// Sends a pice of code to execute and inspect
+        /// </summary>
+        /// <param name="code">The code</param>
+        /// <returns>Response string</returns>
         public static async Task<string> Inspect(string code)
         {
             return await Print

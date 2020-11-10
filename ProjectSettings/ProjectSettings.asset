@@ -126,13 +126,15 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.18.2
+  bundleVersion: 0.18.3
   preloadedAssets:
   - {fileID: 0}
-  - {fileID: 11400000, guid: a1d2c164c522bbe4383401f5324e5b25, type: 2}
   - {fileID: -8242214477344585710, guid: 7b83389652aeb1248ad8f81106c670da, type: 2}
-  - {fileID: -2996649687786445223, guid: 25de574d9d0517c4b80cc7b3fe6c7a22, type: 2}
+  - {fileID: 11400000, guid: a1d2c164c522bbe4383401f5324e5b25, type: 2}
+  - {fileID: -4705417493290739971, guid: 25de574d9d0517c4b80cc7b3fe6c7a22, type: 2}
   - {fileID: 11400000, guid: 6dbff9dff261cce43bad07ba14db5687, type: 2}
+  - {fileID: 0}
+  - {fileID: 4800000, guid: c9f956787b1d945e7b36e0516201fc76, type: 3}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -747,7 +749,7 @@ PlayerSettings:
   metroSplashScreenUseBackgroundColor: 0
   platformCapabilities:
     WindowsStoreApps:
-      CodeGeneration: False
+      EnterpriseAuthentication: False
       VideosLibrary: False
       Location: False
       HumanInterfaceDevice: False
@@ -783,8 +785,8 @@ PlayerSettings:
       Contacts: False
       Proximity: False
       InternetClient: False
+      CodeGeneration: False
       BackgroundMediaPlayback: False
-      EnterpriseAuthentication: False
   metroTargetDeviceFamilies:
     Desktop: False
     Holographic: False

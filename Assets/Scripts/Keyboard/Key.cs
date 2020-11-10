@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,6 +30,7 @@ public class Key : MonoBehaviour
 	private const float KeyBounceBackMultiplier = 1500f;
 	private KeySoundController keySoundController;
 	private float currentDistance = -1;
+	private bool isSpecialKey;
 
 	void Start()
 	{
@@ -43,10 +45,7 @@ public class Key : MonoBehaviour
 		initialPosition.localPosition = Vector3.zero;
 		initialPosition.localRotation = Quaternion.identity;
 
-		if(Rigidbody == null)
-		{
-			Rigidbody = GetComponent<Rigidbody>();
-		}
+		if(Rigidbody == null) Rigidbody = GetComponent<Rigidbody>();
 
 		initialLocalPosition = this.transform.localPosition;
 		initialLocalRotation = this.transform.localRotation;
@@ -58,6 +57,8 @@ public class Key : MonoBehaviour
 			.gameObject.GetComponent<KeySoundController> ();
 
 		SwitchKeycapCharCase ();
+
+		isSpecialKey = Regex.Match(name, "Backspace|Return|Shift|Symbol|Tab|Del").Success;
 	}
 
 	void FixedUpdate()
@@ -79,39 +80,23 @@ public class Key : MonoBehaviour
 				keyPressed ();
 				if (symbolSwitch)
 				{
-					if (name.Contains("Backspace") ||
-						name.Contains("Return") ||
-						name.Contains("Shift") ||
-						name.Contains("Symbol") ||
-						name.Contains("Tab") ||
-						name.Contains("Del"))
-
+					if (isSpecialKey)
 						keycodeAdder.SimulateAlternateKeyPress();
-
 					else
-
 						WriteStringToTarget();
 				}
 				else
 				{
-                    if (name.Contains("Backspace") ||
-						name.Contains("Return") ||
-						name.Contains("Shift") ||
-						name.Contains("Symbol") ||
-						name.Contains("Tab") ||
-						name.Contains("Del"))
-                    
+                    if (isSpecialKey)
 						keycodeAdder.SimulateKeyPress();
-					
                     else
-                    
 						WriteStringToTarget();
-					
 				}
 				keySoundController.StartKeySound (this.gameObject.transform);
 				checkForButton = false;
 			}
-		} else if (!checkForButton)
+		} 
+		else if (!checkForButton)
 		{
 			if (currentDistance < DistanceToBePressed)
 			{
@@ -131,22 +116,16 @@ public class Key : MonoBehaviour
 	void ChangeKeyColorOnPress()
 	{
 		if (KeyPressed)
-		{
 			gameObject.GetComponent<Renderer> ().material.color = PressedKeycapColor;
-		}
 		else
-		{
 			gameObject.GetComponent<Renderer> ().material.color = KeycapColor;
-		}
 	}
 
 	void ConstrainPosition()
 	{
 		constrainedPosition.y = this.transform.localPosition.y;
 		if (this.transform.localPosition.y > initialLocalPosition.y)
-		{
 			constrainedPosition.y = initialLocalPosition.y;
-		}
 		this.transform.localPosition = constrainedPosition;
 		this.transform.localRotation = constrainedRotation;
 	}

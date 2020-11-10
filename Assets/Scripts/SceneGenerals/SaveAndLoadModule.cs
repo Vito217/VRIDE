@@ -5,8 +5,14 @@ using LoggingModule;
 using AsyncSerializer;
 using System.Threading.Tasks;
 
+/// <summary>
+/// Tools for storing session data
+/// </summary>
 namespace SaveAndLoad
 {
+    /// <summary>
+    /// Includes serializers and deserializers
+    /// </summary>
     public class SaveAndLoadModule : MonoBehaviour
     {
         private static bool inEditor = Application.isEditor;
@@ -19,6 +25,10 @@ namespace SaveAndLoad
         public static List<Graph> graphs = new List<Graph>();
         public static List<Transcript> transcripts = new List<Transcript>();
 
+        /// <summary>
+        /// Stores browsers data
+        /// </summary>
+        /// <returns>BrowserData list</returns>
         public static List<BrowserData> SerializeBrowsers()
         {
             List<BrowserData> browsersData = new List<BrowserData>();
@@ -43,6 +53,10 @@ namespace SaveAndLoad
             return browsersData;
         }
 
+        /// <summary>
+        /// Loads browsers data
+        /// </summary>
+        /// <param name="session">Previous session</param>
         public static void DeserializeBrowsers(Session session)
         {
             List<BrowserData> browsersData = session.browsers;
@@ -74,6 +88,10 @@ namespace SaveAndLoad
             }
         }
 
+        /// <summary>
+        /// Stores playgrounds data
+        /// </summary>
+        /// <returns>PlaygroundData list</returns>
         public static List<PlaygroundData> SerializePlaygrounds()
         {
             List<PlaygroundData> playgroundsData = new List<PlaygroundData>();
@@ -87,6 +105,10 @@ namespace SaveAndLoad
             return playgroundsData;
         }
 
+        /// <summary>
+        /// Loads playgrounds data
+        /// </summary>
+        /// <param name="session">Previous session</param>
         public static void DeserializePlaygrounds(Session session)
         {
             List<PlaygroundData> playgroundsData = session.playgrounds;
@@ -104,6 +126,10 @@ namespace SaveAndLoad
             }
         }
 
+        /// <summary>
+        /// Saves inspectors data
+        /// </summary>
+        /// <returns>InspectorData list</returns>
         public static List<InspectorData> SerializeInspectors()
         {
             List<InspectorData> inspectorsData = new List<InspectorData>();
@@ -117,6 +143,10 @@ namespace SaveAndLoad
             return inspectorsData;
         }
 
+        /// <summary>
+        /// Loads Inspectors data
+        /// </summary>
+        /// <param name="session">Previous session</param>
         public static void DeserializeInspectors(Session session)
         {
             List<InspectorData> inspectorsData = session.inspectors;
@@ -136,6 +166,10 @@ namespace SaveAndLoad
             }
         }
 
+        /// <summary>
+        /// Stores graphs data
+        /// </summary>
+        /// <returns>SVGData list</returns>
         public static List<SVGData> SerializeGraphs()
         {
             List<SVGData> graphsData = new List<SVGData>();
@@ -150,6 +184,10 @@ namespace SaveAndLoad
             return graphsData;
         }
 
+        /// <summary>
+        /// Stores graphs data
+        /// </summary>
+        /// <param name="session">Previous session</param>
         public static void DeserializeGraphs(Session session)
         {
             List<SVGData> graphsData = session.graphs;
@@ -171,7 +209,11 @@ namespace SaveAndLoad
             }
         }
 
-        public static async Task Save()
+        /// <summary>
+        /// Saves serialized data into a file.
+        /// </summary>
+        /// <returns></returns>
+        public static void Save()
         {
             if (!inEditor)
             {
@@ -184,10 +226,15 @@ namespace SaveAndLoad
                     SerializeInspectors(),
                     SerializeGraphs()
                 );
-                await AsynchronousSerializer.Serialize(sessionPath, s);
+
+                AsynchronousSerializer.Serialize(sessionPath, s);
             }
         }
 
+        /// <summary>
+        /// Loads serialized data from a file.
+        /// </summary>
+        /// <returns></returns>
         public static async Task Load()
         {
             if (!inEditor)

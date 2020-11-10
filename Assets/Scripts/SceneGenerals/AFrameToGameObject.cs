@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -12,16 +13,21 @@ namespace AFrameModule
 {
     public static class AFrameToGameObject
     {
-        public static (GameObject canvas, float width, float height) Convert(String aframe)
+        public static async Task<(GameObject canvas, float width, float height)> Convert(String aframe)
         {
-            aframe = aframe.Split(new string[] { "</html>" }, StringSplitOptions.None)[0];
-            MatchCollection texts = Regex.Matches(aframe, "<a-entity(.*)text=\"(.*)\"(.*)>");
-            MatchCollection geometries = Regex.Matches(aframe, "<a-entity(.*)geometry=\"(.*)\"(.*)>");
-            MatchCollection lines = Regex.Matches(aframe, "<a-entity(.*)line=\"(.*)\"(.*)>");
-            MatchCollection boxes = Regex.Matches(aframe, "<a-box(.*)>");
-            MatchCollection spheres = Regex.Matches(aframe, "<a-sphere(.*)>");
-            MatchCollection cylinders = Regex.Matches(aframe, "<a-cylinder(.*)>");
-            MatchCollection planes = Regex.Matches(aframe, "<a-plane(.*)>");
+            MatchCollection texts = null, geometries = null, lines = null, boxes = null,
+                spheres = null, cylinders = null, planes = null;
+
+            await Task.Run(() => {
+                aframe = aframe.Split(new string[] { "</html>" }, StringSplitOptions.None)[0];
+                texts = Regex.Matches(aframe, "<a-entity(.*)text=\"(.*)\"(.*)>");
+                geometries = Regex.Matches(aframe, "<a-entity(.*)geometry=\"(.*)\"(.*)>");
+                lines = Regex.Matches(aframe, "<a-entity(.*)line=\"(.*)\"(.*)>");
+                boxes = Regex.Matches(aframe, "<a-box(.*)>");
+                spheres = Regex.Matches(aframe, "<a-sphere(.*)>");
+                cylinders = Regex.Matches(aframe, "<a-cylinder(.*)>");
+                planes = Regex.Matches(aframe, "<a-plane(.*)>");
+            });
 
             Dictionary<Vector3, GameObject> geoMapping = new Dictionary<Vector3, GameObject>();
             Dictionary<Vector3, GameObject> lineMapping = new Dictionary<Vector3, GameObject>();
@@ -38,12 +44,17 @@ namespace AFrameModule
 
             foreach (Match m in texts)
             {
-                string tag = m.Value;
-                string value = Regex.Match(tag, @"value: ([a-zA-Z0-9-.\s]+)(;|"")").Groups[1].Value;
-                Match posMatch = Regex.Match(tag, @"position=""([0-9-.\s]+)""");
-                Match rotMatch = Regex.Match(tag, @"rotation=""([0-9-.\s]+)""");
-                Match widthMatch = widthMatch = Regex.Match(tag, @"width: ([0-9-.]+)(;|"")");
-                Match colorMatch = colorMatch = Regex.Match(tag, @"color: ([#0-9A-Z]+)(;|"")");
+                string tag = "", value = "";
+                Match posMatch = null, rotMatch = null, widthMatch = null, colorMatch = null;
+
+                await Task.Run(() => {
+                    tag = m.Value;
+                    value = Regex.Match(tag, @"value: ([a-zA-Z0-9-.\s]+)(;|"")").Groups[1].Value;
+                    posMatch = Regex.Match(tag, @"position=""([0-9-.\s]+)""");
+                    rotMatch = Regex.Match(tag, @"rotation=""([0-9-.\s]+)""");
+                    widthMatch = widthMatch = Regex.Match(tag, @"width: ([0-9-.]+)(;|"")");
+                    colorMatch = colorMatch = Regex.Match(tag, @"color: ([#0-9A-Z]+)(;|"")");
+                });
 
                 GameObject text = new GameObject(
                     value,
@@ -68,7 +79,7 @@ namespace AFrameModule
                         rotMatch.Groups[1].Value.Split(' '),
                         i => float.Parse(i, CultureInfo.InvariantCulture));
 
-                    text.transform.localRotation = 
+                    text.transform.localRotation =
                         Quaternion.Euler(coords[0], coords[1], coords[2]);
                 }
 
@@ -104,41 +115,36 @@ namespace AFrameModule
                 if (tag.Contains("src: #floor;"))
                     continue;
 
-                string primitive = Regex.Match(tag, @"primitive: ([a-zA-Z]+)(;|"")").Groups[1].Value;
-                Match posMatch = Regex.Match(tag, @"position=""([0-9-.\s]+)""");
-                Match rotMatch = Regex.Match(tag, @"rotation=""([0-9-.\s]+)""");
-                Match widthMatch = Regex.Match(tag, @"width: ([0-9.]+) ;");
-                Match heightMatch = Regex.Match(tag, @"height: ([0-9.]+);");
-                Match depthMatch = Regex.Match(tag, @"depth: ([0-9.]+);");
-                Match colorMatch = Regex.Match(tag, @"color: ([#0-9A-Z]+)(;|"")");
-                Match metalMatch = Regex.Match(tag, @"metalness: ([0-9.]+)(;|"")");
-                Match glossMatch = Regex.Match(tag, @"roughness: ([0-9.]+)(;|"")");
+                string primitive = "";
+                Match posMatch = null, rotMatch = null, widthMatch = null, heightMatch = null,
+                    depthMatch = null, colorMatch = null, metalMatch = null, glossMatch = null;
+
+                await Task.Run(() => {
+                    primitive = Regex.Match(tag, @"primitive: ([a-zA-Z]+)(;|"")").Groups[1].Value;
+                    posMatch = Regex.Match(tag, @"position=""([0-9-.\s]+)""");
+                    rotMatch = Regex.Match(tag, @"rotation=""([0-9-.\s]+)""");
+                    widthMatch = Regex.Match(tag, @"width: ([0-9.]+) ;");
+                    heightMatch = Regex.Match(tag, @"height: ([0-9.]+);");
+                    depthMatch = Regex.Match(tag, @"depth: ([0-9.]+);");
+                    colorMatch = Regex.Match(tag, @"color: ([#0-9A-Z]+)(;|"")");
+                    metalMatch = Regex.Match(tag, @"metalness: ([0-9.]+)(;|"")");
+                    glossMatch = Regex.Match(tag, @"roughness: ([0-9.]+)(;|"")");
+                });
 
                 GameObject ob;
-                switch (primitive)
-                {
-                    case "cube":
-                        ob = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        break;
-                    case "cylinder":
-                        ob = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
-                        break;
-                    case "capsule":
-                        ob = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-                        break;
-                    case "plane":
-                        ob = GameObject.CreatePrimitive(PrimitiveType.Plane);
-                        break;
-                    case "quad":
-                        ob = GameObject.CreatePrimitive(PrimitiveType.Quad);
-                        break;
-                    case "sphere":
-                        ob = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                        break;
-                    default:
-                        ob = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        break;
-                }
+                if (primitive.Equals("box"))
+                    ob = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                else if (primitive.Equals("cylinder"))
+                    ob = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+                else if (primitive.Equals("capsule"))
+                    ob = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+                else if (primitive.Equals("plane"))
+                    ob = GameObject.CreatePrimitive(PrimitiveType.Plane);
+                else if (primitive.Equals("sphere"))
+                    ob = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                else
+                    ob = GameObject.CreatePrimitive(PrimitiveType.Quad);
+
                 ob.tag = "AFrame";
                 MakeGeometryInteractable(ob);
                 ob.transform.SetParent(aFramePanel.transform, false);
@@ -216,15 +222,21 @@ namespace AFrameModule
 
             foreach (Match m in boxes)
             {
-                string tag = m.Value;
-                Match posMatch = Regex.Match(tag, @"position=""([0-9-.\s]+)""");
-                Match rotMatch = Regex.Match(tag, @"rotation=""([0-9-.\s]+)""");
-                Match colorMatch = Regex.Match(tag, @"color=""([#0-9A-Z]+)""");
-                Match widthMatch = Regex.Match(tag, @"width=""([0-9.]+)""");
-                Match heightMatch = Regex.Match(tag, @"height=""([0-9.]+)""");
-                Match depthMatch = Regex.Match(tag, @"depth=""([0-9.]+)""");
-                Match metalMatch = Regex.Match(tag, @"metalness=""([0-9.]+)""");
-                Match glossMatch = Regex.Match(tag, @"roughness=""([0-9.]+)""");
+                string tag = "";
+                Match posMatch = null, rotMatch = null, widthMatch = null, heightMatch = null,
+                    depthMatch = null, colorMatch = null, metalMatch = null, glossMatch = null;
+
+                await Task.Run(() => {
+                    tag = m.Value;
+                    posMatch = Regex.Match(tag, @"position=""([0-9-.\s]+)""");
+                    rotMatch = Regex.Match(tag, @"rotation=""([0-9-.\s]+)""");
+                    colorMatch = Regex.Match(tag, @"color=""([#0-9A-Z]+)""");
+                    widthMatch = Regex.Match(tag, @"width=""([0-9.]+)""");
+                    heightMatch = Regex.Match(tag, @"height=""([0-9.]+)""");
+                    depthMatch = Regex.Match(tag, @"depth=""([0-9.]+)""");
+                    metalMatch = Regex.Match(tag, @"metalness=""([0-9.]+)""");
+                    glossMatch = Regex.Match(tag, @"roughness=""([0-9.]+)""");
+                });
 
                 GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Cube);
                 ob.tag = "AFrame";
@@ -304,12 +316,18 @@ namespace AFrameModule
 
             foreach (Match m in spheres)
             {
-                string tag = m.Value;
-                Match posMatch = Regex.Match(tag, @"position=""([0-9-.\s]+)""");
-                Match colorMatch = Regex.Match(tag, @"color=""([#0-9A-Z]+)""");
-                Match metalMatch = Regex.Match(tag, @"metalness=""([0-9.]+)""");
-                Match glossMatch = Regex.Match(tag, @"roughness=""([0-9.]+)""");
-                Match radiusMatch = Regex.Match(tag, @"radius=""([0-9.]+)""");
+                string tag = "";
+                Match posMatch = null, colorMatch = null, metalMatch = null,
+                    glossMatch = null, radiusMatch = null;
+
+                await Task.Run(() => {
+                    tag = m.Value;
+                    posMatch = Regex.Match(tag, @"position=""([0-9-.\s]+)""");
+                    colorMatch = Regex.Match(tag, @"color=""([#0-9A-Z]+)""");
+                    metalMatch = Regex.Match(tag, @"metalness=""([0-9.]+)""");
+                    glossMatch = Regex.Match(tag, @"roughness=""([0-9.]+)""");
+                    radiusMatch = Regex.Match(tag, @"radius=""([0-9.]+)""");
+                });
 
                 GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 ob.tag = "AFrame";
@@ -336,10 +354,10 @@ namespace AFrameModule
                     ob.transform.localScale = scale;
                 }
 
-                if(colorMatch.Success || glossMatch.Success || metalMatch.Success)
+                if (colorMatch.Success || glossMatch.Success || metalMatch.Success)
                 {
                     Material material = ob.GetComponent<Renderer>().material;
-                    
+
                     if (colorMatch.Success)
                     {
                         Color c;
@@ -350,16 +368,16 @@ namespace AFrameModule
                     if (glossMatch.Success)
                     {
                         material.SetFloat(
-                            "_Glossiness", 
-                            1f - float.Parse(glossMatch.Groups[1].Value, 
+                            "_Glossiness",
+                            1f - float.Parse(glossMatch.Groups[1].Value,
                             CultureInfo.InvariantCulture));
                     }
 
                     if (metalMatch.Success)
                     {
                         material.SetFloat(
-                            "_Metallic", 
-                            float.Parse(metalMatch.Groups[1].Value, 
+                            "_Metallic",
+                            float.Parse(metalMatch.Groups[1].Value,
                             CultureInfo.InvariantCulture));
                     }
                 }
@@ -380,14 +398,20 @@ namespace AFrameModule
 
             foreach (Match m in cylinders)
             {
-                string tag = m.Value;
-                Match posMatch = Regex.Match(tag, @"position=""([0-9-.\s]+)""");
-                Match colorMatch = Regex.Match(tag, @"color=""([#0-9A-Z]+)""");
-                Match metalMatch = Regex.Match(tag, @"metalness=""([0-9.]+)""");
-                Match glossMatch = Regex.Match(tag, @"roughness=""([0-9.]+)""");
-                Match radiusMatch = Regex.Match(tag, @"radius=""([0-9.]+)""");
-                Match heightMatch = Regex.Match(tag, @"height=""([0-9.]+)""");
-                Match rotMatch = Regex.Match(tag, @"rotation=""([0-9-.\s]+)""");
+                string tag = "";
+                Match posMatch = null, colorMatch = null, metalMatch = null, glossMatch = null,
+                    radiusMatch = null, heightMatch = null, rotMatch = null;
+
+                await Task.Run(() => {
+                    tag = m.Value;
+                    posMatch = Regex.Match(tag, @"position=""([0-9-.\s]+)""");
+                    colorMatch = Regex.Match(tag, @"color=""([#0-9A-Z]+)""");
+                    metalMatch = Regex.Match(tag, @"metalness=""([0-9.]+)""");
+                    glossMatch = Regex.Match(tag, @"roughness=""([0-9.]+)""");
+                    radiusMatch = Regex.Match(tag, @"radius=""([0-9.]+)""");
+                    heightMatch = Regex.Match(tag, @"height=""([0-9.]+)""");
+                    rotMatch = Regex.Match(tag, @"rotation=""([0-9-.\s]+)""");
+                });
 
                 GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
                 ob.tag = "AFrame";
@@ -472,14 +496,20 @@ namespace AFrameModule
 
             foreach (Match m in planes)
             {
-                string tag = m.Value;
-                Match posMatch = Regex.Match(tag, @"position=""([0-9-.\s]+)""");
-                Match rotMatch = Regex.Match(tag, @"rotation=""([0-9-.\s]+)""");
-                Match colorMatch = Regex.Match(tag, @"color=""([#0-9A-Z]+)""");
-                Match widthMatch = Regex.Match(tag, @"width=""([0-9.]+)""");
-                Match heightMatch = Regex.Match(tag, @"height=""([0-9.]+)""");
-                Match metalMatch = Regex.Match(tag, @"metalness=""([0-9.]+)""");
-                Match glossMatch = Regex.Match(tag, @"roughness=""([0-9.]+)""");
+                string tag = "";
+                Match posMatch = null, rotMatch = null, widthMatch = null, heightMatch = null,
+                    colorMatch = null, metalMatch = null, glossMatch = null;
+
+                await Task.Run(() => {
+                    tag = m.Value;
+                    posMatch = Regex.Match(tag, @"position=""([0-9-.\s]+)""");
+                    rotMatch = Regex.Match(tag, @"rotation=""([0-9-.\s]+)""");
+                    colorMatch = Regex.Match(tag, @"color=""([#0-9A-Z]+)""");
+                    widthMatch = Regex.Match(tag, @"width=""([0-9.]+)""");
+                    heightMatch = Regex.Match(tag, @"height=""([0-9.]+)""");
+                    metalMatch = Regex.Match(tag, @"metalness=""([0-9.]+)""");
+                    glossMatch = Regex.Match(tag, @"roughness=""([0-9.]+)""");
+                });                
 
                 GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Plane);
                 ob.tag = "AFrame";
@@ -559,10 +589,15 @@ namespace AFrameModule
 
             foreach (Match m in lines)
             {
-                string tag = m.Value;
-                Match startMatch = Regex.Match(tag, @"start: ([0-9-.\s]+)(;|"")");
-                Match endMatch = Regex.Match(tag, @"end: ([0-9-.\s]+)(;|"")");
-                Match colorMatch = Regex.Match(tag, @"color: ([#0-9A-Z]+)(;|"")");
+                string tag = "";
+                Match startMatch = null, endMatch = null, colorMatch = null;
+
+                await Task.Run(() => {
+                    tag = m.Value;
+                    startMatch = Regex.Match(tag, @"start: ([0-9-.\s]+)(;|"")");
+                    endMatch = Regex.Match(tag, @"end: ([0-9-.\s]+)(;|"")");
+                    colorMatch = Regex.Match(tag, @"color: ([#0-9A-Z]+)(;|"")");
+                });                
 
                 GameObject line = GameObject.CreatePrimitive(PrimitiveType.Cube);
                 line.name = "Line";
@@ -593,7 +628,7 @@ namespace AFrameModule
                     // If there is a geometry at the local start point
                     // Use it as the start object
                     if (geoMapping.ContainsKey(start))
-                         geoMapping.TryGetValue(start, out afl.startObject);
+                        geoMapping.TryGetValue(start, out afl.startObject);
                     else
                     {
                         // If not
@@ -627,7 +662,7 @@ namespace AFrameModule
                     }
 
                     if (geoMapping.ContainsKey(end))
-                         geoMapping.TryGetValue(end, out afl.endObject);
+                        geoMapping.TryGetValue(end, out afl.endObject);
                     else
                     {
                         if (lineMapping.ContainsKey(end))
@@ -680,9 +715,6 @@ namespace AFrameModule
             aFrameCanvas.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
             aFramePanel.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
 
-            //Transform aFrameBar = aFrameCanvas.transform.Find("Panel/Toolbar");
-            //aFrameBar.localPosition = new Vector3(aFrameBar.localPosition.x, maxY, 0f);
-
             return (aFrameCanvas, width, height);
         }
 
@@ -693,11 +725,11 @@ namespace AFrameModule
             MatchCollection c = Regex.Matches(aFrame,
                 @"(start|end|position)(:\s|="")([0-9-.\s]+)(;|"")");
 
-            foreach(Match m in c)
+            foreach (Match m in c)
             {
-                float[] coords = 
+                float[] coords =
                     Array.ConvertAll(
-                        m.Groups[3].Value.Split(' '), 
+                        m.Groups[3].Value.Split(' '),
                         i => float.Parse(i, CultureInfo.InvariantCulture));
 
                 Vector3 pos = new Vector3(coords[0], coords[1], coords[2]);
@@ -712,21 +744,22 @@ namespace AFrameModule
 
         private static void MakeGeometryInteractable(GameObject ob)
         {
-            ob.AddComponent<AFrameGeometry>();
             ob.AddComponent<EventTrigger>();
             ob.AddComponent<GraphicRaycaster>();
             ob.AddComponent<CanvasRaycastTarget>();
+            ob.AddComponent<InitializeBehaviour>();
             ob.GetComponent<RectTransform>().pivot = Vector2.zero;
             ob.GetComponent<RectTransform>().anchorMin = Vector2.zero;
             ob.GetComponent<RectTransform>().anchorMax = Vector2.zero;
             ob.GetComponent<RectTransform>().sizeDelta = Vector2.zero;
+            ob.GetComponent<InitializeBehaviour>().freezeRotation = false;
         }
 
         private static void MakeGeometryDraggable(GameObject ob)
         {
             // Adding Drag functions
             EventTrigger trigger = ob.GetComponent<EventTrigger>();
-            AFrameGeometry afg = ob.GetComponent<AFrameGeometry>();
+            InitializeBehaviour afg = ob.GetComponent<InitializeBehaviour>();
 
             // OnPointerDown -> OnDrag
             EventTrigger.Entry entry = new EventTrigger.Entry();

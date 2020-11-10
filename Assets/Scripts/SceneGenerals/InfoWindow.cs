@@ -1,12 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+/// <summary>
+/// Used in About section and Tasks list
+/// </summary>
 public class InfoWindow : MonoBehaviour
 {
     public Transform playerCamera;
 
-    // Start is called before the first frame update
     void Start()
     {
         if(playerCamera != null)

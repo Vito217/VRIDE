@@ -133,7 +133,6 @@ public class Browser : InitializeBehaviour
 
     public override void OnSelect(BaseEventData data)
     {
-        base.OnSelect(data);
         keyboardTarget = data.selectedObject.GetComponent<TMP_InputField>();
         wordPicker.TextField = keyboardTarget;
         InteractionLogger.StartTimerFor("Browser");
@@ -141,7 +140,6 @@ public class Browser : InitializeBehaviour
 
     public override void OnDeselect(BaseEventData data)
     {
-        base.OnDeselect(data);
         InteractionLogger.EndTimerFor("Browser");
     }
 

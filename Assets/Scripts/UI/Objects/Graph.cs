@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using ImageUtils;
+﻿using ImageUtils;
 using LoggingModule;
 using SaveAndLoad;
 using Unity.VectorGraphics;
@@ -22,13 +20,6 @@ public class Graph : InitializeBehaviour
         graph_panel.sprite = type == "SVG" ?
             ImageModule.ImportSVG(raw) :
             ImageModule.ImportPNG(raw);
-
-        //width = graph_panel.sprite.texture.width;
-        //height = graph_panel.sprite.texture.height;
-
-        //var sd = GetComponent<RectTransform>().sizeDelta;
-        //sd.x = width * sd.y / height;
-        //GetComponent<RectTransform>().sizeDelta = sd;
     }
 
     public override void onClose()
