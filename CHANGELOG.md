@@ -1,5 +1,8 @@
 # PharoVRIDE's Channel Log
 
+## V0.18.2 (06/11/2020)
+* Updated Unity + XR Plugins
+
 ## V0.18.1 (04/11/2020)
 * Added window that shows the tasks that will be used during the test.
 * Fixed some lightning issues.
