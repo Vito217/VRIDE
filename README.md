@@ -155,8 +155,6 @@ All previous commands can be executed using the VR and physical keyboards.
 Before opening the application, make sure you have your Pharo image ready. Open Pharo launcher and execute the following code:
 
 ```
-ZnReadEvalPrintDelegate startInServerOn: 1701.
-
 Author uniqueInstance fullName: 'VRIDE User'.
 
 Metacello new
@@ -175,13 +173,39 @@ Metacello new
     load: 'AFrame'.
 ```
 
+THis code does a full installation of Roassal3 and sets up the author. Next, you must run a Pharo ZincHTTP server. Run the following code:
+
+```
+ZnReadEvalPrintDelegate startInServerOn: 1701.
+```
+
+If you are using Oculus Quest, or if you just want to connect remotely to your local machine, run:
+
+```
+(ZnServer on: 1701)
+    bindingAddress: NetNameResolver localHostAddress;
+    delegate: ZnReadEvalPrintDelegate new;
+    start;
+    yourself
+```
+
+If it doesn't work on Mac, you can manually enter the IP address:
+
+```
+(ZnServer on: 1701)
+    bindingAddress: (NetNameResolver addressFromString: 'your IP address');
+    delegate: ZnReadEvalPrintDelegate  new;
+    start;
+    yourself.
+```
+
 Now open PharoVRIDE. Right into the first scene, you will see a field asking for the IP address of your Pharo server. It must be as follows:
 
 ```
 http://<Host name or IP Address>:<Port>/repl
 ```
 
-If you are running on localhost just as shown in the previous script, press the Enter button to proceed.
+If you are running on localhost just as shown in the previous script, press the Enter button to proceed. Otherwise, you must specify an address.
 
 Finally, put on your VR headset, and try some stuff!
 
