@@ -1,5 +1,9 @@
 # PharoVRIDE's Channel Log
 
+## V0.18.3 (09/11/2020)
+* Code refactoring
+* Better performance
+
 ## V0.18.2 (06/11/2020)
 * Updated Unity + XR Plugins
 
