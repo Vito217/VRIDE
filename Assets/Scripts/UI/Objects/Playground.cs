@@ -11,8 +11,8 @@ using PharoModule;
 using LoggingModule;
 using SaveAndLoad;
 using ImageUtils;
-using AFrameModule;
 using TMPro;
+using System.Collections;
 
 public class Playground : InitializeBehaviour
 {
@@ -57,7 +57,7 @@ public class Playground : InitializeBehaviour
                             string aframe = res;
 
                             MatchCollection texts = null, geometries = null, lines = null, boxes = null,
-                spheres = null, cylinders = null, planes = null;
+                                            spheres = null, cylinders = null, planes = null;
 
                             await Task.Run(() => {
                                 aframe = aframe.Split(new string[] { "</html>" }, StringSplitOptions.None)[0];
@@ -755,11 +755,6 @@ public class Playground : InitializeBehaviour
 
                             aFrameCanvas.GetComponent<RectTransform>().sizeDelta = new Vector2(finalWidth, finalHeight);
                             aFramePanel.GetComponent<RectTransform>().sizeDelta = new Vector2(finalWidth, finalHeight);
-
-                            //(GameObject g, float w, float h) t = await AFrameToGameObject.Convert(res);
-                            //GameObject aFrameCanvas = t.g;
-                            //float finalWidth = t.w;
-                            //float finalHeight = t.h;
 
                             float finalScale = (GetComponent<RectTransform>().sizeDelta.y / finalHeight) * 0.001f;
                             float finalToolbarScale = 0.001f / finalScale;

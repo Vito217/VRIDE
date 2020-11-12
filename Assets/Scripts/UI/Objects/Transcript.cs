@@ -1,5 +1,6 @@
 ﻿using LoggingModule;
 using SaveAndLoad;
+using System.Collections;
 
 public class Transcript : InitializeBehaviour
 {

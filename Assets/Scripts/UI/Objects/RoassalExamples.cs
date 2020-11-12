@@ -15,7 +15,7 @@ public class RoassalExamples : InitializeBehaviour
         ColorUtility.TryParseHtmlString("#00FFFF", out skyBlue);
         yield return null;
         ColorUtility.TryParseHtmlString("#9D9D9D", out gray);
-        yield return base.innerStart();
+        yield return null;
     }
 
     public override void innerBehaviour()

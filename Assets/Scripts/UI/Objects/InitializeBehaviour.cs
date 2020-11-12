@@ -34,13 +34,6 @@ public class InitializeBehaviour : MonoBehaviour
     public IEnumerator Coroutine()
     {
         if(panel != null) panel.color = UnityEngine.Random.ColorHSV();
-        if (keyboardTarget != null) 
-        {
-            lastCaretPosition = keyboardTarget.text.Length;
-            lastAnchorPosition = lastCaretPosition;
-            keyboardTarget.caretPosition = lastCaretPosition;
-            keyboardTarget.selectionAnchorPosition = lastAnchorPosition;
-        } 
         yield return innerStart();
     }
 
@@ -234,6 +227,13 @@ public class InitializeBehaviour : MonoBehaviour
     public virtual void innerBehaviour() {
         if (keyboardTarget != null && keyboardTarget.isFocused)
         {
+            if (fromUIClick)
+            {
+                fromUIClick = false;
+                keyboardTarget.caretPosition = lastCaretPosition;
+                keyboardTarget.selectionAnchorPosition = lastAnchorPosition;
+            }
+
             lastCaretPosition = keyboardTarget.caretPosition;
             lastAnchorPosition = keyboardTarget.selectionAnchorPosition;
         }

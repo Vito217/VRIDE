@@ -1,4 +1,5 @@
-﻿using UnityEngine.UI;
+﻿using System.Collections;
+using UnityEngine.UI;
 
 public class VRIDEMenu : InitializeBehaviour
 {

@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using LoggingModule;
 using SaveAndLoad;
+using System.Collections;
 
 public class Inspector : InitializeBehaviour
 {

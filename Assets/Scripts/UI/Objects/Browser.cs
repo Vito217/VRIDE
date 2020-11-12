@@ -160,7 +160,7 @@ public class Browser : InitializeBehaviour
         ColorUtility.TryParseHtmlString("#00FFFF", out skyBlue);
         yield return null;
         ColorUtility.TryParseHtmlString("#9D9D9D", out gray);
-        yield return base.innerStart();
+        yield return null;
     }
 
     public override void innerBehaviour()
@@ -170,8 +170,15 @@ public class Browser : InitializeBehaviour
             loadingPackages = false;
             package_list.Load();
         }
-        else if (field.isFocused || keyboardTarget.isFocused)
+        else if (keyboardTarget.isFocused)
         {
+            if (fromUIClick)
+            {
+                fromUIClick = false;
+                keyboardTarget.caretPosition = lastCaretPosition;
+                keyboardTarget.selectionAnchorPosition = lastAnchorPosition;
+            }
+
             if (Input.anyKeyDown && !loadingWheel.activeSelf)
             {
                 bool cmd = Input.GetKey(KeyCode.LeftCommand) ||

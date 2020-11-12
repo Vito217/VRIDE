@@ -1,6 +1,7 @@
 ﻿using ImageUtils;
 using LoggingModule;
 using SaveAndLoad;
+using System.Collections;
 using Unity.VectorGraphics;
 
 public class Graph : InitializeBehaviour
@@ -8,10 +9,6 @@ public class Graph : InitializeBehaviour
     public SVGImage graph_panel;
     public string raw_image;
     public string type;
-    //float width;
-    //float height;
-
-    void Start() { }
 
     public void setSprite(string raw, string tp)
     {
