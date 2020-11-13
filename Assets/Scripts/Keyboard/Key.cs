@@ -58,7 +58,7 @@ public class Key : MonoBehaviour
 
 		SwitchKeycapCharCase ();
 
-		isSpecialKey = Regex.Match(name, "Backspace|Return|Shift|Symbol|Tab|Del").Success;
+		isSpecialKey = Regex.Match(name, "Shift|Symbol").Success;
 	}
 
 	void FixedUpdate()
@@ -78,20 +78,7 @@ public class Key : MonoBehaviour
 			{
 				KeyPressed = true;
 				keyPressed ();
-				if (symbolSwitch)
-				{
-					if (isSpecialKey)
-						keycodeAdder.SimulateAlternateKeyPress();
-					else
-						WriteStringToTarget();
-				}
-				else
-				{
-                    if (isSpecialKey)
-						keycodeAdder.SimulateKeyPress();
-                    else
-						WriteStringToTarget();
-				}
+				if (!isSpecialKey) WriteStringToTarget();
 				keySoundController.StartKeySound (this.gameObject.transform);
 				checkForButton = false;
 			}
@@ -167,18 +154,70 @@ public class Key : MonoBehaviour
 			int lcp = window.lastCaretPosition;
 			int lap = window.lastAnchorPosition;
 			window.keyboardTarget.ActivateInputField();
-			if(lcp != lap)
+			if (name.Contains("Backspace"))
             {
-				if (lcp < lap) lap = Interlocked.Exchange(ref lcp, lap);
-				window.keyboardTarget.text = window.keyboardTarget.text.Remove(Math.Min(lcp, lap), lcp - lap);
-				window.keyboardTarget.caretPosition = Math.Min(lcp, lap);
-				lcp = Math.Min(lcp, lap);
+				if (lcp != lap)
+					DeleteSelection(ref lcp, ref lap, window);
+                else
+                {
+					try
+					{
+						window.keyboardTarget.text = window.keyboardTarget.text.Remove(lcp - 1, 1);
+						window.keyboardTarget.caretPosition = lcp - 1;
+						window.keyboardTarget.selectionAnchorPosition = lap - 1;
+						window.lastCaretPosition = lcp - 1;
+						window.lastAnchorPosition = lap - 1;
+					} catch { }
+				}
 			}
-			window.keyboardTarget.text = window.keyboardTarget.text.Insert(lcp, keyCapText.text);
-			window.keyboardTarget.caretPosition = lcp + 1;
-			window.keyboardTarget.selectionAnchorPosition = lcp + 1;
-			window.lastCaretPosition = lcp + 1;
-			window.lastAnchorPosition = lcp + 1;
+			else if (name.Contains("Return"))
+            {
+				if (lcp != lap) DeleteSelection(ref lcp, ref lap, window);
+				window.keyboardTarget.text = window.keyboardTarget.text.Insert(lcp, "\n");
+				window.keyboardTarget.caretPosition = lcp + 1;
+				window.keyboardTarget.selectionAnchorPosition = lap + 1;
+				window.lastCaretPosition = lcp + 1;
+				window.lastAnchorPosition = lap + 1;
+			}
+			else if (name.Contains("Del"))
+            {
+				if (lcp != lap)
+					DeleteSelection(ref lcp, ref lap, window);
+				else
+				{
+					try
+					{
+						window.keyboardTarget.text = window.keyboardTarget.text.Remove(lcp, 1);
+					}
+					catch { }
+				}
+			}
+			else if (name.Contains("Tab"))
+			{
+				window.keyboardTarget.text = window.keyboardTarget.text.Insert(Math.Min(lcp, lap), "    ");
+				window.keyboardTarget.caretPosition = lcp + 4;
+				window.keyboardTarget.selectionAnchorPosition = lap + 4;
+				window.lastCaretPosition = lcp + 4;
+				window.lastAnchorPosition = lap + 4;
+			}
+			else
+            {
+				if (lcp != lap) DeleteSelection(ref lcp, ref lap, window);
+				window.keyboardTarget.text = window.keyboardTarget.text.Insert(lcp, keyCapText.text);
+				window.keyboardTarget.caretPosition = lcp + 1;
+				window.keyboardTarget.selectionAnchorPosition = lap + 1;
+				window.lastCaretPosition = lcp + 1;
+				window.lastAnchorPosition = lap + 1;
+			}
 		}
+	}
+
+	private void DeleteSelection(ref int lcp, ref int lap, InitializeBehaviour window)
+    {
+		if (lcp < lap) lap = Interlocked.Exchange(ref lcp, lap);
+		window.keyboardTarget.text = window.keyboardTarget.text
+			.Remove(Math.Min(lcp, lap), lcp - lap);
+		window.keyboardTarget.caretPosition = Math.Min(lcp, lap);
+		lcp = Math.Min(lcp, lap);
 	}
 }
