@@ -1,5 +1,9 @@
 # PharoVRIDE's Channel Log
 
+## V0.18.4 (12/11/2020)
+* Added default icon
+* Fixed some bugs
+
 ## V0.18.3 (09/11/2020)
 * Code refactoring
 * Better performance
