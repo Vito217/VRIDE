@@ -1,5 +1,8 @@
 # PharoVRIDE's Channel Log
 
+## v0.18.5 (13/11/2020)
+* Fixed some input issues
+
 ## V0.18.4 (12/11/2020)
 * Added default icon
 * Fixed some bugs
