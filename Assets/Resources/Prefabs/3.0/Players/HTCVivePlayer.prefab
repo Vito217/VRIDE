@@ -146,14 +146,14 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &1807938776957764800
+--- !u!114 &916367919822196161
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5806132230542661265}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
   m_Name: 
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_TrackedDeviceOrientationAction: {fileID: 1025543830046995696, guid: ca9f5fa95ffab41fb9a615ab714db018,
     type: 3}
   m_DeselectOnBackgroundClick: 1
-  m_PointerBehavior: 0
+  m_PointerBehavior: 2
 --- !u!1 &5875528058706001518
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,7 +892,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2548992823208286274, guid: 9bb7a9a2136e6de4a8d3f4f5a598c870, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9bb7a9a2136e6de4a8d3f4f5a598c870, type: 3}
 --- !u!1 &5806132230542661265 stripped
 GameObject:
