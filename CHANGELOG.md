@@ -1,5 +1,8 @@
 # PharoVRIDE's Channel Log
 
+## V0.18.6 (18/11/2020)
+* Removed old input module. Using new Input UI System.
+
 ## v0.18.5 (13/11/2020)
 * Fixed some input issues
 
