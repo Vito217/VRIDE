@@ -8,6 +8,8 @@ public class BrowserClass : BrowserObject
         base.onSelect();
         if (theBrowser.class_list.last_selected != null)
             theBrowser.class_list.last_selected.onDeselect();
+        if (theBrowser.methodList.last_selected != null)
+            theBrowser.methodList.last_selected.onDeselect();
         theBrowser.class_list.last_selected = this;
         if (name != "template")
         {

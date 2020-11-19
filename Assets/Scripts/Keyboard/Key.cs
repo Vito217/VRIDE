@@ -17,7 +17,7 @@ public class Key : MonoBehaviour
 	public Color InitialKeycapColor;
 
 	protected Transform initialPosition;
-	private KeycodeAdder keycodeAdder;
+	//private KeycodeAdder keycodeAdder;
 	private Text keyCapText;
 	private Vector3 initialLocalPosition;
 	private Quaternion initialLocalRotation;
@@ -34,7 +34,7 @@ public class Key : MonoBehaviour
 
 	void Start()
 	{
-		keycodeAdder = this.gameObject.GetComponent<KeycodeAdder> ();
+		//keycodeAdder = this.gameObject.GetComponent<KeycodeAdder> ();
 
 		keyCapText = this.gameObject.GetComponentInChildren<Text> ();
 		KeycapColor = this.gameObject.GetComponent<Renderer> ().material.color;
