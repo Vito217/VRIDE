@@ -5,12 +5,11 @@
 //=============================================================================
 
 using UnityEngine;
-using System.Collections;
 
 namespace Valve.VR.InteractionSystem
 {
-	//-------------------------------------------------------------------------
-	public class ArrowheadRotation : MonoBehaviour
+    //-------------------------------------------------------------------------
+    public class ArrowheadRotation : MonoBehaviour
 	{
 		//-------------------------------------------------
 		void Start()

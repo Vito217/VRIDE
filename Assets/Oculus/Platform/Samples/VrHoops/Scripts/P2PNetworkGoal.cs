@@ -1,15 +1,14 @@
 namespace Oculus.Platform.Samples.VrHoops
 {
-	using UnityEngine;
-	using System.Collections;
+    using UnityEngine;
 
-	// This component handles network coordination for the moving backboard.
-	// Although there is randomness in the next direction, the movement is
-	// otherwise completely predictable, much like a moving platform or door,
-	// thus we only need to send occasional updates.  If the position of the
-	// backboard is not correct, the GoalMover will gradually nudge it in the
-	// correct direction until the local and remote motion is synchronized.
-	public class P2PNetworkGoal : MonoBehaviour
+    // This component handles network coordination for the moving backboard.
+    // Although there is randomness in the next direction, the movement is
+    // otherwise completely predictable, much like a moving platform or door,
+    // thus we only need to send occasional updates.  If the position of the
+    // backboard is not correct, the GoalMover will gradually nudge it in the
+    // correct direction until the local and remote motion is synchronized.
+    public class P2PNetworkGoal : MonoBehaviour
 	{
 		// cached reference to the associated GoalMover component
 		private GoalMover m_goal;

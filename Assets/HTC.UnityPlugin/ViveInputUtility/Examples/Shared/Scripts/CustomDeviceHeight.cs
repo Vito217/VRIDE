@@ -4,7 +4,6 @@ using HTC.UnityPlugin.Utility;
 using HTC.UnityPlugin.VRModuleManagement;
 using UnityEngine;
 #if UNITY_2017_2_OR_NEWER
-using UnityEngine.XR;
 #endif
 
 namespace HTC.UnityPlugin.Vive

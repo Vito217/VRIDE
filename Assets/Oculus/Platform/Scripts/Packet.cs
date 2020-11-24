@@ -24,7 +24,7 @@ namespace Oculus.Platform
     {
       if ((ulong) destination.LongLength < size)
       {
-        throw new System.ArgumentException(String.Format("Destination array was not big enough to hold {0} bytes", size));
+        throw new ArgumentException(String.Format("Destination array was not big enough to hold {0} bytes", size));
       }
       Marshal.Copy(CAPI.ovr_Packet_GetBytes(packetHandle), destination, 0, (int) size);
       return size;

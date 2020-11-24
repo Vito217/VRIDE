@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using System.Linq;
 using System.IO;
-using System;
 #if UNITY_5_6_OR_NEWER
 using UnityEditor.Build;
 #endif

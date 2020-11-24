@@ -1,9 +1,8 @@
 namespace Oculus.Platform.Samples.VrHoops
 {
-	using UnityEngine;
-	using System.Collections;
+    using UnityEngine;
 
-	public class BallEjector : MonoBehaviour {
+    public class BallEjector : MonoBehaviour {
 
 	}
 }

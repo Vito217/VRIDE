@@ -1,11 +1,10 @@
 namespace Oculus.Platform
 {
-  using UnityEngine;
-  using System;
-  using System.Collections;
-  using System.Runtime.InteropServices;
+    using UnityEngine;
+    using System;
+    using System.Runtime.InteropServices;
 
-  public sealed class StandalonePlatform
+    public sealed class StandalonePlatform
   {
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public delegate void UnityLogDelegate(IntPtr tag, IntPtr msg);

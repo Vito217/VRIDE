@@ -2,13 +2,10 @@
 
 namespace Oculus.Platform.Models
 {
-  using System;
-  using System.Collections;
-  using Oculus.Platform.Models;
-  using System.Collections.Generic;
-  using UnityEngine;
+    using System;
+    using System.Collections.Generic;
 
-  public class SdkAccount
+    public class SdkAccount
   {
     public readonly SdkAccountType AccountType;
     public readonly UInt64 UserId;

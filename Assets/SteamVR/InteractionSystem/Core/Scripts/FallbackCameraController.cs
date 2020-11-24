@@ -5,12 +5,11 @@
 //=============================================================================
 
 using UnityEngine;
-using System.Collections;
 
 namespace Valve.VR.InteractionSystem
 {
-	//-------------------------------------------------------------------------
-	[RequireComponent( typeof( Camera ) )]
+    //-------------------------------------------------------------------------
+    [RequireComponent( typeof( Camera ) )]
 	public class FallbackCameraController : MonoBehaviour
 	{
 		public float speed = 4.0f;

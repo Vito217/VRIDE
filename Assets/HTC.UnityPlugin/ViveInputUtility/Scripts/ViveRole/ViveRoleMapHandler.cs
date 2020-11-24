@@ -1,7 +1,6 @@
 ﻿//========= Copyright 2016-2020, HTC Corporation. All rights reserved. ===========
 
 using HTC.UnityPlugin.VRModuleManagement;
-using System;
 
 namespace HTC.UnityPlugin.Vive
 {

@@ -14,7 +14,6 @@ ANY KIND, either express or implied. See the License for the specific language g
 permissions and limitations under the License.
 ************************************************************************************/
 
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -169,7 +168,7 @@ public class OVRSkeleton : MonoBehaviour
 		// pre-populate bones list before attempting to apply bone hierarchy
 		for (int i = 0; i < skeleton.NumBones; ++i)
 		{
-			BoneId id = (OVRSkeleton.BoneId)skeleton.Bones[i].Id;
+			BoneId id = (BoneId)skeleton.Bones[i].Id;
 			short parentIdx = skeleton.Bones[i].ParentBoneIndex;
 			Vector3 pos = skeleton.Bones[i].Pose.Position.FromFlippedXVector3f();
 			Quaternion rot = skeleton.Bones[i].Pose.Orientation.FromFlippedXQuatf();
@@ -208,7 +207,7 @@ public class OVRSkeleton : MonoBehaviour
 
 		for (int i = 0; i < skeleton.NumBones; ++i)
 		{
-			BoneId id = (OVRSkeleton.BoneId)skeleton.Bones[i].Id;
+			BoneId id = (BoneId)skeleton.Bones[i].Id;
 			short parentIdx = skeleton.Bones[i].ParentBoneIndex;
 			var bindPoseGO = new GameObject(id.ToString());
 			OVRBone bone = _bones[i];

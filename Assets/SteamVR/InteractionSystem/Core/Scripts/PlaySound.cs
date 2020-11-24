@@ -5,12 +5,11 @@
 //=============================================================================
 
 using UnityEngine;
-using System.Collections;
 
 namespace Valve.VR.InteractionSystem
 {
-	//-------------------------------------------------------------------------
-	[RequireComponent( typeof( AudioSource ) )]
+    //-------------------------------------------------------------------------
+    [RequireComponent( typeof( AudioSource ) )]
 	public class PlaySound : MonoBehaviour
 	{
 		[Tooltip( "List of audio clips to play." )]

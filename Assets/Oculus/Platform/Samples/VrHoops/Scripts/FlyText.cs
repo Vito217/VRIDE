@@ -1,11 +1,10 @@
 namespace Oculus.Platform.Samples.VrHoops
 {
-	using UnityEngine;
-	using UnityEngine.UI;
-	using System.Collections;
+    using UnityEngine;
+    using UnityEngine.UI;
 
-	// helper script to render fading flytext above an object
-	public class FlyText : MonoBehaviour
+    // helper script to render fading flytext above an object
+    public class FlyText : MonoBehaviour
 	{
 		// destory the gameobject after this many seconds
 		private const float LIFESPAN = 3.0f;

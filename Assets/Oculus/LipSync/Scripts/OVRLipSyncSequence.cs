@@ -26,7 +26,7 @@ using System.IO;
 using UnityEngine;
 
 // Sequence - holds ordered entries for playback
-[System.Serializable]
+[Serializable]
 public class OVRLipSyncSequence : ScriptableObject
 {
     public List<OVRLipSync.Frame> entries = new List<OVRLipSync.Frame>();

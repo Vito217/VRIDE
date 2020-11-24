@@ -1,9 +1,8 @@
 namespace Oculus.Platform.Samples.VrBoardGame
 {
-	using UnityEngine;
-	using System.Collections;
+    using UnityEngine;
 
-	public class GamePiece : MonoBehaviour
+    public class GamePiece : MonoBehaviour
 	{
 		[SerializeField] private Piece m_type = Piece.A;
 

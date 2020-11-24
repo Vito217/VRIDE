@@ -2,13 +2,9 @@
 
 namespace Oculus.Platform.Models
 {
-  using System;
-  using System.Collections;
-  using Oculus.Platform.Models;
-  using System.Collections.Generic;
-  using UnityEngine;
+    using System;
 
-  public class PlatformInitialize
+    public class PlatformInitialize
   {
     public readonly PlatformInitializeResult Result;
 

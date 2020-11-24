@@ -1,10 +1,8 @@
-using UnityEngine;
-using System.Collections;
 using System;
 
 namespace Oculus.Platform
 {
-  public class VoipPCMSourceNative : IVoipPCMSource
+    public class VoipPCMSourceNative : IVoipPCMSource
   {
     ulong senderID;
 

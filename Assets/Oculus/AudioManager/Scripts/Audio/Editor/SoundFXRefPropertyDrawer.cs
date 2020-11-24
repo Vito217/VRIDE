@@ -1,18 +1,17 @@
 using UnityEngine;
 using UnityEditor;
-using System.Collections;
 
 namespace OVR
 {
 
-/*
------------------------
+    /*
+    -----------------------
 
-SoundFXRefPropertyDrawer
+    SoundFXRefPropertyDrawer
 
------------------------
-*/
-[CustomPropertyDrawer(typeof(SoundFXRef))]
+    -----------------------
+    */
+    [CustomPropertyDrawer(typeof(SoundFXRef))]
 public class SoundFXRefPropertyDrawer : PropertyDrawer {
 
 	static private GUIStyle disabledStyle = null;

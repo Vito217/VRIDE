@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Text;
-using UnityEngine.UI;
 
 /// <summary>
 /// A BaseInputModule for pointer input.

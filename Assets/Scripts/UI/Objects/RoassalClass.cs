@@ -1,10 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class RoassalClass : RoassalObject
+﻿public class RoassalClass : RoassalObject
 {
-    public override async void onSelect()
+    public override void onSelect()
     {
         base.onSelect();
         if (roassal.class_list.last_selected != null)

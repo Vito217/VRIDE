@@ -1,9 +1,7 @@
 ﻿//========= Copyright 2016-2020, HTC Corporation. All rights reserved. ===========
 
 using HTC.UnityPlugin.VRModuleManagement;
-using System;
 using System.IO;
-using System.Linq;
 using UnityEditor;
 #if UNITY_5_6_OR_NEWER
 using UnityEditor.Build;
@@ -12,7 +10,6 @@ using UnityEditor.Build;
 using HTC.UnityPlugin.UPMRegistryTool;
 using UnityEditor.Build.Reporting;
 #endif
-using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.Rendering;
 

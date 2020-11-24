@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class InspectItKey : VRKey
+﻿public class InspectItKey : VRKey
 {
     public override void OnClick()
     {
@@ -11,7 +7,7 @@ public class InspectItKey : VRKey
             try
             {
                 Playground p = keyboard.window as Playground;
-                p.PharoInspect();
+                _ = p.PharoInspect();
             }
             catch { }
         }

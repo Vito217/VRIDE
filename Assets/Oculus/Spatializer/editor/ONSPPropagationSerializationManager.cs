@@ -19,7 +19,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ************************************************************************************/
 using UnityEditor;
-using UnityEditor.Build;
 using UnityEngine;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;

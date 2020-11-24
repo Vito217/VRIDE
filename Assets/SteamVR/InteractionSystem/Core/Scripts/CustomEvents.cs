@@ -5,12 +5,11 @@
 //=============================================================================
 
 using UnityEngine.Events;
-using System;
 
 namespace Valve.VR.InteractionSystem
 {
-	//-------------------------------------------------------------------------
-	public static class CustomEvents
+    //-------------------------------------------------------------------------
+    public static class CustomEvents
 	{
 		//-------------------------------------------------
 		[System.Serializable]

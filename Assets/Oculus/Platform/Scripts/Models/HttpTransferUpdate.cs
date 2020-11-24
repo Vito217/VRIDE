@@ -1,13 +1,9 @@
 namespace Oculus.Platform.Models
 {
-  using System;
-  using System.Collections;
-  using System.Collections.Generic;
-  using System.Runtime.InteropServices;
-  using Oculus.Platform.Models;
-  using UnityEngine;
+    using System;
+    using System.Runtime.InteropServices;
 
-  public class HttpTransferUpdate
+    public class HttpTransferUpdate
   {
     public readonly UInt64 ID;
     public readonly byte[] Payload;

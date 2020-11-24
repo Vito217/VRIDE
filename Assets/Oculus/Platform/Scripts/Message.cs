@@ -2,13 +2,11 @@
 
 namespace Oculus.Platform
 {
-  using UnityEngine;
-  using System;
-  using System.Collections;
-  using System.Collections.Generic;
-  using Oculus.Platform.Models;
+    using UnityEngine;
+    using System;
+    using Oculus.Platform.Models;
 
-  public abstract class Message<T> : Message
+    public abstract class Message<T> : Message
   {
     public new delegate void Callback(Message<T> message);
     public Message(IntPtr c_message) : base(c_message) {
@@ -382,7 +380,7 @@ namespace Oculus.Platform
       }
 
       Message message = null;
-      Message.MessageType message_type = (Message.MessageType)CAPI.ovr_Message_GetType(messageHandle);
+            MessageType message_type = (MessageType)CAPI.ovr_Message_GetType(messageHandle);
 
       switch(message_type) {
         // OVR_MESSAGE_TYPE_START
@@ -752,7 +750,7 @@ namespace Oculus.Platform
       return message;
     }
 
-    internal delegate Message ExtraMessageTypesHandler(IntPtr messageHandle, Message.MessageType message_type);
+    internal delegate Message ExtraMessageTypesHandler(IntPtr messageHandle, MessageType message_type);
     internal static ExtraMessageTypesHandler HandleExtraMessageTypes { set; private get; }
   }
 

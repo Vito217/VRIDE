@@ -20,8 +20,6 @@ permissions and limitations under the License.
 
 using UnityEngine;
 using System.Collections.Generic;
-using System.Threading;
-using UnityEngine.Rendering;
 
 #if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN || UNITY_ANDROID
 

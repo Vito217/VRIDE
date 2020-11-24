@@ -28,8 +28,6 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 using Assets.OVR.Scripts;
-using Assets.Oculus.VR;
-using Assets.Oculus.VR.Editor;
 
 /// <summary>
 ///Scans the project and warns about the following conditions:
@@ -70,7 +68,7 @@ using Assets.Oculus.VR.Editor;
 ///Large textures, lots of prefabs in startup scene (for bootstrap optimization)
 ///GPU skinning: testing Android-only, as most Rift devs are GPU-bound.
 /// </summary>
-[InitializeOnLoadAttribute]
+[InitializeOnLoad]
 public class OVRLint : EditorWindow
 {
 	//TODO: The following require reflection or static analysis.
@@ -172,7 +170,7 @@ public class OVRLint : EditorWindow
 									}
 								}
 
-								UnityEngine.Object[] undoObjects = new UnityEngine.Object[recordsToProcess.Count];
+                                Object[] undoObjects = new Object[recordsToProcess.Count];
 								for (int z = 0; z < recordsToProcess.Count; z++)
 								{
 									undoObjects[z] = recordsToProcess[z].targetObject;
@@ -272,7 +270,7 @@ public class OVRLint : EditorWindow
 		return mRecords.Count;
 	}
 
-	static void AddFix(string category, string message, FixMethodDelegate method, UnityEngine.Object target, bool editModeRequired, params string[] buttons)
+	static void AddFix(string category, string message, FixMethodDelegate method, Object target, bool editModeRequired, params string[] buttons)
 	{
 		OVRPlugin.SendEvent("perf_lint_add_fix", category);
 		mRecords.Add(new FixRecord(category, message, method, target, editModeRequired, buttons));
@@ -287,7 +285,7 @@ public class OVRLint : EditorWindow
 
 		if (QualitySettings.anisotropicFiltering != AnisotropicFiltering.Enable && QualitySettings.anisotropicFiltering != AnisotropicFiltering.ForceEnable)
 		{
-			AddFix("Optimize Aniso", "Anisotropic filtering is recommended for optimal image sharpness and GPU performance.", delegate (UnityEngine.Object obj, bool last, int selected)
+			AddFix("Optimize Aniso", "Anisotropic filtering is recommended for optimal image sharpness and GPU performance.", delegate (Object obj, bool last, int selected)
 			{
 				// Ideally this would be multi-option: offer Enable or ForceEnable.
 				QualitySettings.anisotropicFiltering = AnisotropicFiltering.Enable;
@@ -302,7 +300,7 @@ public class OVRLint : EditorWindow
 
 		if (QualitySettings.pixelLightCount > recommendedPixelLightCount)
 		{
-			AddFix("Optimize Pixel Light Count", "For GPU performance set no more than " + recommendedPixelLightCount + " pixel lights in Quality Settings (currently " + QualitySettings.pixelLightCount + ").", delegate (UnityEngine.Object obj, bool last, int selected)
+			AddFix("Optimize Pixel Light Count", "For GPU performance set no more than " + recommendedPixelLightCount + " pixel lights in Quality Settings (currently " + QualitySettings.pixelLightCount + ").", delegate (Object obj, bool last, int selected)
 			{
 				QualitySettings.pixelLightCount = recommendedPixelLightCount;
 			}, null, false, "Fix");
@@ -321,7 +319,7 @@ public class OVRLint : EditorWindow
 
 		if ((!PlayerSettings.MTRendering || !PlayerSettings.GetMobileMTRendering(BuildTargetGroup.Android)))
 		{
-			AddFix("Optimize MT Rendering", "For CPU performance, please enable multithreaded rendering.", delegate (UnityEngine.Object obj, bool last, int selected)
+			AddFix("Optimize MT Rendering", "For CPU performance, please enable multithreaded rendering.", delegate (Object obj, bool last, int selected)
 			{
 				PlayerSettings.SetMobileMTRendering(BuildTargetGroup.Standalone, true);
 				PlayerSettings.SetMobileMTRendering(BuildTargetGroup.Android, true);
@@ -363,7 +361,7 @@ public class OVRLint : EditorWindow
 		if ((tierSettings.renderingPath == RenderingPath.DeferredShading ||
 			tierSettings.renderingPath == RenderingPath.DeferredLighting))
 		{
-			AddFix("Optimize Rendering Path", "For CPU performance, please do not use deferred shading.", delegate (UnityEngine.Object obj, bool last, int selected)
+			AddFix("Optimize Rendering Path", "For CPU performance, please do not use deferred shading.", delegate (Object obj, bool last, int selected)
 			{
 				tierSettings.renderingPath = RenderingPath.Forward;
 				UnityEditor.Rendering.EditorGraphicsSettings.SetTierSettings(target, tier, tierSettings);
@@ -372,7 +370,7 @@ public class OVRLint : EditorWindow
 
 		if (PlayerSettings.stereoRenderingPath == StereoRenderingPath.MultiPass)
 		{
-			AddFix("Optimize Stereo Rendering", "For CPU performance, please enable single-pass or instanced stereo rendering.", delegate (UnityEngine.Object obj, bool last, int selected)
+			AddFix("Optimize Stereo Rendering", "For CPU performance, please enable single-pass or instanced stereo rendering.", delegate (Object obj, bool last, int selected)
 			{
 				PlayerSettings.stereoRenderingPath = StereoRenderingPath.Instancing;
 			}, null, false, "Fix");
@@ -380,7 +378,7 @@ public class OVRLint : EditorWindow
 
 		if (LightmapSettings.lightmaps.Length > 0 && LightmapSettings.lightmapsMode != LightmapsMode.NonDirectional)
 		{
-			AddFix("Optimize Lightmap Directionality", "Switching from directional lightmaps to non-directional lightmaps can save a small amount of GPU time.", delegate (UnityEngine.Object obj, bool last, int selected)
+			AddFix("Optimize Lightmap Directionality", "Switching from directional lightmaps to non-directional lightmaps can save a small amount of GPU time.", delegate (Object obj, bool last, int selected)
 			{
 				LightmapSettings.lightmapsMode = LightmapsMode.NonDirectional;
 			}, null, false, "Switch to non-directional lightmaps");
@@ -388,7 +386,7 @@ public class OVRLint : EditorWindow
 
 		if (Lightmapping.realtimeGI)
 		{
-			AddFix("Disable Realtime GI", "Disabling real-time global illumination can improve GPU performance.", delegate (UnityEngine.Object obj, bool last, int selected)
+			AddFix("Disable Realtime GI", "Disabling real-time global illumination can improve GPU performance.", delegate (Object obj, bool last, int selected)
 			{
 				Lightmapping.realtimeGI = false;
 			}, null, false, "Set Lightmapping.realtimeGI = false.");
@@ -404,7 +402,7 @@ public class OVRLint : EditorWindow
 
 			if (lights[i].shadows != LightShadows.None && !IsLightBaked(lights[i]))
 			{
-				AddFix("Optimize Shadows", "For CPU performance, consider disabling shadows on realtime lights.", delegate (UnityEngine.Object obj, bool last, int selected)
+				AddFix("Optimize Shadows", "For CPU performance, consider disabling shadows on realtime lights.", delegate (Object obj, bool last, int selected)
 				{
 					Light thisLight = (Light)obj;
 					thisLight.shadows = LightShadows.None;
@@ -433,7 +431,7 @@ public class OVRLint : EditorWindow
 				});
 				for (int i = 16; i < playingAudioSources.Count; ++i)
 				{
-					AddFix("Optimize Audio Source Count", "For CPU performance, please disable all but the top 16 AudioSources.", delegate (UnityEngine.Object obj, bool last, int selected)
+					AddFix("Optimize Audio Source Count", "For CPU performance, please disable all but the top 16 AudioSources.", delegate (Object obj, bool last, int selected)
 					{
 						AudioSource audioSource = (AudioSource)obj;
 						audioSource.enabled = false;
@@ -447,7 +445,7 @@ public class OVRLint : EditorWindow
 		{
 			if (clips[i].loadType == AudioClipLoadType.DecompressOnLoad)
 			{
-				AddFix("Audio Loading", "For fast loading, please don't use decompress on load for audio clips", delegate (UnityEngine.Object obj, bool last, int selected)
+				AddFix("Audio Loading", "For fast loading, please don't use decompress on load for audio clips", delegate (Object obj, bool last, int selected)
 				{
 					AudioClip thisClip = (AudioClip)obj;
 					if (selected == 0)
@@ -464,7 +462,7 @@ public class OVRLint : EditorWindow
 
 			if (clips[i].preloadAudioData)
 			{
-				AddFix("Audio Preload", "For fast loading, please don't preload data for audio clips.", delegate (UnityEngine.Object obj, bool last, int selected)
+				AddFix("Audio Preload", "For fast loading, please don't preload data for audio clips.", delegate (Object obj, bool last, int selected)
 				{
 					SetAudioPreload(clips[i], false, last);
 				}, clips[i], false, "Fix");
@@ -473,7 +471,7 @@ public class OVRLint : EditorWindow
 
 		if (Physics.defaultContactOffset < 0.01f)
 		{
-			AddFix("Optimize Contact Offset", "For CPU performance, please don't use default contact offset below 0.01.", delegate (UnityEngine.Object obj, bool last, int selected)
+			AddFix("Optimize Contact Offset", "For CPU performance, please don't use default contact offset below 0.01.", delegate (Object obj, bool last, int selected)
 			{
 				Physics.defaultContactOffset = 0.01f;
 			}, null, false, "Fix");
@@ -481,7 +479,7 @@ public class OVRLint : EditorWindow
 
 		if (Physics.sleepThreshold < 0.005f)
 		{
-			AddFix("Optimize Sleep Threshold", "For CPU performance, please don't use sleep threshold below 0.005.", delegate (UnityEngine.Object obj, bool last, int selected)
+			AddFix("Optimize Sleep Threshold", "For CPU performance, please don't use sleep threshold below 0.005.", delegate (Object obj, bool last, int selected)
 			{
 				Physics.sleepThreshold = 0.005f;
 			}, null, false, "Fix");
@@ -489,7 +487,7 @@ public class OVRLint : EditorWindow
 
 		if (Physics.defaultSolverIterations > 8)
 		{
-			AddFix("Optimize Solver Iterations", "For CPU performance, please don't use excessive solver iteration counts.", delegate (UnityEngine.Object obj, bool last, int selected)
+			AddFix("Optimize Solver Iterations", "For CPU performance, please don't use excessive solver iteration counts.", delegate (Object obj, bool last, int selected)
 			{
 				Physics.defaultSolverIterations = 8;
 			}, null, false, "Fix");
@@ -500,7 +498,7 @@ public class OVRLint : EditorWindow
 		{
 			if (materials[i].shader.name.Contains("Parallax") || materials[i].IsKeywordEnabled("_PARALLAXMAP"))
 			{
-				AddFix("Optimize Shading", "For GPU performance, please don't use parallax-mapped materials.", delegate (UnityEngine.Object obj, bool last, int selected)
+				AddFix("Optimize Shading", "For GPU performance, please don't use parallax-mapped materials.", delegate (Object obj, bool last, int selected)
 				{
 					Material thisMaterial = (Material)obj;
 					if (thisMaterial.IsKeywordEnabled("_PARALLAXMAP"))
@@ -538,7 +536,7 @@ public class OVRLint : EditorWindow
 		var overlays = GameObject.FindObjectsOfType<OVROverlay>();
 		if (overlays.Length > 4)
 		{
-			AddFix("Optimize VR Layer Count", "For GPU performance, please use 4 or fewer VR layers.", delegate (UnityEngine.Object obj, bool last, int selected)
+			AddFix("Optimize VR Layer Count", "For GPU performance, please use 4 or fewer VR layers.", delegate (Object obj, bool last, int selected)
 			{
 				for (int i = 4; i < OVROverlay.instances.Length; ++i)
 				{
@@ -552,7 +550,7 @@ public class OVRLint : EditorWindow
 		{
 			if (splashScreen.filterMode != FilterMode.Trilinear)
 			{
-				AddFix("Optimize VR Splash Filtering", "For visual quality, please use trilinear filtering on your VR splash screen.", delegate (UnityEngine.Object obj, bool last, int EditorSelectedRenderState)
+				AddFix("Optimize VR Splash Filtering", "For visual quality, please use trilinear filtering on your VR splash screen.", delegate (Object obj, bool last, int EditorSelectedRenderState)
 				{
 					var assetPath = AssetDatabase.GetAssetPath(splashScreen);
 					var importer = (TextureImporter)TextureImporter.GetAtPath(assetPath);
@@ -563,7 +561,7 @@ public class OVRLint : EditorWindow
 
 			if (splashScreen.mipmapCount <= 1)
 			{
-				AddFix("Generate VR Splash Mipmaps", "For visual quality, please use mipmaps with your VR splash screen.", delegate (UnityEngine.Object obj, bool last, int EditorSelectedRenderState)
+				AddFix("Generate VR Splash Mipmaps", "For visual quality, please use mipmaps with your VR splash screen.", delegate (Object obj, bool last, int EditorSelectedRenderState)
 				{
 					var assetPath = AssetDatabase.GetAssetPath(splashScreen);
 					var importer = (TextureImporter)TextureImporter.GetAtPath(assetPath);
@@ -578,7 +576,7 @@ public class OVRLint : EditorWindow
 	{
 		if (!OVRPlugin.occlusionMesh)
 		{
-			AddFix("Occlusion Mesh", "Enabling the occlusion mesh saves substantial GPU resources, generally with no visual impact. Enable unless you have an exceptional use case.", delegate (UnityEngine.Object obj, bool last, int selected)
+			AddFix("Occlusion Mesh", "Enabling the occlusion mesh saves substantial GPU resources, generally with no visual impact. Enable unless you have an exceptional use case.", delegate (Object obj, bool last, int selected)
 			{
 				OVRPlugin.occlusionMesh = true;
 			}, null, false, "Set OVRPlugin.occlusionMesh = true");
@@ -586,7 +584,7 @@ public class OVRLint : EditorWindow
 
 		if (OVRManager.instance != null && !OVRManager.instance.useRecommendedMSAALevel)
 		{
-			AddFix("Optimize MSAA", "OVRManager can select the optimal antialiasing for the installed hardware at runtime. Recommend enabling this.", delegate (UnityEngine.Object obj, bool last, int selected)
+			AddFix("Optimize MSAA", "OVRManager can select the optimal antialiasing for the installed hardware at runtime. Recommend enabling this.", delegate (Object obj, bool last, int selected)
 			{
 				var ovrManagers = GameObject.FindObjectsOfType<OVRManager>();
 				foreach (var ovrManager in ovrManagers)
@@ -598,7 +596,7 @@ public class OVRLint : EditorWindow
 
 		if (UnityEngine.XR.XRSettings.eyeTextureResolutionScale > 1.5)
 		{
-			AddFix("Optimize Render Scale", "Render scale above 1.5 is extremely expensive on the GPU, with little if any positive visual benefit.", delegate (UnityEngine.Object obj, bool last, int selected)
+			AddFix("Optimize Render Scale", "Render scale above 1.5 is extremely expensive on the GPU, with little if any positive visual benefit.", delegate (Object obj, bool last, int selected)
 			{
 				UnityEngine.XR.XRSettings.eyeTextureResolutionScale = 1.5f;
 			}, null, false, "Fix");

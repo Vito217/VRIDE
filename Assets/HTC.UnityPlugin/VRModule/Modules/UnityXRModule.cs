@@ -1,6 +1,5 @@
 //========= Copyright 2016-2020, HTC Corporation. All rights reserved. ===========
 
-using HTC.UnityPlugin.Utility;
 using HTC.UnityPlugin.Vive;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -12,7 +11,6 @@ using UnityEngine.XR;
 #if VIU_XR_GENERAL_SETTINGS
 using UnityEngine.XR.Management;
 using UnityEngine.SpatialTracking;
-using System;
 #if VIU_WAVEXR_ESSENCE_RENDERMODEL
 using Wave.Essence;
 #endif
@@ -309,7 +307,7 @@ namespace HTC.UnityPlugin.VRModuleManagement
             if (VRModule.lockPhysicsUpdateRateToRenderFrequency && Time.timeScale > 0.0f)
             {
                 List<XRDisplaySubsystem> displaySystems = new List<XRDisplaySubsystem>();
-                SubsystemManager.GetInstances<XRDisplaySubsystem>(displaySystems);
+                SubsystemManager.GetInstances(displaySystems);
 
                 float minRefreshRate = float.MaxValue;
                 foreach (XRDisplaySubsystem system in displaySystems)

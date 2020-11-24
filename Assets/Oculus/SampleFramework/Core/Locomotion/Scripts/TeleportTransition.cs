@@ -7,8 +7,6 @@ language governing permissions and limitations under the license.
 
 ************************************************************************************/
 
-using UnityEngine;
-using System.Collections;
 
 /// <summary>
 /// Teleport transitions manage the actual relocation of the player from the current position and orientation

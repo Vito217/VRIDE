@@ -2,13 +2,9 @@
 
 namespace Oculus.Platform
 {
-  using System;
-  using System.Collections;
-  using Oculus.Platform.Models;
-  using System.Collections.Generic;
-  using UnityEngine;
+    using System;
 
-  public class MatchmakingOptions {
+    public class MatchmakingOptions {
 
     public MatchmakingOptions() {
       Handle = CAPI.ovr_MatchmakingOptions_Create();

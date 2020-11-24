@@ -12,7 +12,6 @@ using XRDevice = UnityEngine.VR.VRDevice;
 using XRSettings = UnityEngine.VR.VRSettings;
 #endif
 #if VIU_XR_GENERAL_SETTINGS
-using UnityEngine.XR.Management;
 using UnityEngine.SpatialTracking;
 #endif
 #endif

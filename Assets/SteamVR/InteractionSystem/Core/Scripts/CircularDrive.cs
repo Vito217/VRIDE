@@ -34,13 +34,13 @@ namespace Valve.VR.InteractionSystem
 		[Tooltip( "If true, the drive will stay manipulating as long as the button is held down, if false, it will stop if the controller moves out of the collider" )]
 		public bool hoverLock = false;
 
-		[HeaderAttribute( "Limited Rotation" )]
+		[Header( "Limited Rotation" )]
 		[Tooltip( "If true, the rotation will be limited to [minAngle, maxAngle], if false, the rotation is unlimited" )]
 		public bool limited = false;
 		public Vector2 frozenDistanceMinMaxThreshold = new Vector2( 0.1f, 0.2f );
 		public UnityEvent onFrozenDistanceThreshold;
 
-		[HeaderAttribute( "Limited Rotation Min" )]
+		[Header( "Limited Rotation Min" )]
 		[Tooltip( "If limited is true, the specifies the lower limit, otherwise value is unused" )]
 		public float minAngle = -45.0f;
 		[Tooltip( "If limited, set whether drive will freeze its angle when the min angle is reached" )]
@@ -48,7 +48,7 @@ namespace Valve.VR.InteractionSystem
 		[Tooltip( "If limited, event invoked when minAngle is reached" )]
 		public UnityEvent onMinAngle;
 
-		[HeaderAttribute( "Limited Rotation Max" )]
+		[Header( "Limited Rotation Max" )]
 		[Tooltip( "If limited is true, the specifies the upper limit, otherwise value is unused" )]
 		public float maxAngle = 45.0f;
 		[Tooltip( "If limited, set whether drive will freeze its angle when the max angle is reached" )]

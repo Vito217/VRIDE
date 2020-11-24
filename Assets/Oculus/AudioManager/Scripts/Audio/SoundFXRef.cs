@@ -1,16 +1,15 @@
 using UnityEngine;
-using System.Collections;
 
 namespace OVR
 {
 
-/*
------------------------
-SoundFXRef
-just a references to a SoundFX.. all the SoundFX methods are called indirectly from here
------------------------
-*/
-[System.Serializable]
+    /*
+    -----------------------
+    SoundFXRef
+    just a references to a SoundFX.. all the SoundFX methods are called indirectly from here
+    -----------------------
+    */
+    [System.Serializable]
 public class SoundFXRef {
 
 	public string			soundFXName = string.Empty;

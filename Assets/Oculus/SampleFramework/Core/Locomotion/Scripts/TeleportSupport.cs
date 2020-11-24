@@ -8,7 +8,6 @@ language governing permissions and limitations under the license.
 ************************************************************************************/
 
 using UnityEngine;
-using System.Collections;
 
 /// <summary>
 /// The TeleportSupport is an EventHandlerBehavior used by a number of derived behaviors 

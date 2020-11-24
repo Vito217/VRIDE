@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.IO;
 using System;
 
 #if UNITY_EDITOR
-[UnityEditor.InitializeOnLoad]
+[InitializeOnLoad]
 #endif
 public class OVRConfig : ScriptableObject
 {

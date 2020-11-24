@@ -11,7 +11,6 @@ language governing permissions and limitations under the license.
 //#define SHOW_PATH_RESULT
 
 using UnityEngine;
-using System.Collections;
 using System.Diagnostics;
 
 public class TeleportTargetHandlerNavMesh : TeleportTargetHandler

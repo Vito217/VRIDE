@@ -2,13 +2,9 @@
 
 namespace Oculus.Platform.Models
 {
-  using System;
-  using System.Collections;
-  using Oculus.Platform.Models;
-  using System.Collections.Generic;
-  using UnityEngine;
+    using System;
 
-  public class CalApplicationFinalized
+    public class CalApplicationFinalized
   {
     public readonly int CountdownMS;
     public readonly UInt64 ID;

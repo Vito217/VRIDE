@@ -2,13 +2,10 @@
 
 namespace Oculus.Platform.Models
 {
-  using System;
-  using System.Collections;
-  using Oculus.Platform.Models;
-  using System.Collections.Generic;
-  using UnityEngine;
+    using System;
+    using System.Collections.Generic;
 
-  public class CloudStorageMetadata
+    public class CloudStorageMetadata
   {
     public readonly string Bucket;
     public readonly long Counter;

@@ -815,7 +815,7 @@ namespace Oculus.Avatar
 #else
         private const string LibFile = "libovravatar";
 
-        public static readonly System.Version AvatarSDKVersion = new System.Version(1, 36, 0);
+        public static readonly Version AvatarSDKVersion = new Version(1, 36, 0);
 
         [DllImport(LibFile, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ovrAvatar_Initialize(string appID);
@@ -1158,7 +1158,7 @@ namespace Oculus.Avatar
         public static UInt64[] ovrAvatarAsset_GetCombinedMeshIDs(IntPtr assetHandle)
         {
             UInt32 count = 0;
-            System.IntPtr countPtr = Marshal.AllocHGlobal(Marshal.SizeOf(count));
+            IntPtr countPtr = Marshal.AllocHGlobal(Marshal.SizeOf(count));
             IntPtr idBuffer = ovrAvatarAsset_GetCombinedMeshIDs_Native(assetHandle, countPtr);
             count = (UInt32)Marshal.PtrToStructure(countPtr, typeof(UInt32));
             UInt64[] meshIDs = new UInt64[count];
@@ -1178,8 +1178,8 @@ namespace Oculus.Avatar
 
         public static void ovrAvatar_GetCombinedMeshAlphaData(IntPtr avatar, ref UInt64 textureID, ref Vector4 offset)
         {
-            System.IntPtr textureIDPtr = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(UInt64)));
-            System.IntPtr offsetPtr = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(Vector4)));
+            IntPtr textureIDPtr = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(UInt64)));
+            IntPtr offsetPtr = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(Vector4)));
 
             ovrAvatar_GetCombinedMeshAlphaData_Native(avatar, textureIDPtr, offsetPtr);
 
@@ -1332,7 +1332,7 @@ namespace Oculus.Avatar
 
         public static ovrAvatarPBSMaterialState[] ovrAvatar_GetBodyPBSMaterialStates(IntPtr renderPart)
         {
-            System.IntPtr countPtr = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(UInt32)));
+            IntPtr countPtr = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(UInt32)));
             IntPtr ptrState = ovrAvatar_GetBodyPBSMaterialStates_Native(renderPart, countPtr);
             UInt32 count = (UInt32)Marshal.ReadInt32(countPtr);
 
@@ -1600,7 +1600,7 @@ namespace Oculus.Avatar
 
         //OvrPlugin Hooks
         private const string ovrPluginDLL = "OVRPlugin";
-        private static System.Version ovrPluginVersion;
+        private static Version ovrPluginVersion;
 
         public enum Result
         {
@@ -1627,11 +1627,11 @@ namespace Oculus.Avatar
               string version = ovrp_GetVersion();
               if (!String.IsNullOrEmpty(version))
               {
-                ovrPluginVersion = new System.Version(version.Split('-')[0]);
+                ovrPluginVersion = new Version(version.Split('-')[0]);
               }
               else
               {
-                ovrPluginVersion = new System.Version(0, 0, 0);
+                ovrPluginVersion = new Version(0, 0, 0);
               }
             }
             if (ovrPluginVersion >= OVRP_1_30_0.version)
@@ -1655,7 +1655,7 @@ namespace Oculus.Avatar
 
         private static class OVRP_1_30_0
         {
-          public static readonly System.Version version = new System.Version(1, 30, 0);
+          public static readonly Version version = new Version(1, 30, 0);
           [DllImport(ovrPluginDLL, CallingConvention = CallingConvention.Cdecl)]
           public static extern Result ovrp_SendEvent2(string name, string param, string source);
         }

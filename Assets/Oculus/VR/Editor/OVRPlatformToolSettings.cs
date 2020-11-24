@@ -1,7 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 using UnityEditor;
 using UnityEngine;
 
@@ -9,7 +6,7 @@ using UnityEngine;
 namespace Assets.Oculus.VR.Editor
 {
 #if UNITY_EDITOR
-	[UnityEditor.InitializeOnLoad]
+    [InitializeOnLoad]
 #endif
 	public sealed class OVRPlatformToolSettings : ScriptableObject
 	{

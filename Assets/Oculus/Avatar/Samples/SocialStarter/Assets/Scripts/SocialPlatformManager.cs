@@ -1,9 +1,7 @@
 using UnityEngine;
 using AOT;
 using System;
-using System.IO;
 using System.Collections.Generic;
-using Oculus.Avatar;
 using Oculus.Platform;
 using Oculus.Platform.Models;
 
@@ -561,8 +559,8 @@ public class SocialPlatformManager : MonoBehaviour
         voiceCurrent = voiceMax;
     }
 
-    [MonoPInvokeCallback(typeof(Oculus.Platform.CAPI.FilterCallback))]
-    public static void MicFilter(short[] pcmData, System.UIntPtr pcmDataLength, int frequency, int numChannels)
+    [MonoPInvokeCallback(typeof(CAPI.FilterCallback))]
+    public static void MicFilter(short[] pcmData, UIntPtr pcmDataLength, int frequency, int numChannels)
     {
         s_instance.UpdateVoiceData(pcmData, numChannels);
     }

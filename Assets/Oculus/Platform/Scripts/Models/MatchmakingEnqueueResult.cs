@@ -4,13 +4,9 @@
 
 namespace Oculus.Platform.Models
 {
-  using System;
-  using System.Collections;
-  using Oculus.Platform.Models;
-  using System.Collections.Generic;
-  using UnityEngine;
+    using System;
 
-  public class MatchmakingEnqueueResult
+    public class MatchmakingEnqueueResult
   {
     // May be null. Check before using.
     public readonly MatchmakingAdminSnapshot AdminSnapshotOptional;

@@ -15,7 +15,6 @@ permissions and limitations under the License.
 ************************************************************************************/
 
 using UnityEngine;
-using System.Collections;
 
 /// <summary>
 /// Diagnostic display with a regular grid of cubes for visual testing of

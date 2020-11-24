@@ -5,13 +5,12 @@ using System.Runtime.CompilerServices;
 
 namespace Oculus.Platform
 {
-  using UnityEngine;
-  using System;
-  using System.Collections;
-  using System.Collections.Generic;
-  using System.Runtime.InteropServices;
+    using UnityEngine;
+    using System;
+    using System.Collections.Generic;
+    using System.Runtime.InteropServices;
 
-  public sealed class Core {
+    public sealed class Core {
     private static bool IsPlatformInitialized = false;
     public static bool IsInitialized()
     {
@@ -502,7 +501,7 @@ namespace Oculus.Platform
       return SystemVoipStatus.Unknown;
     }
 
-    public static Oculus.Platform.VoipDtxState GetIsConnectionUsingDtx(UInt64 peerID)
+    public static VoipDtxState GetIsConnectionUsingDtx(UInt64 peerID)
     {
       if (Core.IsInitialized())
       {
@@ -511,7 +510,7 @@ namespace Oculus.Platform
       return Oculus.Platform.VoipDtxState.Unknown;
     }
 
-    public static Oculus.Platform.VoipBitrate GetLocalBitrate(UInt64 peerID)
+    public static VoipBitrate GetLocalBitrate(UInt64 peerID)
     {
       if (Core.IsInitialized())
       {
@@ -520,7 +519,7 @@ namespace Oculus.Platform
       return Oculus.Platform.VoipBitrate.Unknown;
     }
 
-    public static Oculus.Platform.VoipBitrate GetRemoteBitrate(UInt64 peerID)
+    public static VoipBitrate GetRemoteBitrate(UInt64 peerID)
     {
       if (Core.IsInitialized())
       {

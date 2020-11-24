@@ -1,10 +1,5 @@
 ﻿//========= Copyright 2016-2020, HTC Corporation. All rights reserved. ===========
 
-using System;
-using HTC.UnityPlugin.Vive;
-using UnityEditor;
-using UnityEngine;
-
 namespace HTC.UnityPlugin.VRModuleManagement
 {
     public static class UnityVRModuleEditor

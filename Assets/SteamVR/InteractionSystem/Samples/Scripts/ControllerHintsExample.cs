@@ -6,12 +6,11 @@
 
 using UnityEngine;
 using System.Collections;
-using Valve.VR;
 
 namespace Valve.VR.InteractionSystem.Sample
 {
-	//-------------------------------------------------------------------------
-	public class ControllerHintsExample : MonoBehaviour
+    //-------------------------------------------------------------------------
+    public class ControllerHintsExample : MonoBehaviour
 	{
 		private Coroutine buttonHintCoroutine;
 		private Coroutine textHintCoroutine;

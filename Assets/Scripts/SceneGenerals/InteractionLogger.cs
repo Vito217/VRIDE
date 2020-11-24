@@ -19,7 +19,6 @@ namespace LoggingModule
         public static DateTime sessionEnd;
 
         private static bool inEditor = Application.isEditor;
-        private static bool usePersistentPath = true;
         public static float totalSessionTime = 0.0f;
         static string persistentPath = Path.Combine(
             Application.persistentDataPath, "VRIDE_log.txt");

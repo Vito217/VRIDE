@@ -15,7 +15,6 @@ permissions and limitations under the License.
 ************************************************************************************/
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
@@ -261,7 +260,7 @@ public static class OVRInput
 
 	private static bool _pluginSupportsActiveController = false;
 	private static bool _pluginSupportsActiveControllerCached = false;
-	private static System.Version _pluginSupportsActiveControllerMinVersion = new System.Version(1, 9, 0);
+	private static Version _pluginSupportsActiveControllerMinVersion = new Version(1, 9, 0);
 	private static bool pluginSupportsActiveController
 	{
 		get
@@ -374,8 +373,8 @@ public static class OVRInput
 			Controller localActiveController = activeControllerType;
 
 			// override locally derived active and connected controllers if plugin provides more accurate data
-			connectedControllerTypes = (OVRInput.Controller)OVRPlugin.GetConnectedControllers();
-			activeControllerType = (OVRInput.Controller)OVRPlugin.GetActiveController();
+			connectedControllerTypes = (Controller)OVRPlugin.GetConnectedControllers();
+			activeControllerType = (Controller)OVRPlugin.GetActiveController();
 
 			// unless the plugin reports none and we locally detected hands as the active controller
 			if (activeControllerType == Controller.None && ((localActiveController & Controller.Hands) != 0))
@@ -406,7 +405,7 @@ public static class OVRInput
 	/// Returns true if the given Controller's orientation is currently tracked.
 	/// Only supported for Oculus LTouch and RTouch controllers. Non-tracked controllers will return false.
 	/// </summary>
-	public static bool GetControllerOrientationTracked(OVRInput.Controller controllerType)
+	public static bool GetControllerOrientationTracked(Controller controllerType)
 	{
 		switch (controllerType)
 		{
@@ -425,7 +424,7 @@ public static class OVRInput
 	/// Returns true if the given Controller's orientation is currently valid.
 	/// Only supported for Oculus LTouch and RTouch controllers. Non-tracked controllers will return false.
 	/// </summary>
-	public static bool GetControllerOrientationValid(OVRInput.Controller controllerType)
+	public static bool GetControllerOrientationValid(Controller controllerType)
 	{
 		switch (controllerType)
 		{
@@ -445,7 +444,7 @@ public static class OVRInput
 	/// Returns true if the given Controller's position is currently tracked.
 	/// Only supported for Oculus LTouch and RTouch controllers. Non-tracked controllers will return false.
 	/// </summary>
-	public static bool GetControllerPositionTracked(OVRInput.Controller controllerType)
+	public static bool GetControllerPositionTracked(Controller controllerType)
 	{
 		switch (controllerType)
 		{
@@ -464,7 +463,7 @@ public static class OVRInput
 	/// Returns true if the given Controller's position is currently valid.
 	/// Only supported for Oculus LTouch and RTouch controllers. Non-tracked controllers will return false.
 	/// </summary>
-	public static bool GetControllerPositionValid(OVRInput.Controller controllerType)
+	public static bool GetControllerPositionValid(Controller controllerType)
 	{
 		switch (controllerType)
 		{
@@ -483,7 +482,7 @@ public static class OVRInput
 	/// Gets the position of the given Controller local to its tracking space.
 	/// Only supported for Oculus LTouch and RTouch controllers. Non-tracked controllers will return Vector3.zero.
 	/// </summary>
-	public static Vector3 GetLocalControllerPosition(OVRInput.Controller controllerType)
+	public static Vector3 GetLocalControllerPosition(Controller controllerType)
 	{
 		switch (controllerType)
 		{
@@ -522,7 +521,7 @@ public static class OVRInput
 	/// Gets the linear velocity of the given Controller local to its tracking space.
 	/// Only supported for Oculus LTouch and RTouch controllers. Non-tracked controllers will return Vector3.zero.
 	/// </summary>
-	public static Vector3 GetLocalControllerVelocity(OVRInput.Controller controllerType)
+	public static Vector3 GetLocalControllerVelocity(Controller controllerType)
 	{
 		Vector3 velocity = Vector3.zero;
 
@@ -557,7 +556,7 @@ public static class OVRInput
 	/// Gets the linear acceleration of the given Controller local to its tracking space.
 	/// Only supported for Oculus LTouch and RTouch controllers. Non-tracked controllers will return Vector3.zero.
 	/// </summary>
-	public static Vector3 GetLocalControllerAcceleration(OVRInput.Controller controllerType)
+	public static Vector3 GetLocalControllerAcceleration(Controller controllerType)
 	{
 		Vector3 accel = Vector3.zero;
 
@@ -592,7 +591,7 @@ public static class OVRInput
 	/// Gets the rotation of the given Controller local to its tracking space.
 	/// Only supported for Oculus LTouch and RTouch controllers. Non-tracked controllers will return Quaternion.identity.
 	/// </summary>
-	public static Quaternion GetLocalControllerRotation(OVRInput.Controller controllerType)
+	public static Quaternion GetLocalControllerRotation(Controller controllerType)
 	{
 		switch (controllerType)
 		{
@@ -631,7 +630,7 @@ public static class OVRInput
 	/// Gets the angular velocity of the given Controller local to its tracking space in radians per second around each axis.
 	/// Only supported for Oculus LTouch and RTouch controllers. Non-tracked controllers will return Vector3.zero.
 	/// </summary>
-	public static Vector3 GetLocalControllerAngularVelocity(OVRInput.Controller controllerType)
+	public static Vector3 GetLocalControllerAngularVelocity(Controller controllerType)
 	{
 		Vector3 velocity = Vector3.zero;
 
@@ -666,7 +665,7 @@ public static class OVRInput
 	/// Gets the angular acceleration of the given Controller local to its tracking space in radians per second per second around each axis.
 	/// Only supported for Oculus LTouch and RTouch controllers. Non-tracked controllers will return Vector3.zero.
 	/// </summary>
-	public static Vector3 GetLocalControllerAngularAcceleration(OVRInput.Controller controllerType)
+	public static Vector3 GetLocalControllerAngularAcceleration(Controller controllerType)
 	{
 		Vector3 accel = Vector3.zero;
 

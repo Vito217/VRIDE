@@ -1,8 +1,5 @@
-using System.Collections;
 using System.IO;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 // Create menu of all scenes included in the build.
 public class StartMenu : MonoBehaviour

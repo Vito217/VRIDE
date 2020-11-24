@@ -7,10 +7,7 @@ language governing permissions and limitations under the license.
 
 ************************************************************************************/
 
-using System;
 using UnityEngine;
-using System.Collections;
-using UnityEngine.EventSystems;
 
 /// <summary>
 /// This target handler simply returns any location that is detected by the aim collision tests.

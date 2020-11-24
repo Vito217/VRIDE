@@ -2,13 +2,9 @@
 
 namespace Oculus.Platform
 {
-  using System;
-  using System.Collections;
-  using Oculus.Platform.Models;
-  using System.Collections.Generic;
-  using UnityEngine;
+    using System;
 
-  public class RichPresenceOptions {
+    public class RichPresenceOptions {
 
     public RichPresenceOptions() {
       Handle = CAPI.ovr_RichPresenceOptions_Create();

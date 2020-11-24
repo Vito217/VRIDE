@@ -1,15 +1,14 @@
 namespace Oculus.Platform.Samples.VrHoops
 {
-	using UnityEngine;
-	using System.Collections;
+    using UnityEngine;
 
-	// This component handles network coordination for moving balls.
-	// Synchronizing moving objects that are under the influence of physics
-	// and other forces is somewhat of an art and this example only scratches
-	// the surface.  Ultimately how you synchronize will depend on the requirements
-	// of your application and its tolerance for users seeing slightly different
-	// versions of the simulation.
-	public class P2PNetworkBall : MonoBehaviour
+    // This component handles network coordination for moving balls.
+    // Synchronizing moving objects that are under the influence of physics
+    // and other forces is somewhat of an art and this example only scratches
+    // the surface.  Ultimately how you synchronize will depend on the requirements
+    // of your application and its tolerance for users seeing slightly different
+    // versions of the simulation.
+    public class P2PNetworkBall : MonoBehaviour
 	{
 		// the last time this ball locally collided with something
 		private float lastCollisionTime;

@@ -1,10 +1,8 @@
 namespace Oculus.Platform.Models
 {
-  using UnityEngine;
-  using System;
-  using System.ComponentModel;
+    using System;
 
-  public class NetworkingPeer
+    public class NetworkingPeer
   {
     public NetworkingPeer(UInt64 id, PeerConnectionState state) {
       ID = id;

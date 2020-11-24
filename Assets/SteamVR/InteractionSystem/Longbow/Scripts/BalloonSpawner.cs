@@ -5,12 +5,11 @@
 //=============================================================================
 
 using UnityEngine;
-using System.Collections;
 
 namespace Valve.VR.InteractionSystem
 {
-	//-------------------------------------------------------------------------
-	public class BalloonSpawner : MonoBehaviour
+    //-------------------------------------------------------------------------
+    public class BalloonSpawner : MonoBehaviour
 	{
 		public float minSpawnTime = 5f;
 		public float maxSpawnTime = 15f;

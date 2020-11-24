@@ -9,7 +9,6 @@ language governing permissions and limitations under the license.
 
 using System;
 using UnityEngine;
-using System.Collections;
 
 public class TeleportAimVisualLaser : TeleportSupport
 {

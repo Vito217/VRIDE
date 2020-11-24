@@ -5,12 +5,11 @@
 //=============================================================================
 
 using UnityEngine;
-using System.Collections;
 
 namespace Valve.VR.InteractionSystem
 {
-	//-------------------------------------------------------------------------
-	public class SoundBowClick : MonoBehaviour
+    //-------------------------------------------------------------------------
+    public class SoundBowClick : MonoBehaviour
 	{
 		public AudioClip bowClick;
 		public AnimationCurve pitchTensionCurve;

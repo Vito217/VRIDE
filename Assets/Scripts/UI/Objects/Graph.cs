@@ -1,7 +1,6 @@
 ﻿using ImageUtils;
 using LoggingModule;
 using SaveAndLoad;
-using System.Collections;
 using Unity.VectorGraphics;
 
 public class Graph : InitializeBehaviour

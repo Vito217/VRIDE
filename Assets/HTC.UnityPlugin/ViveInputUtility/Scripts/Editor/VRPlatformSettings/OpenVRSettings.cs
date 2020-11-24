@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEditor;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -15,7 +14,6 @@ using HTC.UnityPlugin.UPMRegistryTool;
 #endif
 
 #if UNITY_2017_2_OR_NEWER
-using UnityEngine.XR;
 #endif
 
 #if VIU_STEAMVR_2_0_0_OR_NEWER

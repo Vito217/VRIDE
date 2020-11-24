@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class PrintItKey : VRKey 
+﻿public class PrintItKey : VRKey 
 {
     public override void OnClick()
     {

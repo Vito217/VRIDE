@@ -6,12 +6,11 @@
 
 using UnityEngine;
 using UnityEngine.Events;
-using System.Collections;
 
 namespace Valve.VR.InteractionSystem
 {
-	//-------------------------------------------------------------------------
-	[RequireComponent( typeof( Interactable ) )]
+    //-------------------------------------------------------------------------
+    [RequireComponent( typeof( Interactable ) )]
 	public class InteractableHoverEvents : MonoBehaviour
 	{
 		public UnityEvent onHandHoverBegin;

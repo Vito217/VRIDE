@@ -105,7 +105,7 @@ public class OVRLipSync : MonoBehaviour
     /// NOTE: Opaque typedef for lip-sync context is an unsigned int (uint)
 
     /// Current phoneme frame results
-    [System.Serializable]
+    [Serializable]
     public class Frame
     {
         public void CopyInput(Frame input)

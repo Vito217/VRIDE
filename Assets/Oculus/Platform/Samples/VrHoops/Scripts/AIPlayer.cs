@@ -1,10 +1,9 @@
 namespace Oculus.Platform.Samples.VrHoops
 {
-	using UnityEngine;
-	using System.Collections;
+    using UnityEngine;
 
-	// An AI Player just shoots a ball forward with some random delay.
-	public class AIPlayer : Player {
+    // An AI Player just shoots a ball forward with some random delay.
+    public class AIPlayer : Player {
 
 		void FixedUpdate ()
 		{

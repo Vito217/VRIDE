@@ -1,11 +1,10 @@
 namespace Oculus.Platform.Samples.VrHoops
 {
-	using UnityEngine;
-	using UnityEngine.UI;
+    using UnityEngine;
 
-	// Uses two triggers to detect that a basket is made by traveling from top to bottom
-	// through the hoop.
-	public class DetectBasket : MonoBehaviour
+    // Uses two triggers to detect that a basket is made by traveling from top to bottom
+    // through the hoop.
+    public class DetectBasket : MonoBehaviour
 	{
 		private enum BasketPhase { NONE, TOP, BOTH, BOTTOM }
 

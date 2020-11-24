@@ -7,8 +7,6 @@ language governing permissions and limitations under the license.
 
 ************************************************************************************/
 
-using UnityEngine;
-using System.Collections;
 
 /// <summary>
 /// This transition will move the player with no other side effects.

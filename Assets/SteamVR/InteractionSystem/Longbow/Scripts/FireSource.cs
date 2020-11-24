@@ -5,12 +5,11 @@
 //=============================================================================
 
 using UnityEngine;
-using System.Collections;
 
 namespace Valve.VR.InteractionSystem
 {
-	//-------------------------------------------------------------------------
-	public class FireSource : MonoBehaviour
+    //-------------------------------------------------------------------------
+    public class FireSource : MonoBehaviour
 	{
 		public GameObject fireParticlePrefab;
 		public bool startActive;

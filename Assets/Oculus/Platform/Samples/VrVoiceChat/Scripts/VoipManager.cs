@@ -1,14 +1,13 @@
 namespace Oculus.Platform.Samples.VrVoiceChat
 {
-	using UnityEngine;
-	using System.Collections;
+    using UnityEngine;
 
-	using Oculus.Platform;
-	using Oculus.Platform.Models;
+    using Oculus.Platform;
+    using Oculus.Platform.Models;
 
-	// Helper class to manage the Voice-over-IP connection to the
-	// remote user
-	public class VoipManager
+    // Helper class to manage the Voice-over-IP connection to the
+    // remote user
+    public class VoipManager
 	{
 		// the ID of the remote user I expect to talk to
 		private ulong m_remoteID;

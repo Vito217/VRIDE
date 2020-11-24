@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine.UI;
-using System.Text.RegularExpressions;
 
 public class Levenshtein : MonoBehaviour
 {

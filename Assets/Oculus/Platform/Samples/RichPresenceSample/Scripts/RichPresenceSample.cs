@@ -224,7 +224,7 @@ public class RichPresenceSample : MonoBehaviour
   }
 
   // User has interacted with a deeplink outside this app
-  void OnLaunchIntentChangeNotif(Oculus.Platform.Message<string> message)
+  void OnLaunchIntentChangeNotif(Message<string> message)
   {
     if (message.IsError)
     {

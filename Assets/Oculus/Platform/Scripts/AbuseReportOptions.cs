@@ -2,13 +2,9 @@
 
 namespace Oculus.Platform
 {
-  using System;
-  using System.Collections;
-  using Oculus.Platform.Models;
-  using System.Collections.Generic;
-  using UnityEngine;
+    using System;
 
-  public class AbuseReportOptions {
+    public class AbuseReportOptions {
 
     public AbuseReportOptions() {
       Handle = CAPI.ovr_AbuseReportOptions_Create();

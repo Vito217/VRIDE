@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-using UnityEditor;
-using System.Collections;
+﻿using UnityEditor;
 using UnityEditor.Callbacks;
 using System.IO;
 
@@ -8,7 +6,7 @@ namespace Valve.VR
 {
     public class SteamVR_Input_PostProcessBuild
     {
-        [PostProcessBuildAttribute(1)]
+        [PostProcessBuild(1)]
         public static void OnPostprocessBuild(BuildTarget target, string pathToBuiltProject)
         {
             

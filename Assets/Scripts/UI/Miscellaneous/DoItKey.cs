@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class DoItKey : VRKey
+﻿public class DoItKey : VRKey
 {
     public override void OnClick()
     {

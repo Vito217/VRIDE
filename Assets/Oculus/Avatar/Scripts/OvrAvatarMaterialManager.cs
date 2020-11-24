@@ -53,7 +53,7 @@ public class OvrAvatarMaterialManager : MonoBehaviour
     };
 
     // Container class for all the data relating to an avatar material description
-    [System.Serializable]
+    [Serializable]
     public class AvatarMaterialConfig
     {
         public AvatarComponentMaterialProperties[] ComponentMaterialProperties;
@@ -313,7 +313,7 @@ public class OvrAvatarMaterialManager : MonoBehaviour
             {
                 if (props[propIndex].Textures[index] == null)
                 {
-                    throw new System.Exception(
+                    throw new Exception(
                         props[propIndex].TypeIndex.ToString()
                         + "Invalid: "
                         + ((TextureType)index).ToString());
@@ -331,7 +331,7 @@ public class OvrAvatarMaterialManager : MonoBehaviour
                 if (props[propIndex - 1].Textures[textureIndex].height
                     != props[propIndex].Textures[textureIndex].height)
                 {
-                    throw new System.Exception(
+                    throw new Exception(
                         props[propIndex].TypeIndex.ToString()
                         + " Mismatching Resolutions: "
                         + ((TextureType)textureIndex).ToString()
@@ -349,7 +349,7 @@ public class OvrAvatarMaterialManager : MonoBehaviour
                 if (props[propIndex - 1].Textures[textureIndex].format
                     != props[propIndex].Textures[textureIndex].format)
                 {
-                    throw new System.Exception(
+                    throw new Exception(
                         props[propIndex].TypeIndex.ToString()
                         + " Mismatching Formats: "
                         + ((TextureType)textureIndex).ToString()

@@ -5,14 +5,12 @@
 //=============================================================================
 
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
-using System;
 
 namespace Valve.VR.InteractionSystem
 {
-	//-------------------------------------------------------------------------
-	[RequireComponent( typeof( Interactable ) )]
+    //-------------------------------------------------------------------------
+    [RequireComponent( typeof( Interactable ) )]
 	public class UIElement : MonoBehaviour
 	{
 		public CustomEvents.UnityEventHand onHandClick;

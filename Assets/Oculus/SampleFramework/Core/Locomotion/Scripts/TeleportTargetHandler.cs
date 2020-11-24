@@ -13,8 +13,6 @@ using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
-using Debug = UnityEngine.Debug;
 
 /// <summary>
 /// The TeleportTargetHandler's main purpose is to determine when the current aim target is valid

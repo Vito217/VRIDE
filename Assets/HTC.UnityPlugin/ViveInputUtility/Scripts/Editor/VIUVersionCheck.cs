@@ -131,7 +131,7 @@ namespace HTC.UnityPlugin.Vive
         private static bool completeCheckVersionFlow = false;
         private static UnityWebRequest webReq;
         private static RepoInfo latestRepoInfo;
-        private static System.Version latestVersion;
+        private static Version latestVersion;
         private static Vector2 releaseNoteScrollPosition;
         private static Vector2 settingScrollPosition;
         private static bool showNewVersion;
@@ -256,12 +256,12 @@ namespace HTC.UnityPlugin.Vive
                 {
                     try
                     {
-                        latestVersion = new System.Version(Regex.Replace(latestRepoInfo.tag_name, "[^0-9\\.]", string.Empty));
+                        latestVersion = new Version(Regex.Replace(latestRepoInfo.tag_name, "[^0-9\\.]", string.Empty));
                         ignoreThisVersionKey = string.Format(fmtIgnoreUpdateKey, latestVersion.ToString());
                     }
                     catch
                     {
-                        latestVersion = default(System.Version);
+                        latestVersion = default(Version);
                         ignoreThisVersionKey = string.Empty;
                     }
                 }

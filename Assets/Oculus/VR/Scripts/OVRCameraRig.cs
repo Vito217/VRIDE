@@ -18,9 +18,6 @@ permissions and limitations under the License.
 #define USING_XR_SDK
 #endif
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 using Node = UnityEngine.XR.XRNode;

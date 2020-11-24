@@ -5,12 +5,11 @@
 //=============================================================================
 
 using UnityEngine;
-using System.Collections;
 
 namespace Valve.VR.InteractionSystem
 {
-	//-------------------------------------------------------------------------
-	public class SpawnAndAttachToHand : MonoBehaviour
+    //-------------------------------------------------------------------------
+    public class SpawnAndAttachToHand : MonoBehaviour
 	{
 		public Hand hand;
 		public GameObject prefab;

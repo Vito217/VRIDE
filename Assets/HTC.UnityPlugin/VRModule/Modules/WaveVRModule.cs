@@ -1,10 +1,6 @@
 ﻿//========= Copyright 2016-2020, HTC Corporation. All rights reserved. ===========
 
 using HTC.UnityPlugin.Utility;
-using HTC.UnityPlugin.Vive;
-using System;
-using System.Collections.Generic;
-using UnityEngine;
 #if VIU_WAVEVR && UNITY_ANDROID
 using wvr;
 using Object = UnityEngine.Object;

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 using UnityEditor;
 using UnityEngine;
@@ -331,7 +330,7 @@ namespace Valve.VR
                 return typeof(SteamVR_Action_Vibration);
             }
 
-            throw new System.Exception("unknown type (" + action.type + ") in actions file for action: " + action.name);
+            throw new Exception("unknown type (" + action.type + ") in actions file for action: " + action.name);
         }
 
         private static string GetClassPath()

@@ -1,20 +1,19 @@
 namespace Oculus.Platform.Samples.VrBoardGame
 {
-	using System;
-	using UnityEngine;
+    using UnityEngine;
 
-	//
-	// This script describes the game board along with the game pieces that
-	// are in play.  The rules for the game board are:
-	// 1) Player can place a normal GamePiece on any empty BoardPosition
-	// 2) Player can place a power GamePiece on top of a normal piece
-	// 3) The board is full when all positions have a normal piece
-	// Player score is calculated as:
-	// 1) +10 points for each normal piece on the board
-	// 2) +10 points for each normal piece with 1 square of one of their power pieces
-	// 3) -10 points for each opponent normal piece within 1 square of their power pieces
-	//
-	public class GameBoard : MonoBehaviour
+    //
+    // This script describes the game board along with the game pieces that
+    // are in play.  The rules for the game board are:
+    // 1) Player can place a normal GamePiece on any empty BoardPosition
+    // 2) Player can place a power GamePiece on top of a normal piece
+    // 3) The board is full when all positions have a normal piece
+    // Player score is calculated as:
+    // 1) +10 points for each normal piece on the board
+    // 2) +10 points for each normal piece with 1 square of one of their power pieces
+    // 3) -10 points for each opponent normal piece within 1 square of their power pieces
+    //
+    public class GameBoard : MonoBehaviour
 	{
 		public const int LENGTH_X = 3;
 		public const int LENGTH_Y = 3;

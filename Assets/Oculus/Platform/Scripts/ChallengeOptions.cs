@@ -2,13 +2,9 @@
 
 namespace Oculus.Platform
 {
-  using System;
-  using System.Collections;
-  using Oculus.Platform.Models;
-  using System.Collections.Generic;
-  using UnityEngine;
+    using System;
 
-  public class ChallengeOptions {
+    public class ChallengeOptions {
 
     public ChallengeOptions() {
       Handle = CAPI.ovr_ChallengeOptions_Create();

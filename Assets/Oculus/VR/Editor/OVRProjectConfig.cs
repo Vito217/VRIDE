@@ -19,16 +19,15 @@ limitations under the License.
 
 ************************************************************************************/
 
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.IO;
 using System;
 
-[System.Serializable]
+[Serializable]
 #if UNITY_EDITOR
-[UnityEditor.InitializeOnLoad]
+[InitializeOnLoad]
 #endif
 public class OVRProjectConfig : ScriptableObject
 {
@@ -98,7 +97,7 @@ public class OVRProjectConfig : ScriptableObject
 		{
 			projectConfig = AssetDatabase.LoadAssetAtPath(oculusProjectConfigAssetPath, typeof(OVRProjectConfig)) as OVRProjectConfig;
 		}
-		catch (System.Exception e)
+		catch (Exception e)
 		{
 			Debug.LogWarningFormat("Unable to load ProjectConfig from {0}, error {1}", oculusProjectConfigAssetPath, e.Message);
 		}

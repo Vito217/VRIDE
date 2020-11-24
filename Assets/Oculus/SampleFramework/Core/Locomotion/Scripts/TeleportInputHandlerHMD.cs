@@ -8,7 +8,6 @@ language governing permissions and limitations under the license.
 ************************************************************************************/
 
 using UnityEngine;
-using System.Collections;
 
 /// <summary>
 /// When this component is enabled, the player will be able to aim and trigger teleport behavior using HMD aiming.
@@ -45,36 +44,36 @@ public class TeleportInputHandlerHMD : TeleportInputHandler
 	{
 		if (!isActiveAndEnabled)
 		{
-			return global::LocomotionTeleport.TeleportIntentions.None;
+			return LocomotionTeleport.TeleportIntentions.None;
 		}
 
-		if (LocomotionTeleport.CurrentIntention == global::LocomotionTeleport.TeleportIntentions.Aim)
+		if (LocomotionTeleport.CurrentIntention == LocomotionTeleport.TeleportIntentions.Aim)
 		{
 			// If the user has actually pressed the teleport button, enter the preteleport state.
 			if (OVRInput.GetDown(TeleportButton))
 			{
-				return FastTeleport ? global::LocomotionTeleport.TeleportIntentions.Teleport : global::LocomotionTeleport.TeleportIntentions.PreTeleport;
+				return FastTeleport ? LocomotionTeleport.TeleportIntentions.Teleport : LocomotionTeleport.TeleportIntentions.PreTeleport;
 			}
 		}
 
 		// If the user is already in the preteleport state, the intention will be to either remain in this state or switch to Teleport
-		if (LocomotionTeleport.CurrentIntention == global::LocomotionTeleport.TeleportIntentions.PreTeleport)
+		if (LocomotionTeleport.CurrentIntention == LocomotionTeleport.TeleportIntentions.PreTeleport)
 		{
 			// If they released the button, switch to Teleport.
 			if (OVRInput.GetUp(TeleportButton))
 			{
 				// Button released, enter the teleport state.
-				return global::LocomotionTeleport.TeleportIntentions.Teleport;
+				return LocomotionTeleport.TeleportIntentions.Teleport;
 			}
 			// Button still down, remain in PreTeleport so they can orient the destination if an orientation handler supports it.
-			return global::LocomotionTeleport.TeleportIntentions.PreTeleport;
+			return LocomotionTeleport.TeleportIntentions.PreTeleport;
 		}
 
 
 		// Update the aim intention based on the button press state of the AimButton.
 		if (OVRInput.Get(AimButton))
 		{
-			return global::LocomotionTeleport.TeleportIntentions.Aim;
+			return LocomotionTeleport.TeleportIntentions.Aim;
 		}
 
 		// If the aim button is the same as the teleport button, then there is no way to abort the teleport.
@@ -82,7 +81,7 @@ public class TeleportInputHandlerHMD : TeleportInputHandler
 		// the input handler would remain active.
 		if (AimButton == TeleportButton)
 		{
-			return global::LocomotionTeleport.TeleportIntentions.Teleport;
+			return LocomotionTeleport.TeleportIntentions.Teleport;
 		}
 
 		return LocomotionTeleport.TeleportIntentions.None;

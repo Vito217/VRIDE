@@ -5,12 +5,11 @@
 //=============================================================================
 
 using UnityEngine;
-using System.Collections;
 
 namespace Valve.VR.InteractionSystem
 {
-	//-------------------------------------------------------------------------
-	public class ExplosionWobble : MonoBehaviour
+    //-------------------------------------------------------------------------
+    public class ExplosionWobble : MonoBehaviour
 	{
 		//-------------------------------------------------
 		public void ExplosionEvent( Vector3 explosionPos )

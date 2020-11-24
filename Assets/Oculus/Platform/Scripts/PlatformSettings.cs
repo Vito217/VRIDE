@@ -1,10 +1,9 @@
 namespace Oculus.Platform
 {
-  using UnityEngine;
-  using System.Collections;
+    using UnityEngine;
 
 #if UNITY_EDITOR
-  [UnityEditor.InitializeOnLoad]
+    [UnityEditor.InitializeOnLoad]
 #endif
   public sealed class PlatformSettings : ScriptableObject
   {

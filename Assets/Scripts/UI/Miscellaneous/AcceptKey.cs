@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class AcceptKey : VRKey
+﻿public class AcceptKey : VRKey
 {
     public override void OnClick()
     {

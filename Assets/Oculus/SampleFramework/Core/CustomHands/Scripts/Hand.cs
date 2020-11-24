@@ -12,7 +12,6 @@ language governing permissions and limitations under the license.
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using OVRTouchSample;
 #if UNITY_EDITOR
 using UnityEngine.SceneManagement;
 #endif

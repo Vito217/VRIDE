@@ -1,10 +1,8 @@
 namespace Oculus.Platform.Models
 {
-  using UnityEngine;
-  using System;
-  using System.ComponentModel;
+    using System;
 
-  public class PingResult
+    public class PingResult
   {
     public PingResult(UInt64 id, UInt64? pingTimeUsec) {
       this.ID = id;

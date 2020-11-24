@@ -16,8 +16,6 @@ permissions and limitations under the License.
 
 using UnityEngine;
 using UnityEditor;
-using System.Collections.Generic;
-using System.Reflection;
 
 [CustomEditor(typeof(OVRManager))]
 public class OVRManagerEditor : Editor

@@ -3,12 +3,8 @@
 #pragma warning disable 0618
 #if UNITY_2017_1_OR_NEWER
 
-using HTC.UnityPlugin.Utility;
-using System.Collections.Generic;
-using UnityEngine;
 
 #if UNITY_2017_2_OR_NEWER
-using UnityEngine.XR;
 #else
 using UnityEngine.VR;
 using XRSettings = UnityEngine.VR.VRSettings;

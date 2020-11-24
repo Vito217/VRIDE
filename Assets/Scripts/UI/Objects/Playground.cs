@@ -12,7 +12,6 @@ using LoggingModule;
 using SaveAndLoad;
 using ImageUtils;
 using TMPro;
-using System.Collections;
 
 public class Playground : InitializeBehaviour
 {
@@ -1041,7 +1040,7 @@ public class Playground : InitializeBehaviour
                 else if ((cmd && p) || f4)
                     PharoPrint();
                 else if ((cmd && i) || f5)
-                    PharoInspect();
+                    _ = PharoInspect();
 
                 //else if (((leftCmd || leftCtrl) && b) || f8)
                 //    PharoBrowse();

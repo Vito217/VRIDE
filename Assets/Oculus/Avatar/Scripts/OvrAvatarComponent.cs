@@ -1,9 +1,7 @@
 using System;
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using Oculus.Avatar;
-using System.Threading;
 
 public class OvrAvatarComponent : MonoBehaviour
 {

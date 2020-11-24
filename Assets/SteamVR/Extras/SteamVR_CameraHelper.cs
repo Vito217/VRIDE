@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace Valve.VR
 {
-	public class SteamVR_CameraHelper : MonoBehaviour
+    public class SteamVR_CameraHelper : MonoBehaviour
 	{
 		void Start()
 		{

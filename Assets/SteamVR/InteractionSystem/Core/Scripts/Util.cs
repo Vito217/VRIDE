@@ -301,7 +301,7 @@ namespace Valve.VR.InteractionSystem
 
 
 		//-------------------------------------------------
-		public static List<T> FindAndRemove<T>( List<T> list, System.Predicate<T> match )
+		public static List<T> FindAndRemove<T>( List<T> list, Predicate<T> match )
 		{
 			List<T> retVal = list.FindAll( match );
 			list.RemoveAll( match );
@@ -408,7 +408,7 @@ namespace Valve.VR.InteractionSystem
 
 
 		//-------------------------------------------------
-		public static void AfterTimer( GameObject go, float _time, System.Action callback, bool trigger_if_destroyed_early = false )
+		public static void AfterTimer( GameObject go, float _time, Action callback, bool trigger_if_destroyed_early = false )
 		{
 			AfterTimer_Component afterTimer_component = go.AddComponent<AfterTimer_Component>();
 			afterTimer_component.Init( _time, callback, trigger_if_destroyed_early );
@@ -466,7 +466,7 @@ namespace Valve.VR.InteractionSystem
 
 
 		//-------------------------------------------------
-		public static IEnumerator WrapCoroutine( IEnumerator coroutine, System.Action onCoroutineFinished )
+		public static IEnumerator WrapCoroutine( IEnumerator coroutine, Action onCoroutineFinished )
 		{
 			while ( coroutine.MoveNext() )
 			{
@@ -687,16 +687,16 @@ namespace Valve.VR.InteractionSystem
 	//-------------------------------------------------------------------------
 	//Component used by the static AfterTimer function
 	//-------------------------------------------------------------------------
-	[System.Serializable]
+	[Serializable]
 	public class AfterTimer_Component : MonoBehaviour
 	{
-		private System.Action callback;
+		private Action callback;
 		private float triggerTime;
 		private bool timerActive = false;
 		private bool triggerOnEarlyDestroy = false;
 
 		//-------------------------------------------------
-		public void Init( float _time, System.Action _callback, bool earlydestroy )
+		public void Init( float _time, Action _callback, bool earlydestroy )
 		{
 			triggerTime = _time;
 			callback = _callback;

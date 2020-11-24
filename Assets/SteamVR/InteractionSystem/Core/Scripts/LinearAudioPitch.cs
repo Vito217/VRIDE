@@ -6,12 +6,11 @@
 //=============================================================================
 
 using UnityEngine;
-using System.Collections;
 
 namespace Valve.VR.InteractionSystem
 {
-	//-------------------------------------------------------------------------
-	public class LinearAudioPitch : MonoBehaviour
+    //-------------------------------------------------------------------------
+    public class LinearAudioPitch : MonoBehaviour
 	{
 		public LinearMapping linearMapping;
 		public AnimationCurve pitchCurve;

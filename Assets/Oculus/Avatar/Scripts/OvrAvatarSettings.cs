@@ -1,8 +1,7 @@
 using UnityEngine;
-using System.Collections;
 
 #if UNITY_EDITOR
-    [UnityEditor.InitializeOnLoad]
+[UnityEditor.InitializeOnLoad]
 #endif
 public sealed class OvrAvatarSettings : ScriptableObject {
     public static string AppID

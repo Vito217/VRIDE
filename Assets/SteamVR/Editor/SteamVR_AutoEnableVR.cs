@@ -6,17 +6,10 @@
 
 using UnityEngine;
 using UnityEditor;
-using System.IO;
-using System.Collections.Generic;
-using System.Linq;
 using System;
 using System.Reflection;
 
-using Valve.VR.InteractionSystem;
-
 #if OPENVR_XR_API
-using UnityEditor.XR.Management.Metadata;
-using UnityEngine.XR.Management;
 #endif
 
 #if UNITY_2018_2_OR_NEWER

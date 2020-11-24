@@ -1,14 +1,13 @@
 namespace Oculus.Platform.Samples.SimplePlatformSample
 {
-	using UnityEngine;
-	using UnityEngine.UI;
-	using System;
-	using System.Collections;
-	using System.Collections.Generic;
-	using Oculus.Platform;
-	using Oculus.Platform.Models;
+    using UnityEngine;
+    using UnityEngine.UI;
+    using System;
+    using System.Collections.Generic;
+    using Oculus.Platform;
+    using Oculus.Platform.Models;
 
-	public class DataEntry : MonoBehaviour
+    public class DataEntry : MonoBehaviour
 	{
 
 		public Text dataOutput;

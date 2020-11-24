@@ -10,7 +10,6 @@ language governing permissions and limitations under the license.
 ************************************************************************************/
 
 using UnityEngine;
-using System.Collections;
 
 public class TeleportPoint : MonoBehaviour {
 

@@ -2,13 +2,9 @@
 
 namespace Oculus.Platform.Models
 {
-  using System;
-  using System.Collections;
-  using Oculus.Platform.Models;
-  using System.Collections.Generic;
-  using UnityEngine;
+    using System;
 
-  public class LivestreamingStatus
+    public class LivestreamingStatus
   {
     public readonly bool CommentsVisible;
     public readonly bool IsPaused;

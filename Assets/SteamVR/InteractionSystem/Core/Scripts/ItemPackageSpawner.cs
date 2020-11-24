@@ -5,18 +5,14 @@
 //=============================================================================
 
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using UnityEngine.Events;
 #if UNITY_EDITOR
-using UnityEditor;
 #endif
 
 namespace Valve.VR.InteractionSystem
 {
-	//-------------------------------------------------------------------------
-	[RequireComponent( typeof( Interactable ) )]
+    //-------------------------------------------------------------------------
+    [RequireComponent( typeof( Interactable ) )]
 	public class ItemPackageSpawner : MonoBehaviour
 	{
 		public ItemPackage itemPackage
