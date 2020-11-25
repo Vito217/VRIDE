@@ -1,0 +1,24 @@
+{
+    "name":"XRSDK Windows Mixed Reality",
+    "version":"1.0.0",
+    "libraryName":"WindowsMRXRSDK",
+    "properties":{},
+    "displays":[
+        {
+            "id":"Windows Mixed Reality Display",
+            "supportedMirrorBlitReservedModes" : ["leftEye","rightEye", "sideBySide", "occlusionMeshSideBySide"],
+            "disablesLegacyVr":true,
+            "splashScreenIsWorldLocked":false
+        }
+    ],
+    "inputs":[
+        {
+            "id":"Windows Mixed Reality Input"
+        }
+    ],
+    "meshings":[
+        {
+            "id":"Windows Mixed Reality Meshing"
+        }
+    ]
+}
