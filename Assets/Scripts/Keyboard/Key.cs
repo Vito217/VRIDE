@@ -194,11 +194,11 @@ public class Key : MonoBehaviour
 			}
 			else if (name.Contains("Tab"))
 			{
-				window.keyboardTarget.text = window.keyboardTarget.text.Insert(Math.Min(lcp, lap), "    ");
-				window.keyboardTarget.caretPosition = lcp + 4;
-				window.keyboardTarget.selectionAnchorPosition = lap + 4;
-				window.lastCaretPosition = lcp + 4;
-				window.lastAnchorPosition = lap + 4;
+				window.keyboardTarget.text = window.keyboardTarget.text.Insert(Math.Min(lcp, lap), "\t");
+				window.keyboardTarget.caretPosition = lcp + 1;
+				window.keyboardTarget.selectionAnchorPosition = lap + 1;
+				window.lastCaretPosition = lcp + 1;
+				window.lastAnchorPosition = lap + 1;
 			}
 			else
             {

@@ -1,8 +1,15 @@
 //========= Copyright 2016-2020, HTC Corporation. All rights reserved. ===========
 
+using HTC.UnityPlugin.VRModuleManagement;
+using System;
+using System.IO;
+using System.Linq;
 using UnityEditor;
+using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.Rendering;
 #if UNITY_2017_2_OR_NEWER
+using UnityEngine.XR;
 #endif
 
 namespace HTC.UnityPlugin.Vive

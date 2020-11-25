@@ -2,6 +2,7 @@
 
 using HTC.UnityPlugin.Utility;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 

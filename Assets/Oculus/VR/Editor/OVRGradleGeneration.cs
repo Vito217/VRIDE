@@ -35,6 +35,7 @@ using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
 #if UNITY_ANDROID
 using UnityEditor.Android;
+using System.Threading;
 #endif
 
 [InitializeOnLoad]

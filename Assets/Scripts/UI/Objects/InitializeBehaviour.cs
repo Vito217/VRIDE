@@ -16,6 +16,7 @@ public class InitializeBehaviour : MonoBehaviour
     public GameObject loadingWheel;
     public GameObject keyboardsGameObject;
     public Image panel;
+    public AutocompleteWordPicker wordPicker;
     public int lastCaretPosition = 0;
     public int lastAnchorPosition = 0;
     public float sizeVariance = 20;
@@ -168,9 +169,12 @@ public class InitializeBehaviour : MonoBehaviour
         transform.forward = forward;
     }
 
-    public virtual void OnSelect(BaseEventData data) { }
+    public virtual void OnSelect(BaseEventData data) {
+        keyboardTarget = data.selectedObject.GetComponent<TMP_InputField>();
+        wordPicker.TextField = keyboardTarget;
+    }
 
-    public virtual void OnDeselect(BaseEventData data) { }
+    public virtual void OnDeselect(BaseEventData data) {}
 
     public virtual void HorizontalExpand()
     {

@@ -1,3 +1,6 @@
+using System;
+using UnityEngine;
+
 namespace Oculus.Platform
 {
     public class AndroidPlatform

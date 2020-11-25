@@ -17,7 +17,6 @@ public class Playground : InitializeBehaviour
 {
     private Graph view;
     private Inspector insp;
-    public AutocompleteWordPicker wordPicker;
 
     public async void PharoDo()
     {
@@ -984,8 +983,7 @@ public class Playground : InitializeBehaviour
 
     public override void OnSelect(BaseEventData data)
     {
-        keyboardTarget = data.selectedObject.GetComponent<TMP_InputField>();
-        wordPicker.TextField = keyboardTarget;
+        base.OnSelect(data);
         InteractionLogger.StartTimerFor("Playground");
     }
 

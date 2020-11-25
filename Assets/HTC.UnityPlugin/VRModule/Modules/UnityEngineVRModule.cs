@@ -1,7 +1,10 @@
 ﻿//========= Copyright 2016-2020, HTC Corporation. All rights reserved. ===========
 
+using UnityEngine;
+using HTC.UnityPlugin.Vive;
 
 #if UNITY_2017_2_OR_NEWER
+using UnityEngine.XR;
 #else
 using XRSettings = UnityEngine.VR.VRSettings;
 using XRDevice = UnityEngine.VR.VRDevice;
