@@ -1,5 +1,9 @@
 # PharoVRIDE's Channel Log
 
+## V0.19.0 (28/11/2020)
+* Using two inputs to receive IP and port.
+* Now compatible with Oculus Quest 2
+
 ## V0.18.7 (19/11/2020)
 * Removed unnecessary objects.
 
