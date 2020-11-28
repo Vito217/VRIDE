@@ -4,10 +4,13 @@
 
 namespace Oculus.Platform.Models
 {
-    using System;
-    using System.Collections.Generic;
+  using System;
+  using System.Collections;
+  using Oculus.Platform.Models;
+  using System.Collections.Generic;
+  using UnityEngine;
 
-    public class Room
+  public class Room
   {
     public readonly UInt64 ApplicationID;
     public readonly Dictionary<string, string> DataStore;

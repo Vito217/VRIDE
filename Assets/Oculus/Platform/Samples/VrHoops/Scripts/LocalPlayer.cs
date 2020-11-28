@@ -1,10 +1,11 @@
 namespace Oculus.Platform.Samples.VrHoops
 {
-    using UnityEngine;
+	using UnityEngine;
+	using System.Collections;
 
-    // This class listens for Input events to shoot a ball, and also notifies the P2PManager when
-    // ball or scores needs to be synchronized to remote players.
-    public class LocalPlayer : Player {
+	// This class listens for Input events to shoot a ball, and also notifies the P2PManager when
+	// ball or scores needs to be synchronized to remote players.
+	public class LocalPlayer : Player {
 
 		public override uint Score
 		{

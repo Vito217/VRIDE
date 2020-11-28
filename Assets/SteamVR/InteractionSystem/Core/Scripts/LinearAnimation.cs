@@ -5,11 +5,12 @@
 //=============================================================================
 
 using UnityEngine;
+using System.Collections;
 
 namespace Valve.VR.InteractionSystem
 {
-    //-------------------------------------------------------------------------
-    public class LinearAnimation : MonoBehaviour
+	//-------------------------------------------------------------------------
+	public class LinearAnimation : MonoBehaviour
 	{
 		public LinearMapping linearMapping;
 		public new Animation animation;

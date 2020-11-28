@@ -16,6 +16,7 @@ permissions and limitations under the License.
 
 using UnityEngine;
 using System;
+using System.Collections;
 using System.Runtime.InteropServices;
 
 /// <summary>
@@ -191,7 +192,7 @@ public class OVROverlay : MonoBehaviour
 	/// <summary>
 	/// The Surface object (Android only).
 	/// </summary>
-	public IntPtr externalSurfaceObject;
+	public System.IntPtr externalSurfaceObject;
 
 	public delegate void ExternalSurfaceObjectCreated();
 	/// <summary>

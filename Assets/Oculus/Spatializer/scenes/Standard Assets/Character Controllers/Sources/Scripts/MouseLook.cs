@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 /// MouseLook rotates the transform based on the mouse delta.
 /// Minimum and Maximum values can be used to constrain the possible rotation

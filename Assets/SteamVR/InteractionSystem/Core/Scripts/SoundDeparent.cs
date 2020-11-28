@@ -6,11 +6,12 @@
 //=============================================================================
 
 using UnityEngine;
+using System.Collections;
 
 namespace Valve.VR.InteractionSystem
 {
-    //-------------------------------------------------------------------------
-    public class SoundDeparent : MonoBehaviour
+	//-------------------------------------------------------------------------
+	public class SoundDeparent : MonoBehaviour
 	{
 		public bool destroyAfterPlayOnce = true;
 		private AudioSource thisAudioSource;

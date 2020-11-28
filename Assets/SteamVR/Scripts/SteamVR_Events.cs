@@ -19,6 +19,7 @@
 
 using UnityEngine;
 using UnityEngine.Events;
+using Valve.VR;
 
 namespace Valve.VR
 {

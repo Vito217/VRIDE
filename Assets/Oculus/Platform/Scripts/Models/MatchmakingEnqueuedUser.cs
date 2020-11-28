@@ -4,10 +4,13 @@
 
 namespace Oculus.Platform.Models
 {
-    using System;
-    using System.Collections.Generic;
+  using System;
+  using System.Collections;
+  using Oculus.Platform.Models;
+  using System.Collections.Generic;
+  using UnityEngine;
 
-    public class MatchmakingEnqueuedUser
+  public class MatchmakingEnqueuedUser
   {
     public readonly Dictionary<string, string> CustomData;
     // May be null. Check before using.

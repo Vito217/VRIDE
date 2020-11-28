@@ -5,6 +5,7 @@
 //=============================================================================
 
 using UnityEngine;
+using Valve.VR;
 using System.IO;
 using System.Linq;
 
@@ -363,7 +364,7 @@ namespace Valve.VR
             bool temporarySession = InitializeTemporarySession(false);
 
 
-            EVRSettingsError bindingFlagError = Valve.VR.EVRSettingsError.None;
+            Valve.VR.EVRSettingsError bindingFlagError = Valve.VR.EVRSettingsError.None;
             Valve.VR.OpenVR.Settings.SetBool(Valve.VR.OpenVR.k_pch_SteamVR_Section, Valve.VR.OpenVR.k_pch_SteamVR_DebugInputBinding, true, ref bindingFlagError);
 
             if (bindingFlagError != Valve.VR.EVRSettingsError.None)
@@ -389,7 +390,7 @@ namespace Valve.VR
 
             string scriptPath = UnityEditor.AssetDatabase.GetAssetPath(scriptAsset);
 
-            FileInfo settingsScriptFileInfo = new FileInfo(scriptPath);
+            System.IO.FileInfo settingsScriptFileInfo = new System.IO.FileInfo(scriptPath);
 
             string fullPath = settingsScriptFileInfo.Directory.Parent.Parent.FullName;
 
@@ -397,7 +398,7 @@ namespace Valve.VR
                 return fullPath;
             else
             {
-                DirectoryInfo assetsDirectoryInfo = new DirectoryInfo(Application.dataPath);
+                System.IO.DirectoryInfo assetsDirectoryInfo = new DirectoryInfo(Application.dataPath);
                 string localPath = fullPath.Substring(assetsDirectoryInfo.Parent.FullName.Length + 1); //plus separator char
                 return localPath;
             }
@@ -410,7 +411,7 @@ namespace Valve.VR
 
             string scriptPath = UnityEditor.AssetDatabase.GetAssetPath(scriptAsset);
 
-            FileInfo settingsScriptFileInfo = new FileInfo(scriptPath);
+            System.IO.FileInfo settingsScriptFileInfo = new System.IO.FileInfo(scriptPath);
             string fullPath = settingsScriptFileInfo.Directory.Parent.FullName;
 
 
@@ -418,7 +419,7 @@ namespace Valve.VR
                 return fullPath;
             else
             {
-                DirectoryInfo assetsDirectoryInfo = new DirectoryInfo(Application.dataPath);
+                System.IO.DirectoryInfo assetsDirectoryInfo = new DirectoryInfo(Application.dataPath);
                 string localPath = fullPath.Substring(assetsDirectoryInfo.Parent.FullName.Length + 1); //plus separator char
                 return localPath;
             }
@@ -552,7 +553,7 @@ namespace Valve.VR
                 manifestFile.applications.Add(manifestApplication);
 
                 string json = Valve.Newtonsoft.Json.JsonConvert.SerializeObject(manifestFile, Valve.Newtonsoft.Json.Formatting.Indented,
-                    new Newtonsoft.Json.JsonSerializerSettings { NullValueHandling = Valve.Newtonsoft.Json.NullValueHandling.Ignore });
+                    new Valve.Newtonsoft.Json.JsonSerializerSettings { NullValueHandling = Valve.Newtonsoft.Json.NullValueHandling.Ignore });
 
                 File.WriteAllText(fullPath, json);
             }

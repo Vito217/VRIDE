@@ -1,5 +1,6 @@
 // This file was @generated with LibOVRPlatform/codegen/main. Do not modify it!
 
+using UnityEngine;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -8,7 +9,7 @@ using System.Text;
 #pragma warning disable 414
 namespace Oculus.Platform
 {
-    public class CAPI
+  public class CAPI
   {
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
   #if UNITY_64 || UNITY_EDITOR_64
@@ -86,29 +87,29 @@ namespace Oculus.Platform
       return childrenPtr;
     }
 
-    public static ovrKeyValuePair[] DictionaryToOVRKeyValuePairs(Dictionary<string, object> dict)
+    public static CAPI.ovrKeyValuePair[] DictionaryToOVRKeyValuePairs(Dictionary<string, object> dict)
     {
       if(dict == null || dict.Count == 0)
       {
         return null;
       }
 
-      var nativeCustomData = new ovrKeyValuePair[dict.Count];
+      var nativeCustomData = new CAPI.ovrKeyValuePair[dict.Count];
 
       int i = 0;
       foreach(var item in dict)
       {
         if(item.Value.GetType() == typeof(int))
         {
-          nativeCustomData[i] = new ovrKeyValuePair(item.Key, (int)item.Value);
+          nativeCustomData[i] = new CAPI.ovrKeyValuePair(item.Key, (int)item.Value);
         }
         else if(item.Value.GetType() == typeof(string))
         {
-          nativeCustomData[i] = new ovrKeyValuePair(item.Key, (string)item.Value);
+          nativeCustomData[i] = new CAPI.ovrKeyValuePair(item.Key, (string)item.Value);
         }
         else if(item.Value.GetType() == typeof(double))
         {
-          nativeCustomData[i] = new ovrKeyValuePair(item.Key, (double)item.Value);
+          nativeCustomData[i] = new CAPI.ovrKeyValuePair(item.Key, (double)item.Value);
         }
         else
         {

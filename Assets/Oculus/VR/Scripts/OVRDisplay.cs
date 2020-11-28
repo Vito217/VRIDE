@@ -21,13 +21,18 @@ permissions and limitations under the License.
 #define REQUIRES_XR_SDK
 #endif
 
+using System;
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using System.Collections.Generic;
 
 #if USING_XR_SDK
 using UnityEngine.XR;
+using UnityEngine.Experimental.XR;
 #endif
 
+using InputTracking = UnityEngine.XR.InputTracking;
 using Node = UnityEngine.XR.XRNode;
 using Settings = UnityEngine.XR.XRSettings;
 
@@ -245,7 +250,7 @@ public class OVRDisplay
 	/// <summary>
 	/// Gets the resolution and field of view for the given eye.
 	/// </summary>
-    public EyeRenderDesc GetEyeRenderDesc(Node eye)
+    public EyeRenderDesc GetEyeRenderDesc(UnityEngine.XR.XRNode eye)
 	{
 		return eyeDescs[(int)eye];
 	}

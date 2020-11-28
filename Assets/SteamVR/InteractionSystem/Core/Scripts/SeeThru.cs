@@ -5,11 +5,13 @@
 //=============================================================================
 
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Valve.VR.InteractionSystem
 {
-    //-------------------------------------------------------------------------
-    public class SeeThru : MonoBehaviour
+	//-------------------------------------------------------------------------
+	public class SeeThru : MonoBehaviour
 	{
 		public Material seeThruMaterial;
 

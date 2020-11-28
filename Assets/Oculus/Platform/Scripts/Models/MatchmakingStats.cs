@@ -2,9 +2,13 @@
 
 namespace Oculus.Platform.Models
 {
-    using System;
+  using System;
+  using System.Collections;
+  using Oculus.Platform.Models;
+  using System.Collections.Generic;
+  using UnityEngine;
 
-    public class MatchmakingStats
+  public class MatchmakingStats
   {
     public readonly uint DrawCount;
     public readonly uint LossCount;

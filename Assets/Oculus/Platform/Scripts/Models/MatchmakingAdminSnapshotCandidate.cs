@@ -2,10 +2,13 @@
 
 namespace Oculus.Platform.Models
 {
-    using System;
-    using System.Collections.Generic;
+  using System;
+  using System.Collections;
+  using Oculus.Platform.Models;
+  using System.Collections.Generic;
+  using UnityEngine;
 
-    public class MatchmakingAdminSnapshotCandidate
+  public class MatchmakingAdminSnapshotCandidate
   {
     public readonly bool CanMatch;
     public readonly double MyTotalScore;

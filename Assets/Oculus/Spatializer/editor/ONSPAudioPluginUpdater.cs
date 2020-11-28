@@ -21,8 +21,13 @@ limitations under the License.
 
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.Callbacks;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using System.IO;
+using System.Diagnostics;
 
 [InitializeOnLoad]
 class ONSPAudioPluginUpdater
@@ -30,7 +35,7 @@ class ONSPAudioPluginUpdater
     private static bool restartPending = false;
     private static bool unityRunningInBatchmode = false;
 
-    private static Version invalidVersion = new Version("0.0.0");
+    private static System.Version invalidVersion = new System.Version("0.0.0");
 
     static ONSPAudioPluginUpdater()
     {
@@ -66,7 +71,7 @@ class ONSPAudioPluginUpdater
         return ovrDir;
     }
 
-    public static string GetVersionDescription(Version version)
+    public static string GetVersionDescription(System.Version version)
     {
         bool isVersionValid = (version != invalidVersion);
         return isVersionValid ? version.ToString() : "(Unknown)";

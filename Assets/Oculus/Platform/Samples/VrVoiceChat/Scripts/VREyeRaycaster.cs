@@ -1,11 +1,12 @@
 namespace Oculus.Platform.Samples.VrVoiceChat
 {
-    using UnityEngine;
-    using UnityEngine.UI;
+	using UnityEngine;
+	using System.Collections;
+	using UnityEngine.UI;
 
-    // Helper class to attach to the main camera that raycasts where the
-    // user is looking to select/deselect Buttons.
-    public class VREyeRaycaster : MonoBehaviour
+	// Helper class to attach to the main camera that raycasts where the
+	// user is looking to select/deselect Buttons.
+	public class VREyeRaycaster : MonoBehaviour
 	{
 		[SerializeField] private UnityEngine.EventSystems.EventSystem m_eventSystem = null;
 

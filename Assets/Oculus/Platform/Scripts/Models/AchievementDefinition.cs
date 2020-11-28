@@ -2,10 +2,13 @@
 
 namespace Oculus.Platform.Models
 {
-    using System;
-    using System.Collections.Generic;
+  using System;
+  using System.Collections;
+  using Oculus.Platform.Models;
+  using System.Collections.Generic;
+  using UnityEngine;
 
-    public class AchievementDefinition
+  public class AchievementDefinition
   {
     public readonly AchievementType Type;
     public readonly string Name;

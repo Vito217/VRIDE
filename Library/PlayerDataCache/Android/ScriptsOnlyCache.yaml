@@ -44,6 +44,7 @@ ScriptsOnlyBuild:
     - HTC.UnityPlugin.Vive.ViveRaycaster
     - HTC.UnityPlugin.Vive.ViveRigidPoseTracker
     - HTC.UnityPlugin.Vive.ViveRoleSetter
+    - IPAddressTextField
     - InfoWindow
     - InitializeBehaviour
     - InspectItKey
@@ -60,6 +61,7 @@ ScriptsOnlyBuild:
     - NonVRPlayerCamera
     - NonVRPlayerMovement
     - ONSPSettings
+    - OvrAvatarSettings
     - PackageWindow
     - Paste
     - Playground
@@ -79,6 +81,22 @@ ScriptsOnlyBuild:
     - VRIDEMenu
     - VRIDETitleController
     - VRKeyboard
+    HTC.ViveHandTracking.Sample.dll:
+    - ViveHandTracking.Sample.DisableController
+    HTC.ViveHandTracking.dll:
+    - ViveHandTracking.EditorEngine
+    - ViveHandTracking.GestureProvider
+    - ViveHandTracking.HandDisplaySwitch
+    - ViveHandTracking.HandInputModule
+    - ViveHandTracking.HandInputRayPointer
+    - ViveHandTracking.HandRenderer
+    - ViveHandTracking.HandStateChecker
+    - ViveHandTracking.ModelRenderer
+    - ViveHandTracking.VHTSettings
+    - ViveHandTracking.ViveHandTrackingEngine
+    - ViveHandTracking.WaveVRHandEngine
+    Oculus.Platform.dll:
+    - Oculus.Platform.PlatformSettings
     Oculus.VR.Editor.dll:
     - Assets.Oculus.VR.Editor.OVRPlatformToolSettings
     - OVRConfig
@@ -95,6 +113,8 @@ ScriptsOnlyBuild:
     - UnityEngine.InputSystem.InputSystemObject
     - UnityEngine.InputSystem.RemoteInputPlayerConnection
     - UnityEngine.InputSystem.UI.InputSystemUIInputModule
+    Unity.Mobile.AndroidLogcat.Editor.dll:
+    - Unity.Android.Logcat.AndroidLogcatManager
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro.dll:
@@ -121,6 +141,8 @@ ScriptsOnlyBuild:
     Unity.XR.OpenVR.dll:
     - Unity.XR.OpenVR.OpenVRLoader
     - Unity.XR.OpenVR.OpenVRSettings
+    Unity.XR.WindowsMixedReality.Editor.dll:
+    - UnityEditor.XR.WindowsMR.WindowsMRPackageSettings
     Unity.XR.WindowsMixedReality.dll:
     - UnityEngine.XR.WindowsMR.WindowsMRSettings
     UnityEditor.Graphs.dll:
@@ -130,9 +152,11 @@ ScriptsOnlyBuild:
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
+    - TestRunner.Callbacks.WindowResultUpdaterDataHolder
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
+    - UnityEditor.TestTools.TestRunner.TestRunnerWindow
     UnityEngine.SpatialTracking.dll:
     - UnityEngine.SpatialTracking.TrackedPoseDriver
     UnityEngine.UI.dll:
@@ -182,8 +206,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 54
       Script: {instanceID: 0}
-    - Class: 64
-      Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
     - Class: 74
@@ -205,235 +227,265 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 12304}
+      Script: {instanceID: 12218}
     - Class: 114
-      Script: {instanceID: 12306}
+      Script: {instanceID: 12220}
     - Class: 114
-      Script: {instanceID: 12308}
+      Script: {instanceID: 12222}
     - Class: 114
-      Script: {instanceID: 12310}
+      Script: {instanceID: 12224}
     - Class: 114
-      Script: {instanceID: 12312}
+      Script: {instanceID: 12226}
     - Class: 114
-      Script: {instanceID: 12314}
+      Script: {instanceID: 12228}
     - Class: 114
-      Script: {instanceID: 12316}
+      Script: {instanceID: 12230}
     - Class: 114
-      Script: {instanceID: 12318}
+      Script: {instanceID: 12232}
     - Class: 114
-      Script: {instanceID: 12320}
+      Script: {instanceID: 12234}
     - Class: 114
-      Script: {instanceID: 12322}
+      Script: {instanceID: 12236}
     - Class: 114
-      Script: {instanceID: 12324}
+      Script: {instanceID: 12268}
     - Class: 114
-      Script: {instanceID: 12326}
+      Script: {instanceID: 12282}
     - Class: 114
-      Script: {instanceID: 12328}
+      Script: {instanceID: 12286}
     - Class: 114
-      Script: {instanceID: 12330}
+      Script: {instanceID: 12352}
     - Class: 114
-      Script: {instanceID: 12332}
+      Script: {instanceID: 12384}
     - Class: 114
-      Script: {instanceID: 12334}
-    - Class: 114
-      Script: {instanceID: 12336}
-    - Class: 114
-      Script: {instanceID: 12338}
-    - Class: 114
-      Script: {instanceID: 12340}
-    - Class: 114
-      Script: {instanceID: 12342}
-    - Class: 114
-      Script: {instanceID: 12344}
-    - Class: 114
-      Script: {instanceID: 12346}
-    - Class: 114
-      Script: {instanceID: 12348}
-    - Class: 114
-      Script: {instanceID: 12378}
+      Script: {instanceID: 12386}
     - Class: 114
       Script: {instanceID: 12394}
     - Class: 114
-      Script: {instanceID: 12490}
+      Script: {instanceID: 12412}
     - Class: 114
-      Script: {instanceID: 12492}
+      Script: {instanceID: 12422}
     - Class: 114
-      Script: {instanceID: 12500}
+      Script: {instanceID: 12440}
     - Class: 114
-      Script: {instanceID: 12516}
+      Script: {instanceID: 12686}
     - Class: 114
-      Script: {instanceID: 12526}
+      Script: {instanceID: 12762}
     - Class: 114
-      Script: {instanceID: 12774}
+      Script: {instanceID: 12768}
     - Class: 114
-      Script: {instanceID: 12854}
+      Script: {instanceID: 12772}
     - Class: 114
-      Script: {instanceID: 12872}
+      Script: {instanceID: 12790}
     - Class: 114
-      Script: {instanceID: 12990}
+      Script: {instanceID: 12912}
     - Class: 114
-      Script: {instanceID: 12992}
+      Script: {instanceID: 12918}
     - Class: 114
-      Script: {instanceID: 13076}
+      Script: {instanceID: 13000}
     - Class: 114
-      Script: {instanceID: 13086}
+      Script: {instanceID: 13010}
     - Class: 114
-      Script: {instanceID: 13118}
+      Script: {instanceID: 13044}
     - Class: 114
-      Script: {instanceID: 13126}
+      Script: {instanceID: 13052}
     - Class: 114
-      Script: {instanceID: 13170}
+      Script: {instanceID: 13098}
     - Class: 114
-      Script: {instanceID: 13298}
+      Script: {instanceID: 13158}
     - Class: 114
-      Script: {instanceID: 13308}
+      Script: {instanceID: 13178}
     - Class: 114
-      Script: {instanceID: 13436}
+      Script: {instanceID: 13236}
     - Class: 114
-      Script: {instanceID: 13454}
+      Script: {instanceID: 13246}
     - Class: 114
-      Script: {instanceID: 13530}
+      Script: {instanceID: 13328}
     - Class: 114
-      Script: {instanceID: 13640}
+      Script: {instanceID: 13382}
     - Class: 114
-      Script: {instanceID: 13720}
+      Script: {instanceID: 13384}
     - Class: 114
-      Script: {instanceID: 13760}
+      Script: {instanceID: 13402}
     - Class: 114
-      Script: {instanceID: 13812}
+      Script: {instanceID: 13482}
     - Class: 114
-      Script: {instanceID: 13860}
+      Script: {instanceID: 13594}
     - Class: 114
-      Script: {instanceID: 13966}
+      Script: {instanceID: 13606}
     - Class: 114
-      Script: {instanceID: 14054}
+      Script: {instanceID: 13676}
     - Class: 114
-      Script: {instanceID: 14210}
+      Script: {instanceID: 13718}
     - Class: 114
-      Script: {instanceID: 14288}
+      Script: {instanceID: 13774}
     - Class: 114
-      Script: {instanceID: 14568}
+      Script: {instanceID: 13806}
     - Class: 114
-      Script: {instanceID: 14586}
+      Script: {instanceID: 13822}
     - Class: 114
-      Script: {instanceID: 14756}
+      Script: {instanceID: 13936}
     - Class: 114
-      Script: {instanceID: 14778}
+      Script: {instanceID: 14026}
     - Class: 114
-      Script: {instanceID: 14866}
+      Script: {instanceID: 14182}
     - Class: 114
-      Script: {instanceID: 14878}
+      Script: {instanceID: 14262}
     - Class: 114
-      Script: {instanceID: 14928}
+      Script: {instanceID: 14518}
     - Class: 114
-      Script: {instanceID: 14946}
+      Script: {instanceID: 14554}
+    - Class: 114
+      Script: {instanceID: 14572}
+    - Class: 114
+      Script: {instanceID: 14694}
+    - Class: 114
+      Script: {instanceID: 14746}
+    - Class: 114
+      Script: {instanceID: 14768}
+    - Class: 114
+      Script: {instanceID: 14804}
+    - Class: 114
+      Script: {instanceID: 14862}
+    - Class: 114
+      Script: {instanceID: 14874}
+    - Class: 114
+      Script: {instanceID: 14924}
+    - Class: 114
+      Script: {instanceID: 14944}
     - Class: 114
       Script: {instanceID: 15064}
     - Class: 114
-      Script: {instanceID: 15070}
+      Script: {instanceID: 15068}
     - Class: 114
-      Script: {instanceID: 15386}
+      Script: {instanceID: 15072}
     - Class: 114
-      Script: {instanceID: 15534}
+      Script: {instanceID: 15396}
     - Class: 114
-      Script: {instanceID: 15560}
+      Script: {instanceID: 15484}
     - Class: 114
-      Script: {instanceID: 15568}
+      Script: {instanceID: 15556}
     - Class: 114
-      Script: {instanceID: 15668}
+      Script: {instanceID: 15582}
     - Class: 114
-      Script: {instanceID: 15680}
+      Script: {instanceID: 15590}
     - Class: 114
-      Script: {instanceID: 15682}
+      Script: {instanceID: 15698}
     - Class: 114
-      Script: {instanceID: 15690}
+      Script: {instanceID: 15712}
     - Class: 114
-      Script: {instanceID: 15800}
+      Script: {instanceID: 15714}
     - Class: 114
-      Script: {instanceID: 15894}
+      Script: {instanceID: 15722}
     - Class: 114
-      Script: {instanceID: 15916}
+      Script: {instanceID: 15770}
     - Class: 114
-      Script: {instanceID: 15924}
+      Script: {instanceID: 15816}
     - Class: 114
-      Script: {instanceID: 15992}
+      Script: {instanceID: 15838}
     - Class: 114
-      Script: {instanceID: 16060}
+      Script: {instanceID: 15868}
     - Class: 114
-      Script: {instanceID: 16126}
+      Script: {instanceID: 15936}
     - Class: 114
-      Script: {instanceID: 16176}
+      Script: {instanceID: 15942}
+    - Class: 114
+      Script: {instanceID: 15964}
+    - Class: 114
+      Script: {instanceID: 15972}
+    - Class: 114
+      Script: {instanceID: 16040}
+    - Class: 114
+      Script: {instanceID: 16112}
     - Class: 114
       Script: {instanceID: 16186}
     - Class: 114
-      Script: {instanceID: 16212}
+      Script: {instanceID: 16242}
     - Class: 114
-      Script: {instanceID: 16302}
+      Script: {instanceID: 16252}
     - Class: 114
-      Script: {instanceID: 16326}
+      Script: {instanceID: 16280}
     - Class: 114
-      Script: {instanceID: 16344}
+      Script: {instanceID: 16376}
     - Class: 114
-      Script: {instanceID: 16418}
+      Script: {instanceID: 16402}
     - Class: 114
-      Script: {instanceID: 16446}
+      Script: {instanceID: 16420}
     - Class: 114
-      Script: {instanceID: 16464}
+      Script: {instanceID: 16496}
     - Class: 114
-      Script: {instanceID: 16468}
+      Script: {instanceID: 16526}
     - Class: 114
-      Script: {instanceID: 16572}
+      Script: {instanceID: 16546}
     - Class: 114
-      Script: {instanceID: 16622}
+      Script: {instanceID: 16550}
     - Class: 114
-      Script: {instanceID: 16642}
+      Script: {instanceID: 16652}
     - Class: 114
-      Script: {instanceID: 16700}
+      Script: {instanceID: 16702}
     - Class: 114
-      Script: {instanceID: 16706}
+      Script: {instanceID: 16708}
     - Class: 114
-      Script: {instanceID: 16740}
+      Script: {instanceID: 16728}
     - Class: 114
-      Script: {instanceID: 16774}
+      Script: {instanceID: 16790}
     - Class: 114
-      Script: {instanceID: 16802}
+      Script: {instanceID: 16796}
     - Class: 114
-      Script: {instanceID: 16838}
+      Script: {instanceID: 16834}
     - Class: 114
-      Script: {instanceID: 16846}
-    - Class: 114
-      Script: {instanceID: 16886}
+      Script: {instanceID: 16870}
     - Class: 114
       Script: {instanceID: 16898}
     - Class: 114
-      Script: {instanceID: 16958}
+      Script: {instanceID: 16934}
     - Class: 114
-      Script: {instanceID: 17018}
+      Script: {instanceID: 16942}
     - Class: 114
-      Script: {instanceID: 17034}
+      Script: {instanceID: 16982}
     - Class: 114
-      Script: {instanceID: 17044}
+      Script: {instanceID: 16994}
     - Class: 114
-      Script: {instanceID: 17118}
+      Script: {instanceID: 17054}
     - Class: 114
-      Script: {instanceID: 17226}
+      Script: {instanceID: 17114}
     - Class: 114
-      Script: {instanceID: 17264}
+      Script: {instanceID: 17132}
     - Class: 114
-      Script: {instanceID: 17290}
+      Script: {instanceID: 17142}
     - Class: 114
-      Script: {instanceID: 17408}
+      Script: {instanceID: 17222}
     - Class: 114
-      Script: {instanceID: 17454}
+      Script: {instanceID: 17334}
     - Class: 114
-      Script: {instanceID: 17490}
+      Script: {instanceID: 17370}
     - Class: 114
-      Script: {instanceID: 17574}
+      Script: {instanceID: 17374}
+    - Class: 114
+      Script: {instanceID: 17404}
+    - Class: 114
+      Script: {instanceID: 17474}
+    - Class: 114
+      Script: {instanceID: 17500}
+    - Class: 114
+      Script: {instanceID: 17530}
+    - Class: 114
+      Script: {instanceID: 17582}
+    - Class: 114
+      Script: {instanceID: 17586}
+    - Class: 114
+      Script: {instanceID: 17622}
     - Class: 114
       Script: {instanceID: 17624}
     - Class: 114
-      Script: {instanceID: 17632}
+      Script: {instanceID: 17710}
+    - Class: 114
+      Script: {instanceID: 17720}
+    - Class: 114
+      Script: {instanceID: 17728}
+    - Class: 114
+      Script: {instanceID: 17766}
+    - Class: 114
+      Script: {instanceID: 17776}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -502,177 +554,191 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 12304}
+      Script: {instanceID: 12218}
     - Class: 114
-      Script: {instanceID: 12306}
+      Script: {instanceID: 12220}
     - Class: 114
-      Script: {instanceID: 12308}
+      Script: {instanceID: 12222}
     - Class: 114
-      Script: {instanceID: 12310}
+      Script: {instanceID: 12224}
     - Class: 114
-      Script: {instanceID: 12312}
+      Script: {instanceID: 12228}
     - Class: 114
-      Script: {instanceID: 12314}
+      Script: {instanceID: 12230}
     - Class: 114
-      Script: {instanceID: 12316}
+      Script: {instanceID: 12234}
     - Class: 114
-      Script: {instanceID: 12318}
+      Script: {instanceID: 12236}
     - Class: 114
-      Script: {instanceID: 12320}
+      Script: {instanceID: 12282}
     - Class: 114
-      Script: {instanceID: 12322}
+      Script: {instanceID: 12286}
     - Class: 114
-      Script: {instanceID: 12324}
+      Script: {instanceID: 12352}
     - Class: 114
-      Script: {instanceID: 12328}
+      Script: {instanceID: 12384}
     - Class: 114
-      Script: {instanceID: 12336}
+      Script: {instanceID: 12412}
     - Class: 114
-      Script: {instanceID: 12338}
+      Script: {instanceID: 12422}
     - Class: 114
-      Script: {instanceID: 12340}
+      Script: {instanceID: 12440}
     - Class: 114
-      Script: {instanceID: 12344}
+      Script: {instanceID: 12686}
     - Class: 114
-      Script: {instanceID: 12346}
+      Script: {instanceID: 12768}
     - Class: 114
-      Script: {instanceID: 12348}
+      Script: {instanceID: 12772}
     - Class: 114
-      Script: {instanceID: 12394}
+      Script: {instanceID: 12790}
     - Class: 114
-      Script: {instanceID: 12490}
+      Script: {instanceID: 12912}
     - Class: 114
-      Script: {instanceID: 12516}
+      Script: {instanceID: 12918}
     - Class: 114
-      Script: {instanceID: 12526}
+      Script: {instanceID: 13000}
     - Class: 114
-      Script: {instanceID: 12774}
+      Script: {instanceID: 13098}
     - Class: 114
-      Script: {instanceID: 12854}
+      Script: {instanceID: 13158}
     - Class: 114
-      Script: {instanceID: 12872}
+      Script: {instanceID: 13236}
     - Class: 114
-      Script: {instanceID: 12990}
+      Script: {instanceID: 13246}
     - Class: 114
-      Script: {instanceID: 12992}
+      Script: {instanceID: 13384}
     - Class: 114
-      Script: {instanceID: 13076}
+      Script: {instanceID: 13402}
     - Class: 114
-      Script: {instanceID: 13170}
+      Script: {instanceID: 13606}
     - Class: 114
-      Script: {instanceID: 13298}
+      Script: {instanceID: 13718}
     - Class: 114
-      Script: {instanceID: 13308}
+      Script: {instanceID: 13822}
     - Class: 114
-      Script: {instanceID: 13454}
+      Script: {instanceID: 14014}
     - Class: 114
-      Script: {instanceID: 13760}
+      Script: {instanceID: 14182}
     - Class: 114
-      Script: {instanceID: 13860}
+      Script: {instanceID: 14262}
     - Class: 114
-      Script: {instanceID: 14042}
+      Script: {instanceID: 14554}
     - Class: 114
-      Script: {instanceID: 14210}
+      Script: {instanceID: 14572}
     - Class: 114
-      Script: {instanceID: 14288}
+      Script: {instanceID: 14656}
     - Class: 114
-      Script: {instanceID: 14568}
+      Script: {instanceID: 14694}
     - Class: 114
-      Script: {instanceID: 14586}
+      Script: {instanceID: 14746}
     - Class: 114
-      Script: {instanceID: 14670}
+      Script: {instanceID: 14768}
     - Class: 114
-      Script: {instanceID: 14756}
+      Script: {instanceID: 14862}
     - Class: 114
-      Script: {instanceID: 14778}
+      Script: {instanceID: 14944}
     - Class: 114
-      Script: {instanceID: 14866}
+      Script: {instanceID: 15068}
     - Class: 114
-      Script: {instanceID: 14946}
+      Script: {instanceID: 15072}
     - Class: 114
-      Script: {instanceID: 15070}
+      Script: {instanceID: 15396}
     - Class: 114
-      Script: {instanceID: 15386}
+      Script: {instanceID: 15484}
     - Class: 114
-      Script: {instanceID: 15534}
+      Script: {instanceID: 15556}
     - Class: 114
-      Script: {instanceID: 15560}
+      Script: {instanceID: 15582}
     - Class: 114
-      Script: {instanceID: 15568}
+      Script: {instanceID: 15590}
     - Class: 114
-      Script: {instanceID: 15680}
+      Script: {instanceID: 15712}
     - Class: 114
-      Script: {instanceID: 15682}
+      Script: {instanceID: 15714}
     - Class: 114
-      Script: {instanceID: 15690}
+      Script: {instanceID: 15722}
     - Class: 114
-      Script: {instanceID: 15800}
+      Script: {instanceID: 15770}
     - Class: 114
-      Script: {instanceID: 15894}
+      Script: {instanceID: 15838}
     - Class: 114
-      Script: {instanceID: 15924}
+      Script: {instanceID: 15936}
     - Class: 114
-      Script: {instanceID: 15992}
+      Script: {instanceID: 15942}
     - Class: 114
-      Script: {instanceID: 16060}
+      Script: {instanceID: 15972}
     - Class: 114
-      Script: {instanceID: 16126}
+      Script: {instanceID: 16040}
     - Class: 114
-      Script: {instanceID: 16176}
+      Script: {instanceID: 16112}
     - Class: 114
       Script: {instanceID: 16186}
     - Class: 114
-      Script: {instanceID: 16212}
+      Script: {instanceID: 16242}
     - Class: 114
-      Script: {instanceID: 16302}
+      Script: {instanceID: 16252}
     - Class: 114
-      Script: {instanceID: 16326}
+      Script: {instanceID: 16280}
     - Class: 114
-      Script: {instanceID: 16344}
+      Script: {instanceID: 16376}
     - Class: 114
-      Script: {instanceID: 16396}
+      Script: {instanceID: 16402}
     - Class: 114
-      Script: {instanceID: 16418}
+      Script: {instanceID: 16420}
     - Class: 114
-      Script: {instanceID: 16446}
+      Script: {instanceID: 16472}
     - Class: 114
-      Script: {instanceID: 16464}
+      Script: {instanceID: 16496}
     - Class: 114
-      Script: {instanceID: 16468}
+      Script: {instanceID: 16526}
     - Class: 114
-      Script: {instanceID: 16642}
+      Script: {instanceID: 16546}
     - Class: 114
-      Script: {instanceID: 16700}
+      Script: {instanceID: 16550}
     - Class: 114
-      Script: {instanceID: 16706}
+      Script: {instanceID: 16728}
     - Class: 114
-      Script: {instanceID: 16802}
+      Script: {instanceID: 16790}
     - Class: 114
-      Script: {instanceID: 16838}
-    - Class: 114
-      Script: {instanceID: 16846}
+      Script: {instanceID: 16796}
     - Class: 114
       Script: {instanceID: 16898}
     - Class: 114
-      Script: {instanceID: 17018}
+      Script: {instanceID: 16934}
     - Class: 114
-      Script: {instanceID: 17044}
+      Script: {instanceID: 16942}
     - Class: 114
-      Script: {instanceID: 17118}
+      Script: {instanceID: 16994}
     - Class: 114
-      Script: {instanceID: 17226}
+      Script: {instanceID: 17114}
     - Class: 114
-      Script: {instanceID: 17290}
+      Script: {instanceID: 17142}
     - Class: 114
-      Script: {instanceID: 17454}
+      Script: {instanceID: 17222}
     - Class: 114
-      Script: {instanceID: 17490}
+      Script: {instanceID: 17334}
     - Class: 114
-      Script: {instanceID: 17574}
+      Script: {instanceID: 17370}
+    - Class: 114
+      Script: {instanceID: 17404}
+    - Class: 114
+      Script: {instanceID: 17474}
+    - Class: 114
+      Script: {instanceID: 17500}
+    - Class: 114
+      Script: {instanceID: 17582}
+    - Class: 114
+      Script: {instanceID: 17586}
+    - Class: 114
+      Script: {instanceID: 17622}
     - Class: 114
       Script: {instanceID: 17624}
     - Class: 114
-      Script: {instanceID: 17632}
+      Script: {instanceID: 17710}
+    - Class: 114
+      Script: {instanceID: 17766}
+    - Class: 114
+      Script: {instanceID: 17776}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -684,6 +750,8 @@ ScriptsOnlyBuild:
     - Class: 135
       Script: {instanceID: 0}
     - Class: 136
+      Script: {instanceID: 0}
+    - Class: 137
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -704,30 +772,6 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
-      Hash: 134322c9293c1896357cce271b819ce4
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.EventSystems
-    className: EventTrigger
-  - hash:
-      serializedVersion: 2
-      Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: ContentSizeFitter
-  - hash:
-      serializedVersion: 2
-      Hash: f087c23fbfa15475a0d110af46fb0496
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Button
-  - hash:
-      serializedVersion: 2
-      Hash: 3164bc883ff663a5cdb32d1ef7e7c0c5
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: VerticalLayoutGroup
-  - hash:
-      serializedVersion: 2
       Hash: a6e561615949734e9f12f9b61661f43e
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -740,10 +784,10 @@ ScriptsOnlyBuild:
     className: Text
   - hash:
       serializedVersion: 2
-      Hash: 3164bc883ff663a5cdb32d1ef7e7c0c5
+      Hash: f087c23fbfa15475a0d110af46fb0496
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
-    className: HorizontalLayoutGroup
+    className: Button
   - hash:
       serializedVersion: 2
       Hash: cc4274b586df3c02688bac01b88bd16c
@@ -752,76 +796,16 @@ ScriptsOnlyBuild:
     className: EventSystem
   - hash:
       serializedVersion: 2
-      Hash: 4bc4346a71a8df53a6b106f68ef3a190
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: CanvasScaler
-  - hash:
-      serializedVersion: 2
-      Hash: 18c222bef9ae745ce69ddde9b74337ca
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.EventSystems
-    className: PhysicsRaycaster
-  - hash:
-      serializedVersion: 2
-      Hash: ae83e830e7a90c0aff918c4c2e520825
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: GraphicRaycaster
-  - hash:
-      serializedVersion: 2
       Hash: d251bf88db6c95a6b1aa0b69298da9ef
     assemblyName: UnityEngine.SpatialTracking.dll
     namespaceName: UnityEngine.SpatialTracking
     className: TrackedPoseDriver
   - hash:
       serializedVersion: 2
-      Hash: 0ffaf073d4b1fa4e8036cf7ad52ddba7
+      Hash: 3164bc883ff663a5cdb32d1ef7e7c0c5
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
-    className: Toggle
-  - hash:
-      serializedVersion: 2
-      Hash: cf9f5cf2c3145a37ac07f00e50e460f9
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: AspectRatioFitter
-  - hash:
-      serializedVersion: 2
-      Hash: 0fd6822f6177297bd0eb4d83cc7a9030
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: ToggleGroup
-  - hash:
-      serializedVersion: 2
-      Hash: 0dbc3be398b4869a5c8d0d8481ee402c
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: LayoutElement
-  - hash:
-      serializedVersion: 2
-      Hash: ef5c43f921427d03730f6ea4c848f07d
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: RectMask2D
-  - hash:
-      serializedVersion: 2
-      Hash: 040dd48e3a027d5424519a5fa2009df4
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: ScrollRect
-  - hash:
-      serializedVersion: 2
-      Hash: fd8b23ad3c9e81bc85b197495bc510ac
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Scrollbar
-  - hash:
-      serializedVersion: 2
-      Hash: f7bb6096199e0cf058d5d69878184cf4
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: InputField
+    className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
       Hash: 0c05f2bfb402def3f0a85a62a2323c7f
@@ -830,22 +814,22 @@ ScriptsOnlyBuild:
     className: Slider
   - hash:
       serializedVersion: 2
-      Hash: aba7b2852ef61d175dd9602e7723d5e5
+      Hash: 0dbc3be398b4869a5c8d0d8481ee402c
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
-    className: Mask
+    className: LayoutElement
   - hash:
       serializedVersion: 2
-      Hash: 748dd2a2a28da4e618912da5ac45684b
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.EventSystems
-    className: StandaloneInputModule
-  - hash:
-      serializedVersion: 2
-      Hash: caa533b001ae39b864ba8425019e2268
+      Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
-    className: Outline
+    className: ContentSizeFitter
+  - hash:
+      serializedVersion: 2
+      Hash: ae83e830e7a90c0aff918c4c2e520825
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: GraphicRaycaster
   - hash:
       serializedVersion: 2
       Hash: 3b459f9135bff1b403a790a729792206
@@ -864,6 +848,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ONSPVersion
+  - hash:
+      serializedVersion: 2
+      Hash: 4bc4346a71a8df53a6b106f68ef3a190
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: CanvasScaler
   - hash:
       serializedVersion: 2
       Hash: 3800f5e3156a1e54f5c990c4e514eda1
@@ -918,6 +908,12 @@ ScriptsOnlyBuild:
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem
     className: Teleport
+  - hash:
+      serializedVersion: 2
+      Hash: ffe7a172d4d00820ba1500f2ee83de13
+    assemblyName: HTC.ViveHandTracking.dll
+    namespaceName: ViveHandTracking
+    className: HandDisplaySwitch
   - hash:
       serializedVersion: 2
       Hash: 329a4358a2c40fe3c40f44951200bd91
@@ -1004,6 +1000,12 @@ ScriptsOnlyBuild:
     className: PoseFreezer
   - hash:
       serializedVersion: 2
+      Hash: 9b8b4244070a3098126315fad0eb23e9
+    assemblyName: HTC.ViveHandTracking.dll
+    namespaceName: ViveHandTracking
+    className: ModelRenderer
+  - hash:
+      serializedVersion: 2
       Hash: e0a0f15bc639eab4f95ddba0417463fd
     assemblyName: Assembly-CSharp.dll
     namespaceName: HTC.UnityPlugin.Pointer3D
@@ -1050,6 +1052,12 @@ ScriptsOnlyBuild:
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem
     className: LinearAudioPitch
+  - hash:
+      serializedVersion: 2
+      Hash: 55f3330aefc46870debc7d8f48eefd1d
+    assemblyName: HTC.ViveHandTracking.dll
+    namespaceName: ViveHandTracking
+    className: CustomGestureProvider
   - hash:
       serializedVersion: 2
       Hash: e7a73f5f78ba6445195ec23b74a1ce2d
@@ -1158,6 +1166,18 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: OVR
     className: SoundEmitter
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: HTC.ViveHandTracking.dll
+    namespaceName: ViveHandTracking
+    className: ViveHandTrackingEngine
+  - hash:
+      serializedVersion: 2
+      Hash: fd8b23ad3c9e81bc85b197495bc510ac
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Scrollbar
   - hash:
       serializedVersion: 2
       Hash: c261000967ec3f7a1b0ea2476abf2d50
@@ -1278,6 +1298,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: RoassalMethod
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: HTC.ViveHandTracking.Sample.dll
+    namespaceName: ViveHandTracking.Sample
+    className: Grab
   - hash:
       serializedVersion: 2
       Hash: 5f206dd3b0d6b103c9456019be49d644
@@ -1412,6 +1438,12 @@ ScriptsOnlyBuild:
     className: OVRAudioSourceTest
   - hash:
       serializedVersion: 2
+      Hash: 47e19d681fd5ae696d69b522d331e8b6
+    assemblyName: HTC.ViveHandTracking.dll
+    namespaceName: ViveHandTracking
+    className: DualHandGestureProducer
+  - hash:
+      serializedVersion: 2
       Hash: 574548a369e199ea1d83b5331c5a911b
     assemblyName: Oculus.Platform.dll
     namespaceName: 
@@ -1430,6 +1462,12 @@ ScriptsOnlyBuild:
     className: RemoteInputPlayerConnection
   - hash:
       serializedVersion: 2
+      Hash: 18c222bef9ae745ce69ddde9b74337ca
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.EventSystems
+    className: PhysicsRaycaster
+  - hash:
+      serializedVersion: 2
       Hash: d29554da4f32756eaad6ec0d568c5648
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1440,6 +1478,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.InputSystem.dll
     namespaceName: UnityEngine.InputSystem.Editor
     className: InputActionEditorWindow
+  - hash:
+      serializedVersion: 2
+      Hash: 54cabd2886a2165a7fa1684b6c934e5d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: IPAddressTextField
   - hash:
       serializedVersion: 2
       Hash: 18628813c7aad3d4328ffde18c4d9d59
@@ -1466,7 +1510,7 @@ ScriptsOnlyBuild:
     className: TeleportAimHandlerParabolic
   - hash:
       serializedVersion: 2
-      Hash: 9f3bd3114c70b9131d453cf53ed03081
+      Hash: 4a77a8178133ee5fd738f22aa8784965
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Browser
@@ -1526,10 +1570,22 @@ ScriptsOnlyBuild:
     className: GameBoard
   - hash:
       serializedVersion: 2
+      Hash: cf9f5cf2c3145a37ac07f00e50e460f9
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: AspectRatioFitter
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem
     className: HideOnHandFocusLost
+  - hash:
+      serializedVersion: 2
+      Hash: ece401e3fba3aeee6991ab292d44ea64
+    assemblyName: HTC.ViveHandTracking.Sample.dll
+    namespaceName: ViveHandTracking.Sample
+    className: Laser
   - hash:
       serializedVersion: 2
       Hash: df6d951b6ecf8a67b68b89b4c07d970b
@@ -1548,6 +1604,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: HTC.UnityPlugin.Vive.BindingInterface
     className: BindingInterfaceDeviceItem
+  - hash:
+      serializedVersion: 2
+      Hash: ef5c43f921427d03730f6ea4c848f07d
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: RectMask2D
   - hash:
       serializedVersion: 2
       Hash: f567adef2b413f8c95c4f966001c7e25
@@ -1682,6 +1744,12 @@ ScriptsOnlyBuild:
     className: Grenade
   - hash:
       serializedVersion: 2
+      Hash: aba7b2852ef61d175dd9602e7723d5e5
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Mask
+  - hash:
+      serializedVersion: 2
       Hash: 9337d9b49ef69a8f6b3c9e840a9d2fe6
     assemblyName: Assembly-CSharp.dll
     namespaceName: OculusSampleFramework
@@ -1776,6 +1844,12 @@ ScriptsOnlyBuild:
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem.Sample
     className: FlowerPlanted
+  - hash:
+      serializedVersion: 2
+      Hash: 0269c243220d05905398780d728395cf
+    assemblyName: HTC.ViveHandTracking.Sample.dll
+    namespaceName: ViveHandTracking.Sample
+    className: Draw
   - hash:
       serializedVersion: 2
       Hash: 5777c70a25f193ad387a5581565b81b9
@@ -2144,6 +2218,12 @@ ScriptsOnlyBuild:
     className: HandsActiveChecker
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: HTC.ViveHandTracking.dll
+    namespaceName: ViveHandTracking
+    className: WaveVRHandEngine
+  - hash:
+      serializedVersion: 2
       Hash: 87e6cfc8015337aef5fa238bd355b16f
     assemblyName: Unity.XR.Interaction.Toolkit.dll
     namespaceName: UnityEngine.XR.Interaction.Toolkit
@@ -2166,6 +2246,12 @@ ScriptsOnlyBuild:
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem
     className: LinearBlendshape
+  - hash:
+      serializedVersion: 2
+      Hash: 7e9087a6fe801df2711df5a2ea6bf7ef
+    assemblyName: HTC.ViveHandTracking.Sample.dll
+    namespaceName: ViveHandTracking.Sample
+    className: RemoteGrab
   - hash:
       serializedVersion: 2
       Hash: 29d518781ccba8971abc835d8d13df67
@@ -2198,6 +2284,12 @@ ScriptsOnlyBuild:
     className: Keyboards
   - hash:
       serializedVersion: 2
+      Hash: 020c9c074fc5ac8b0bc517b2568f5d59
+    assemblyName: HTC.ViveHandTracking.Sample.dll
+    namespaceName: ViveHandTracking.Sample
+    className: ObjectFactory
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Oculus.VR.dll
     namespaceName: 
@@ -2226,6 +2318,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Instantiator
+  - hash:
+      serializedVersion: 2
+      Hash: 040dd48e3a027d5424519a5fa2009df4
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: ScrollRect
   - hash:
       serializedVersion: 2
       Hash: 20ae459a0072025a05fde31a89b54ba3
@@ -2280,6 +2378,12 @@ ScriptsOnlyBuild:
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR
     className: SteamVR_Behaviour_Single
+  - hash:
+      serializedVersion: 2
+      Hash: 56fc8c88522abeb5e5ac99644613044e
+    assemblyName: HTC.ViveHandTracking.dll
+    namespaceName: ViveHandTracking
+    className: VHTSettings
   - hash:
       serializedVersion: 2
       Hash: ff0d4ea993c9dc3492bad42bf07d28fd
@@ -2342,7 +2446,7 @@ ScriptsOnlyBuild:
     className: AnalyticsEventTrackerEditor
   - hash:
       serializedVersion: 2
-      Hash: 5b1123a692a3380808912e62e2a8bc35
+      Hash: 34e8443cf2110b0c01859f4c67487b28
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EnterAddressBehaviour
@@ -2472,6 +2576,12 @@ ScriptsOnlyBuild:
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR
     className: SteamVR_Behaviour_Skeleton
+  - hash:
+      serializedVersion: 2
+      Hash: fe5a6fc508980841d35a517262a3d9d5
+    assemblyName: HTC.ViveHandTracking.dll
+    namespaceName: ViveHandTracking
+    className: HandInputRayPointer
   - hash:
       serializedVersion: 2
       Hash: de580946687da35aae20beea87afd558
@@ -2750,6 +2860,12 @@ ScriptsOnlyBuild:
     className: RenderModel
   - hash:
       serializedVersion: 2
+      Hash: 6a2ece2bce3a5c72664bad5a32fec8f8
+    assemblyName: HTC.ViveHandTracking.dll
+    namespaceName: ViveHandTracking
+    className: HandInputModule
+  - hash:
+      serializedVersion: 2
       Hash: 9edf0788742c31d8eaaf32cf4feac747
     assemblyName: Oculus.VR.dll
     namespaceName: 
@@ -2760,6 +2876,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: SaveAndLoad
     className: SaveAndLoadModule
+  - hash:
+      serializedVersion: 2
+      Hash: ece401e3fba3aeee6991ab292d44ea64
+    assemblyName: HTC.ViveHandTracking.Sample.dll
+    namespaceName: ViveHandTracking.Sample
+    className: PinchLaser
   - hash:
       serializedVersion: 2
       Hash: 88cacbf32b3084ad3e4aa6c19d9257f3
@@ -2900,6 +3022,12 @@ ScriptsOnlyBuild:
     className: BindingInterfaceRoleButtonItem
   - hash:
       serializedVersion: 2
+      Hash: ad66842c0fb7afbf6481096e79c5b27b
+    assemblyName: WebXR.dll
+    namespaceName: WebXR
+    className: WebXRController
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Oculus.Platform.dll
     namespaceName: Oculus.Platform.Samples.VrHoops
@@ -2940,6 +3068,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.InputSystem.dll
     namespaceName: UnityEngine.InputSystem.Editor
     className: InputDeviceDebuggerWindow
+  - hash:
+      serializedVersion: 2
+      Hash: 7bb3115704fd3b61b57afcf83752873d
+    assemblyName: HTC.ViveHandTracking.dll
+    namespaceName: ViveHandTracking
+    className: HandRenderer
   - hash:
       serializedVersion: 2
       Hash: 7d19057642c463daceac505ab19dd37e
@@ -2984,7 +3118,7 @@ ScriptsOnlyBuild:
     className: MouseLook
   - hash:
       serializedVersion: 2
-      Hash: deb0e9ee0503cad7b5cd691928ba151a
+      Hash: fc8fd604861dfd719925fbdef72e4ce4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Playground
@@ -2994,6 +3128,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TeleportTargetHandlerNode
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: HTC.ViveHandTracking.Sample.dll
+    namespaceName: ViveHandTracking.Sample
+    className: CameraHeight
   - hash:
       serializedVersion: 2
       Hash: b4f33769b4be9dc6ee0546bbfc960cbb
@@ -3006,6 +3146,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: OculusSampleFramework
     className: ButtonTriggerZone
+  - hash:
+      serializedVersion: 2
+      Hash: f7bb6096199e0cf058d5d69878184cf4
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: InputField
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -3044,10 +3190,22 @@ ScriptsOnlyBuild:
     className: OvrAvatarRemoteDriver
   - hash:
       serializedVersion: 2
+      Hash: 4b27471e3f716e099800d3f7e89fd7fd
+    assemblyName: HTC.ViveHandTracking.Sample.dll
+    namespaceName: ViveHandTracking.Sample
+    className: TriggerCallback
+  - hash:
+      serializedVersion: 2
       Hash: 636a77f3228481f2b67ba1c4242ac5b9
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR
     className: SteamVR_Behaviour
+  - hash:
+      serializedVersion: 2
+      Hash: 3164bc883ff663a5cdb32d1ef7e7c0c5
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: HorizontalLayoutGroup
   - hash:
       serializedVersion: 2
       Hash: 7abdf6195e530455923d81f2f009ab0f
@@ -3254,6 +3412,12 @@ ScriptsOnlyBuild:
     className: SteamVR_Overlay
   - hash:
       serializedVersion: 2
+      Hash: 56f6466cddb9ac7427bdfac376b0d64d
+    assemblyName: WebXR.dll
+    namespaceName: WebXR
+    className: WebXRCamera
+  - hash:
+      serializedVersion: 2
       Hash: 57f180a5003248da76cab9f40f315b05
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -3264,6 +3428,12 @@ ScriptsOnlyBuild:
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem.Sample
     className: trackCam
+  - hash:
+      serializedVersion: 2
+      Hash: 977011d065eb0ab6be7ebbc9c5476cf3
+    assemblyName: HTC.ViveHandTracking.Sample.dll
+    namespaceName: ViveHandTracking.Sample
+    className: ShowViveLogo
   - hash:
       serializedVersion: 2
       Hash: b03fe09f7dd0c9bd7643e472425ed68e
@@ -3278,7 +3448,7 @@ ScriptsOnlyBuild:
     className: WheelDust
   - hash:
       serializedVersion: 2
-      Hash: 871673322172907b0c68232aacdc67ec
+      Hash: fc8fd604861dfd719925fbdef72e4ce4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: InitializeBehaviour
@@ -3324,6 +3494,12 @@ ScriptsOnlyBuild:
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem
     className: BalloonSpawner
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: HTC.ViveHandTracking.Sample.dll
+    namespaceName: ViveHandTracking.Sample
+    className: PushColor
   - hash:
       serializedVersion: 2
       Hash: ee29c518c1506815647c105173f43312
@@ -3416,6 +3592,12 @@ ScriptsOnlyBuild:
     className: ProceduralHats
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: TestProperties.dll
+    namespaceName: TestProperties
+    className: GeneralTestProperties
+  - hash:
+      serializedVersion: 2
       Hash: 28ac522fa9bb47d578bbacfcb5a65149
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -3432,6 +3614,12 @@ ScriptsOnlyBuild:
     assemblyName: Oculus.Platform.dll
     namespaceName: Oculus.Platform.Samples.VrHoops
     className: MatchController
+  - hash:
+      serializedVersion: 2
+      Hash: bdee625372ff24ea11c92bdc66fb3c27
+    assemblyName: HTC.ViveHandTracking.dll
+    namespaceName: ViveHandTracking
+    className: SingleHandGestureProducer
   - hash:
       serializedVersion: 2
       Hash: 06ec5a802436794537adc2b2a106b756
@@ -3548,6 +3736,12 @@ ScriptsOnlyBuild:
     className: BasicGrabbable
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: HTC.ViveHandTracking.Sample.dll
+    namespaceName: ViveHandTracking.Sample
+    className: DisableController
+  - hash:
+      serializedVersion: 2
       Hash: b00ce1f32326f1cd1160488ffd14965a
     assemblyName: Oculus.VR.Editor.dll
     namespaceName: 
@@ -3602,6 +3796,12 @@ ScriptsOnlyBuild:
     className: ChangeMaterialToButtonsColor
   - hash:
       serializedVersion: 2
+      Hash: 1abb5364164f5da2296f7eb467834ea3
+    assemblyName: HTC.ViveHandTracking.Sample.dll
+    namespaceName: ViveHandTracking.Sample
+    className: ShowCustomGestureInfo
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.XR.OpenVR.dll
     namespaceName: Unity.XR.OpenVR
@@ -3618,6 +3818,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Levenshtein
+  - hash:
+      serializedVersion: 2
+      Hash: f973b98d115885bad817bce4d62cc62f
+    assemblyName: HTC.ViveHandTracking.dll
+    namespaceName: ViveHandTracking
+    className: EditorHandSimulator
   - hash:
       serializedVersion: 2
       Hash: 5d820a4b2d2a41b143640b8af1508079
@@ -3698,7 +3904,7 @@ ScriptsOnlyBuild:
     className: ActionBasedController
   - hash:
       serializedVersion: 2
-      Hash: dab5d68722c21b5cd7b3df4a95f25721
+      Hash: edaa433ad75b339f2b6954def558790f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: RoassalExamples
@@ -3800,10 +4006,16 @@ ScriptsOnlyBuild:
     className: BindingInterfaceConfigPanelController
   - hash:
       serializedVersion: 2
-      Hash: 871673322172907b0c68232aacdc67ec
+      Hash: fc8fd604861dfd719925fbdef72e4ce4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Transcript
+  - hash:
+      serializedVersion: 2
+      Hash: 6b5d57d2ab997ecd24b686d21bc349df
+    assemblyName: WebXR.dll
+    namespaceName: WebXR
+    className: WebXRManager
   - hash:
       serializedVersion: 2
       Hash: dcc608e96ec2ac8ad8de1fc54d7d0b7a
@@ -3914,6 +4126,12 @@ ScriptsOnlyBuild:
     className: FallbackCameraController
   - hash:
       serializedVersion: 2
+      Hash: b5657e5f760d148ab6d313cfc4906e67
+    assemblyName: HTC.ViveHandTracking.dll
+    namespaceName: ViveHandTracking
+    className: GestureProvider
+  - hash:
+      serializedVersion: 2
       Hash: 358725ab975a43af405c30ec6515f1bb
     assemblyName: Assembly-CSharp.dll
     namespaceName: HTC.UnityPlugin.Vive
@@ -3932,7 +4150,7 @@ ScriptsOnlyBuild:
     className: BalloonHapticBump
   - hash:
       serializedVersion: 2
-      Hash: bd0e339fe24d194d4d611eb3cca2d5b6
+      Hash: 54629183b3f1d63cc6565ddf5b076c36
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: VRIDEMenu
@@ -3948,6 +4166,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.XR.Interaction.Toolkit.dll
     namespaceName: UnityEngine.XR.Interaction.Toolkit
     className: XRRayInteractor
+  - hash:
+      serializedVersion: 2
+      Hash: caa533b001ae39b864ba8425019e2268
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Outline
   - hash:
       serializedVersion: 2
       Hash: a7089f9264d52603b4e6e5c1fd3d2696
@@ -3968,6 +4192,12 @@ ScriptsOnlyBuild:
     className: XRReferenceImageLibrary
   - hash:
       serializedVersion: 2
+      Hash: 134322c9293c1896357cce271b819ce4
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.EventSystems
+    className: EventTrigger
+  - hash:
+      serializedVersion: 2
       Hash: 5dea360fb0b147724ac344e6f399c2f3
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -3978,6 +4208,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.XR.Interaction.Toolkit.dll
     namespaceName: UnityEngine.XR.Interaction.Toolkit.Inputs.Simulation
     className: XRDeviceSimulator
+  - hash:
+      serializedVersion: 2
+      Hash: be29780733e2db31d3085b886a549e46
+    assemblyName: HTC.ViveHandTracking.dll
+    namespaceName: ViveHandTracking
+    className: HandStateChecker
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -4016,6 +4252,12 @@ ScriptsOnlyBuild:
     className: BindingInterfaceRoleSetBindingItem
   - hash:
       serializedVersion: 2
+      Hash: 28f071a5e6bafd17d8c7712d7485a939
+    assemblyName: WebXR.dll
+    namespaceName: WebXR
+    className: WebXRControllerInputMap
+  - hash:
+      serializedVersion: 2
       Hash: 163c66cebee3ffd65522e6a24263575f
     assemblyName: Assembly-CSharp.dll
     namespaceName: OculusSampleFramework
@@ -4046,16 +4288,28 @@ ScriptsOnlyBuild:
     className: OVRSkeleton
   - hash:
       serializedVersion: 2
-      Hash: dbefcf0bffe1e76fe220d47f599fadd8
+      Hash: e1a4e3b6348e1e9215411ce8766f4b9d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Graph
+  - hash:
+      serializedVersion: 2
+      Hash: 748dd2a2a28da4e618912da5ac45684b
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.EventSystems
+    className: StandaloneInputModule
   - hash:
       serializedVersion: 2
       Hash: d287c185a119d79ff1e89b8a6a2ad8aa
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR
     className: SteamVR_Frustum
+  - hash:
+      serializedVersion: 2
+      Hash: 0ffaf073d4b1fa4e8036cf7ad52ddba7
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Toggle
   - hash:
       serializedVersion: 2
       Hash: e8e6708f78d26e943d13044f5d15f757
@@ -4112,16 +4366,28 @@ ScriptsOnlyBuild:
     className: DebugUISample
   - hash:
       serializedVersion: 2
-      Hash: 278255c25ac053ec367c6626b1b6b60e
+      Hash: 12f8e6f6cff044552c0be2a2f47fd1af
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Inspector
+  - hash:
+      serializedVersion: 2
+      Hash: 0fd6822f6177297bd0eb4d83cc7a9030
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: ToggleGroup
   - hash:
       serializedVersion: 2
       Hash: 1cd711ef09fe5722c15bf8fb60b1d818
     assemblyName: Unity.XR.Interaction.Toolkit.dll
     namespaceName: UnityEngine.XR.Interaction.Toolkit
     className: XRSimpleInteractable
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: HTC.ViveHandTracking.dll
+    namespaceName: ViveHandTracking
+    className: EditorEngine
   - hash:
       serializedVersion: 2
       Hash: 75cd39a1f6026e63f483b86039e2c4cb

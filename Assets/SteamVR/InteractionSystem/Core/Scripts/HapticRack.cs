@@ -6,11 +6,12 @@
 
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
 
 namespace Valve.VR.InteractionSystem
 {
-    //-------------------------------------------------------------------------
-    [RequireComponent( typeof( Interactable ) )]
+	//-------------------------------------------------------------------------
+	[RequireComponent( typeof( Interactable ) )]
 	public class HapticRack : MonoBehaviour
 	{
 		[Tooltip( "The linear mapping driving the haptic rack" )]

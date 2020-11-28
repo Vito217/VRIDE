@@ -4,9 +4,13 @@
 
 namespace Oculus.Platform.Models
 {
-    using System;
+  using System;
+  using System.Collections;
+  using Oculus.Platform.Models;
+  using System.Collections.Generic;
+  using UnityEngine;
 
-    public class LaunchDetails
+  public class LaunchDetails
   {
     public readonly string DeeplinkMessage;
     public readonly string DestinationApiName;

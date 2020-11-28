@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class OVRAudioSourceTest : MonoBehaviour
@@ -9,7 +11,7 @@ public class OVRAudioSourceTest : MonoBehaviour
     void Start()
     {
 		Material templateMaterial = GetComponent<Renderer>().material;
-		Material newMaterial = Instantiate(templateMaterial);
+		Material newMaterial = Instantiate<Material>(templateMaterial);
 		newMaterial.color = Color.green;
 		GetComponent<Renderer>().material = newMaterial;
 

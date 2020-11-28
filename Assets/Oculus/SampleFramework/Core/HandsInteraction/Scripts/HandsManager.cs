@@ -11,12 +11,13 @@ language governing permissions and limitations under the license.
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace OculusSampleFramework
 {
-    public class HandsManager : MonoBehaviour
+	public class HandsManager : MonoBehaviour
 	{
 		private const string SKELETON_VISUALIZER_NAME = "SkeletonRenderer";
 

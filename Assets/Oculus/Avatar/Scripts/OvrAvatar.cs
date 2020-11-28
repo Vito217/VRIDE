@@ -12,7 +12,7 @@ using UnityEditor;
 using UnityEngine.Events;
 #endif
 
-[Serializable]
+[System.Serializable]
 public class AvatarLayer
 {
     public int layerIndex;
@@ -33,7 +33,7 @@ public class AvatarLayerPropertyDrawer : PropertyDrawer
 }
 #endif
 
-[Serializable]
+[System.Serializable]
 public class PacketRecordSettings
 {
     internal bool RecordingFrames = false;
@@ -982,7 +982,6 @@ public class OvrAvatar : MonoBehaviour
 
     bool IsValidMic()
     {
-#if !UNITY_WEBGL
         string[] devices = Microphone.devices;
 
         if (devices.Length < 1)
@@ -1021,9 +1020,6 @@ public class OvrAvatar : MonoBehaviour
 
         Microphone.End(selectedDevice);
         return true;
-#else
-        return false;
-#endif
     }
 
     void InitPostLoad()

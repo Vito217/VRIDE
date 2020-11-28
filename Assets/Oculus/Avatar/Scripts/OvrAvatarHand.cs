@@ -1,3 +1,7 @@
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using System;
 using Oculus.Avatar;
 
 public class OvrAvatarHand : OvrAvatarComponent

@@ -6,11 +6,12 @@
 //=============================================================================
 
 using UnityEngine;
+using System.Collections;
 
 namespace Valve.VR.InteractionSystem
 {
-    //-------------------------------------------------------------------------
-    public class SpawnAndAttachAfterControllerIsTracking : MonoBehaviour
+	//-------------------------------------------------------------------------
+	public class SpawnAndAttachAfterControllerIsTracking : MonoBehaviour
 	{
 		private Hand hand;
 		public GameObject itemPrefab;

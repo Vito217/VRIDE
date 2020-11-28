@@ -5,11 +5,12 @@
 //=============================================================================
 
 using UnityEngine;
+using System.Collections;
 
 namespace Valve.VR.InteractionSystem
 {
-    //-------------------------------------------------------------------------
-    [RequireComponent( typeof( ParticleSystem ) )]
+	//-------------------------------------------------------------------------
+	[RequireComponent( typeof( ParticleSystem ) )]
 	public class DestroyOnParticleSystemDeath : MonoBehaviour
 	{
 		private ParticleSystem particles;

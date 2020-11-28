@@ -1,7 +1,10 @@
 ﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
 
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
+using Valve.VR;
 
 namespace Valve.VR
 {

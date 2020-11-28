@@ -7,6 +7,8 @@ language governing permissions and limitations under the license.
 
 ************************************************************************************/
 
+using UnityEngine;
+using System.Collections;
 
 /// <summary>
 /// This orientation handler doesn't actually do anything with the orientation at all; this is for users

@@ -8,6 +8,7 @@ language governing permissions and limitations under the license.
 ************************************************************************************/
 
 using UnityEngine;
+using System.Collections;
 
 /// <summary>
 /// This orientation handler will use the specified thumbstick to adjust the landing orientation of the teleport.

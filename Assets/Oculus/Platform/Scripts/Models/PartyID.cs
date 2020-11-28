@@ -2,9 +2,13 @@
 
 namespace Oculus.Platform.Models
 {
-    using System;
+  using System;
+  using System.Collections;
+  using Oculus.Platform.Models;
+  using System.Collections.Generic;
+  using UnityEngine;
 
-    public class PartyID
+  public class PartyID
   {
     public readonly UInt64 ID;
 

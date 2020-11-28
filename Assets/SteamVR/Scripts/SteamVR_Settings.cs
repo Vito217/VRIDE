@@ -1,6 +1,9 @@
 ﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
 
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine.Serialization;
 
 namespace Valve.VR
@@ -35,7 +38,7 @@ namespace Valve.VR
         }
 
         [SerializeField]
-        [FormerlySerializedAs("trackingSpace")]
+        [FormerlySerializedAsAttribute("trackingSpace")]
         private ETrackingUniverseOrigin trackingSpaceOrigin = ETrackingUniverseOrigin.TrackingUniverseStanding;
 
         [Tooltip("Filename local to StreamingAssets/SteamVR/ folder")]

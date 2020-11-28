@@ -2,9 +2,13 @@
 
 namespace Oculus.Platform
 {
-    using System;
+  using System;
+  using System.Collections;
+  using Oculus.Platform.Models;
+  using System.Collections.Generic;
+  using UnityEngine;
 
-    public class NetSyncOptions {
+  public class NetSyncOptions {
 
     public NetSyncOptions() {
       Handle = CAPI.ovr_NetSyncOptions_Create();

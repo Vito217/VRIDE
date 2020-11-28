@@ -24,6 +24,7 @@ using UnityEngine;
 #if UNITY_2019_1_OR_NEWER
 using UnityEngine.XR;
 #endif
+using System.Collections;
 using System.Collections.Generic;
 
 public class LipSyncDemo_SetCurrentTarget : MonoBehaviour

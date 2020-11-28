@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEditor;
+using System.Collections;
+using System.Collections.Generic;
 
 [CustomPropertyDrawer(typeof(InspectorNoteAttribute))]
 public class DrawerInspectorNote : DecoratorDrawer

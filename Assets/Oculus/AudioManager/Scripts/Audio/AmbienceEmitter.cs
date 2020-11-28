@@ -1,16 +1,17 @@
 using UnityEngine;
+using System.Collections;
 
 namespace OVR
 {
 
-    /*
-    -----------------------
-
-     AmbienceEmitter()
-
-    -----------------------
-    */
-    public class AmbienceEmitter : MonoBehaviour {
+/*
+-----------------------
+ 
+ AmbienceEmitter()
+ 
+-----------------------
+*/
+public class AmbienceEmitter : MonoBehaviour {
 
 	public SoundFXRef[]		ambientSounds = new SoundFXRef[0];
 	public bool				autoActivate = true;

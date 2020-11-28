@@ -464,7 +464,7 @@ namespace Valve.VR.InteractionSystem
 		{
 			renderModel.gameObject.SetActive( true );
 
-			renderModel.GetComponentsInChildren( renderers );
+			renderModel.GetComponentsInChildren<MeshRenderer>( renderers );
 			for ( int i = 0; i < renderers.Count; i++ )
 			{
 				Texture mainTexture = renderers[i].material.mainTexture;

@@ -34,11 +34,14 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 #if UNITY_EDITOR
+using UnityEditor;
 #endif
 
+using UnityEngine.Rendering;
 
 #if USING_XR_SDK
 using UnityEngine.XR;
+using UnityEngine.Experimental.XR;
 #endif
 
 using Settings = UnityEngine.XR.XRSettings;
@@ -383,14 +386,14 @@ public class OVRManager : MonoBehaviour
 	/// <summary>
 	/// Min RenderScale the app can reach under adaptive resolution mode ( enableAdaptiveResolution = true );
 	/// </summary>
-	[Range(0.5f, 2.0f)]
+	[RangeAttribute(0.5f, 2.0f)]
 	[Tooltip("Min RenderScale the app can reach under adaptive resolution mode")]
 	public float minRenderScale = 0.7f;
 
 	/// <summary>
 	/// Max RenderScale the app can reach under adaptive resolution mode ( enableAdaptiveResolution = true );
 	/// </summary>
-	[Range(0.5f, 2.0f)]
+	[RangeAttribute(0.5f, 2.0f)]
 	[Tooltip("Max RenderScale the app can reach under adaptive resolution mode")]
 	public float maxRenderScale = 1.0f;
 
@@ -794,7 +797,7 @@ public class OVRManager : MonoBehaviour
 	{
 		get
 		{
-			return (EyeTextureFormat)OVRPlugin.GetDesiredEyeTextureFormat();
+			return (OVRManager.EyeTextureFormat)OVRPlugin.GetDesiredEyeTextureFormat();
 		}
 
 		set
@@ -984,17 +987,17 @@ public class OVRManager : MonoBehaviour
 	[Header("Tracking")]
 	[SerializeField]
 	[Tooltip("Defines the current tracking origin type.")]
-	private TrackingOrigin _trackingOriginType = OVRManager.TrackingOrigin.EyeLevel;
+	private OVRManager.TrackingOrigin _trackingOriginType = OVRManager.TrackingOrigin.EyeLevel;
 	/// <summary>
 	/// Defines the current tracking origin type.
 	/// </summary>
-	public TrackingOrigin trackingOriginType
+	public OVRManager.TrackingOrigin trackingOriginType
 	{
 		get {
 			if (!isHmdPresent)
 				return _trackingOriginType;
 
-			return (TrackingOrigin)OVRPlugin.GetTrackingOriginType();
+			return (OVRManager.TrackingOrigin)OVRPlugin.GetTrackingOriginType();
 		}
 
 		set {
@@ -1086,17 +1089,17 @@ public class OVRManager : MonoBehaviour
 	private static string prevAudioInId = string.Empty;
 	private static bool wasPositionTracked = false;
 
-	public static Version utilitiesVersion
+	public static System.Version utilitiesVersion
 	{
 		get { return OVRPlugin.wrapperVersion; }
 	}
 
-	public static Version pluginVersion
+	public static System.Version pluginVersion
 	{
 		get { return OVRPlugin.version; }
 	}
 
-	public static Version sdkVersion
+	public static System.Version sdkVersion
 	{
 		get { return OVRPlugin.nativeSDKVersion; }
 	}

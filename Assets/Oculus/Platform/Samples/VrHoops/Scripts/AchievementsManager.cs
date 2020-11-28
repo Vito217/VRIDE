@@ -1,9 +1,11 @@
 namespace Oculus.Platform.Samples.VrHoops
 {
-    using Oculus.Platform;
-    using Oculus.Platform.Models;
+	using UnityEngine;
+	using System.Collections;
+	using Oculus.Platform;
+	using Oculus.Platform.Models;
 
-    public class AchievementsManager
+	public class AchievementsManager
 	{
 		// API NAME defined on the dashboard for the achievement
 		private const string LIKES_TO_WIN = "LIKES_TO_WIN";

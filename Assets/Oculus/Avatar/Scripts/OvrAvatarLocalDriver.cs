@@ -1,5 +1,8 @@
 using UnityEngine;
+using System.Collections;
 using System;
+using System.Collections.Generic;
+using Oculus.Avatar;
 
 public class OvrAvatarLocalDriver : OvrAvatarDriver {
 

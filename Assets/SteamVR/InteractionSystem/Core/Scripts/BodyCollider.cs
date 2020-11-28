@@ -5,11 +5,12 @@
 //=============================================================================
 
 using UnityEngine;
+using System.Collections;
 
 namespace Valve.VR.InteractionSystem
 {
-    //-------------------------------------------------------------------------
-    [RequireComponent( typeof( CapsuleCollider ) )]
+	//-------------------------------------------------------------------------
+	[RequireComponent( typeof( CapsuleCollider ) )]
 	public class BodyCollider : MonoBehaviour
 	{
 		public Transform head;

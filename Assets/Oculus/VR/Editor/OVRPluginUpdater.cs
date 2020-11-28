@@ -21,8 +21,11 @@ limitations under the License.
 
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.Callbacks;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using System.IO;
 using System.Diagnostics;
 
@@ -40,7 +43,7 @@ class OVRPluginUpdater
 	class PluginPackage
 	{
 		public string RootPath;
-		public Version Version;
+		public System.Version Version;
 		public Dictionary<PluginPlatform, string> Plugins = new Dictionary<PluginPlatform, string>();
 
 		public bool IsBundledPluginPackage()
@@ -103,7 +106,7 @@ class OVRPluginUpdater
 	private static bool unityVersionSupportsAndroidUniversal = false;
 	private static bool enableAndroidUniversalSupport = true;
 
-	private static Version invalidVersion = new Version("0.0.0");
+	private static System.Version invalidVersion = new System.Version("0.0.0");
 
 	static OVRPluginUpdater()
 	{
@@ -230,13 +233,13 @@ class OVRPluginUpdater
 		return @".disabled";
 	}
 
-	private static Version GetPluginVersion(string path)
+	private static System.Version GetPluginVersion(string path)
 	{
-        Version pluginVersion = invalidVersion;
+		System.Version pluginVersion = invalidVersion;
 
 		try
 		{
-			pluginVersion = new Version(Path.GetFileName(path));
+			pluginVersion = new System.Version(Path.GetFileName(path));
 		}
 		catch
 		{
@@ -262,13 +265,13 @@ class OVRPluginUpdater
 				return invalidVersion;
 			}
 
-			pluginVersion = new Version(pluginVersionInfo.ProductVersion);
+			pluginVersion = new System.Version(pluginVersionInfo.ProductVersion);
 		}
 
 		return pluginVersion;
 	}
 
-	public static string GetVersionDescription(Version version)
+	public static string GetVersionDescription(System.Version version)
 	{
 		bool isVersionValid = (version != invalidVersion);
 		return isVersionValid ? version.ToString() : "(Unknown)";
@@ -532,7 +535,7 @@ class OVRPluginUpdater
 			return; // No update necessary.
 		}
 
-        Version targetVersion = targetPluginPkg.Version;
+		System.Version targetVersion = targetPluginPkg.Version;
 
 		bool userAcceptsUpdate = false;
 

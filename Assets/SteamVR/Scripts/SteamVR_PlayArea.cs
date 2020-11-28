@@ -7,6 +7,7 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 using System.Collections;
+using Valve.VR;
 
 namespace Valve.VR
 {

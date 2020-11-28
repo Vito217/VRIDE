@@ -5,12 +5,14 @@
 //=============================================================================
 
 using UnityEngine;
+using UnityEngine.Events;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Valve.VR.InteractionSystem
 {
-    //-------------------------------------------------------------------------
-    public class InteractableDebug : MonoBehaviour
+	//-------------------------------------------------------------------------
+	public class InteractableDebug : MonoBehaviour
 	{
         [System.NonSerialized]
         public Hand attachedToHand;

@@ -1,9 +1,10 @@
-using System;
-using UnityEngine;
-
 namespace Oculus.Platform
 {
-    public class AndroidPlatform
+  using UnityEngine;
+  using System.Collections;
+  using System;
+
+  public class AndroidPlatform
   {
     public bool Initialize(string appId)
     {

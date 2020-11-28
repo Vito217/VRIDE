@@ -22,6 +22,7 @@ limitations under the License.
 
 using UnityEditor;
 using UnityEngine;
+using System.Collections.Generic;
 
 [CustomEditor(typeof(ONSPAudioSource))]
 

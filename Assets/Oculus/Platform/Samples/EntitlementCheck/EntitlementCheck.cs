@@ -1,9 +1,11 @@
 using System;
 using UnityEngine;
+using Oculus.Platform;
+using Oculus.Platform.Models;
 
 namespace Oculus.Platform.Samples.EntitlementCheck
 {
-    public class EntitlementCheck : MonoBehaviour
+  public class EntitlementCheck : MonoBehaviour
   {
     // Implements a default behavior for entitlement check failures by simply exiting the app.
     // Set to false if the app wants to provide custom logic to handle entitlement check failures.

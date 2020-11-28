@@ -2,10 +2,13 @@
 
 namespace Oculus.Platform.Models
 {
-    using System;
-    using System.Collections.Generic;
+  using System;
+  using System.Collections;
+  using Oculus.Platform.Models;
+  using System.Collections.Generic;
+  using UnityEngine;
 
-    public class LinkedAccount
+  public class LinkedAccount
   {
     public readonly string AccessToken;
     public readonly ServiceProvider ServiceProvider;

@@ -26,16 +26,19 @@ limitations under the License.
 #endif
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Xml;
 using System.Diagnostics;
+using System.Threading;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
 #if UNITY_ANDROID
 using UnityEditor.Android;
-using System.Threading;
 #endif
 
 [InitializeOnLoad]
@@ -49,8 +52,8 @@ public class OVRGradleGeneration
 	public Process adbProcess;
 
 	public int callbackOrder { get { return 99999; } }
-	static private DateTime buildStartTime;
-	static private Guid buildGuid;
+	static private System.DateTime buildStartTime;
+	static private System.Guid buildGuid;
 
 #if UNITY_ANDROID
 	private const string prefName = "OVRAutoIncrementVersionCode_Enabled";
@@ -180,7 +183,7 @@ public class OVRGradleGeneration
 					}
 				}
 			}
-			catch (Exception e)
+			catch (System.Exception e)
 			{
 				UnityEngine.Debug.LogWarningFormat("Unable to overwrite build.gradle, error {0}", e.Message);
 			}

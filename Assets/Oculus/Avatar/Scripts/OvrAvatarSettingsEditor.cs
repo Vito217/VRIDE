@@ -1,10 +1,11 @@
 #if UNITY_EDITOR
 using UnityEngine;
+using System.Collections;
 using UnityEditor;
 using Oculus.Avatar;
 
 [CustomEditor(typeof(OvrAvatarSettings))]
-[InitializeOnLoad]
+[InitializeOnLoadAttribute]
 public class OvrAvatarSettingsEditor : Editor {
     GUIContent appIDLabel = new GUIContent("Oculus Rift App Id [?]", 
       "This AppID will be used for OvrAvatar registration.");
@@ -12,7 +13,7 @@ public class OvrAvatarSettingsEditor : Editor {
     GUIContent mobileAppIDLabel = new GUIContent("Oculus Go/Quest or Gear VR [?]", 
       "This AppID will be used when building to the Android target");
 
-    [MenuItem("Oculus/Avatars/Edit Settings")]
+    [UnityEditor.MenuItem("Oculus/Avatars/Edit Settings")]
     public static void Edit()
     {
         var settings = OvrAvatarSettings.Instance;

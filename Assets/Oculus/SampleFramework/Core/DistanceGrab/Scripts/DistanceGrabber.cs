@@ -9,6 +9,7 @@ language governing permissions and limitations under the license.
 
 ************************************************************************************/
 
+using System.Collections.Generic;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEngine.SceneManagement;

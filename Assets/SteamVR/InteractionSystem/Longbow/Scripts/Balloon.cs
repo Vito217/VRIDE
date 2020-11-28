@@ -4,12 +4,13 @@
 //
 //=============================================================================
 
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
 namespace Valve.VR.InteractionSystem
 {
-    //-------------------------------------------------------------------------
-    public class Balloon : MonoBehaviour
+	//-------------------------------------------------------------------------
+	public class Balloon : MonoBehaviour
 	{
 		public enum BalloonColor { Red, OrangeRed, Orange, YellowOrange, Yellow, GreenYellow, Green, BlueGreen, Blue, VioletBlue, Violet, RedViolet, LightGray, DarkGray, Random };
 

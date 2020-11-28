@@ -4,10 +4,13 @@
 
 namespace Oculus.Platform.Models
 {
-    using System;
-    using System.Collections.Generic;
+  using System;
+  using System.Collections;
+  using Oculus.Platform.Models;
+  using System.Collections.Generic;
+  using UnityEngine;
 
-    public class AssetDetails
+  public class AssetDetails
   {
     public readonly UInt64 AssetId;
     public readonly string AssetType;

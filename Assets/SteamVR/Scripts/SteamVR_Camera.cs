@@ -7,9 +7,10 @@
 using UnityEngine;
 using System.Collections;
 using System.Reflection;
+using Valve.VR;
 
 #if UNITY_2017_2_OR_NEWER
-using UnityEngine.XR;
+    using UnityEngine.XR;
 #else
 using XRSettings = UnityEngine.VR.VRSettings;
 using XRDevice = UnityEngine.VR.VRDevice;

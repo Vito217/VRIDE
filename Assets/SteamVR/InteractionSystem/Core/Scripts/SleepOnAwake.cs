@@ -5,11 +5,12 @@
 //=============================================================================
 
 using UnityEngine;
+using System.Collections;
 
 namespace Valve.VR.InteractionSystem
 {
-    //-------------------------------------------------------------------------
-    public class SleepOnAwake : MonoBehaviour
+	//-------------------------------------------------------------------------
+	public class SleepOnAwake : MonoBehaviour
 	{
 		//-------------------------------------------------
 		void Awake()

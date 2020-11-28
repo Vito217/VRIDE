@@ -86,11 +86,11 @@ public class OVRBoundary
 	/// Returns the results of testing a tracked node against the specified boundary type.
 	/// All points are returned in local tracking space shared by tracked nodes and accessible through OVRCameraRig's trackingSpace anchor.
 	/// </summary>
-	public BoundaryTestResult TestNode(Node node, BoundaryType boundaryType)
+	public OVRBoundary.BoundaryTestResult TestNode(OVRBoundary.Node node, OVRBoundary.BoundaryType boundaryType)
 	{
 		OVRPlugin.BoundaryTestResult ovrpRes = OVRPlugin.TestBoundaryNode((OVRPlugin.Node)node, (OVRPlugin.BoundaryType)boundaryType);
 
-        BoundaryTestResult res = new BoundaryTestResult()
+		OVRBoundary.BoundaryTestResult res = new OVRBoundary.BoundaryTestResult()
 		{
 			IsTriggering = (ovrpRes.IsTriggering == OVRPlugin.Bool.True),
 			ClosestDistance = ovrpRes.ClosestDistance,
@@ -106,11 +106,11 @@ public class OVRBoundary
 	/// The test point is expected in local tracking space.
 	/// All points are returned in local tracking space shared by tracked nodes and accessible through OVRCameraRig's trackingSpace anchor.
 	/// </summary>
-	public BoundaryTestResult TestPoint(Vector3 point, BoundaryType boundaryType)
+	public OVRBoundary.BoundaryTestResult TestPoint(Vector3 point, OVRBoundary.BoundaryType boundaryType)
 	{
 		OVRPlugin.BoundaryTestResult ovrpRes = OVRPlugin.TestBoundaryPoint(point.ToFlippedZVector3f(), (OVRPlugin.BoundaryType)boundaryType);
 
-        BoundaryTestResult res = new BoundaryTestResult()
+		OVRBoundary.BoundaryTestResult res = new OVRBoundary.BoundaryTestResult()
 		{
 			IsTriggering = (ovrpRes.IsTriggering == OVRPlugin.Bool.True),
 			ClosestDistance = ovrpRes.ClosestDistance,
@@ -129,7 +129,7 @@ public class OVRBoundary
 	/// Returns an array of 3d points (in clockwise order) that define the specified boundary type.
 	/// All points are returned in local tracking space shared by tracked nodes and accessible through OVRCameraRig's trackingSpace anchor.
 	/// </summary>
-	public Vector3[] GetGeometry(BoundaryType boundaryType)
+	public Vector3[] GetGeometry(OVRBoundary.BoundaryType boundaryType)
 	{
 		if (OVRManager.loadedXRDevice != OVRManager.XRDevice.Oculus)
 		{
@@ -184,7 +184,7 @@ public class OVRBoundary
 	/// <summary>
 	/// Returns a vector that indicates the spatial dimensions of the specified boundary type. (x = width, y = height, z = depth)
 	/// </summary>
-	public Vector3 GetDimensions(BoundaryType boundaryType)
+	public Vector3 GetDimensions(OVRBoundary.BoundaryType boundaryType)
 	{
 		if (OVRManager.loadedXRDevice == OVRManager.XRDevice.Oculus)
 			return OVRPlugin.GetBoundaryDimensions((OVRPlugin.BoundaryType)boundaryType).FromVector3f();

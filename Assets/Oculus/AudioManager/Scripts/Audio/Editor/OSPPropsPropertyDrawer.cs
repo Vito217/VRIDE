@@ -1,17 +1,18 @@
 using UnityEngine;
 using UnityEditor;
+using System.Collections;
 
 namespace OVR
 {
 
-    /*
-    -----------------------
+/*
+-----------------------
 
-    OSPPropsPropertyDrawer
+OSPPropsPropertyDrawer
 
-    -----------------------
-    */
-    [CustomPropertyDrawer(typeof(OSPProps))]
+-----------------------
+*/
+[CustomPropertyDrawer(typeof(OSPProps))]
 public class OSPPropsPropertyDrawer : PropertyDrawer {
 
 	static float lineHeight = EditorGUIUtility.singleLineHeight + 2.0f;

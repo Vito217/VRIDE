@@ -1,7 +1,9 @@
 using UnityEngine;
+using System.Collections;
 using System;
 using System.IO;
 using Oculus.Avatar;
+using System.Runtime.InteropServices;
 using System.Collections.Generic;
 
 public class RemoteLoopbackManager : MonoBehaviour
@@ -15,7 +17,7 @@ public class RemoteLoopbackManager : MonoBehaviour
     public OvrAvatar LocalAvatar;
     public OvrAvatar LoopbackAvatar;
 
-    [Serializable]
+    [System.Serializable]
     public class SimulatedLatencySettings
     {
         [Range(0.0f, 0.5f)]

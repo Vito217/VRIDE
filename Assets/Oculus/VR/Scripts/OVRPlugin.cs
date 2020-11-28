@@ -47,13 +47,13 @@ public static class OVRPlugin
 #if OVRPLUGIN_UNSUPPORTED_PLATFORM
 	public static readonly System.Version wrapperVersion = _versionZero;
 #else
-	public static readonly Version wrapperVersion = OVRP_1_52_0.version;
+	public static readonly System.Version wrapperVersion = OVRP_1_52_0.version;
 #endif
 
 #if !OVRPLUGIN_UNSUPPORTED_PLATFORM
-	private static Version _version;
+	private static System.Version _version;
 #endif
-	public static Version version
+	public static System.Version version
 	{
 		get {
 #if OVRPLUGIN_UNSUPPORTED_PLATFORM
@@ -70,7 +70,7 @@ public static class OVRPlugin
 					{
 						// Truncate unsupported trailing version info for System.Version. Original string is returned if not present.
 						pluginVersion = pluginVersion.Split('-')[0];
-						_version = new Version(pluginVersion);
+						_version = new System.Version(pluginVersion);
 					}
 					else
 					{
@@ -96,9 +96,9 @@ public static class OVRPlugin
 	}
 
 #if !OVRPLUGIN_UNSUPPORTED_PLATFORM
-	private static Version _nativeSDKVersion;
+	private static System.Version _nativeSDKVersion;
 #endif
-	public static Version nativeSDKVersion
+	public static System.Version nativeSDKVersion
 	{
 		get {
 #if OVRPLUGIN_UNSUPPORTED_PLATFORM
@@ -119,7 +119,7 @@ public static class OVRPlugin
 					{
 						// Truncate unsupported trailing version info for System.Version. Original string is returned if not present.
 						sdkVersion = sdkVersion.Split('-')[0];
-						_nativeSDKVersion = new Version(sdkVersion);
+						_nativeSDKVersion = new System.Version(sdkVersion);
 					}
 					else
 					{
@@ -1405,7 +1405,7 @@ public static class OVRPlugin
 	}
 
 #if !OVRPLUGIN_UNSUPPORTED_PLATFORM
-	private static GUID _nativeAudioOutGuid = new GUID();
+	private static GUID _nativeAudioOutGuid = new OVRPlugin.GUID();
 	private static Guid _cachedAudioOutGuid;
 	private static string _cachedAudioOutString;
 #endif
@@ -1419,7 +1419,7 @@ public static class OVRPlugin
 			try
 			{
 				if (_nativeAudioOutGuid == null)
-					_nativeAudioOutGuid = new GUID();
+					_nativeAudioOutGuid = new OVRPlugin.GUID();
 
 				IntPtr ptr = OVRP_1_1_0.ovrp_GetAudioOutId();
 				if (ptr != IntPtr.Zero)
@@ -1455,7 +1455,7 @@ public static class OVRPlugin
 	}
 
 #if !OVRPLUGIN_UNSUPPORTED_PLATFORM
-	private static GUID _nativeAudioInGuid = new GUID();
+	private static GUID _nativeAudioInGuid = new OVRPlugin.GUID();
 	private static Guid _cachedAudioInGuid;
 	private static string _cachedAudioInString;
 #endif
@@ -1469,7 +1469,7 @@ public static class OVRPlugin
 			try
 			{
 				if (_nativeAudioInGuid == null)
-					_nativeAudioInGuid = new GUID();
+					_nativeAudioInGuid = new OVRPlugin.GUID();
 
 				IntPtr ptr = OVRP_1_1_0.ovrp_GetAudioInId();
 				if (ptr != IntPtr.Zero)
@@ -4314,7 +4314,7 @@ public static class OVRPlugin
 #endif
 		}
 
-		public static bool EncodeMrcFrame(IntPtr textureHandle, IntPtr fgTextureHandle, float[] audioData, int audioFrames, int audioChannels, double timestamp, double poseTime, ref int outSyncId)
+		public static bool EncodeMrcFrame(System.IntPtr textureHandle, System.IntPtr fgTextureHandle, float[] audioData, int audioFrames, int audioChannels, double timestamp, double poseTime, ref int outSyncId)
 		{
 #if OVRPLUGIN_UNSUPPORTED_PLATFORM
 			return false;
@@ -4669,7 +4669,7 @@ public static class OVRPlugin
 		{
 			mesh = new Mesh();
 			int meshSize = Marshal.SizeOf(mesh);
-            IntPtr meshPtr = Marshal.AllocHGlobal(meshSize);
+			System.IntPtr meshPtr = Marshal.AllocHGlobal(meshSize);
 			Result result = OVRP_1_44_0.ovrp_GetMesh(meshType, meshPtr);
 			if (result == Result.Success)
 			{
@@ -4777,14 +4777,14 @@ public static class OVRPlugin
 	}
 
 	private const string pluginName = "OVRPlugin";
-	private static Version _versionZero = new Version(0, 0, 0);
+	private static System.Version _versionZero = new System.Version(0, 0, 0);
 
 	// Disable all the DllImports when the platform is not supported
 #if !OVRPLUGIN_UNSUPPORTED_PLATFORM
 
 	private static class OVRP_0_1_0
 	{
-		public static readonly Version version = new Version(0, 1, 0);
+		public static readonly System.Version version = new System.Version(0, 1, 0);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern Sizei ovrp_GetEyeTextureSize(Eye eyeId);
@@ -4792,7 +4792,7 @@ public static class OVRPlugin
 
 	private static class OVRP_0_1_1
 	{
-		public static readonly Version version = new Version(0, 1, 1);
+		public static readonly System.Version version = new System.Version(0, 1, 1);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern Bool ovrp_SetOverlayQuad2(Bool onTop, Bool headLocked, IntPtr texture, IntPtr device, Posef pose, Vector3f scale);
@@ -4800,7 +4800,7 @@ public static class OVRPlugin
 
 	private static class OVRP_0_1_2
 	{
-		public static readonly Version version = new Version(0, 1, 2);
+		public static readonly System.Version version = new System.Version(0, 1, 2);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern Posef ovrp_GetNodePose(Node nodeId);
@@ -4811,7 +4811,7 @@ public static class OVRPlugin
 
 	private static class OVRP_0_1_3
 	{
-		public static readonly Version version = new Version(0, 1, 3);
+		public static readonly System.Version version = new System.Version(0, 1, 3);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern Posef ovrp_GetNodeVelocity(Node nodeId);
@@ -4822,12 +4822,12 @@ public static class OVRPlugin
 
 	private static class OVRP_0_5_0
 	{
-		public static readonly Version version = new Version(0, 5, 0);
+		public static readonly System.Version version = new System.Version(0, 5, 0);
 	}
 
 	private static class OVRP_1_0_0
 	{
-		public static readonly Version version = new Version(1, 0, 0);
+		public static readonly System.Version version = new System.Version(1, 0, 0);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern TrackingOrigin ovrp_GetTrackingOriginType();
@@ -4844,7 +4844,7 @@ public static class OVRPlugin
 
 	private static class OVRP_1_1_0
 	{
-		public static readonly Version version = new Version(1, 1, 0);
+		public static readonly System.Version version = new System.Version(1, 1, 0);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern Bool ovrp_GetInitialized();
@@ -4985,7 +4985,7 @@ public static class OVRPlugin
 
 	private static class OVRP_1_2_0
 	{
-		public static readonly Version version = new Version(1, 2, 0);
+		public static readonly System.Version version = new System.Version(1, 2, 0);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern Bool ovrp_SetSystemVSyncCount(int vsyncCount);
@@ -4996,7 +4996,7 @@ public static class OVRPlugin
 
 	private static class OVRP_1_3_0
 	{
-		public static readonly Version version = new Version(1, 3, 0);
+		public static readonly System.Version version = new System.Version(1, 3, 0);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern Bool ovrp_GetEyeOcclusionMeshEnabled();
@@ -5010,7 +5010,7 @@ public static class OVRPlugin
 
 	private static class OVRP_1_5_0
 	{
-		public static readonly Version version = new Version(1, 5, 0);
+		public static readonly System.Version version = new System.Version(1, 5, 0);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern SystemRegion ovrp_GetSystemRegion();
@@ -5018,7 +5018,7 @@ public static class OVRPlugin
 
 	private static class OVRP_1_6_0
 	{
-		public static readonly Version version = new Version(1, 6, 0);
+		public static readonly System.Version version = new System.Version(1, 6, 0);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern Bool ovrp_GetTrackingIPDEnabled();
@@ -5050,7 +5050,7 @@ public static class OVRPlugin
 
 	private static class OVRP_1_7_0
 	{
-		public static readonly Version version = new Version(1, 7, 0);
+		public static readonly System.Version version = new System.Version(1, 7, 0);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern Bool ovrp_GetAppChromaticCorrection();
@@ -5061,7 +5061,7 @@ public static class OVRPlugin
 
 	private static class OVRP_1_8_0
 	{
-		public static readonly Version version = new Version(1, 8, 0);
+		public static readonly System.Version version = new System.Version(1, 8, 0);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern Bool ovrp_GetBoundaryConfigured();
@@ -5099,7 +5099,7 @@ public static class OVRPlugin
 
 	private static class OVRP_1_9_0
 	{
-		public static readonly Version version = new Version(1, 9, 0);
+		public static readonly System.Version version = new System.Version(1, 9, 0);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern SystemHeadset ovrp_GetSystemHeadsetType();
@@ -5122,12 +5122,12 @@ public static class OVRPlugin
 
 	private static class OVRP_1_10_0
 	{
-		public static readonly Version version = new Version(1, 10, 0);
+		public static readonly System.Version version = new System.Version(1, 10, 0);
 	}
 
 	private static class OVRP_1_11_0
 	{
-		public static readonly Version version = new Version(1, 11, 0);
+		public static readonly System.Version version = new System.Version(1, 11, 0);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern Bool ovrp_SetDesiredEyeTextureFormat(EyeTextureFormat value);
@@ -5138,7 +5138,7 @@ public static class OVRPlugin
 
 	private static class OVRP_1_12_0
 	{
-		public static readonly Version version = new Version(1, 12, 0);
+		public static readonly System.Version version = new System.Version(1, 12, 0);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern float ovrp_GetAppFramerate();
@@ -5152,7 +5152,7 @@ public static class OVRPlugin
 
 	private static class OVRP_1_15_0
 	{
-		public static readonly Version version = new Version(1, 15, 0);
+		public static readonly System.Version version = new System.Version(1, 15, 0);
 
 		public const int OVRP_EXTERNAL_CAMERA_NAME_SIZE = 32;
 
@@ -5208,7 +5208,7 @@ public static class OVRPlugin
 
 	private static class OVRP_1_16_0
 	{
-		public static readonly Version version = new Version(1, 16, 0);
+		public static readonly System.Version version = new System.Version(1, 16, 0);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern Result ovrp_UpdateCameraDevices();
@@ -5243,7 +5243,7 @@ public static class OVRPlugin
 
 	private static class OVRP_1_17_0
 	{
-		public static readonly Version version = new Version(1, 17, 0);
+		public static readonly System.Version version = new System.Version(1, 17, 0);
 
 #if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
@@ -5286,7 +5286,7 @@ public static class OVRPlugin
 
 	private static class OVRP_1_18_0
 	{
-		public static readonly Version version = new Version(1, 18, 0);
+		public static readonly System.Version version = new System.Version(1, 18, 0);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern Result ovrp_SetHandNodePoseStateLatency(double latencyInSeconds);
@@ -5300,12 +5300,12 @@ public static class OVRPlugin
 
 	private static class OVRP_1_19_0
 	{
-		public static readonly Version version = new Version(1, 19, 0);
+		public static readonly System.Version version = new System.Version(1, 19, 0);
 	}
 
 	private static class OVRP_1_21_0
 	{
-		public static readonly Version version = new Version(1, 21, 0);
+		public static readonly System.Version version = new System.Version(1, 21, 0);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern Result ovrp_GetTiledMultiResSupported(out Bool foveationSupported);
@@ -5337,7 +5337,7 @@ public static class OVRPlugin
 
 	private static class OVRP_1_28_0
 	{
-		public static readonly Version version = new Version(1, 28, 0);
+		public static readonly System.Version version = new System.Version(1, 28, 0);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern Result ovrp_GetDominantHand(out Handedness dominantHand);
@@ -5351,7 +5351,7 @@ public static class OVRPlugin
 
 	private static class OVRP_1_29_0
 	{
-		public static readonly Version version = new Version(1, 29, 0);
+		public static readonly System.Version version = new System.Version(1, 29, 0);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern Result ovrp_GetLayerAndroidSurfaceObject(int layerId, ref IntPtr surfaceObject);
@@ -5368,7 +5368,7 @@ public static class OVRPlugin
 
 	private static class OVRP_1_30_0
 	{
-		public static readonly Version version = new Version(1, 30, 0);
+		public static readonly System.Version version = new System.Version(1, 30, 0);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern Result ovrp_GetCurrentTrackingTransformPose(out Posef trackingTransformPose);
@@ -5391,7 +5391,7 @@ public static class OVRPlugin
 
 	private static class OVRP_1_31_0
 	{
-		public static readonly Version version = new Version(1, 31, 0);
+		public static readonly System.Version version = new System.Version(1, 31, 0);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern Result ovrp_GetTimeInSeconds(out double value);
@@ -5402,7 +5402,7 @@ public static class OVRPlugin
 
 	private static class OVRP_1_32_0
 	{
-		public static readonly Version version = new Version(1, 32, 0);
+		public static readonly System.Version version = new System.Version(1, 32, 0);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern Result ovrp_AddCustomMetadata(string name, string param);
@@ -5410,7 +5410,7 @@ public static class OVRPlugin
 
 	private static class OVRP_1_34_0
 	{
-		public static readonly Version version = new Version(1, 34, 0);
+		public static readonly System.Version version = new System.Version(1, 34, 0);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern Result ovrp_EnqueueSubmitLayer2(uint flags, IntPtr textureLeft, IntPtr textureRight, int layerId, int frameIndex, ref Posef pose, ref Vector3f scale, int layerIndex,
@@ -5420,22 +5420,22 @@ public static class OVRPlugin
 
 	private static class OVRP_1_35_0
 	{
-		public static readonly Version version = new Version(1, 35, 0);
+		public static readonly System.Version version = new System.Version(1, 35, 0);
 	}
 
 	private static class OVRP_1_36_0
 	{
-		public static readonly Version version = new Version(1, 36, 0);
+		public static readonly System.Version version = new System.Version(1, 36, 0);
 	}
 
 	private static class OVRP_1_37_0
 	{
-		public static readonly Version version = new Version(1, 37, 0);
+		public static readonly System.Version version = new System.Version(1, 37, 0);
 	}
 
 	private static class OVRP_1_38_0
 	{
-		public static readonly Version version = new Version(1, 38, 0);
+		public static readonly System.Version version = new System.Version(1, 38, 0);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern Result ovrp_GetTrackingTransformRelativePose(ref Posef trackingTransformRelativePose, TrackingOrigin trackingOrigin);
@@ -5492,10 +5492,10 @@ public static class OVRPlugin
 		public static extern Result ovrp_Media_GetMrcFrameImageFlipped(ref Bool flipped);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
-		public static extern Result ovrp_Media_EncodeMrcFrame(IntPtr rawBuffer, IntPtr audioDataPtr, int audioDataLen, int audioChannels, double timestamp, ref int outSyncId);
+		public static extern Result ovrp_Media_EncodeMrcFrame(System.IntPtr rawBuffer, System.IntPtr audioDataPtr, int audioDataLen, int audioChannels, double timestamp, ref int outSyncId);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
-		public static extern Result ovrp_Media_EncodeMrcFrameWithDualTextures(IntPtr backgroundTextureHandle, IntPtr foregroundTextureHandle, IntPtr audioData, int audioDataLen, int audioChannels, double timestamp, ref int outSyncId);
+		public static extern Result ovrp_Media_EncodeMrcFrameWithDualTextures(System.IntPtr backgroundTextureHandle, System.IntPtr foregroundTextureHandle, System.IntPtr audioData, int audioDataLen, int audioChannels, double timestamp, ref int outSyncId);
 
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
@@ -5518,22 +5518,22 @@ public static class OVRPlugin
 
 	private static class OVRP_1_39_0
 	{
-		public static readonly Version version = new Version(1, 39, 0);
+		public static readonly System.Version version = new System.Version(1, 39, 0);
 	}
 
 	private static class OVRP_1_40_0
 	{
-		public static readonly Version version = new Version(1, 40, 0);
+		public static readonly System.Version version = new System.Version(1, 40, 0);
 	}
 
 	private static class OVRP_1_41_0
 	{
-		public static readonly Version version = new Version(1, 41, 0);
+		public static readonly System.Version version = new System.Version(1, 41, 0);
 	}
 
 	private static class OVRP_1_42_0
 	{
-		public static readonly Version version = new Version(1, 42, 0);
+		public static readonly System.Version version = new System.Version(1, 42, 0);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern Result ovrp_GetAdaptiveGpuPerformanceScale2(ref float adaptiveGpuPerformanceScale);
@@ -5541,12 +5541,12 @@ public static class OVRPlugin
 
 	private static class OVRP_1_43_0
 	{
-		public static readonly Version version = new Version(1, 43, 0);
+		public static readonly System.Version version = new System.Version(1, 43, 0);
 	}
 
 	private static class OVRP_1_44_0
 	{
-		public static readonly Version version = new Version(1, 44, 0);
+		public static readonly System.Version version = new System.Version(1, 44, 0);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern Result ovrp_GetHandTrackingEnabled(ref Bool handTrackingEnabled);
@@ -5558,7 +5558,7 @@ public static class OVRPlugin
 		public static extern Result ovrp_GetSkeleton(SkeletonType skeletonType, out Skeleton skeleton);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
-		public static extern Result ovrp_GetMesh(MeshType meshType, IntPtr meshPtr);
+		public static extern Result ovrp_GetMesh(MeshType meshType, System.IntPtr meshPtr);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern Result ovrp_OverrideExternalCameraFov(int cameraId, Bool useOverriddenFov, ref Fovf fov);
@@ -5584,7 +5584,7 @@ public static class OVRPlugin
 
 	private static class OVRP_1_45_0
 	{
-		public static readonly Version version = new Version(1, 45, 0);
+		public static readonly System.Version version = new System.Version(1, 45, 0);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern Result ovrp_GetSystemHmd3DofModeEnabled(ref Bool enabled);
@@ -5595,7 +5595,7 @@ public static class OVRPlugin
 
 	private static class OVRP_1_46_0
 	{
-		public static readonly Version version = new Version(1, 46, 0);
+		public static readonly System.Version version = new System.Version(1, 46, 0);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern Result ovrp_GetTiledMultiResDynamic(out Bool isDynamic);
@@ -5607,12 +5607,12 @@ public static class OVRPlugin
 
 	private static class OVRP_1_47_0
 	{
-		public static readonly Version version = new Version(1, 47, 0);
+		public static readonly System.Version version = new System.Version(1, 47, 0);
 	}
 
 	private static class OVRP_1_48_0
 	{
-		public static readonly Version version = new Version(1, 48, 0);
+		public static readonly System.Version version = new System.Version(1, 48, 0);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern Result ovrp_SetExternalCameraProperties(string cameraName, ref CameraIntrinsics cameraIntrinsics, ref CameraExtrinsics cameraExtrinsics);
@@ -5620,7 +5620,7 @@ public static class OVRPlugin
 
 	private static class OVRP_1_49_0
 	{
-		public static readonly Version version = new Version(1, 49, 0);
+		public static readonly System.Version version = new System.Version(1, 49, 0);
 
 		public const int OVRP_ANCHOR_NAME_SIZE = 32;
 
@@ -5675,17 +5675,17 @@ public static class OVRPlugin
 
 	private static class OVRP_1_50_0
 	{
-		public static readonly Version version = new Version(1, 50, 0);
+		public static readonly System.Version version = new System.Version(1, 50, 0);
 	}
 
 	private static class OVRP_1_51_0
 	{
-		public static readonly Version version = new Version(1, 51, 0);
+		public static readonly System.Version version = new System.Version(1, 51, 0);
 	}
 
 	private static class OVRP_1_52_0
 	{
-		public static readonly Version version = new Version(1, 52, 0);
+		public static readonly System.Version version = new System.Version(1, 52, 0);
 	}
 #endif // !OVRPLUGIN_UNSUPPORTED_PLATFORM
 

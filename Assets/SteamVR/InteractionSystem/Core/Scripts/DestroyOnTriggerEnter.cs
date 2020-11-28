@@ -5,11 +5,12 @@
 //=============================================================================
 
 using UnityEngine;
+using System.Collections;
 
 namespace Valve.VR.InteractionSystem
 {
-    //-------------------------------------------------------------------------
-    public class DestroyOnTriggerEnter : MonoBehaviour
+	//-------------------------------------------------------------------------
+	public class DestroyOnTriggerEnter : MonoBehaviour
 	{
 		public string tagFilter;
 

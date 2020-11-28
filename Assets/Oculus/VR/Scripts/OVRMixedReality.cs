@@ -18,6 +18,10 @@ permissions and limitations under the License.
 #define OVR_ANDROID_MRC
 #endif
 
+using System;
+using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
+using System.Collections.Generic;
 using UnityEngine;
 
 #if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN || UNITY_ANDROID

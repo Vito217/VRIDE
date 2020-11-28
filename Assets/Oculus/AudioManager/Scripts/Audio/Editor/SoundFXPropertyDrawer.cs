@@ -1,17 +1,18 @@
 using UnityEngine;
 using UnityEditor;
+using System.Collections;
 
 namespace OVR
 {
 
-    /*
-    -----------------------
+/*
+-----------------------
 
-    SoundFXPropertyDrawer
+SoundFXPropertyDrawer
 
-    -----------------------
-    */
-    [CustomPropertyDrawer(typeof(SoundFX))]
+-----------------------
+*/
+[CustomPropertyDrawer(typeof(SoundFX))]
 public class SoundFXPropertyDrawer : PropertyDrawer {
 
 	static float lineHeight = EditorGUIUtility.singleLineHeight + 2.0f;

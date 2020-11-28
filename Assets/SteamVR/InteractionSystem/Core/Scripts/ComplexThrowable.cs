@@ -37,7 +37,7 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		void Awake()
 		{
-            GetComponentsInChildren( rigidBodies );
+			GetComponentsInChildren<Rigidbody>( rigidBodies );
 		}
 
 

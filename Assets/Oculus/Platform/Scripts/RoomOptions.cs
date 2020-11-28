@@ -2,9 +2,13 @@
 
 namespace Oculus.Platform
 {
-    using System;
+  using System;
+  using System.Collections;
+  using Oculus.Platform.Models;
+  using System.Collections.Generic;
+  using UnityEngine;
 
-    public class RoomOptions {
+  public class RoomOptions {
 
     public RoomOptions() {
       Handle = CAPI.ovr_RoomOptions_Create();

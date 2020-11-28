@@ -5,11 +5,12 @@
 //=============================================================================
 
 using UnityEngine;
+using System.Collections;
 
 namespace Valve.VR.InteractionSystem
 {
-    //-------------------------------------------------------------------------
-    public class ItemPackage : MonoBehaviour
+	//-------------------------------------------------------------------------
+	public class ItemPackage : MonoBehaviour
 	{
 		public enum ItemPackageType { Unrestricted, OneHanded, TwoHanded }
 

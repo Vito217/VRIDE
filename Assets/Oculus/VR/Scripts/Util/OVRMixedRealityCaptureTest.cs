@@ -2,6 +2,8 @@
 #define OVR_ANDROID_MRC
 #endif
 
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class OVRMixedRealityCaptureTest : MonoBehaviour {

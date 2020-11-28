@@ -5,12 +5,13 @@
 //=============================================================================
 
 using UnityEngine;
+using System.Collections;
 using UnityEngine.EventSystems;
 
 namespace Valve.VR.InteractionSystem
 {
-    //-------------------------------------------------------------------------
-    public class InputModule : BaseInputModule
+	//-------------------------------------------------------------------------
+	public class InputModule : BaseInputModule
 	{
 		private GameObject submitObject;
 

@@ -29,7 +29,9 @@ limitations under the License.
 
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.Callbacks;
 using System;
+using System.IO;
 
 [InitializeOnLoad]
 class OVREngineConfigurationUpdater

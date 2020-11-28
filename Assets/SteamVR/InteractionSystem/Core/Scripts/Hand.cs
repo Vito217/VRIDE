@@ -10,6 +10,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using UnityEngine.Events;
+using System.Threading;
 
 namespace Valve.VR.InteractionSystem
 {
@@ -1680,6 +1681,6 @@ namespace Valve.VR.InteractionSystem
     }
 
 
-    [Serializable]
+    [System.Serializable]
     public class HandEvent : UnityEvent<Hand> { }
 }

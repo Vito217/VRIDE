@@ -1,9 +1,10 @@
 using UnityEngine;
+using System.Collections;
 
 namespace OVR
 {
 
-    public class TestScript : MonoBehaviour {
+public class TestScript : MonoBehaviour {
 
 	[InspectorNote( "Sound Setup", "Press '1' to play testSound1 and '2' to play testSound2")]
 

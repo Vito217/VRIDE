@@ -1,7 +1,9 @@
 ﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
 
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR.InteractionSystem;
 
 namespace Valve.VR.InteractionSystem.Sample
 {

@@ -1,4 +1,7 @@
-﻿namespace Valve.VR
+﻿using UnityEngine;
+using System.Collections;
+
+namespace Valve.VR
 {
     public class SteamVR_Windows_Editor_Helper
     {

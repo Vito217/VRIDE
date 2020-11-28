@@ -5,10 +5,12 @@ using System.Runtime.CompilerServices;
 
 namespace Oculus.Platform
 {
-    using UnityEngine;
-    using System;
+  using UnityEngine;
+  using System;
+  using System.Collections;
+  using System.Collections.Generic;
 
-    public static class PlatformInternal
+  public static class PlatformInternal
   {
     // Keep this enum in sync with ovrMessageTypeInternal in OVR_Platform_Internal.h
     public enum MessageTypeInternal : uint { //TODO - rename this to type; it's already in Message class
@@ -82,7 +84,7 @@ namespace Oculus.Platform
     internal static Message ParseMessageHandle(IntPtr messageHandle, Message.MessageType messageType)
     {
       Message message = null;
-      switch ((MessageTypeInternal)messageType)
+      switch ((PlatformInternal.MessageTypeInternal)messageType)
       {
         case MessageTypeInternal.User_StartRecordingForReportFlow:
           message = new MessageWithAbuseReportRecording(messageHandle);

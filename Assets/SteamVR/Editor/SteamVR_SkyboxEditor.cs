@@ -6,6 +6,9 @@
 
 using UnityEngine;
 using UnityEditor;
+using System.Text;
+using System.Collections.Generic;
+using Valve.VR;
 using System.IO;
 
 namespace Valve.VR

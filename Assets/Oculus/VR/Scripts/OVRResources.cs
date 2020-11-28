@@ -6,7 +6,7 @@ public class OVRResources : MonoBehaviour
 	private static AssetBundle resourceBundle;
 	private static List<string> assetNames;
 
-	public static Object Load(string path)
+	public static UnityEngine.Object Load(string path)
 	{
 		if (Debug.isDebugBuild)
 		{
@@ -21,8 +21,8 @@ public class OVRResources : MonoBehaviour
 		}
 		return Resources.Load(path);
 	}
-	public static T Load<T>(string path) where T : Object
-    {
+	public static T Load<T>(string path) where T : UnityEngine.Object
+	{
 		if (Debug.isDebugBuild)
 		{
 			if (resourceBundle == null)

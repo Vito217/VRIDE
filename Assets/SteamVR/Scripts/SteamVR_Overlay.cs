@@ -5,6 +5,8 @@
 //=============================================================================
 
 using UnityEngine;
+using System.Collections;
+using Valve.VR;
 
 namespace Valve.VR
 {
@@ -129,7 +131,7 @@ namespace Valve.VR
             if (overlay == null)
                 return false;
 
-            var size = (uint)System.Runtime.InteropServices.Marshal.SizeOf(typeof(VREvent_t));
+            var size = (uint)System.Runtime.InteropServices.Marshal.SizeOf(typeof(Valve.VR.VREvent_t));
             return overlay.PollNextOverlayEvent(handle, ref pEvent, size);
         }
 

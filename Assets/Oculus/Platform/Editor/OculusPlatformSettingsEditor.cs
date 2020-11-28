@@ -26,7 +26,7 @@ namespace Oculus.Platform
       isBuildSettingsExpanded = true;
     }
 
-    [MenuItem("Oculus/Platform/Edit Settings")]
+    [UnityEditor.MenuItem("Oculus/Platform/Edit Settings")]
     public static void Edit()
     {
       UnityEditor.Selection.activeObject = PlatformSettings.Instance;

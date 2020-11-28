@@ -2,9 +2,13 @@
 
 namespace Oculus.Platform.Models
 {
-    using System;
+  using System;
+  using System.Collections;
+  using Oculus.Platform.Models;
+  using System.Collections.Generic;
+  using UnityEngine;
 
-    public class CloudStorageUpdateResponse
+  public class CloudStorageUpdateResponse
   {
     public readonly string Bucket;
     public readonly string Key;

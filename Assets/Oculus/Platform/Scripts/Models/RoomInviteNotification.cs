@@ -2,10 +2,13 @@
 
 namespace Oculus.Platform.Models
 {
-    using System;
-    using System.Collections.Generic;
+  using System;
+  using System.Collections;
+  using Oculus.Platform.Models;
+  using System.Collections.Generic;
+  using UnityEngine;
 
-    public class RoomInviteNotification
+  public class RoomInviteNotification
   {
     public readonly UInt64 ID;
     public readonly UInt64 RoomID;

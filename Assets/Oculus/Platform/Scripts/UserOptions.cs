@@ -2,9 +2,13 @@
 
 namespace Oculus.Platform
 {
-    using System;
+  using System;
+  using System.Collections;
+  using Oculus.Platform.Models;
+  using System.Collections.Generic;
+  using UnityEngine;
 
-    public class UserOptions {
+  public class UserOptions {
 
     public UserOptions() {
       Handle = CAPI.ovr_UserOptions_Create();

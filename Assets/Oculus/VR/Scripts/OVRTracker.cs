@@ -14,6 +14,8 @@ ANY KIND, either express or implied. See the License for the specific language g
 permissions and limitations under the License.
 ************************************************************************************/
 
+using System;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 /// <summary>

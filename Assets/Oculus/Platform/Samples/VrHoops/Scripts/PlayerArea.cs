@@ -1,9 +1,10 @@
 namespace Oculus.Platform.Samples.VrHoops
 {
-    using UnityEngine;
-    using UnityEngine.UI;
+	using UnityEngine;
+	using UnityEngine.UI;
+	using Oculus.Platform.Models;
 
-    public class PlayerArea : MonoBehaviour
+	public class PlayerArea : MonoBehaviour
 	{
 		// the prefab for the ball that players will shoot
 		[SerializeField] private GameObject m_ballPrefab = null;

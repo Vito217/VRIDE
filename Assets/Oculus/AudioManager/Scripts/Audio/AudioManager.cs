@@ -1,16 +1,17 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using System.Collections;
 using System.Collections.Generic;
-//#if UNITY_EDITOR
+#if UNITY_EDITOR
 using UnityEditor;
 using System;
 using System.Reflection;
-//#endif
+#endif
 
 namespace OVR
 {
 
-    public enum PreloadSounds {
+public enum PreloadSounds {
 	Default,		// default unity behavior
 	Preload,		// audio clips are forced to preload
 	ManualPreload,	// audio clips are forced to not preload, preloading must be done manually
@@ -22,7 +23,7 @@ public enum Fade
     Out
 }
 
-[Serializable]
+[System.Serializable]
 public class SoundGroup {
 	public SoundGroup( string name ) {
 		this.name = name;
@@ -350,7 +351,7 @@ public partial class AudioManager : MonoBehaviour {
 				"PlayClip",
 				BindingFlags.Static | BindingFlags.Public,
 				null,
-				new Type[] { typeof(AudioClip) },
+				new System.Type[] { typeof(AudioClip) },
 				null );
 			method.Invoke( null, new object[] { clip } );
 		}
@@ -380,7 +381,7 @@ public partial class AudioManager : MonoBehaviour {
 				"IsClipPlaying",
 				BindingFlags.Static | BindingFlags.Public,
 				null,
-				new Type[] { typeof(AudioClip) },
+				new System.Type[] { typeof(AudioClip) },
 				null );
 			return Convert.ToBoolean( method.Invoke( null, new object[] { clip } ) );
 		}
@@ -417,7 +418,7 @@ public partial class AudioManager : MonoBehaviour {
 				"StopClip",
 				BindingFlags.Static | BindingFlags.Public,
 				null,
-				new Type[] { typeof(AudioClip) },
+				new System.Type[] { typeof(AudioClip) },
 				null);
 			method.Invoke(null, new object[] { clip });
 		}

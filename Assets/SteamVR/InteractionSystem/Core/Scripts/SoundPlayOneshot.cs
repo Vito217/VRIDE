@@ -5,11 +5,12 @@
 //=============================================================================
 
 using UnityEngine;
+using System.Collections;
 
 namespace Valve.VR.InteractionSystem
 {
-    //-------------------------------------------------------------------------
-    public class SoundPlayOneshot : MonoBehaviour
+	//-------------------------------------------------------------------------
+	public class SoundPlayOneshot : MonoBehaviour
 	{
 		public AudioClip[] waveFiles;
 		private AudioSource thisAudioSource;

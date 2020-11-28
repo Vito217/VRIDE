@@ -27,13 +27,13 @@ limitations under the License.
 #define REQUIRES_XR_SDK
 #endif
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Threading;
-using UnityEditor;
 using UnityEngine;
+using UnityEditor;
+using System;
+using System.IO;
+using System.Diagnostics;
+using System.Collections.Generic;
+using System.Threading;
 
 /// <summary>
 /// Allows Oculus to build apps from the command line.

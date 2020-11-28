@@ -19,6 +19,11 @@ limitations under the License.
 
 ************************************************************************************/
 
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEditor;
+
 public class OVRDeviceSelector
 {
 	public static bool isTargetDeviceQuestFamily

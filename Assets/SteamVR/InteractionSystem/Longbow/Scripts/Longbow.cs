@@ -6,11 +6,12 @@
 
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Valve.VR.InteractionSystem
 {
-    //-------------------------------------------------------------------------
-    [RequireComponent( typeof( Interactable ) )]
+	//-------------------------------------------------------------------------
+	[RequireComponent( typeof( Interactable ) )]
 	public class Longbow : MonoBehaviour
 	{
 		public enum Handedness { Left, Right };

@@ -23,6 +23,8 @@ limitations under the License.
 //#define TEST_READONLY_PARAMETERS
 
 using UnityEngine;
+using System;
+using System.Collections;
 using System.Runtime.InteropServices;
 
 public class ONSPAudioSource : MonoBehaviour
@@ -357,6 +359,6 @@ public class ONSPAudioSource : MonoBehaviour
         }
     }
     
-    [DllImport("AudioPluginOculusSpatializer")]
+    [System.Runtime.InteropServices.DllImport("AudioPluginOculusSpatializer")]
     private static extern int OSP_SetGlobalVoiceLimit(int VoiceLimit);
 }

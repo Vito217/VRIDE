@@ -5,11 +5,13 @@
 //=============================================================================
 
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
 
 namespace Valve.VR.InteractionSystem
 {
-    //-------------------------------------------------------------------------
-    public class DebugUI : MonoBehaviour
+	//-------------------------------------------------------------------------
+	public class DebugUI : MonoBehaviour
 	{
 		private Player player;
 

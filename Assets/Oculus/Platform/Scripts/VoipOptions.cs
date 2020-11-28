@@ -2,9 +2,13 @@
 
 namespace Oculus.Platform
 {
-    using System;
+  using System;
+  using System.Collections;
+  using Oculus.Platform.Models;
+  using System.Collections.Generic;
+  using UnityEngine;
 
-    public class VoipOptions {
+  public class VoipOptions {
 
     public VoipOptions() {
       Handle = CAPI.ovr_VoipOptions_Create();

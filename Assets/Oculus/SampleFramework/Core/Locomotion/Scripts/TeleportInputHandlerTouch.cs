@@ -7,7 +7,10 @@ language governing permissions and limitations under the license.
 
 ************************************************************************************/
 
+using System;
 using UnityEngine;
+using System.Collections;
+using UnityEngine.Assertions;
 
 /// <summary>
 /// When this component is enabled, the player will be able to aim and trigger teleport behavior using Oculus Touch controllers.
@@ -115,7 +118,7 @@ public class TeleportInputHandlerTouch : TeleportInputHandlerHMD
 	{
 		if (!isActiveAndEnabled)
 		{
-			return LocomotionTeleport.TeleportIntentions.None;
+			return global::LocomotionTeleport.TeleportIntentions.None;
 		}
 
 		// If capacitive touch isn't being used, the base implementation will do the work.

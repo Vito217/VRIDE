@@ -370,8 +370,8 @@ MonoBehaviour:
     type: 3}
   m_TrackedDeviceOrientationAction: {fileID: 1025543830046995696, guid: ca9f5fa95ffab41fb9a615ab714db018,
     type: 3}
-  m_DeselectOnBackgroundClick: 1
-  m_PointerBehavior: 2
+  m_DeselectOnBackgroundClick: 0
+  m_PointerBehavior: 0
 --- !u!114 &4985036362534128717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1497,7 +1497,7 @@ PrefabInstance:
     - target: {fileID: 2548992823208286274, guid: 9bb7a9a2136e6de4a8d3f4f5a598c870,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2548992823208286277, guid: 9bb7a9a2136e6de4a8d3f4f5a598c870,
         type: 3}
@@ -1509,7 +1509,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2548992823208286274, guid: 9bb7a9a2136e6de4a8d3f4f5a598c870, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9bb7a9a2136e6de4a8d3f4f5a598c870, type: 3}
 --- !u!1 &5806132230542661265 stripped
 GameObject:
