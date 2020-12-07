@@ -3,7 +3,7 @@ using SaveAndLoad;
 using UnityEngine;
 using HTC.UnityPlugin.Vive;
 
-public class VRIDEController : VRIDETitleController
+public class VRIDEController : MonoBehaviour
 {
     public bool can_move = true;
     public GameObject quad;
