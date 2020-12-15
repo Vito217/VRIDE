@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.TestTools;
 using UnityEngine.SceneManagement;
-using System.Collections.Generic;
-using UnityEngine.EventSystems;
-using TestProperties;
+using TMPro;
 
 namespace Tests
 {
@@ -24,24 +23,9 @@ namespace Tests
         // The user
         public GameObject user;
 
-        // A Test behaves as an ordinary method
-        [Test]
-        public void InitialSceneUITestsScriptSimplePasses()
-        {
-            // Use the Assert class to test conditions
-
-        }
-
-        // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-        // 'yield return null;' to skip a frame.
         [UnityTest]
         public IEnumerator InitialSceneUITestsScriptWithEnumeratorPasses()
         {
-            // Use the Assert class to test conditions.
-            // Use yield to skip a frame.
-
-            // Preparing test
-            
             SceneManager.LoadScene("InitialScene", LoadSceneMode.Single);
             yield return null;
             Assert.IsTrue(SceneManager.GetActiveScene().name == "InitialScene");
@@ -74,42 +58,28 @@ namespace Tests
             yield return null;
             Assert.IsNotNull(user);
 
-            List <GameObject> objs = new List<GameObject>() {
-                submitButton, exitButton, ipField, portField, inputsBar, infoBar
-            };
-
-            foreach (GameObject ob in objs)
-            {
-                ob.AddComponent<GeneralTestProperties>();
-                ob.AddComponent<EventTrigger>();
-                EventTrigger.Entry entry = new EventTrigger.Entry();
-                EventTrigger.Entry entryTwo = new EventTrigger.Entry();
-                entry.eventID = EventTriggerType.PointerDown;
-                entryTwo.eventID = EventTriggerType.PointerUp;
-                entry.callback.AddListener((data) => { ob.AddComponent<GeneralTestProperties>().OnPointerEnter(); });
-                entryTwo.callback.AddListener((data) => { ob.AddComponent<GeneralTestProperties>().OnPointerExit(); });
-                ob.AddComponent<EventTrigger>().triggers.Add(entry);
-                ob.AddComponent<EventTrigger>().triggers.Add(entryTwo);
-                yield return null;
-            }
-
             // Testing UI interactivity
             Transform rightPointer = user.transform.Find("VivePointers/Right");
             Transform leftPointer = user.transform.Find("VivePointers/Left");
-
-            rightPointer.LookAt(ipField.transform);
             yield return null;
-            Assert.IsTrue(ipField.GetComponent<GeneralTestProperties>().IsHovered());
 
-            rightPointer.LookAt(portField.transform);
-            yield return null;
-            Assert.IsTrue(portField.GetComponent<GeneralTestProperties>().IsHovered());
+            Button sb = submitButton.GetComponent<Button>();
+            Assert.IsTrue(sb.isActiveAndEnabled && sb.interactable);
 
-            rightPointer.LookAt(submitButton.transform);
-            yield return null;
-            Assert.IsTrue(submitButton.GetComponent<GeneralTestProperties>().IsHovered());
+            Button eb = exitButton.GetComponent<Button>();
+            Assert.IsTrue(eb.isActiveAndEnabled && eb.interactable);
 
+            Button inpb = inputsBar.GetComponent<Button>();
+            Assert.IsTrue(inpb.isActiveAndEnabled && inpb.interactable);
 
+            Button infb = infoBar.GetComponent<Button>();
+            Assert.IsTrue(infb.isActiveAndEnabled && infb.interactable);
+
+            TMP_InputField ip = ipField.GetComponent<TMP_InputField>();
+            Assert.IsTrue(ip.isActiveAndEnabled && ip.interactable);
+
+            TMP_InputField port = portField.GetComponent<TMP_InputField>();
+            Assert.IsTrue(port.isActiveAndEnabled && port.interactable);
         }
     }
 }

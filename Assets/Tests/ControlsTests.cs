@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.TestTools;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
-using UnityEngine.EventSystems;
-using TestProperties;
 using UnityEngine.XR;
 using UnityEngine.XR.Management;
 
@@ -15,15 +13,6 @@ namespace Tests
     {
         public GameObject user;
 
-        // A Test behaves as an ordinary method
-        [Test]
-        public void ControlsTestsSimplePasses()
-        {
-            // Use the Assert class to test conditions
-        }
-
-        // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-        // `yield return null;` to skip a frame.
         [UnityTest]
         public IEnumerator ControlsTestsWithEnumeratorPasses()
         {
