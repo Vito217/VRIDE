@@ -2,6 +2,7 @@
 using SaveAndLoad;
 using UnityEngine;
 using HTC.UnityPlugin.Vive;
+using System.Text.RegularExpressions;
 
 public class VRIDEController : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class VRIDEController : MonoBehaviour
 
     void Update()
     {
+        if (Input.anyKeyDown && Regex.Match(Input.inputString, @"[a-zA-Z0-9]").Success && !InteractionLogger.isUsingPhysicalKeyboard) 
+            InteractionLogger.RegisterPhysicalKeyboard();
+
         // HTC VIVE
         bool menuButton = ViveInput.GetPressDownEx(HandRole.RightHand, ControllerButton.Menu) ||
                           ViveInput.GetPressDownEx(HandRole.LeftHand, ControllerButton.Menu);

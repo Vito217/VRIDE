@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using PharoModule;
+using LoggingModule;
 
 public class RoassalMethod : RoassalObject
 {
@@ -26,6 +27,9 @@ public class RoassalMethod : RoassalObject
             Playground playground = Instantiator.Instance.Playground();
             playground.Initialize(roassal.transform.position, roassal.transform.forward);
             playground.field.text = sourceCode;
+
+            InteractionLogger.RegisterRoassalExample(name);
+
             Destroy(roassal.gameObject);
         }
         catch (Exception e)

@@ -18,6 +18,9 @@ namespace LoggingModule
         public static DateTime sessionStart;
         public static DateTime sessionEnd;
 
+        public static bool isUsingVirtualKeyboard = false;
+        public static bool isUsingPhysicalKeyboard = false;
+
         private static bool inEditor = Application.isEditor;
         public static float totalSessionTime = 0.0f;
         static string persistentPath = Path.Combine(
@@ -165,6 +168,49 @@ namespace LoggingModule
         public static void SessionEnd()
         {
             if (!inEditor) writeLineToLog("[ " + DateTime.Now + " ] Session ended.");
+        }
+
+        /// <summary>
+        /// Register if the user started coding with a physical keyboard
+        /// </summary>
+        public static void RegisterPhysicalKeyboard()
+        {
+            if (!inEditor)
+            {
+                if (!isUsingPhysicalKeyboard)
+                {
+                    isUsingVirtualKeyboard = false;
+                    isUsingPhysicalKeyboard = true;
+                    writeLineToLog("[ " + DateTime.Now + " ] Changed to physical keyboard");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Register if the user started coding with a virtual keyboard
+        /// </summary>
+        public static void RegisterVirtualKeyboard()
+        {
+            if (!inEditor)
+            {
+                if (!isUsingVirtualKeyboard)
+                {
+                    isUsingVirtualKeyboard = true;
+                    isUsingPhysicalKeyboard = false;
+                    writeLineToLog("[ " + DateTime.Now + " ] Changed to virtual keyboard");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Register if the user opened a Roassal example
+        /// </summary>
+        public static void RegisterRoassalExample(string example)
+        {
+            if (!inEditor)
+            {
+                writeLineToLog("[ " + DateTime.Now + " ] Opened Roassal Example (" + example + ")");
+            }
         }
     }
 }

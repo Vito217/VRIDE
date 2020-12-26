@@ -3,6 +3,7 @@ using System.Threading;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
+using LoggingModule;
 
 public class Key : MonoBehaviour
 {
@@ -148,6 +149,8 @@ public class Key : MonoBehaviour
 
 	private void WriteStringToTarget()
     {
+		if (!InteractionLogger.isUsingVirtualKeyboard) InteractionLogger.RegisterVirtualKeyboard();
+
 		InitializeBehaviour window = transform.root.gameObject.GetComponent<InitializeBehaviour>();
 		if (!window.loadingWheel.activeSelf)
 		{
