@@ -1,5 +1,12 @@
 # PharoVRIDE's Channel Log
 
+## V0.19.2 (27/12/2020)
+* Fixed some Roassal and Aframe issues.
+* Added AFrame Color on hover.
+
+## V0.19.1 (19/12/2020)
+* Added missing keys
+
 ## V0.19.0 (28/11/2020)
 * Using two inputs to receive IP and port.
 * Now compatible with Oculus Quest 2
