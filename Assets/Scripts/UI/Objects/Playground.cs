@@ -90,7 +90,7 @@ public class Playground : InitializeBehaviour
                                 await Task.Run(() => {
                                     tag = m.Value;
                                     value = Regex.Match(tag, @"value: ([a-zA-Z0-9-.\s]+)(;|"")").Groups[1].Value;
-                                    posMatch = Regex.Match(tag, @"position="" ([0-9-.\s]+)""");
+                                    posMatch = Regex.Match(tag, @"position="" ([0-9-.\se]+)""");
                                     rotMatch = Regex.Match(tag, @"rotation="" ([0-9-.\s]+)""");
                                     widthMatch = widthMatch = Regex.Match(tag, @"width: ([0-9-.]+)(;|"")");
                                     colorMatch = colorMatch = Regex.Match(tag, @"color: ([#0-9A-Z]+)(;|"")");
@@ -106,8 +106,8 @@ public class Playground : InitializeBehaviour
                                 if (posMatch.Success)
                                 {
                                     float[] coords = Array.ConvertAll(
-                                        posMatch.Groups[1].Value.Split(' '),
-                                        i => float.Parse(i, CultureInfo.InvariantCulture));
+                                         Regex.Replace(posMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0").Split(' '),
+                                         i => float.Parse(i, CultureInfo.InvariantCulture));
 
                                     text.transform.localPosition =
                                         new Vector3(coords[0], coords[1], coords[2]) - pivot;
@@ -157,18 +157,19 @@ public class Playground : InitializeBehaviour
 
                                 string primitive = "";
                                 Match posMatch = null, rotMatch = null, widthMatch = null, heightMatch = null, radiusMatch = null,
-                                    depthMatch = null, colorMatch = null, metalMatch = null, glossMatch = null;
+                                    depthMatch = null, colorMatch = null, metalMatch = null, glossMatch = null, hoverColorMatch = null;
 
                                 await Task.Run(() => {
                                     primitive = Regex.Match(tag, @"primitive:\s*([a-zA-Z]+)(;|"")").Groups[1].Value;
-                                    posMatch = Regex.Match(tag, @"position=""\s*([0-9-.\s]+)""");
+                                    posMatch = Regex.Match(tag, @"position=""\s*([0-9-.\se]+)""");
                                     rotMatch = Regex.Match(tag, @"rotation=""\s*([0-9-.\s]+)""");
-                                    widthMatch = Regex.Match(tag, @"width:\s*([0-9.]+) ;");
-                                    heightMatch = Regex.Match(tag, @"height:\s*([0-9.]+);");
-                                    depthMatch = Regex.Match(tag, @"depth:\s*([0-9.]+);");
+                                    widthMatch = Regex.Match(tag, @"width:\s*([0-9.]+)(;|"")");
+                                    heightMatch = Regex.Match(tag, @"height:\s*([0-9.]+)(;|"")");
+                                    depthMatch = Regex.Match(tag, @"depth:\s*([0-9.]+)(;|"")");
                                     colorMatch = Regex.Match(tag, @"color:\s*([#0-9A-Z]+)(;|"")");
                                     metalMatch = Regex.Match(tag, @"metalness:\s*([0-9.]+)(;|"")");
                                     glossMatch = Regex.Match(tag, @"roughness:\s*([0-9.]+)(;|"")");
+                                    hoverColorMatch = Regex.Match(tag, @"change-color-on-hover\s*=\s*""\s*color:\s*([#0-9A-Z]+)\*""");
                                     radiusMatch = Regex.Match(tag, @"radius:\s*([0-9.]+)(;|"")");
                                 });
 
@@ -193,7 +194,7 @@ public class Playground : InitializeBehaviour
                                 if (posMatch.Success)
                                 {
                                     float[] coords = Array.ConvertAll(
-                                        posMatch.Groups[1].Value.Split(' '),
+                                        Regex.Replace(posMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0").Split(' '),
                                         i => float.Parse(i, CultureInfo.InvariantCulture));
 
                                     ob.transform.localPosition =
@@ -211,16 +212,19 @@ public class Playground : InitializeBehaviour
                                 }
 
                                 Vector3 scale = new Vector3(1f, 1f, 1f);
-                                if (widthMatch.Success && depthMatch.Success) {
+                                if (widthMatch.Success && depthMatch.Success)
+                                {
                                     scale.x = float.Parse(widthMatch.Groups[1].Value, CultureInfo.InvariantCulture);
                                     scale.z = float.Parse(depthMatch.Groups[1].Value, CultureInfo.InvariantCulture);
                                 }
                                 else if (radiusMatch.Success)
                                 {
-                                    scale.x = float.Parse(radiusMatch.Groups[1].Value, CultureInfo.InvariantCulture) * 10f;
-                                    scale.z = float.Parse(radiusMatch.Groups[1].Value, CultureInfo.InvariantCulture) * 10f;
+                                    scale.x = float.Parse(radiusMatch.Groups[1].Value, CultureInfo.InvariantCulture);
+                                    scale.z = float.Parse(radiusMatch.Groups[1].Value, CultureInfo.InvariantCulture);
                                 }
-                                if (heightMatch.Success) scale.y = float.Parse(heightMatch.Groups[1].Value, CultureInfo.InvariantCulture);
+                                if (heightMatch.Success)
+                                    scale.y = float.Parse(heightMatch.Groups[1].Value, CultureInfo.InvariantCulture);
+
                                 ob.transform.localScale = scale;
 
                                 if (colorMatch.Success || glossMatch.Success || metalMatch.Success)
@@ -232,6 +236,7 @@ public class Playground : InitializeBehaviour
                                         Color c;
                                         ColorUtility.TryParseHtmlString(colorMatch.Groups[1].Value, out c);
                                         material.color = c;
+                                        ob.GetComponent<AFrameGeometry>().baseColor = c;
                                     }
 
                                     if (glossMatch.Success)
@@ -251,6 +256,13 @@ public class Playground : InitializeBehaviour
                                     }
                                 }
 
+                                if (hoverColorMatch.Success)
+                                {
+                                    Color c;
+                                    ColorUtility.TryParseHtmlString(hoverColorMatch.Groups[1].Value, out c);
+                                    ob.GetComponent<AFrameGeometry>().hoverColor = c;
+                                }
+
                                 // Update width and height
                                 Vector3 size = ob.transform.localScale;
 
@@ -268,12 +280,12 @@ public class Playground : InitializeBehaviour
                             foreach (Match m in boxes)
                             {
                                 string tag = "";
-                                Match posMatch = null, rotMatch = null, widthMatch = null, heightMatch = null,
+                                Match posMatch = null, rotMatch = null, widthMatch = null, heightMatch = null, hoverColorMatch = null,
                                     depthMatch = null, colorMatch = null, metalMatch = null, glossMatch = null;
 
                                 await Task.Run(() => {
                                     tag = m.Value;
-                                    posMatch = Regex.Match(tag, @"position\s*=\s*""\s*([0-9-.\s]+)\s*""");
+                                    posMatch = Regex.Match(tag, @"position\s*=\s*""\s*([0-9-.\se]+)\s*""");
                                     rotMatch = Regex.Match(tag, @"rotation\s*=\s*""\s*([0-9-.\s]+)\s*""");
                                     colorMatch = Regex.Match(tag, @"color\s*=\s*""\s*([#0-9A-Z]+)\s*""");
                                     widthMatch = Regex.Match(tag, @"width\s*=\s*""\s*([0-9.]+)\s*""");
@@ -281,6 +293,7 @@ public class Playground : InitializeBehaviour
                                     depthMatch = Regex.Match(tag, @"depth\s*=\s*""\s*([0-9.]+)\s*""");
                                     metalMatch = Regex.Match(tag, @"metalness\s*=\s*""\s*([0-9.]+)\s*""");
                                     glossMatch = Regex.Match(tag, @"roughness\s*=\s*""\s*([0-9.]+)\s*""");
+                                    hoverColorMatch = Regex.Match(tag, @"change-color-on-hover\s*=\s*""\s*color:\s*([#0-9A-Z]+)\*""");
                                 });
 
                                 GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -291,7 +304,7 @@ public class Playground : InitializeBehaviour
                                 if (posMatch.Success)
                                 {
                                     float[] coords = Array.ConvertAll(
-                                        posMatch.Groups[1].Value.Split(' '),
+                                        Regex.Replace(posMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0").Split(' '),
                                         i => float.Parse(i, CultureInfo.InvariantCulture));
 
                                     ob.transform.localPosition =
@@ -323,6 +336,7 @@ public class Playground : InitializeBehaviour
                                         Color c;
                                         ColorUtility.TryParseHtmlString(colorMatch.Groups[1].Value, out c);
                                         material.color = c;
+                                        ob.GetComponent<AFrameGeometry>().baseColor = c;
                                     }
 
                                     if (glossMatch.Success)
@@ -340,6 +354,12 @@ public class Playground : InitializeBehaviour
                                             float.Parse(metalMatch.Groups[1].Value,
                                             CultureInfo.InvariantCulture));
                                     }
+                                }
+
+                                if (hoverColorMatch.Success) {
+                                    Color c;
+                                    ColorUtility.TryParseHtmlString(hoverColorMatch.Groups[1].Value, out c);
+                                    ob.GetComponent<AFrameGeometry>().hoverColor = c;
                                 }
 
                                 // Update width and height
@@ -360,15 +380,16 @@ public class Playground : InitializeBehaviour
                             {
                                 string tag = "";
                                 Match posMatch = null, colorMatch = null, metalMatch = null,
-                                    glossMatch = null, radiusMatch = null;
+                                    glossMatch = null, radiusMatch = null, hoverColorMatch = null;
 
                                 await Task.Run(() => {
                                     tag = m.Value;
-                                    posMatch = Regex.Match(tag, @"position\s*=\s*""\s*([0-9-.\s]+)\s*""");
+                                    posMatch = Regex.Match(tag, @"position\s*=\s*""\s*([0-9-.\se]+)\s*""");
                                     colorMatch = Regex.Match(tag, @"color\s*=\s*""\s*([#0-9A-Z]+)\s*""");
                                     metalMatch = Regex.Match(tag, @"metalness\s*=\s*""\s*([0-9.]+)\s*""");
                                     glossMatch = Regex.Match(tag, @"roughness\s*=\s*""\s*([0-9.]+)\s*""");
                                     radiusMatch = Regex.Match(tag, @"radius\s*=\s*""\s*([0-9.]+)\s*""");
+                                    hoverColorMatch = Regex.Match(tag, @"change-color-on-hover\s*=\s*""\s*color:\s*([#0-9A-Z]+)\*""");
                                 });
 
                                 GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -379,7 +400,7 @@ public class Playground : InitializeBehaviour
                                 if (posMatch.Success)
                                 {
                                     float[] coords = Array.ConvertAll(
-                                        posMatch.Groups[1].Value.Split(' '),
+                                        Regex.Replace(posMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0").Split(' '),
                                         i => float.Parse(i, CultureInfo.InvariantCulture));
 
                                     ob.transform.localPosition =
@@ -405,6 +426,7 @@ public class Playground : InitializeBehaviour
                                         Color c;
                                         ColorUtility.TryParseHtmlString(colorMatch.Groups[1].Value, out c);
                                         material.color = c;
+                                        ob.GetComponent<AFrameGeometry>().baseColor = c;
                                     }
 
                                     if (glossMatch.Success)
@@ -422,6 +444,13 @@ public class Playground : InitializeBehaviour
                                             float.Parse(metalMatch.Groups[1].Value,
                                             CultureInfo.InvariantCulture));
                                     }
+                                }
+
+                                if (hoverColorMatch.Success)
+                                {
+                                    Color c;
+                                    ColorUtility.TryParseHtmlString(hoverColorMatch.Groups[1].Value, out c);
+                                    ob.GetComponent<AFrameGeometry>().hoverColor = c;
                                 }
 
                                 // Update width and height
@@ -442,17 +471,18 @@ public class Playground : InitializeBehaviour
                             {
                                 string tag = "";
                                 Match posMatch = null, colorMatch = null, metalMatch = null, glossMatch = null,
-                                    radiusMatch = null, heightMatch = null, rotMatch = null;
+                                    radiusMatch = null, heightMatch = null, rotMatch = null, hoverColorMatch = null;
 
                                 await Task.Run(() => {
                                     tag = m.Value;
-                                    posMatch = Regex.Match(tag, @"position\s*=\s*""([0-9-.\s]+)\s*""");
+                                    posMatch = Regex.Match(tag, @"position\s*=\s*""([0-9-.\se]+)\s*""");
                                     colorMatch = Regex.Match(tag, @"color\s*=\s*""\s*([#0-9A-Z]+)\s*""");
                                     metalMatch = Regex.Match(tag, @"metalness\s*=\s*""\s*([0-9.]+)\s*""");
                                     glossMatch = Regex.Match(tag, @"roughness\s*=\s*""\s*([0-9.]+)\s*""");
                                     radiusMatch = Regex.Match(tag, @"radius\s*=\s*""\s*([0-9.]+)\s*""");
                                     heightMatch = Regex.Match(tag, @"height\s*=\s*""\s*([0-9.]+)\s*""");
                                     rotMatch = Regex.Match(tag, @"rotation\s*=\s*""\s*([0-9-.\s]+)\s*""");
+                                    hoverColorMatch = Regex.Match(tag, @"change-color-on-hover\s*=\s*""\s*color:\s*([#0-9A-Z]+)\*""");
                                 });
 
                                 GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
@@ -463,7 +493,7 @@ public class Playground : InitializeBehaviour
                                 if (posMatch.Success)
                                 {
                                     float[] coords = Array.ConvertAll(
-                                        posMatch.Groups[1].Value.Split(' '),
+                                        Regex.Replace(posMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0").Split(' '),
                                         i => float.Parse(i, CultureInfo.InvariantCulture));
 
                                     ob.transform.localPosition =
@@ -503,6 +533,7 @@ public class Playground : InitializeBehaviour
                                         Color c;
                                         ColorUtility.TryParseHtmlString(colorMatch.Groups[1].Value, out c);
                                         material.color = c;
+                                        ob.GetComponent<AFrameGeometry>().baseColor = c;
                                     }
 
                                     if (glossMatch.Success)
@@ -520,6 +551,13 @@ public class Playground : InitializeBehaviour
                                             float.Parse(metalMatch.Groups[1].Value,
                                             CultureInfo.InvariantCulture));
                                     }
+                                }
+
+                                if (hoverColorMatch.Success)
+                                {
+                                    Color c;
+                                    ColorUtility.TryParseHtmlString(hoverColorMatch.Groups[1].Value, out c);
+                                    ob.GetComponent<AFrameGeometry>().hoverColor = c;
                                 }
 
                                 // Update width and height
@@ -540,17 +578,18 @@ public class Playground : InitializeBehaviour
                             {
                                 string tag = "";
                                 Match posMatch = null, rotMatch = null, widthMatch = null, heightMatch = null,
-                                    colorMatch = null, metalMatch = null, glossMatch = null;
+                                    colorMatch = null, metalMatch = null, glossMatch = null, hoverColorMatch = null;
 
                                 await Task.Run(() => {
                                     tag = m.Value;
-                                    posMatch = Regex.Match(tag, @"position\s*=\s*""\s*([0-9-.\s]+)\s*""");
+                                    posMatch = Regex.Match(tag, @"position\s*=\s*""\s*([0-9-.\se]+)\s*""");
                                     rotMatch = Regex.Match(tag, @"rotation\s*=\s*""\s*([0-9-.\s]+)\s*""");
                                     colorMatch = Regex.Match(tag, @"color\s*=\s*""\s*([#0-9A-Z]+)\s*""");
                                     widthMatch = Regex.Match(tag, @"width\s*=\s*""\s*([0-9.]+)\s*""");
                                     heightMatch = Regex.Match(tag, @"height\s*=\s*""\s*([0-9.]+)\s*""");
                                     metalMatch = Regex.Match(tag, @"metalness\s*=\s*""\s*([0-9.]+)\s*""");
                                     glossMatch = Regex.Match(tag, @"roughness\s*=\s*""\s*([0-9.]+)\s*""");
+                                    hoverColorMatch = Regex.Match(tag, @"change-color-on-hover\s*=\s*""\s*color:\s*([#0-9A-Z]+)\*""");
                                 });
 
                                 GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Plane);
@@ -561,8 +600,8 @@ public class Playground : InitializeBehaviour
                                 if (posMatch.Success)
                                 {
                                     float[] coords = Array.ConvertAll(
-                                        posMatch.Groups[1].Value.Split(' '),
-                                        i => float.Parse(i, CultureInfo.InvariantCulture));
+                                         Regex.Replace(posMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0").Split(' '),
+                                         i => float.Parse(i, CultureInfo.InvariantCulture));
 
                                     ob.transform.localPosition =
                                         new Vector3(coords[0], coords[1], coords[2]) - pivot;
@@ -596,6 +635,7 @@ public class Playground : InitializeBehaviour
                                         Color c;
                                         ColorUtility.TryParseHtmlString(colorMatch.Groups[1].Value, out c);
                                         material.color = c;
+                                        ob.GetComponent<AFrameGeometry>().baseColor = c;
                                     }
 
                                     if (glossMatch.Success)
@@ -613,6 +653,13 @@ public class Playground : InitializeBehaviour
                                             float.Parse(metalMatch.Groups[1].Value,
                                             CultureInfo.InvariantCulture));
                                     }
+                                }
+
+                                if (hoverColorMatch.Success)
+                                {
+                                    Color c;
+                                    ColorUtility.TryParseHtmlString(hoverColorMatch.Groups[1].Value, out c);
+                                    ob.GetComponent<AFrameGeometry>().hoverColor = c;
                                 }
 
                                 // Update width and height
@@ -760,7 +807,7 @@ public class Playground : InitializeBehaviour
                             float finalScale = (GetComponent<RectTransform>().sizeDelta.y / finalHeight) * 0.001f;
                             float finalToolbarScale = 0.001f / finalScale;
                             aFrameCanvas.transform.localScale = new Vector3(finalScale, finalScale, finalScale);
-                            aFrameCanvas.transform.Find("Panel/Toolbar").localScale = 
+                            aFrameCanvas.transform.Find("Panel/Toolbar").localScale =
                                 new Vector3(finalToolbarScale, finalToolbarScale, finalToolbarScale);
 
                             float scaledWidth = finalWidth * finalScale;
@@ -769,9 +816,9 @@ public class Playground : InitializeBehaviour
                             Vector3 aFramePos = transform.TransformPoint(
                                 new Vector3(
                                     -.5f * (GetComponent<RectTransform>().sizeDelta.x + scaledWidth),
-                                    transform.position.y < .5f * scaledHeight ? 
-                                        .5f * scaledHeight - transform.position.y:
-                                        0f, 
+                                    transform.position.y < .5f * scaledHeight ?
+                                        .5f * scaledHeight - transform.position.y :
+                                        0f,
                                     0f));
 
                             // Positioning
@@ -788,45 +835,45 @@ public class Playground : InitializeBehaviour
                         goto RSToSVG;
 
                     RSToSVG:
-                        res = await TryGetImageFile(match, "svg", selectedCode);
-                        if (Regex.Match(res, @"\[[0-9\s]+\]").Success)
+                    res = await TryGetImageFile(match, "svg", selectedCode);
+                    if (Regex.Match(res, @"\[[0-9\s]+\]").Success)
+                    {
+                        try
                         {
-                            try 
-                            { 
-                                GenerateView(res, "SVG", resPNG);
-                                goto Reactivation;
-                            }
-                            catch { goto RSToPNG; }
+                            GenerateView(res, "SVG", resPNG);
+                            goto Reactivation;
                         }
-                        else
-                            goto RSToPNG;
+                        catch { goto RSToPNG; }
+                    }
+                    else
+                        goto RSToPNG;
 
-                        RSToPNG:
-                            res = resPNG;
-                            if (Regex.Match(res, @"\[[0-9\s]+\]").Success)
-                            {
-                                try 
-                                { 
-                                    GenerateView(res, "PNG", resPNG);
-                                    goto Reactivation;
-                                }
-                                catch { goto RSFailed; }
-                            }
-                            else
-                                goto RSFailed;
+                    RSToPNG:
+                    res = resPNG;
+                    if (Regex.Match(res, @"\[[0-9\s]+\]").Success)
+                    {
+                        try
+                        {
+                            GenerateView(res, "PNG", resPNG);
+                            goto Reactivation;
+                        }
+                        catch { goto RSFailed; }
+                    }
+                    else
+                        goto RSFailed;
 
-                            RSFailed:
-                                throw new Exception("Couldn't export view.");
+                    RSFailed:
+                    throw new Exception("Couldn't export view.");
                 }
                 else if (match.Value.Contains("RT"))
                 {
                     string resPNG = await TryGetImageFile(match, "png", selectedCode);
-                    
+
                     res = await TryGetImageFile(match, "svg", selectedCode);
                     if (Regex.Match(res, @"\[[0-9\s]+\]").Success)
                     {
-                        try 
-                        { 
+                        try
+                        {
                             GenerateView(res, "SVG", resPNG);
                             goto Reactivation;
                         }
@@ -836,27 +883,27 @@ public class Playground : InitializeBehaviour
                         goto RTToPNG;
 
                     RTToPNG:
-                        res = resPNG;
-                        if (Regex.Match(res, @"\[[0-9\s]+\]").Success)
+                    res = resPNG;
+                    if (Regex.Match(res, @"\[[0-9\s]+\]").Success)
+                    {
+                        try
                         {
-                            try 
-                            { 
-                                GenerateView(res, "PNG", resPNG);
-                                goto Reactivation;
-                            }
-                            catch { goto RTFailed; }
+                            GenerateView(res, "PNG", resPNG);
+                            goto Reactivation;
                         }
-                        else
-                            goto RTFailed;
+                        catch { goto RTFailed; }
+                    }
+                    else
+                        goto RTFailed;
 
-                        RTFailed:
-                            throw new Exception("Couldn't export view.");
+                    RTFailed:
+                    throw new Exception("Couldn't export view.");
                 }
                 else
                 {
                     res = await Pharo.Print(selectedCode);
-                    logText.text = 
-                        "<color=#C63737>"+res.Remove(res.LastIndexOf("\n"), 1)+"</color>";
+                    logText.text =
+                        "<color=#C63737>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>";
                 }
             Reactivation:
                 InteractionLogger.RegisterCodeExecution(selectedCode, res);
@@ -936,7 +983,7 @@ public class Playground : InitializeBehaviour
             else
             {
                 //output = " <color=#b32d00>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>";
-                logText.text = 
+                logText.text =
                     "<color=#C63737>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>";
             }
 
@@ -1079,8 +1126,8 @@ public class Playground : InitializeBehaviour
                     + (type == "aFrame" ? "r" : "binaryR") + "eadStreamDo:[ :stream | stream upToEnd ].";
 
         selectedCode = Regex.Replace(
-            selectedCode, 
-            $@"(\.)([\n\t\s]*)(\^)?([\n\t\s]*){var}([\n\t\s]+view)?([\n\t\s]*)(\.|\Z)", 
+            selectedCode,
+            $@"(\.)([\n\t\s]*)(\^)?([\n\t\s]*){var}([\n\t\s]+view)?([\n\t\s]*)(\.|\Z)",
             finalCode
         );
 
@@ -1118,18 +1165,18 @@ public class Playground : InitializeBehaviour
         float minMagnitude = float.MaxValue;
         Vector3 pivot = Vector3.zero;
         MatchCollection c = Regex.Matches(aFrame,
-            @"(start|end|position)(:\s|=""\s?)([0-9-.\s]+)(;|"")");
+            @"(start|end|position)(:\s|=""\s?)([0-9-.\se]+)(;|"")");
 
         foreach (Match m in c)
         {
             float[] coords =
                 Array.ConvertAll(
-                    m.Groups[3].Value.Split(' '),
+                    Regex.Replace(m.Groups[3].Value, @"([0-9-.]+)e-([0-9.]+)", "0").Split(' '),
                     i => float.Parse(i, CultureInfo.InvariantCulture));
 
             Vector3 pos = new Vector3(
-                coords[0], 
-                coords[1], 
+                coords[0],
+                coords[1],
                 coords[2]
             );
 
@@ -1147,19 +1194,19 @@ public class Playground : InitializeBehaviour
         ob.AddComponent<EventTrigger>();
         ob.AddComponent<GraphicRaycaster>();
         ob.AddComponent<CanvasRaycastTarget>();
-        ob.AddComponent<InitializeBehaviour>();
+        ob.AddComponent<AFrameGeometry>();
         ob.GetComponent<RectTransform>().pivot = Vector2.zero;
         ob.GetComponent<RectTransform>().anchorMin = Vector2.zero;
         ob.GetComponent<RectTransform>().anchorMax = Vector2.zero;
         ob.GetComponent<RectTransform>().sizeDelta = Vector2.zero;
-        ob.GetComponent<InitializeBehaviour>().freezeRotation = false;
+        ob.GetComponent<AFrameGeometry>().freezeRotation = false;
     }
 
     private void MakeGeometryDraggable(GameObject ob)
     {
         // Adding Drag functions
         EventTrigger trigger = ob.GetComponent<EventTrigger>();
-        InitializeBehaviour afg = ob.GetComponent<InitializeBehaviour>();
+        AFrameGeometry afg = ob.GetComponent<AFrameGeometry>();
 
         // OnPointerDown -> OnDrag
         EventTrigger.Entry entry = new EventTrigger.Entry();
@@ -1172,5 +1219,15 @@ public class Playground : InitializeBehaviour
         entryTwo.eventID = EventTriggerType.PointerUp;
         entryTwo.callback.AddListener((data) => { afg.OnEndDrag(data); });
         trigger.triggers.Add(entryTwo);
+        
+        EventTrigger.Entry entryThree = new EventTrigger.Entry();
+        entryThree.eventID = EventTriggerType.PointerEnter;
+        entryThree.callback.AddListener((data) => { afg.OnPointerEnter(data); });
+        trigger.triggers.Add(entryThree);
+
+        EventTrigger.Entry entryFour = new EventTrigger.Entry();
+        entryFour.eventID = EventTriggerType.PointerExit;
+        entryFour.callback.AddListener((data) => { afg.OnPointerExit(data); });
+        trigger.triggers.Add(entryFour);
     }
 }
