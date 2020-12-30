@@ -1,5 +1,8 @@
 # PharoVRIDE's Channel Log
 
+## V0.19.3 (29/12/2020)
+* Fixed bad Aframe parsing.
+
 ## V0.19.2 (27/12/2020)
 * Fixed some Roassal and Aframe issues.
 * Added AFrame Color on hover.
