@@ -89,11 +89,11 @@ public class Playground : InitializeBehaviour
 
                                 await Task.Run(() => {
                                     tag = m.Value;
-                                    value = Regex.Match(tag, @"value: ([a-zA-Z0-9-.\s]+)(;|"")").Groups[1].Value;
-                                    posMatch = Regex.Match(tag, @"position="" ([0-9-.\se]+)""");
-                                    rotMatch = Regex.Match(tag, @"rotation="" ([0-9-.\s]+)""");
-                                    widthMatch = widthMatch = Regex.Match(tag, @"width: ([0-9-.]+)(;|"")");
-                                    colorMatch = colorMatch = Regex.Match(tag, @"color: ([#0-9A-Z]+)(;|"")");
+                                    value = Regex.Match(tag, @"value:\s*([a-zA-Z0-9-.\s]+)\s*(;|"")").Groups[1].Value;
+                                    posMatch = Regex.Match(tag, @"position=""\s*([0-9-.\se]+)\s*""");
+                                    rotMatch = Regex.Match(tag, @"rotation=""\s*([0-9-.\s]+)\s*""");
+                                    widthMatch = widthMatch = Regex.Match(tag, @"width:\s*([0-9-.]+)\s*(;|"")");
+                                    colorMatch = colorMatch = Regex.Match(tag, @"color:\s*([#0-9A-Z]+)\s*(;|"")");
                                 });
 
                                 GameObject text = new GameObject(
@@ -160,17 +160,17 @@ public class Playground : InitializeBehaviour
                                     depthMatch = null, colorMatch = null, metalMatch = null, glossMatch = null, hoverColorMatch = null;
 
                                 await Task.Run(() => {
-                                    primitive = Regex.Match(tag, @"primitive:\s*([a-zA-Z]+)(;|"")").Groups[1].Value;
-                                    posMatch = Regex.Match(tag, @"position=""\s*([0-9-.\se]+)""");
-                                    rotMatch = Regex.Match(tag, @"rotation=""\s*([0-9-.\s]+)""");
-                                    widthMatch = Regex.Match(tag, @"width:\s*([0-9.]+)(;|"")");
-                                    heightMatch = Regex.Match(tag, @"height:\s*([0-9.]+)(;|"")");
-                                    depthMatch = Regex.Match(tag, @"depth:\s*([0-9.]+)(;|"")");
-                                    colorMatch = Regex.Match(tag, @"color:\s*([#0-9A-Z]+)(;|"")");
-                                    metalMatch = Regex.Match(tag, @"metalness:\s*([0-9.]+)(;|"")");
-                                    glossMatch = Regex.Match(tag, @"roughness:\s*([0-9.]+)(;|"")");
-                                    hoverColorMatch = Regex.Match(tag, @"change-color-on-hover\s*=\s*""\s*color:\s*([#0-9A-Z]+)\*""");
-                                    radiusMatch = Regex.Match(tag, @"radius:\s*([0-9.]+)(;|"")");
+                                    primitive = Regex.Match(tag, @"primitive:\s*([a-zA-Z]+)\s*(;|"")").Groups[1].Value;
+                                    posMatch = Regex.Match(tag, @"position=""\s*([0-9-.\se]+)\s*""");
+                                    rotMatch = Regex.Match(tag, @"rotation=""\s*([0-9-.\s]+)\s*""");
+                                    widthMatch = Regex.Match(tag, @"width:\s*([0-9.]+)\s*(;|"")");
+                                    heightMatch = Regex.Match(tag, @"height:\s*([0-9.]+)\s*(;|"")");
+                                    depthMatch = Regex.Match(tag, @"depth:\s*([0-9.]+)\s*(;|"")");
+                                    colorMatch = Regex.Match(tag, @"color:\s*([#0-9A-Z]+)\s*(;|"")");
+                                    metalMatch = Regex.Match(tag, @"metalness:\s*([0-9.]+)\s*(;|"")");
+                                    glossMatch = Regex.Match(tag, @"roughness:\s*([0-9.]+)\s*(;|"")");
+                                    hoverColorMatch = Regex.Match(tag, @"change-color-on-hover\s*=\s*""\s*color:\s*([#0-9A-Z]+)\s*""");
+                                    radiusMatch = Regex.Match(tag, @"radius:\s*([0-9.]+)\s*(;|"")");
                                 });
 
                                 GameObject ob;
@@ -217,7 +217,7 @@ public class Playground : InitializeBehaviour
                                     scale.x = float.Parse(widthMatch.Groups[1].Value, CultureInfo.InvariantCulture);
                                     scale.z = float.Parse(depthMatch.Groups[1].Value, CultureInfo.InvariantCulture);
                                 }
-                                else if (radiusMatch.Success)
+                                if (radiusMatch.Success)
                                 {
                                     scale.x = float.Parse(radiusMatch.Groups[1].Value, CultureInfo.InvariantCulture);
                                     scale.z = float.Parse(radiusMatch.Groups[1].Value, CultureInfo.InvariantCulture);
@@ -293,7 +293,7 @@ public class Playground : InitializeBehaviour
                                     depthMatch = Regex.Match(tag, @"depth\s*=\s*""\s*([0-9.]+)\s*""");
                                     metalMatch = Regex.Match(tag, @"metalness\s*=\s*""\s*([0-9.]+)\s*""");
                                     glossMatch = Regex.Match(tag, @"roughness\s*=\s*""\s*([0-9.]+)\s*""");
-                                    hoverColorMatch = Regex.Match(tag, @"change-color-on-hover\s*=\s*""\s*color:\s*([#0-9A-Z]+)\*""");
+                                    hoverColorMatch = Regex.Match(tag, @"change-color-on-hover\s*=\s*""\s*color:\s*([#0-9A-Z]+)\s*""");
                                 });
 
                                 GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -389,7 +389,7 @@ public class Playground : InitializeBehaviour
                                     metalMatch = Regex.Match(tag, @"metalness\s*=\s*""\s*([0-9.]+)\s*""");
                                     glossMatch = Regex.Match(tag, @"roughness\s*=\s*""\s*([0-9.]+)\s*""");
                                     radiusMatch = Regex.Match(tag, @"radius\s*=\s*""\s*([0-9.]+)\s*""");
-                                    hoverColorMatch = Regex.Match(tag, @"change-color-on-hover\s*=\s*""\s*color:\s*([#0-9A-Z]+)\*""");
+                                    hoverColorMatch = Regex.Match(tag, @"change-color-on-hover\s*=\s*""\s*color:\s*([#0-9A-Z]+)\s*""");
                                 });
 
                                 GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -482,7 +482,7 @@ public class Playground : InitializeBehaviour
                                     radiusMatch = Regex.Match(tag, @"radius\s*=\s*""\s*([0-9.]+)\s*""");
                                     heightMatch = Regex.Match(tag, @"height\s*=\s*""\s*([0-9.]+)\s*""");
                                     rotMatch = Regex.Match(tag, @"rotation\s*=\s*""\s*([0-9-.\s]+)\s*""");
-                                    hoverColorMatch = Regex.Match(tag, @"change-color-on-hover\s*=\s*""\s*color:\s*([#0-9A-Z]+)\*""");
+                                    hoverColorMatch = Regex.Match(tag, @"change-color-on-hover\s*=\s*""\s*color:\s*([#0-9A-Z]+)\s*""");
                                 });
 
                                 GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
@@ -589,7 +589,7 @@ public class Playground : InitializeBehaviour
                                     heightMatch = Regex.Match(tag, @"height\s*=\s*""\s*([0-9.]+)\s*""");
                                     metalMatch = Regex.Match(tag, @"metalness\s*=\s*""\s*([0-9.]+)\s*""");
                                     glossMatch = Regex.Match(tag, @"roughness\s*=\s*""\s*([0-9.]+)\s*""");
-                                    hoverColorMatch = Regex.Match(tag, @"change-color-on-hover\s*=\s*""\s*color:\s*([#0-9A-Z]+)\*""");
+                                    hoverColorMatch = Regex.Match(tag, @"change-color-on-hover\s*=\s*""\s*color:\s*([#0-9A-Z]+)\s*""");
                                 });
 
                                 GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Plane);
