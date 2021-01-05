@@ -82,6 +82,8 @@ public class Playground : InitializeBehaviour
                             GameObject aFrameCanvas = Instantiator.Instance.AFrame();
                             GameObject aFramePanel = aFrameCanvas.transform.Find("Panel").gameObject;
 
+                            // ############################ TEXTS ########################################
+
                             foreach (Match m in texts)
                             {
                                 string tag = "", value = "";
@@ -149,6 +151,8 @@ public class Playground : InitializeBehaviour
                                 minY = Math.Min(minY, text.transform.localPosition.y - size.y);
                             }
 
+                            // ############################ GEOMETRIES ########################################
+
                             foreach (Match m in geometries)
                             {
                                 string tag = m.Value;
@@ -157,7 +161,8 @@ public class Playground : InitializeBehaviour
 
                                 string primitive = "";
                                 Match posMatch = null, rotMatch = null, widthMatch = null, heightMatch = null, radiusMatch = null,
-                                    depthMatch = null, colorMatch = null, metalMatch = null, glossMatch = null, hoverColorMatch = null;
+                                    depthMatch = null, colorMatch = null, metalMatch = null, glossMatch = null, hoverColorMatch = null,
+                                    modelMatch = null;
 
                                 await Task.Run(() => {
                                     primitive = Regex.Match(tag, @"primitive:\s*([a-zA-Z]+)\s*(;|"")").Groups[1].Value;
@@ -171,6 +176,7 @@ public class Playground : InitializeBehaviour
                                     glossMatch = Regex.Match(tag, @"roughness:\s*([0-9.]+)\s*(;|"")");
                                     hoverColorMatch = Regex.Match(tag, @"change-color-on-hover\s*=\s*""\s*color:\s*([#0-9A-Z]+)\s*""");
                                     radiusMatch = Regex.Match(tag, @"radius:\s*([0-9.]+)\s*(;|"")");
+                                    modelMatch = Regex.Match(tag, @"model=""\s*([a-zA-Z0-9]+)\s*""");
                                 });
 
                                 GameObject ob;
@@ -266,6 +272,14 @@ public class Playground : InitializeBehaviour
                                 // Update width and height
                                 Vector3 size = ob.transform.localScale;
 
+                                if (modelMatch.Success)
+                                {
+                                    TextMeshPro t = Instantiator.Instance.Text(modelMatch.Groups[1].Value, ob.transform);
+                                    ob.GetComponent<AFrameGeometry>().t = t;
+                                    t.gameObject.SetActive(false);
+                                    t.transform.localPosition = - ob.transform.forward;
+                                }
+
                                 maxX = Math.Max(maxX, ob.transform.localPosition.x + size.x);
                                 maxY = Math.Max(maxY, ob.transform.localPosition.y + size.y);
                                 minX = Math.Min(minX, ob.transform.localPosition.x - size.x);
@@ -277,11 +291,13 @@ public class Playground : InitializeBehaviour
                                 MakeGeometryDraggable(ob);
                             }
 
+                            // ############################# BOXES #########################################
+
                             foreach (Match m in boxes)
                             {
                                 string tag = "";
                                 Match posMatch = null, rotMatch = null, widthMatch = null, heightMatch = null, hoverColorMatch = null,
-                                    depthMatch = null, colorMatch = null, metalMatch = null, glossMatch = null;
+                                    depthMatch = null, colorMatch = null, metalMatch = null, glossMatch = null, modelMatch = null;
 
                                 await Task.Run(() => {
                                     tag = m.Value;
@@ -294,6 +310,7 @@ public class Playground : InitializeBehaviour
                                     metalMatch = Regex.Match(tag, @"metalness\s*=\s*""\s*([0-9.]+)\s*""");
                                     glossMatch = Regex.Match(tag, @"roughness\s*=\s*""\s*([0-9.]+)\s*""");
                                     hoverColorMatch = Regex.Match(tag, @"change-color-on-hover\s*=\s*""\s*color:\s*([#0-9A-Z]+)\s*""");
+                                    modelMatch = Regex.Match(tag, @"model=""\s*([a-zA-Z0-9]+)\s*""");
                                 });
 
                                 GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -365,6 +382,14 @@ public class Playground : InitializeBehaviour
                                 // Update width and height
                                 Vector3 size = ob.transform.localScale;
 
+                                if (modelMatch.Success)
+                                {
+                                    TextMeshPro t = Instantiator.Instance.Text(modelMatch.Groups[1].Value, ob.transform);
+                                    ob.GetComponent<AFrameGeometry>().t = t;
+                                    t.gameObject.SetActive(false);
+                                    t.transform.localPosition = -ob.transform.forward;
+                                }
+
                                 maxX = Math.Max(maxX, ob.transform.localPosition.x + size.x);
                                 maxY = Math.Max(maxY, ob.transform.localPosition.y + size.y);
                                 minX = Math.Min(minX, ob.transform.localPosition.x - size.x);
@@ -376,10 +401,12 @@ public class Playground : InitializeBehaviour
                                 MakeGeometryDraggable(ob);
                             }
 
+                            // ########################## SPHERES #########################################
+
                             foreach (Match m in spheres)
                             {
                                 string tag = "";
-                                Match posMatch = null, colorMatch = null, metalMatch = null,
+                                Match posMatch = null, colorMatch = null, metalMatch = null, modelMatch = null,
                                     glossMatch = null, radiusMatch = null, hoverColorMatch = null;
 
                                 await Task.Run(() => {
@@ -390,6 +417,7 @@ public class Playground : InitializeBehaviour
                                     glossMatch = Regex.Match(tag, @"roughness\s*=\s*""\s*([0-9.]+)\s*""");
                                     radiusMatch = Regex.Match(tag, @"radius\s*=\s*""\s*([0-9.]+)\s*""");
                                     hoverColorMatch = Regex.Match(tag, @"change-color-on-hover\s*=\s*""\s*color:\s*([#0-9A-Z]+)\s*""");
+                                    modelMatch = Regex.Match(tag, @"model=""\s*([a-zA-Z0-9]+)\s*""");
                                 });
 
                                 GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -407,13 +435,14 @@ public class Playground : InitializeBehaviour
                                         new Vector3(coords[0], coords[1], coords[2]) - pivot;
                                 }
 
+                                Vector3 scale = new Vector3(1f, 1f, 1f);
                                 if (radiusMatch.Success)
                                 {
                                     float radius = float.Parse(
                                         radiusMatch.Groups[1].Value,
                                         CultureInfo.InvariantCulture);
 
-                                    Vector3 scale = new Vector3(radius, radius, radius);
+                                    scale = new Vector3(radius, radius, radius);
                                     ob.transform.localScale = scale;
                                 }
 
@@ -456,6 +485,14 @@ public class Playground : InitializeBehaviour
                                 // Update width and height
                                 Vector3 size = ob.transform.localScale;
 
+                                if (modelMatch.Success)
+                                {
+                                    TextMeshPro t = Instantiator.Instance.Text(modelMatch.Groups[1].Value, ob.transform);
+                                    ob.GetComponent<AFrameGeometry>().t = t;
+                                    t.gameObject.SetActive(false);
+                                    t.transform.localPosition = -ob.transform.forward;
+                                }
+
                                 maxX = Math.Max(maxX, ob.transform.localPosition.x + size.x);
                                 maxY = Math.Max(maxY, ob.transform.localPosition.y + size.y);
                                 minX = Math.Min(minX, ob.transform.localPosition.x - size.x);
@@ -467,10 +504,12 @@ public class Playground : InitializeBehaviour
                                 MakeGeometryDraggable(ob);
                             }
 
+                            // ############################## CYLINDERS ######################################
+
                             foreach (Match m in cylinders)
                             {
                                 string tag = "";
-                                Match posMatch = null, colorMatch = null, metalMatch = null, glossMatch = null,
+                                Match posMatch = null, colorMatch = null, metalMatch = null, glossMatch = null, modelMatch = null,
                                     radiusMatch = null, heightMatch = null, rotMatch = null, hoverColorMatch = null;
 
                                 await Task.Run(() => {
@@ -483,6 +522,7 @@ public class Playground : InitializeBehaviour
                                     heightMatch = Regex.Match(tag, @"height\s*=\s*""\s*([0-9.]+)\s*""");
                                     rotMatch = Regex.Match(tag, @"rotation\s*=\s*""\s*([0-9-.\s]+)\s*""");
                                     hoverColorMatch = Regex.Match(tag, @"change-color-on-hover\s*=\s*""\s*color:\s*([#0-9A-Z]+)\s*""");
+                                    modelMatch = Regex.Match(tag, @"model=""\s*([a-zA-Z0-9]+)\s*""");
                                 });
 
                                 GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
@@ -510,6 +550,7 @@ public class Playground : InitializeBehaviour
                                         Quaternion.Euler(coords[0], coords[1], coords[2]);
                                 }
 
+                                Vector3 scale = new Vector3(1f, 1f, 1f);
                                 if (radiusMatch.Success && heightMatch.Success)
                                 {
                                     float radius = float.Parse(
@@ -520,7 +561,7 @@ public class Playground : InitializeBehaviour
                                         heightMatch.Groups[1].Value,
                                         CultureInfo.InvariantCulture);
 
-                                    Vector3 scale = new Vector3(radius, h, radius);
+                                    scale = new Vector3(radius, h, radius);
                                     ob.transform.localScale = scale;
                                 }
 
@@ -553,15 +594,24 @@ public class Playground : InitializeBehaviour
                                     }
                                 }
 
-                                if (hoverColorMatch.Success)
+                                if (modelMatch.Success)
                                 {
-                                    Color c;
-                                    ColorUtility.TryParseHtmlString(hoverColorMatch.Groups[1].Value, out c);
-                                    ob.GetComponent<AFrameGeometry>().hoverColor = c;
+                                    TextMeshPro t = Instantiator.Instance.Text(modelMatch.Groups[1].Value, ob.transform);
+                                    ob.GetComponent<AFrameGeometry>().t = t;
+                                    t.gameObject.SetActive(false);
+                                    t.transform.localPosition = -ob.transform.forward;
                                 }
 
                                 // Update width and height
                                 Vector3 size = ob.transform.localScale;
+
+                                if (modelMatch.Success)
+                                {
+                                    TextMeshPro t = Instantiator.Instance.Text(modelMatch.Groups[1].Value, ob.transform);
+                                    ob.GetComponent<AFrameGeometry>().t = t;
+                                    t.gameObject.SetActive(false);
+                                    t.transform.localPosition = ob.transform.forward;
+                                }
 
                                 maxX = Math.Max(maxX, ob.transform.localPosition.x + size.x);
                                 maxY = Math.Max(maxY, ob.transform.localPosition.y + size.y);
@@ -574,10 +624,12 @@ public class Playground : InitializeBehaviour
                                 MakeGeometryDraggable(ob);
                             }
 
+                            // ########################## PLANES #############################################
+
                             foreach (Match m in planes)
                             {
                                 string tag = "";
-                                Match posMatch = null, rotMatch = null, widthMatch = null, heightMatch = null,
+                                Match posMatch = null, rotMatch = null, widthMatch = null, heightMatch = null, modelMatch = null,
                                     colorMatch = null, metalMatch = null, glossMatch = null, hoverColorMatch = null;
 
                                 await Task.Run(() => {
@@ -590,6 +642,7 @@ public class Playground : InitializeBehaviour
                                     metalMatch = Regex.Match(tag, @"metalness\s*=\s*""\s*([0-9.]+)\s*""");
                                     glossMatch = Regex.Match(tag, @"roughness\s*=\s*""\s*([0-9.]+)\s*""");
                                     hoverColorMatch = Regex.Match(tag, @"change-color-on-hover\s*=\s*""\s*color:\s*([#0-9A-Z]+)\s*""");
+                                    modelMatch = Regex.Match(tag, @"model=""\s*([a-zA-Z0-9]+)\s*""");
                                 });
 
                                 GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Plane);
@@ -617,9 +670,10 @@ public class Playground : InitializeBehaviour
                                         Quaternion.Euler(coords[0], coords[1], coords[2]);
                                 }
 
+                                Vector3 scale = new Vector3(1f, 1f, 1f);
                                 if (widthMatch.Success && heightMatch.Success)
                                 {
-                                    Vector3 scale = new Vector3(
+                                    scale = new Vector3(
                                         float.Parse(widthMatch.Groups[1].Value, CultureInfo.InvariantCulture),
                                         ob.transform.localScale.y,
                                         float.Parse(heightMatch.Groups[1].Value, CultureInfo.InvariantCulture));
@@ -665,6 +719,14 @@ public class Playground : InitializeBehaviour
                                 // Update width and height
                                 Vector3 size = ob.transform.localScale;
 
+                                if (modelMatch.Success)
+                                {
+                                    TextMeshPro t = Instantiator.Instance.Text(modelMatch.Groups[1].Value, ob.transform);
+                                    ob.GetComponent<AFrameGeometry>().t = t;
+                                    t.gameObject.SetActive(false);
+                                    t.transform.localPosition = -ob.transform.forward;
+                                }
+
                                 maxX = Math.Max(maxX, ob.transform.localPosition.x + size.x);
                                 maxY = Math.Max(maxY, ob.transform.localPosition.y + size.y);
                                 minX = Math.Min(minX, ob.transform.localPosition.x - size.x);
@@ -675,6 +737,8 @@ public class Playground : InitializeBehaviour
 
                                 MakeGeometryDraggable(ob);
                             }
+
+                            // ########################### LINES #####################################
 
                             foreach (Match m in lines)
                             {
@@ -976,7 +1040,7 @@ public class Playground : InitializeBehaviour
                         newWorldPos,
                         transform.forward
                     );
-                    InteractionLogger.Count("Inspector");
+                    InteractionLogger.Count("Inspector", insp.GetInstanceID().ToString());
                 }
                 insp.setContent(res);
             }
@@ -1034,12 +1098,12 @@ public class Playground : InitializeBehaviour
     public override void OnSelect(BaseEventData data)
     {
         base.OnSelect(data);
-        InteractionLogger.StartTimerFor("Playground");
+        InteractionLogger.StartTimerFor("Playground", GetInstanceID().ToString());
     }
 
     public override void OnDeselect(BaseEventData data)
     {
-        InteractionLogger.EndTimerFor("Playground");
+        InteractionLogger.EndTimerFor("Playground", GetInstanceID().ToString());
     }
 
     public override void onClose()
@@ -1047,7 +1111,7 @@ public class Playground : InitializeBehaviour
         if (loadingWheel == null || !loadingWheel.activeSelf)
         {
             SaveAndLoadModule.playgrounds.Remove(this);
-            InteractionLogger.Discount("Playground");
+            InteractionLogger.Discount("Playground", GetInstanceID().ToString());
             Destroy(gameObject);
         }
     }
@@ -1141,7 +1205,7 @@ public class Playground : InitializeBehaviour
         {
             view = Instantiator.Instance.Graph() as Graph;
             SaveAndLoadModule.graphs.Add(view);
-            InteractionLogger.Count("GraphObject");
+            InteractionLogger.Count("GraphObject", view.GetInstanceID().ToString());
         }
         view.setSprite(responseString, type);
 

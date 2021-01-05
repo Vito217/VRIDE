@@ -8,7 +8,7 @@ public class Transcript : InitializeBehaviour
         if(loadingWheel == null || !loadingWheel.activeSelf)
         {
             SaveAndLoadModule.transcripts.Remove(this);
-            InteractionLogger.Discount("Transcript");
+            InteractionLogger.Discount("Transcript", GetInstanceID().ToString());
             Destroy(gameObject);
         }
     }

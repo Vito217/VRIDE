@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using TMPro;
 
 /// <summary>
 /// Instantiates many prefabs assigned by the user. 
@@ -20,6 +21,7 @@ public class Instantiator: MonoBehaviour
     public VRIDEMenu menuPrefab;
     public GameObject taskListPrefab;
     public GameObject aframePrefab;
+    public TextMeshPro textPrefab;
 
     private static Instantiator _instance;
     public static Instantiator Instance
@@ -197,5 +199,12 @@ public class Instantiator: MonoBehaviour
     public GameObject TaskList()
     {
         return Instantiate(taskListPrefab);
+    }
+
+    public TextMeshPro Text(string content, Transform parent)
+    {
+        TextMeshPro t = Instantiate(textPrefab, parent);
+        t.text = content;
+        return t;
     }
 }

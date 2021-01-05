@@ -130,7 +130,11 @@ public class InitializeBehaviour : MonoBehaviour
         else
             transform.SetParent(player.Find("ViveCameraRig/RightHand"));
 
-        InteractionLogger.StartTimerFor("WindowDragging");
+        //InteractionLogger.StartTimerFor("WindowDragging");
+
+        InteractionLogger.RegisterWindowDraggingStart(
+            transform.position.x, transform.position.y, transform.position.z,
+            name.Replace("(Clone)", ""), GetInstanceID().ToString());
     }
 
     public void OnEndDrag(BaseEventData data)
@@ -143,7 +147,12 @@ public class InitializeBehaviour : MonoBehaviour
         transform.rotation = r;
         transform.localScale = baseScale;
 
-        InteractionLogger.EndTimerFor("WindowDragging");
+        //InteractionLogger.EndTimerFor("WindowDragging");
+
+        InteractionLogger.RegisterWindowDraggingEnd(
+            transform.position.x, transform.position.y, transform.position.z,
+            name.Replace("(Clone)", ""), GetInstanceID().ToString());
+
     }
 
     public void DeactivateTemporarily()
@@ -181,6 +190,8 @@ public class InitializeBehaviour : MonoBehaviour
         transform.Find("Panel").gameObject.GetComponent<RectTransform>().sizeDelta += new Vector2(sizeVariance, 0f);
         if (loadingWheel != null)
             loadingWheel.GetComponent<RectTransform>().sizeDelta += new Vector2(sizeVariance, 0f);
+
+        InteractionLogger.RegisterWindowChange("Increased", name.Replace("(Clone)", ""), GetInstanceID().ToString(), "width");
     }
 
     public virtual void VerticalExpand()
@@ -190,6 +201,8 @@ public class InitializeBehaviour : MonoBehaviour
             loadingWheel.GetComponent<RectTransform>().sizeDelta += new Vector2(0f, sizeVariance);
         if (keyboardsGameObject != null)
             keyboardsGameObject.transform.localPosition -= new Vector3(0f, sizeVariance, 0f);
+
+        InteractionLogger.RegisterWindowChange("Increased", name.Replace("(Clone)", ""), GetInstanceID().ToString(), "height");
     }
 
     public virtual void HorizontalContract()
@@ -197,6 +210,8 @@ public class InitializeBehaviour : MonoBehaviour
         transform.Find("Panel").gameObject.GetComponent<RectTransform>().sizeDelta -= new Vector2(sizeVariance, 0f);
         if (loadingWheel != null)
             loadingWheel.GetComponent<RectTransform>().sizeDelta -= new Vector2(sizeVariance, 0f);
+
+        InteractionLogger.RegisterWindowChange("Decreased", name.Replace("(Clone)", ""), GetInstanceID().ToString(), "width");
     }
 
     public virtual void VerticalContract()
@@ -206,6 +221,8 @@ public class InitializeBehaviour : MonoBehaviour
             loadingWheel.GetComponent<RectTransform>().sizeDelta -= new Vector2(0f, sizeVariance);
         if (keyboardsGameObject != null)
             keyboardsGameObject.transform.localPosition += new Vector3(0f, sizeVariance, 0f);
+
+        InteractionLogger.RegisterWindowChange("Decreased", name.Replace("(Clone)", ""), GetInstanceID().ToString(), "height");
     }
 
     public virtual void IncreaseScale()
@@ -215,6 +232,8 @@ public class InitializeBehaviour : MonoBehaviour
             loadingWheel.GetComponent<RectTransform>().localScale += new Vector3(scaleVariance, scaleVariance, scaleVariance);
         if (keyboardsGameObject != null)
             keyboardsGameObject.transform.localPosition -= new Vector3(0f, 50f, 0f);
+
+        InteractionLogger.RegisterWindowChange("Increased", name.Replace("(Clone)", ""), GetInstanceID().ToString(), "scale");
     }
 
     public virtual void DecreaseScale()
@@ -224,6 +243,8 @@ public class InitializeBehaviour : MonoBehaviour
             loadingWheel.GetComponent<RectTransform>().localScale -= new Vector3(scaleVariance, scaleVariance, scaleVariance);
         if (keyboardsGameObject != null)
             keyboardsGameObject.transform.localPosition += new Vector3(0f, 50f, 0f);
+
+        InteractionLogger.RegisterWindowChange("Decreased", name.Replace("(Clone)", ""), GetInstanceID().ToString(), "scale");
     }
 
     public virtual void onClose() { Destroy(gameObject); }

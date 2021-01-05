@@ -2,6 +2,7 @@
 using SaveAndLoad;
 using UnityEngine;
 using HTC.UnityPlugin.Vive;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 public class VRIDEController : MonoBehaviour
@@ -15,6 +16,8 @@ public class VRIDEController : MonoBehaviour
     Vector3 newForw;
     VRIDEMenu menu;
     GameObject taskList;
+
+    Vector3 currentPosition = Vector3.zero;
 
     void Update()
     {
@@ -62,6 +65,12 @@ public class VRIDEController : MonoBehaviour
             else if (f9 || menuButton)
                 GenerateMenu();
         }
+
+        if (currentPosition != transform.position)
+        {
+            currentPosition = transform.position;
+            InteractionLogger.RegisterPlayerPosition(currentPosition.x, currentPosition.y, currentPosition.z);
+        }
     }
 
     public void GenerateBrowser()
@@ -69,7 +78,7 @@ public class VRIDEController : MonoBehaviour
         Browser browser = Instantiator.Instance.Browser();
         browser.Initialize(newFinalPos, newForw);
         SaveAndLoadModule.browsers.Add(browser);
-        InteractionLogger.Count("Browser");
+        InteractionLogger.Count("Browser", browser.GetInstanceID().ToString());
         if (menu != null) Destroy(menu.gameObject);
     }
 
@@ -78,7 +87,7 @@ public class VRIDEController : MonoBehaviour
         Playground playground = Instantiator.Instance.Playground();
         playground.Initialize(newFinalPos, newForw);
         SaveAndLoadModule.playgrounds.Add(playground);
-        InteractionLogger.Count("Playground");
+        InteractionLogger.Count("Playground", playground.GetInstanceID().ToString());
         if (menu != null) Destroy(menu.gameObject);
     }
 
@@ -87,7 +96,7 @@ public class VRIDEController : MonoBehaviour
         Transcript transcript = Instantiator.Instance.Transcript();
         transcript.Initialize(newFinalPos, newForw);
         SaveAndLoadModule.transcripts.Add(transcript);
-        InteractionLogger.Count("Transcript");
+        InteractionLogger.Count("Transcript", transcript.GetInstanceID().ToString());
         if (menu != null) Destroy(menu.gameObject);
     }
 

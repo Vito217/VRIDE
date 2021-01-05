@@ -133,12 +133,12 @@ public class Browser : InitializeBehaviour
     public override void OnSelect(BaseEventData data)
     {
         base.OnSelect(data);
-        InteractionLogger.StartTimerFor("Browser");
+        InteractionLogger.StartTimerFor("Browser", GetInstanceID().ToString());
     }
 
     public override void OnDeselect(BaseEventData data)
     {
-        InteractionLogger.EndTimerFor("Browser");
+        InteractionLogger.EndTimerFor("Browser", GetInstanceID().ToString());
     }
 
     public override void onClose()
@@ -146,7 +146,7 @@ public class Browser : InitializeBehaviour
         if (loadingWheel == null || !loadingWheel.activeSelf)
         {
             SaveAndLoadModule.browsers.Remove(this);
-            InteractionLogger.Discount("Browser");
+            InteractionLogger.Discount("Browser", GetInstanceID().ToString());
             Destroy(gameObject);
         }
     }

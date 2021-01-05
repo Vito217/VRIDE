@@ -23,7 +23,7 @@ public class Graph : InitializeBehaviour
         if (loadingWheel == null || !loadingWheel.activeSelf)
         {
             SaveAndLoadModule.graphs.Remove(this);
-            InteractionLogger.Discount("GraphObject");
+            InteractionLogger.Discount("GraphObject", GetInstanceID().ToString());
             Destroy(gameObject);
         }
     }

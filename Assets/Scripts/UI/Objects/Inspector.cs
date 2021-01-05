@@ -39,7 +39,7 @@ public class Inspector : InitializeBehaviour
         if (loadingWheel == null || !loadingWheel.activeSelf)
         {
             SaveAndLoadModule.inspectors.Remove(this);
-            InteractionLogger.Discount("Inspector");
+            InteractionLogger.Discount("Inspector", GetInstanceID().ToString());
             Destroy(gameObject);
         }
     }

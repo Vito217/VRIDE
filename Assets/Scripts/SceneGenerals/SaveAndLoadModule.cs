@@ -84,7 +84,7 @@ namespace SaveAndLoad
                     browser.onSelectInstanceSide();
 
                 browsers.Add(browser);
-                InteractionLogger.Count("Browser");
+                InteractionLogger.Count("Browser", browser.GetInstanceID().ToString());
             }
         }
 
@@ -122,7 +122,7 @@ namespace SaveAndLoad
                 playground.Initialize(final_pos, fwd);
                 playground.field.text = pdata.sourceCode;
                 playgrounds.Add(playground);
-                InteractionLogger.Count("Playground");
+                InteractionLogger.Count("Playground", playground.GetInstanceID().ToString());
             }
         }
 
@@ -162,7 +162,7 @@ namespace SaveAndLoad
 
                 inspectors.Add(inspector);
 
-                InteractionLogger.Count("Inspector");
+                InteractionLogger.Count("Inspector", inspector.GetInstanceID().ToString());
             }
         }
 
@@ -205,7 +205,7 @@ namespace SaveAndLoad
                 graph.Initialize(final_pos, fwd);
                 graphs.Add(graph);
 
-                InteractionLogger.Count("GraphObject");
+                InteractionLogger.Count("GraphObject", graph.GetInstanceID().ToString());
             }
         }
 

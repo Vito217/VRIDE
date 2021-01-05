@@ -32,6 +32,8 @@ public class TitleScreenBehaviour : MonoBehaviour
     {
         initializing = false;
 
+        InteractionLogger.SessionStart();
+
         limit = 0.3f;
 
         await Pharo.Start();   
@@ -41,8 +43,6 @@ public class TitleScreenBehaviour : MonoBehaviour
         await SaveAndLoadModule.Load();
 
         limit = 1.0f;
-
-        InteractionLogger.SessionStart();
 
         await Task.Delay(5000);
 

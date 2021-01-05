@@ -75,30 +75,30 @@ namespace LoggingModule
         /// Register an opened window
         /// </summary>
         /// <param name="window"></param>
-        public static void Count(string window)
+        public static void Count(string window, string id)
         {
-            if (!inEditor) writeLineToLog("[ " + DateTime.Now + " ] Opened new window: " + window);
+            if (!inEditor) writeLineToLog("[ " + DateTime.Now + " ] Opened new window: " + window + " (ID: " + id + ")");
         }
 
         /// <summary>
         /// Register a closed window. 
         /// </summary>
         /// <param name="window"></param>
-        public static void Discount(string window)
+        public static void Discount(string window, string id)
         {
-            if (!inEditor) writeLineToLog("[ " + DateTime.Now + " ] Closed a window: " + window);
+            if (!inEditor) writeLineToLog("[ " + DateTime.Now + " ] Closed a window: " + window + " (ID: " + id + ")");
         }
 
         /// <summary>
         /// Starts a timer that counts how many millisecs the user spends using a window.
         /// </summary>
         /// <param name="window">Target window name</param>
-        public static void StartTimerFor(string window)
+        public static void StartTimerFor(string window, string id)
         {
             if (!inEditor)
             {
                 timers[window + "Interaction"] = Stopwatch.StartNew();
-                writeLineToLog("[ " + DateTime.Now + " ] Started interaction with a " + window);
+                writeLineToLog("[ " + DateTime.Now + " ] Started interaction with a " + window +" (ID: " + id + ")");
             }
         }
 
@@ -106,7 +106,7 @@ namespace LoggingModule
         /// Ends a window timer
         /// </summary>
         /// <param name="window">Target window name</param>
-        public static void EndTimerFor(string window)
+        public static void EndTimerFor(string window, string id)
         {
             if (!inEditor)
             {
@@ -114,7 +114,7 @@ namespace LoggingModule
                 int elapsedTime = (int)timers[window + "Interaction"].Elapsed.TotalMilliseconds;
                 counters["total" + window + "Milliseconds"] += elapsedTime;
                 writeLineToLog(
-                    "[ " + DateTime.Now + " ] Finished interaction with a " + window + ". Time Spent: " + elapsedTime.ToString() + " ms"
+                    "[ " + DateTime.Now + " ] Finished interaction with a " + window + " (ID: " + id + "). Time Spent: " + elapsedTime.ToString() + " ms"
                 );
             }   
         }
@@ -210,6 +210,40 @@ namespace LoggingModule
             if (!inEditor)
             {
                 writeLineToLog("[ " + DateTime.Now + " ] Opened Roassal Example (" + example + ")");
+            }
+        }
+
+        public static void RegisterPlayerPosition(float x, float y, float z)
+        {
+            if (!inEditor)
+            {
+                writeLineToLog("[ " + DateTime.Now + " ] User moved to (" + x.ToString() + ", " + y.ToString() + ", " + z.ToString() + ")");
+            }
+        }
+
+        public static void RegisterWindowDraggingStart(float x, float y, float z, string window, string id)
+        {
+            if (!inEditor)
+            {
+                writeLineToLog("[ " + DateTime.Now + " ] Dragging " + window + " (ID: " + id + ") from position (" +
+                    x.ToString() + ", " + y.ToString() + ", " + z.ToString() + ")");
+            }
+        }
+
+        public static void RegisterWindowDraggingEnd(float x, float y, float z, string window, string id)
+        {
+            if (!inEditor)
+            {
+                writeLineToLog("[ " + DateTime.Now + " ] Dragged " + window + " (ID: " + id + ") to position (" +
+                    x.ToString() + ", " + y.ToString() + ", " + z.ToString() + ")");
+            }
+        }
+
+        public static void RegisterWindowChange(string increasedOrDecreased, string window, string id, string property)
+        {
+            if (!inEditor)
+            {
+                writeLineToLog("[ " + DateTime.Now + " ] " + increasedOrDecreased + " " + window + " (ID: " + id + ") " + property);
             }
         }
     }
