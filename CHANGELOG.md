@@ -1,5 +1,9 @@
 # PharoVRIDE's Channel Log
 
+## V0.20.0 (05/01/2021)
+* Improved logging system. Now it tracks each time the user changes position, moves a window to another point, and changes a window's scale and dimensions. Every window is now identified by their ID.
+* Minor additions to AFrames.
+
 ## V0.19.3 (29/12/2020)
 * Fixed bad Aframe parsing.
 
