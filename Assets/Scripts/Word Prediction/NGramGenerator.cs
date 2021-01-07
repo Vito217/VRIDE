@@ -21,34 +21,36 @@ public class NGramGenerator : MonoBehaviour
 	private void Awake()
 	{
 		// Uncomment this when working in the Unity Editor or with new dictionaries
-		/*
+		
 		string directoryPath = Application.dataPath + "/Resources/WordPrediction";
-		if(!Directory.Exists(directoryPath))
-		{    
-			Directory.CreateDirectory(directoryPath);
-		}
+		//if(!Directory.Exists(directoryPath))
+		//{    
+		//	Directory.CreateDirectory(directoryPath);
+		//}
 
-		if(!File.Exists(directoryPath + "/biGramDict.txt") || !File.Exists(directoryPath + "/levenshteinDict.txt"))
-		{
-			Debug.Log("No dictionaries found, building a new one. This can take a while depending on the corpus size.");
-			var loadedCorpus = Resources.Load ("Sample") as TextAsset;
-			string stringsCorpus = loadedCorpus.ToString ();
+		//if(!File.Exists(directoryPath + "/biGramDict.txt") || !File.Exists(directoryPath + "/levenshteinDict.txt"))
+		//{
+		//	Debug.Log("No dictionaries found, building a new one. This can take a while depending on the corpus size.");
+			//var loadedCorpus = Resources.Load ("Sample") as TextAsset;
+			//string stringsCorpus = loadedCorpus.ToString ();
 
-			GenerateBiGrams(stringsCorpus);
-			GenerateLevenshteinDict(stringsCorpus);
+		//	string stringsCorpus = System.IO.File.ReadAllText(directoryPath + "/PharoCorpus.txt");
 
-			LevenshteinCorpus = levenshteinDict.Keys.ToList();
-			Debug.Log("Dictionaries were succesfully generated.");
-		}
-		else
-		{
-			Debug.Log("Dictionaries found, word prediction is running.");
-			biGramDict = LoadDictionary("WordPrediction/biGramDict");
-			levenshteinDict = LoadDictionary("WordPrediction/levenshteinDict");
+		//	GenerateBiGrams(stringsCorpus);
+		//	GenerateLevenshteinDict(stringsCorpus);
 
-			LevenshteinCorpus = levenshteinDict.Keys.ToList();
-		}
-		*/
+		//	LevenshteinCorpus = levenshteinDict.Keys.ToList();
+		//	Debug.Log("Dictionaries were succesfully generated.");
+		//}
+		//else
+		//{
+		//	Debug.Log("Dictionaries found, word prediction is running.");
+		//	biGramDict = LoadDictionary("WordPrediction/biGramDict");
+		//	levenshteinDict = LoadDictionary("WordPrediction/levenshteinDict");
+
+		//	LevenshteinCorpus = levenshteinDict.Keys.ToList();
+		//}
+		
 
 		biGramDict = LoadDictionary("WordPrediction/biGramDict");
 		levenshteinDict = LoadDictionary("WordPrediction/levenshteinDict");
@@ -95,7 +97,7 @@ public class NGramGenerator : MonoBehaviour
 		biGramDict = orderedEnum.ToDictionary(pair => pair.Key, pair => pair.Value);
 
 		string s = GetLine(biGramDict);
-		File.WriteAllText(Application.dataPath + "/Resources/AutoCorrect/biGramDict.txt", s);
+		File.WriteAllText(Application.dataPath + "/Resources/WordPrediction/biGramDict.txt", s);
 
 //		#if UNITY_EDITOR
 //			AssetDatabase.Refresh();
@@ -118,7 +120,7 @@ public class NGramGenerator : MonoBehaviour
 		levenshteinDict = orderedEnum.ToDictionary(pair => pair.Key, pair => pair.Value);
 
 		string s = GetLine(levenshteinDict);
-		File.WriteAllText(Application.dataPath + "/Resources/AutoCorrect/levenshteinDict.txt", s);
+		File.WriteAllText(Application.dataPath + "/Resources/WordPrediction/levenshteinDict.txt", s);
 
 //		#if UNITY_EDITOR
 //			AssetDatabase.Refresh();
@@ -217,11 +219,13 @@ public class NGramGenerator : MonoBehaviour
 	Dictionary<string, int> GetDict(string s)
 	{
 		Dictionary<string, int> d = new Dictionary<string, int>();
-		string[] tokens = s.Split(new char[] { ':', ',' }, StringSplitOptions.RemoveEmptyEntries);
-		for (int i = 0; i < tokens.Length; i += 2)
-		{
-			string name = tokens[i];
-			string freq = tokens[i + 1];
+
+		string[] tokenValue = s.Split(new char[] {','}, StringSplitOptions.RemoveEmptyEntries);
+		foreach (string tv in tokenValue)
+        {
+			string[] vals = tv.Split(':');
+			string freq = vals[vals.Length - 1];
+			string name = tv.Replace(freq, "");
 
 			int count = int.Parse(freq);
 			if (d.ContainsKey(name))
@@ -233,6 +237,26 @@ public class NGramGenerator : MonoBehaviour
 				d.Add(name, count);
 			}
 		}
+
+		//string[] tokens = s.Split(new char[] { ':', ',' }, StringSplitOptions.RemoveEmptyEntries);
+		//for (int i = 0; i < tokens.Length; i += 2)
+		//{
+		//	string name = tokens[i];
+		//	string freq = tokens[i + 1];
+
+		//	Debug.Log(freq);
+
+		//	int count = int.Parse(freq);
+		//	if (d.ContainsKey(name))
+		//	{
+		//		d[name] += count;
+		//	}
+		//	else
+		//	{
+		//		d.Add(name, count);
+		//	}
+		//}
+
 		return d;
 	}
 }

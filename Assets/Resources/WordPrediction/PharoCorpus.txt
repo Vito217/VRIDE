@@ -1,0 +1,1999 @@
+Object subclass: #ZnBasicAuthenticator
+	instanceVariableNames: 'credentials realm'
+	classVariableNames: ''
+	package: 'Zinc-HTTP-Support'
+
+methodSelectorAndArgumentNames
+	"comment stating purpose of instance-side method"
+	"scope: class-variables  &  instance-variables"	
+			
+	| temporary variable names |
+	statements
+
+initialize
+	credentials := Dictionary new
+
+Object subclass: #ZnCookie
+	instanceVariableNames: 'attributes'
+	classVariableNames: ''
+	package: 'Zinc-HTTP-Support'
+
+domain: aDomain
+	attributes at: 'domain' put: aDomain
+
+Object subclass: #RSObject
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Roassal3-Core'
+
+fromSpaceToPixel: aPoint
+
+	^ AthensAffineTransform new
+		translateBy: self canvas extent / 2;
+		scaleBy: self scale;
+		translateBy: self position negated;
+		transform: aPoint
+
+Object subclass: #MyClass
+	instanceVariableNames: '' 
+	classVariableNames: ''
+	package: 'Roassal3-Pie'
+
+RSAbstractBarPlot subclass: #RSBarPlot
+	instanceVariableNames: 'bottom'
+	classVariableNames: ''
+	package: 'Roassal3-Chart-Core'
+
+example01BasicBoxes
+	<script: 'self new example01BasicBoxes open'>
+	| c |
+	c := RSCanvas new.
+	c addShape: (RSBox new
+		extent: 100@100;
+		yourself).
+	c addShape: (RSBox new
+		position: 100@100;
+		color: Color red;
+		extent: 100@100;
+		yourself).
+	^ c
+
+example02BasicEllipses
+	<script: 'self new example02BasicEllipses open'>
+
+	| c |
+	c := RSCanvas new.
+	c addShape: (RSEllipse new
+		extent: 100@100;
+		yourself).
+	c addShape: (RSEllipse new
+		position: 100@100;
+		color: Color red;
+		extent: 100@100;
+		yourself).
+	^ c
+
+example06BasicLabels
+	<script: 'self new example06BasicLabels open'>
+	| c label |
+	c := RSCanvas new.
+	1 to: 12 do: [ :m | 
+		| angle theta p|
+		angle := (m * 360 / 12) degreesToRadians.
+		theta := angle cos @ angle sin.
+		p := theta * 100.
+		label := RSLabel new
+			color: (Color purple alpha: 0.5);
+			fontName: 'Source Sans Pro';
+			fontSize: 20;
+			text: (Month nameOfMonth: m);
+			yourself.
+		angle := angle radiansToDegrees.
+		angle := angle + ((angle between: 90 and: 270) 
+			ifTrue: [ 180 ]
+			ifFalse: [ 0 ] ).
+		
+		label rotateByDegrees: angle.
+		label position: p + ((label textWidth/2) * theta).
+		m even
+			ifTrue: [ label bold ]
+			ifFalse: [ label italic ].
+		c addShape: label.
+		].
+	c addShape: (RSEllipse new
+		color: nil;
+		withBorder;
+		radius: 90).
+	^ c
+
+example32RotateShapeByMouse
+	<script: 'self new example32RotateShapeByMouse open'>
+	| c s |
+	c := RSCanvas new.
+	s := RSLabel new
+		text: 'Dehaka';
+		draggable;
+		yourself.
+	c add: s.
+	s @ RSRotated.
+	^ c
+
+example22BasicPieSlice
+	<script: 'self new example22BasicPieSlice open'>
+	| c |
+	c := RSCanvas new.
+	"slice"
+	c addShape: (RSPieSlice new
+		externalRadius: 100;
+		alphaAngle: 30;
+		betaAngle: 90).
+	^ c
+
+example26Polygon
+	<script: 'self new example26Polygon open'>
+	| c |
+	c := RSCanvas new.
+	c addShape: (RSPolygon new
+		points: { 100@10. 40@198. 190@78. 10@78. 160@198 };
+		yourself).
+	c shapes first translateTo: 0@0.
+	c showEncompassingRectangles.
+	c shapes first when: RSMouseDragging do: [:evt |
+		evt shape translateBy: evt step; signalUpdate].
+	^ c
+
+ClassBuilderError subclass: #IncompatibleLayoutConflict
+	instanceVariableNames: 'layout subType'
+	classVariableNames: ''
+	package: 'Slot-Core-Exception'
+
+subType
+	^ subType
+
+DebugAction subclass: #ReturnValueDebugAction
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Debugger-Actions-Actions'
+
+help
+	^ 'Return of a given value to the previous context.'
+
+DrTestsPlugin subclass: #DTCommentToTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'DrTests-CommentsToTests-Base'
+
+runSuite: aTestSuite withResult: aResult
+	aTestSuite
+		when: TestAnnouncement
+		do: [ :testAnnouncement | 
+			self announcer
+				announce:
+					(DTStatusUpdate
+						message: ('Running test {1}.' format: {testAnnouncement test asString})) ].
+	[ aTestSuite run: aResult ]
+		ensure: [ aTestSuite unsubscribe: TestAnnouncement ]
+
+Object subclass: #ZdcAbstractSocketStream
+	instanceVariableNames: 'socket readBuffer writeBuffer timeout debug'
+	classVariableNames: ''
+	package: 'Zodiac-Core'
+
+isConnected
+	"Are we connected at the socket level ?"
+	
+	^ self subclassResponsibility 
+
+Object << #Breakpoint
+	slots: { #condition . #link . #node . #level . #options . #targetInstance => WeakSlot .
+				 #oneShot . #enabled };
+	sharedVariables: { #AllBreakpoints };
+	tag: 'Breakpoints';
+	package: 'Reflectivity'
+
+enable
+	enabled := true
+
+GLMInteractableBrick subclass: #GTSpotterCategoryTitleBrick
+	instanceVariableNames: 'nameBrick amountBrick actionbarBrick stepModel diveInButton shortcutBrick category'
+	classVariableNames: ''
+	package: 'GT-Spotter-UI-Widgets'
+
+diveInButton
+	^ diveInButton
+
+Collection subclass: #Array2D
+	instanceVariableNames: 'contents numberOfColumns numberOfRows'
+	classVariableNames: ''
+	package: 'Collections-Sequenceable-Ordered'
+
+,, aMatrix
+	"Answer a new matrix having the same number of columns as the receiver and aMatrix,
+	 its rows being the rows of the receiver followed by the rows of aMatrix."
+
+	[numberOfColumns = aMatrix numberOfColumns] assert.
+	^self class 
+			rows: numberOfRows + aMatrix numberOfRows 
+			columns: numberOfColumns
+			contents: contents , aMatrix privateContents
+
+ClyClassScript subclass: #ClySampleInstanceScript
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Calypso-SystemPlugins-ClassScripts-Queries'
+
+executeOn: aClass
+
+ 	(super executeOn: aClass) inspect
+
+EpEnabledIntegrationTest subclass: #EpLogBrowserOperationFactoryTest
+	instanceVariableNames: 'inputEntry inputEntries'
+	classVariableNames: ''
+	package: 'EpiceaBrowsers-Tests-Integration'
+
+setMonitorLogAsInputEntries
+
+	inputEntries := monitor log entries.
+	inputEntry := nil. "Not used"
+
+OSWindowFormRenderer subclass: #OSVMFormRenderer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'OSWindow-VM'
+
+updateAll
+	self updateRectangle: (0@0 extent: form extent)
+
+TestCase subclass: #FreeTypeFontFamilyMemberTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'FreeType-Tests-FontManager'
+
+testBeSimulatedStyle
+
+	|member|
+	member := FreeTypeFontFamilyMember new.
+	self deny: member isSimulatedStyle.
+	member beSimulatedStyle.
+	self assert: member isSimulatedStyle.
+
+Object subclass: #JPEGHuffmanTable
+	instanceVariableNames: 'bits values mincode maxcode valptr lookaheadBits lookaheadSymbol'
+	classVariableNames: 'BitBufferSize Lookahead'
+	package: 'Graphics-Files'
+
+lookaheadBits
+	^lookaheadBits
+
+Object subclass: #MetacelloProjectRefTutorialConfig
+	instanceVariableNames: 'project'
+	classVariableNames: ''
+	package: 'Metacello-Tutorial'
+
+version07: spec 
+	<version: '0.7' imports: #('0.7-baseline' )>
+	
+	spec for: #common do: [
+		spec blessing: #release.
+		
+		spec 
+			package: 'Project-Core' with: 'Project-Core-anon.1';
+			package: 'Project-Tests' with: 'Project-Tests-anon.1';
+			package: 'Example-Core' with: 'Example-Core-anon.12';
+			package: 'Example-Tests' with: 'Example-Tests-anon.3';
+			package: 'Example-AddOn' with: 'Example-AddOn-anon.1'.].
+
+StPresenter subclass: #StReporter
+	instanceVariableNames: 'topicList reportText topics'
+	classVariableNames: ''
+	package: 'NewTools-SystemReporter'
+
+header: aString on: aStream
+	aStream
+		withAttribute: TextEmphasis bold
+		do: [ aStream
+				nextPutAll: aString;
+				cr.
+			aString size timesRepeat: [ aStream nextPut: $- ].
+			aStream cr ]
+
+RSTest subclass: #RSShapeTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Roassal3-Global-Tests-Shapes'
+
+testModels
+
+	| shapes |
+	shapes := RSCircle models: (1 to: 10).
+	self assert: shapes isCollection.
+	self assert: shapes class equals: RSGroup.
+	self assert: (shapes allSatisfy: [ :s | s class == RSCircle ]).
+	self assert: (shapes collect: #width) asSet asArray equals: #(10)
+
+SpPopoverContentPresenter subclass: #SpCodePopoverErrorPresenter
+	instanceVariableNames: 'object code text message'
+	classVariableNames: ''
+	package: 'Spec2-Code'
+
+dismiss
+
+	super dismiss.
+	self code takeKeyboardFocus
+
+CustomHelp subclass: #WorldMenuHelp
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Pharo-Help'
+
+MCHttpRepository subclass: #MCGemstoneRepository
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'MonticelloRemoteRepositories'
+
+includesVersionNamed: aString
+	"directly do a filename check since the server only stores mcz"
+	^ self includesFileNamed: aString, '.mcz'
+
+Object subclass: #PRRichTextCanvas
+	instanceVariableNames: 'out brushes nesting crAtEnd'
+	classVariableNames: ''
+	package: 'Pillar-ExporterRichText-Core'
+
+includeAttribute: attr in: aBlock
+	brushes addLast: (PRRichTextBrush on: self attribute: attr).
+	aBlock value.
+	brushes removeLast
+
+Model subclass: #ThreadSafeTranscript
+	instanceVariableNames: 'stream accessSemaphore deferredClear deferredEndEntry stepContents'
+	classVariableNames: ''
+	package: 'Transcript-Core-Base'
+
+isSelfEvaluating
+
+	^self == Transcript 
+		ifTrue: [ true ]
+		ifFalse: [ super isSelfEvaluating ]
+
+clear 
+"	Clear all characters by resetting the stream and voiding any previously flagged deferredEndEntry.
+	Redisplays the view by signalling for #step to send #changed: .
+"	
+	self 
+		critical: [ 
+			deferredClear := true.
+			deferredEndEntry := false.
+			stream reset ]
+
+nextPut: value
+	"Output character on the receiver, buffered, not yet shown"
+
+	self critical: [ stream nextPut: value ].
+	^ value
+
+Object subclass: #UIManager
+	instanceVariableNames: ''
+	classVariableNames: 'Default'
+	package: 'UIManager-Base'
+
+chooseDirectoryFrom: dir
+	"Let the user choose a directory"
+
+	^self chooseDirectory: nil from: dir
+
+T2AbstractTest subclass: #T2SubclassingTraitedClassTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'TraitsV2-Tests'
+
+testCreatingMethodInSubclass
+	| t1 c1 c2 |
+	t1 := self newTrait: #T1 with: #() uses: {}.
+	c1 := self newClass: #C1 with: #()  uses: t1.
+
+	c2 := self newClass: #C2 superclass: c1 with: #() uses: {}.
+
+	c2 compile: 'asd'.
+
+	self shouldnt: [c2 >> #asd] raise: Error.
+	self assert: (c2 >> #asd) package name equals: 'TraitsV2-Tests'.
+	self assert: (c2 >> #asd) package equals: c2 package.
+
+RBProgramNodeVisitor subclass: #EFFormatter
+	instanceVariableNames: 'codeStream indent originalSource lineStart context isInCascadeNode lookAheadCode'
+	classVariableNames: 'DefaultPrettyPrintContext FormatAsYouReadPolicy'
+	package: 'EnlumineurFormatter-Core'
+
+formatBlock: aBlockNode
+ 	" see formatBlock2: for a possible alternate and faster definition."
+	
+	| isMultiline |
+	isMultiline := self willBeMultiline: aBlockNode body.
+  
+	codeStream nextPutAll: self spacesInsideBlocksString.
+	
+	self formatBlockArgumentsFor: aBlockNode.
+	self formatBlockCommentFor: aBlockNode.
+	((isMultiline or: [ self isLineTooLongWithNode: aBlockNode body ]) 
+		and: [ self shouldPassNewLineAfterHeadOfBlock: aBlockNode ]) 
+			ifTrue: [ self newLine ].
+  
+	self visitSequenceNode: aBlockNode body.
+	
+	(self lineUpBlockBrackets and: [ isMultiline ]) 
+		ifTrue: [ self newLine ] 
+		ifFalse: [ codeStream nextPutAll: self spacesInsideBlocksString ]
+
+bracketWith: bracketString around: aBlock
+	bracketString isEmpty
+		ifTrue: [ ^ aBlock value ].
+	codeStream nextPut: bracketString first.
+	^ aBlock
+		ensure: [ codeStream nextPut: bracketString last ] 
+
+FFIBackend variableByteSubclass: #NullFFIBackend
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'FFI-Kernel'
+
+integerOfObject: anObject at: byteOffset put: value size: nBytes signed: aBoolean
+
+	^ self primitiveFailed 
+
+FileSystemStore subclass: #DiskStore
+	instanceVariableNames: 'maxFileNameLength'
+	classVariableNames: 'CurrentFS DefaultWorkingDirectory'
+	package: 'FileSystem-Disk-Store'
+
+changeTimeOf: aPath
+	"Answer the time the metadata of aPath was last changed.
+	On platforms that don't support change time, use the modification time."
+
+	| pathString time |
+	pathString := self stringFromPath: aPath.
+	time := (File fileAttribute: pathString number: 11) ifNil: 
+			[ File fileAttribute: pathString number: 12 ].
+	^DateAndTime fromInternalTime: time
+
+rename: sourcePath to: destinationPath
+
+	| sourcePathString encodedSourcePathString targetPathString encodedTargetPathString |
+	sourcePathString := self stringFromPath: sourcePath.
+	encodedSourcePathString := File encodePathString: sourcePathString.
+	targetPathString := self stringFromPath: destinationPath.
+	encodedTargetPathString := File encodePathString: targetPathString.
+	^ File rename: encodedSourcePathString to: encodedTargetPathString.
+
+Announcement subclass: #JobAnnouncement
+	instanceVariableNames: 'job'
+	classVariableNames: ''
+	package: 'Jobs-Announcements'
+
+job: anObject
+	
+	job := anObject
+
+Object subclass: #UIManager
+	instanceVariableNames: ''
+	classVariableNames: 'Default'
+	package: 'UIManager-Base'
+
+displayProgress: titleString from: minVal to: maxVal during: workBlock
+	"SystemProgressMorph show: titleString from: minVal to:  during: "
+
+	^ workBlock asJob
+			title: titleString;
+			min: minVal;
+			max: maxVal;
+			run
+
+ClyClass0FromPWithSingleClass subclass: #ClySubclassLOfClass0FromPExtendedByP1
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Calypso-SystemQueries-Tests-PExtendedByP1'
+
+ClapApplication subclass: #ClapPharoApplication
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Clap-Commands-Pharo'
+
+shouldSave
+	^ (arguments at: #save) isExplicit
+		or: [ (arguments at: #noSave) isExplicit not ]
+
+BaselineOf subclass: #BaselineOfSessionVisualization
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'BaselineOfSessionVisualization'
+
+baseline: spec
+	<baseline>
+	spec
+		for: #pharo
+		do:
+			[ 
+"			spec project: 'Roassal3' with: [
+				spec
+					className: #ConfigurationOfFicus;
+					versionString: #development;
+					loads: #FicusMonticello;
+					repository: 'http://smalltalkhub.com/mc/MartinDias/Ficus/main' ].
+"			
+			spec package: 'SessionVisualization'.
+
+			spec
+				group: 'default' with: #('SessionVisualization')
+			]
+
+Object subclass: #AthensTextDisplayCommand
+	instanceVariableNames: 'next'
+	classVariableNames: ''
+	package: 'Athens-Text'
+
+do: aBlock
+	| nn |
+	nn := self.
+	
+	[ nn isNil ] whileFalse: [ 
+		aBlock value: nn.
+		nn := nn next. ]
+
+FT2GlyphSlot subclass: #SimpleTextGlyphInfo
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Athens-Text'
+
+loadFrom: anFT2Face
+	"Same as in superclass, but avoid converting coordinates to not waste CPU cycles"
+	
+	face := anFT2Face.
+	anFT2Face fillGlyph: self.
+	format := (EndianDetector isLittleEndian ifTrue: [ format reversed ] ifFalse: [ format ]) asString.
+
+CmdOpenContextMenuCommand subclass: #CmdOpenTextLeftBarMenuCommand
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Commander-Activators-TextView'
+
+activationStrategy
+	^CmdTextLeftBarMenuActivation 
+
+MemoryFileSystemFile subclass: #ZipFileSystemFile
+	instanceVariableNames: 'member'
+	classVariableNames: ''
+	package: 'FileSystem-Zip-Base'
+
+readFromMember
+	^ ByteArray 
+		new: self member uncompressedSize
+		streamContents: [ :stream |		
+			self member extractTo: stream ]
+
+TestCase subclass: #FBDDecompilerTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Flashback-Decompiler-Tests-Base'
+
+checkCorrectMethodDecompilation: originalMethod
+
+	| newMethod |
+	newMethod := self decompileThenRecompile: originalMethod.
+	self compare: originalMethod with: newMethod
+
+MemoryFileSystemEntry subclass: #MemoryFileSystemDirectory
+	instanceVariableNames: 'entries'
+	classVariableNames: ''
+	package: 'FileSystem-Memory-Base'
+
+fileEntryRemove: aFileName ifAbsent: absentBlock
+	| deletedEntry |
+	deletedEntry := entries removeKey: aFileName ifAbsent: [ ^ absentBlock value ].
+	modificationTime := DateAndTime now.
+	^ deletedEntry
+
+fileEntryRemove: aFileName ifAbsent: absentBlock
+	| deletedEntry |
+	deletedEntry := entries removeKey: aFileName ifAbsent: [ ^ absentBlock value ].
+	modificationTime := DateAndTime now.
+	^ deletedEntry
+
+gtDebuggerPresentationsIn: composite inContext: aGTInspector
+	| pragmas |
+	pragmas := (Pragma 
+				allNamed: #gtDebuggerPresentationOrder:
+				from: self class 
+				to: ProtoObject) asOrderedCollection.
+	pragmas addAll:((Pragma 
+				allNamed: aGTInspector class extensionsPragma 
+				from: self class 
+				to: ProtoObject)
+					reject: [:pragma| pragma method selector = #gtInspectorRawIn: ]).
+	pragmas := pragmas sorted: [: x :y | (x argumentAt: 1) < (y argumentAt: 1)].
+	self gtInspectorPresentationsFromPragmas: pragmas In: composite inContext: aGTInspector
+
+mustBeBooleanCompileExpression: context andCache: cache
+	"Permits to redefine methods inlined by compiler.
+	Take the ast node corresponding to the mustBeBoolean error, compile it on the fly and executes it as a DoIt. Then resume the execution of the context."
+
+	| sendNode methodNode pc method pcAfterJump |
+
+	"get the message send node that triggered mustBeBoolean"
+	pc := context pc - 1.
+	sendNode := context sourceNode sourceNodeForPC: pc.
+	"Rewrite non-local returns to return to the correct context from send"
+	RBParseTreeRewriter new 
+		replace: '^ ``@value' with: 'ThisContext home return: ``@value';
+		executeTree: sendNode.
+	"Build doit node to perform send unoptimized"
+	methodNode := sendNode copy asDoitForContext: context.
+	"Keep same compilation context as the sender node's"
+	methodNode compilationContext: sendNode methodNode compilationContext copy.
+	"Disable inlining so the message send will be unoptimized"
+	methodNode compilationContext compilerOptions: #(- optionInlineIf optionInlineAndOr optionInlineWhile).
+	"Generate the method"	
+	OCASTSemanticCleaner clean: methodNode.
+	method := methodNode generate.
+	"store the pc of the instruction following the send when returning from deoptimized code."
+	pcAfterJump := sendNode irInstruction nextBytecodeOffsetAfterJump.
+	method propertyAt: #mustBeBooleanJump put: pcAfterJump.
+	"cache the method we just created"
+	cache at: pc put: method.
+	^method
+	
+pointersToExcept: objectsToExclude among: aCollectionOfObjects
+	"Find all objects in the system that hold a pointer to me, excluding those listed.
+	This method is meant to be a faster solution if used several times on several objects rather than calling the GC multiples times.
+	See pointersToExcept: for usage.
+	"
+
+	| pointers objectsToAlwaysExclude |
+	pointers := OrderedCollection new.
+	pointers := aCollectionOfObjects select: [ :e | e pointsTo: self ].
+	objectsToAlwaysExclude := {thisContext.
+	thisContext sender.
+	thisContext sender sender.
+	objectsToExclude}.
+	^ (pointers
+		removeAllSuchThat: [ :ea | 
+			ea == thisContext sender
+				or:
+					[ "warning: this expression is dependent on closure structure of this method"
+					(objectsToAlwaysExclude identityIncludes: ea)
+						or: [ objectsToExclude identityIncludes: ea ] ] ]) asArray
+
+Object subclass: #ClassHierarchyPrinter
+	instanceVariableNames: 'theClass excludedClasses limitedToClasses stream level index showSuperclasses showState'
+	classVariableNames: ''
+	package: 'Kernel-ExtraUtils-ForPharo'
+printSubclassesOf: aClass
+	"As part of the algorithm for printing a description of the receiver, print the
+	subclass on the file stream, aStream, indenting level times."
+
+	| sortedSubclasses |
+	limitedToClasses ifNotEmpty: [ 
+			(limitedToClasses includes: aClass) 
+				ifFalse: [ ^ self ]
+			].
+	(excludedClasses includes: aClass)
+		ifTrue: [ ^ self ].
+		
+	self printClass: aClass.
+	aClass == Class
+		ifTrue: [ stream
+				tab: index + 1;
+				nextPutAll: '[ ... all the Metaclasses ... ]'.
+			^ self ].
+	sortedSubclasses := aClass subclasses
+		asSortedCollection: [ :c1 :c2 | c1 name <= c2 name ].
+	sortedSubclasses do: [ :subclass | 
+			index := index + 1.
+			self printSubclassesOf: subclass.
+			index := index - 1 ]
+
+Object subclass: #MicAbstractBlock
+	instanceVariableNames: 'parent children parser'
+	classVariableNames: ''
+	package: 'Microdown-Model'
+
+Object subclass: #ShGlobalsEnvironment
+	instanceVariableNames: 'environment'
+	classVariableNames: ''
+	package: 'Shift-ClassBuilder'
+
+
+bindingAt: aString 
+	
+	^ environment bindingOf: aString
+
+Object subclass: #SortFunction
+	instanceVariableNames: ''
+	classVariableNames: 'Default'
+	package: 'SortFunctions-Core'
+
+collate: anObject1 with: anObject2
+	"Do a three-way comparison between the anObject1 and anObject2, returning
+	-1 if anObject1 < anObject2
+	0 if anObject1 = anObject2
+	1 if anObject1 > anObject2
+	This assumes a total order in accordance with the mathematical law of trichotomy.
+	See also:  http://en.wikipedia.org/wiki/Three-way_comparison"
+	self subclassResponsibility 
+
+= anObject
+	"Answer whether the receiver and anObject represent the same object."
+
+	self == anObject
+		ifTrue: [ ^ true ].
+	self class = anObject class
+		ifFalse: [ ^ false ].
+	^ baseSortFunction = anObject baseSortFunction
+		and: [ property = anObject property ]
+
+TaAbstractComposition subclass: #TaCompositionElement
+	instanceVariableNames: 'innerClass'
+	classVariableNames: ''
+	package: 'TraitsV2-Compositions'
+
+asRingMinimalDefinitionIn: anRGEnvironment
+	| def |
+	^ anRGEnvironment backend
+		definitionFor: self
+		ifAbsentRegister: [ | definingClass |
+			definingClass := Smalltalk environment allBehaviors detect: [ :b | b traitComposition == self or: [b traitComposition includesElement: self]].
+
+			def := RGTraitComposition named: self name parent: (definingClass asRingMinimalDefinitionIn: anRGEnvironment).
+
+			def propertyNamed: #realObject put: self.
+
+			"we need to set real object because we cannot simply identify the real object from the model data"
+			def ]
+
+applyOn: aClass 	
+	| result |
+	
+	"I apply all the changes in a class.
+	This class is a trait or a trait user
+	I produce a new trait change with the changes to be propagated to the users of aClass.
+	Then the changes are propagated using the same mechanism recursively"
+	
+	result := TraitChange new.
+	
+	addedSelectors do: [ :e | self add: e into: aClass changes: result ].
+	removedSelectors do: [ :e | self remove: e into: aClass changes: result ].
+	updatedSelectors do: [ :e | self update: e into: aClass changes: result ].
+	
+	aClass traitUsers do: [ :aUser | result applyOn: aUser ].
+
+remove: aSelector into: aClass changes: results
+	| isLocal inTrait priorMethod priorProtocol |
+
+	"I handle the removal of a selector. There are many cases to check."
+
+	isLocal := aClass localSelectors includes: aSelector.
+	inTrait := aClass traitComposition traitDefining: aSelector ifNone: [ nil ].
+
+	"This is only true when the update method is a propagation, so we have to avoid destroying a locally defined method.
+	Check TraitedClass >> #removeSelector: and you will see that the method is removed from the local method dict 
+	if it is local.
+	As the method is propagated and is local, we don't do nothing"
+	isLocal ifTrue: [ ^ self ].	
+	
+	"If the removed method was shadowing a method from a trait composition, the method from the trait composition
+	should be installed. And the change propagated as an update, not as a removal."
+	inTrait 
+		ifNotNil: [ 
+			inTrait installSelector: aSelector into: aClass.
+			results updatedSelectors add: aSelector.
+			^ self ].
+
+
+	"We have to remove the method that was removed in a used trait."
+
+	(aClass methodDict includesKey: aSelector) ifTrue:[
+		priorMethod := aClass methodDict at: aSelector.
+		priorProtocol := aClass whichCategoryIncludesSelector: aSelector.
+
+		aClass methodDict removeKey: aSelector.
+		aClass organization removeElement: aSelector.	
+		
+		SystemAnnouncer uniqueInstance methodRemoved: priorMethod protocol: priorProtocol origin: aClass	
+	].
+
+	"The change is propagated as a removal"
+	results removedSelectors add: aSelector.
+	
+	"If the updated method is aliased (it has alias pointing to it), they should be removed also"
+	(aClass traitComposition reverseAlias: aSelector)
+		do: [ :aliased | 
+			aClass methodDict removeKey: aliased ifAbsent: [  ].
+			results removedSelectors add: aliased ]
+
+update: aSelector into: aClass changes: changes
+	
+	"I am the responsible of propagating a change from an used trait"
+	
+	"If the updated selector (from other trait) is in the local methods, nothing to do."
+
+	aClass localMethodDict at: aSelector ifPresent: [ ^ self ].
+	
+	(aClass traitComposition selectors includes: aSelector)
+		ifTrue: [  	aClass traitComposition installSelector: aSelector into: aClass.
+						changes updatedSelectors add: aSelector ].
+
+	"If the updated method is aliased, it should be updated also"
+	(aClass traitComposition reverseAlias: aSelector)
+		do: [ :aliased | 
+			aClass traitComposition installSelector: aliased into: aClass.
+			changes updatedSelectors add: aliased ]
+
+compareClass
+
+	(self enhancer traitCompositionOf: builder)
+		~= (self enhancer traitCompositionOfClass: builder oldClass)
+		ifTrue: [ ^ {(ShClassChanged new
+				builder: builder;
+				yourself)} ].
+
+	(self enhancer classTraitCompositionOf: builder)
+		~= (self enhancer classTraitCompositionOfClass: builder oldClass)
+		ifTrue: [ ^ {(ShMetaclassChanged new
+				builder: builder;
+				yourself)} ].
+
+	^ #()
+
+extractSelectorFromAST: ast atPosition: aPosition
+
+	"Obtain the the best node matching the position and extracts a selector from it."
+
+	"Position Heuristic: If the previous character is not a separator, take selection one position before.
+	This heuristic is for the cases where the caret (|) is:
+	   |self foo  => the caret is before self, do not move
+	   self foo|  => the caret is before foo, interpret is as if we are in foo.
+		self foo | => the caret is before a space, interpret is as if we are in foo.
+
+	This heuristic introduces although an ambiguity when code is not nicely formatted:
+	   self foo:|#bar => Here a user may want foo: or bar.
+	For now we decided to favor foo: to motivate people to indent code correctly"
+	| offset position bestNodeAtPosition |
+	offset := (aPosition = 1 or: [ (ast sourceCode at: aPosition - 1) isSeparator ])
+		ifTrue: [ 0 ]
+		ifFalse: [ -1 ].
+
+	position := (aPosition + offset) min: ast stop.
+	bestNodeAtPosition := ast bestNodeFor: (position to: position).
+	^ self extractSelectorFromNode: bestNodeAtPosition
+
+extractSelectorFromNode: aNode
+	
+	| node originalNode |
+	originalNode := node := aNode.
+	node isReturn ifTrue: [ 
+		node := node value ].
+	
+	node isCascade ifTrue: [ 
+		^ node messages first selector ].
+	
+	node isMethod ifFalse: [ 
+		(node isValue and: [ node value isSymbol ]) ifTrue: [ ^ node value ].
+				
+		[ node isMessage or: [ node isMethod ]  ] whileFalse: [ 
+	 		(node := node parent) ifNil: [ ^ nil ] ].
+		
+		"This is a strange case with cascades.
+		Cascade nodes contain messages.
+		And each message contains (duplicated) the receiver.
+		So we need to deambiguate here:
+		  was the selection on the receiver? or on the message itself?
+		
+		For example:
+		  aVariable
+			cascade1;
+			cascade2.
+			
+		Selecting both the receiver or the cascade2 will yield a message node `aVariable cascade2`.
+		However, in the first case we want cascade1 and in the latter we want cascade2.
+		
+		"
+		(node ~= originalNode
+			and: [ node parent notNil
+				and: [ node parent isCascade ] ])
+				ifTrue: [ node := node parent messages first ] ].
+	
+	^node selector
+
+extractSelectorFromSelection: aString 
+
+	"Extract a selector from the given string in isolation, regarless of the context around it"
+	
+	| node |
+	node := RBParser parseFaultyExpression: aString.
+	node
+		nodesDo: [ :n |
+			n isMessage
+				ifTrue: [ ^ n selector ].
+			n isVariable
+				ifTrue: [ ^ n name ].
+			n isLiteralNode
+				ifTrue: [ ^ n value ] ].
+
+	"fall back"
+	^ aString asSymbol
+
+, aRunArray 
+	"Answer a new RunArray that is a concatenation of the receiver and
+	aRunArray."
+
+	| new newRuns |
+	(aRunArray isMemberOf: RunArray)
+		ifFalse: 
+			[new := self copy.
+			"attempt to be sociable"
+			aRunArray do: [:each | new addLast: each].
+			^new].
+	runs size = 0 ifTrue: [^aRunArray copy].
+	aRunArray runs size = 0 ifTrue: [^self copy].
+	(values at: values size) ~= (aRunArray values at: 1)
+		ifTrue: [^RunArray
+					runs: runs , aRunArray runs
+					values: values , aRunArray values].
+	newRuns := runs
+			copyReplaceFrom: runs size
+			to: runs size
+			with: aRunArray runs.
+	newRuns at: runs size put: (runs at: runs size) + (aRunArray runs at: 1).
+	^RunArray
+		runs: newRuns
+		values: 
+			(values
+				copyReplaceFrom: values size
+				to: values size
+				with: aRunArray values)
+
+= otherArray 
+	"Test if all my elements are equal to those of otherArray"
+
+	self == otherArray ifTrue: [^true].
+	self species == otherArray species ifFalse: [^ false].
+	(otherArray isMemberOf: RunArray) ifFalse: [^ self hasEqualElements: otherArray].
+
+	"Faster test between two RunArrays"
+	^ (runs hasEqualElements: otherArray runs)
+		and: [values hasEqualElements: otherArray values]
+
+at: index put: aValue
+	"Set an element of the RunArray"
+
+	| runIndex offsetInRun lastValue runLength runReplacement valueReplacement iStart iStop |
+	index isInteger
+		ifFalse: [ self errorNonIntegerIndex ].
+	(index between: 1 and: self size)
+		ifFalse: [ self errorSubscriptBounds: index ].
+	self
+		at: index
+		setRunOffsetAndValue: [ :run :offset :value | 
+			runIndex := run.
+			offsetInRun := offset.
+			lastValue := value ].
+	aValue = lastValue
+		ifTrue: [ ^ aValue ].
+	runLength := runs at: runIndex.
+	runReplacement := Array with: offsetInRun with: 1 with: runLength - offsetInRun - 1.
+	valueReplacement := Array with: lastValue with: aValue with: lastValue.
+	iStart := offsetInRun = 0
+		ifTrue: [ 2 ]
+		ifFalse: [ 1 ].
+	iStop := offsetInRun = (runLength - 1)
+		ifTrue: [ 2 ]
+		ifFalse: [ 3 ].
+	self
+		setRuns: (runs copyReplaceFrom: runIndex to: runIndex with: (runReplacement copyFrom: iStart to: iStop))
+		setValues: (values copyReplaceFrom: runIndex to: runIndex with: (valueReplacement copyFrom: iStart to: iStop)).
+	self coalesce.
+	^ aValue
+
+at: index setRunOffsetAndValue: aBlock 
+	"Supply all run information to aBlock."
+	"Tolerates index=0 and index=size+1 for copyReplace: "
+	| run limit offset |
+	limit := runs size.
+	(lastIndex == nil or: [index < lastIndex])
+		ifTrue: "cache not loaded, or beyond index - start over"
+			[run := 1.
+			offset := index-1]
+		ifFalse: "cache loaded and before index - start at cache"
+			[run := lastRun.
+			offset := lastOffset + (index-lastIndex)].
+	[run <= limit and: [offset >= (runs at: run)]]
+		whileTrue: 
+			[offset := offset - (runs at: run).
+			run := run + 1].
+	lastIndex := index. "Load cache for next access"
+	lastRun := run.
+	lastOffset := offset.
+	run > limit
+		ifTrue: 
+			["adjustment for size+1"
+			run := run - 1.
+			offset := offset + (runs at: run)].
+	^aBlock
+		value: run "an index into runs and values"
+		value: offset "zero-based offset from beginning of this run"
+		value: (values at: run) "value for this run"
+
+copyFrom: start to: stop
+	| newRuns run1 run2 offset1 offset2 | 
+	stop < start ifTrue: [^RunArray new].
+	self at: start setRunOffsetAndValue: [:r :o :value1 | run1 := r. offset1 := o. value1].
+	self at: stop setRunOffsetAndValue: [:r :o :value2 | run2 := r. offset2 := o. value2].
+	run1 = run2
+		ifTrue: 
+			[newRuns := Array with: offset2 - offset1 + 1]
+		ifFalse: 
+			[newRuns := runs copyFrom: run1 to: run2.
+			newRuns at: 1 put: (newRuns at: 1) - offset1.
+			newRuns at: newRuns size put: offset2 + 1].
+	^RunArray runs: newRuns values: (values copyFrom: run1 to: run2)
+
+fillFrom: aCollection with: aBlock
+	"Evaluate aBlock with each of aCollection's elements as the argument.
+	Collect the resulting values into self. Answer self."
+
+	| newRuns newValues lastLength lastValue |
+	newRuns := (Array new: aCollection size) writeStream.
+	newValues := (Array new: aCollection size) writeStream.
+	lastLength := 0.
+	lastValue := Object new.
+	aCollection do: [:each | 
+		| value |
+		value := aBlock value: each.
+		lastValue = value
+			ifTrue: [lastLength := lastLength + 1]
+			ifFalse:
+				[lastLength > 0
+					ifTrue:
+						[newRuns nextPut: lastLength.
+						newValues nextPut: lastValue].
+				lastLength := 1.
+				lastValue := value]].
+	lastLength > 0
+		ifTrue:
+			[newRuns nextPut: lastLength.
+			newValues nextPut: lastValue].
+	self setRuns: newRuns contents setValues: newValues contents
+
+rangeOf: attr startingAt: startPos
+	"Answer an interval that gives the range of attr at index position startPos. An empty interval with start value startPos is returned when the attribute attr is not present at position startPos. self size > 0 is assumed, it is the responsibility of the caller to test for emptiness of self.
+Note that an attribute may span several adjancent runs. "
+
+	self at: startPos 
+		setRunOffsetAndValue: 
+			[:run :offset :value | 
+			^(value includes: attr)
+				ifFalse: [startPos to: startPos - 1]
+				ifTrue:
+					[ | firstRelevantPosition lastRelevantPosition idxOfCandidateRun |
+					lastRelevantPosition := startPos - offset + (runs at: run) - 1.
+					firstRelevantPosition := startPos - offset.
+					idxOfCandidateRun := run + 1.
+					[idxOfCandidateRun <= runs size 
+							 and: [(values at: idxOfCandidateRun) includes: attr]]
+						whileTrue:
+							[lastRelevantPosition := lastRelevantPosition + (runs at: idxOfCandidateRun).
+							idxOfCandidateRun := idxOfCandidateRun + 1]. 
+					idxOfCandidateRun := run - 1.
+					[idxOfCandidateRun >= 1 
+							 and: [(values at: idxOfCandidateRun) includes: attr]]
+						whileTrue:
+							[firstRelevantPosition := firstRelevantPosition - (runs at: idxOfCandidateRun).
+							idxOfCandidateRun := idxOfCandidateRun - 1]. 
+ 
+					firstRelevantPosition to: lastRelevantPosition]]
+
+remove: anObject ifAbsent: exceptionBlock
+	| index mustCoalesce run |
+	index := values indexOf: anObject ifAbsent: [^exceptionBlock value].
+	(run := runs at: index) > 1
+		ifTrue: [runs at: index put: run - 1]
+		ifFalse:
+			[mustCoalesce := index > 1 and: [index < values size and: [(values at: index - 1) = (values at: index + 1)]].
+			runs := runs copyWithoutIndex: index.
+			values := values copyWithoutIndex: index.
+			mustCoalesce
+				ifTrue:
+					[runs at: index - 1 put: (runs at: index - 1) + (runs at: index).
+					runs := runs copyWithoutIndex: index.
+					values := values copyWithoutIndex: index]].
+	^anObject
+
+repeatLast: times ifEmpty: defaultBlock
+	"add the last value back again, the given number of times. If we are empty, add (defaultBlock value)"
+	times = 0 ifTrue: [^self ].
+	lastIndex := nil. "flush access cache"
+	(runs size=0)
+		ifTrue:
+			[runs := runs copyWith: times.
+			values := values copyWith: defaultBlock value]
+		ifFalse:
+			[runs at: runs size put: runs last+times] 
+
+FFIExternalType subclass: #FFIBoolean32
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'ThreadedFFI-Types'
+
+replaceFrom: start to: stop with: aText
+	self okToStyle
+		ifFalse: [ ^ next replaceFrom: start to: stop with: aText ].
+		
+	self paragraph disableDrawingWhile: [
+		
+		aText addAttribute: self paragraph defaultFontChange.
+		text ifNil: [ text := self text ].
+		text replaceFrom: start to: stop with: (self styler format: aText).
+		replaceStart := start.
+		replaceStop := stop.
+		self style: text.
+		next text: text.
+		
+		self paragraph ifNotNil: [ :paragraph |
+			paragraph recomposeFrom: start to: start + aText size - 1 delta: aText size - (stop - start + 1).
+			paragraph textArea paragraphWasComposedFrom: start to: start + aText size - 1.
+			paragraph textArea paragraphReplacedTextFrom: start to: stop with: aText 
+		]
+	
+	]
+
+stylerStyled: styledCopyOfText
+	next ifNil: [ ^ self ].
+	(text notNil and:[text string = styledCopyOfText string])
+		ifFalse: [ ^ self ].
+	text runs: styledCopyOfText runs.
+	"must take care to recompose. If not, the textArea 
+	markIndex and pointIndex may be inconsistent"
+	self paragraph 
+		recomposeFrom: replaceStart 
+		to: replaceStart + text size - 1 
+		delta: text size - (replaceStop - replaceStart + 1).	
+			
+	"The selection and then the cursor bounds has to be updated 
+	to take possible text attribute changes into account"
+	
+	self updateTextArea
+
+testBlockReading
+	| input buffer |
+	input := STONCStyleCommentsSkipStream on: 'abc/*comment*/def' readStream.
+	buffer := String new: 6.
+	self assert: (input readInto: buffer startingAt: 1 count: 4) equals: 4.
+	self assert: (buffer copyFrom: 1 to: 4) equals: 'abcd'.
+	self assert: (input readInto: buffer startingAt: 5 count: 4) equals: 2.
+	self assert: buffer equals: 'abcdef'.
+	input := STONCStyleCommentsSkipStream on: 'abc//comment\def' withCRs readStream.
+	buffer := String new: 6.
+	self assert: (input readInto: buffer startingAt: 1 count: 6) equals: 6.
+	self assert: buffer equals: 'abcdef'.
+	self assert: input atEnd
+
+testCommentInString
+	self 
+		assert: (STONCStyleCommentsSkipStream on: '''/*comment*/''' readStream) upToEnd 
+		equals: '''/*comment*/'''.
+	self 
+		assert: (STONCStyleCommentsSkipStream on: '{''foo'':''/*comment*/bar''}' readStream) upToEnd 
+		equals: '{''foo'':''/*comment*/bar''}'.
+	self 
+		assert: (STONCStyleCommentsSkipStream on: '{''foo'':''//comment\''bar''}' readStream) upToEnd 
+		equals: '{''foo'':''//comment\''bar''}'.
+	self 
+		assert: (STONCStyleCommentsSkipStream on: '{"foo":"/*comment*/bar"}' readStream) upToEnd 
+		equals: '{"foo":"/*comment*/bar"}'.
+	self 
+		assert: (STONCStyleCommentsSkipStream on: '{"foo":"//comment\"bar"}' readStream) upToEnd 
+		equals: '{"foo":"//comment\"bar"}'
+
+id: uuid
+	id := uuid.
+	self description: 'I am a complex object known under the ID ', id asString, ' - I was created @ ', DateAndTime now asString
+
+initialize
+	super initialize.
+	darkColor := Color r: 0.130 g: 0.130 b: 0.130.
+	self 
+		boxColor: darkColor;
+		textColor: Color white.
+	self marker shape color: darkColor.
+	self border 
+		width: 2;
+		color: Color white.
+
+titleFor: aClass
+	| shapes |
+	shapes := RSGroup with: (super titleFor: aClass).
+	aClass hasAbstractMethods ifTrue: [ 
+		shapes addFirst: (RSLabel new
+			color: Color magenta;
+			italic;
+			text: '<<Abstract>>') ].
+	self applyLayoutOn: shapes.
+	^ RSComposite new 
+		shapes: shapes;
+		yourself.
+
+initialize
+	super initialize.
+	self resetStylerClasses
+
+addIconStyle: aNode from: start to: stop color: aColor
+
+	| conf |
+	(self shouldStyleNode: aNode) ifFalse: [ ^ self ].
+	conf := RubConfigurationChange new.
+	conf configurationBlock: [ :text | 
+		| r |
+		r := self segmentMorphClass from: start to: stop + 1.
+		text addSegment: r.
+		r label: (self iconLabelBlock: aNode).
+		r icon: (self iconFor: aNode).
+		r iconBlock: (self iconBlock: aNode).
+		r color: aColor.
+		r borderColor: self borderColor ].
+	textModel announce: conf
+
+initializeWidgets
+
+	list := self newList.
+	inspectIt := self newButton.
+	
+	self setupMenu.
+	
+	list displayBlock: [ :assoc | assoc value asString].
+	numItems := 7.
+	self refreshItems.
+	
+	inspectIt label: 'Inspect...'.
+	inspectIt enabled: false.
+
+setupMenu
+	menu := MenuPresenter new.
+	menu applyTo: self.
+	menu
+		addGroup: [ :group | 
+			group
+				addItem: [ :item | 
+					item
+						name: nil;
+						description: 'Show More Items';
+						icon: (self iconNamed: #up);
+						action: [ self moreItems ] ].
+			group
+				addItem: [ :item | 
+					item
+						name: nil;
+						description: 'Show Less Items';
+						icon: (self iconNamed: #down);
+						action: [ self lessItems ] ].
+			group
+				addItem: [ :item | 
+					item
+						name: nil;
+						description: 'Remove All Items';
+						icon: (self iconNamed: #smallDelete);
+						action: [ self watch deleteHistory ] ] ].
+	menu
+		addGroup: [ :group | 
+			group
+				addItem: [ :item | 
+					item
+						name: nil;
+						description: 'Stop Monitoring';
+						icon: (self iconNamed: #stop);
+						action: [ self watch stop ] ].
+			group
+				addItem: [ :item | 
+					item
+						name: nil;
+						description: 'Start Monitoring';
+						icon: (self iconNamed: #smallPrintIt);
+						action: [ self watch start ] ] ].
+	menu
+		addGroup: [ :group | 
+			group
+				addItem: [ :item | 
+					item
+						name: nil;
+						description: 'Inspect ...';
+						icon: (self iconNamed: #smallInspectIt);
+						action: [ self watch inspect ] ].
+			group
+				addItem: [ :item | 
+					item
+						name: nil;
+						description: 'Browse ...';
+						icon: (self iconNamed: #nautilus);
+						action:
+								[ Smalltalk tools browser openOnMethod: self watch compiledMethod ] ].
+			group
+				addItem: [ :item | 
+					item
+						name: nil;
+						description: 'Remove !';
+						icon: (self iconNamed: #delete);
+						action: [ self watch uninstall ] ] ]
+
+initialize
+
+	super initialize.
+	active := true.
+	evaluator := true
+
+initialize
+
+	super initialize.
+	self description: (String streamContents: [ :stream | 
+		stream 
+			<< self class defaultName
+			<< ': '
+			<< self class defaultDescription ])	
+
+initialize 
+
+	super initialize.
+
+	"Use the default menu"
+	overrideContextMenu := false.
+	
+	self withSyntaxHighlight.
+	self withLineNumbers.
+	
+	self registerEventsForStyling.
+	self clearInteractionModel
+
+initialize
+
+	super initialize.
+	suspendAll := false.
+	suspendedConditions := OrderedCollection new: 5
+
+initialize
+	"Subclasses should redefine this method to perform initializations on instance creation"
+	"Overrides ProtoObjects' method for explicitness."
+
+copyInto: aByteObject "<Alien | indexableByteSubclass>" from: start "<Integer>" to: stop "<Integer>" in: replacement "<Alien | indexableByteSubclass>" startingAt: repStart "<Integer>" "^<self>"
+	<primitive: 'primAlienReplace' module: 'IA32ABI' error: errorCode>
+	^self primitiveFailed
+
+floatAt: index "<Integer>" put: value "<Float | Integer> ^<Float | Integer>"
+	<primitive: 'primFloatAtPut' module: 'IA32ABI' error: errorCode>
+	^self primitiveFailed
+
+initialize
+	super initialize.
+	origin := 0 @ 0
+
+initialize
+	super initialize.
+	failOnUndeclared := true.
+	duplicationMode := HEFailOnDuplication new.
+
+initialize
+	super initialize.
+	hasChanges := false.
+	
+initialize
+
+	super initialize.
+	contextClass := CoCompletionContext.
+
+initialize
+	super initialize.
+	linkColor := nodeColor := Smalltalk ui theme caretColor
+
+initialize
+	super initialize.
+	range := domain := #(0 1).
+	clamp := false.
+	interpolate := NSInterpolator.
+	self rescale.
+
+initialize
+	super initialize.
+	
+	isTextInputActive := false
+
+initialize
+	super initialize.
+	bullets := OrderedCollection new.
+	self reset.
+
+normalizeAxisValue: value
+	| result deadZone |
+	result := value asFloat / self axisMaxValue.
+	deadZone := self axisDeadZoneThreshold.
+	(result between: deadZone negated and: deadZone) ifTrue: [ 
+		result := 0.0
+	] ifFalse: [
+		result < 0 ifTrue: [ 
+			result := result + deadZone.
+		] ifFalse: [ 
+			result := result - deadZone.
+		].
+		result := result / (1.0 - deadZone).
+	].
+
+	^ result min: 1.0 max: -1.0
+
+visitJoyAxisEvent: axisEvent
+	| axisValue velocity |
+	axisEvent isPreferredEvent ifFalse: [ ^ self ].
+	
+	axisValue := self normalizeAxisValue: axisEvent value.
+	velocity := example characterVelocity.
+	axisEvent isLeftX ifTrue: [ 
+		velocity := (axisValue * 300) @ velocity y
+	].
+
+	axisEvent isLeftY ifTrue: [ 
+		"Left Y"
+		velocity := velocity x @ (axisValue * 300)
+
+	].
+
+	example characterVelocity: velocity
+
+createEventHandler
+	^ OSWindowGestureEventHandler new
+			touchExample: self;
+			registerGesture: OSTouchTwoFingersScrollDetector new;
+			registerGesture: OSTouchTwoFingersPinchDetector new;
+			registerGesture: OSTouchThreeFingersSwipeDetector new;
+			registerGesture: OSTouchTwoFingersRotationDetector new;
+			registerGesture: OSTouchOneFingerDoubleTapDetector new;
+			registerGesture: OSTouchOneFingerHoldDetector new;
+			yourself
+
+displayAbortMessage
+	renderer athensSurface
+		drawDuring: [ :canvas | 
+			canvas pathTransform translateBy: self windowCenter x - 30 @ self windowCenter y.
+			canvas
+				setPaint: Color green;
+				setFont: ((LogicalFont familyName: 'Arial' pointSize: 1) emphasis: 1);
+				setShape: (renderer athensSurface createPath: [ :builder | builder close ]);
+				drawString: 'Swipe Aborted!';
+				draw ]
+
+drawCircle
+	renderer athensSurface
+		drawDuring: [ :canvas | 
+			canvas pathTransform translateBy: circleCenter.
+			canvas
+				setPaint:
+						(circleSize positive
+								ifTrue: [ positiveColor ]
+								ifFalse: [ negativeColor ]);
+				setShape: (self generateCircleOfSize: circleSize);
+				draw ]
+
+testReferenceToANonExistingMethodBecauseOfNoSymbol
+
+	| text |
+	self skip.
+	"for now scantoken convert 'setX:setY: into #setX:setY:'
+	so I cannot distinguish"
+	
+	text := (PRMonospaceFormat with: (PRText content: 'Point >> setX:setY:')) children first text.
+	self assert: (PRSemanticAction from: text) entity isNil
+
+testCodeBlock
+	| runs richText |
+	self skip.
+	richText := self richTextFor: sample codeblock.
+
+"
+'1 + 2 
+	* 3  '
+"	
+	runs := richText runs.	
+	
+	"self assert: runs first isEmpty. 
+	self assert: runs second first class equals: TextIndent.
+	self assert: runs second first amount equals: 1.
+	self assert: runs runs equals:  #(1 3 1 15 1 1).
+	"
+	self assert: richText string equals: '1 + 2 
+	* 3  
+
+'
+
+testExternaLink
+	| pillarLink target obj1 obj2 raised |
+	self skip.
+	raised := false.
+	[ pillarLink := '*SitePharo>https://get.pharo.org/64/*'.
+	target := 'https://get.pharo.org/64/'.
+
+	obj1 := ((PRRichTextComposer asText: pillarLink) runs at: 1) first.
+	obj2 := self externalLink: target ]
+		on: Error
+		do: [ raised := true ].
+	self deny: raised.
+	self assert: obj1 class equals: obj2 class.
+	self assert: obj1 class name equals: #TextAction
+
+testFigure
+	| link pillarLink obj1 obj2 raised |
+	self skip.
+	raised := false.
+	[ pillarLink := '+Pharologo>https://files.pharo.org/media/logo/logo.png+'.
+	link := 'https://files.pharo.org/media/logo/logo.png'.
+
+	obj1 := ((PRRichTextComposer asText: pillarLink) runs at: 1) first.
+	obj2 := self figure: link ]
+		on: Error
+		do: [ raised := true ].
+	self deny: raised.
+	self assert: obj1 class equals: obj2 class.
+	self assert: obj1 class name equals: #TextAnchor
+
+testNestedList
+	| runs string |
+	self skip.
+	runs := self runsOf: sample nestedList.
+	string := self stringOf: sample nestedList.
+	self assert: string first equals: $1.
+	self assert: runs first first class equals: TextIndent.
+	self assert: runs first first amount equals: 1.
+	self assert: (string at: 12) equals: $-.
+	self assert: (runs at: 12) first class equals: TextIndent.
+	self assert: (runs at: 12) first amount equals: 2.
+	self assert: (string at: 21) equals: $-.
+	self assert: (runs at: 21) first class equals: TextIndent.
+	self assert: (runs at: 21) first amount equals: 2.
+	self assert: (string at: 30) equals: $2.
+	self assert: (runs at: 30) first class equals: TextIndent.
+	self assert: (runs at: 30) first amount equals: 1.
+	self assert: runs runs equals: #(3 7 1 2 6 1 2 6 1 3 7 1) asArray.
+	
+initialize
+	self useClockBasedSeed.
+	a := 16r000041A7 asFloat.    " magic constant =      16807 = 7^5"
+	m := 16r7FFFFFFF asFloat.    " magic constant = 2147483647 = 2^31 - 1"
+	q := (m quo: a) asFloat.
+	r  := (m \\ a) asFloat.
+
+useUnixRandomGeneratorSeed
+	"Try to seed the receiver using random bytes from a Unix OS' /dev/random.
+	Return true if we succeeded, false otherwise.
+	Note that this might block until the OS thinks it has enough entropy."
+
+	^ [ (File named: '/dev/random') readStreamDo: [ :in | 
+			[ seed := (in next: 4) asInteger.
+			seed isZero ] whileTrue. "Try again if we ever get a zero value"
+			true ] ]
+		on: Error
+		do: [ false ]
+
+nextInteger: anInteger
+	"Answer a random integer in the interval [1, anInteger].
+	Handle large numbers too (for cryptography)."
+
+	anInteger strictlyPositive ifFalse: [ self error: 'Range must be positive' ].
+	anInteger asFloat isInfinite "are we outside the range of float? - use fraction"
+		ifTrue: [^(self privateNextValue asFraction * anInteger) truncated + 1].
+	^ (self privateNextValue * anInteger) truncated + 1
+
+PackageManifest subclass: #ManifestRenraku
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Renraku-Manifest'
+
+initialize
+
+	super initialize.
+	updating := false.
+	keepShowingPage := false
+
+changed: aParameter 
+	"Receiver changed. The change is denoted by the argument aParameter. 
+	Usually the argument is a Symbol that is part of the dependent's change 
+	protocol. Inform all of the dependents."
+
+	self 
+		triggerEvent: self changedEventSelector
+		with: aParameter
+
+testCreatingNamespace
+	| newNamespace newPackage newClass |
+	newNamespace := RGNamespace named: #RingNamespace.
+	newPackage := RGPackageDefinition named: #'Collections-Sequenceable'.
+	newClass := RGClassDefinition named: #OrderedCollection.
+	newPackage addClass: newClass.
+	newNamespace
+		addPackage: newPackage;
+		addClass: newClass.
+
+	self assert: newNamespace isNamespace.
+	self assert: (newNamespace packageNamed: #'Collections-Sequenceable') identicalTo: newPackage.
+	self assert: (newNamespace classNamed: #OrderedCollection) identicalTo: newClass.
+	self assertEmpty: newNamespace methods.
+	self assertEmpty: newNamespace pools.
+	self assertEmpty: newNamespace globalVariables.
+
+	newNamespace removeClass: newClass.
+	self assert: (newNamespace classNamed: #OrderedCollection) isNil.
+	self assert: (newPackage classNamed: #OrderedCollection) notNil
+
+setUp
+	super setUp.
+
+	brokenRule := self class classInstaller make: [ :aClassBuilder | 
+		aClassBuilder 
+			name: #ReBrokenRuleForTesting;
+			superclass: ReAbstractRule;
+			package: self class category ].
+
+		
+	brokenRule class
+		compile: 'checksMethod ^ true'.
+		
+	brokenRule
+		compile: 'name ^ ''A purpously broken rule to test exception handling''';
+		compile: 'check: aNode forCritiquesDo: aBlock
+						MyTestError signal: ',
+						self errorMessage surroundedBySingleQuotes.
+						
+	ReRuleManager reset
+
+breakLink
+	"for now it should just halt in base level"
+
+	^ MetaLink new
+		  metaObject: self;
+		  selector: #breakInContext:node:;
+		  options: options;
+		  arguments: #(#context #node)
+
+addAssociation
+
+	[  | argument value |
+		argument := argumentsList at: self argumentIndex.
+		value := valuesList at: self valueIndex.
+			
+		"replace occurrences in code"
+		tree := RBParseTreeRewriter 
+			replace: value
+			with: argument in: tree.
+		
+		"add new entry"
+		argsAndValues at: argument put: value.
+		"remove from lists"
+		argumentsList removeAt: self argumentIndex.
+		valuesList removeAt: self valueIndex.
+		
+		sourceCodeMorph contents: self sourceCode.
+		self changed: #associations; changed: #arguments; 
+				changed: #values; changed: #isOkEnabled ]
+	on: Error do: [ self inform: 'Please select one argument and one value.' ]
+	
+Object subclass: #LGitReadStream
+	instanceVariableNames: 'rawBuffer gitBlob position'
+	classVariableNames: ''
+	package: 'LibGit-FileSystem'
+
+readInto: aBuffer startingAt: start count: bytesToRead
+	| limit |
+	limit := bytesToRead min: (self size - position).
+	LibC
+		memCopy: gitBlob rawBuffer + position
+		to: aBuffer
+		size: limit.
+	position := position + limit.
+	^ limit
+
+compareWith: anotherMagnitude ifLesser: lesserBlock ifEqual: equalBlock ifGreater: greaterBlock
+
+	^ self < anotherMagnitude
+		ifTrue: lesserBlock
+		ifFalse: [ 
+			self = anotherMagnitude
+				ifTrue: equalBlock
+				ifFalse: greaterBlock ]
+
+Object subclass: #MenuRegistration
+	instanceVariableNames: 'parentName itemList order spec owner isGroup precondition'
+	classVariableNames: ''
+	package: 'MenuRegistration-Core'
+
+initialize
+	super initialize.
+	isGroup := false
+
+action: aMessageSendOrABlock
+	"set the action of the menu"
+	
+	aMessageSendOrABlock isBlock 
+		ifTrue: [
+			self target: aMessageSendOrABlock.
+			self selector: #cull:.
+			self arguments: {self model}]
+		ifFalse: [
+			self selector: aMessageSendOrABlock]
+
+checkForPendingError
+	"If data is waiting, check it to catch any error reports.
+	In case the response is not an error, push it back."
+
+	self stream isDataAvailable
+		ifFalse: [^self].
+	self fetchNextResponse.
+	self
+		checkResponse: self lastResponse
+		onError: [:response | (TelnetProtocolError protocolInstance: self) signal]
+		onWarning: [:response | (TelnetProtocolError protocolInstance: self) signal].
+	"if we get here, it wasn't an error"
+	self pushResponse: self lastResponse
+
+testScaleLinearClamp
+	| linear |
+	linear := self classToTest new
+		domain: #(0 10);
+		range: #(0 100).
+	self assert: (linear scale: 11) equals: 110.
+	self assert: (linear scale: -5) equals: -50.
+	linear clamp: true.
+	self assert: (linear scale: 11) equals: 100.
+	self assert: (linear scale: -5) equals: 0.
+
+printOn: aStream
+
+	super printOn: aStream.
+	color
+		ifNotNil: [ aStream
+				nextPutAll: ' color: ';
+				nextPutAll: color printString
+			].
+	emphasis
+		ifNotNil: [ aStream
+				nextPutAll: ' emphasis: ';
+				nextPutAll: emphasis printString
+			].
+	tokens
+		ifNotNil: [ aStream
+				nextPutAll: ' tokens: ';
+				nextPutAll: tokens printString
+			]
+
+baseline: spec
+	<baseline>
+	spec for: #'common' do: [
+		spec 
+			package: 'ReferenceFinder-Core'.
+		spec 
+			group: 'default' with: #('ReferenceFinder-Core') ]
+
+nextNumber
+	"read the number from stream.
+	or answer nil if not successfull"
+	
+"
+<number> (real number value): The specification of real number values is different for property values than for XML attribute values.
+❍ CSS2 [CSS2] states that a property value which is a <number> is specified in decimal notation (i.e., a <decimal-number>), which consists of either an <integer>, or an optional sign character followed by
+zero or more digits followed by a dot (.) followed by one or more digits. Thus, for conformance with
+CSS2, any property in SVG which accepts <number> values is specified in decimal notation only.
+❍ For SVG's XML attributes, to provide as much scalability in numeric values as possible, real number
+values can be provided either in decimal notation or in scientific notation (i.e., a <scientific-number>), which consists of a <decimal-number> immediately followed by the letter ''e'' or ''E'' immediately followed by an <integer>.
+Unless stated otherwise for a particular attribute or property, a <number> has the capacity for at least a single- precision floating point number (see [ICC32]) and has a range (at a minimum) of -3.4e+38F to +3.4e+38F.
+It is recommended that higher precision floating point storage and computation be performed on operations such as coordinate system transformations to provide the best possible precision and to prevent round-off errors.
+Conforming High-Quality SVG Viewers are required to use at least double-precision floating point (see [ICC32]) for intermediate calculations on certain numerical operations.
+Within the SVG DOM, a <number> is represented as a float or an SVGAnimatedNumber.
+"
+	
+	| result sign esign pos int frac exponent |
+	
+	esign := sign := 1.
+	pos := stream position.
+	
+	stream peek = $- ifTrue: [ sign := -1.  stream next ].
+
+	int := self readInteger.
+	
+	stream peek = $. ifTrue: [
+		stream next.
+		frac := self readFraction.
+	].
+	
+	(stream peek = $e or: [ stream peek = $E ]) ifTrue: [
+		stream next.
+		stream peek = $- ifTrue: [ esign := -1.  stream next ].
+
+		exponent := self readInteger * esign ].
+	
+	"failed"
+	(int isNil and: [ frac isNil ]) ifTrue: [ stream position: pos.  ^ nil ].
+	
+	int ifNil: [ int := 0 ].
+	frac ifNil: [ frac := 0 ].
+	exponent ifNil: [ exponent := 0 ].
+	
+	result :=  (int + frac * (10 raisedTo: exponent) * sign).
+	
+	result isFraction ifTrue: [  ^ result asFloat ] ifFalse: [ ^ result ]
+
+readFraction
+"
+read fraction, what is after the decimal point:
+
+.12345
+
+"
+	| result mul |
+	(stream atEnd or: [ stream peek isDigit not ]) ifTrue: [ ^ nil ].
+	
+	mul := 1/10. 
+	result := 0.
+	[ stream peek notNil and: [ stream peek isDigit ] ] whileTrue: [
+		result := result + ( (stream next digitValue) * mul ).
+		mul := mul / 10
+	].
+	^ result
+
+initialize
+	super initialize.
+	self 
+		changeTableLayout;
+		hResizing: #shrinkWrap;
+		vResizing: #shrinkWrap;
+		listDirection: #leftToRight;
+		cellInset: 2.
+	progress := 1.
+	progressIconMorph := self currentIcon asMorph.
+	self addMorphBack: progressIconMorph.
+	self extent: progressIconMorph extent.
+
+ClyBrowserNavigationCommand subclass: #ClyNavigateBrowserBackCommand
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Calypso-Browser-NavigationHistory'
+
+customSubMenu: aMenu
+	
+	aMenu addGroup: [ :aGroup | 
+		aGroup 
+			addItem: [:anItem | 
+				anItem 
+					name: 'List Methods Using "', self instVarName, '"';
+					action: [ self referencesToInstanceVariable] ];
+			addItem: [:anItem | 
+				anItem 
+					name: 'List Methods Storing into "', self instVarName, '"';
+					action: [ self storingsIntoInstanceVariable].
+			].
+		]
+
+forceLoading
+	"Primitive. Force loading the given library.
+	The primitive will fail if the library is not available
+	or if anything is wrong with the receiver."
+	<primitive: 'primitiveForceLoad' module:'SqueakFFIPrims'>
+	^self externalCallFailed "The primitive will set the error code"
+
+testVisitingClassReturnsSuiteWithSameTestsSelectors
+
+	| result |
+	result := visitor visit: self class.
+	self
+		assertCollection: (result tests collect: [:each | each selector])
+		hasSameElements: self class testSelectors
+
+initialize
+	super initialize.
+	materializer := FLMaterializer new.
+
+schedule
+	lastSchedule := DateAndTime now.
+
+	process ifNil: [ 
+		"Deferrer can be activated during tests which intercept any forked processes.
+		To prevent it we should ensure here that message process is running out of tests environment"
+		DefaultExecutionEnvironment beActiveDuring: [ self runMessageProcess ]]
+
+initializeWithStore: anOmBlockFileStore startPosition: aStartPosition endPosition: anEndPosition firstEntryReference: anOmReference
+
+	self initialize.
+	store := anOmBlockFileStore.
+	startPosition := aStartPosition.
+	endPosition := anEndPosition.
+	firstEntryReference := anOmReference.
+
+refreshIfNeededStartingAt: firstStreamPosition since: initialLocalName 
+
+	positions isEmptyOrNil ifTrue: [ ^self ]. "Initial #refresh not yet done, so let things untouched."
+	
+	"Then, it's only partially loaded i.e. outdated."
+	positions addAll: (store entryPositionsStartingAt: firstStreamPosition upTo: endPosition).
+
+Object subclass: #KMBuilder
+	instanceVariableNames: 'platform'
+	classVariableNames: ''
+	package: 'Keymapping-Pragmas'
+
+category: aCategoryName default: aShortcut do: actionBlock
+	"actionBlock - can take 3 optional arguments: target, morph, and keyboard event"
+
+	KMRepository default
+		initializeKeymap: shortcutName
+		executingOn: aShortcut
+		doing: actionBlock
+		inCategory: aCategoryName
+		platform: platform
+
+handleSharedPoolsFromNode: aNode
+	| shareds sharedPoolNodes sharedPoolString |
+	sharedPoolString := aNode value.
+	shareds := sharedPoolString substrings.
+	sharedPoolNodes := shareds
+		collect: [ :slotName | 
+			| start |
+			start := aNode start + (sharedPoolString findString: slotName).
+			self sharedPoolNodeClass
+				node: aNode
+				name: slotName
+				start: start
+				stop: start + slotName size ].
+	classDefinition sharedPools: sharedPoolNodes
+
+handleSuperclassNode: aSuperclassNode
+	| aSuperclassName superclassNode |
+	aSuperclassName := (aSuperclassNode isLiteralNode
+		ifTrue: [ aSuperclassNode value asString ]
+		ifFalse: [ aSuperclassNode name ]) asSymbol.
+	superclassNode := self classNameNodeClass new
+		originalNode: aSuperclassNode;
+		className: aSuperclassName.
+	classDefinition
+		superclassName: aSuperclassName
+		astNode: superclassNode
+
+visitMessageNode: aRBMessageNode
+
+	(self isInstanceSideDefinition: aRBMessageNode)
+		ifTrue: [ self handleSuperclassNode: aRBMessageNode receiver ]
+		ifFalse: [ self handleClassName: aRBMessageNode receiver receiver ].
+	
+	aRBMessageNode selectorParts
+		with: aRBMessageNode arguments
+		do: [ :selectorPart :argument |
+			self parseSelectorPart: selectorPart withArgument: argument ]
+
+Object subclass: #CDNode
+	instanceVariableNames: 'parent originalNode children tokens'
+	classVariableNames: ''
+	package: 'ClassParser-Model'
+
+checkClass: aSmalllintContext 
+	rules do: 
+			[:each | 
+			each checkClass: aSmalllintContext.
+			Processor yield]
+
+allReifications
+	| reifications |
+	"we only check reification, that is symbols."
+	reifications := (self arguments select: [:each | each isSymbol]) asSet. 
+	self metaObject isSymbol ifTrue: [reifications add: self metaObject].
+	
+	self conditionArguments ifNil: [  
+		self condition ifNotNil: [reifications addAll: (self reificationsFor: self condition)]]
+		ifNotNil: [reifications addAll: self conditionArguments ].
+	
+	^reifications
+
+BreakpointAnnouncement subclass: #BreakpointRemoved
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Reflectivity-Breakpoints'
+
+announceChange
+	self optionAnnounce ifTrue: [SystemAnnouncer uniqueInstance announce: (MetalinkChanged new link: self)]
