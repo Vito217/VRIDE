@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 public class VRIDEController : MonoBehaviour
 {
     public bool can_move = true;
-    public GameObject quad;
+    //public GameObject quad;
 
     Vector3 pos;
     Vector3 forw;
@@ -19,6 +19,9 @@ public class VRIDEController : MonoBehaviour
 
     Vector3 currentPosition = Vector3.zero;
 
+    public List<Material> skyBoxes;
+    int skyboxesIndex = 0;
+
     void Update()
     {
         if (Input.anyKeyDown && Regex.Match(Input.inputString, @"[a-zA-Z0-9]").Success && !InteractionLogger.isUsingPhysicalKeyboard) 
@@ -27,6 +30,9 @@ public class VRIDEController : MonoBehaviour
         // HTC VIVE
         bool menuButton = ViveInput.GetPressDownEx(HandRole.RightHand, ControllerButton.Menu) ||
                           ViveInput.GetPressDownEx(HandRole.LeftHand, ControllerButton.Menu);
+
+        bool skyButton = ViveInput.GetPressDownEx(HandRole.RightHand, ControllerButton.AKey) ||
+                         ViveInput.GetPressDownEx(HandRole.LeftHand, ControllerButton.AKey);
 
         // KeyBoard
         bool cmd = Input.GetKey(KeyCode.LeftCommand) ||
@@ -52,7 +58,7 @@ public class VRIDEController : MonoBehaviour
             pos.z + forw.z * .8f);
         newForw = new Vector3(forw.x, 0, forw.z);
 
-        if (f1 || f2 || f7 || cmd || f8 || f9 || menuButton)
+        if (f1 || f2 || f7 || cmd || f8 || f9 || menuButton || skyButton)
         {
             if (f1 || (cmd && o && b))
                 GenerateBrowser();
@@ -64,6 +70,11 @@ public class VRIDEController : MonoBehaviour
                 GenerateRoassalExamples();
             else if (f9 || menuButton)
                 GenerateMenu();
+            else if (skyButton)
+            {
+                skyboxesIndex = (skyboxesIndex + 1) % skyBoxes.Count;
+                RenderSettings.skybox = skyBoxes[skyboxesIndex];
+            }
         }
 
         if (currentPosition != transform.position)

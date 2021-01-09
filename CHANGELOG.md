@@ -1,5 +1,8 @@
 # PharoVRIDE's Channel Log
 
+## V0.21.0 (09/01/2021)
+* Added more skyboxes. Now it is possible to change the skybox by pressing A.
+
 ## V0.20.0 (05/01/2021)
 * Improved logging system. Now it tracks each time the user changes position, moves a window to another point, and changes a window's scale and dimensions. Every window is now identified by their ID.
 * Minor additions to AFrames.
