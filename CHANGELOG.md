@@ -1,5 +1,8 @@
 # PharoVRIDE's Channel Log
 
+## V0.21.1 (12/01/2021)
+* Added missing keys.
+
 ## V0.21.0 (09/01/2021)
 * Added more skyboxes. Now it is possible to change the skybox by pressing A.
 
