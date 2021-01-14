@@ -55,8 +55,8 @@ namespace PharoModule
         {
             if (!code.Contains("compile"))
                 //code = "self class compiler evaluate: '" + code.Replace("'", "''") + "'";
-                //code = "self class compiler evaluate: '" + code.Replace("''", "'").Replace("'", "''") + "'";
-                code = "self class compiler evaluate: '" + Regex.Replace(code, @"([^'])'([^'])", "$1''$2") + "'";
+                //code = "self class compiler evaluate: '" + code.Replace("'", "''").Replace("''''", "''") + "'";
+                code = "self class compiler evaluate: '" + Regex.Replace(code, @"'|''''", "''") + "'";
 
             return await Execute(code);
         }
