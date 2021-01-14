@@ -260,16 +260,16 @@ public class Playground : InitializeBehaviour
                                     ob.GetComponent<AFrameGeometry>().hoverColor = c;
                                 }
 
-                                // Update width and height
-                                Vector3 size = ob.transform.localScale;
-
                                 if (modelMatch.Success)
                                 {
                                     TextMeshPro t = Instantiator.Instance.Text(modelMatch.Groups[1].Value, ob.transform);
                                     ob.GetComponent<AFrameGeometry>().t = t;
                                     t.gameObject.SetActive(false);
-                                    t.transform.localPosition = - ob.transform.forward;
+                                    t.transform.localPosition = -ob.transform.forward;
                                 }
+
+                                // Update width and height
+                                Vector3 size = ob.transform.localScale;                                
 
                                 maxX = Math.Max(maxX, ob.transform.localPosition.x + size.x);
                                 maxY = Math.Max(maxY, ob.transform.localPosition.y + size.y);
@@ -358,9 +358,6 @@ public class Playground : InitializeBehaviour
                                     ob.GetComponent<AFrameGeometry>().hoverColor = c;
                                 }
 
-                                // Update width and height
-                                Vector3 size = ob.transform.localScale;
-
                                 if (modelMatch.Success)
                                 {
                                     TextMeshPro t = Instantiator.Instance.Text(modelMatch.Groups[1].Value, ob.transform);
@@ -368,6 +365,9 @@ public class Playground : InitializeBehaviour
                                     t.gameObject.SetActive(false);
                                     t.transform.localPosition = -ob.transform.forward;
                                 }
+
+                                // Update width and height
+                                Vector3 size = ob.transform.localScale;
 
                                 maxX = Math.Max(maxX, ob.transform.localPosition.x + size.x);
                                 maxY = Math.Max(maxY, ob.transform.localPosition.y + size.y);
@@ -394,7 +394,7 @@ public class Playground : InitializeBehaviour
                                     colorMatch = Regex.Match(tag, @"color\s*=\s*""\s*([#0-9A-Z]+)\s*""");
                                     metalMatch = Regex.Match(tag, @"metalness\s*=\s*""\s*([0-9-.e]+)\s*""");
                                     glossMatch = Regex.Match(tag, @"roughness\s*=\s*""\s*([0-9-.e]+)\s*""");
-                                    radiusMatch = Regex.Match(tag, @"radius\s*=\s*""\s*([0-9-.e]+)\s*""");
+                                    radiusMatch = Regex.Match(tag, @"radius\s*=\s*""\s*([0-9-.\se]+)\s*""");
                                     hoverColorMatch = Regex.Match(tag, @"change-color-on-hover\s*=\s*""\s*color:\s*([#0-9A-Z]+)\s*""");
                                     modelMatch = Regex.Match(tag, @"model\s*=\s*""\s*([a-zA-Z0-9]+)\s*""");
                                 });
@@ -417,12 +417,11 @@ public class Playground : InitializeBehaviour
                                 Vector3 scale = new Vector3(1f, 1f, 1f);
                                 if (radiusMatch.Success)
                                 {
-                                    float radius = float.Parse(
-                                        Regex.Replace(radiusMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0"),
-                                        CultureInfo.InvariantCulture);
+                                    float[] coords = Array.ConvertAll(
+                                        Regex.Replace(radiusMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0").Split(' '),
+                                        i => float.Parse(i, CultureInfo.InvariantCulture));
 
-                                    scale = new Vector3(radius, radius, radius);
-                                    ob.transform.localScale = scale;
+                                    ob.transform.localScale = new Vector3(coords[0], coords[1], coords[2]);
                                 }
 
                                 UpdateGeometryMaterial(ob, colorMatch, metalMatch, glossMatch);
@@ -437,9 +436,6 @@ public class Playground : InitializeBehaviour
                                     ob.GetComponent<AFrameGeometry>().hoverColor = c;
                                 }
 
-                                // Update width and height
-                                Vector3 size = ob.transform.localScale;
-
                                 if (modelMatch.Success)
                                 {
                                     TextMeshPro t = Instantiator.Instance.Text(modelMatch.Groups[1].Value, ob.transform);
@@ -447,6 +443,9 @@ public class Playground : InitializeBehaviour
                                     t.gameObject.SetActive(false);
                                     t.transform.localPosition = -ob.transform.forward;
                                 }
+
+                                // Update width and height
+                                Vector3 size = ob.transform.localScale;
 
                                 maxX = Math.Max(maxX, ob.transform.localPosition.x + size.x);
                                 maxY = Math.Max(maxY, ob.transform.localPosition.y + size.y);
@@ -529,16 +528,16 @@ public class Playground : InitializeBehaviour
 
                                 UpdateGeometryMaterial(ob, colorMatch, metalMatch, glossMatch);
 
-                                // Update width and height
-                                Vector3 size = ob.transform.localScale;
-
                                 if (modelMatch.Success)
                                 {
                                     TextMeshPro t = Instantiator.Instance.Text(modelMatch.Groups[1].Value, ob.transform);
                                     ob.GetComponent<AFrameGeometry>().t = t;
                                     t.gameObject.SetActive(false);
-                                    t.transform.localPosition = ob.transform.forward;
+                                    t.transform.localPosition = -ob.transform.forward;
                                 }
+
+                                // Update width and height
+                                Vector3 size = ob.transform.localScale;
 
                                 maxX = Math.Max(maxX, ob.transform.localPosition.x + size.x);
                                 maxY = Math.Max(maxY, ob.transform.localPosition.y + size.y);
@@ -625,9 +624,6 @@ public class Playground : InitializeBehaviour
                                     ob.GetComponent<AFrameGeometry>().hoverColor = c;
                                 }
 
-                                // Update width and height
-                                Vector3 size = ob.transform.localScale;
-
                                 if (modelMatch.Success)
                                 {
                                     TextMeshPro t = Instantiator.Instance.Text(modelMatch.Groups[1].Value, ob.transform);
@@ -635,6 +631,9 @@ public class Playground : InitializeBehaviour
                                     t.gameObject.SetActive(false);
                                     t.transform.localPosition = -ob.transform.forward;
                                 }
+
+                                // Update width and height
+                                Vector3 size = ob.transform.localScale;
 
                                 maxX = Math.Max(maxX, ob.transform.localPosition.x + size.x);
                                 maxY = Math.Max(maxY, ob.transform.localPosition.y + size.y);
