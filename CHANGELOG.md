@@ -1,5 +1,9 @@
 # PharoVRIDE's Channel Log
 
+## V0.21.2 (14/01/2021)
+* Fixed bad Pharo code parsing.
+* Fixed some Roassal issues.
+
 ## V0.21.1 (12/01/2021)
 * Added missing keys.
 
