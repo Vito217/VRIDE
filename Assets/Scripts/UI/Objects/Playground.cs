@@ -60,9 +60,9 @@ public class Playground : InitializeBehaviour
 
                             await Task.Run(() => {
                                 aframe = aframe.Split(new string[] { "</html>" }, StringSplitOptions.None)[0];
-                                texts = Regex.Matches(aframe, "<a-entity(.*)text=\"(.*)\"(.*)>");
-                                geometries = Regex.Matches(aframe, "<a-entity(.*)geometry=\"(.*)\"(.*)>");
-                                lines = Regex.Matches(aframe, "<a-entity(.*)line=\"(.*)\"(.*)>");
+                                texts = Regex.Matches(aframe, "<a-entity (.*)text=\"(.*)\"(.*)>");
+                                geometries = Regex.Matches(aframe, "<a-entity (.*)geometry=\"(.*)\"(.*)>");
+                                lines = Regex.Matches(aframe, "<a-entity (.*)line=\"(.*)\"(.*)>");
                                 boxes = Regex.Matches(aframe, "<a-box (.*)>");
                                 spheres = Regex.Matches(aframe, "<a-sphere (.*)>");
                                 cylinders = Regex.Matches(aframe, "<a-cylinder (.*)>");
@@ -92,9 +92,9 @@ public class Playground : InitializeBehaviour
                                 await Task.Run(() => {
                                     tag = m.Value;
                                     value = Regex.Match(tag, @"value:\s*([a-zA-Z0-9-.\s]+)\s*(;|"")").Groups[1].Value;
-                                    posMatch = Regex.Match(tag, @"position=""\s*([0-9-.\se]+)\s*""");
-                                    rotMatch = Regex.Match(tag, @"rotation=""\s*([0-9-.\s]+)\s*""");
-                                    widthMatch = widthMatch = Regex.Match(tag, @"width:\s*([0-9-.]+)\s*(;|"")");
+                                    posMatch = Regex.Match(tag, @"position\s*=\s*""\s*([0-9-.\se]+)\s*""");
+                                    rotMatch = Regex.Match(tag, @"rotation\s*=\s*""\s*([0-9-.\se]+)\s*""");
+                                    widthMatch = widthMatch = Regex.Match(tag, @"width:\s*([0-9-.e]+)\s*(;|"")");
                                     colorMatch = colorMatch = Regex.Match(tag, @"color:\s*([#0-9A-Z]+)\s*(;|"")");
                                 });
 
@@ -118,7 +118,7 @@ public class Playground : InitializeBehaviour
                                 if (rotMatch.Success)
                                 {
                                     float[] coords = Array.ConvertAll(
-                                        rotMatch.Groups[1].Value.Split(' '),
+                                        Regex.Replace(rotMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0").Split(' '),
                                         i => float.Parse(i, CultureInfo.InvariantCulture));
 
                                     text.transform.localRotation =
@@ -131,15 +131,18 @@ public class Playground : InitializeBehaviour
                                 if (widthMatch.Success)
                                 {
                                     var sd = text.GetComponent<RectTransform>().sizeDelta;
-                                    sd.x = float.Parse(widthMatch.Groups[1].Value, CultureInfo.InvariantCulture);
+
+                                    sd.x = float.Parse(
+                                        Regex.Replace(widthMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0"), 
+                                        CultureInfo.InvariantCulture);
+
                                     text.GetComponent<RectTransform>().sizeDelta = sd;
                                 }
 
                                 if (colorMatch.Success)
                                 {
                                     TextMeshProUGUI textComponent = text.GetComponent<TextMeshProUGUI>();
-                                    textComponent.text =
-                                        "<size=0.1><color=" + colorMatch.Groups[1].Value + ">" + value + "</color></size>";
+                                    textComponent.text = "<size=0.1><color=" + colorMatch.Groups[1].Value + ">" + value + "</color></size>";
                                 }
 
                                 // Update width and height
@@ -166,17 +169,17 @@ public class Playground : InitializeBehaviour
 
                                 await Task.Run(() => {
                                     primitive = Regex.Match(tag, @"primitive:\s*([a-zA-Z]+)\s*(;|"")").Groups[1].Value;
-                                    posMatch = Regex.Match(tag, @"position=""\s*([0-9-.\se]+)\s*""");
-                                    rotMatch = Regex.Match(tag, @"rotation=""\s*([0-9-.\s]+)\s*""");
-                                    widthMatch = Regex.Match(tag, @"width:\s*([0-9.]+)\s*(;|"")");
-                                    heightMatch = Regex.Match(tag, @"height:\s*([0-9.]+)\s*(;|"")");
-                                    depthMatch = Regex.Match(tag, @"depth:\s*([0-9.]+)\s*(;|"")");
+                                    posMatch = Regex.Match(tag, @"position\s*=\s*""\s*([0-9-.\se]+)\s*""");
+                                    rotMatch = Regex.Match(tag, @"rotation\s*=\s*""\s*([0-9-.\se]+)\s*""");
+                                    widthMatch = Regex.Match(tag, @"width:\s*([0-9-.e]+)\s*(;|"")");
+                                    heightMatch = Regex.Match(tag, @"height:\s*([0-9-.e]+)\s*(;|"")");
+                                    depthMatch = Regex.Match(tag, @"depth:\s*([0-9-.e]+)\s*(;|"")");
                                     colorMatch = Regex.Match(tag, @"color:\s*([#0-9A-Z]+)\s*(;|"")");
-                                    metalMatch = Regex.Match(tag, @"metalness:\s*([0-9.]+)\s*(;|"")");
-                                    glossMatch = Regex.Match(tag, @"roughness:\s*([0-9.]+)\s*(;|"")");
+                                    metalMatch = Regex.Match(tag, @"metalness:\s*([0-9-.e]+)\s*(;|"")");
+                                    glossMatch = Regex.Match(tag, @"roughness:\s*([0-9-.e]+)\s*(;|"")");
                                     hoverColorMatch = Regex.Match(tag, @"change-color-on-hover\s*=\s*""\s*color:\s*([#0-9A-Z]+)\s*""");
-                                    radiusMatch = Regex.Match(tag, @"radius:\s*([0-9.]+)\s*(;|"")");
-                                    modelMatch = Regex.Match(tag, @"model=""\s*([a-zA-Z0-9]+)\s*""");
+                                    radiusMatch = Regex.Match(tag, @"radius:\s*([0-9-.e]+)\s*(;|"")");
+                                    modelMatch = Regex.Match(tag, @"model\s*=\s*""\s*([a-zA-Z0-9]+)\s*""");
                                 });
 
                                 GameObject ob;
@@ -210,7 +213,7 @@ public class Playground : InitializeBehaviour
                                 if (rotMatch.Success)
                                 {
                                     float[] coords = Array.ConvertAll(
-                                        rotMatch.Groups[1].Value.Split(' '),
+                                        Regex.Replace(rotMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0").Split(' '),
                                         i => float.Parse(i, CultureInfo.InvariantCulture));
 
                                     ob.transform.localRotation =
@@ -220,52 +223,40 @@ public class Playground : InitializeBehaviour
                                 Vector3 scale = new Vector3(1f, 1f, 1f);
                                 if (widthMatch.Success && depthMatch.Success)
                                 {
-                                    scale.x = float.Parse(widthMatch.Groups[1].Value, CultureInfo.InvariantCulture);
-                                    scale.z = float.Parse(depthMatch.Groups[1].Value, CultureInfo.InvariantCulture);
+                                    scale.x = float.Parse(
+                                        Regex.Replace(widthMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0"), 
+                                        CultureInfo.InvariantCulture);
+
+                                    scale.z = float.Parse(
+                                        Regex.Replace(depthMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0"), 
+                                        CultureInfo.InvariantCulture);
                                 }
                                 if (radiusMatch.Success)
                                 {
-                                    scale.x = float.Parse(radiusMatch.Groups[1].Value, CultureInfo.InvariantCulture);
-                                    scale.z = float.Parse(radiusMatch.Groups[1].Value, CultureInfo.InvariantCulture);
+                                    scale.x = float.Parse(
+                                        Regex.Replace(radiusMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0"), 
+                                        CultureInfo.InvariantCulture);
+
+                                    scale.z = float.Parse(
+                                        Regex.Replace(radiusMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0"), 
+                                        CultureInfo.InvariantCulture);
                                 }
                                 if (heightMatch.Success)
-                                    scale.y = float.Parse(heightMatch.Groups[1].Value, CultureInfo.InvariantCulture);
+                                    scale.y = float.Parse(
+                                        Regex.Replace(heightMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0"), 
+                                        CultureInfo.InvariantCulture);
 
                                 ob.transform.localScale = scale;
 
-                                if (colorMatch.Success || glossMatch.Success || metalMatch.Success)
-                                {
-                                    Material material = ob.GetComponent<Renderer>().material;
-
-                                    if (colorMatch.Success)
-                                    {
-                                        Color c;
-                                        ColorUtility.TryParseHtmlString(colorMatch.Groups[1].Value, out c);
-                                        material.color = c;
-                                        ob.GetComponent<AFrameGeometry>().baseColor = c;
-                                    }
-
-                                    if (glossMatch.Success)
-                                    {
-                                        material.SetFloat(
-                                            "_Glossiness",
-                                            1f - float.Parse(glossMatch.Groups[1].Value,
-                                            CultureInfo.InvariantCulture));
-                                    }
-
-                                    if (metalMatch.Success)
-                                    {
-                                        material.SetFloat(
-                                            "_Metallic",
-                                            float.Parse(metalMatch.Groups[1].Value,
-                                            CultureInfo.InvariantCulture));
-                                    }
-                                }
+                                UpdateGeometryMaterial(ob, colorMatch, metalMatch, glossMatch);
 
                                 if (hoverColorMatch.Success)
                                 {
                                     Color c;
-                                    ColorUtility.TryParseHtmlString(hoverColorMatch.Groups[1].Value, out c);
+                                    ColorUtility.TryParseHtmlString(
+                                        hoverColorMatch.Groups[1].Value, 
+                                        out c);
+
                                     ob.GetComponent<AFrameGeometry>().hoverColor = c;
                                 }
 
@@ -302,15 +293,15 @@ public class Playground : InitializeBehaviour
                                 await Task.Run(() => {
                                     tag = m.Value;
                                     posMatch = Regex.Match(tag, @"position\s*=\s*""\s*([0-9-.\se]+)\s*""");
-                                    rotMatch = Regex.Match(tag, @"rotation\s*=\s*""\s*([0-9-.\s]+)\s*""");
+                                    rotMatch = Regex.Match(tag, @"rotation\s*=\s*""\s*([0-9-.\se]+)\s*""");
                                     colorMatch = Regex.Match(tag, @"color\s*=\s*""\s*([#0-9A-Z]+)\s*""");
-                                    widthMatch = Regex.Match(tag, @"width\s*=\s*""\s*([0-9.]+)\s*""");
-                                    heightMatch = Regex.Match(tag, @"height\s*=\s*""\s*([0-9.]+)\s*""");
-                                    depthMatch = Regex.Match(tag, @"depth\s*=\s*""\s*([0-9.]+)\s*""");
-                                    metalMatch = Regex.Match(tag, @"metalness\s*=\s*""\s*([0-9.]+)\s*""");
-                                    glossMatch = Regex.Match(tag, @"roughness\s*=\s*""\s*([0-9.]+)\s*""");
+                                    widthMatch = Regex.Match(tag, @"width\s*=\s*""\s*([0-9-.e]+)\s*""");
+                                    heightMatch = Regex.Match(tag, @"height\s*=\s*""\s*([0-9-.e]+)\s*""");
+                                    depthMatch = Regex.Match(tag, @"depth\s*=\s*""\s*([0-9-.e]+)\s*""");
+                                    metalMatch = Regex.Match(tag, @"metalness\s*=\s*""\s*([0-9-.e]+)\s*""");
+                                    glossMatch = Regex.Match(tag, @"roughness\s*=\s*""\s*([0-9-.e]+)\s*""");
                                     hoverColorMatch = Regex.Match(tag, @"change-color-on-hover\s*=\s*""\s*color:\s*([#0-9A-Z]+)\s*""");
-                                    modelMatch = Regex.Match(tag, @"model=""\s*([a-zA-Z0-9]+)\s*""");
+                                    modelMatch = Regex.Match(tag, @"model\s*=\s*""\s*([a-zA-Z0-9]+)\s*""");
                                 });
 
                                 GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -331,7 +322,7 @@ public class Playground : InitializeBehaviour
                                 if (rotMatch.Success)
                                 {
                                     float[] coords = Array.ConvertAll(
-                                        rotMatch.Groups[1].Value.Split(' '),
+                                        Regex.Replace(rotMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0").Split(' '),
                                         i => float.Parse(i, CultureInfo.InvariantCulture));
 
                                     ob.transform.localRotation =
@@ -339,43 +330,31 @@ public class Playground : InitializeBehaviour
                                 }
 
                                 Vector3 scale = new Vector3(1f, 1f, 1f);
-                                if (widthMatch.Success) scale.x = float.Parse(widthMatch.Groups[1].Value, CultureInfo.InvariantCulture);
-                                if (heightMatch.Success) scale.y = float.Parse(heightMatch.Groups[1].Value, CultureInfo.InvariantCulture);
-                                if (depthMatch.Success) scale.z = float.Parse(depthMatch.Groups[1].Value, CultureInfo.InvariantCulture);
+                                if (widthMatch.Success) 
+                                    scale.x = float.Parse(
+                                        Regex.Replace(widthMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0"), 
+                                        CultureInfo.InvariantCulture);
+
+                                if (heightMatch.Success) 
+                                    scale.y = float.Parse(
+                                        Regex.Replace(heightMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0"), 
+                                        CultureInfo.InvariantCulture);
+
+                                if (depthMatch.Success) 
+                                    scale.z = float.Parse(
+                                        Regex.Replace(depthMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0"), 
+                                        CultureInfo.InvariantCulture);
+
                                 ob.transform.localScale = scale;
 
-                                if (colorMatch.Success || glossMatch.Success || metalMatch.Success)
-                                {
-                                    Material material = ob.GetComponent<Renderer>().material;
-
-                                    if (colorMatch.Success)
-                                    {
-                                        Color c;
-                                        ColorUtility.TryParseHtmlString(colorMatch.Groups[1].Value, out c);
-                                        material.color = c;
-                                        ob.GetComponent<AFrameGeometry>().baseColor = c;
-                                    }
-
-                                    if (glossMatch.Success)
-                                    {
-                                        material.SetFloat(
-                                            "_Glossiness",
-                                            1f - float.Parse(glossMatch.Groups[1].Value,
-                                            CultureInfo.InvariantCulture));
-                                    }
-
-                                    if (metalMatch.Success)
-                                    {
-                                        material.SetFloat(
-                                            "_Metallic",
-                                            float.Parse(metalMatch.Groups[1].Value,
-                                            CultureInfo.InvariantCulture));
-                                    }
-                                }
+                                UpdateGeometryMaterial(ob, colorMatch, metalMatch, glossMatch);
 
                                 if (hoverColorMatch.Success) {
                                     Color c;
-                                    ColorUtility.TryParseHtmlString(hoverColorMatch.Groups[1].Value, out c);
+                                    ColorUtility.TryParseHtmlString(
+                                        hoverColorMatch.Groups[1].Value, 
+                                        out c);
+
                                     ob.GetComponent<AFrameGeometry>().hoverColor = c;
                                 }
 
@@ -413,11 +392,11 @@ public class Playground : InitializeBehaviour
                                     tag = m.Value;
                                     posMatch = Regex.Match(tag, @"position\s*=\s*""\s*([0-9-.\se]+)\s*""");
                                     colorMatch = Regex.Match(tag, @"color\s*=\s*""\s*([#0-9A-Z]+)\s*""");
-                                    metalMatch = Regex.Match(tag, @"metalness\s*=\s*""\s*([0-9.]+)\s*""");
-                                    glossMatch = Regex.Match(tag, @"roughness\s*=\s*""\s*([0-9.]+)\s*""");
-                                    radiusMatch = Regex.Match(tag, @"radius\s*=\s*""\s*([0-9.]+)\s*""");
+                                    metalMatch = Regex.Match(tag, @"metalness\s*=\s*""\s*([0-9-.e]+)\s*""");
+                                    glossMatch = Regex.Match(tag, @"roughness\s*=\s*""\s*([0-9-.e]+)\s*""");
+                                    radiusMatch = Regex.Match(tag, @"radius\s*=\s*""\s*([0-9-.e]+)\s*""");
                                     hoverColorMatch = Regex.Match(tag, @"change-color-on-hover\s*=\s*""\s*color:\s*([#0-9A-Z]+)\s*""");
-                                    modelMatch = Regex.Match(tag, @"model=""\s*([a-zA-Z0-9]+)\s*""");
+                                    modelMatch = Regex.Match(tag, @"model\s*=\s*""\s*([a-zA-Z0-9]+)\s*""");
                                 });
 
                                 GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -439,46 +418,22 @@ public class Playground : InitializeBehaviour
                                 if (radiusMatch.Success)
                                 {
                                     float radius = float.Parse(
-                                        radiusMatch.Groups[1].Value,
+                                        Regex.Replace(radiusMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0"),
                                         CultureInfo.InvariantCulture);
 
                                     scale = new Vector3(radius, radius, radius);
                                     ob.transform.localScale = scale;
                                 }
 
-                                if (colorMatch.Success || glossMatch.Success || metalMatch.Success)
-                                {
-                                    Material material = ob.GetComponent<Renderer>().material;
-
-                                    if (colorMatch.Success)
-                                    {
-                                        Color c;
-                                        ColorUtility.TryParseHtmlString(colorMatch.Groups[1].Value, out c);
-                                        material.color = c;
-                                        ob.GetComponent<AFrameGeometry>().baseColor = c;
-                                    }
-
-                                    if (glossMatch.Success)
-                                    {
-                                        material.SetFloat(
-                                            "_Glossiness",
-                                            1f - float.Parse(glossMatch.Groups[1].Value,
-                                            CultureInfo.InvariantCulture));
-                                    }
-
-                                    if (metalMatch.Success)
-                                    {
-                                        material.SetFloat(
-                                            "_Metallic",
-                                            float.Parse(metalMatch.Groups[1].Value,
-                                            CultureInfo.InvariantCulture));
-                                    }
-                                }
+                                UpdateGeometryMaterial(ob, colorMatch, metalMatch, glossMatch);
 
                                 if (hoverColorMatch.Success)
                                 {
                                     Color c;
-                                    ColorUtility.TryParseHtmlString(hoverColorMatch.Groups[1].Value, out c);
+                                    ColorUtility.TryParseHtmlString(
+                                        hoverColorMatch.Groups[1].Value, 
+                                        out c);
+
                                     ob.GetComponent<AFrameGeometry>().hoverColor = c;
                                 }
 
@@ -516,13 +471,13 @@ public class Playground : InitializeBehaviour
                                     tag = m.Value;
                                     posMatch = Regex.Match(tag, @"position\s*=\s*""([0-9-.\se]+)\s*""");
                                     colorMatch = Regex.Match(tag, @"color\s*=\s*""\s*([#0-9A-Z]+)\s*""");
-                                    metalMatch = Regex.Match(tag, @"metalness\s*=\s*""\s*([0-9.]+)\s*""");
-                                    glossMatch = Regex.Match(tag, @"roughness\s*=\s*""\s*([0-9.]+)\s*""");
-                                    radiusMatch = Regex.Match(tag, @"radius\s*=\s*""\s*([0-9.]+)\s*""");
-                                    heightMatch = Regex.Match(tag, @"height\s*=\s*""\s*([0-9.]+)\s*""");
-                                    rotMatch = Regex.Match(tag, @"rotation\s*=\s*""\s*([0-9-.\s]+)\s*""");
+                                    metalMatch = Regex.Match(tag, @"metalness\s*=\s*""\s*([0-9-.e]+)\s*""");
+                                    glossMatch = Regex.Match(tag, @"roughness\s*=\s*""\s*([0-9-.e]+)\s*""");
+                                    radiusMatch = Regex.Match(tag, @"radius\s*=\s*""\s*([0-9-.e]+)\s*""");
+                                    heightMatch = Regex.Match(tag, @"height\s*=\s*""\s*([0-9-.e]+)\s*""");
+                                    rotMatch = Regex.Match(tag, @"rotation\s*=\s*""\s*([0-9-.\se]+)\s*""");
                                     hoverColorMatch = Regex.Match(tag, @"change-color-on-hover\s*=\s*""\s*color:\s*([#0-9A-Z]+)\s*""");
-                                    modelMatch = Regex.Match(tag, @"model=""\s*([a-zA-Z0-9]+)\s*""");
+                                    modelMatch = Regex.Match(tag, @"model\s*=\s*""\s*([a-zA-Z0-9]+)\s*""");
                                 });
 
                                 GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
@@ -543,7 +498,7 @@ public class Playground : InitializeBehaviour
                                 if (rotMatch.Success)
                                 {
                                     float[] coords = Array.ConvertAll(
-                                        rotMatch.Groups[1].Value.Split(' '),
+                                        Regex.Replace(rotMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0").Split(' '),
                                         i => float.Parse(i, CultureInfo.InvariantCulture));
 
                                     ob.transform.localRotation =
@@ -551,56 +506,28 @@ public class Playground : InitializeBehaviour
                                 }
 
                                 Vector3 scale = new Vector3(1f, 1f, 1f);
-                                if (radiusMatch.Success && heightMatch.Success)
+                                if (radiusMatch.Success)
                                 {
                                     float radius = float.Parse(
-                                        radiusMatch.Groups[1].Value,
+                                        Regex.Replace(radiusMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0"),
                                         CultureInfo.InvariantCulture);
 
+                                    scale.x = radius;
+                                    scale.z = radius;
+                                }
+
+                                if (heightMatch.Success)
+                                {
                                     float h = float.Parse(
-                                        heightMatch.Groups[1].Value,
+                                        Regex.Replace(heightMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0"),
                                         CultureInfo.InvariantCulture);
 
-                                    scale = new Vector3(radius, h, radius);
-                                    ob.transform.localScale = scale;
+                                    scale.y = h;
                                 }
 
-                                if (colorMatch.Success || glossMatch.Success || metalMatch.Success)
-                                {
-                                    Material material = ob.GetComponent<Renderer>().material;
+                                ob.transform.localScale = scale;
 
-                                    if (colorMatch.Success)
-                                    {
-                                        Color c;
-                                        ColorUtility.TryParseHtmlString(colorMatch.Groups[1].Value, out c);
-                                        material.color = c;
-                                        ob.GetComponent<AFrameGeometry>().baseColor = c;
-                                    }
-
-                                    if (glossMatch.Success)
-                                    {
-                                        material.SetFloat(
-                                            "_Glossiness",
-                                            1f - float.Parse(glossMatch.Groups[1].Value,
-                                            CultureInfo.InvariantCulture));
-                                    }
-
-                                    if (metalMatch.Success)
-                                    {
-                                        material.SetFloat(
-                                            "_Metallic",
-                                            float.Parse(metalMatch.Groups[1].Value,
-                                            CultureInfo.InvariantCulture));
-                                    }
-                                }
-
-                                if (modelMatch.Success)
-                                {
-                                    TextMeshPro t = Instantiator.Instance.Text(modelMatch.Groups[1].Value, ob.transform);
-                                    ob.GetComponent<AFrameGeometry>().t = t;
-                                    t.gameObject.SetActive(false);
-                                    t.transform.localPosition = -ob.transform.forward;
-                                }
+                                UpdateGeometryMaterial(ob, colorMatch, metalMatch, glossMatch);
 
                                 // Update width and height
                                 Vector3 size = ob.transform.localScale;
@@ -630,19 +557,20 @@ public class Playground : InitializeBehaviour
                             {
                                 string tag = "";
                                 Match posMatch = null, rotMatch = null, widthMatch = null, heightMatch = null, modelMatch = null,
-                                    colorMatch = null, metalMatch = null, glossMatch = null, hoverColorMatch = null;
+                                    colorMatch = null, metalMatch = null, glossMatch = null, hoverColorMatch = null, depthMatch = null;
 
                                 await Task.Run(() => {
                                     tag = m.Value;
                                     posMatch = Regex.Match(tag, @"position\s*=\s*""\s*([0-9-.\se]+)\s*""");
-                                    rotMatch = Regex.Match(tag, @"rotation\s*=\s*""\s*([0-9-.\s]+)\s*""");
+                                    rotMatch = Regex.Match(tag, @"rotation\s*=\s*""\s*([0-9-.\se]+)\s*""");
                                     colorMatch = Regex.Match(tag, @"color\s*=\s*""\s*([#0-9A-Z]+)\s*""");
-                                    widthMatch = Regex.Match(tag, @"width\s*=\s*""\s*([0-9.]+)\s*""");
-                                    heightMatch = Regex.Match(tag, @"height\s*=\s*""\s*([0-9.]+)\s*""");
-                                    metalMatch = Regex.Match(tag, @"metalness\s*=\s*""\s*([0-9.]+)\s*""");
-                                    glossMatch = Regex.Match(tag, @"roughness\s*=\s*""\s*([0-9.]+)\s*""");
+                                    widthMatch = Regex.Match(tag, @"width\s*=\s*""\s*([0-9-.e]+)\s*""");
+                                    depthMatch = Regex.Match(tag, @"depth\s*=\s*""\s*([0-9-.e]+)\s*""");
+                                    heightMatch = Regex.Match(tag, @"height\s*=\s*""\s*([0-9-.e]+)\s*""");
+                                    metalMatch = Regex.Match(tag, @"metalness\s*=\s*""\s*([0-9-.e]+)\s*""");
+                                    glossMatch = Regex.Match(tag, @"roughness\s*=\s*""\s*([0-9-.e]+)\s*""");
                                     hoverColorMatch = Regex.Match(tag, @"change-color-on-hover\s*=\s*""\s*color:\s*([#0-9A-Z]+)\s*""");
-                                    modelMatch = Regex.Match(tag, @"model=""\s*([a-zA-Z0-9]+)\s*""");
+                                    modelMatch = Regex.Match(tag, @"model\s*=\s*""\s*([a-zA-Z0-9]+)\s*""");
                                 });
 
                                 GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Plane);
@@ -663,7 +591,7 @@ public class Playground : InitializeBehaviour
                                 if (rotMatch.Success)
                                 {
                                     float[] coords = Array.ConvertAll(
-                                        rotMatch.Groups[1].Value.Split(' '),
+                                        Regex.Replace(rotMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0").Split(' '),
                                         i => float.Parse(i, CultureInfo.InvariantCulture));
 
                                     ob.transform.localRotation =
@@ -671,43 +599,24 @@ public class Playground : InitializeBehaviour
                                 }
 
                                 Vector3 scale = new Vector3(1f, 1f, 1f);
-                                if (widthMatch.Success && heightMatch.Success)
-                                {
-                                    scale = new Vector3(
-                                        float.Parse(widthMatch.Groups[1].Value, CultureInfo.InvariantCulture),
-                                        ob.transform.localScale.y,
-                                        float.Parse(heightMatch.Groups[1].Value, CultureInfo.InvariantCulture));
-                                    ob.transform.localScale = scale;
-                                }
+                                if (widthMatch.Success)
+                                    scale.x = float.Parse(
+                                        Regex.Replace(widthMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0"),
+                                        CultureInfo.InvariantCulture);
 
-                                if (colorMatch.Success || glossMatch.Success || metalMatch.Success)
-                                {
-                                    Material material = ob.GetComponent<Renderer>().material;
+                                if (heightMatch.Success)
+                                    scale.y = float.Parse(
+                                        Regex.Replace(heightMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0"),
+                                        CultureInfo.InvariantCulture);
 
-                                    if (colorMatch.Success)
-                                    {
-                                        Color c;
-                                        ColorUtility.TryParseHtmlString(colorMatch.Groups[1].Value, out c);
-                                        material.color = c;
-                                        ob.GetComponent<AFrameGeometry>().baseColor = c;
-                                    }
+                                if (depthMatch.Success)
+                                    scale.z = float.Parse(
+                                        Regex.Replace(depthMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0"),
+                                        CultureInfo.InvariantCulture);
 
-                                    if (glossMatch.Success)
-                                    {
-                                        material.SetFloat(
-                                            "_Glossiness",
-                                            1f - float.Parse(glossMatch.Groups[1].Value,
-                                            CultureInfo.InvariantCulture));
-                                    }
+                                ob.transform.localScale = scale;
 
-                                    if (metalMatch.Success)
-                                    {
-                                        material.SetFloat(
-                                            "_Metallic",
-                                            float.Parse(metalMatch.Groups[1].Value,
-                                            CultureInfo.InvariantCulture));
-                                    }
-                                }
+                                UpdateGeometryMaterial(ob, colorMatch, metalMatch, glossMatch);
 
                                 if (hoverColorMatch.Success)
                                 {
@@ -747,8 +656,8 @@ public class Playground : InitializeBehaviour
 
                                 await Task.Run(() => {
                                     tag = m.Value;
-                                    startMatch = Regex.Match(tag, @"start: ([0-9-.\s]+)(;|"")");
-                                    endMatch = Regex.Match(tag, @"end: ([0-9-.\s]+)(;|"")");
+                                    startMatch = Regex.Match(tag, @"start: ([0-9-.\se]+)(;|"")");
+                                    endMatch = Regex.Match(tag, @"end: ([0-9-.\se]+)(;|"")");
                                     colorMatch = Regex.Match(tag, @"color: ([#0-9A-Z]+)(;|"")");
                                 });
 
@@ -761,11 +670,11 @@ public class Playground : InitializeBehaviour
                                 if (startMatch.Success && endMatch.Success)
                                 {
                                     float[] s = Array.ConvertAll(
-                                        startMatch.Groups[1].Value.Split(' '),
+                                        Regex.Replace(startMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0").Split(' '),
                                         i => float.Parse(i, CultureInfo.InvariantCulture));
 
                                     float[] e = Array.ConvertAll(
-                                        endMatch.Groups[1].Value.Split(' '),
+                                        Regex.Replace(endMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0").Split(' '),
                                         i => float.Parse(i, CultureInfo.InvariantCulture));
 
                                     // Local positions
@@ -1293,5 +1202,46 @@ public class Playground : InitializeBehaviour
         entryFour.eventID = EventTriggerType.PointerExit;
         entryFour.callback.AddListener((data) => { afg.OnPointerExit(data); });
         trigger.triggers.Add(entryFour);
+    }
+
+    private void UpdateGeometryMaterial(GameObject ob, Match colorMatch, Match metalMatch, Match glossMatch)
+    {
+        if (colorMatch.Success || glossMatch.Success || metalMatch.Success)
+        {
+            Material material = ob.GetComponent<Renderer>().material;
+
+            if (colorMatch.Success)
+            {
+                Color c;
+                ColorUtility.TryParseHtmlString(
+                    colorMatch.Groups[1].Value,
+                    out c);
+
+                material.color = c;
+                ob.GetComponent<AFrameGeometry>().baseColor = c;
+            }
+
+            if (glossMatch.Success)
+            {
+                material.SetFloat(
+                    "_Glossiness",
+                    1f - float.Parse(
+                        Regex.Replace(glossMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0"),
+                        CultureInfo.InvariantCulture
+                        )
+                    );
+            }
+
+            if (metalMatch.Success)
+            {
+                material.SetFloat(
+                    "_Metallic",
+                    float.Parse(
+                        Regex.Replace(metalMatch.Groups[1].Value, @"([0-9-.]+)e-([0-9.]+)", "0"),
+                        CultureInfo.InvariantCulture
+                        )
+                    );
+            }
+        }
     }
 }

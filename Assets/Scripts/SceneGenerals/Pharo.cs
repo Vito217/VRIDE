@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Net.Http;
 using System.Text;
 
@@ -21,58 +22,7 @@ namespace PharoModule
         /// <returns></returns>
         public static async Task Start()
         {
-            await Task.Run(() => {
-                /**try
-                {
-                    string enginePath = Path.Combine(Application.streamingAssetsPath, "PharoEngine");
-                    string arguments = $"Pharo.image st server.st";
-                    string executable = "";
-
-                    if (Application.platform == RuntimePlatform.WindowsPlayer ||
-                        Application.platform == RuntimePlatform.WindowsEditor)
-                    {
-                        if (File.Exists("c:/Windows/System32/bash.exe"))
-                        {
-                            executable = "c:/Windows/System32/bash.exe";
-                            arguments = $"-c \"./pharo Pharo.image st server.st\"";
-                        }
-                        else
-                        {
-                            executable = Path.Combine(".", "pharo-vm-win10", "Pharo");
-                        }
-                    }
-                    else if (Application.platform == RuntimePlatform.OSXPlayer ||
-                        Application.platform == RuntimePlatform.OSXEditor)
-                    {
-                        executable = Path.Combine(".", "pharo-vm-macosx", "Pharo.app", "Contents", 
-                            "MacOS", "Pharo");
-                    }
-                    else
-                    {
-                        executable = Path.Combine(".", "pharo");
-                    }
-
-                    var process = new Process()
-                    {
-                        StartInfo = new ProcessStartInfo
-                        {
-                            FileName = executable,
-                            WorkingDirectory = enginePath,
-                            Arguments = arguments,
-                            RedirectStandardOutput = false,
-                            UseShellExecute = true,
-                            CreateNoWindow = true,
-                            WindowStyle = ProcessWindowStyle.Hidden,
-                        }
-                    };
-                    process.Start();
-                }
-                catch
-                {
-                    UnityEngine.Debug.Log("Local server not found. Make sure you have " +
-                        "Pharo Launcher running.");
-                }**/
-            });
+            await Task.Delay(2000);
         }
 
         /// <summary>
@@ -104,7 +54,9 @@ namespace PharoModule
         public static async Task<string> Print(string code)
         {
             if (!code.Contains("compile"))
-                code = "self class compiler evaluate: '" + code.Replace("'", "''") + "'";
+                //code = "self class compiler evaluate: '" + code.Replace("'", "''") + "'";
+                //code = "self class compiler evaluate: '" + code.Replace("''", "'").Replace("'", "''") + "'";
+                code = "self class compiler evaluate: '" + Regex.Replace(code, @"([^'])'([^'])", "$1''$2") + "'";
 
             return await Execute(code);
         }
