@@ -19,7 +19,7 @@ public class Browser : InitializeBehaviour
     public TMP_InputField packageFilter;
     public TMP_InputField classFilter;
     public TMP_InputField methodFilter;
-    private bool loadingPackages = true;
+    private bool loadingPackages = false;
 
     public async void PharoDefine()
     {
@@ -195,5 +195,10 @@ public class Browser : InitializeBehaviour
             lastCaretPosition = keyboardTarget.caretPosition;
             lastAnchorPosition = keyboardTarget.selectionAnchorPosition;
         }
+    }
+
+    public void LoadPackages()
+    {
+        loadingPackages = true;
     }
 }

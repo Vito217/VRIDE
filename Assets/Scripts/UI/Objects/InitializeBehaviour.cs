@@ -268,4 +268,17 @@ public class InitializeBehaviour : MonoBehaviour
     {
         yield return null;
     }
+
+    public void ToggleKeyboard()
+    {
+        Renderer[] lChildRenderers = keyboardsGameObject.GetComponentsInChildren<Renderer>();
+        BoxCollider[] lChildColliders = keyboardsGameObject.GetComponentsInChildren<BoxCollider>();
+        foreach (Renderer lRenderer in lChildRenderers) lRenderer.enabled = !lRenderer.enabled;
+        foreach (BoxCollider lCollider in lChildColliders) lCollider.enabled = !lCollider.enabled;
+
+        CanvasGroup cg = keyboardsGameObject.GetComponent<CanvasGroup>();
+        cg.interactable = !cg.interactable;
+        cg.blocksRaycasts = !cg.blocksRaycasts;
+        cg.alpha = Mathf.Abs(1f - cg.alpha);
+    }
 }
