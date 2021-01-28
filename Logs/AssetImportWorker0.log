@@ -1,10 +1,10 @@
 Using pre-set license
-Built from '2020.2/release' branch; Version is '2020.2.1f1 (270dd8c3da1c) revision 2559448'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 10  (10.0.0) 64bit' Language: 'es' Physical Memory: 16251 MB
+Built from '2020.2/release' branch; Version is '2020.2.2f1 (068178b99f32) revision 426360'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Home Single Language; OS build 18363.1316; Version 1909; 64bit' Language: 'es' Physical Memory: 16251 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
  COMMAND LINE ARGUMENTS:
-D:\Unity\2020.2.1f1\Editor\Unity.exe
+D:\Unity\2020.2.2f1\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
@@ -15,14 +15,14 @@ C:/Users/alexa/Documents/Unity Projects/PharoVRIDE
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-51473
+59035
 Successfully changed project path to: C:/Users/alexa/Documents/Unity Projects/PharoVRIDE
 C:/Users/alexa/Documents/Unity Projects/PharoVRIDE
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 107.98 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 1.45 ms.
-Initialize engine version: 2020.2.1f1 (270dd8c3da1c)
-[Subsystems] Discovering subsystems at path D:/Unity/2020.2.1f1/Editor/Data/Resources/UnitySubsystems
+Refreshing native plugins compatible for Editor in 970.02 ms, found 19 plugins.
+Preloading 2 native plugins for Editor in 22.46 ms.
+Initialize engine version: 2020.2.2f1 (068178b99f32)
+[Subsystems] Discovering subsystems at path D:/Unity/2020.2.2f1/Editor/Data/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path C:/Users/alexa/Documents/Unity Projects/PharoVRIDE/Assets
 GfxDevice: creating device client; threaded=0
 Direct3D:
@@ -31,40 +31,44 @@ Direct3D:
     Vendor:   
     VRAM:     5980 MB
     Driver:   27.21.14.5256
+Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
 Initialize mono
-Mono path[0] = 'D:/Unity/2020.2.1f1/Editor/Data/Managed'
-Mono path[1] = 'D:/Unity/2020.2.1f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
-Mono config path = 'D:/Unity/2020.2.1f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56112
+Mono path[0] = 'D:/Unity/2020.2.2f1/Editor/Data/Managed'
+Mono path[1] = 'D:/Unity/2020.2.2f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'D:/Unity/2020.2.2f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56328
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: D:/Unity/2020.2.1f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.000638 seconds.
+Register platform support module: D:/Unity/2020.2.2f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Register platform support module: D:/Unity/2020.2.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Register platform support module: D:/Unity/2020.2.2f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
+Registered in 0.105900 seconds.
+Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 68.64 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.11 ms.
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 69.18 ms, found 19 plugins.
+Preloading 2 native plugins for Editor in 0.10 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.352 seconds
+- Completed reload, in  3.126 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.020955 seconds.
+Registered in 0.903030 seconds.
 Begin MonoManager ReloadAssembly
 Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
 Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
 
+Symbol file LoadedFromMemory is not a mono symbol file
 Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
 Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
 
-Error: Could not load signature of Unity.Android.Logcat.AndroidLogcat:.ctor due to: Could not load file or assembly 'UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
-
-Unloading broken assembly Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll, this assembly can cause crashes in the runtime
-
+Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 67.46 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.11 ms.
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 67.01 ms, found 19 plugins.
+Preloading 2 native plugins for Editor in 0.10 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
@@ -74,1572 +78,178 @@ RoslynAnalysisRunner has terminated.
 [XR] Unable to register input lifecyle provider: [1]
 [XR] OVRP version 1.52.1
 Mono: successfully reloaded assembly
-- Completed reload, in  1.108 seconds
+- Completed reload, in  3.623 seconds
 Platform modules already initialized, skipping
 Assertion failed on expression: 'reloadOk'
 
 ========================================================================
 Worker process is ready to serve import requests
 Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
-Refreshing native plugins compatible for Editor in 1.20 ms, found 19 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.12 seconds
+Refreshing native plugins compatible for Editor in 1.19 ms, found 19 plugins.
 Preloading 2 native plugins for Editor in 0.11 ms.
-Unloading 2875 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 134.7 MB.
-System memory in use after: 133.7 MB.
+Unloading 2901 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 135.7 MB.
+System memory in use after: 135.8 MB.
 
-Unloading 109 unused Assets to reduce memory usage. Loaded Objects now: 3235.
-Total: 2.560300 ms (FindLiveObjects: 0.274600 ms CreateObjectMapping: 0.127100 ms MarkObjects: 1.591900 ms  DeleteObjects: 0.565900 ms)
-
-========================================================================
-Received Import Request.
-  path: Assets/Resources/ONSPSettings.asset
-  artifactKey: Guid(20d9dcf50ff72c645832a309483ff91c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/ONSPSettings.asset using Guid(20d9dcf50ff72c645832a309483ff91c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e3c57af995c24e2dbc7d8d65fa1dd77a') in 0.032999 seconds
-  Import took 0.037352 seconds .
+Unloading 94 unused Assets to reduce memory usage. Loaded Objects now: 3277.
+Total: 2.206600 ms (FindLiveObjects: 0.259100 ms CreateObjectMapping: 0.138500 ms MarkObjects: 1.725200 ms  DeleteObjects: 0.083000 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000175 seconds.
-  path: Assets/Resources/Prefabs
-  artifactKey: Guid(9127a3cc855e6bb4fa25fb30dde602f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs using Guid(9127a3cc855e6bb4fa25fb30dde602f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0048c2f7dae9e8e2baa16a414b688ac4') in 0.005582 seconds
-  Import took 0.010475 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000144 seconds.
-  path: Assets/Resources/load_wheel.png
-  artifactKey: Guid(d74c8ae230b943647b279b3b0f7bb516) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/load_wheel.png using Guid(d74c8ae230b943647b279b3b0f7bb516) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f2b850ad7001ef4c095b0d49a2ed6158') in 0.103340 seconds
-  Import took 0.107270 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000148 seconds.
   path: Assets/Resources/Prefabs/Punchkeyboard.prefab
   artifactKey: Guid(d85aeebb7d9d19b46b11a1e3a7635f5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Punchkeyboard.prefab using Guid(d85aeebb7d9d19b46b11a1e3a7635f5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '911be23d19c4b043fc65e6dbe79a6c1f') in 0.173910 seconds
-  Import took 0.179194 seconds .
+Start importing Assets/Resources/Prefabs/Punchkeyboard.prefab using Guid(d85aeebb7d9d19b46b11a1e3a7635f5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6cff3678f26dc83bb30522d16f44699') in 0.306192 seconds
+  Import took 0.311006 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 1.549117 seconds.
-  path: Assets/Resources/Prefabs/3.0
-  artifactKey: Guid(bd074d0743589554ca720812d1d03b52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0 using Guid(bd074d0743589554ca720812d1d03b52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cde7a3a0e878951dbf6f48fdf0d2b86b') in 0.005460 seconds
-  Import took 0.011413 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.005339 seconds.
-  path: Assets/Resources/Prefabs/3.0
-  artifactKey: Guid(bd074d0743589554ca720812d1d03b52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0 using Guid(bd074d0743589554ca720812d1d03b52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cde7a3a0e878951dbf6f48fdf0d2b86b') in 0.001963 seconds
-  Import took 0.006618 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.322058 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI
-  artifactKey: Guid(c828fa44ddbaedf47be8206f48e3eb28) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI using Guid(c828fa44ddbaedf47be8206f48e3eb28) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3835b39a97d0a0893ccd4c382be4dbd6') in 0.006134 seconds
-  Import took 0.011459 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000201 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Browser.prefab
-  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aeeb535a0e667066095e0bfb8cd39f0a') in 0.124868 seconds
-  Import took 0.130320 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000138 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Inspector.prefab
-  artifactKey: Guid(8edb5bebbffcf3341af87069bb0c36e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Inspector.prefab using Guid(8edb5bebbffcf3341af87069bb0c36e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ebf7bc040796244721ce7e58a003fd2e') in 0.027228 seconds
-  Import took 0.031498 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000128 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab
-  artifactKey: Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab using Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9ce5f2361f32390a69489d085c589f3f') in 0.052807 seconds
-  Import took 0.057995 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000123 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Menu.prefab
-  artifactKey: Guid(fb745a6f83285354d926519301bc2f75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Menu.prefab using Guid(fb745a6f83285354d926519301bc2f75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4b10e41e1cd75fc1e0cd3b3353688d3f') in 0.024569 seconds
-  Import took 0.029180 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000224 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/GraphObject.prefab
-  artifactKey: Guid(ec197222d023e764dad3752f71176000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/GraphObject.prefab using Guid(ec197222d023e764dad3752f71176000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '35e5eba50380b1d39b42b7de849e33a3') in 0.027574 seconds
-  Import took 0.031924 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000132 seconds.
+  Time since last request: 179.296730 seconds.
   path: Assets/Resources/Prefabs/3.0/UI/AFrame.prefab
   artifactKey: Guid(63f8d24d1f7ee53438369d757e614850) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/AFrame.prefab using Guid(63f8d24d1f7ee53438369d757e614850) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b13463cc8c71694639b9c5fd604e06c5') in 0.024452 seconds
-  Import took 0.028564 seconds .
+Start importing Assets/Resources/Prefabs/3.0/UI/AFrame.prefab using Guid(63f8d24d1f7ee53438369d757e614850) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c4fe872647ab33efeee96492b44b61cb') in 0.064097 seconds
+  Import took 0.068594 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 1.289472 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Playground.prefab
-  artifactKey: Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Playground.prefab using Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d4c7060c7236c3e5a5362ee71df14f9') in 0.062387 seconds
-  Import took 0.068733 seconds .
+  Time since last request: 0.000136 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Browser.prefab
+  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd1d2f8a6ec77b2f46361598931521803') in 0.121651 seconds
+  Import took 0.127353 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000130 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Roassal Examples.prefab
-  artifactKey: Guid(734e0ef38a1ab0d43be055e16420da75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Roassal Examples.prefab using Guid(734e0ef38a1ab0d43be055e16420da75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3cb771984bbbd42682ac24e1dcf6eab4') in 0.031159 seconds
-  Import took 0.035895 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.019652 seconds.
-Begin MonoManager ReloadAssembly
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.30 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.21 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.966 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Refreshing native plugins compatible for Editor in 1.43 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.12 ms.
-Unloading 2765 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 141.4 MB.
-System memory in use after: 140.7 MB.
-
-Unloading 107 unused Assets to reduce memory usage. Loaded Objects now: 3248.
-Total: 3.110600 ms (FindLiveObjects: 0.488500 ms CreateObjectMapping: 0.220700 ms MarkObjects: 1.739800 ms  DeleteObjects: 0.660700 ms)
-
-========================================================================
-Received Prepare
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Refreshing native plugins compatible for Editor in 18.12 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.10 ms.
-Unloading 99 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 89.4 MB.
-System memory in use after: 88.7 MB.
-
-Unloading 99 unused Assets to reduce memory usage. Loaded Objects now: 3248.
-Total: 2.834800 ms (FindLiveObjects: 0.306100 ms CreateObjectMapping: 0.174300 ms MarkObjects: 1.745600 ms  DeleteObjects: 0.608000 ms)
-
-========================================================================
-Received Prepare
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Refreshing native plugins compatible for Editor in 19.41 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.10 ms.
-Unloading 99 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 89.8 MB.
-System memory in use after: 89.1 MB.
-
-Unloading 99 unused Assets to reduce memory usage. Loaded Objects now: 3248.
-Total: 3.149700 ms (FindLiveObjects: 0.289700 ms CreateObjectMapping: 0.153100 ms MarkObjects: 1.856200 ms  DeleteObjects: 0.849900 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.020229 seconds.
-Begin MonoManager ReloadAssembly
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.27 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.12 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.037 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Refreshing native plugins compatible for Editor in 1.29 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.11 ms.
-Unloading 2770 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 142.5 MB.
-System memory in use after: 141.7 MB.
-
-Unloading 102 unused Assets to reduce memory usage. Loaded Objects now: 3259.
-Total: 2.793500 ms (FindLiveObjects: 0.287300 ms CreateObjectMapping: 0.160200 ms MarkObjects: 1.701600 ms  DeleteObjects: 0.643500 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.026042 seconds.
-Begin MonoManager ReloadAssembly
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Error: Could not load signature of Unity.Android.Logcat.AndroidLogcat:.ctor due to: Could not load file or assembly 'UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
-
-Unloading broken assembly Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll, this assembly can cause crashes in the runtime
-
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.34 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.12 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.057 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Refreshing native plugins compatible for Editor in 1.33 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.11 ms.
-Unloading 2774 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 142.8 MB.
-System memory in use after: 142.1 MB.
-
-Unloading 102 unused Assets to reduce memory usage. Loaded Objects now: 3262.
-Total: 2.764800 ms (FindLiveObjects: 0.284200 ms CreateObjectMapping: 0.163300 ms MarkObjects: 1.672600 ms  DeleteObjects: 0.643900 ms)
-
-========================================================================
-Received Prepare
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Refreshing native plugins compatible for Editor in 17.22 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.10 ms.
-Unloading 102 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 89.9 MB.
-System memory in use after: 89.1 MB.
-
-Unloading 99 unused Assets to reduce memory usage. Loaded Objects now: 3262.
-Total: 2.693000 ms (FindLiveObjects: 0.298200 ms CreateObjectMapping: 0.144100 ms MarkObjects: 1.564700 ms  DeleteObjects: 0.685200 ms)
-
-========================================================================
-Received Prepare
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Refreshing native plugins compatible for Editor in 17.13 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.10 ms.
-Unloading 99 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 89.9 MB.
-System memory in use after: 89.2 MB.
-
-Unloading 99 unused Assets to reduce memory usage. Loaded Objects now: 3262.
-Total: 2.952300 ms (FindLiveObjects: 0.283400 ms CreateObjectMapping: 0.166100 ms MarkObjects: 1.798000 ms  DeleteObjects: 0.704100 ms)
+  Time since last request: 0.160971 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/GraphObject.prefab
+  artifactKey: Guid(ec197222d023e764dad3752f71176000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/GraphObject.prefab using Guid(ec197222d023e764dad3752f71176000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3d1d91d0058b38de6b0d39eab487b37') in 0.030803 seconds
+  Import took 0.035734 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 1953.936441 seconds.
-  path: Assets/Resources/OculusPlatformSettings.asset
-  artifactKey: Guid(0856d4d6c73f0b9459beb103d56f24f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/OculusPlatformSettings.asset using Guid(0856d4d6c73f0b9459beb103d56f24f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f9416d18bfafa48b98e9709b459b8da5') in 0.013585 seconds
-  Import took 0.018919 seconds .
+  Time since last request: 0.000162 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Inspector.prefab
+  artifactKey: Guid(8edb5bebbffcf3341af87069bb0c36e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Inspector.prefab using Guid(8edb5bebbffcf3341af87069bb0c36e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff257446b74d2313d13eca2d7bde7dc3') in 0.027821 seconds
+  Import took 0.032334 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.002296 seconds.
-  path: Assets/Resources/OculusPlatformSettings.asset
-  artifactKey: Guid(0856d4d6c73f0b9459beb103d56f24f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/OculusPlatformSettings.asset using Guid(0856d4d6c73f0b9459beb103d56f24f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f9416d18bfafa48b98e9709b459b8da5') in 0.002621 seconds
-  Import took 0.007071 seconds .
+  Time since last request: 0.000157 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Toolbar.prefab
+  artifactKey: Guid(37ac4eb99071a274782f526fe5e0bca6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Toolbar.prefab using Guid(37ac4eb99071a274782f526fe5e0bca6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f9a79bdf5e974d4b3875f37a766735e4') in 0.024866 seconds
+  Import took 0.029718 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.017853 seconds.
-  path: Assets/Resources/OvrAvatarSettings.asset
-  artifactKey: Guid(b521cdee8f4705a46b6418386aeaddc0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/OvrAvatarSettings.asset using Guid(b521cdee8f4705a46b6418386aeaddc0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0a3f37df1dc7702bc8c6e5d70e7c84a9') in 0.006369 seconds
-  Import took 0.011043 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000151 seconds.
-  path: Assets/Resources/OVRPlatformToolSettings.asset
-  artifactKey: Guid(d0eab8d4cdb455e48a3d075226140f01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/OVRPlatformToolSettings.asset using Guid(d0eab8d4cdb455e48a3d075226140f01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9b8828714c745e7769874521030ee1d0') in 0.007053 seconds
-  Import took 0.010964 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.072675 seconds.
-  path: Assets/Resources/OVRPlatformToolSettings.asset
-  artifactKey: Guid(d0eab8d4cdb455e48a3d075226140f01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/OVRPlatformToolSettings.asset using Guid(d0eab8d4cdb455e48a3d075226140f01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9b8828714c745e7769874521030ee1d0') in 0.003253 seconds
-  Import took 0.007479 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 500.430817 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Text (TMP).prefab
-  artifactKey: Guid(27880938e29150d4181959d4469815e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Text (TMP).prefab using Guid(27880938e29150d4181959d4469815e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81011e013a71ee00dec320ebc6eb405e') in 0.060700 seconds
-  Import took 0.066143 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 82.693597 seconds.
-  path: Assets/Scripts/Keyboard/ShiftKeyBehaviour.cs
-  artifactKey: Guid(6ece448ab8efd8847afc032be75ecd49) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Keyboard/ShiftKeyBehaviour.cs using Guid(6ece448ab8efd8847afc032be75ecd49) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e9e0e9ab30e944763d338705640e72c2') in 0.022085 seconds
-  Import took 0.028382 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 338.957612 seconds.
-  path: Assets/Oculus/SampleFramework/Usage/HandsTrainExample/Textures/XingLight.svg
-  artifactKey: Guid(5bf89341012d5104286d3d51e6e254dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Oculus/SampleFramework/Usage/HandsTrainExample/Textures/XingLight.svg using Guid(5bf89341012d5104286d3d51e6e254dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '446c8a2dfcfe1756117439a22b7293d1') in 0.245033 seconds
-  Import took 0.250701 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000228 seconds.
-  path: Assets/HTC.UnityPlugin/ViveInputUtility/Examples/2.2DDragDrop/Sprites/Yellow.png
-  artifactKey: Guid(2caa46ba9fdd6eb4ca30fd8259df839a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/HTC.UnityPlugin/ViveInputUtility/Examples/2.2DDragDrop/Sprites/Yellow.png using Guid(2caa46ba9fdd6eb4ca30fd8259df839a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1bcf5d41fc0d77b2cc719cb631ee6c62') in 0.014924 seconds
-  Import took 0.018866 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.724425 seconds.
-  path: Assets/Resources/Sprites/vert_exp.png
-  artifactKey: Guid(f6d0114a35cfb554c9b1587e99620aa3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Sprites/vert_exp.png using Guid(f6d0114a35cfb554c9b1587e99620aa3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b9e70558f2061a5ed7f37b69e6feaa8') in 0.046268 seconds
-  Import took 0.051167 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000126 seconds.
-  path: Assets/Oculus/VR/Textures/windowgui.png
-  artifactKey: Guid(a26663690a6580440963aa46e582c35b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Oculus/VR/Textures/windowgui.png using Guid(a26663690a6580440963aa46e582c35b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '57b69ae6dbf0886ebe7f6ee7f6ae4286') in 0.016838 seconds
-  Import took 0.020737 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.339106 seconds.
-  path: Assets/HTC.UnityPlugin/ViveInputUtility/Examples/2.2DDragDrop/Sprites/Turquoise.png
-  artifactKey: Guid(66c4580cae2903646861a62234f82b09) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/HTC.UnityPlugin/ViveInputUtility/Examples/2.2DDragDrop/Sprites/Turquoise.png using Guid(66c4580cae2903646861a62234f82b09) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c19e4418f8539e75efc29b225341746e') in 0.011978 seconds
-  Import took 0.016837 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000147 seconds.
-  path: Assets/Resources/Sprites/vert_estr.png
-  artifactKey: Guid(92806e4e19c3b3947b4f0f82907ab670) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Sprites/vert_estr.png using Guid(92806e4e19c3b3947b4f0f82907ab670) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '309a17b2bfd6155403349c61174b3dda') in 0.043309 seconds
-  Import took 0.047212 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.234327 seconds.
-  path: Assets/UI/Sprites/TertiaryBG.png
-  artifactKey: Guid(821f80015254356408c0db5f32a439d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/UI/Sprites/TertiaryBG.png using Guid(821f80015254356408c0db5f32a439d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78d5eb169434eb8afcbe666e87e583b8') in 0.015631 seconds
-  Import took 0.020484 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000123 seconds.
-  path: Assets/Oculus/SampleFramework/Core/DebugUI/Textures/translucent_01.png
-  artifactKey: Guid(7ebd72557d873024e8afa355e92d435f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Oculus/SampleFramework/Core/DebugUI/Textures/translucent_01.png using Guid(7ebd72557d873024e8afa355e92d435f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b9f04e29daac82f94a7d11656a78bca') in 0.013481 seconds
-  Import took 0.017617 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.389151 seconds.
-  path: Assets/Oculus/SampleFramework/Core/DebugUI/Textures/slider_slider.png
-  artifactKey: Guid(871600bbe5c92eb45a948fe73ff8b1a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Oculus/SampleFramework/Core/DebugUI/Textures/slider_slider.png using Guid(871600bbe5c92eb45a948fe73ff8b1a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '49c7129540fc293b406096d14bb103a1') in 0.013901 seconds
-  Import took 0.018326 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000160 seconds.
-  path: Assets/Oculus/SampleFramework/Core/DebugUI/Textures/separator.png
-  artifactKey: Guid(99e2846e72f06dc4fb23e772dca82743) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Oculus/SampleFramework/Core/DebugUI/Textures/separator.png using Guid(99e2846e72f06dc4fb23e772dca82743) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '210e8815714dae9a97a6e4b2b2839311') in 0.013535 seconds
-  Import took 0.018117 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000258 seconds.
-  path: Assets/SteamVR/InteractionSystem/Samples/BuggyBuddy/UI/BuggyUI/steering.png
-  artifactKey: Guid(91b480a4153c3a549ac9da4a987977e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SteamVR/InteractionSystem/Samples/BuggyBuddy/UI/BuggyUI/steering.png using Guid(91b480a4153c3a549ac9da4a987977e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03ec1cc8eef87c8be542dff513a8b0c8') in 0.024012 seconds
-  Import took 0.028134 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000130 seconds.
-  path: Assets/Oculus/SampleFramework/Core/DebugUI/Textures/slider_bar.png
-  artifactKey: Guid(71df6d228f4ab4245b9791d80663baa4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Oculus/SampleFramework/Core/DebugUI/Textures/slider_bar.png using Guid(71df6d228f4ab4245b9791d80663baa4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aeed75d864f8233063688f1218a718f2') in 0.016027 seconds
-  Import took 0.020740 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000119 seconds.
-  path: Assets/SteamVR/InteractionSystem/Samples/BuggyBuddy/UI/BuggyUI/RPMCounterFill.png
-  artifactKey: Guid(05f36522b35629f44aac32011b53123b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SteamVR/InteractionSystem/Samples/BuggyBuddy/UI/BuggyUI/RPMCounterFill.png using Guid(05f36522b35629f44aac32011b53123b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c52c706469742028ca9e7e964d53d7de') in 0.022466 seconds
-  Import took 0.026818 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000156 seconds.
-  path: Assets/UI/Sprites/SecondaryBG.png
-  artifactKey: Guid(8537e83cabd0eb74b96cf7bbbbae2405) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/UI/Sprites/SecondaryBG.png using Guid(8537e83cabd0eb74b96cf7bbbbae2405) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bde15dd765691ab3d30a1958e6586c72') in 0.014601 seconds
-  Import took 0.019098 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.331618 seconds.
-  path: Assets/SteamVR/InteractionSystem/Samples/BuggyBuddy/UI/Roundsquare.png
-  artifactKey: Guid(aa45b5fa956e6234eb161fc63113b33a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SteamVR/InteractionSystem/Samples/BuggyBuddy/UI/Roundsquare.png using Guid(aa45b5fa956e6234eb161fc63113b33a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2e9d48ca6e24d7fe360fbc8375b1b80e') in 0.018413 seconds
-  Import took 0.023224 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000141 seconds.
-  path: Assets/SteamVR/InteractionSystem/Samples/BuggyBuddy/UI/BuggyUI/RPMCounterBorder.png
-  artifactKey: Guid(27916dbd53464474fbd89dc6b88228ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SteamVR/InteractionSystem/Samples/BuggyBuddy/UI/BuggyUI/RPMCounterBorder.png using Guid(27916dbd53464474fbd89dc6b88228ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6bf001c1d2fe1179c4795becb72da53') in 0.021877 seconds
-  Import took 0.026275 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.243140 seconds.
-  path: Assets/Oculus/SampleFramework/Core/DebugUI/Textures/radio_on.png
-  artifactKey: Guid(5aeca7df47eecc94bb7fbb5d79cf2036) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Oculus/SampleFramework/Core/DebugUI/Textures/radio_on.png using Guid(5aeca7df47eecc94bb7fbb5d79cf2036) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c09f7867e482c427ff61085e2f66fb0b') in 0.014651 seconds
-  Import took 0.019882 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000124 seconds.
-  path: Assets/Oculus/SampleFramework/Core/DebugUI/Textures/radio_over.png
-  artifactKey: Guid(d573cef9968bac840a82613c16823a0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Oculus/SampleFramework/Core/DebugUI/Textures/radio_over.png using Guid(d573cef9968bac840a82613c16823a0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5940f57552f01d27f645d44cf946bdcd') in 0.014708 seconds
-  Import took 0.018895 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.232987 seconds.
-  path: Assets/Oculus/SampleFramework/Core/DebugUI/Textures/radio_disabled.png
-  artifactKey: Guid(bdbd8a3ecf4a241499b36f4c13ded10b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Oculus/SampleFramework/Core/DebugUI/Textures/radio_disabled.png using Guid(bdbd8a3ecf4a241499b36f4c13ded10b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fbfc4c1154f016a22b0d9d046b5d4b67') in 0.015027 seconds
-  Import took 0.019569 seconds .
+  Time since last request: 0.000325 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Inspector.prefab
+  artifactKey: Guid(8edb5bebbffcf3341af87069bb0c36e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Inspector.prefab using Guid(8edb5bebbffcf3341af87069bb0c36e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff257446b74d2313d13eca2d7bde7dc3') in 0.026569 seconds
+  Import took 0.031665 seconds .
 
 ========================================================================
 Received Import Request.
   Time since last request: 0.000121 seconds.
-  path: Assets/Oculus/SampleFramework/Core/DebugUI/Textures/radio_off.png
-  artifactKey: Guid(9a7a1aee5662d8e439db9465d2c3e3fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Oculus/SampleFramework/Core/DebugUI/Textures/radio_off.png using Guid(9a7a1aee5662d8e439db9465d2c3e3fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9c51b65e2b96bbb73e59d74d7fa768ad') in 0.014143 seconds
-  Import took 0.018748 seconds .
+  path: Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab
+  artifactKey: Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab using Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5884b9f2174b8ef0db9f1b60c9ccd96a') in 0.049077 seconds
+  Import took 0.053921 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.057052 seconds.
-  path: Assets/Oculus/SampleFramework/Core/DebugUI/Textures/radio_on_off.png
-  artifactKey: Guid(f6e6acbe07068e448ada3d7aaeb72562) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Oculus/SampleFramework/Core/DebugUI/Textures/radio_on_off.png using Guid(f6e6acbe07068e448ada3d7aaeb72562) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '29bb1d57b3ee603c1ecd132705329b4f') in 0.016396 seconds
-  Import took 0.021158 seconds .
+  Time since last request: 0.000124 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Roassal Examples.prefab
+  artifactKey: Guid(734e0ef38a1ab0d43be055e16420da75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Roassal Examples.prefab using Guid(734e0ef38a1ab0d43be055e16420da75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b2ee87152d8a705eab75abc09a9781e') in 0.027480 seconds
+  Import took 0.031714 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.025615 seconds.
-  path: Assets/Oculus/SampleFramework/Core/DebugUI/Textures/panel_background.PNG
-  artifactKey: Guid(d929e2a65a1cbc54dacdbdcdb33165e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Oculus/SampleFramework/Core/DebugUI/Textures/panel_background.PNG using Guid(d929e2a65a1cbc54dacdbdcdb33165e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '852eacb53eee694380b275b500a7ed16') in 0.017856 seconds
-  Import took 0.022571 seconds .
+  Time since last request: 0.000171 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Menu.prefab
+  artifactKey: Guid(fb745a6f83285354d926519301bc2f75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Menu.prefab using Guid(fb745a6f83285354d926519301bc2f75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b5a9e83d90de809d986825c9b1033b3a') in 0.024021 seconds
+  Import took 0.028171 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000127 seconds.
-  path: Assets/UI/Sprites/Primary BG.png
-  artifactKey: Guid(a3ff31f4102f1f246b64ab9d88baf48d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/UI/Sprites/Primary BG.png using Guid(a3ff31f4102f1f246b64ab9d88baf48d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0db563a7ff4b59ccaaca479bcb46ed2b') in 0.014613 seconds
-  Import took 0.018791 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.048203 seconds.
-  path: Assets/HTC.UnityPlugin/ViveInputUtility/Examples/2.2DDragDrop/Sprites/Orange.png
-  artifactKey: Guid(321907ea57315784d917227c1bec08c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/HTC.UnityPlugin/ViveInputUtility/Examples/2.2DDragDrop/Sprites/Orange.png using Guid(321907ea57315784d917227c1bec08c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf5b7a8d1bf16391d75496863a05b60d') in 0.012833 seconds
-  Import took 0.018096 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.002209 seconds.
-  path: Assets/HTC.UnityPlugin/ViveInputUtility/Examples/2.2DDragDrop/Sprites/Orange.png
-  artifactKey: Guid(321907ea57315784d917227c1bec08c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/HTC.UnityPlugin/ViveInputUtility/Examples/2.2DDragDrop/Sprites/Orange.png using Guid(321907ea57315784d917227c1bec08c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf5b7a8d1bf16391d75496863a05b60d') in 0.006908 seconds
-  Import took 0.011314 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.681771 seconds.
-  path: Assets/Resources/Sprites/hor_exp.png
-  artifactKey: Guid(90fa2c29fd8893f4c8000ee4e414327b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Sprites/hor_exp.png using Guid(90fa2c29fd8893f4c8000ee4e414327b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2741245f4c8aa630f2e73acbd4bee0b5') in 0.039504 seconds
-  Import took 0.045202 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000122 seconds.
-  path: Assets/AllSkyFree/AllSkyDemoEnvironment/HowToUpResSkies.png
-  artifactKey: Guid(5f86fefc3a6bd4b1998b38ab48808f10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/AllSkyFree/AllSkyDemoEnvironment/HowToUpResSkies.png using Guid(5f86fefc3a6bd4b1998b38ab48808f10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b22bbd5524eaec00cbf7fd553c96327') in 0.029294 seconds
-  Import took 0.033929 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.333077 seconds.
-  path: Assets/SteamVR/InteractionSystem/Hints/Textures/HintBackground.png
-  artifactKey: Guid(5697c26ee2ef0c848996640f6a3d3432) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SteamVR/InteractionSystem/Hints/Textures/HintBackground.png using Guid(5697c26ee2ef0c848996640f6a3d3432) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '10bdadd8c4799155d719582e12ed43b6') in 0.012764 seconds
-  Import took 0.017241 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000120 seconds.
-  path: Assets/Resources/Sprites/hor_estr.png
-  artifactKey: Guid(24cd7fed9335ac645a748e688a1e5f96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Sprites/hor_estr.png using Guid(24cd7fed9335ac645a748e688a1e5f96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03e3d7e773921c4d0f957b62e4b9e4c7') in 0.043509 seconds
-  Import took 0.047449 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.175879 seconds.
-  path: Assets/Oculus/VR/Textures/handle.png
-  artifactKey: Guid(ce8f78b2b9292484e97f36ad9568fc4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Oculus/VR/Textures/handle.png using Guid(ce8f78b2b9292484e97f36ad9568fc4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '924f1c77c5f820510a03aac00cb68b94') in 0.014283 seconds
-  Import took 0.019946 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000152 seconds.
-  path: Assets/Oculus/SampleFramework/Core/DebugUI/Textures/header.png
-  artifactKey: Guid(eee045d55647138479b30e687b81c7e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Oculus/SampleFramework/Core/DebugUI/Textures/header.png using Guid(eee045d55647138479b30e687b81c7e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2378b3156e31563bb480cc564c4e0d6c') in 0.018301 seconds
-  Import took 0.022451 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.380227 seconds.
-  path: Assets/Oculus/SampleFramework/Core/DebugUI/Textures/button9slice.png
-  artifactKey: Guid(eec623c29607b1447ac4dc6de3cdda6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Oculus/SampleFramework/Core/DebugUI/Textures/button9slice.png using Guid(eec623c29607b1447ac4dc6de3cdda6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '74e474fe9e2db4738f3780ac6a0eb090') in 0.014120 seconds
-  Import took 0.018750 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000120 seconds.
-  path: Assets/SteamVR/InteractionSystem/Samples/BuggyBuddy/UI/BuggyUI/blob.png
-  artifactKey: Guid(34052ff677e1e0040bfdde61332fac2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SteamVR/InteractionSystem/Samples/BuggyBuddy/UI/BuggyUI/blob.png using Guid(34052ff677e1e0040bfdde61332fac2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a19c536d6d16f93cdc42f6f22e9f01f6') in 0.021523 seconds
-  Import took 0.025997 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000147 seconds.
-  path: Assets/Oculus/SampleFramework/Core/DebugUI/Textures/button.png
-  artifactKey: Guid(749615b78f067c442b8275980b7ed7c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Oculus/SampleFramework/Core/DebugUI/Textures/button.png using Guid(749615b78f067c442b8275980b7ed7c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '702a9919ca3a7ecd7ed16166b646aa60') in 0.013584 seconds
-  Import took 0.018341 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000220 seconds.
-  path: Assets/Oculus/SampleFramework/Core/DebugUI/Textures/dialog.png
-  artifactKey: Guid(fd7cf88ee9b05f94f84bd7686a9669a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Oculus/SampleFramework/Core/DebugUI/Textures/dialog.png using Guid(fd7cf88ee9b05f94f84bd7686a9669a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '25ad5130f5f9cf69c3dff3d880d448f9') in 0.016421 seconds
-  Import took 0.020677 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000227 seconds.
-  path: Assets/HTC.UnityPlugin/ViveInputUtility/Resources/Sprites/binding_ui_icons.png
-  artifactKey: Guid(3a23c65532a98fa409e94bf90a84543e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/HTC.UnityPlugin/ViveInputUtility/Resources/Sprites/binding_ui_icons.png using Guid(3a23c65532a98fa409e94bf90a84543e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a5a04c1cafa775de3fa351921635f0ec') in 0.055809 seconds
-  Import took 0.060167 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000125 seconds.
-  path: Assets/AllSkyFree/AllSkyDemoEnvironment/BlackTransparentGradient.png
-  artifactKey: Guid(5fcdc8d88900447cbacc2451e4e54427) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/AllSkyFree/AllSkyDemoEnvironment/BlackTransparentGradient.png using Guid(5fcdc8d88900447cbacc2451e4e54427) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9acc62f56f1a63a100943bb6b256fb0b') in 0.013694 seconds
-  Import took 0.018099 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 4.280362 seconds.
-  path: Assets/AllSkyFree/AllSkyDemoEnvironment/AllSky_Logo.png
-  artifactKey: Guid(a5075efb0c5504a389b38cf795aabf4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/AllSkyFree/AllSkyDemoEnvironment/AllSky_Logo.png using Guid(a5075efb0c5504a389b38cf795aabf4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f48c3f01e6300ebce5d827173689ae1') in 0.015765 seconds
-  Import took 0.020552 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.002696 seconds.
-  path: Assets/AllSkyFree/AllSkyDemoEnvironment/AllSky_Logo.png
-  artifactKey: Guid(a5075efb0c5504a389b38cf795aabf4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/AllSkyFree/AllSkyDemoEnvironment/AllSky_Logo.png using Guid(a5075efb0c5504a389b38cf795aabf4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f48c3f01e6300ebce5d827173689ae1') in 0.008352 seconds
-  Import took 0.013072 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.403348 seconds.
-  path: Assets/Resources/Sprites/_ogo.png
-  artifactKey: Guid(ea526bed0ad4e7d4cb7647da581d36a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Sprites/_ogo.png using Guid(ea526bed0ad4e7d4cb7647da581d36a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '53aec309bfdedf19c2091ac994878464') in 0.022832 seconds
-  Import took 0.027337 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.001711 seconds.
-  path: Assets/Resources/Sprites/_ogo.png
-  artifactKey: Guid(ea526bed0ad4e7d4cb7647da581d36a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Sprites/_ogo.png using Guid(ea526bed0ad4e7d4cb7647da581d36a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '53aec309bfdedf19c2091ac994878464') in 0.022544 seconds
-  Import took 0.026945 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 18.717866 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Browser.prefab
-  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad3ce57338f1a708412cee2d7927c70e') in 0.115180 seconds
-  Import took 0.121133 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 80.697963 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Browser.prefab
-  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '13fbd7edc4308558e39a329339c51947') in 0.061739 seconds
-  Import took 0.067537 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 44.298519 seconds.
-  path: Assets/Scripts/UI/Objects
-  artifactKey: Guid(6ecaee2546594f34bbc46a2fa3f350fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/UI/Objects using Guid(6ecaee2546594f34bbc46a2fa3f350fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd9236a5eca65c0324a830be039a18ebc') in 0.006183 seconds
-  Import took 0.010256 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.019936 seconds.
-Begin MonoManager ReloadAssembly
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Error: Could not load signature of Unity.Android.Logcat.AndroidLogcat:.ctor due to: Could not load file or assembly 'UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
-
-Unloading broken assembly Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll, this assembly can cause crashes in the runtime
-
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.28 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.13 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.930 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Refreshing native plugins compatible for Editor in 1.27 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.11 ms.
-Unloading 2773 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 143.1 MB.
-System memory in use after: 142.3 MB.
-
-Unloading 107 unused Assets to reduce memory usage. Loaded Objects now: 3307.
-Total: 3.148600 ms (FindLiveObjects: 0.283700 ms CreateObjectMapping: 0.159100 ms MarkObjects: 1.999100 ms  DeleteObjects: 0.706100 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 41.091512 seconds.
-  path: Assets/Scripts/UI/Objects/Browser.cs
-  artifactKey: Guid(544fd21399091a44e9015068ea9fee19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/UI/Objects/Browser.cs using Guid(544fd21399091a44e9015068ea9fee19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b364f44f23fc08b2494332f977eaf5ff') in 0.005999 seconds
-  Import took 0.011153 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.126846 seconds.
-  path: Assets/Scripts/UI/Objects/Browser.cs
-  artifactKey: Guid(544fd21399091a44e9015068ea9fee19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/UI/Objects/Browser.cs using Guid(544fd21399091a44e9015068ea9fee19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b364f44f23fc08b2494332f977eaf5ff') in 0.002643 seconds
-  Import took 0.007424 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 259.730733 seconds.
-  path: Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/9-Sliced.png
-  artifactKey: Guid(cc35afd292fc349128b36a291fb3a165) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/9-Sliced.png using Guid(cc35afd292fc349128b36a291fb3a165) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '081006364e32a18735828b3fdf2a7e7c') in 0.045307 seconds
-  Import took 0.050505 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 8.261145 seconds.
-  path: Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/Capsule.png
-  artifactKey: Guid(34587324d412940a79d530020c957dc0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/Capsule.png using Guid(34587324d412940a79d530020c957dc0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6454c2914498c65caf15814c15d54090') in 0.110364 seconds
-  Import took 0.115474 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000153 seconds.
-  path: Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/CircleMask.png
-  artifactKey: Guid(87aaca0a643d54397ba969dab4fc8875) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/CircleMask.png using Guid(87aaca0a643d54397ba969dab4fc8875) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '402a06a226409e85859fcd896d098f09') in 0.029107 seconds
-  Import took 0.033347 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000164 seconds.
-  path: Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/Circle.png
-  artifactKey: Guid(4adeaf2d2b1c7417e89f026626d8264f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/Circle.png using Guid(4adeaf2d2b1c7417e89f026626d8264f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1c4b0b105971088804e06b35bef21f28') in 0.017514 seconds
-  Import took 0.023207 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.001594 seconds.
-  path: Packages/com.unity.analytics/DataPrivacy/DataPrivacyIcon.png
-  artifactKey: Guid(599a5fd92bab81a4ab02e52d0b1b1c60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Packages/com.unity.analytics/DataPrivacy/DataPrivacyIcon.png using Guid(599a5fd92bab81a4ab02e52d0b1b1c60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e5acc068db4414727e4d749410492a19') in 0.016975 seconds
-  Import took 0.021206 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.437338 seconds.
-  path: Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/HexagonFlat-Top.png
-  artifactKey: Guid(a9716c16a44a94eed9b5c90fbf4d9bdd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/HexagonFlat-Top.png using Guid(a9716c16a44a94eed9b5c90fbf4d9bdd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f378d27763b31ac03248b5ffd42c20d6') in 0.017924 seconds
-  Import took 0.022875 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000229 seconds.
-  path: Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/HexagonPointed-Top.png
-  artifactKey: Guid(4b2a04fdbe0ef4d8da8f90eaca817cd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/HexagonPointed-Top.png using Guid(4b2a04fdbe0ef4d8da8f90eaca817cd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16fd35a3e0d09bac6bb89260fb13f550') in 0.019793 seconds
-  Import took 0.024051 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.748878 seconds.
-  path: Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/IsometricDiamond.png
-  artifactKey: Guid(0d267bc78a0864eb48358689b29ed20a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/IsometricDiamond.png using Guid(0d267bc78a0864eb48358689b29ed20a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4546b3441598bdf33845a27fb05f34bb') in 0.013904 seconds
-  Import took 0.018017 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.845252 seconds.
-  path: Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/Square.png
-  artifactKey: Guid(db750325989564987a34393247d883b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/Square.png using Guid(db750325989564987a34393247d883b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0a2a9fd554bd3ad0cb1b8ea88b2fe09c') in 0.014295 seconds
-  Import took 0.019759 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 150.697991 seconds.
-  path: Assets/Resources/Sprites/Refresh_icon.png
-  artifactKey: Guid(2090b12265bd8b64394f4ea504d2bcc2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Sprites/Refresh_icon.png using Guid(2090b12265bd8b64394f4ea504d2bcc2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2e0f87805e8000df3bd8741649f1af2f') in 0.050078 seconds
-  Import took 0.055124 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 22.878534 seconds.
-  path: Assets/Resources/Sprites/Refresh_icon.png
-  artifactKey: Guid(2090b12265bd8b64394f4ea504d2bcc2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Sprites/Refresh_icon.png using Guid(2090b12265bd8b64394f4ea504d2bcc2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '243567f8370fc189990835820d881fec') in 0.041679 seconds
-  Import took 0.046269 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 99.294083 seconds.
-  path: Assets/Resources/Sprites/Refresh_icon.png
-  artifactKey: Guid(2090b12265bd8b64394f4ea504d2bcc2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Sprites/Refresh_icon.png using Guid(2090b12265bd8b64394f4ea504d2bcc2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '605cf86eb18b479245674851ef98085a') in 0.027972 seconds
-  Import took 0.032667 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.019650 seconds.
-Begin MonoManager ReloadAssembly
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Error: Could not load signature of Unity.Android.Logcat.AndroidLogcat:.ctor due to: Could not load file or assembly 'UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
-
-Unloading broken assembly Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll, this assembly can cause crashes in the runtime
-
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.31 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.13 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.930 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Refreshing native plugins compatible for Editor in 1.31 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.11 ms.
-Unloading 2774 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 142.8 MB.
-System memory in use after: 142.0 MB.
-
-Unloading 102 unused Assets to reduce memory usage. Loaded Objects now: 3317.
-Total: 3.165300 ms (FindLiveObjects: 0.444100 ms CreateObjectMapping: 0.160100 ms MarkObjects: 1.833900 ms  DeleteObjects: 0.726600 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.031210 seconds.
-Begin MonoManager ReloadAssembly
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Error: Could not load signature of Unity.Android.Logcat.AndroidLogcat:.ctor due to: Could not load file or assembly 'UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
-
-Unloading broken assembly Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll, this assembly can cause crashes in the runtime
-
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.29 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.19 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.952 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Refreshing native plugins compatible for Editor in 1.28 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.11 ms.
-Unloading 2774 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 143.1 MB.
-System memory in use after: 142.4 MB.
-
-Unloading 102 unused Assets to reduce memory usage. Loaded Objects now: 3320.
-Total: 3.044500 ms (FindLiveObjects: 0.274900 ms CreateObjectMapping: 0.162500 ms MarkObjects: 1.881700 ms  DeleteObjects: 0.724600 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 358.128116 seconds.
-  path: Assets/Resources/Sprites/Refresh_icon.png
-  artifactKey: Guid(2090b12265bd8b64394f4ea504d2bcc2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Sprites/Refresh_icon.png using Guid(2090b12265bd8b64394f4ea504d2bcc2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '652921b8a0f8655c73d5484a077f48d0') in 0.201606 seconds
-  Import took 0.206305 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 10.348150 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Browser.prefab
-  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9e816fe416a96397d8b5fc045d0403b4') in 0.284277 seconds
-  Import took 0.290011 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1344.814830 seconds.
-  path: Assets/Resources/Sprites/Refresh_icon.png
-  artifactKey: Guid(2090b12265bd8b64394f4ea504d2bcc2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Sprites/Refresh_icon.png using Guid(2090b12265bd8b64394f4ea504d2bcc2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '574d90f10cbc4a71683c2c3efb894164') in 0.116240 seconds
-  Import took 0.121351 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 38.392940 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Browser.prefab
-  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '784a2cb1ecf37ffa9231b902432c3c9b') in 0.064367 seconds
-  Import took 0.070273 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.018791 seconds.
-Begin MonoManager ReloadAssembly
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Error: Could not load signature of Unity.Android.Logcat.AndroidLogcat:.ctor due to: Could not load file or assembly 'UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
-
-Unloading broken assembly Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll, this assembly can cause crashes in the runtime
-
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.31 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.13 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.932 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Refreshing native plugins compatible for Editor in 1.29 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.11 ms.
-Unloading 2774 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 143.1 MB.
-System memory in use after: 142.3 MB.
-
-Unloading 107 unused Assets to reduce memory usage. Loaded Objects now: 3324.
-Total: 2.980800 ms (FindLiveObjects: 0.346500 ms CreateObjectMapping: 0.160100 ms MarkObjects: 1.751800 ms  DeleteObjects: 0.721500 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 364.407351 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Browser.prefab
-  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '76d351cf5335ad17703fb1cd1cf8cdf2') in 0.167393 seconds
-  Import took 0.173602 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 244.259066 seconds.
-  path: Assets/Resources/Sprites/keyboard_icon.png
-  artifactKey: Guid(1388578816b6d5e42821dbd6738e34b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Sprites/keyboard_icon.png using Guid(1388578816b6d5e42821dbd6738e34b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '104676fc6b1a1f8e37c02a4f5a191571') in 0.038903 seconds
-  Import took 0.044165 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.002179 seconds.
-  path: Assets/Resources/Sprites/keyboard_icon.png
-  artifactKey: Guid(1388578816b6d5e42821dbd6738e34b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Sprites/keyboard_icon.png using Guid(1388578816b6d5e42821dbd6738e34b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '104676fc6b1a1f8e37c02a4f5a191571') in 0.024840 seconds
-  Import took 0.029511 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 13.064616 seconds.
-  path: Assets/Resources/Sprites/keyboard_icon.png
-  artifactKey: Guid(1388578816b6d5e42821dbd6738e34b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Sprites/keyboard_icon.png using Guid(1388578816b6d5e42821dbd6738e34b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'faef3a2828e69c08318ace109ad414c1') in 0.034587 seconds
-  Import took 0.039159 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 159.531794 seconds.
-  path: Assets/Scripts/UI/Objects/InitializeBehaviour.cs
-  artifactKey: Guid(45b08d2b377074b4f8bf0e0c24778844) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/UI/Objects/InitializeBehaviour.cs using Guid(45b08d2b377074b4f8bf0e0c24778844) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '67f895a4b96019dc8610324a25ff989c') in 0.009500 seconds
-  Import took 0.018483 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.019630 seconds.
-Begin MonoManager ReloadAssembly
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Error: Could not load signature of Unity.Android.Logcat.AndroidLogcat:.ctor due to: Could not load file or assembly 'UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
-
-Unloading broken assembly Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll, this assembly can cause crashes in the runtime
-
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.32 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.12 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.943 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Refreshing native plugins compatible for Editor in 1.34 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.11 ms.
-Unloading 2774 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 143.4 MB.
-System memory in use after: 142.7 MB.
-
-Unloading 107 unused Assets to reduce memory usage. Loaded Objects now: 3330.
-Total: 3.262100 ms (FindLiveObjects: 0.384500 ms CreateObjectMapping: 0.152700 ms MarkObjects: 1.945700 ms  DeleteObjects: 0.778500 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.018705 seconds.
-Begin MonoManager ReloadAssembly
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Error: Could not load signature of Unity.Android.Logcat.AndroidLogcat:.ctor due to: Could not load file or assembly 'UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
-
-Unloading broken assembly Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll, this assembly can cause crashes in the runtime
-
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.41 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.12 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.945 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Refreshing native plugins compatible for Editor in 1.29 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.11 ms.
-Unloading 2774 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 143.4 MB.
-System memory in use after: 142.7 MB.
-
-Unloading 102 unused Assets to reduce memory usage. Loaded Objects now: 3333.
-Total: 2.913300 ms (FindLiveObjects: 0.306600 ms CreateObjectMapping: 0.156900 ms MarkObjects: 1.774600 ms  DeleteObjects: 0.674500 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 499.497505 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Browser.prefab
-  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf9314a0371f0a6b26e4c70831e726fa') in 0.169192 seconds
-  Import took 0.175772 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.019613 seconds.
-Begin MonoManager ReloadAssembly
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Error: Could not load signature of Unity.Android.Logcat.AndroidLogcat:.ctor due to: Could not load file or assembly 'UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
-
-Unloading broken assembly Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll, this assembly can cause crashes in the runtime
-
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.27 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.12 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.950 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Refreshing native plugins compatible for Editor in 1.28 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.11 ms.
-Unloading 2774 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 143.2 MB.
-System memory in use after: 142.4 MB.
-
-Unloading 107 unused Assets to reduce memory usage. Loaded Objects now: 3337.
-Total: 2.991300 ms (FindLiveObjects: 0.288400 ms CreateObjectMapping: 0.147000 ms MarkObjects: 1.815800 ms  DeleteObjects: 0.739500 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 206.127966 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Toolbar.prefab
-  artifactKey: Guid(37ac4eb99071a274782f526fe5e0bca6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Toolbar.prefab using Guid(37ac4eb99071a274782f526fe5e0bca6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd419b80288085008bae4f7425ea26abd') in 0.080235 seconds
-  Import took 0.084918 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000233 seconds.
+  Time since last request: 0.000137 seconds.
   path: Assets/Resources/Prefabs/3.0/UI/Transcript.prefab
   artifactKey: Guid(91399c91e41a50c46b88f339e9d07cff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Transcript.prefab using Guid(91399c91e41a50c46b88f339e9d07cff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1bca46a5cdfbe4ca79f7c520abb53f49') in 0.046346 seconds
-  Import took 0.051523 seconds .
+Start importing Assets/Resources/Prefabs/3.0/UI/Transcript.prefab using Guid(91399c91e41a50c46b88f339e9d07cff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '43cf3715a6b6dc08d782b745a528f4bd') in 0.025856 seconds
+  Import took 0.029960 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000170 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Toolbar.prefab
-  artifactKey: Guid(37ac4eb99071a274782f526fe5e0bca6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Toolbar.prefab using Guid(37ac4eb99071a274782f526fe5e0bca6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd419b80288085008bae4f7425ea26abd') in 0.021711 seconds
-  Import took 0.026462 seconds .
+  Time since last request: 0.000213 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Playground.prefab
+  artifactKey: Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Playground.prefab using Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '11a7c17ad0aedf542ccd7da2bdb871dc') in 0.057461 seconds
+  Import took 0.062493 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000208 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Text (TMP).prefab
+  artifactKey: Guid(27880938e29150d4181959d4469815e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Text (TMP).prefab using Guid(27880938e29150d4181959d4469815e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '571506265fda861f88d840313b6dc114') in 0.029202 seconds
+  Import took 0.033192 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.018958 seconds.
+Registered in 0.021870 seconds.
 Begin MonoManager ReloadAssembly
 Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
 Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
 
+Symbol file LoadedFromMemory is not a mono symbol file
 Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
 Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
 
-Error: Could not load signature of Unity.Android.Logcat.AndroidLogcat:.ctor due to: Could not load file or assembly 'UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
-
-Unloading broken assembly Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll, this assembly can cause crashes in the runtime
-
+Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 1.66 ms, found 19 plugins.
+Preloading 2 native plugins for Editor in 0.11 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.020 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
 Refreshing native plugins compatible for Editor in 1.29 ms, found 19 plugins.
+Preloading 2 native plugins for Editor in 0.11 ms.
+Unloading 2774 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 129.9 MB.
+System memory in use after: 130.2 MB.
+
+Unloading 92 unused Assets to reduce memory usage. Loaded Objects now: 3288.
+Total: 2.218600 ms (FindLiveObjects: 0.291100 ms CreateObjectMapping: 0.146000 ms MarkObjects: 1.736000 ms  DeleteObjects: 0.044800 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.022744 seconds.
+Begin MonoManager ReloadAssembly
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 1.26 ms, found 19 plugins.
 Preloading 2 native plugins for Editor in 0.12 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.937 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Refreshing native plugins compatible for Editor in 1.30 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.11 ms.
-Unloading 2774 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 143.5 MB.
-System memory in use after: 142.7 MB.
-
-Unloading 105 unused Assets to reduce memory usage. Loaded Objects now: 3340.
-Total: 3.226100 ms (FindLiveObjects: 0.311600 ms CreateObjectMapping: 0.156600 ms MarkObjects: 2.005400 ms  DeleteObjects: 0.751900 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 54.884916 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Browser.prefab
-  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a7a612f962c0ab9fec7e77f9d8fb4348') in 0.166012 seconds
-  Import took 0.172366 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.019269 seconds.
-Begin MonoManager ReloadAssembly
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Error: Could not load signature of Unity.Android.Logcat.AndroidLogcat:.ctor due to: Could not load file or assembly 'UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
-
-Unloading broken assembly Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll, this assembly can cause crashes in the runtime
-
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.27 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.15 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.954 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Refreshing native plugins compatible for Editor in 1.29 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.11 ms.
-Unloading 2774 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 143.4 MB.
-System memory in use after: 142.7 MB.
-
-Unloading 107 unused Assets to reduce memory usage. Loaded Objects now: 3344.
-Total: 2.968000 ms (FindLiveObjects: 0.301300 ms CreateObjectMapping: 0.142500 ms MarkObjects: 1.846300 ms  DeleteObjects: 0.677100 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.019100 seconds.
-Begin MonoManager ReloadAssembly
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Error: Could not load signature of Unity.Android.Logcat.AndroidLogcat:.ctor due to: Could not load file or assembly 'UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
-
-Unloading broken assembly Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll, this assembly can cause crashes in the runtime
-
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.23 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.11 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.924 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Refreshing native plugins compatible for Editor in 1.32 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.11 ms.
-Unloading 2774 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 143.5 MB.
-System memory in use after: 142.7 MB.
-
-Unloading 102 unused Assets to reduce memory usage. Loaded Objects now: 3347.
-Total: 3.433200 ms (FindLiveObjects: 0.306300 ms CreateObjectMapping: 0.193500 ms MarkObjects: 2.225700 ms  DeleteObjects: 0.685100 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 121.426969 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Browser.prefab
-  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '57539596f0fbfa63db5f291ce84c77c5') in 0.164390 seconds
-  Import took 0.171506 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.019867 seconds.
-Begin MonoManager ReloadAssembly
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Error: Could not load signature of Unity.Android.Logcat.AndroidLogcat:.ctor due to: Could not load file or assembly 'UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
-
-Unloading broken assembly Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll, this assembly can cause crashes in the runtime
-
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.30 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.13 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.947 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Refreshing native plugins compatible for Editor in 1.29 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.11 ms.
-Unloading 2774 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 143.5 MB.
-System memory in use after: 142.8 MB.
-
-Unloading 107 unused Assets to reduce memory usage. Loaded Objects now: 3351.
-Total: 3.137300 ms (FindLiveObjects: 0.482000 ms CreateObjectMapping: 0.165800 ms MarkObjects: 1.802100 ms  DeleteObjects: 0.686400 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 107.761145 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Browser.prefab
-  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fc9eda3bf73095c187d9c913d48fb14f') in 0.170420 seconds
-  Import took 0.177198 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.019447 seconds.
-Begin MonoManager ReloadAssembly
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Error: Could not load signature of Unity.Android.Logcat.AndroidLogcat:.ctor due to: Could not load file or assembly 'UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
-
-Unloading broken assembly Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll, this assembly can cause crashes in the runtime
-
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.35 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.13 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.940 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Refreshing native plugins compatible for Editor in 1.27 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.11 ms.
-Unloading 2774 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 143.3 MB.
-System memory in use after: 142.6 MB.
-
-Unloading 107 unused Assets to reduce memory usage. Loaded Objects now: 3355.
-Total: 2.985200 ms (FindLiveObjects: 0.307000 ms CreateObjectMapping: 0.162300 ms MarkObjects: 1.801300 ms  DeleteObjects: 0.713600 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 168.770285 seconds.
-  path: Assets/Meshes/Keyboard/Punchkeyboard2.0/Punchkeyboard_2.0.fbx
-  artifactKey: Guid(8d5c6e844e4ca2940ba2fe6497665938) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Meshes/Keyboard/Punchkeyboard2.0/Punchkeyboard_2.0.fbx using Guid(8d5c6e844e4ca2940ba2fe6497665938) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff904fc366d85ee8604d2bd38a1a94ae') in 0.385984 seconds
-  Import took 0.391172 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.003438 seconds.
-  path: Assets/Meshes/Keyboard/Punchkeyboard2.0/Punchkeyboard_2.0.fbx
-  artifactKey: Guid(8d5c6e844e4ca2940ba2fe6497665938) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Meshes/Keyboard/Punchkeyboard2.0/Punchkeyboard_2.0.fbx using Guid(8d5c6e844e4ca2940ba2fe6497665938) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff904fc366d85ee8604d2bd38a1a94ae') in 0.179264 seconds
-  Import took 0.184419 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.019680 seconds.
-Begin MonoManager ReloadAssembly
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Error: Could not load signature of Unity.Android.Logcat.AndroidLogcat:.ctor due to: Could not load file or assembly 'UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
-
-Unloading broken assembly Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll, this assembly can cause crashes in the runtime
-
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.30 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.11 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.939 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Refreshing native plugins compatible for Editor in 1.32 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.11 ms.
-Unloading 2774 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 144.3 MB.
-System memory in use after: 143.5 MB.
-
-Unloading 102 unused Assets to reduce memory usage. Loaded Objects now: 3362.
-Total: 3.124000 ms (FindLiveObjects: 0.304200 ms CreateObjectMapping: 0.144000 ms MarkObjects: 1.957300 ms  DeleteObjects: 0.694400 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.018813 seconds.
-Begin MonoManager ReloadAssembly
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Error: Could not load signature of Unity.Android.Logcat.AndroidLogcat:.ctor due to: Could not load file or assembly 'UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
-
-Unloading broken assembly Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll, this assembly can cause crashes in the runtime
-
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.36 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.13 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.941 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Refreshing native plugins compatible for Editor in 1.28 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.11 ms.
-Unloading 2774 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 144.3 MB.
-System memory in use after: 143.5 MB.
-
-Unloading 102 unused Assets to reduce memory usage. Loaded Objects now: 3365.
-Total: 3.081800 ms (FindLiveObjects: 0.369800 ms CreateObjectMapping: 0.163200 ms MarkObjects: 1.808000 ms  DeleteObjects: 0.740100 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.019531 seconds.
-Begin MonoManager ReloadAssembly
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Error: Could not load signature of Unity.Android.Logcat.AndroidLogcat:.ctor due to: Could not load file or assembly 'UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
-
-Unloading broken assembly Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll, this assembly can cause crashes in the runtime
-
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.29 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.13 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.949 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Refreshing native plugins compatible for Editor in 1.29 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.13 ms.
-Unloading 2774 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 144.0 MB.
-System memory in use after: 143.3 MB.
-
-Unloading 102 unused Assets to reduce memory usage. Loaded Objects now: 3368.
-Total: 3.172200 ms (FindLiveObjects: 0.430100 ms CreateObjectMapping: 0.211000 ms MarkObjects: 1.855000 ms  DeleteObjects: 0.675300 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.019046 seconds.
-Begin MonoManager ReloadAssembly
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Error: Could not load signature of Unity.Android.Logcat.AndroidLogcat:.ctor due to: Could not load file or assembly 'UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
-
-Unloading broken assembly Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll, this assembly can cause crashes in the runtime
-
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.32 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.14 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.964 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Refreshing native plugins compatible for Editor in 1.28 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.11 ms.
-Unloading 2774 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 144.3 MB.
-System memory in use after: 143.6 MB.
-
-Unloading 102 unused Assets to reduce memory usage. Loaded Objects now: 3371.
-Total: 3.088600 ms (FindLiveObjects: 0.279500 ms CreateObjectMapping: 0.159100 ms MarkObjects: 1.940900 ms  DeleteObjects: 0.708400 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.018669 seconds.
-Begin MonoManager ReloadAssembly
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Error: Could not load signature of Unity.Android.Logcat.AndroidLogcat:.ctor due to: Could not load file or assembly 'UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
-
-Unloading broken assembly Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll, this assembly can cause crashes in the runtime
-
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.39 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.14 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
@@ -1649,182 +259,544 @@ Platform modules already initialized, skipping
 Assertion failed on expression: 'reloadOk'
 
 Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Refreshing native plugins compatible for Editor in 1.30 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.11 ms.
+Refreshing native plugins compatible for Editor in 1.45 ms, found 19 plugins.
+Preloading 2 native plugins for Editor in 0.12 ms.
 Unloading 2774 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 144.3 MB.
-System memory in use after: 143.6 MB.
+System memory in use before: 131.0 MB.
+System memory in use after: 131.2 MB.
 
-Unloading 102 unused Assets to reduce memory usage. Loaded Objects now: 3374.
-Total: 3.062800 ms (FindLiveObjects: 0.292200 ms CreateObjectMapping: 0.168000 ms MarkObjects: 1.836200 ms  DeleteObjects: 0.765800 ms)
+Unloading 87 unused Assets to reduce memory usage. Loaded Objects now: 3291.
+Total: 2.670900 ms (FindLiveObjects: 0.344800 ms CreateObjectMapping: 0.143500 ms MarkObjects: 2.109900 ms  DeleteObjects: 0.072100 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 1724.706193 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Browser.prefab
+  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b11d03fdf06efa898e26e0a623d6d26c') in 0.174440 seconds
+  Import took 0.181319 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000255 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab
+  artifactKey: Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab using Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1ab89fdceeb25a848f9ec0b026fbc884') in 0.048731 seconds
+  Import took 0.053631 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000137 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Playground.prefab
+  artifactKey: Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Playground.prefab using Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '899023a1437deed6bba6ef346eddea44') in 0.057154 seconds
+  Import took 0.062544 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.019170 seconds.
+Registered in 0.018860 seconds.
 Begin MonoManager ReloadAssembly
 Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
 Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
 
+Symbol file LoadedFromMemory is not a mono symbol file
 Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
 Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
 
-Error: Could not load signature of Unity.Android.Logcat.AndroidLogcat:.ctor due to: Could not load file or assembly 'UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
-
-Unloading broken assembly Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll, this assembly can cause crashes in the runtime
-
+Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.32 ms, found 19 plugins.
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 1.30 ms, found 19 plugins.
 Preloading 2 native plugins for Editor in 0.12 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.961 seconds
+- Completed reload, in  0.928 seconds
 Platform modules already initialized, skipping
 Assertion failed on expression: 'reloadOk'
 
 Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Refreshing native plugins compatible for Editor in 1.30 ms, found 19 plugins.
+Refreshing native plugins compatible for Editor in 1.27 ms, found 19 plugins.
 Preloading 2 native plugins for Editor in 0.11 ms.
 Unloading 2774 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 144.0 MB.
-System memory in use after: 143.2 MB.
+System memory in use before: 130.9 MB.
+System memory in use after: 131.1 MB.
 
-Unloading 102 unused Assets to reduce memory usage. Loaded Objects now: 3377.
-Total: 2.990500 ms (FindLiveObjects: 0.336900 ms CreateObjectMapping: 0.129300 ms MarkObjects: 1.786300 ms  DeleteObjects: 0.737100 ms)
+Unloading 92 unused Assets to reduce memory usage. Loaded Objects now: 3295.
+Total: 2.585900 ms (FindLiveObjects: 0.280500 ms CreateObjectMapping: 0.140200 ms MarkObjects: 2.062900 ms  DeleteObjects: 0.101600 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 341.527709 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab
+  artifactKey: Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab using Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '35bcebae7887ecab316f3d023da4a83d') in 0.127246 seconds
+  Import took 0.132791 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000129 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Playground.prefab
+  artifactKey: Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Playground.prefab using Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '82a0bdb18f8cc473f37a812771ef4c28') in 0.070275 seconds
+  Import took 0.075683 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 90.091407 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab
+  artifactKey: Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab using Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd5b82a5e7a8db17679e76a2193e9dc0e') in 0.044332 seconds
+  Import took 0.050635 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000135 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Playground.prefab
+  artifactKey: Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Playground.prefab using Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a1728705492ca34e658bb6a8a832312e') in 0.051873 seconds
+  Import took 0.057020 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 43.090292 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Browser.prefab
+  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '227d190c6e3bafbbfb1d6da60fd549c9') in 0.072902 seconds
+  Import took 0.079253 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.018383 seconds.
+Registered in 0.019568 seconds.
 Begin MonoManager ReloadAssembly
 Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
 Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
 
+Symbol file LoadedFromMemory is not a mono symbol file
 Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
 Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
 
-Error: Could not load signature of Unity.Android.Logcat.AndroidLogcat:.ctor due to: Could not load file or assembly 'UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
-
-Unloading broken assembly Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll, this assembly can cause crashes in the runtime
-
+Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.34 ms, found 19 plugins.
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 1.36 ms, found 19 plugins.
+Preloading 2 native plugins for Editor in 0.17 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.931 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
+Refreshing native plugins compatible for Editor in 1.31 ms, found 19 plugins.
+Preloading 2 native plugins for Editor in 0.11 ms.
+Unloading 2774 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 131.4 MB.
+System memory in use after: 131.6 MB.
+
+Unloading 92 unused Assets to reduce memory usage. Loaded Objects now: 3299.
+Total: 2.276300 ms (FindLiveObjects: 0.307000 ms CreateObjectMapping: 0.167400 ms MarkObjects: 1.754200 ms  DeleteObjects: 0.047000 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 84.176556 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Browser.prefab
+  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '25d0ad3ac7933e3fd456cef2f87e12e5') in 0.166397 seconds
+  Import took 0.172855 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000170 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab
+  artifactKey: Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab using Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e26cfe730077caeb67a4b84834f18c0') in 0.043633 seconds
+  Import took 0.048499 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000128 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Playground.prefab
+  artifactKey: Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Playground.prefab using Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f91a51f4a704db73a5400544692c6150') in 0.053028 seconds
+  Import took 0.058531 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 90.854011 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Browser.prefab
+  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a447cc038afa359963b19b34eac9021a') in 0.063062 seconds
+  Import took 0.070058 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000134 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab
+  artifactKey: Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab using Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e4cf65c3ec1b616b677d54de8fc4f414') in 0.044344 seconds
+  Import took 0.049623 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000132 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Playground.prefab
+  artifactKey: Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Playground.prefab using Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b2cd160549817992c30d404d965ec57f') in 0.051914 seconds
+  Import took 0.057017 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.018909 seconds.
+Begin MonoManager ReloadAssembly
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 1.27 ms, found 19 plugins.
 Preloading 2 native plugins for Editor in 0.13 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.963 seconds
+- Completed reload, in  0.915 seconds
 Platform modules already initialized, skipping
 Assertion failed on expression: 'reloadOk'
 
 Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Refreshing native plugins compatible for Editor in 1.29 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.11 ms.
-Unloading 2774 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 144.3 MB.
-System memory in use after: 143.6 MB.
-
-Unloading 102 unused Assets to reduce memory usage. Loaded Objects now: 3380.
-Total: 3.096700 ms (FindLiveObjects: 0.406500 ms CreateObjectMapping: 0.171700 ms MarkObjects: 1.815000 ms  DeleteObjects: 0.702900 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.019575 seconds.
-Begin MonoManager ReloadAssembly
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Error: Could not load signature of Unity.Android.Logcat.AndroidLogcat:.ctor due to: Could not load file or assembly 'UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
-
-Unloading broken assembly Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll, this assembly can cause crashes in the runtime
-
-Native extension for WindowsStandalone target not found
 Refreshing native plugins compatible for Editor in 1.28 ms, found 19 plugins.
+Preloading 2 native plugins for Editor in 0.11 ms.
+Unloading 2774 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 131.4 MB.
+System memory in use after: 131.6 MB.
+
+Unloading 92 unused Assets to reduce memory usage. Loaded Objects now: 3303.
+Total: 2.544800 ms (FindLiveObjects: 0.394100 ms CreateObjectMapping: 0.135500 ms MarkObjects: 1.950500 ms  DeleteObjects: 0.063900 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 183.301146 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Browser.prefab
+  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38cb0eb4e4942979c2ff3cd3d420d60a') in 0.172037 seconds
+  Import took 0.178399 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000154 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab
+  artifactKey: Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab using Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d1c797803e187af7fdd28da1b998614') in 0.049883 seconds
+  Import took 0.055001 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000135 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Playground.prefab
+  artifactKey: Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Playground.prefab using Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4edaebc7074f443778320cc39ffe821f') in 0.056610 seconds
+  Import took 0.062008 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.020538 seconds.
+Begin MonoManager ReloadAssembly
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 1.30 ms, found 19 plugins.
+Preloading 2 native plugins for Editor in 0.13 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.926 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
+Refreshing native plugins compatible for Editor in 1.28 ms, found 19 plugins.
+Preloading 2 native plugins for Editor in 0.11 ms.
+Unloading 2774 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 131.6 MB.
+System memory in use after: 131.8 MB.
+
+Unloading 92 unused Assets to reduce memory usage. Loaded Objects now: 3307.
+Total: 2.712600 ms (FindLiveObjects: 0.528200 ms CreateObjectMapping: 0.246400 ms MarkObjects: 1.875200 ms  DeleteObjects: 0.061900 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.021099 seconds.
+Begin MonoManager ReloadAssembly
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 1.34 ms, found 19 plugins.
 Preloading 2 native plugins for Editor in 0.12 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.962 seconds
+- Completed reload, in  0.977 seconds
 Platform modules already initialized, skipping
 Assertion failed on expression: 'reloadOk'
 
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
 Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
 Refreshing native plugins compatible for Editor in 1.29 ms, found 19 plugins.
 Preloading 2 native plugins for Editor in 0.11 ms.
 Unloading 2774 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 144.3 MB.
-System memory in use after: 143.5 MB.
+System memory in use before: 131.8 MB.
+System memory in use after: 132.0 MB.
 
-Unloading 102 unused Assets to reduce memory usage. Loaded Objects now: 3383.
-Total: 3.051500 ms (FindLiveObjects: 0.289200 ms CreateObjectMapping: 0.150900 ms MarkObjects: 1.903800 ms  DeleteObjects: 0.707000 ms)
+Unloading 87 unused Assets to reduce memory usage. Loaded Objects now: 3310.
+Total: 2.956600 ms (FindLiveObjects: 0.579700 ms CreateObjectMapping: 0.244700 ms MarkObjects: 2.053800 ms  DeleteObjects: 0.077600 ms)
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.018791 seconds.
+Registered in 0.019483 seconds.
 Begin MonoManager ReloadAssembly
 Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
 Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
 
+Symbol file LoadedFromMemory is not a mono symbol file
 Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
 Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
 
-Error: Could not load signature of Unity.Android.Logcat.AndroidLogcat:.ctor due to: Could not load file or assembly 'UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
-
-Unloading broken assembly Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll, this assembly can cause crashes in the runtime
-
+Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.38 ms, found 19 plugins.
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 1.37 ms, found 19 plugins.
 Preloading 2 native plugins for Editor in 0.12 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.957 seconds
+- Completed reload, in  0.939 seconds
 Platform modules already initialized, skipping
 Assertion failed on expression: 'reloadOk'
 
 Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Refreshing native plugins compatible for Editor in 1.31 ms, found 19 plugins.
-Preloading 2 native plugins for Editor in 0.12 ms.
+Refreshing native plugins compatible for Editor in 1.29 ms, found 19 plugins.
+Preloading 2 native plugins for Editor in 0.11 ms.
 Unloading 2774 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 144.3 MB.
-System memory in use after: 143.6 MB.
+System memory in use before: 131.8 MB.
+System memory in use after: 132.0 MB.
 
-Unloading 102 unused Assets to reduce memory usage. Loaded Objects now: 3386.
-Total: 3.104600 ms (FindLiveObjects: 0.415600 ms CreateObjectMapping: 0.200900 ms MarkObjects: 1.791400 ms  DeleteObjects: 0.695700 ms)
+Unloading 87 unused Assets to reduce memory usage. Loaded Objects now: 3313.
+Total: 2.482800 ms (FindLiveObjects: 0.342000 ms CreateObjectMapping: 0.136000 ms MarkObjects: 1.918000 ms  DeleteObjects: 0.086000 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 1098.622683 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Browser.prefab
+  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '051f92297b6a11846a9f4e4d59ac2863') in 0.176026 seconds
+  Import took 0.182188 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000175 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab
+  artifactKey: Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab using Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08c240329c9c0382aef181fdacec2ab4') in 0.045158 seconds
+  Import took 0.050075 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000156 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Playground.prefab
+  artifactKey: Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Playground.prefab using Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f4e65f26b5c6282aa0c1cad5b221957f') in 0.054342 seconds
+  Import took 0.059765 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 855.019006 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Browser.prefab
+  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '815e575f5a61aa7d31a77973e3a864ea') in 0.064853 seconds
+  Import took 0.071583 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000159 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab
+  artifactKey: Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab using Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '24cffe7d9f24890704e94467c1018fdf') in 0.047187 seconds
+  Import took 0.052239 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000132 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Playground.prefab
+  artifactKey: Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Playground.prefab using Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b5d8f8b5d3ef63b850e107708f24def3') in 0.054592 seconds
+  Import took 0.060135 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 272.895377 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Browser.prefab
+  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '576af9b5cd582a5cd791470d4fe8ac46') in 0.065545 seconds
+  Import took 0.072830 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000130 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab
+  artifactKey: Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab using Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '15292074f75b6a0964d729b71eb3e418') in 0.047660 seconds
+  Import took 0.052897 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000120 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Playground.prefab
+  artifactKey: Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Playground.prefab using Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '999c29ed64b40c83613ffd0c58ad0dd9') in 0.056592 seconds
+  Import took 0.062086 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.018829 seconds.
+Registered in 0.018978 seconds.
 Begin MonoManager ReloadAssembly
 Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
 Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
 
+Symbol file LoadedFromMemory is not a mono symbol file
 Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
 Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
 
-Error: Could not load signature of Unity.Android.Logcat.AndroidLogcat:.ctor due to: Could not load file or assembly 'UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
-
-Unloading broken assembly Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll, this assembly can cause crashes in the runtime
-
+Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 1.38 ms, found 19 plugins.
+Preloading 2 native plugins for Editor in 0.16 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.947 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
+Refreshing native plugins compatible for Editor in 1.27 ms, found 19 plugins.
+Preloading 2 native plugins for Editor in 0.11 ms.
+Unloading 2774 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 131.6 MB.
+System memory in use after: 131.9 MB.
+
+Unloading 92 unused Assets to reduce memory usage. Loaded Objects now: 3317.
+Total: 2.331400 ms (FindLiveObjects: 0.324500 ms CreateObjectMapping: 0.158800 ms MarkObjects: 1.762400 ms  DeleteObjects: 0.085000 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 327.440000 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Browser.prefab
+  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40db24d7badcca12749f5bb001ec3262') in 0.169964 seconds
+  Import took 0.176589 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000199 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab
+  artifactKey: Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab using Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b4c6e7d7701cff128be17f11e82b41c2') in 0.045761 seconds
+  Import took 0.050660 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000129 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Playground.prefab
+  artifactKey: Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Playground.prefab using Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '32fab9470b9c364000313de88dd5aaf1') in 0.055097 seconds
+  Import took 0.060210 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.020483 seconds.
+Begin MonoManager ReloadAssembly
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
 Refreshing native plugins compatible for Editor in 1.30 ms, found 19 plugins.
 Preloading 2 native plugins for Editor in 0.12 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.972 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
+Refreshing native plugins compatible for Editor in 1.33 ms, found 19 plugins.
+Preloading 2 native plugins for Editor in 0.11 ms.
+Unloading 2774 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 131.9 MB.
+System memory in use after: 132.1 MB.
+
+Unloading 92 unused Assets to reduce memory usage. Loaded Objects now: 3321.
+Total: 2.594700 ms (FindLiveObjects: 0.316600 ms CreateObjectMapping: 0.213800 ms MarkObjects: 2.011200 ms  DeleteObjects: 0.051600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.022481 seconds.
+Begin MonoManager ReloadAssembly
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 1.26 ms, found 19 plugins.
+Preloading 2 native plugins for Editor in 0.13 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
@@ -1834,13 +806,60 @@ Platform modules already initialized, skipping
 Assertion failed on expression: 'reloadOk'
 
 Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
 Refreshing native plugins compatible for Editor in 1.30 ms, found 19 plugins.
 Preloading 2 native plugins for Editor in 0.11 ms.
 Unloading 2774 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 144.3 MB.
-System memory in use after: 143.6 MB.
+System memory in use before: 131.9 MB.
+System memory in use after: 132.1 MB.
 
-Unloading 102 unused Assets to reduce memory usage. Loaded Objects now: 3389.
-Total: 3.478100 ms (FindLiveObjects: 0.317500 ms CreateObjectMapping: 0.171000 ms MarkObjects: 2.221000 ms  DeleteObjects: 0.768000 ms)
+Unloading 87 unused Assets to reduce memory usage. Loaded Objects now: 3324.
+Total: 3.673300 ms (FindLiveObjects: 0.627000 ms CreateObjectMapping: 0.339500 ms MarkObjects: 2.652000 ms  DeleteObjects: 0.052900 ms)
 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.019004 seconds.
+Begin MonoManager ReloadAssembly
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 1.42 ms, found 19 plugins.
+Preloading 2 native plugins for Editor in 0.12 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.919 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
+Refreshing native plugins compatible for Editor in 1.29 ms, found 19 plugins.
+Preloading 2 native plugins for Editor in 0.11 ms.
+Unloading 2774 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 131.7 MB.
+System memory in use after: 131.9 MB.
+
+Unloading 87 unused Assets to reduce memory usage. Loaded Objects now: 3327.
+Total: 2.495100 ms (FindLiveObjects: 0.421200 ms CreateObjectMapping: 0.163000 ms MarkObjects: 1.829500 ms  DeleteObjects: 0.080900 ms)
+
+========================================================================
+Received Prepare
+Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
+Refreshing native plugins compatible for Editor in 25.70 ms, found 19 plugins.
+Preloading 2 native plugins for Editor in 0.12 ms.
+Unloading 84 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 78.8 MB.
+System memory in use after: 79.0 MB.
+
+Unloading 84 unused Assets to reduce memory usage. Loaded Objects now: 3327.
+Total: 2.422900 ms (FindLiveObjects: 0.287600 ms CreateObjectMapping: 0.140800 ms MarkObjects: 1.964200 ms  DeleteObjects: 0.028900 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

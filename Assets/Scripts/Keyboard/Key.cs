@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading;
 using System.Text.RegularExpressions;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using LoggingModule;
@@ -77,11 +79,7 @@ public class Key : MonoBehaviour
 		{
 			if (currentDistance > DistanceToBePressed)
 			{
-				KeyPressed = true;
-				keyPressed ();
-				if (!isSpecialKey) WriteStringToTarget();
-				keySoundController.StartKeySound (this.gameObject.transform);
-				checkForButton = false;
+				ActivateKeyPress();
 			}
 		} 
 		else if (!checkForButton)
@@ -147,7 +145,7 @@ public class Key : MonoBehaviour
 		}
 	}
 
-	private void WriteStringToTarget()
+	IEnumerator WriteStringToTarget()
     {
 		if (!InteractionLogger.isUsingVirtualKeyboard) InteractionLogger.RegisterVirtualKeyboard();
 
@@ -157,6 +155,10 @@ public class Key : MonoBehaviour
 			int lcp = window.lastCaretPosition;
 			int lap = window.lastAnchorPosition;
 			window.keyboardTarget.ActivateInputField();
+			yield return null;
+			window.keyboardTarget.caretPosition = lcp;
+			window.keyboardTarget.selectionAnchorPosition = lap;
+
 			if (name.Contains("Backspace"))
             {
 				if (lcp != lap)
@@ -191,6 +193,8 @@ public class Key : MonoBehaviour
 					try
 					{
 						window.keyboardTarget.text = window.keyboardTarget.text.Remove(lcp, 1);
+						window.keyboardTarget.caretPosition = lcp;
+						window.keyboardTarget.selectionAnchorPosition = lap;
 					}
 					catch { }
 				}
@@ -222,5 +226,14 @@ public class Key : MonoBehaviour
 			.Remove(Math.Min(lcp, lap), lcp - lap);
 		window.keyboardTarget.caretPosition = Math.Min(lcp, lap);
 		lcp = Math.Min(lcp, lap);
+	}
+
+	public void ActivateKeyPress()
+    {
+		KeyPressed = true;
+		keyPressed();
+		if (!isSpecialKey) StartCoroutine(WriteStringToTarget());
+		keySoundController.StartKeySound(this.gameObject.transform);
+		checkForButton = false;
 	}
 }
