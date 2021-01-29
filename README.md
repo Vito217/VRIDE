@@ -3,11 +3,13 @@ A Virtual Reality Interactive Development Environment made in Unity that support
 
 <i><b>Note:</b> This is still an early WIP, so there could be lot of features missing</i>
 
-[![Alt text for your video](https://img.youtube.com/vi/rulEHAiN-3M/0.jpg)](http://www.youtube.com/watch?v=rulEHAiN-3M)
-
 ![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-07-15.png)
 ![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-10-27.png)
 ![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-10-28.png)
+
+### Example Video:
+
+[![Alt text for your video](https://img.youtube.com/vi/rulEHAiN-3M/0.jpg)](http://www.youtube.com/watch?v=rulEHAiN-3M)
 
 ## What is PharoVRIDE?
 
