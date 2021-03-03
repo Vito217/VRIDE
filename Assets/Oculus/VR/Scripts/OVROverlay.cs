@@ -1,12 +1,8 @@
 /************************************************************************************
 Copyright : Copyright (c) Facebook Technologies, LLC and its affiliates. All rights reserved.
 
-Licensed under the Oculus Master SDK License Version 1.0 (the "License"); you may not use
-the Utilities SDK except in compliance with the License, which is provided at the time of installation
-or download, or which otherwise accompanies this software in either electronic or hard copy form.
-
-You may obtain a copy of the License at
-https://developer.oculus.com/licenses/oculusmastersdk-1.0/
+Your use of this SDK or tool is subject to the Oculus SDK License Agreement, available at
+https://developer.oculus.com/licenses/oculussdk/
 
 Unless required by applicable law or agreed to in writing, the Utilities SDK distributed
 under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF
@@ -18,6 +14,7 @@ using UnityEngine;
 using System;
 using System.Collections;
 using System.Runtime.InteropServices;
+using System.Collections.Generic;
 
 /// <summary>
 /// Add OVROverlay script to an object with an optional mesh primitive
@@ -60,6 +57,7 @@ public class OVROverlay : MonoBehaviour
 		Cubemap = OVRPlugin.OverlayShape.Cubemap,
 		OffcenterCubemap = OVRPlugin.OverlayShape.OffcenterCubemap,
 		Equirect = OVRPlugin.OverlayShape.Equirect,
+		Fisheye = OVRPlugin.OverlayShape.Fisheye,
 	}
 
 	/// <summary>
@@ -182,7 +180,7 @@ public class OVROverlay : MonoBehaviour
 
 	[SerializeField]
 	private bool _previewInEditor = false;
-	
+
 #if UNITY_EDITOR
 	private GameObject previewObject;
 #endif
@@ -260,6 +258,11 @@ public class OVROverlay : MonoBehaviour
 	private Renderer rend;
 
 	private int texturesPerStage { get { return (layout == OVRPlugin.LayerLayout.Stereo) ? 2 : 1; } }
+
+	private static bool NeedsTexturesForShape(OverlayShape shape)
+	{
+		return true;
+	}
 
 	private bool CreateLayer(int mipLevels, int sampleCount, OVRPlugin.EyeTextureFormat etFormat, int flags, OVRPlugin.Sizei size, OVRPlugin.OverlayShape shape)
 	{
@@ -450,6 +453,15 @@ public class OVROverlay : MonoBehaviour
 		textureRectMatrix.leftRect = srcRectLeftConverted;
 		textureRectMatrix.rightRect = srcRectRightConverted;
 
+		// Fisheye layer requires a 0.5f offset for texture to be centered on the fisheye projection
+		if (currentOverlayShape == OverlayShape.Fisheye)
+		{
+			destRectLeftConverted.x -= 0.5f;
+			destRectLeftConverted.y -= 0.5f;
+			destRectRightConverted.x -= 0.5f;
+			destRectRightConverted.y -= 0.5f;
+		}
+
 		float leftWidthFactor = srcRectLeft.width / destRectLeft.width;
 		float leftHeightFactor = srcRectLeft.height / destRectLeft.height;
 		textureRectMatrix.leftScaleBias = new Vector4(leftWidthFactor, leftHeightFactor, srcRectLeftConverted.x - destRectLeftConverted.x * leftWidthFactor, srcRectLeftConverted.y - destRectLeftConverted.y * leftHeightFactor);
@@ -530,7 +542,7 @@ public class OVROverlay : MonoBehaviour
 			textureSize.w = externalSurfaceWidth;
 			textureSize.h = externalSurfaceHeight;
 		}
-		else
+		else if (NeedsTexturesForShape(currentOverlayShape))
 		{
 			if (textures[0] == null)
 			{
@@ -765,9 +777,10 @@ public class OVROverlay : MonoBehaviour
 		{
 			UpdateTextureRectMatrix();
 		}
+		bool noTextures = isExternalSurface || !NeedsTexturesForShape(currentOverlayShape);
 		bool isOverlayVisible = OVRPlugin.EnqueueSubmitLayer(overlay, headLocked, noDepthBufferTesting,
-			isExternalSurface ? System.IntPtr.Zero : layerTextures[0].appTexturePtr,
-			isExternalSurface ? System.IntPtr.Zero : layerTextures[rightEyeIndex].appTexturePtr,
+			noTextures ? System.IntPtr.Zero : layerTextures[0].appTexturePtr,
+			noTextures ? System.IntPtr.Zero : layerTextures[rightEyeIndex].appTexturePtr,
 			layerId, frameIndex, pose.flipZ().ToPosef_Legacy(), scale.ToVector3f(), layerIndex, (OVRPlugin.OverlayShape)currentOverlayShape,
 			overrideTextureRectMatrix, textureRectMatrix, overridePerLayerColorScaleAndOffset, colorScale, colorOffset, useExpensiveSuperSample,
 			hidden);
@@ -797,7 +810,8 @@ public class OVROverlay : MonoBehaviour
 		#endif
 	}
 
-#region Unity Messages
+
+	#region Unity Messages
 
 	void Awake()
 	{
@@ -873,7 +887,7 @@ public class OVROverlay : MonoBehaviour
 
 	void OnDisable()
 	{
-	
+
 	#if UNITY_EDITOR
 		if (previewObject != null) {
 			previewObject.SetActive(false);
@@ -939,8 +953,11 @@ public class OVROverlay : MonoBehaviour
 		if (currentOverlayShape == OverlayShape.Cubemap)
 		{
 #if UNITY_ANDROID && !UNITY_EDITOR
-			//HACK: VRAPI cubemaps assume are yawed 180 degrees relative to LibOVR.
-			pose.orientation = pose.orientation * Quaternion.AngleAxis(180, Vector3.up);
+			if (OVRPlugin.nativeXrApi != OVRPlugin.XrApi.OpenXR)
+			{
+				//HACK: VRAPI cubemaps assume are yawed 180 degrees relative to LibOVR.
+				pose.orientation = pose.orientation * Quaternion.AngleAxis(180, Vector3.up);
+			}
 #endif
 			pose.position = headCamera.transform.position;
 		}
@@ -956,8 +973,8 @@ public class OVROverlay : MonoBehaviour
 			}
 		}
 
-		// Cylinder overlay sanity checking
-		if (currentOverlayShape == OverlayShape.Cylinder)
+		// Cylinder overlay sanity checking when not using OpenXR
+		if (OVRPlugin.nativeXrApi != OVRPlugin.XrApi.OpenXR && currentOverlayShape == OverlayShape.Cylinder)
 		{
 			float arcAngle = scale.x / scale.z / (float)Math.PI * 180.0f;
 			if (arcAngle > 180.0f)
@@ -1039,8 +1056,12 @@ public class OVROverlay : MonoBehaviour
 		// The overlay must be specified every eye frame, because it is positioned relative to the
 		// current head location.  If frames are dropped, it will be time warped appropriately,
 		// just like the eye buffers.
-		if (currentOverlayType == OverlayType.None || ((textures.Length < texturesPerStage || textures[0] == null) && !isExternalSurface))
+		bool requiresTextures = !isExternalSurface && NeedsTexturesForShape(currentOverlayShape);
+		if (currentOverlayType == OverlayType.None ||
+			(requiresTextures && (textures.Length < texturesPerStage || textures[0] == null)))
+		{
 			return;
+		}
 
 		OVRPose pose = OVRPose.identity;
 		Vector3 scale = Vector3.one;
@@ -1060,8 +1081,12 @@ public class OVROverlay : MonoBehaviour
 		OVRPlugin.LayerDesc newDesc = GetCurrentLayerDesc();
 		bool isHdr = (newDesc.Format == OVRPlugin.EyeTextureFormat.R16G16B16A16_FP);
 
-		// If the layer and textures are created but sizes differ, force re-creating them
-		if (!layerDesc.TextureSize.Equals(newDesc.TextureSize) && layerId > 0)
+		// If the layer and textures are created but sizes differ, force re-creating them.
+		// If the layer needed textures but does not anymore (or vice versa), re-create as well.
+		bool textureSizesDiffer = !layerDesc.TextureSize.Equals(newDesc.TextureSize) && layerId > 0;
+		bool needsTextures = NeedsTexturesForShape(currentOverlayShape);
+		bool needsTextureChanged = NeedsTexturesForShape(prevOverlayShape) != needsTextures;
+		if (textureSizesDiffer || needsTextureChanged)
 		{
 			DestroyLayerTextures();
 			DestroyLayer();
@@ -1069,26 +1094,38 @@ public class OVROverlay : MonoBehaviour
 
 		bool createdLayer = CreateLayer(newDesc.MipLevels, newDesc.SampleCount, newDesc.Format, newDesc.LayerFlags, newDesc.TextureSize, newDesc.Shape);
 
+
 		if (layerIndex == -1 || layerId <= 0)
-			return;
-
-		bool useMipmaps = (newDesc.MipLevels > 1);
-
-		createdLayer |= CreateLayerTextures(useMipmaps, newDesc.TextureSize, isHdr);
-
-		if (!isExternalSurface && (layerTextures[0].appTexture as RenderTexture != null))
-			isDynamic = true;
-
-		if (!LatchLayerTextures())
-			return;
-
-		// Don't populate the same frame image twice.
-		if (frameIndex > prevFrameIndex)
 		{
-			int stage = frameIndex % stageCount;
-			if (!PopulateLayer (newDesc.MipLevels, isHdr, newDesc.TextureSize, newDesc.SampleCount, stage))
-				return;
+			if (createdLayer)
+			{
+				// Propagate the current shape and avoid the permanent state of "needs texture changed"
+				prevOverlayShape = currentOverlayShape;
+			}
+			return;
 		}
+
+		if (needsTextures)
+		{
+			bool useMipmaps = (newDesc.MipLevels > 1);
+
+			createdLayer |= CreateLayerTextures(useMipmaps, newDesc.TextureSize, isHdr);
+
+			if (!isExternalSurface && (layerTextures[0].appTexture as RenderTexture != null))
+				isDynamic = true;
+
+			if (!LatchLayerTextures())
+				return;
+
+			// Don't populate the same frame image twice.
+			if (frameIndex > prevFrameIndex)
+			{
+				int stage = frameIndex % stageCount;
+				if (!PopulateLayer(newDesc.MipLevels, isHdr, newDesc.TextureSize, newDesc.SampleCount, stage))
+					return;
+			}
+		}
+
 
 		bool isOverlayVisible = SubmitLayer(overlay, headLocked, noDepthBufferTesting, pose, scale, frameIndex);
 

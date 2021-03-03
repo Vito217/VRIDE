@@ -6,7 +6,6 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using LoggingModule;
 using TMPro;
-using HTC.UnityPlugin.Vive;
 
 public class InitializeBehaviour : MonoBehaviour
 {
@@ -29,6 +28,7 @@ public class InitializeBehaviour : MonoBehaviour
 
     void Start()
     {
+        GetComponent<Canvas>().worldCamera = Camera.main;
         StartCoroutine(Coroutine());
     }
 
@@ -125,12 +125,10 @@ public class InitializeBehaviour : MonoBehaviour
         baseScale = transform.localScale;
 
         Transform player = ((PointerEventData) data).enterEventCamera.transform.root;
-        if (ViveInput.GetPressDownEx(HandRole.LeftHand, ControllerButton.Trigger))
-            transform.SetParent(player.Find("ViveCameraRig/LeftHand"));
+        if (player.gameObject.GetComponent<VRIDEInputHandler>().LeftTrigger)
+            transform.SetParent(player.Find("Camera Offset/LeftHand Controller"));
         else
-            transform.SetParent(player.Find("ViveCameraRig/RightHand"));
-
-        //InteractionLogger.StartTimerFor("WindowDragging");
+            transform.SetParent(player.Find("Camera Offset/RightHand Controller"));
 
         InteractionLogger.RegisterWindowDraggingStart(
             transform.position.x, transform.position.y, transform.position.z,
@@ -147,12 +145,9 @@ public class InitializeBehaviour : MonoBehaviour
         transform.rotation = r;
         transform.localScale = baseScale;
 
-        //InteractionLogger.EndTimerFor("WindowDragging");
-
         InteractionLogger.RegisterWindowDraggingEnd(
             transform.position.x, transform.position.y, transform.position.z,
             name.Replace("(Clone)", ""), GetInstanceID().ToString());
-
     }
 
     public void DeactivateTemporarily()

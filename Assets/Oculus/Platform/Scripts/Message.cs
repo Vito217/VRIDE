@@ -132,7 +132,9 @@ namespace Oculus.Platform
       Leaderboard_GetNextEntries                          = 0x4E207CD9,
       Leaderboard_GetPreviousEntries                      = 0x4901DAC0,
       Leaderboard_WriteEntry                              = 0x117FC8FE,
+      Leaderboard_WriteEntryWithSupplementaryMetric       = 0x72C692FA,
       Livestreaming_GetStatus                             = 0x489A6995,
+      Livestreaming_LaunchLivestreamingFlow               = 0x6AB156BD,
       Livestreaming_PauseStream                           = 0x369C7683,
       Livestreaming_ResumeStream                          = 0x22526D8F,
       Matchmaking_Browse                                  = 0x1E6532C8,
@@ -181,6 +183,14 @@ namespace Oculus.Platform
       Room_UpdateMembershipLockStatus                     = 0x370BB7AC,
       Room_UpdateOwner                                    = 0x32B63D1D,
       Room_UpdatePrivateRoomJoinPolicy                    = 0x1141029B,
+      UserDataStore_PrivateDeleteEntryByKey               = 0x5C896F3E,
+      UserDataStore_PrivateGetEntries                     = 0x6C8A8228,
+      UserDataStore_PrivateGetEntryByKey                  = 0x1C068319,
+      UserDataStore_PrivateWriteEntry                     = 0x41D2828B,
+      UserDataStore_PublicDeleteEntryByKey                = 0x1DD5E5FB,
+      UserDataStore_PublicGetEntries                      = 0x167D4BC2,
+      UserDataStore_PublicGetEntryByKey                   = 0x195C66C6,
+      UserDataStore_PublicWriteEntry                      = 0x34364A0A,
       User_Get                                            = 0x6BCF9E47,
       User_GetAccessToken                                 = 0x06A85ABE,
       User_GetLoggedInUser                                = 0x436F345D,
@@ -284,6 +294,9 @@ namespace Oculus.Platform
       /// functions at any time to get the current state directly.
       Notification_Voip_SystemVoipState = 0x58D254A5,
 
+      /// Get surface and update action from platform webrtc for update.
+      Notification_Vrcamera_GetSurfaceUpdate = 0x37F21084,
+
 
       Platform_InitializeWithAccessToken = 0x35692F2B,
       Platform_InitializeStandaloneOculus = 0x51F8CE0C,
@@ -328,6 +341,7 @@ namespace Oculus.Platform
     public virtual CloudStorageMetadata GetCloudStorageMetadata() { return null; }
     public virtual CloudStorageMetadataList GetCloudStorageMetadataList() { return null; }
     public virtual CloudStorageUpdateResponse GetCloudStorageUpdateResponse() { return null; }
+    public virtual Dictionary<string, string> GetDataStore() { return null; }
     public virtual DestinationList GetDestinationList() { return null; }
     public virtual InstalledApplicationList GetInstalledApplicationList() { return null; }
     public virtual LaunchBlockFlowResult GetLaunchBlockFlowResult() { return null; }
@@ -370,6 +384,7 @@ namespace Oculus.Platform
     public virtual SystemVoipState GetSystemVoipState() { return null; }
     public virtual User GetUser() { return null; }
     public virtual UserAndRoomList GetUserAndRoomList() { return null; }
+    public virtual UserDataStoreUpdateResponse GetUserDataStoreUpdateResponse() { return null; }
     public virtual UserList GetUserList() { return null; }
     public virtual UserProof GetUserProof() { return null; }
     public virtual UserReportID GetUserReportID() { return null; }
@@ -498,6 +513,16 @@ namespace Oculus.Platform
           message = new MessageWithCloudStorageUpdateResponse(messageHandle);
           break;
 
+        case Message.MessageType.UserDataStore_PrivateGetEntries:
+        case Message.MessageType.UserDataStore_PrivateGetEntryByKey:
+          message = new MessageWithDataStoreUnderPrivateUserDataStore(messageHandle);
+          break;
+
+        case Message.MessageType.UserDataStore_PublicGetEntries:
+        case Message.MessageType.UserDataStore_PublicGetEntryByKey:
+          message = new MessageWithDataStoreUnderPublicUserDataStore(messageHandle);
+          break;
+
         case Message.MessageType.RichPresence_GetDestinations:
         case Message.MessageType.RichPresence_GetNextDestinationArrayPage:
           message = new MessageWithDestinationList(messageHandle);
@@ -507,6 +532,7 @@ namespace Oculus.Platform
         case Message.MessageType.Challenges_Delete:
         case Message.MessageType.Entitlement_GetIsViewerEntitled:
         case Message.MessageType.IAP_ConsumePurchase:
+        case Message.MessageType.Livestreaming_LaunchLivestreamingFlow:
         case Message.MessageType.Matchmaking_Cancel:
         case Message.MessageType.Matchmaking_Cancel2:
         case Message.MessageType.Matchmaking_ReportResultInsecure:
@@ -533,6 +559,7 @@ namespace Oculus.Platform
           break;
 
         case Message.MessageType.Leaderboard_WriteEntry:
+        case Message.MessageType.Leaderboard_WriteEntryWithSupplementaryMetric:
           message = new MessageWithLeaderboardDidUpdate(messageHandle);
           break;
 
@@ -661,6 +688,7 @@ namespace Oculus.Platform
         case Message.MessageType.CloudStorage2_GetUserDirectoryPath:
         case Message.MessageType.Notification_ApplicationLifecycle_LaunchIntentChanged:
         case Message.MessageType.Notification_Room_InviteAccepted:
+        case Message.MessageType.Notification_Vrcamera_GetSurfaceUpdate:
         case Message.MessageType.User_GetAccessToken:
           message = new MessageWithString(messageHandle);
           break;
@@ -685,6 +713,13 @@ namespace Oculus.Platform
         case Message.MessageType.User_GetLoggedInUserFriends:
         case Message.MessageType.User_GetNextUserArrayPage:
           message = new MessageWithUserList(messageHandle);
+          break;
+
+        case Message.MessageType.UserDataStore_PrivateDeleteEntryByKey:
+        case Message.MessageType.UserDataStore_PrivateWriteEntry:
+        case Message.MessageType.UserDataStore_PublicDeleteEntryByKey:
+        case Message.MessageType.UserDataStore_PublicWriteEntry:
+          message = new MessageWithUserDataStoreUpdateResponse(messageHandle);
           break;
 
         case Message.MessageType.User_GetUserProof:
@@ -1017,6 +1052,30 @@ namespace Oculus.Platform
       var msg = CAPI.ovr_Message_GetNativeMessage(c_message);
       var obj = CAPI.ovr_Message_GetCloudStorageUpdateResponse(msg);
       return new CloudStorageUpdateResponse(obj);
+    }
+
+  }
+  public class MessageWithDataStoreUnderPrivateUserDataStore : Message<Dictionary<string, string>>
+  {
+    public MessageWithDataStoreUnderPrivateUserDataStore(IntPtr c_message) : base(c_message) { }
+    public override Dictionary<string, string> GetDataStore() { return Data; }
+    protected override Dictionary<string, string> GetDataFromMessage(IntPtr c_message)
+    {
+      var msg = CAPI.ovr_Message_GetNativeMessage(c_message);
+      var obj = CAPI.ovr_Message_GetDataStore(msg);
+      return CAPI.DataStoreFromNative(obj);
+    }
+
+  }
+  public class MessageWithDataStoreUnderPublicUserDataStore : Message<Dictionary<string, string>>
+  {
+    public MessageWithDataStoreUnderPublicUserDataStore(IntPtr c_message) : base(c_message) { }
+    public override Dictionary<string, string> GetDataStore() { return Data; }
+    protected override Dictionary<string, string> GetDataFromMessage(IntPtr c_message)
+    {
+      var msg = CAPI.ovr_Message_GetNativeMessage(c_message);
+      var obj = CAPI.ovr_Message_GetDataStore(msg);
+      return CAPI.DataStoreFromNative(obj);
     }
 
   }
@@ -1542,6 +1601,18 @@ namespace Oculus.Platform
       var msg = CAPI.ovr_Message_GetNativeMessage(c_message);
       var obj = CAPI.ovr_Message_GetUserArray(msg);
       return new UserList(obj);
+    }
+
+  }
+  public class MessageWithUserDataStoreUpdateResponse : Message<UserDataStoreUpdateResponse>
+  {
+    public MessageWithUserDataStoreUpdateResponse(IntPtr c_message) : base(c_message) { }
+    public override UserDataStoreUpdateResponse GetUserDataStoreUpdateResponse() { return Data; }
+    protected override UserDataStoreUpdateResponse GetDataFromMessage(IntPtr c_message)
+    {
+      var msg = CAPI.ovr_Message_GetNativeMessage(c_message);
+      var obj = CAPI.ovr_Message_GetUserDataStoreUpdateResponse(msg);
+      return new UserDataStoreUpdateResponse(obj);
     }
 
   }

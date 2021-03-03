@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.Globalization;
 using System.Collections.Generic;
-using HTC.UnityPlugin.Pointer3D;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -1165,7 +1164,6 @@ public class Playground : InitializeBehaviour
     {
         ob.AddComponent<EventTrigger>();
         ob.AddComponent<GraphicRaycaster>();
-        ob.AddComponent<CanvasRaycastTarget>();
         ob.AddComponent<AFrameGeometry>();
         ob.GetComponent<RectTransform>().pivot = Vector2.zero;
         ob.GetComponent<RectTransform>().anchorMin = Vector2.zero;

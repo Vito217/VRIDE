@@ -13,11 +13,6 @@ public class TitleScreenBehaviour : MonoBehaviour
     float limit = 0.0f;
     bool initializing = true;
 
-    private Dictionary<string, VRIDEController> dict;
-
-    public VRIDEController htcplayer_prefab;
-    public VRIDEController openVRPlayerPrefab;
-    public VRIDEController nonvrplayer_prefab;
     public GameObject ground;
     public Material finalMaterial;
 

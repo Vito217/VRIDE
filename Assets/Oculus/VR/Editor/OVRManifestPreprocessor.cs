@@ -228,6 +228,7 @@ public class OVRManifestPreprocessor
                 handTrackingEntryNeeded,
                 modifyIfFound);
 
+
             // Add focus aware tag if this app is targeting Quest Family
             AddOrRemoveTag(doc,
                 androidNamepsaceURI,
@@ -244,11 +245,11 @@ public class OVRManifestPreprocessor
                 string targetDeviceValue = "quest";
                 if (OVRDeviceSelector.isTargetDeviceQuest && OVRDeviceSelector.isTargetDeviceQuest2)
                 {
-                    targetDeviceValue = "quest|delmar";
+                    targetDeviceValue = "quest|quest2";
                 }
                 else if (OVRDeviceSelector.isTargetDeviceQuest2)
                 {
-                    targetDeviceValue = "delmar";
+                    targetDeviceValue = "quest2";
                 }
                 else if (OVRDeviceSelector.isTargetDeviceQuest)
                 {
@@ -288,8 +289,17 @@ public class OVRManifestPreprocessor
                 modifyIfFound,
                 "value", "vr_only");
 
-            // make sure android label and icon are set in the manifest
-            AddOrRemoveTag(doc,
+			// Add VR intent filter tag in the manifest
+			AddOrRemoveTag(doc,
+				androidNamepsaceURI,
+				"/manifest/application/activity/intent-filter",
+				"category",
+				"com.oculus.intent.category.VR",
+				required: true,
+				modifyIfFound: true);
+
+			// make sure android label and icon are set in the manifest
+			AddOrRemoveTag(doc,
                 androidNamepsaceURI,
                 "/manifest",
                 "application",
