@@ -7,6 +7,10 @@ A Virtual Reality Interactive Development Environment made in Unity that support
 ![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-10-27.png)
 ![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-10-28.png)
 
+### Example Video:
+
+[![Alt text for your video](https://img.youtube.com/vi/rulEHAiN-3M/0.jpg)](http://www.youtube.com/watch?v=rulEHAiN-3M)
+
 ## What is PharoVRIDE?
 
 PharoVRIDE is an attempt to make an entire IDE inside a VR game. The main goal of this project is having a big and personalized space, where the programmer can not only develop software in Pharo, but also see and interact with 3D representations of the IDE and Objects in real time.

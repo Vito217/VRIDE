@@ -1,5 +1,10 @@
 # PharoVRIDE's Channel Log
 
+## V0.22.0 (28/01/2021)
+* Added button to show/hide the virtual keyboard.
+* Added refresh button on Browser. Since loading packages sacrifices performance, it must be pressed if you want to see the packages.
+* Now the keys from every virtual keyboard can be used with the pointers.
+
 ## V0.21.2 (14/01/2021)
 * Fixed bad Pharo code parsing.
 * Fixed some Roassal issues.
