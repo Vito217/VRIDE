@@ -15,12 +15,12 @@ C:/Users/alexa/Documents/Unity Projects/PharoVRIDE
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-54465
+58304
 Successfully changed project path to: C:/Users/alexa/Documents/Unity Projects/PharoVRIDE
 C:/Users/alexa/Documents/Unity Projects/PharoVRIDE
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 77.99 ms, found 12 plugins.
-Preloading 1 native plugins for Editor in 0.71 ms.
+Refreshing native plugins compatible for Editor in 47.50 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.70 ms.
 Initialize engine version: 2020.2.6f1 (8a2143876886)
 [Subsystems] Discovering subsystems at path D:/Unity/2020.2.6f1/Editor/Data/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path C:/Users/alexa/Documents/Unity Projects/PharoVRIDE/Assets
@@ -31,44 +31,43 @@ Direct3D:
     Vendor:   
     VRAM:     5980 MB
     Driver:   27.21.14.5256
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
 Initialize mono
 Mono path[0] = 'D:/Unity/2020.2.6f1/Editor/Data/Managed'
 Mono path[1] = 'D:/Unity/2020.2.6f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'D:/Unity/2020.2.6f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56384
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56624
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: D:/Unity/2020.2.6f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
 Register platform support module: D:/Unity/2020.2.6f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
 Register platform support module: D:/Unity/2020.2.6f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
-Registered in 0.000978 seconds.
+Registered in 0.001021 seconds.
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 57.15 ms, found 12 plugins.
-Preloading 1 native plugins for Editor in 0.05 ms.
+Refreshing native plugins compatible for Editor in 34.18 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.08 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.156 seconds
+- Completed reload, in  1.151 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.013274 seconds.
+Registered in 0.010872 seconds.
 Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
 Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
 Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
 
-Symbol file LoadedFromMemory is not a mono symbol file
 Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
 Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
 
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 58.61 ms, found 12 plugins.
-Preloading 1 native plugins for Editor in 0.05 ms.
+Refreshing native plugins compatible for Editor in 34.17 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.08 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
@@ -76,276 +75,133 @@ RoslynAnalysisRunner has terminated.
 [XR] Unable to register display lifecyle provider: [1]
 [XR] Oculus Input lifecycle provider registered.
 [XR] Unable to register input lifecyle provider: [1]
-[XR] OVRP version 1.57.0
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.7.0\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.7.0\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.7.0/Runtime/OculusLoader.cs Line: 243)
+
 Mono: successfully reloaded assembly
-- Completed reload, in  0.975 seconds
+- Completed reload, in  0.901 seconds
 Platform modules already initialized, skipping
 Assertion failed on expression: 'reloadOk'
 
 ========================================================================
 Worker process is ready to serve import requests
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.16 seconds
-Refreshing native plugins compatible for Editor in 0.96 ms, found 12 plugins.
-Preloading 1 native plugins for Editor in 0.05 ms.
-Unloading 2484 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 123.0 MB.
-System memory in use after: 123.0 MB.
-
-Unloading 79 unused Assets to reduce memory usage. Loaded Objects now: 2879.
-Total: 2.055800 ms (FindLiveObjects: 0.285100 ms CreateObjectMapping: 0.115500 ms MarkObjects: 1.575100 ms  DeleteObjects: 0.079200 ms)
-
-========================================================================
-Received Import Request.
-  path: Assets/Resources/Prefabs/Punchkeyboard.prefab
-  artifactKey: Guid(d85aeebb7d9d19b46b11a1e3a7635f5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Punchkeyboard.prefab using Guid(d85aeebb7d9d19b46b11a1e3a7635f5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1520f85f260f5d23520de621c77724fc') in 0.120774 seconds
-  Import took 0.125229 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000262 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Browser.prefab
-  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '432d3e3915059a2983e56c38341999d6') in 0.131942 seconds
-  Import took 0.138385 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000228 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Inspector.prefab
-  artifactKey: Guid(8edb5bebbffcf3341af87069bb0c36e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Inspector.prefab using Guid(8edb5bebbffcf3341af87069bb0c36e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b2e2c9310fd838a8ade2ce40db31a6f7') in 0.030085 seconds
-  Import took 0.034526 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000121 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab
-  artifactKey: Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab using Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9f98e32a612be36ae5c0dc0e24b5fff9') in 0.055554 seconds
-  Import took 0.060743 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000257 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Roassal Examples.prefab
-  artifactKey: Guid(734e0ef38a1ab0d43be055e16420da75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Roassal Examples.prefab using Guid(734e0ef38a1ab0d43be055e16420da75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb79791023bf728540f62cb511c1f617') in 0.032754 seconds
-  Import took 0.036642 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000192 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Transcript.prefab
-  artifactKey: Guid(91399c91e41a50c46b88f339e9d07cff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Transcript.prefab using Guid(91399c91e41a50c46b88f339e9d07cff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '53d62b4e68f54722b9bb86b8c7a1f466') in 0.031658 seconds
-  Import took 0.035418 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000187 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Playground.prefab
-  artifactKey: Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Playground.prefab using Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '15fe0abfeda364a7ee98044cfd7039c9') in 0.060559 seconds
-  Import took 0.065592 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000208 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/GraphObject.prefab
-  artifactKey: Guid(ec197222d023e764dad3752f71176000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/GraphObject.prefab using Guid(ec197222d023e764dad3752f71176000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '853ad838db5564a13a6242e462a0871c') in 0.028404 seconds
-  Import took 0.031689 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000159 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/AFrame.prefab
-  artifactKey: Guid(63f8d24d1f7ee53438369d757e614850) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/AFrame.prefab using Guid(63f8d24d1f7ee53438369d757e614850) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '402bad8fd19392f1dde8ab3be76ea3c4') in 0.025175 seconds
-  Import took 0.029492 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 109.873193 seconds.
-  path: Assets/Scenes/MainScene.unity
-  artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/MainScene.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f4f2d2ddbb2a6cd16826fe198498104') in 0.007862 seconds
-  Import took 0.012741 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.012680 seconds.
-Begin MonoManager ReloadAssembly
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Symbol file LoadedFromMemory is not a mono symbol file
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Native extension for LinuxStandalone target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 1.04 ms, found 12 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
+Refreshing native plugins compatible for Editor in 0.60 ms, found 8 plugins.
 Preloading 1 native plugins for Editor in 0.07 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.824 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
+Unloading 1700 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.0 MB.
+System memory in use after: 84.9 MB.
 
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Refreshing native plugins compatible for Editor in 1.09 ms, found 12 plugins.
-Preloading 1 native plugins for Editor in 0.05 ms.
-Unloading 2377 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 117.2 MB.
-System memory in use after: 117.4 MB.
-
-Unloading 77 unused Assets to reduce memory usage. Loaded Objects now: 2891.
-Total: 2.168400 ms (FindLiveObjects: 0.250200 ms CreateObjectMapping: 0.104100 ms MarkObjects: 1.733100 ms  DeleteObjects: 0.080300 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.013289 seconds.
-Begin MonoManager ReloadAssembly
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Symbol file LoadedFromMemory is not a mono symbol file
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Native extension for LinuxStandalone target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 1.05 ms, found 12 plugins.
-Preloading 1 native plugins for Editor in 0.08 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.813 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Refreshing native plugins compatible for Editor in 1.02 ms, found 12 plugins.
-Preloading 1 native plugins for Editor in 0.05 ms.
-Unloading 2377 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 117.3 MB.
-System memory in use after: 117.5 MB.
-
-Unloading 72 unused Assets to reduce memory usage. Loaded Objects now: 2895.
-Total: 2.154900 ms (FindLiveObjects: 0.299400 ms CreateObjectMapping: 0.159400 ms MarkObjects: 1.662200 ms  DeleteObjects: 0.032700 ms)
+Unloading 52 unused Assets to reduce memory usage. Loaded Objects now: 2117.
+Total: 1.785500 ms (FindLiveObjects: 0.183200 ms CreateObjectMapping: 0.100300 ms MarkObjects: 1.474100 ms  DeleteObjects: 0.026900 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 3689.311282 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Browser.prefab
-  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '058ac506c7ce1917bf8bbbdddc6541b9') in 0.190383 seconds
-  Import took 0.196254 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000200 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab
-  artifactKey: Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab using Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e3fb0704fb9e12a16299272da6b4447') in 0.055548 seconds
-  Import took 0.060420 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000161 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Playground.prefab
-  artifactKey: Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Playground.prefab using Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cbf398f930b885c2006198b822651431') in 0.059293 seconds
-  Import took 0.064623 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 107.786263 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/AFrame.prefab
-  artifactKey: Guid(63f8d24d1f7ee53438369d757e614850) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/AFrame.prefab using Guid(63f8d24d1f7ee53438369d757e614850) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '62bdbda41cff4f3d235de51a0a93410c') in 0.026961 seconds
-  Import took 0.031250 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 126.743411 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Browser.prefab
-  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c33c8f6b9e93943418b762154e4fa8be') in 0.067101 seconds
-  Import took 0.072923 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000127 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab
-  artifactKey: Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab using Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df0bdf9369ab17ce5832300c50587d74') in 0.046390 seconds
-  Import took 0.051680 seconds .
+  path: Assets/Resources/Prefabs/3.0/Miscellaneous
+  artifactKey: Guid(6e26830bf33267a40aacf10931682cba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/Miscellaneous using Guid(6e26830bf33267a40aacf10931682cba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4a55d2e8c2c6159c11a90315f4e5b29c') in 0.007206 seconds
+  Import took 0.010189 seconds .
 
 ========================================================================
 Received Import Request.
   Time since last request: 0.000133 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Playground.prefab
-  artifactKey: Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Playground.prefab using Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54cbc2f26ac4a49cef9568e3af349788') in 0.051585 seconds
-  Import took 0.056584 seconds .
+  path: Assets/Resources/Prefabs/3.0/Miscellaneous/Loading Wheel.prefab
+  artifactKey: Guid(0ae674cbe19e51e4dbc42e2aa30464bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/Miscellaneous/Loading Wheel.prefab using Guid(0ae674cbe19e51e4dbc42e2aa30464bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd23946075f607d6fe1c67a39a3d014d4') in 0.043249 seconds
+  Import took 0.046788 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 806.381551 seconds.
+  Time since last request: 0.000219 seconds.
+  path: Assets/Resources/Prefabs/3.0/Miscellaneous/Virtual Keyboard.prefab
+  artifactKey: Guid(c8377cfcc15dfc34b843e03f478146fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/Miscellaneous/Virtual Keyboard.prefab using Guid(c8377cfcc15dfc34b843e03f478146fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45f3fe1f345a27a73908a8406ac183d7') in 0.066568 seconds
+  Import took 0.069296 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000227 seconds.
+  path: Assets/Resources/Prefabs/3.0/Miscellaneous/InfoWindow.prefab
+  artifactKey: Guid(91c1d89c9fc9bb04da7d16f046c38ba3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/Miscellaneous/InfoWindow.prefab using Guid(91c1d89c9fc9bb04da7d16f046c38ba3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bcf711d66929c2248e6200b641486eba') in 0.033445 seconds
+  Import took 0.035932 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 93.822372 seconds.
+  path: Assets/Resources/Prefabs/3.0/Miscellaneous/Virtual Keyboard.prefab
+  artifactKey: Guid(c8377cfcc15dfc34b843e03f478146fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/Miscellaneous/Virtual Keyboard.prefab using Guid(c8377cfcc15dfc34b843e03f478146fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a33e70feb3982068a7a284628f46327d') in 0.024043 seconds
+  Import took 0.026805 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.966667 seconds.
+  path: Assets/Resources/Prefabs/2.0/InspectorRow.prefab
+  artifactKey: Guid(f1b973ff977e44049983404d58ff2f45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/2.0/InspectorRow.prefab using Guid(f1b973ff977e44049983404d58ff2f45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0c4ba1f9b99723bfd8a34685afbf8bc1') in 0.011599 seconds
+  Import took 0.014094 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 21.373976 seconds.
+  path: Assets/Resources/Prefabs/2.0/InspectorRow.prefab
+  artifactKey: Guid(f1b973ff977e44049983404d58ff2f45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/2.0/InspectorRow.prefab using Guid(f1b973ff977e44049983404d58ff2f45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '142ea0103757c5ecb7e0f55d4271d3f7') in 0.008468 seconds
+  Import took 0.011353 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.491867 seconds.
   path: Assets/Resources/Prefabs/3.0/UI/Browser.prefab
   artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eaaffb58b6198fdb9863e4ad5ffccdcd') in 0.078556 seconds
-  Import took 0.085014 seconds .
+Start importing Assets/Resources/Prefabs/3.0/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e63e2ad81efa63a76e8f3bcd58076ae7') in 0.127380 seconds
+  Import took 0.131555 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 1775.274699 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/GraphObject.prefab
-  artifactKey: Guid(ec197222d023e764dad3752f71176000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/GraphObject.prefab using Guid(ec197222d023e764dad3752f71176000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '452ab47244a5862234f216ef318cf88f') in 0.028523 seconds
-  Import took 0.034335 seconds .
+  Time since last request: 0.000141 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab
+  artifactKey: Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Keyboards.prefab using Guid(c3196275f8a467548b7939a150347be7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5332eb9345b24d63b35f34b00f130650') in 0.050123 seconds
+  Import took 0.053524 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 1938.825069 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Inspector.prefab
-  artifactKey: Guid(8edb5bebbffcf3341af87069bb0c36e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Inspector.prefab using Guid(8edb5bebbffcf3341af87069bb0c36e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b445939a655689d0859df57e32cabcb2') in 0.031669 seconds
-  Import took 0.036678 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 945.430460 seconds.
+  Time since last request: 0.000132 seconds.
   path: Assets/Resources/Prefabs/3.0/UI/Playground.prefab
   artifactKey: Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Playground.prefab using Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fd5ccfde5411e14385d7a0b4de9756c4') in 0.074135 seconds
-  Import took 0.080431 seconds .
+Start importing Assets/Resources/Prefabs/3.0/UI/Playground.prefab using Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7daf0ba22f50de639832258d44ab6d88') in 0.059760 seconds
+  Import took 0.063853 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 292.173820 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Roassal Examples.prefab
-  artifactKey: Guid(734e0ef38a1ab0d43be055e16420da75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Roassal Examples.prefab using Guid(734e0ef38a1ab0d43be055e16420da75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '96c558be57627ecf82fbb3d2366dca65') in 0.029082 seconds
-  Import took 0.034215 seconds .
+  Time since last request: 68.222511 seconds.
+  path: Assets/Resources/Prefabs/3.0/Miscellaneous/InfoWindow.prefab
+  artifactKey: Guid(91c1d89c9fc9bb04da7d16f046c38ba3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/Miscellaneous/InfoWindow.prefab using Guid(91c1d89c9fc9bb04da7d16f046c38ba3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a2ebbf7141cf40eecd33e58784a168f8') in 0.022662 seconds
+  Import took 0.026133 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 247.536361 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Transcript.prefab
-  artifactKey: Guid(91399c91e41a50c46b88f339e9d07cff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Transcript.prefab using Guid(91399c91e41a50c46b88f339e9d07cff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'efc6a8420540f06682a4d2ea0c667027') in 0.024695 seconds
-  Import took 0.029304 seconds .
+  Time since last request: 32.031020 seconds.
+  path: Assets/Resources/Prefabs/Punchkeyboard.prefab
+  artifactKey: Guid(d85aeebb7d9d19b46b11a1e3a7635f5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Punchkeyboard.prefab using Guid(d85aeebb7d9d19b46b11a1e3a7635f5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4a181791697ede251e8a0d5b58a42f94') in 0.031742 seconds
+  Import took 0.035376 seconds .
+
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 9.99 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 43 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 54.5 MB.
+System memory in use after: 54.6 MB.
+
+Unloading 48 unused Assets to reduce memory usage. Loaded Objects now: 2125.
+Total: 2.616600 ms (FindLiveObjects: 0.157900 ms CreateObjectMapping: 0.052900 ms MarkObjects: 2.372300 ms  DeleteObjects: 0.032900 ms)
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.114102125, g: 0.32948005, b: 0.71094096, a: 1}
+  m_IndirectSpecularColor: {r: 0.1144524, g: 0.3299516, b: 0.71226037, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3670,7 +3670,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1838748051}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -4882,6 +4882,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deaf761c35b3def408bffd10dd23a04d, type: 3}
+--- !u!20 &1838748051 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 7236977681792975147, guid: deaf761c35b3def408bffd10dd23a04d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1838748050}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1976915286 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2593483291794296838, guid: c3196275f8a467548b7939a150347be7,
@@ -5283,7 +5289,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1838748051}
     - target: {fileID: 4015082970055237779, guid: 91c1d89c9fc9bb04da7d16f046c38ba3,
         type: 3}
       propertyPath: m_PresetInfoIsWorld

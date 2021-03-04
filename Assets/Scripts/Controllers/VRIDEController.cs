@@ -2,15 +2,16 @@
 using SaveAndLoad;
 using UnityEngine;
 using System.Text.RegularExpressions;
+using UnityEngine.UI;
 
 public class VRIDEController : MonoBehaviour
 {
+    public VRIDEMenu menu;
+
     Vector3 pos;
     Vector3 forw;
     Vector3 newFinalPos;
     Vector3 newForw;
-    VRIDEMenu menu;
-    GameObject taskList;
 
     Vector3 currentPosition = Vector3.zero;
 
@@ -23,8 +24,8 @@ public class VRIDEController : MonoBehaviour
             InteractionLogger.RegisterPhysicalKeyboard();
 
         // HTC VIVE
-        bool menuButton = GetComponent<VRIDEInputHandler>().RightPrimaryButtonDown ||
-                          GetComponent<VRIDEInputHandler>().LeftPrimaryButtonDown;
+        bool menuButton = GetComponent<VRIDEInputHandler>().RightSecondaryButtonDown ||
+                          GetComponent<VRIDEInputHandler>().LeftSecondaryButtonDown;
 
         //bool skyButton = ViveInput.GetPressDownEx(HandRole.RightHand, ControllerButton.AKey) ||
         //                 ViveInput.GetPressDownEx(HandRole.LeftHand, ControllerButton.AKey);
@@ -85,7 +86,11 @@ public class VRIDEController : MonoBehaviour
         browser.Initialize(newFinalPos, newForw);
         SaveAndLoadModule.browsers.Add(browser);
         InteractionLogger.Count("Browser", browser.GetInstanceID().ToString());
-        if (menu != null) Destroy(menu.gameObject);
+
+        if (menu.transform.Find("Button Collection/Settings/Viewport/Content/Keyboard Enable").gameObject.GetComponent<Toggle>().isOn)
+            browser.ToggleKeyboard();
+
+        menu.gameObject.SetActive(false);
     }
 
     public void GeneratePlayground()
@@ -94,7 +99,11 @@ public class VRIDEController : MonoBehaviour
         playground.Initialize(newFinalPos, newForw);
         SaveAndLoadModule.playgrounds.Add(playground);
         InteractionLogger.Count("Playground", playground.GetInstanceID().ToString());
-        if (menu != null) Destroy(menu.gameObject);
+
+        if (menu.transform.Find("Button Collection/Settings/Viewport/Content/Keyboard Enable").gameObject.GetComponent<Toggle>().isOn)
+            playground.ToggleKeyboard();
+
+        menu.gameObject.SetActive(false);
     }
 
     public void GenerateTranscript()
@@ -103,38 +112,27 @@ public class VRIDEController : MonoBehaviour
         transcript.Initialize(newFinalPos, newForw);
         SaveAndLoadModule.transcripts.Add(transcript);
         InteractionLogger.Count("Transcript", transcript.GetInstanceID().ToString());
-        if (menu != null) Destroy(menu.gameObject);
+        menu.gameObject.SetActive(false);
     }
 
     public void GenerateRoassalExamples()
     {
         RoassalExamples re = Instantiator.Instance.RoassalExamples();
         re.Initialize(newFinalPos, newForw);
-        if (menu != null) Destroy(menu.gameObject);
+        menu.gameObject.SetActive(false);
     }
 
-    public void GenerateTaskList()
+    public void GenerateWebcam()
     {
-        if(taskList == null) taskList = Instantiator.Instance.TaskList();
-        taskList.GetComponent<InitializeBehaviour>().Initialize(newFinalPos, newForw);
-        if (menu != null) Destroy(menu.gameObject);
+        WebcamView wc = Instantiator.Instance.WebCam();
+        wc.Initialize(newFinalPos, newForw);
+        menu.gameObject.SetActive(false);
     }
 
     public void GenerateMenu()
     {
-        if (menu != null) 
-            Destroy(menu.gameObject);
-        else
-        {
-            menu = Instantiator.Instance.Menu();
-            menu.playgroundGenerator.onClick.AddListener(GeneratePlayground);
-            menu.browserGenerator.onClick.AddListener(GenerateBrowser);
-            menu.transcriptGenerator.onClick.AddListener(GenerateTranscript);
-            menu.roassalGenerator.onClick.AddListener(GenerateRoassalExamples);
-            menu.taskGenerator.onClick.AddListener(GenerateTaskList);
-            menu.quit.onClick.AddListener(Exit);
-            menu.Initialize(newFinalPos, newForw);
-        }
+        menu.gameObject.SetActive(!menu.gameObject.activeSelf);
+        if(menu.gameObject.activeSelf) menu.Initialize(newFinalPos, newForw);
     }
 
     public void Exit()

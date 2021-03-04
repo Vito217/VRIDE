@@ -19,7 +19,7 @@ public class Instantiator: MonoBehaviour
     public Graph svgPrefab;
     public Transcript transcriptPrefab;
     public VRIDEMenu menuPrefab;
-    public GameObject taskListPrefab;
+    public WebcamView webcamPrefab;
     public GameObject aframePrefab;
     public TextMeshPro textPrefab;
 
@@ -196,9 +196,9 @@ public class Instantiator: MonoBehaviour
     /// Creates a TaskList
     /// </summary>
     /// <returns>TaskList gameObject</returns>
-    public GameObject TaskList()
+    public WebcamView WebCam()
     {
-        return Instantiate(taskListPrefab);
+        return Instantiate(webcamPrefab);
     }
 
     public TextMeshPro Text(string content, Transform parent)
