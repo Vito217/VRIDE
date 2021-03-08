@@ -1,5 +1,11 @@
 # PharoVRIDE's Channel Log
 
+
+## V0.23.0 (04/03/2021)
+* Changed Vive Input Utility to XR Interaction Toolkit. Now it should work properly on OS X and Linux.
+* Improved VRIDE menu. Added new "Settings" section.
+* It is possible to disable  the virtual keyboard once a window is opened.
+
 ## V0.22.0 (28/01/2021)
 * Added button to show/hide the virtual keyboard.
 * Added refresh button on Browser. Since loading packages sacrifices performance, it must be pressed if you want to see the packages.
