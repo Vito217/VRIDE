@@ -23,6 +23,9 @@ public class Instantiator: MonoBehaviour
     public GameObject aframePrefab;
     public TextMeshPro textPrefab;
 
+    public GameObject defaultGround;
+    public GameObject spaceShip;
+
     private static Instantiator _instance;
     public static Instantiator Instance
     {
@@ -201,6 +204,12 @@ public class Instantiator: MonoBehaviour
         return Instantiate(webcamPrefab);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="content"></param>
+    /// <param name="parent"></param>
+    /// <returns></returns>
     public TextMeshPro Text(string content, Transform parent)
     {
         TextMeshPro t = Instantiate(textPrefab, parent);
