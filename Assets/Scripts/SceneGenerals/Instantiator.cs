@@ -26,6 +26,8 @@ public class Instantiator: MonoBehaviour
     public GameObject defaultGround;
     public GameObject spaceShip;
 
+    public static GameObject currentEnvironment;
+
     private static Instantiator _instance;
     public static Instantiator Instance
     {
@@ -38,6 +40,8 @@ public class Instantiator: MonoBehaviour
             Destroy(this.gameObject);
         else
             _instance = this;
+
+        currentEnvironment = GameObject.Find("Ground");
     }
 
     /// <summary>

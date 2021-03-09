@@ -6,8 +6,6 @@ using SaveAndLoad;
 public class VRIDEMenu : InitializeBehaviour
 {
     public GameObject lastSelected;
-    public GameObject lastEnvironment;
-
     public Material spaceSkyBox;
     public Material defaultSkyBox;
 
@@ -88,9 +86,9 @@ public class VRIDEMenu : InitializeBehaviour
     {
         RenderSettings.skybox = spaceSkyBox;
 
-        lastEnvironment.SetActive(false);
-        lastEnvironment = Instantiator.Instance.spaceShip;
-        lastEnvironment.SetActive(true);
+        Instantiator.currentEnvironment.SetActive(false);
+        Instantiator.currentEnvironment = Instantiator.Instance.spaceShip;
+        Instantiator.currentEnvironment.SetActive(true);
 
         foreach (VRIDEController user in FindObjectsOfType<VRIDEController>())
             user.transform.position = Vector3.zero;
@@ -100,9 +98,9 @@ public class VRIDEMenu : InitializeBehaviour
     {
         RenderSettings.skybox = defaultSkyBox;
 
-        lastEnvironment.SetActive(false);
-        lastEnvironment = Instantiator.Instance.defaultGround;
-        lastEnvironment.SetActive(true);
+        Instantiator.currentEnvironment.SetActive(false);
+        Instantiator.currentEnvironment = Instantiator.Instance.defaultGround;
+        Instantiator.currentEnvironment.SetActive(true);
 
         foreach (VRIDEController user in FindObjectsOfType<VRIDEController>())
             user.transform.position = Vector3.zero;
