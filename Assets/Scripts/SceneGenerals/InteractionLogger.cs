@@ -17,14 +17,13 @@ namespace LoggingModule
     {
         public static DateTime sessionStart;
         public static DateTime sessionEnd;
+        public static string persistentPath;
 
         public static bool isUsingVirtualKeyboard = false;
         public static bool isUsingPhysicalKeyboard = false;
 
         private static bool inEditor = Application.isEditor;
         public static float totalSessionTime = 0.0f;
-        static string persistentPath = Path.Combine(
-            Application.persistentDataPath, "VRIDE_log.txt");
 
         private static Dictionary<string, int> counters = new Dictionary<string, int>() {
             { "totalPlaygroundMilliseconds" , 0 },

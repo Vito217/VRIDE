@@ -14,6 +14,13 @@ using TMPro;
 
 public class Playground : InitializeBehaviour
 {
+    public GameObject AFrameCube;
+    public GameObject AFrameSphere;
+    public GameObject AFrameCylinder;
+    public GameObject AFramePlane;
+    public GameObject AFrameQuad;
+    public GameObject AFrameCapsule;
+
     private Graph view;
     private Inspector insp;
 
@@ -101,6 +108,7 @@ public class Playground : InitializeBehaviour
                                     value,
                                     typeof(TextMeshProUGUI),
                                     typeof(ContentSizeFitter));
+
                                 text.tag = "AFrame";
                                 text.transform.SetParent(aFramePanel.transform, false);
 
@@ -182,21 +190,13 @@ public class Playground : InitializeBehaviour
                                 });
 
                                 GameObject ob;
-                                if (primitive.Equals("box"))
-                                    ob = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                                else if (primitive.Equals("cylinder"))
-                                    ob = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
-                                else if (primitive.Equals("capsule"))
-                                    ob = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-                                else if (primitive.Equals("plane"))
-                                    ob = GameObject.CreatePrimitive(PrimitiveType.Plane);
-                                else if (primitive.Equals("sphere"))
-                                    ob = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                                else
-                                    ob = GameObject.CreatePrimitive(PrimitiveType.Quad);
+                                if (primitive.Equals("box")) ob = Instantiate(AFrameCube);
+                                else if (primitive.Equals("cylinder")) ob = Instantiate(AFrameCylinder);
+                                else if (primitive.Equals("capsule")) ob = Instantiate(AFrameCapsule);
+                                else if (primitive.Equals("plane")) ob = Instantiate (AFramePlane);
+                                else if (primitive.Equals("sphere")) ob = Instantiate(AFrameSphere);
+                                else ob = Instantiate(AFrameQuad);
 
-                                ob.tag = "AFrame";
-                                MakeGeometryInteractable(ob);
                                 ob.transform.SetParent(aFramePanel.transform, false);
 
                                 if (posMatch.Success)
@@ -277,8 +277,6 @@ public class Playground : InitializeBehaviour
 
                                 if (!geoMapping.ContainsKey(ob.transform.localPosition))
                                     geoMapping.Add(ob.transform.localPosition, ob);
-
-                                MakeGeometryDraggable(ob);
                             }
 
                             // ############################# BOXES #########################################
@@ -303,9 +301,7 @@ public class Playground : InitializeBehaviour
                                     modelMatch = Regex.Match(tag, @"model\s*=\s*""\s*([a-zA-Z0-9]+)\s*""");
                                 });
 
-                                GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                                ob.tag = "AFrame";
-                                MakeGeometryInteractable(ob);
+                                GameObject ob = Instantiate(AFrameCube);
                                 ob.transform.SetParent(aFramePanel.transform, false);
 
                                 if (posMatch.Success)
@@ -375,8 +371,6 @@ public class Playground : InitializeBehaviour
 
                                 if (!geoMapping.ContainsKey(ob.transform.localPosition))
                                     geoMapping.Add(ob.transform.localPosition, ob);
-
-                                MakeGeometryDraggable(ob);
                             }
 
                             // ########################## SPHERES #########################################
@@ -398,9 +392,7 @@ public class Playground : InitializeBehaviour
                                     modelMatch = Regex.Match(tag, @"model\s*=\s*""\s*([a-zA-Z0-9]+)\s*""");
                                 });
 
-                                GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                                ob.tag = "AFrame";
-                                MakeGeometryInteractable(ob);
+                                GameObject ob = Instantiate(AFrameSphere);
                                 ob.transform.SetParent(aFramePanel.transform, false);
 
                                 if (posMatch.Success)
@@ -453,8 +445,6 @@ public class Playground : InitializeBehaviour
 
                                 if (!geoMapping.ContainsKey(ob.transform.localPosition))
                                     geoMapping.Add(ob.transform.localPosition, ob);
-
-                                MakeGeometryDraggable(ob);
                             }
 
                             // ############################## CYLINDERS ######################################
@@ -478,9 +468,7 @@ public class Playground : InitializeBehaviour
                                     modelMatch = Regex.Match(tag, @"model\s*=\s*""\s*([a-zA-Z0-9]+)\s*""");
                                 });
 
-                                GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
-                                ob.tag = "AFrame";
-                                MakeGeometryInteractable(ob);
+                                GameObject ob = Instantiate(AFrameCylinder);
                                 ob.transform.SetParent(aFramePanel.transform, false);
 
                                 if (posMatch.Success)
@@ -545,8 +533,6 @@ public class Playground : InitializeBehaviour
 
                                 if (!geoMapping.ContainsKey(ob.transform.localPosition))
                                     geoMapping.Add(ob.transform.localPosition, ob);
-
-                                MakeGeometryDraggable(ob);
                             }
 
                             // ########################## PLANES #############################################
@@ -571,9 +557,7 @@ public class Playground : InitializeBehaviour
                                     modelMatch = Regex.Match(tag, @"model\s*=\s*""\s*([a-zA-Z0-9]+)\s*""");
                                 });
 
-                                GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Plane);
-                                ob.tag = "AFrame";
-                                MakeGeometryInteractable(ob);
+                                GameObject ob = Instantiate(AFramePlane);
                                 ob.transform.SetParent(aFramePanel.transform, false);
 
                                 if (posMatch.Success)
@@ -641,8 +625,6 @@ public class Playground : InitializeBehaviour
 
                                 if (!geoMapping.ContainsKey(ob.transform.localPosition))
                                     geoMapping.Add(ob.transform.localPosition, ob);
-
-                                MakeGeometryDraggable(ob);
                             }
 
                             // ########################### LINES #####################################
@@ -698,14 +680,11 @@ public class Playground : InitializeBehaviour
                                         {
                                             // It is connected to another line.
                                             // Then, we create a node
-                                            GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                                            ob.tag = "AFrame";
-                                            MakeGeometryInteractable(ob);
+                                            GameObject ob = Instantiate(AFrameSphere);
                                             ob.transform.SetParent(aFramePanel.transform, false);
                                             ob.transform.localScale = new Vector3(.06f, .06f, .06f);
                                             ob.transform.localPosition = afl.start;
                                             geoMapping.Add(start, ob);
-                                            MakeGeometryDraggable(ob);
 
                                             // Both lines must share the same node
                                             GameObject intersec;
@@ -728,14 +707,11 @@ public class Playground : InitializeBehaviour
                                         if (lineMapping.ContainsKey(end))
                                         {
                                             // It is connected to another line
-                                            GameObject ob = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                                            ob.tag = "AFrame";
-                                            MakeGeometryInteractable(ob);
+                                            GameObject ob = Instantiate(AFrameSphere);
                                             ob.transform.SetParent(aFramePanel.transform, false);
                                             ob.transform.localScale = new Vector3(.06f, .06f, .06f);
                                             ob.transform.localPosition = afl.end;
                                             geoMapping.Add(end, ob);
-                                            MakeGeometryDraggable(ob);
 
                                             // Both lines must share the same node
                                             GameObject intersec;
@@ -1158,47 +1134,6 @@ public class Playground : InitializeBehaviour
             }
         }
         return pivot;
-    }
-
-    private void MakeGeometryInteractable(GameObject ob)
-    {
-        ob.AddComponent<EventTrigger>();
-        ob.AddComponent<GraphicRaycaster>();
-        ob.AddComponent<AFrameGeometry>();
-        ob.GetComponent<RectTransform>().pivot = Vector2.zero;
-        ob.GetComponent<RectTransform>().anchorMin = Vector2.zero;
-        ob.GetComponent<RectTransform>().anchorMax = Vector2.zero;
-        ob.GetComponent<RectTransform>().sizeDelta = Vector2.zero;
-        ob.GetComponent<AFrameGeometry>().freezeRotation = false;
-    }
-
-    private void MakeGeometryDraggable(GameObject ob)
-    {
-        // Adding Drag functions
-        EventTrigger trigger = ob.GetComponent<EventTrigger>();
-        AFrameGeometry afg = ob.GetComponent<AFrameGeometry>();
-
-        // OnPointerDown -> OnDrag
-        EventTrigger.Entry entry = new EventTrigger.Entry();
-        entry.eventID = EventTriggerType.PointerDown;
-        entry.callback.AddListener((data) => { afg.OnDrag(data); });
-        trigger.triggers.Add(entry);
-
-        // OnPointerUp -> OnEndDrag
-        EventTrigger.Entry entryTwo = new EventTrigger.Entry();
-        entryTwo.eventID = EventTriggerType.PointerUp;
-        entryTwo.callback.AddListener((data) => { afg.OnEndDrag(data); });
-        trigger.triggers.Add(entryTwo);
-        
-        EventTrigger.Entry entryThree = new EventTrigger.Entry();
-        entryThree.eventID = EventTriggerType.PointerEnter;
-        entryThree.callback.AddListener((data) => { afg.OnPointerEnter(data); });
-        trigger.triggers.Add(entryThree);
-
-        EventTrigger.Entry entryFour = new EventTrigger.Entry();
-        entryFour.eventID = EventTriggerType.PointerExit;
-        entryFour.callback.AddListener((data) => { afg.OnPointerExit(data); });
-        trigger.triggers.Add(entryFour);
     }
 
     private void UpdateGeometryMaterial(GameObject ob, Match colorMatch, Match metalMatch, Match glossMatch)

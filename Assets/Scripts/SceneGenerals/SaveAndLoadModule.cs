@@ -15,8 +15,7 @@ namespace SaveAndLoad
     /// </summary>
     public class SaveAndLoadModule : MonoBehaviour
     {
-        private static bool inEditor = Application.isEditor;
-        static string sessionPath = Path.Combine(Application.persistentDataPath, "session.data");
+        public static string sessionPath;
         
         public static string transcriptContents = "";
         public static List<Browser> browsers = new List<Browser>();
@@ -215,7 +214,7 @@ namespace SaveAndLoad
         /// <returns></returns>
         public static void Save()
         {
-            if (!inEditor)
+            if (!Application.isEditor)
             {
                 if (!Directory.Exists(Application.persistentDataPath))
                     Directory.CreateDirectory(Application.persistentDataPath);
@@ -237,7 +236,7 @@ namespace SaveAndLoad
         /// <returns></returns>
         public static async Task Load()
         {
-            if (!inEditor)
+            if (!Application.isEditor)
             {
                 if (!Directory.Exists(Application.persistentDataPath))
                     Directory.CreateDirectory(Application.persistentDataPath);
