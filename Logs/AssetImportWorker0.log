@@ -15,12 +15,12 @@ C:/Users/alexa/Documents/Unity Projects/PharoVRIDE
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-57541
+60256
 Successfully changed project path to: C:/Users/alexa/Documents/Unity Projects/PharoVRIDE
 C:/Users/alexa/Documents/Unity Projects/PharoVRIDE
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 52.12 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.73 ms.
+Refreshing native plugins compatible for Editor in 46.40 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.90 ms.
 Initialize engine version: 2020.2.7f1 (c53830e277f1)
 [Subsystems] Discovering subsystems at path D:/Unity/2020.2.7f1/Editor/Data/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path C:/Users/alexa/Documents/Unity Projects/PharoVRIDE/Assets
@@ -35,26 +35,26 @@ Initialize mono
 Mono path[0] = 'D:/Unity/2020.2.7f1/Editor/Data/Managed'
 Mono path[1] = 'D:/Unity/2020.2.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'D:/Unity/2020.2.7f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56364
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56236
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: D:/Unity/2020.2.7f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
 Register platform support module: D:/Unity/2020.2.7f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
 Register platform support module: D:/Unity/2020.2.7f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
-Registered in 0.000959 seconds.
+Registered in 0.001031 seconds.
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 36.84 ms, found 8 plugins.
+Refreshing native plugins compatible for Editor in 36.39 ms, found 8 plugins.
 Preloading 1 native plugins for Editor in 0.07 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.146 seconds
+- Completed reload, in  1.182 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.010355 seconds.
+Registered in 0.011883 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
 Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
@@ -66,7 +66,7 @@ Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 30.51 ms, found 8 plugins.
+Refreshing native plugins compatible for Editor in 33.37 ms, found 8 plugins.
 Preloading 1 native plugins for Editor in 0.06 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
@@ -82,475 +82,387 @@ NullReferenceException: Object reference not set to an instance of an object
 (Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
 
 Mono: successfully reloaded assembly
-- Completed reload, in  0.898 seconds
+- Completed reload, in  1.133 seconds
 Platform modules already initialized, skipping
 Assertion failed on expression: 'reloadOk'
 
 ========================================================================
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
-Refreshing native plugins compatible for Editor in 0.69 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.07 ms.
-Unloading 1701 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 84.9 MB.
-System memory in use after: 84.8 MB.
+Refreshing native plugins compatible for Editor in 0.66 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.06 ms.
+Unloading 1891 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 109.1 MB.
+System memory in use after: 108.8 MB.
 
-Unloading 53 unused Assets to reduce memory usage. Loaded Objects now: 2117.
-Total: 2.461600 ms (FindLiveObjects: 0.345500 ms CreateObjectMapping: 0.095600 ms MarkObjects: 1.882900 ms  DeleteObjects: 0.136700 ms)
-
-========================================================================
-Received Import Request.
-  path: Assets/Resources/Prefabs/3.0/UI/Menu.prefab
-  artifactKey: Guid(fb745a6f83285354d926519301bc2f75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Menu.prefab using Guid(fb745a6f83285354d926519301bc2f75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a6737fe1098cafcebf8f63cef5ffe8bb') in 0.136546 seconds
-  Import took 0.140951 seconds .
+Unloading 66 unused Assets to reduce memory usage. Loaded Objects now: 2331.
+Total: 2.966900 ms (FindLiveObjects: 0.182000 ms CreateObjectMapping: 0.097700 ms MarkObjects: 2.485300 ms  DeleteObjects: 0.201200 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 12.758913 seconds.
-  path: Assets/Resources/Prefabs/3.0/AFrameObjects
-  artifactKey: Guid(86b8ac6c0f5a26b4c9898862baceebb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/AFrameObjects using Guid(86b8ac6c0f5a26b4c9898862baceebb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dbd4555c3b9f7a8cf834e60a6f5be6f1') in 0.012997 seconds
-  Import took 0.016776 seconds .
+  path: Assets/Resources/Prefabs/3.0/Environments/Forest.prefab
+  artifactKey: Guid(e5ec2e827b9f6e649b5421d567a5aff0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/Environments/Forest.prefab using Guid(e5ec2e827b9f6e649b5421d567a5aff0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cda6db3a8586678b1b7f15b02093d7cc') in 0.038565 seconds
+  Import took 0.041424 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 540.865689 seconds.
-  path: Assets/Meshes/Keyboard/Punchkeyboard2.0/Punchkeyboard_2.0.fbx
-  artifactKey: Guid(8d5c6e844e4ca2940ba2fe6497665938) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Meshes/Keyboard/Punchkeyboard2.0/Punchkeyboard_2.0.fbx using Guid(8d5c6e844e4ca2940ba2fe6497665938) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c14441b7f31480bd16edfc140b2c9bc3') in 0.888312 seconds
-  Import took 0.893883 seconds .
+  Time since last request: 215.482056 seconds.
+  path: Assets/Materials/Environments/Forest/Ground.mat
+  artifactKey: Guid(d0c700865d03e164db01fbb42d9a1ab2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Environments/Forest/Ground.mat using Guid(d0c700865d03e164db01fbb42d9a1ab2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b289b52197864804bb714aed076b47e') in 0.058294 seconds
+  Import took 0.062891 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000202 seconds.
-  path: Assets/Meshes/VR/ReducedControllers/ReducedViveController.fbx
-  artifactKey: Guid(536028004cd5e9e44af6c28393f113b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Meshes/VR/ReducedControllers/ReducedViveController.fbx using Guid(536028004cd5e9e44af6c28393f113b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6884196fd024dfcf48f329b45ff541db') in 0.115036 seconds
-  Import took 0.118281 seconds .
+  Time since last request: 15.731202 seconds.
+  path: Assets/Resources/Prefabs/3.0/Environments/Forest.prefab
+  artifactKey: Guid(e5ec2e827b9f6e649b5421d567a5aff0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/Environments/Forest.prefab using Guid(e5ec2e827b9f6e649b5421d567a5aff0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2bca5b873d95bc8ee87a372e4ef2e94e') in 0.009353 seconds
+  Import took 0.014705 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000319 seconds.
-  path: Assets/Meshes/Keyboard/Drumsticks/Drumsticks.fbx
-  artifactKey: Guid(717bbd4890ed45a4a90c90af4580c364) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Meshes/Keyboard/Drumsticks/Drumsticks.fbx using Guid(717bbd4890ed45a4a90c90af4580c364) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b6b62b23ba4fa5a876235c3027dfcf8') in 0.214995 seconds
-  Import took 0.218079 seconds .
+  Time since last request: 105.293479 seconds.
+  path: Assets/Resources/Prefabs/3.0/Environments/Forest.prefab
+  artifactKey: Guid(e5ec2e827b9f6e649b5421d567a5aff0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/Environments/Forest.prefab using Guid(e5ec2e827b9f6e649b5421d567a5aff0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e67b609e7c393ba0433699bf8bf3e16') in 0.012287 seconds
+  Import took 0.017000 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000432 seconds.
-  path: Assets/Meshes/Environment/Island/Island.fbx
-  artifactKey: Guid(0a0823704e66cba4eb07d99162e72886) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Meshes/Environment/Island/Island.fbx using Guid(0a0823704e66cba4eb07d99162e72886) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '60ba80875042867c62ee043c8235c2c8') in 0.162611 seconds
-  Import took 0.166134 seconds .
+  Time since last request: 178.545164 seconds.
+  path: Assets/Terrain/Terrain_0_0_cf7ef382-8b3e-4ebd-aa1d-5c98199b442c.asset
+  artifactKey: Guid(b947d8efe2d64de4ba388b7a57073447) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Terrain/Terrain_0_0_cf7ef382-8b3e-4ebd-aa1d-5c98199b442c.asset using Guid(b947d8efe2d64de4ba388b7a57073447) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a796f76a1390ad7e01b239ceafabd3f') in 0.014009 seconds
+  Import took 0.018156 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000234 seconds.
-  path: Assets/Meshes/Environment/SkyboxSphere/SkySphere.fbx
-  artifactKey: Guid(b2f4814a47ab2cb47864e9474b529be2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Meshes/Environment/SkyboxSphere/SkySphere.fbx using Guid(b2f4814a47ab2cb47864e9474b529be2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '83b7989b1b2f2529d9fbcebf1258d6a8') in 0.037211 seconds
-  Import took 0.040491 seconds .
+  Time since last request: 44.726848 seconds.
+  path: Assets/Terrain/Terrain_0_0_50c4aa54-b170-4a55-8608-e618bc574ebf.asset
+  artifactKey: Guid(de151e111fc7a1141bb7a08871d08a1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Terrain/Terrain_0_0_50c4aa54-b170-4a55-8608-e618bc574ebf.asset using Guid(de151e111fc7a1141bb7a08871d08a1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a19ff39f68e6b401b0d4918f25e9041e') in 0.016824 seconds
+  Import took 0.021426 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 1.870017 seconds.
-  path: Assets/Meshes/Environment/Floor/Floor.fbx
-  artifactKey: Guid(2efa1b29f5d49ee46a754fd22e742423) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Meshes/Environment/Floor/Floor.fbx using Guid(2efa1b29f5d49ee46a754fd22e742423) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd0d7c26428ca7a23ef0c113089757cbc') in 0.046060 seconds
-  Import took 0.050084 seconds .
+  Time since last request: 65.729458 seconds.
+  path: Assets/Terrain/Terrain_0_0_b0fde513-1928-445d-b891-16a5b7e69314.asset
+  artifactKey: Guid(7a7ddb34958a8c741be5a8d80e0a4b4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Terrain/Terrain_0_0_b0fde513-1928-445d-b891-16a5b7e69314.asset using Guid(7a7ddb34958a8c741be5a8d80e0a4b4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e44cb2f61a67684c63254738b611a5b7') in 0.018213 seconds
+  Import took 0.023605 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 69.166011 seconds.
+  path: Assets/Resources/Prefabs/3.0/Environments/Forest.prefab
+  artifactKey: Guid(e5ec2e827b9f6e649b5421d567a5aff0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/Environments/Forest.prefab using Guid(e5ec2e827b9f6e649b5421d567a5aff0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5eb02b88b44c8fa0140c3da7efbe0f12') in 0.029977 seconds
+  Import took 0.034832 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 131.971642 seconds.
+  path: Assets/Resources/Prefabs/3.0/Environments/NewBrush.brush
+  artifactKey: Guid(44861394c03fc2046a21cfe634b25292) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/Environments/NewBrush.brush using Guid(44861394c03fc2046a21cfe634b25292) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1669a1ccac291ae21e21700cf23a9005') in 0.025965 seconds
+  Import took 0.031036 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001174 seconds.
+  path: Assets/Resources/Prefabs/3.0/Environments/NewBrush.brush
+  artifactKey: Guid(44861394c03fc2046a21cfe634b25292) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/Environments/NewBrush.brush using Guid(44861394c03fc2046a21cfe634b25292) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1669a1ccac291ae21e21700cf23a9005') in 0.008254 seconds
+  Import took 0.012063 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1971.646910 seconds.
+  path: Assets/Materials/Environments/Forest/Log.mat
+  artifactKey: Guid(8683463ec3bff0346ab132a099f1c9b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Environments/Forest/Log.mat using Guid(8683463ec3bff0346ab132a099f1c9b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ab644415540ebc9eae2ba5965e52dfb2') in 0.018634 seconds
+  Import took 0.023995 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 25.363874 seconds.
+  path: Assets/Materials/Environments/Forest/Leaves.mat
+  artifactKey: Guid(3ca83d04e422796478de09e0872b1adb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Environments/Forest/Leaves.mat using Guid(3ca83d04e422796478de09e0872b1adb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0332afcd2b71d6ef91fdb3fec3b1dcdd') in 0.016058 seconds
+  Import took 0.020090 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 90.193611 seconds.
+  path: Assets/TextMesh Pro/Fonts/LiberationSans.ttf
+  artifactKey: Guid(e3265ab4bf004d28a9537516768c1c75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Fonts/LiberationSans.ttf using Guid(e3265ab4bf004d28a9537516768c1c75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e5a4240543c55f95ae38b6474a9784ee') in 0.033499 seconds
+  Import took 0.037960 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000198 seconds.
+  path: Assets/AllSkyFree/AllSkyDemoEnvironment/Materials/rock.mat
+  artifactKey: Guid(30d990fd39e798242be00a47c8f8fcaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AllSkyFree/AllSkyDemoEnvironment/Materials/rock.mat using Guid(30d990fd39e798242be00a47c8f8fcaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec527b9daaedea089a80bf3c7fd846ee') in 0.023929 seconds
+  Import took 0.028108 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000270 seconds.
+  path: Assets/AllSkyFree/AllSkyDemoEnvironment/Materials/Landscape.mat
+  artifactKey: Guid(36b724f005def154c831325bf69c83e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AllSkyFree/AllSkyDemoEnvironment/Materials/Landscape.mat using Guid(36b724f005def154c831325bf69c83e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '66ae769ebc58fd60305c13af6bd2289a') in 0.029673 seconds
+  Import took 0.033616 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000324 seconds.
+  path: Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Outline.mat
+  artifactKey: Guid(79459efec17a4d00a321bdcc27bbc385) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Outline.mat using Guid(79459efec17a4d00a321bdcc27bbc385) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ffc4678de1fa14feb012cd698c1800b4') in 0.046211 seconds
+  Import took 0.050952 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000251 seconds.
+  path: Assets/Meshes/VR/ReducedControllers/Materials/TriggerMat.mat
+  artifactKey: Guid(5063e58815c3db544862cf72b8b3f97f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Meshes/VR/ReducedControllers/Materials/TriggerMat.mat using Guid(5063e58815c3db544862cf72b8b3f97f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd81d5c92dbe8ac37a38cd7960516f7c3') in 0.020870 seconds
+  Import took 0.024731 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000293 seconds.
+  path: Assets/Meshes/Environment/Island/Materials/LandMat.mat
+  artifactKey: Guid(2b9aeaf9c4f2fe54f82b54b40d9c2a8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Meshes/Environment/Island/Materials/LandMat.mat using Guid(2b9aeaf9c4f2fe54f82b54b40d9c2a8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40ba3855996442b2bcc3c226940fba60') in 0.037579 seconds
+  Import took 0.041723 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000286 seconds.
+  path: Assets/Meshes/Environment/SkyboxSphere/Materials/SkySphereMat.mat
+  artifactKey: Guid(5c718991274effb44867b1a0cd812160) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Meshes/Environment/SkyboxSphere/Materials/SkySphereMat.mat using Guid(5c718991274effb44867b1a0cd812160) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a0bd0c75ec8e332c778d74ebce09e38c') in 0.023013 seconds
+  Import took 0.026908 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000265 seconds.
+  path: Assets/Materials/UIOverlay/UIOverlayMat.mat
+  artifactKey: Guid(0c57f79d319b1464a80eb4b7c6f8ea33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/UIOverlay/UIOverlayMat.mat using Guid(0c57f79d319b1464a80eb4b7c6f8ea33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '23f8588f6ad2fa5872c33199cc77aa6f') in 0.021846 seconds
+  Import took 0.025744 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000335 seconds.
+  path: Assets/Meshes/Environment/Island/Materials/LightBoulder.mat
+  artifactKey: Guid(81e3b8e746306ed4faf929a35f866599) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Meshes/Environment/Island/Materials/LightBoulder.mat using Guid(81e3b8e746306ed4faf929a35f866599) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0c7325bc5ce5ced9a6f32a360644a08b') in 0.021782 seconds
+  Import took 0.025673 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000316 seconds.
+  path: Assets/Meshes/Keyboard/Punchkeyboard2.0/Materials/PunctationKeyMat.mat
+  artifactKey: Guid(f3e835aa302d79141a2ed732dd3fa265) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Meshes/Keyboard/Punchkeyboard2.0/Materials/PunctationKeyMat.mat using Guid(f3e835aa302d79141a2ed732dd3fa265) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c9dd0e401648ea812e7f50d45328056e') in 0.023259 seconds
+  Import took 0.027045 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000250 seconds.
+  path: Assets/TextMesh Pro/Fonts/LiberationSans.ttf
+  artifactKey: Guid(e3265ab4bf004d28a9537516768c1c75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Fonts/LiberationSans.ttf using Guid(e3265ab4bf004d28a9537516768c1c75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e5a4240543c55f95ae38b6474a9784ee') in 0.012592 seconds
+  Import took 0.016278 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000258 seconds.
+  path: Assets/Meshes/VR/ReducedControllers/Materials/LedMat.mat
+  artifactKey: Guid(9035f0457ca90514e9df78b134f6b73a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Meshes/VR/ReducedControllers/Materials/LedMat.mat using Guid(9035f0457ca90514e9df78b134f6b73a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b8f672d298a214b4cb0585a40479745') in 0.021335 seconds
+  Import took 0.025088 seconds .
 
 ========================================================================
 Received Import Request.
   Time since last request: 0.000273 seconds.
-  path: Assets/AllSkyFree/AllSkyDemoEnvironment/AllSky_DemoEnvironment02.fbx
-  artifactKey: Guid(cca7a715222e33c49b541a5f7de8f6f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/AllSkyFree/AllSkyDemoEnvironment/AllSky_DemoEnvironment02.fbx using Guid(cca7a715222e33c49b541a5f7de8f6f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e94a0e17f9e033db8f356eb223f726f6') in 0.102913 seconds
-  Import took 0.106480 seconds .
+  path: Assets/ThirdParty/Fonts/Work Sans/WorkSans-SemiBold.ttf
+  artifactKey: Guid(2f8425f001e94204db8cac731a11ef2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ThirdParty/Fonts/Work Sans/WorkSans-SemiBold.ttf using Guid(2f8425f001e94204db8cac731a11ef2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c099217f751fe3c3681e9410a8ba4d3a') in 0.017670 seconds
+  Import took 0.021403 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000360 seconds.
-  path: Assets/AllSkyFree/AllSkyDemoEnvironment/AllSky_DemoEnvironment.fbx
-  artifactKey: Guid(3016c1d519731466ebd747543eef9970) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/AllSkyFree/AllSkyDemoEnvironment/AllSky_DemoEnvironment.fbx using Guid(3016c1d519731466ebd747543eef9970) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d77979a4d576d6c63a86a9e409974ec') in 0.055042 seconds
-  Import took 0.058403 seconds .
+  Time since last request: 0.000240 seconds.
+  path: Assets/Meshes/Environment/Island/Materials/LightBoulderMat.mat
+  artifactKey: Guid(e558711e269146c418c64e9d22cee647) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Meshes/Environment/Island/Materials/LightBoulderMat.mat using Guid(e558711e269146c418c64e9d22cee647) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58077097034ef8756e57242e4f0adb43') in 0.022525 seconds
+  Import took 0.026425 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000283 seconds.
-  path: Assets/AllSkyFree/AllSkyDemoEnvironment/AllSky_DemoEnvironment_Center.fbx
-  artifactKey: Guid(6f81d87fbcb2648b0835af8c7c1cd3fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/AllSkyFree/AllSkyDemoEnvironment/AllSky_DemoEnvironment_Center.fbx using Guid(6f81d87fbcb2648b0835af8c7c1cd3fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '41bb08dfe34603af552976e78f54443c') in 0.063574 seconds
-  Import took 0.068268 seconds .
+  Time since last request: 0.000196 seconds.
+  path: Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Drop Shadow.mat
+  artifactKey: Guid(e73a58f6e2794ae7b1b7e50b7fb811b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Drop Shadow.mat using Guid(e73a58f6e2794ae7b1b7e50b7fb811b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bcf56aa5858dff64e418f2f13e1df3cd') in 0.080926 seconds
+  Import took 0.084705 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000339 seconds.
-  path: Assets/AllSkyFree/AllSkyDemoEnvironment/AllSky_DemoEnvironment.fbx
-  artifactKey: Guid(3016c1d519731466ebd747543eef9970) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/AllSkyFree/AllSkyDemoEnvironment/AllSky_DemoEnvironment.fbx using Guid(3016c1d519731466ebd747543eef9970) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d77979a4d576d6c63a86a9e409974ec') in 0.031795 seconds
-  Import took 0.034696 seconds .
+  Time since last request: 0.000288 seconds.
+  path: Assets/Meshes/Keyboard/Punchkeyboard2.0/Materials/ReturnKeyMat.mat
+  artifactKey: Guid(8517f11cad02e1e4aa972ee3e9b75644) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Meshes/Keyboard/Punchkeyboard2.0/Materials/ReturnKeyMat.mat using Guid(8517f11cad02e1e4aa972ee3e9b75644) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c7baa6379cb570fdb803885d07313246') in 0.021119 seconds
+  Import took 0.025178 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000411 seconds.
-  path: Assets/AllSkyFree/AllSkyDemoEnvironment/AllSky_DemoEnvironment_Light.fbx
-  artifactKey: Guid(a86608a16093647c082aa3ccf69d2558) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/AllSkyFree/AllSkyDemoEnvironment/AllSky_DemoEnvironment_Light.fbx using Guid(a86608a16093647c082aa3ccf69d2558) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8af9b6c3981b85554e773e107ba7ecfe') in 0.037946 seconds
-  Import took 0.041824 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.010039 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Native extension for LinuxStandalone target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 0.90 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.09 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-NullReferenceException: Object reference not set to an instance of an object
-  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
-  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
-
-(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
-
-Mono: successfully reloaded assembly
-- Completed reload, in  0.842 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Refreshing native plugins compatible for Editor in 0.76 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.08 ms.
-Unloading 1659 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 83.5 MB.
-System memory in use after: 83.6 MB.
-
-Unloading 51 unused Assets to reduce memory usage. Loaded Objects now: 2131.
-Total: 3.472300 ms (FindLiveObjects: 0.478400 ms CreateObjectMapping: 0.158400 ms MarkObjects: 2.762300 ms  DeleteObjects: 0.072300 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.010100 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Native extension for LinuxStandalone target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 0.70 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.10 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-NullReferenceException: Object reference not set to an instance of an object
-  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
-  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
-
-(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
-
-Mono: successfully reloaded assembly
-- Completed reload, in  0.803 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Refreshing native plugins compatible for Editor in 1.12 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.19 ms.
-Unloading 1659 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 83.5 MB.
-System memory in use after: 83.6 MB.
-
-Unloading 46 unused Assets to reduce memory usage. Loaded Objects now: 2135.
-Total: 2.593400 ms (FindLiveObjects: 0.241200 ms CreateObjectMapping: 0.078900 ms MarkObjects: 2.243700 ms  DeleteObjects: 0.027900 ms)
+  Time since last request: 0.000251 seconds.
+  path: Assets/AllSkyFree/AllSkyDemoEnvironment/Materials/TreeLeaves.mat
+  artifactKey: Guid(3d7bc6435f5ced147872d5b96fd28f42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AllSkyFree/AllSkyDemoEnvironment/Materials/TreeLeaves.mat using Guid(3d7bc6435f5ced147872d5b96fd28f42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4196392fc3aa29a8fdde63abd71d5ef2') in 0.021955 seconds
+  Import took 0.026148 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 2002.436935 seconds.
-  path: Assets/Resources/Prefabs/3.0/AFrameObjects/Cube.prefab
-  artifactKey: Guid(2a5bce944c0ee424fa75b5265779af50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/AFrameObjects/Cube.prefab using Guid(2a5bce944c0ee424fa75b5265779af50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c018aeef942752335d15a0f084c98576') in 0.114852 seconds
-  Import took 0.118534 seconds .
+  Time since last request: 0.000234 seconds.
+  path: Assets/AllSkyFree/AllSkyDemoEnvironment/Materials/TreeTrunk.mat
+  artifactKey: Guid(7809cf584f7a8ba4897c2c57e9669dfe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AllSkyFree/AllSkyDemoEnvironment/Materials/TreeTrunk.mat using Guid(7809cf584f7a8ba4897c2c57e9669dfe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fb9c89a5e0bc79205f119cf5e52f9780') in 0.017173 seconds
+  Import took 0.021252 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 4.951753 seconds.
-  path: Assets/Resources/Prefabs/3.0/AFrameObjects/Sphere.prefab
-  artifactKey: Guid(35f352b577411b6429deb8baca44217b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/AFrameObjects/Sphere.prefab using Guid(35f352b577411b6429deb8baca44217b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '168ac0c16b231a506bd7c7b15a4c31ff') in 0.023758 seconds
-  Import took 0.027834 seconds .
+  Time since last request: 0.000246 seconds.
+  path: Assets/ThirdParty/Fonts/Work Sans/WorkSans-Regular.ttf
+  artifactKey: Guid(e55b0ec87c7ac294b8a5d4a9953cfb65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ThirdParty/Fonts/Work Sans/WorkSans-Regular.ttf using Guid(e55b0ec87c7ac294b8a5d4a9953cfb65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16e6c2d369ada904795133d3422d97d3') in 0.018151 seconds
+  Import took 0.022100 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 4.623019 seconds.
-  path: Assets/Resources/Prefabs/3.0/AFrameObjects/Capsule.prefab
-  artifactKey: Guid(6a1e0f0d7b04a59478d46899f80d7ea4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/AFrameObjects/Capsule.prefab using Guid(6a1e0f0d7b04a59478d46899f80d7ea4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '607409f6f4fbe4ef2f43e7062ac03afc') in 0.021288 seconds
-  Import took 0.025614 seconds .
+  Time since last request: 0.000184 seconds.
+  path: Assets/Meshes/Keyboard/Drumsticks/Materials/StickHandleMat.mat
+  artifactKey: Guid(6b8f31f26ad7e70469ba62d8479e3990) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Meshes/Keyboard/Drumsticks/Materials/StickHandleMat.mat using Guid(6b8f31f26ad7e70469ba62d8479e3990) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f2fb1b20eb9681a450f285cae3719144') in 0.043746 seconds
+  Import took 0.047476 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 4.823301 seconds.
-  path: Assets/Resources/Prefabs/3.0/AFrameObjects/Cylinder.prefab
-  artifactKey: Guid(0466357c68df6f448b8c4b618e695021) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/AFrameObjects/Cylinder.prefab using Guid(0466357c68df6f448b8c4b618e695021) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '35a4e88ff93c73e9be1d9901a92e408b') in 0.015736 seconds
-  Import took 0.019459 seconds .
+  Time since last request: 0.000218 seconds.
+  path: Assets/Meshes/Keyboard/Drumsticks/Materials/StickTipMat.mat
+  artifactKey: Guid(95bd5f257c4c6ce41ad2ea92872a1d25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Meshes/Keyboard/Drumsticks/Materials/StickTipMat.mat using Guid(95bd5f257c4c6ce41ad2ea92872a1d25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54c2c5aabc69e345454d2eebd678d55c') in 0.022410 seconds
+  Import took 0.026194 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 5.026800 seconds.
-  path: Assets/Resources/Prefabs/3.0/AFrameObjects/Plane.prefab
-  artifactKey: Guid(3bea66fad180cf1418e2f9aa49ca591f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/AFrameObjects/Plane.prefab using Guid(3bea66fad180cf1418e2f9aa49ca591f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd806072cfee5e2b14eb4c24c31daa14b') in 0.036653 seconds
-  Import took 0.040434 seconds .
+  Time since last request: 0.000258 seconds.
+  path: Assets/Meshes/Keyboard/Punchkeyboard2.0/Materials/SpecialKeycapMat.mat
+  artifactKey: Guid(80d9b476365a7e443937a493ee27ba50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Meshes/Keyboard/Punchkeyboard2.0/Materials/SpecialKeycapMat.mat using Guid(80d9b476365a7e443937a493ee27ba50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ace4b4bd2e006c2140f286b373c90729') in 0.021675 seconds
+  Import took 0.025455 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 5.896023 seconds.
-  path: Assets/Resources/Prefabs/3.0/AFrameObjects/Quad.prefab
-  artifactKey: Guid(261325f5c16f6d34caf7045c912bcbab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/AFrameObjects/Quad.prefab using Guid(261325f5c16f6d34caf7045c912bcbab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '97f5c26af855ceb7915f710e314e1b75') in 0.040108 seconds
-  Import took 0.044029 seconds .
+  Time since last request: 0.000271 seconds.
+  path: Assets/Meshes/VR/ReducedControllers/Materials/TrackpadMat.mat
+  artifactKey: Guid(709a844ef0a240144977a2e80419efe9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Meshes/VR/ReducedControllers/Materials/TrackpadMat.mat using Guid(709a844ef0a240144977a2e80419efe9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f401ee0d8a75e3be772f7cf54aecb6e0') in 0.020773 seconds
+  Import took 0.024566 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.002592 seconds.
-  path: Assets/Resources/Prefabs/3.0/AFrameObjects/Quad.prefab
-  artifactKey: Guid(261325f5c16f6d34caf7045c912bcbab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/AFrameObjects/Quad.prefab using Guid(261325f5c16f6d34caf7045c912bcbab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '97f5c26af855ceb7915f710e314e1b75') in 0.011963 seconds
-  Import took 0.015223 seconds .
+  Time since last request: 0.000221 seconds.
+  path: Assets/Meshes/Keyboard/Drumsticks/Materials/StickTipMat.mat
+  artifactKey: Guid(95bd5f257c4c6ce41ad2ea92872a1d25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Meshes/Keyboard/Drumsticks/Materials/StickTipMat.mat using Guid(95bd5f257c4c6ce41ad2ea92872a1d25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54c2c5aabc69e345454d2eebd678d55c') in 0.011659 seconds
+  Import took 0.015604 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 115.592483 seconds.
-  path: Packages/com.unity.xr.interaction.toolkit/Runtime/Interaction/Interactables/XRBaseInteractable.cs
-  artifactKey: Guid(ee3d13c82e3a02e408646cf1a7aca242) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Packages/com.unity.xr.interaction.toolkit/Runtime/Interaction/Interactables/XRBaseInteractable.cs using Guid(ee3d13c82e3a02e408646cf1a7aca242) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '42069fc95045fef744cf0fb2ec762a99') in 0.386781 seconds
-  Import took 0.390073 seconds .
+  Time since last request: 0.006289 seconds.
+  path: Assets/Meshes/VR/ReducedControllers/Materials/TrackpadMat.mat
+  artifactKey: Guid(709a844ef0a240144977a2e80419efe9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Meshes/VR/ReducedControllers/Materials/TrackpadMat.mat using Guid(709a844ef0a240144977a2e80419efe9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f401ee0d8a75e3be772f7cf54aecb6e0') in 0.015769 seconds
+  Import took 0.019858 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.009510 seconds.
-  path: Packages/com.unity.xr.interaction.toolkit/Runtime/Interaction/Interactables/XRBaseInteractable.cs
-  artifactKey: Guid(ee3d13c82e3a02e408646cf1a7aca242) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Packages/com.unity.xr.interaction.toolkit/Runtime/Interaction/Interactables/XRBaseInteractable.cs using Guid(ee3d13c82e3a02e408646cf1a7aca242) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '42069fc95045fef744cf0fb2ec762a99') in 0.003280 seconds
-  Import took 0.006432 seconds .
+  Time since last request: 7.618079 seconds.
+  path: Assets/New Terrain.asset
+  artifactKey: Guid(7de6b5e718ad12444867abd3a91e140b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/New Terrain.asset using Guid(7de6b5e718ad12444867abd3a91e140b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c0ca0f5fbb72423f24fbad400c04ccae') in 0.016664 seconds
+  Import took 0.021140 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 165.128924 seconds.
-  path: Packages/com.unity.xr.management/package.json
-  artifactKey: Guid(a8437ae6df3ab4de78c661f8e1148bbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Packages/com.unity.xr.management/package.json using Guid(a8437ae6df3ab4de78c661f8e1148bbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6107bc429b91ea39309b26d3ddc75597') in 0.031623 seconds
-  Import took 0.035719 seconds .
+  Time since last request: 0.001138 seconds.
+  path: Assets/New Terrain.asset
+  artifactKey: Guid(7de6b5e718ad12444867abd3a91e140b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/New Terrain.asset using Guid(7de6b5e718ad12444867abd3a91e140b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c0ca0f5fbb72423f24fbad400c04ccae') in 0.010599 seconds
+  Import took 0.014640 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 16.567838 seconds.
-  path: Packages/com.unity.xr.management/Runtime
-  artifactKey: Guid(4fb10c2185e1347c4bef41feca4a8845) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Packages/com.unity.xr.management/Runtime using Guid(4fb10c2185e1347c4bef41feca4a8845) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c4cd5c0304bd19518556a89a572befbe') in 0.012551 seconds
-  Import took 0.016017 seconds .
+  Time since last request: 32.437295 seconds.
+  path: Assets/Materials/Environments/Forest/Ground.mat
+  artifactKey: Guid(d0c700865d03e164db01fbb42d9a1ab2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Environments/Forest/Ground.mat using Guid(d0c700865d03e164db01fbb42d9a1ab2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdf529a4a17d8ec034af03f189c49cc4') in 0.037825 seconds
+  Import took 0.042049 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.005130 seconds.
-  path: Packages/com.unity.xr.management/Runtime/Unity.XR.Management.asmdef
-  artifactKey: Guid(e40ba710768534012815d3193fa296cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Packages/com.unity.xr.management/Runtime/Unity.XR.Management.asmdef using Guid(e40ba710768534012815d3193fa296cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '84a38061cc06db0c9a92c1c8b9faa936') in 0.010539 seconds
-  Import took 0.014105 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.010370 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Native extension for LinuxStandalone target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 0.64 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.12 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-NullReferenceException: Object reference not set to an instance of an object
-  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
-  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
-
-(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
-
-Mono: successfully reloaded assembly
-- Completed reload, in  0.937 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Refreshing native plugins compatible for Editor in 0.64 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.06 ms.
-Unloading 1659 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 83.6 MB.
-System memory in use after: 83.8 MB.
-
-Unloading 47 unused Assets to reduce memory usage. Loaded Objects now: 2146.
-Total: 2.674200 ms (FindLiveObjects: 0.345600 ms CreateObjectMapping: 0.057100 ms MarkObjects: 2.203500 ms  DeleteObjects: 0.067200 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.009572 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Native extension for LinuxStandalone target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 0.83 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.11 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-NullReferenceException: Object reference not set to an instance of an object
-  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
-  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
-
-(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
-
-Mono: successfully reloaded assembly
-- Completed reload, in  0.876 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Refreshing native plugins compatible for Editor in 0.76 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.07 ms.
-Unloading 1659 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 83.7 MB.
-System memory in use after: 83.8 MB.
-
-Unloading 46 unused Assets to reduce memory usage. Loaded Objects now: 2150.
-Total: 2.014500 ms (FindLiveObjects: 0.172800 ms CreateObjectMapping: 0.050900 ms MarkObjects: 1.744200 ms  DeleteObjects: 0.045800 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.012955 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Native extension for LinuxStandalone target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 1.00 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.14 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-NullReferenceException: Object reference not set to an instance of an object
-  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
-  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
-
-(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
-
-Mono: successfully reloaded assembly
-- Completed reload, in  1.080 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Refreshing native plugins compatible for Editor in 0.83 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.09 ms.
-Unloading 1659 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 83.7 MB.
-System memory in use after: 83.8 MB.
-
-Unloading 46 unused Assets to reduce memory usage. Loaded Objects now: 2154.
-Total: 2.095500 ms (FindLiveObjects: 0.202200 ms CreateObjectMapping: 0.079700 ms MarkObjects: 1.783200 ms  DeleteObjects: 0.029400 ms)
+  Time since last request: 645.470410 seconds.
+  path: Assets/Materials/Environments/Forest/Ground.mat
+  artifactKey: Guid(d0c700865d03e164db01fbb42d9a1ab2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Environments/Forest/Ground.mat using Guid(d0c700865d03e164db01fbb42d9a1ab2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '33d88df28a5a5c232c09a761aa680ee8') in 0.018138 seconds
+  Import took 0.022306 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 976.288781 seconds.
-  path: Assets/Resources/Prefabs/3.0/UI/Playground.prefab
-  artifactKey: Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/UI/Playground.prefab using Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7cfbd74aae4aebabee9ba7ac774ac55e') in 0.156182 seconds
-  Import took 0.161798 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.019877 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Native extension for LinuxStandalone target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 0.62 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.11 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-NullReferenceException: Object reference not set to an instance of an object
-  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
-  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
-
-(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
-
-Mono: successfully reloaded assembly
-- Completed reload, in  0.732 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Refreshing native plugins compatible for Editor in 0.59 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.06 ms.
-Unloading 1659 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 84.4 MB.
-System memory in use after: 84.6 MB.
-
-Unloading 49 unused Assets to reduce memory usage. Loaded Objects now: 2159.
-Total: 1.789700 ms (FindLiveObjects: 0.146300 ms CreateObjectMapping: 0.053100 ms MarkObjects: 1.559500 ms  DeleteObjects: 0.030100 ms)
+  Time since last request: 0.000190 seconds.
+  path: Assets/Materials/Environments/Forest/Log.mat
+  artifactKey: Guid(8683463ec3bff0346ab132a099f1c9b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Environments/Forest/Log.mat using Guid(8683463ec3bff0346ab132a099f1c9b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '77a7e032747c7f55a94c7bf84e7a7f19') in 0.012571 seconds
+  Import took 0.016154 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 8335.153122 seconds.
-  path: Assets/Scripts/Tests/GeneralTests.asmdef
-  artifactKey: Guid(989bf7b6d01bbf7489b4d728c1ae85d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Tests/GeneralTests.asmdef using Guid(989bf7b6d01bbf7489b4d728c1ae85d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8094ab1a5745b8bc9f56085bed2c7fd') in 0.009935 seconds
-  Import took 0.013579 seconds .
+  Time since last request: 0.000159 seconds.
+  path: Assets/Materials/Environments/Forest/Leaves.mat
+  artifactKey: Guid(3ca83d04e422796478de09e0872b1adb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Environments/Forest/Leaves.mat using Guid(3ca83d04e422796478de09e0872b1adb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fc1b8f46e10fb60e9582ae6fc58f75d2') in 0.011940 seconds
+  Import took 0.014581 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 920.551348 seconds.
+  path: Assets/Resources/Prefabs/3.0/Environments/Forest.prefab
+  artifactKey: Guid(e5ec2e827b9f6e649b5421d567a5aff0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/Environments/Forest.prefab using Guid(e5ec2e827b9f6e649b5421d567a5aff0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'db4144ed0503e2acc5750f5cee3e1058') in 0.026192 seconds
+  Import took 0.029897 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 71.030858 seconds.
+  path: Assets/Scenes/InitialScene.unity
+  artifactKey: Guid(8cf0fa1fd3940494bae7bd743db8ebcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/InitialScene.unity using Guid(8cf0fa1fd3940494bae7bd743db8ebcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0f2156e5e2c834541e9a148d90bbf15b') in 0.007633 seconds
+  Import took 0.010493 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 26.067920 seconds.
+  path: Assets/Scenes/MainScene.unity
+  artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/MainScene.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a9e400fda36f8b892bcda9eb44466e8') in 0.006923 seconds
+  Import took 0.009899 seconds .
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
