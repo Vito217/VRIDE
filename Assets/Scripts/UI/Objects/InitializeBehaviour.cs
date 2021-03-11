@@ -167,10 +167,18 @@ public class InitializeBehaviour : MonoBehaviour
         keyboardTarget.selectionAnchorPosition = lastAnchorPosition;
     }
 
-    public virtual void Initialize(Vector3 final_pos, Vector3 forward)
+    public virtual void Initialize()
     {
-        transform.position = final_pos;
-        transform.forward = forward;
+        Vector3 pos = Camera.main.transform.position;
+        Vector3 forw = Camera.main.transform.forward;
+        Vector3 newFinalPos = new Vector3(
+            pos.x + forw.x * .8f,
+            .9f * pos.y,
+            pos.z + forw.z * .8f);
+        Vector3 newForw = new Vector3(forw.x, 0, forw.z);
+
+        transform.position = newFinalPos;
+        transform.forward = newForw;
     }
 
     public virtual void OnSelect(BaseEventData data) {

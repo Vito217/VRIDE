@@ -42,8 +42,7 @@ namespace SaveAndLoad
                 {
                     lastPackageName = lastPackage.name;
                     BrowserClass lastClass = browser.class_list.last_selected as BrowserClass;
-                    if(lastClass != null)
-                        lastClassName = lastClass.name;
+                    if(lastClass != null) lastClassName = lastClass.name;
                 }
                 string lastSideName = browser.classSideToggle.isOn ? "ClassSide" : "InstanceSide";
 
@@ -62,25 +61,18 @@ namespace SaveAndLoad
 
             foreach (BrowserData bdata in browsersData)
             {
-                Vector3 fwd = new Vector3(bdata.forward.x, bdata.forward.y, bdata.forward.z);
-                Vector3 final_pos = new Vector3(bdata.position.x, bdata.position.y, bdata.position.z);
-
                 Browser browser = Instantiator.Instance.Browser();
-                browser.Initialize(final_pos, fwd);
+                browser.transform.position = new Vector3(bdata.position.x, bdata.position.y, bdata.position.z);
+                browser.transform.forward = new Vector3(bdata.forward.x, bdata.forward.y, bdata.forward.z);
                 Transform lsp = browser.package_list.transform.Find(bdata.lastSelectedPackage);
                 if (lsp != null && bdata.lastSelectedPackage != "")
                 {
                     lsp.gameObject.GetComponent<BrowserPackage>().click();
                     BrowserClass lsc = browser.class_list.last_selected as BrowserClass;
-                    if (lsc != null)
-                    {
-                        lsc.click();
-                    }
+                    if (lsc != null) lsc.click();
                 }
-                if (bdata.lastSelectedSide == "ClassSide")
-                    browser.onSelectClassSide();
-                else
-                    browser.onSelectInstanceSide();
+                if (bdata.lastSelectedSide == "ClassSide") browser.onSelectClassSide();
+                else browser.onSelectInstanceSide();
 
                 browsers.Add(browser);
                 InteractionLogger.Count("Browser", browser.GetInstanceID().ToString());
@@ -114,11 +106,9 @@ namespace SaveAndLoad
 
             foreach (PlaygroundData pdata in playgroundsData)
             {
-                Vector3 fwd = new Vector3(pdata.forward.x, pdata.forward.y, pdata.forward.z);
-                Vector3 final_pos = new Vector3(pdata.position.x, pdata.position.y, pdata.position.z);
-
                 Playground playground = Instantiator.Instance.Playground();
-                playground.Initialize(final_pos, fwd);
+                playground.transform.position = new Vector3(pdata.position.x, pdata.position.y, pdata.position.z);
+                playground.transform.forward = new Vector3(pdata.forward.x, pdata.forward.y, pdata.forward.z);
                 playground.field.text = pdata.sourceCode;
                 playgrounds.Add(playground);
                 InteractionLogger.Count("Playground", playground.GetInstanceID().ToString());
@@ -152,12 +142,10 @@ namespace SaveAndLoad
 
             foreach (InspectorData idata in inspectorsData)
             {
-                Vector3 fwd = new Vector3(idata.forward.x, idata.forward.y, idata.forward.z);
-                Vector3 final_pos = new Vector3(idata.position.x, idata.position.y, idata.position.z);
-
                 Inspector inspector = Instantiator.Instance.Inspector();
                 inspector.setContent(idata.rows);
-                inspector.Initialize(final_pos, fwd);
+                inspector.transform.position = new Vector3(idata.position.x, idata.position.y, idata.position.z);
+                inspector.transform.forward = new Vector3(idata.forward.x, idata.forward.y, idata.forward.z);
 
                 inspectors.Add(inspector);
 
@@ -193,15 +181,13 @@ namespace SaveAndLoad
 
             foreach (SVGData gdata in graphsData)
             {
-                Vector3 fwd = new Vector3(gdata.forward.x, gdata.forward.y, gdata.forward.z);
-                Vector3 final_pos = new Vector3(gdata.position.x, gdata.position.y, gdata.position.z);
-
                 string rawImage = gdata.rawImage;
                 string type = gdata.type;
 
                 Graph graph = Instantiator.Instance.Graph();
                 graph.setSprite(rawImage, type);
-                graph.Initialize(final_pos, fwd);
+                graph.transform.position = new Vector3(gdata.position.x, gdata.position.y, gdata.position.z);
+                graph.transform.forward = new Vector3(gdata.forward.x, gdata.forward.y, gdata.forward.z);
                 graphs.Add(graph);
 
                 InteractionLogger.Count("GraphObject", graph.GetInstanceID().ToString());

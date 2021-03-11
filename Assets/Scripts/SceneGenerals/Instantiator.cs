@@ -25,6 +25,7 @@ public class Instantiator: MonoBehaviour
 
     public GameObject defaultGround;
     public GameObject spaceShip;
+    public GameObject forest;
 
     public static GameObject currentEnvironment;
 

@@ -14,6 +14,16 @@ public class AFrameGeometry : MonoBehaviour
             GameObject.Find("XR Interaction Manager").GetComponent<XRInteractionManager>();
     }
 
+    public void OnSelectEnter()
+    {
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+    }
+
+    public void OnSelectExit()
+    {
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+    }
+
     public void OnPointerEnter() 
     {
         GetComponent<Renderer>().material.color = hoverColor;

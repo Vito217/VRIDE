@@ -293,6 +293,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1680551294280187531, guid: e5ec2e827b9f6e649b5421d567a5aff0,
+        type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 47630752}
     - target: {fileID: 6114426209153993612, guid: e5ec2e827b9f6e649b5421d567a5aff0,
         type: 3}
       propertyPath: m_RootOrder
@@ -350,6 +355,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5ec2e827b9f6e649b5421d567a5aff0, type: 3}
+--- !u!1 &89929736 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1323963914266932028, guid: e5ec2e827b9f6e649b5421d567a5aff0,
+    type: 3}
+  m_PrefabInstance: {fileID: 89929735}
+  m_PrefabAsset: {fileID: 0}
 --- !u!850595691 &177336884
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -549,6 +560,7 @@ MonoBehaviour:
     type: 3}
   defaultGround: {fileID: 1743808469}
   spaceShip: {fileID: 47175570}
+  forest: {fileID: 89929736}
 --- !u!4 &352378833
 Transform:
   m_ObjectHideFlags: 0
@@ -1414,11 +1426,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7236977680674023401, guid: deaf761c35b3def408bffd10dd23a04d,
-        type: 3}
-      propertyPath: menu
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7236977680674023403, guid: deaf761c35b3def408bffd10dd23a04d,
         type: 3}
       propertyPath: m_RootOrder

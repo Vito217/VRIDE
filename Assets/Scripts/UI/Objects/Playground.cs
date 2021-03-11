@@ -769,10 +769,7 @@ public class Playground : InitializeBehaviour
                                     0f));
 
                             // Positioning
-                            aFrameCanvas.GetComponent<InitializeBehaviour>().Initialize(
-                                aFramePos,
-                                transform.forward
-                            );
+                            aFrameCanvas.GetComponent<InitializeBehaviour>().Initialize();
 
                             goto Reactivation;
                         }
@@ -919,10 +916,7 @@ public class Playground : InitializeBehaviour
                     Vector3 newWorldPos = transform.TransformPoint(new Vector3(width, 0, 0));
                     insp = Instantiator.Instance.Inspector() as Inspector;
                     SaveAndLoadModule.inspectors.Add(insp);
-                    insp.Initialize(
-                        newWorldPos,
-                        transform.forward
-                    );
+                    insp.Initialize();
                     InteractionLogger.Count("Inspector", insp.GetInstanceID().ToString());
                 }
                 insp.setContent(res);
@@ -1100,11 +1094,9 @@ public class Playground : InitializeBehaviour
         view.GetComponent<RectTransform>().sizeDelta = sd;
 
         float width = GetComponent<RectTransform>().sizeDelta.x;
-        view.Initialize(
-            transform.TransformPoint(new Vector3(
-                -0.5f * (width + view.GetComponent<RectTransform>().sizeDelta.x), 0, 0)),
-            transform.forward
-        );
+        view.transform.position = transform.TransformPoint(new Vector3(
+                -0.5f * (width + view.GetComponent<RectTransform>().sizeDelta.x), 0, 0));
+        view.transform.forward = transform.forward;
     }
 
     private Vector3 GetNearestObjectToOrigin(string aFrame)

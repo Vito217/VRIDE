@@ -5,6 +5,9 @@ using System.Text.RegularExpressions;
 public class VRIDEController : MonoBehaviour
 {
     public VRIDEMenu menu;
+    public GameObject leftSphere, rightSphere;
+    public GameObject leftHand, rightHand;
+
     Vector3 currentPosition = Vector3.zero;
 
     void Update()
@@ -61,10 +64,28 @@ public class VRIDEController : MonoBehaviour
         if (menu == null)
         {
             menu = Instantiator.Instance.Menu();
-            (Vector3 newFinalPos, Vector3 newForw) = menu.GetPosAndForw();
-            menu.Initialize(newFinalPos, newForw);
+            menu.Initialize();
         }
         else
             Destroy(menu.gameObject);
+
+        GetComponent<VRIDEInputHandler>().RightSecondaryButtonDown = false;
+        GetComponent<VRIDEInputHandler>().LeftSecondaryButtonDown = false;
+    }
+
+    public void EnableSpheres()
+    {
+        leftSphere.SetActive(true);
+        rightSphere.SetActive(true);
+        leftHand.SetActive(false);
+        rightHand.SetActive(false);
+    }
+
+    public void EnableHands()
+    {
+        leftSphere.SetActive(false);
+        rightSphere.SetActive(false);
+        leftHand.SetActive(true);
+        rightHand.SetActive(true);
     }
 }

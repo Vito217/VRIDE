@@ -2,65 +2,78 @@
 using UnityEngine.UI;
 using LoggingModule;
 using SaveAndLoad;
+using System.Collections;
 
 public class VRIDEMenu : InitializeBehaviour
 {
+    public static bool keyboardToggleState;
+    public static bool vrHandsToggleState;
+
+    public Toggle keyboardToggle;
+    public Toggle vrHandsToggle;
+
     public GameObject lastSelected;
     public Material spaceSkyBox;
+    public Material forestSkyBox;
     public Material defaultSkyBox;
+
+    public override IEnumerator innerStart()
+    {
+        keyboardToggle.isOn = keyboardToggleState;
+        vrHandsToggle.isOn = vrHandsToggleState;
+        return base.innerStart();
+    }
 
     public void GenerateBrowser()
     {
-        (Vector3 newFinalPos, Vector3 newForw) = GetPosAndForw();
         Browser browser = Instantiator.Instance.Browser();
-        browser.Initialize(newFinalPos, newForw);
+        browser.Initialize();
         SaveAndLoadModule.browsers.Add(browser);
         InteractionLogger.Count("Browser", browser.GetInstanceID().ToString());
 
-        if (transform.Find("Button Collection/Settings/Viewport/Content/Keyboard Enable").gameObject.GetComponent<Toggle>().isOn)
+        if (keyboardToggle.isOn)
             browser.ToggleKeyboard();
 
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 
     public void GeneratePlayground()
     {
-        (Vector3 newFinalPos, Vector3 newForw) = GetPosAndForw();
         Playground playground = Instantiator.Instance.Playground();
-        playground.Initialize(newFinalPos, newForw);
+        playground.Initialize();
         SaveAndLoadModule.playgrounds.Add(playground);
         InteractionLogger.Count("Playground", playground.GetInstanceID().ToString());
 
-        if (transform.Find("Button Collection/Settings/Viewport/Content/Keyboard Enable").gameObject.GetComponent<Toggle>().isOn)
+        if (keyboardToggle.isOn)
             playground.ToggleKeyboard();
 
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 
     public void GenerateTranscript()
     {
-        (Vector3 newFinalPos, Vector3 newForw) = GetPosAndForw();
         Transcript transcript = Instantiator.Instance.Transcript();
-        transcript.Initialize(newFinalPos, newForw);
+        transcript.Initialize();
         SaveAndLoadModule.transcripts.Add(transcript);
         InteractionLogger.Count("Transcript", transcript.GetInstanceID().ToString());
-        gameObject.SetActive(false);
+
+        Destroy(gameObject);
     }
 
     public void GenerateRoassalExamples()
     {
-        (Vector3 newFinalPos, Vector3 newForw) = GetPosAndForw();
         RoassalExamples re = Instantiator.Instance.RoassalExamples();
-        re.Initialize(newFinalPos, newForw);
-        gameObject.SetActive(false);
+        re.Initialize();
+
+        Destroy(gameObject);
     }
 
     public void GenerateWebcam()
     {
-        (Vector3 newFinalPos, Vector3 newForw) = GetPosAndForw();
         WebcamView wc = Instantiator.Instance.WebCam();
-        wc.Initialize(newFinalPos, newForw);
-        gameObject.SetActive(false);
+        wc.Initialize();
+
+        Destroy(gameObject);
     }
 
     public void Exit()
@@ -68,18 +81,6 @@ public class VRIDEMenu : InitializeBehaviour
         SaveAndLoadModule.Save();
         InteractionLogger.SessionEnd();
         Application.Quit();
-    }
-
-    public (Vector3 newFinalPos, Vector3 newForw) GetPosAndForw()
-    {
-        Vector3 pos = Camera.main.transform.position;
-        Vector3 forw = Camera.main.transform.forward;
-        Vector3 newFinalPos = new Vector3(
-            pos.x + forw.x * .8f,
-            .9f * pos.y,
-            pos.z + forw.z * .8f);
-        Vector3 newForw = new Vector3(forw.x, 0, forw.z);
-        return (newFinalPos, newForw);
     }
 
     public void ChangeEnvToSpace()
@@ -92,6 +93,22 @@ public class VRIDEMenu : InitializeBehaviour
 
         foreach (VRIDEController user in FindObjectsOfType<VRIDEController>())
             user.transform.position = Vector3.zero;
+
+        Initialize();
+    }
+
+    public void ChangeEnvToForest()
+    {
+        RenderSettings.skybox = forestSkyBox;
+
+        Instantiator.currentEnvironment.SetActive(false);
+        Instantiator.currentEnvironment = Instantiator.Instance.forest;
+        Instantiator.currentEnvironment.SetActive(true);
+
+        foreach (VRIDEController user in FindObjectsOfType<VRIDEController>())
+            user.transform.position = Vector3.zero;
+
+        Initialize();
     }
 
     public void ChangeEnvToDefault()
@@ -104,5 +121,19 @@ public class VRIDEMenu : InitializeBehaviour
 
         foreach (VRIDEController user in FindObjectsOfType<VRIDEController>())
             user.transform.position = Vector3.zero;
+
+        Initialize();
+    }
+
+    public void KeyboardToggle()
+    {
+        keyboardToggleState = keyboardToggle.isOn;
+    }
+
+    public void VRHandsToggle()
+    {
+        vrHandsToggleState = vrHandsToggle.isOn;
+        if (vrHandsToggleState) GameObject.Find("XR Rig").GetComponent<VRIDEController>().EnableHands();
+        else GameObject.Find("XR Rig").GetComponent<VRIDEController>().EnableSpheres();
     }
 }

@@ -25,7 +25,8 @@ public class RoassalMethod : RoassalObject
                 sourceCode, @"\A([a-zA-Z0-9\n\s\t<>:']*)(\|.*\|)", "$2");
 
             Playground playground = Instantiator.Instance.Playground();
-            playground.Initialize(roassal.transform.position, roassal.transform.forward);
+            playground.transform.position = roassal.transform.position;
+            playground.transform.forward = roassal.transform.forward;
             playground.field.text = sourceCode;
 
             InteractionLogger.RegisterRoassalExample(name);
