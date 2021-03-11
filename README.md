@@ -217,7 +217,7 @@ Finally, put on your VR headset, and try some stuff!
 ## External Resources
 * <a href="https://github.com/rjth/Punchkeyboard">Jonathan Ravasz' PunchKeyboard</a>
 * <a href="https://assetstore.unity.com/packages/2d/textures-materials/sky/allsky-free-10-sky-skybox-set-146014">Richard Whitelock's AllSkyFree</a>
-* * <a href="https://github.com/C-Through/VR-XRHands">Andrew L. Connell's XRHands</a>
+* <a href="https://github.com/C-Through/VR-XRHands">Andrew L. Connell's XRHands</a>
 
 ## Channel Log
 
