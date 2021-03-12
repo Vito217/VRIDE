@@ -3,6 +3,8 @@ A Virtual Reality Interactive Development Environment made in Unity that support
 
 <i><b>Note:</b> This is still an early WIP, so there could be lot of features missing</i>
 
+<a href="https://github.com/Vito217/PharoVRIDE/releases/tag/v0.24.0">Download PharoVRIDE v0.24.0</a>
+
 ![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-07-15.png)
 ![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-10-27.png)
 ![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-10-28.png)
@@ -225,4 +227,4 @@ Finally, put on your VR headset, and try some stuff!
 
 ## Download
 
-<a href="https://github.com/Vito217/PharoVRIDE/releases">See Releases.</a>
+<a href="https://github.com/Vito217/PharoVRIDE/releases/tag/v0.24.0">Download PharoVRIDE v0.24.0</a>
