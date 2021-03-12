@@ -150,7 +150,7 @@ The text highlightning is based on regular expressions. You can specify a list o
 
 * Y or B: Open Menu.
 * Left/Right trigger: Pointer Click/Drag.
-* Left/Right stick press: Teleport.
+* Left/Right grip: Teleport, Grab 3D Objects.
 
 All previous commands can be executed using the VR and physical keyboards.
 
