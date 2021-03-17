@@ -1,5 +1,9 @@
 # PharoVRIDE's Channel Log
 
+## V0.24.0 (12/03/2021)
+* Added new environment: Forest.
+* Added XR Hands.
+* Fixed some minor bugs.
 
 ## V0.23.0 (04/03/2021)
 * Changed Vive Input Utility to XR Interaction Toolkit. Now it should work properly on OS X and Linux.

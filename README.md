@@ -3,6 +3,8 @@ A Virtual Reality Interactive Development Environment made in Unity that support
 
 <i><b>Note:</b> This is still an early WIP, so there could be lot of features missing</i>
 
+<a href="https://github.com/Vito217/PharoVRIDE/releases/tag/v0.24.0">Download PharoVRIDE v0.24.0</a>
+
 ![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-07-15.png)
 ![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-10-27.png)
 ![alt text](https://github.com/Vito217/PharoVRIDE/blob/master/Screenshots/2020-10-28.png)
@@ -150,7 +152,7 @@ The text highlightning is based on regular expressions. You can specify a list o
 
 * Y or B: Open Menu.
 * Left/Right trigger: Pointer Click/Drag.
-* Left/Right stick press: Teleport.
+* Left/Right grip: Teleport, Grab 3D Objects.
 
 All previous commands can be executed using the VR and physical keyboards.
 
@@ -225,4 +227,4 @@ Finally, put on your VR headset, and try some stuff!
 
 ## Download
 
-<a href="https://github.com/Vito217/PharoVRIDE/releases">See Releases.</a>
+<a href="https://github.com/Vito217/PharoVRIDE/releases/tag/v0.24.0">Download PharoVRIDE v0.24.0</a>
