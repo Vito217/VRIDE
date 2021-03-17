@@ -5,7 +5,6 @@ public class BrowserMethod : BrowserObject
 {
     public override async void onSelect()
     {
-        base.onSelect();
         theBrowser.DeactivateTemporarily();
         theBrowser.logText.text = "";
         if (theBrowser.methodList.last_selected != null)
@@ -22,6 +21,7 @@ public class BrowserMethod : BrowserObject
                 string sourceCode = await Pharo.Execute(code);
                 sourceCode = sourceCode.Substring(1, sourceCode.Length - 3);
                 theBrowser.field.text = sourceCode;
+                theBrowser.methodRemover.interactable = true;
             }
             catch (Exception e)
             {
@@ -36,5 +36,6 @@ public class BrowserMethod : BrowserObject
                     "    statements";
         }
         theBrowser.Reactivate();
+        base.onSelect();
     }
 }

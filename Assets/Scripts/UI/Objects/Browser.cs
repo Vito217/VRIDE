@@ -19,6 +19,9 @@ public class Browser : InitializeBehaviour
     public TMP_InputField packageFilter;
     public TMP_InputField classFilter;
     public TMP_InputField methodFilter;
+    public Button methodRemover;
+    public Button classRemover;
+    public Button packageRemover;
     private bool loadingPackages = false;
 
     public async void PharoDefine()
@@ -33,6 +36,8 @@ public class Browser : InitializeBehaviour
 
             if (clean_code.Contains("subclass"))
             {
+                //------------------------- CREATING A CLASS ------------------------------------------------------------------
+
                 string className = Regex.Matches(clean_code, @"\s#([a-zA-Z]+)(\s|\n)")[0].Groups[1].Value;
                 string packageName = Regex.Matches(clean_code, @"package:(\s*)('|""|'')([a-zA-Z\s-]+)('|""|'')")[0].Groups[3].Value;
 
@@ -50,6 +55,44 @@ public class Browser : InitializeBehaviour
                 string responseString = await Pharo.Print(clean_code);
                 if (responseString.Contains(className))
                 {
+                    //--------------------------- CRATING DEFAULT ACCESORS AND SETTERS -------------------------------
+
+                    // Instance Variables
+                    string[] iVars = Regex.Match(clean_code, @"instanceVariableNames:(\s*)'([a-zA-Z\s]*)'(\s|\n)").Groups[2].Value.Split(' ');
+                    foreach(string var in iVars)
+                    {
+                        if (!String.IsNullOrWhiteSpace(var))
+                        {
+                            // Getter
+                            string exists = await Pharo.Print(className + " canUnderstand: #" + var + " .");
+                            if (exists.Contains("false"))
+                                await Pharo.Print(className + " compile: '" + var + "\n\t ^ " + var + " .'");
+
+                            // Setter
+                            exists = await Pharo.Print(className + " canUnderstand: #" + var + ": .");
+                            if (exists.Contains("false"))
+                                await Pharo.Print(className + " compile: '" + var + ": aValue\n\t" + var + " := aValue .'");
+                        }
+                    }
+
+                    // Class Variables
+                    string[] cVars = Regex.Match(clean_code, @"classVariableNames:(\s*)'([a-zA-Z\s]*)'(\s|\n)").Groups[2].Value.Split(' ');
+                    foreach (string var in cVars)
+                    {
+                        if (!String.IsNullOrWhiteSpace(var))
+                        {
+                            // Getter
+                            string exists = await Pharo.Print("(" + className + " class) canUnderstand: #" + var + " .");
+                            if (exists.Contains("false"))
+                                await Pharo.Print("(" + className + " class) compile: '" + var + "\n\t ^ " + var + " .'");
+
+                            // Setter
+                            exists = await Pharo.Print("(" + className + " class) canUnderstand: #" + var + ": .");
+                            if (exists.Contains("false"))
+                                await Pharo.Print("(" + className + " class) compile: '" + var + ": aValue\n\t" + var + " := aValue .'");
+                        }
+                    }
+
                     // Getting or updating package
                     createOrUpdatePackage(packageName);
                     package_list.transform.Find(packageName).gameObject.GetComponent<BrowserPackage>().click();
@@ -63,6 +106,8 @@ public class Browser : InitializeBehaviour
             }
             else
             {
+                //-------------------------- CREATING A METHOD ----------------------------------------------------------------
+
                 string currentPackage = package_list.last_selected.name;
                 string currentClass = class_list.last_selected.name;
 
@@ -200,5 +245,49 @@ public class Browser : InitializeBehaviour
     public void LoadPackages()
     {
         loadingPackages = true;
+    }
+
+    public void RemoveLastSelectedPackage()
+    {
+        string packageName = package_list.last_selected.name;
+        DeletePackage(packageName);
+    }
+
+    public void RemoveLastSelectedClass()
+    {
+        string className = class_list.last_selected.name;
+        DeleteClass(className);
+    }
+
+    public void RemoveLastSelectedMethod()
+    {
+        string methodName = methodList.last_selected.name;
+        string className = class_list.last_selected.name;
+        DeleteMethod(className, methodName);
+    }
+
+    async void DeleteMethod(string className, string methodName)
+    {
+        await Pharo.Print("(" + className + " >> #" + methodName + ") removeFromSystem .");
+        methodRemover.interactable = false;
+        methodList.Load();
+    }
+
+    async void DeleteClass(string className)
+    {
+        await Pharo.Print(className + " removeFromSystem .");
+        methodList.FullClean();
+        methodFilter.interactable = false;
+        classRemover.interactable = false;
+        class_list.Load();
+    }
+
+    async void DeletePackage(string packageName)
+    {
+        await Pharo.Print("(RPackageOrganizer packageOrganizer packageNamed: '" + packageName + "') removeFromSystem .");
+        class_list.FullClean();
+        classFilter.interactable = false;
+        packageRemover.interactable = false;
+        package_list.Load();
     }
 }

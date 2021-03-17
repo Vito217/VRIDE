@@ -130,10 +130,12 @@ public class VRIDEMenu : InitializeBehaviour
         keyboardToggleState = keyboardToggle.isOn;
     }
 
+    /**
     public void VRHandsToggle()
     {
         vrHandsToggleState = vrHandsToggle.isOn;
         if (vrHandsToggleState) GameObject.Find("XR Rig").GetComponent<VRIDEController>().EnableHands();
         else GameObject.Find("XR Rig").GetComponent<VRIDEController>().EnableSpheres();
     }
+    **/
 }

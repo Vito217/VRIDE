@@ -1,6 +1,7 @@
 ﻿using LoggingModule;
 using UnityEngine;
 using System.Text.RegularExpressions;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class VRIDEController : MonoBehaviour
 {
@@ -9,6 +10,11 @@ public class VRIDEController : MonoBehaviour
     public GameObject leftHand, rightHand;
 
     Vector3 currentPosition = Vector3.zero;
+
+    void Awake()
+    {
+        GetComponent<XRRig>().cameraYOffset = 1.5f;
+    }
 
     void Update()
     {
@@ -53,7 +59,7 @@ public class VRIDEController : MonoBehaviour
         {
             currentPosition = transform.position;
             InteractionLogger.RegisterPlayerPosition(currentPosition.x, currentPosition.y, currentPosition.z);
-        }        
+        }
     }
 
     /// <summary>

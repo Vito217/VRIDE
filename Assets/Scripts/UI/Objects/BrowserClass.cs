@@ -5,7 +5,6 @@ public class BrowserClass : BrowserObject
 {
     public override async void onSelect()
     {
-        base.onSelect();
         if (theBrowser.class_list.last_selected != null)
             theBrowser.class_list.last_selected.onDeselect();
         if (theBrowser.methodList.last_selected != null)
@@ -21,6 +20,7 @@ public class BrowserClass : BrowserObject
                 theBrowser.field.text = sourceCode;
                 theBrowser.methodFilter.interactable = true;
                 theBrowser.methodList.Load();
+                theBrowser.classRemover.interactable = true;
             }
             catch (Exception e)
             {
@@ -37,5 +37,6 @@ public class BrowserClass : BrowserObject
                     "    classVariableNames: ''\n" +
                     "    package: 'MyPackage'";
         }
+        base.onSelect();
     }
 }

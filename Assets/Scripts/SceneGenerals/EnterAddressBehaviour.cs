@@ -19,6 +19,12 @@ public class EnterAddressBehaviour : MonoBehaviour
     public GameObject loadingWheel, aboutSection, mainSection;
     public TextMeshProUGUI errorText;
 
+    void Start()
+    {
+        GetComponent<InitializeBehaviour>().Initialize();
+        aboutSection.transform.position = transform.TransformPoint(GetComponent<RectTransform>().sizeDelta.x, 0f, 0f);
+    }
+
     public void OnButtonClick()
     {
         OnSubmit();

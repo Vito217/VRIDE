@@ -78,6 +78,12 @@ public abstract class BrowserWindow : MonoBehaviour
         step1 = true; 
     }
 
+    public void FullClean()
+    {
+        transform.localPosition = new Vector3(0f, 0f, 0f);
+        foreach (Transform child in transform) Destroy(child.gameObject);
+    }
+
     public abstract string QueryKey();
 
     public abstract Task InnerQuery(string key);

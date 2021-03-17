@@ -2,7 +2,6 @@
 {
     public override void onSelect()
     {
-        base.onSelect();
         if (theBrowser.package_list.last_selected != null)
             theBrowser.package_list.last_selected.onDeselect();
         if (theBrowser.class_list.last_selected != null)
@@ -15,5 +14,7 @@
         theBrowser.classFilter.interactable = true;
         theBrowser.methodFilter.interactable = false;
         theBrowser.class_list.Load();
+        theBrowser.packageRemover.interactable = true;
+        base.onSelect();
     }
 }
