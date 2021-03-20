@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using LoggingModule;
+using UnityEngine.EventSystems;
 
 public class Key : MonoBehaviour
 {
@@ -148,7 +149,6 @@ public class Key : MonoBehaviour
 	IEnumerator WriteStringToTarget()
     {
 		if (!InteractionLogger.isUsingVirtualKeyboard) InteractionLogger.RegisterVirtualKeyboard();
-
 		InitializeBehaviour window = transform.root.gameObject.GetComponent<InitializeBehaviour>();
 		if (!window.loadingWheel.activeSelf)
 		{
@@ -207,6 +207,30 @@ public class Key : MonoBehaviour
 				window.lastCaretPosition = lcp + 1;
 				window.lastAnchorPosition = lap + 1;
 			}
+			else if (name.Contains("Arrow"))
+            {
+				if(name.Contains("LeftArrow"))
+                {
+					int c = lcp > 0 ? lcp - 1 : 0;
+					window.keyboardTarget.caretPosition = c;
+					window.keyboardTarget.selectionAnchorPosition = c;
+					window.lastCaretPosition = c;
+					window.lastAnchorPosition = c;
+					EventSystem.current.SetSelectedGameObject(null);
+					window.keyboardTarget.ActivateInputField();
+				}
+				else if(name.Contains("RightArrow"))
+                {
+					int l = window.keyboardTarget.text.Length;
+					int c = lcp < l ? lcp + 1 : l;
+					window.keyboardTarget.caretPosition = c;
+					window.keyboardTarget.selectionAnchorPosition = c;
+					window.lastCaretPosition = c;
+					window.lastAnchorPosition = c;
+					EventSystem.current.SetSelectedGameObject(null);
+					window.keyboardTarget.ActivateInputField();
+				}
+            }
 			else
             {
 				if (lcp != lap) DeleteSelection(ref lcp, ref lap, window);
