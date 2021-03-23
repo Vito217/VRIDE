@@ -36,6 +36,8 @@ public class Key : MonoBehaviour
 	private float currentDistance = -1;
 	private bool isSpecialKey;
 
+	private InitializeBehaviour window;
+
 	void Start()
 	{
 		//keycodeAdder = this.gameObject.GetComponent<KeycodeAdder> ();
@@ -63,6 +65,9 @@ public class Key : MonoBehaviour
 		SwitchKeycapCharCase ();
 
 		isSpecialKey = Regex.Match(name, "Shift|Symbol").Success;
+
+		window = transform.parent.parent.parent.parent.parent
+			.parent.parent.gameObject.GetComponent<InitializeBehaviour>();
 	}
 
 	void FixedUpdate()
@@ -148,8 +153,12 @@ public class Key : MonoBehaviour
 
 	IEnumerator WriteStringToTarget()
     {
-		if (!InteractionLogger.isUsingVirtualKeyboard) InteractionLogger.RegisterVirtualKeyboard();
-		InitializeBehaviour window = transform.root.gameObject.GetComponent<InitializeBehaviour>();
+		if (!InteractionLogger.isUsingVirtualKeyboard) 
+			InteractionLogger.RegisterVirtualKeyboard();
+
+		// InitializeBehaviour window = transform.parent.parent.parent.parent.parent
+		//	.parent.parent.gameObject.GetComponent<InitializeBehaviour>();
+
 		if (!window.loadingWheel.activeSelf)
 		{
 			int lcp = window.lastCaretPosition;
@@ -211,24 +220,11 @@ public class Key : MonoBehaviour
             {
 				if(name.Contains("LeftArrow"))
                 {
-					int c = lcp > 0 ? lcp - 1 : 0;
-					window.keyboardTarget.caretPosition = c;
-					window.keyboardTarget.selectionAnchorPosition = c;
-					window.lastCaretPosition = c;
-					window.lastAnchorPosition = c;
-					EventSystem.current.SetSelectedGameObject(null);
-					window.keyboardTarget.ActivateInputField();
+					StartCoroutine(MoveCaretLeft());
 				}
 				else if(name.Contains("RightArrow"))
                 {
-					int l = window.keyboardTarget.text.Length;
-					int c = lcp < l ? lcp + 1 : l;
-					window.keyboardTarget.caretPosition = c;
-					window.keyboardTarget.selectionAnchorPosition = c;
-					window.lastCaretPosition = c;
-					window.lastAnchorPosition = c;
-					EventSystem.current.SetSelectedGameObject(null);
-					window.keyboardTarget.ActivateInputField();
+					StartCoroutine(MoveCaretRight());
 				}
             }
 			else
@@ -259,5 +255,42 @@ public class Key : MonoBehaviour
 		if (!isSpecialKey) StartCoroutine(WriteStringToTarget());
 		keySoundController.StartKeySound(this.gameObject.transform);
 		checkForButton = false;
+	}
+
+	IEnumerator MoveCaretLeft()
+    {
+		int lcp = window.lastCaretPosition;
+		int c = lcp > 0 ? lcp - 1 : 0;
+
+		EventSystem.current.SetSelectedGameObject(null);
+		window.keyboardTarget.ActivateInputField();
+
+		yield return null;
+
+		window.keyboardTarget.caretPosition = c;
+		window.keyboardTarget.selectionAnchorPosition = c;
+		window.lastCaretPosition = c;
+		window.lastAnchorPosition = c;
+
+		yield return null;
+	}
+
+	IEnumerator MoveCaretRight()
+    {
+		int lcp = window.lastCaretPosition;
+		int l = window.keyboardTarget.text.Length;
+		int c = lcp < l ? lcp + 1 : l;
+
+		EventSystem.current.SetSelectedGameObject(null);
+		window.keyboardTarget.ActivateInputField();
+
+		yield return null;
+
+		window.keyboardTarget.caretPosition = c;
+		window.keyboardTarget.selectionAnchorPosition = c;
+		window.lastCaretPosition = c;
+		window.lastAnchorPosition = c;
+
+		yield return null;
 	}
 }

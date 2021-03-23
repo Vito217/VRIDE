@@ -23,8 +23,8 @@ public class InitializeBehaviour : MonoBehaviour
     public bool fromUIClick = false;
     public bool freezeRotation = true;
 
-    Transform baseParent;
-    Vector3 baseScale;
+    //Transform baseParent;
+    //Vector3 baseScale;
 
     void Start()
     {
@@ -121,8 +121,8 @@ public class InitializeBehaviour : MonoBehaviour
 
     public void OnDrag(BaseEventData data)
     {
-        baseParent = transform.parent;
-        baseScale = transform.localScale;
+        //baseParent = transform.parent;
+        //baseScale = transform.localScale;
 
         Transform player = ((PointerEventData) data).enterEventCamera.transform.root;
         if (player.gameObject.GetComponent<VRIDEInputHandler>().LeftTrigger)
@@ -140,10 +140,12 @@ public class InitializeBehaviour : MonoBehaviour
         Vector3 gp = transform.position;
         Quaternion r = transform.rotation;
 
-        transform.SetParent(baseParent);
+        transform.SetParent(null);
         transform.position = gp;
         transform.rotation = r;
-        transform.localScale = baseScale;
+
+        GetComponent<Canvas>().enabled = false;
+        GetComponent<Canvas>().enabled = true;
 
         InteractionLogger.RegisterWindowDraggingEnd(
             transform.position.x, transform.position.y, transform.position.z,

@@ -769,6 +769,7 @@ public class Playground : InitializeBehaviour
                                     0f));
 
                             // Positioning
+                            aFrameCanvas.AddComponent<BoxCollider>();
                             aFrameCanvas.GetComponent<InitializeBehaviour>().Initialize();
 
                             goto Reactivation;

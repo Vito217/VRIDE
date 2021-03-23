@@ -76,6 +76,14 @@ public class VRIDEMenu : InitializeBehaviour
         Destroy(gameObject);
     }
 
+    public void GenerateBoard()
+    {
+        Board board = Instantiator.Instance.Board();
+        board.Initialize();
+
+        Destroy(gameObject);
+    }
+
     public void Exit()
     {
         SaveAndLoadModule.Save();

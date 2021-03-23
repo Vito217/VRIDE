@@ -647,6 +647,8 @@ GameObject:
   - component: {fileID: 8797576821972471117}
   - component: {fileID: 6533385620001775649}
   - component: {fileID: 8734383557425136837}
+  - component: {fileID: 4203479551129659467}
+  - component: {fileID: 557992795610081559}
   m_Layer: 0
   m_Name: Playground
   m_TagString: Untagged
@@ -800,6 +802,35 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 2147483647
+--- !u!65 &4203479551129659467
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876944620325929771}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 40, y: 40, z: 40}
+  m_Center: {x: 0, y: 0, z: 20}
+--- !u!54 &557992795610081559
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876944620325929771}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1143995079146188838
 GameObject:
   m_ObjectHideFlags: 0
@@ -4794,6 +4825,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Keyboards
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593483291794296838, guid: c3196275f8a467548b7939a150347be7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2626824715991772721, guid: c3196275f8a467548b7939a150347be7,
         type: 3}

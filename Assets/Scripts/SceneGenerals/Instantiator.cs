@@ -20,6 +20,7 @@ public class Instantiator: MonoBehaviour
     public Transcript transcriptPrefab;
     public VRIDEMenu menuPrefab;
     public WebcamView webcamPrefab;
+    public Board boardPrefab;
     public GameObject aframePrefab;
     public TextMeshPro textPrefab;
 
@@ -207,6 +208,11 @@ public class Instantiator: MonoBehaviour
     public WebcamView WebCam()
     {
         return Instantiate(webcamPrefab);
+    }
+
+    public Board Board()
+    {
+        return Instantiate(boardPrefab);
     }
 
     /// <summary>
