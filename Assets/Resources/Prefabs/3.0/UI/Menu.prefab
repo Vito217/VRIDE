@@ -263,13 +263,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4864393468056705520}
   - component: {fileID: 1278127526784305908}
+  - component: {fileID: 7379379702892380573}
   m_Layer: 5
   m_Name: Hand Enable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4864393468056705520
 RectTransform:
   m_ObjectHideFlags: 0
@@ -337,20 +338,37 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6663584331874351175}
-        m_TargetAssemblyTypeName: VRIDEMenu, Assembly-CSharp
-        m_MethodName: VRHandsToggle
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
+--- !u!114 &7379379702892380573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623710803070170249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6663584331874351175}
+          m_TargetAssemblyTypeName: VRIDEMenu, Assembly-CSharp
+          m_MethodName: VRHandsToggle
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &692095618240386745
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,8 +489,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2859854354800314411}
   m_HandleRect: {fileID: 4577948608451758095}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.999986
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2141,7 +2159,7 @@ RectTransform:
   m_Father: {fileID: 5006281516333689071}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.0000140070915, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -3213,8 +3231,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7701193832928858238}
   m_HandleRect: {fileID: 1425958084191165595}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 0.9999784
+  m_Value: 1
+  m_Size: 0.99996763
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5063,7 +5081,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.005977992, y: 0.0046086414}
+  m_AnchoredPosition: {x: -0.010156973, y: -0.0055572134}
   m_SizeDelta: {x: -3, y: 120}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &231658535954877263
@@ -5539,8 +5557,8 @@ RectTransform:
   m_Father: {fileID: 6998448919343490365}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.9999784}
+  m_AnchorMin: {x: 0, y: 0.000032365322}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6354,7 +6372,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Enable VR Hands
+  m_text: Activate Hand/Sticks
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

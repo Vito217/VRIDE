@@ -6,6 +6,22 @@ public class VRIDEInputHandler : MonoBehaviour
 {
     List<UnityEngine.XR.InputDevice> inputDevices;
 
+    public bool LeftAxisUp;
+    public bool LeftAxisUpHold;
+    public bool LeftAxisUpRelease;
+
+    public bool RightAxisUp;
+    public bool RightAxisUpHold;
+    public bool RightAxisUpRelease;
+
+    public bool LeftAxisDown;
+    public bool LeftAxisDownHold;
+    public bool LeftAxisDownRelease;
+
+    public bool RightAxisDown;
+    public bool RightAxisDownHold;
+    public bool RightAxisDownRelease;
+
     public bool LeftTrigger;
     public bool RightTrigger;
     public bool LeftPrimaryButton;
@@ -40,6 +56,16 @@ public class VRIDEInputHandler : MonoBehaviour
     public bool RightPrimaryButtonDownFlag;
     public bool RightSecondaryButtonUpFlag;
     public bool RightSecondaryButtonDownFlag;
+
+    public bool LeftAxisUpHoldFlag;
+    public bool LeftAxisUpReleaseFlag;
+    public bool RightAxisUpHoldFlag;
+    public bool RightAxisUpReleaseFlag;
+
+    public bool LeftAxisDownHoldFlag;
+    public bool LeftAxisDownReleaseFlag;
+    public bool RightAxisDownHoldFlag;
+    public bool RightAxisDownReleaseFlag;
 
     // Start is called before the first frame update
     void Start()
@@ -98,6 +124,32 @@ public class VRIDEInputHandler : MonoBehaviour
                         ref LeftSecondaryButtonDownFlag, 
                         ref LeftSecondaryButtonUpFlag, 
                         ref LeftSecondaryButtonUp);
+
+                // LEFT AXIS UP
+                device.IsPressed(InputHelpers.Button.PrimaryAxis2DUp, out LeftAxisUp);
+                if (LeftAxisUp)
+                    UpdateFlag(
+                        ref LeftAxisUpReleaseFlag,
+                        ref LeftAxisUpHoldFlag,
+                        ref LeftAxisUpHold);
+                else
+                    UpdateFlag(
+                        ref LeftAxisUpHoldFlag,
+                        ref LeftAxisUpReleaseFlag,
+                        ref LeftAxisUpRelease);
+
+                // LEFT AXIS DOWN
+                device.IsPressed(InputHelpers.Button.PrimaryAxis2DDown, out LeftAxisDown);
+                if (LeftAxisDown)
+                    UpdateFlag(
+                        ref LeftAxisDownReleaseFlag,
+                        ref LeftAxisDownHoldFlag,
+                        ref LeftAxisDownHold);
+                else
+                    UpdateFlag(
+                        ref LeftAxisDownHoldFlag,
+                        ref LeftAxisDownReleaseFlag,
+                        ref LeftAxisDownRelease);
             }
 
             else if (device.characteristics.HasFlag(InputDeviceCharacteristics.Right))
@@ -140,6 +192,32 @@ public class VRIDEInputHandler : MonoBehaviour
                         ref RightSecondaryButtonDownFlag, 
                         ref RightSecondaryButtonUpFlag, 
                         ref RightSecondaryButtonUp);
+
+                // LEFT AXIS UP
+                device.IsPressed(InputHelpers.Button.PrimaryAxis2DUp, out RightAxisUp);
+                if (RightAxisUp)
+                    UpdateFlag(
+                        ref RightAxisUpReleaseFlag,
+                        ref RightAxisUpHoldFlag,
+                        ref RightAxisUpHold);
+                else
+                    UpdateFlag(
+                        ref RightAxisUpHoldFlag,
+                        ref RightAxisUpReleaseFlag,
+                        ref RightAxisUpRelease);
+
+                // LEFT AXIS DOWN
+                device.IsPressed(InputHelpers.Button.PrimaryAxis2DDown, out RightAxisDown);
+                if (RightAxisDown)
+                    UpdateFlag(
+                        ref RightAxisDownReleaseFlag,
+                        ref RightAxisDownHoldFlag,
+                        ref RightAxisDownHold);
+                else
+                    UpdateFlag(
+                        ref RightAxisDownHoldFlag,
+                        ref RightAxisDownReleaseFlag,
+                        ref RightAxisDownRelease);
             }
         }
     }

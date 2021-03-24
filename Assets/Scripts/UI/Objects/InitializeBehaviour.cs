@@ -121,9 +121,6 @@ public class InitializeBehaviour : MonoBehaviour
 
     public void OnDrag(BaseEventData data)
     {
-        //baseParent = transform.parent;
-        //baseScale = transform.localScale;
-
         Transform player = ((PointerEventData) data).enterEventCamera.transform.root;
         if (player.gameObject.GetComponent<VRIDEInputHandler>().LeftTrigger)
             transform.SetParent(player.Find("Camera Offset/LeftHand Controller"));

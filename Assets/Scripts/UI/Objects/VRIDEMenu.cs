@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using LoggingModule;
 using SaveAndLoad;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class VRIDEMenu : InitializeBehaviour
 {
@@ -138,12 +139,10 @@ public class VRIDEMenu : InitializeBehaviour
         keyboardToggleState = keyboardToggle.isOn;
     }
 
-    /**
-    public void VRHandsToggle()
+    public void VRHandsToggle(BaseEventData data)
     {
         vrHandsToggleState = vrHandsToggle.isOn;
-        if (vrHandsToggleState) GameObject.Find("XR Rig").GetComponent<VRIDEController>().EnableHands();
-        else GameObject.Find("XR Rig").GetComponent<VRIDEController>().EnableSpheres();
+        Transform player = ((PointerEventData)data).enterEventCamera.transform.root;
+        player.gameObject.GetComponent<VRIDEController>().ExchangeHandsAndSpheres();
     }
-    **/
 }
