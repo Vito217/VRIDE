@@ -5,9 +5,10 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class VRIDEController : MonoBehaviour
 {
-    public VRIDEMenu menu;
-    public GameObject leftSphere, rightSphere;
+    private VRIDEMenu menu;
+    public GameObject leftStick, rightStick;
     public GameObject leftHand, rightHand;
+    public Transform leftTransform, rightTransform;
 
     Vector3 currentPosition = Vector3.zero;
 
@@ -96,16 +97,19 @@ public class VRIDEController : MonoBehaviour
         GetComponent<VRIDEInputHandler>().LeftSecondaryButtonDown = false;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public void ExchangeHandsAndSpheres()
     {
         // Spheres
-        foreach (Renderer lRenderer in leftSphere.GetComponentsInChildren<Renderer>()) 
+        foreach (Renderer lRenderer in leftStick.GetComponentsInChildren<Renderer>()) 
             lRenderer.enabled = !lRenderer.enabled;
-        foreach (Renderer lRenderer in rightSphere.GetComponentsInChildren<Renderer>()) 
+        foreach (Renderer lRenderer in rightStick.GetComponentsInChildren<Renderer>()) 
             lRenderer.enabled = !lRenderer.enabled;
-        foreach (Collider lCollider in leftSphere.GetComponentsInChildren<Collider>()) 
+        foreach (Collider lCollider in leftStick.GetComponentsInChildren<Collider>()) 
             lCollider.enabled = !lCollider.enabled;
-        foreach (Collider lCollider in rightSphere.GetComponentsInChildren<Collider>()) 
+        foreach (Collider lCollider in rightStick.GetComponentsInChildren<Collider>()) 
             lCollider.enabled = !lCollider.enabled;
 
         // Hands
@@ -119,15 +123,20 @@ public class VRIDEController : MonoBehaviour
             lCollider.enabled = !lCollider.enabled;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="isForward"></param>
+    /// <param name="isRightHand"></param>
     void MoveGrabbedObject(bool isForward, bool isRightHand)
     {
-        GameObject hand = isRightHand ? rightHand : leftHand;
-        InitializeBehaviour window = hand.GetComponentInChildren<InitializeBehaviour>();
+        Transform hand = isRightHand ? rightTransform : leftTransform;
+        InitializeBehaviour window = hand.gameObject.GetComponentInChildren<InitializeBehaviour>();
         if (window != null)
         {
-            Vector3 dir = -hand.transform.forward.normalized;
-            if (isForward) dir = dir * -1f;
-            window.transform.position = window.transform.position + dir;
+            Vector3 dir = (hand.position - window.transform.position).normalized;
+            if (isForward) dir *= -1f;
+            window.transform.localPosition = window.transform.localPosition + dir  * .01f;
         }
     }
 }

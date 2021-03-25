@@ -122,9 +122,15 @@ public class InitializeBehaviour : MonoBehaviour
     public void OnDrag(BaseEventData data)
     {
         Transform player = ((PointerEventData) data).enterEventCamera.transform.root;
+        StartCoroutine(HandleDrag(player));
+    }
+
+    IEnumerator HandleDrag(Transform player)
+    {
+        yield return null;
         if (player.gameObject.GetComponent<VRIDEInputHandler>().LeftTrigger)
             transform.SetParent(player.Find("Camera Offset/LeftHand Controller"));
-        else
+        else if (player.gameObject.GetComponent<VRIDEInputHandler>().RightTrigger)
             transform.SetParent(player.Find("Camera Offset/RightHand Controller"));
 
         InteractionLogger.RegisterWindowDraggingStart(

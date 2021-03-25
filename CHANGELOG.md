@@ -1,5 +1,12 @@
 # PharoVRIDE's Channel Log
 
+## V0.25.0 (25/03/2021)
+* Windows can be dragged forward and backward.
+* It is possible to change between VR Hands and Sticks.
+* Added delete button for deleting packages, classes and methods.
+* Added new tool: Board.
+* Fixed bad input handling during drag.
+
 ## V0.24.0 (12/03/2021)
 * Added new environment: Forest.
 * Added XR Hands.

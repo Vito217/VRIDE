@@ -74,7 +74,7 @@ public class VRIDEInputHandler : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         InputDevices.GetDevicesWithCharacteristics(
            InputDeviceCharacteristics.Controller & InputDeviceCharacteristics.TrackedDevice,
@@ -193,7 +193,7 @@ public class VRIDEInputHandler : MonoBehaviour
                         ref RightSecondaryButtonUpFlag, 
                         ref RightSecondaryButtonUp);
 
-                // LEFT AXIS UP
+                // RIGHT AXIS UP
                 device.IsPressed(InputHelpers.Button.PrimaryAxis2DUp, out RightAxisUp);
                 if (RightAxisUp)
                     UpdateFlag(
@@ -206,7 +206,7 @@ public class VRIDEInputHandler : MonoBehaviour
                         ref RightAxisUpReleaseFlag,
                         ref RightAxisUpRelease);
 
-                // LEFT AXIS DOWN
+                // RIGHT AXIS DOWN
                 device.IsPressed(InputHelpers.Button.PrimaryAxis2DDown, out RightAxisDown);
                 if (RightAxisDown)
                     UpdateFlag(
