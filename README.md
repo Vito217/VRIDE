@@ -227,4 +227,4 @@ Finally, put on your VR headset, and try some stuff!
 
 ## Download
 
-<a href="https://github.com/Vito217/PharoVRIDE/releases/tag/v0.24.0">Download PharoVRIDE v0.24.0</a>
+<a href="https://github.com/Vito217/PharoVRIDE/releases/tag/v0.25.0">Download PharoVRIDE v0.25.0</a>
