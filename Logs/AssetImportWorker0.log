@@ -1,10 +1,10 @@
 Using pre-set license
-Built from '2020.3/staging' branch; Version is '2020.3.0f1 (c7b5465681fb) revision 13088070'; Using compiler version '192528614'; Build Type 'Release'
+Built from '2020.3/release' branch; Version is '2020.3.1f1 (77a89f25062f) revision 7841951'; Using compiler version '192528614'; Build Type 'Release'
 OS: 'Windows 10 Home Single Language; OS build 18363.1440; Version 1909; 64bit' Language: 'es' Physical Memory: 16251 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
  COMMAND LINE ARGUMENTS:
-D:\Unity\2020.3.0f1\Editor\Unity.exe
+D:\Unity\2020.3.1f1\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
@@ -15,14 +15,14 @@ C:/Users/alexa/Documents/Unity Projects/PharoVRIDE
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-57869
+61821
 Successfully changed project path to: C:/Users/alexa/Documents/Unity Projects/PharoVRIDE
 C:/Users/alexa/Documents/Unity Projects/PharoVRIDE
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 48.79 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.73 ms.
-Initialize engine version: 2020.3.0f1 (c7b5465681fb)
-[Subsystems] Discovering subsystems at path D:/Unity/2020.3.0f1/Editor/Data/Resources/UnitySubsystems
+Refreshing native plugins compatible for Editor in 45.46 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.75 ms.
+Initialize engine version: 2020.3.1f1 (77a89f25062f)
+[Subsystems] Discovering subsystems at path D:/Unity/2020.3.1f1/Editor/Data/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path C:/Users/alexa/Documents/Unity Projects/PharoVRIDE/Assets
 GfxDevice: creating device client; threaded=0
 Direct3D:
@@ -32,29 +32,29 @@ Direct3D:
     VRAM:     5980 MB
     Driver:   27.21.14.5256
 Initialize mono
-Mono path[0] = 'D:/Unity/2020.3.0f1/Editor/Data/Managed'
-Mono path[1] = 'D:/Unity/2020.3.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
-Mono config path = 'D:/Unity/2020.3.0f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56420
+Mono path[0] = 'D:/Unity/2020.3.1f1/Editor/Data/Managed'
+Mono path[1] = 'D:/Unity/2020.3.1f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'D:/Unity/2020.3.1f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56268
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: D:/Unity/2020.3.0f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
-Register platform support module: D:/Unity/2020.3.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Register platform support module: D:/Unity/2020.3.0f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
-Registered in 0.001050 seconds.
+Register platform support module: D:/Unity/2020.3.1f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Register platform support module: D:/Unity/2020.3.1f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Register platform support module: D:/Unity/2020.3.1f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
+Registered in 0.000944 seconds.
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 38.70 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.09 ms.
+Refreshing native plugins compatible for Editor in 37.01 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.296 seconds
+- Completed reload, in  1.102 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.010599 seconds.
+Registered in 0.010123 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
 Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
@@ -66,8 +66,8 @@ Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 37.01 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.09 ms.
+Refreshing native plugins compatible for Editor in 37.45 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.13 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
@@ -82,41 +82,337 @@ NullReferenceException: Object reference not set to an instance of an object
 (Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
 
 Mono: successfully reloaded assembly
-- Completed reload, in  1.195 seconds
+- Completed reload, in  1.147 seconds
 Platform modules already initialized, skipping
 Assertion failed on expression: 'reloadOk'
 
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
-Refreshing native plugins compatible for Editor in 0.65 ms, found 8 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
+Refreshing native plugins compatible for Editor in 0.59 ms, found 8 plugins.
 Preloading 1 native plugins for Editor in 0.07 ms.
-Unloading 2100 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 123.8 MB.
-System memory in use after: 123.5 MB.
+Unloading 2101 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 121.6 MB.
+System memory in use after: 121.4 MB.
 
 Unloading 66 unused Assets to reduce memory usage. Loaded Objects now: 2544.
-Total: 2.165000 ms (FindLiveObjects: 0.232700 ms CreateObjectMapping: 0.142100 ms MarkObjects: 1.615300 ms  DeleteObjects: 0.174200 ms)
+Total: 2.087100 ms (FindLiveObjects: 0.161000 ms CreateObjectMapping: 0.059700 ms MarkObjects: 1.715400 ms  DeleteObjects: 0.150000 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/Resources/Prefabs/3.0/Players/XR Rig.prefab
-  artifactKey: Guid(deaf761c35b3def408bffd10dd23a04d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/Players/XR Rig.prefab using Guid(deaf761c35b3def408bffd10dd23a04d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ef2b6ac8d20db2d8ed259ed3e51a8594') in 0.137675 seconds
-  Import took 0.141066 seconds .
+  path: Assets/Scenes/MainScene.unity
+  artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/MainScene.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '560d7c04b66ebd81dd2ab11dc321d005') in 0.041065 seconds
+  Import took 0.045581 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 254.043084 seconds.
-  path: Assets/Resources/Prefabs/3.0/Players/XR Rig.prefab
-  artifactKey: Guid(deaf761c35b3def408bffd10dd23a04d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/Players/XR Rig.prefab using Guid(deaf761c35b3def408bffd10dd23a04d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bfd376f822240be92b3c3c214dea4077') in 0.017148 seconds
-  Import took 0.021379 seconds .
+  Time since last request: 748.158098 seconds.
+  path: Assets/SkySerie Freebie/6SidedFluffball.mat
+  artifactKey: Guid(efd1c33efd2d58340b88804268e6833f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/6SidedFluffball.mat using Guid(efd1c33efd2d58340b88804268e6833f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '93d680616f97b0eb7598410e9a0bb3fd') in 0.534161 seconds
+  Import took 0.537935 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000173 seconds.
+  path: Assets/SkySerie Freebie/HighFantasy.mat
+  artifactKey: Guid(e2341a9d03e86ec4290c72b1e22bbc7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/HighFantasy.mat using Guid(e2341a9d03e86ec4290c72b1e22bbc7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'abadf6af0e9b9e8724cfa03c5df25625') in 0.016166 seconds
+  Import took 0.019566 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000281 seconds.
+  path: Assets/SkySerie Freebie/UnderTheSea4k.mat
+  artifactKey: Guid(119ec07f1c7ed204db46bd8465fd5a50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/UnderTheSea4k.mat using Guid(119ec07f1c7ed204db46bd8465fd5a50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '070852cd45b427d7971f86862e1ff765') in 0.015818 seconds
+  Import took 0.018835 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000159 seconds.
+  path: Assets/SkySerie Freebie/UnearthlyRed.mat
+  artifactKey: Guid(5d133deeaa66ed445853e946ff25e073) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/UnearthlyRed.mat using Guid(5d133deeaa66ed445853e946ff25e073) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '934e9d9d064d312b7d0c08ddf7064a95') in 0.011494 seconds
+  Import took 0.015038 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000287 seconds.
+  path: Assets/SkySerie Freebie/CosmicCoolCloud.mat
+  artifactKey: Guid(f531e09e2ad2fb440b4eed7605863143) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/CosmicCoolCloud.mat using Guid(f531e09e2ad2fb440b4eed7605863143) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '14af7792c67103c4219a96eee067c7f9') in 0.010737 seconds
+  Import took 0.014518 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000162 seconds.
+  path: Assets/SkySerie Freebie/SunlessCirruscover.mat
+  artifactKey: Guid(4e154bf235e41704bbd6bbc6fd6c63f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/SunlessCirruscover.mat using Guid(4e154bf235e41704bbd6bbc6fd6c63f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1dbccfc5ac875e68f80ae81b9e9903d7') in 0.014287 seconds
+  Import took 0.017344 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000124 seconds.
+  path: Assets/SkySerie Freebie/6SidedMegaSun.mat
+  artifactKey: Guid(c52c5d7968fa6c9499b0b5752f899bfb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/6SidedMegaSun.mat using Guid(c52c5d7968fa6c9499b0b5752f899bfb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e28b008f54e75f488448715595c36474') in 0.015189 seconds
+  Import took 0.018439 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000165 seconds.
+  path: Assets/SkySerie Freebie/DayInTheClouds.mat
+  artifactKey: Guid(3e5399bd195de7649b874f58c1b9f8a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/DayInTheClouds.mat using Guid(3e5399bd195de7649b874f58c1b9f8a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45da8d9d68d921ce1a81043c19539318') in 0.010084 seconds
+  Import took 0.012741 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000194 seconds.
+  path: Assets/SkySerie Freebie/Cloudymorning.mat
+  artifactKey: Guid(d9dca9ae1786c394f9e79c637aa9a7bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/Cloudymorning.mat using Guid(d9dca9ae1786c394f9e79c637aa9a7bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '318e60d606198e5f2ed1e29b39763beb') in 0.011728 seconds
+  Import took 0.014508 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000203 seconds.
+  path: Assets/SkySerie Freebie/CoriolisNight4k.mat
+  artifactKey: Guid(d4454f71d85928744be7771e2143dab7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/CoriolisNight4k.mat using Guid(d4454f71d85928744be7771e2143dab7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1483a01d4c32ee2668bbb94919213a60') in 0.011664 seconds
+  Import took 0.014186 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000194 seconds.
+  path: Assets/SkySerie Freebie/SkyhighFluffycloudField.mat
+  artifactKey: Guid(f15c336556dd74f40aaca655f7767970) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/SkyhighFluffycloudField.mat using Guid(f15c336556dd74f40aaca655f7767970) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf6873f8746e829d9919a3131b7c3da9') in 0.013119 seconds
+  Import took 0.015797 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000122 seconds.
+  path: Assets/SkySerie Freebie/PlanetaryEarth.mat
+  artifactKey: Guid(16bc8a9d5451ca44d8f70575adbece3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/PlanetaryEarth.mat using Guid(16bc8a9d5451ca44d8f70575adbece3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b0bd730c2c8a9b2c844c0a5e5f967a8') in 0.014519 seconds
+  Import took 0.017848 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000129 seconds.
+  path: Assets/SkySerie Freebie/DarkStorm.mat
+  artifactKey: Guid(2039a0ad0a9d05549928b70362f54902) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/DarkStorm.mat using Guid(2039a0ad0a9d05549928b70362f54902) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de41c7b72138cddeec3ab10ad725aa38') in 0.011224 seconds
+  Import took 0.014523 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000168 seconds.
+  path: Assets/SkySerie Freebie/AmbienceExposure.mat
+  artifactKey: Guid(72deae4d18418f94688abef8e8483df0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/AmbienceExposure.mat using Guid(72deae4d18418f94688abef8e8483df0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7bf9e548b562c91493700486cd6b5a1f') in 0.014544 seconds
+  Import took 0.017994 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000130 seconds.
+  path: Assets/SkySerie Freebie/CloudedSunGlow.mat
+  artifactKey: Guid(e391f00234292cc4f935308c11cf0e54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/CloudedSunGlow.mat using Guid(e391f00234292cc4f935308c11cf0e54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e5a2ea155df907353920abf8d93f99f') in 0.011199 seconds
+  Import took 0.014308 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000150 seconds.
+  path: Assets/SkySerie Freebie/FluffballDay.mat
+  artifactKey: Guid(20d4f77b9022eab48b4d94599ed4bf82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FluffballDay.mat using Guid(20d4f77b9022eab48b4d94599ed4bf82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f395a8d20d01161fce6ab63f551d2b0a') in 0.014672 seconds
+  Import took 0.017738 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000132 seconds.
+  path: Assets/SkySerie Freebie/CasualDay.mat
+  artifactKey: Guid(85cf0b004bc4a654b9e501efcce47902) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/CasualDay.mat using Guid(85cf0b004bc4a654b9e501efcce47902) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'baec90067f0af6f961a4cde7902881a6') in 0.011136 seconds
+  Import took 0.014579 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000187 seconds.
+  path: Assets/SkySerie Freebie/MegaSun.mat
+  artifactKey: Guid(cede08c9fc471e64884909cd4bbeaf59) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/MegaSun.mat using Guid(cede08c9fc471e64884909cd4bbeaf59) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e04cc4aa4f0ed7f336f92f4b2954a20') in 0.014812 seconds
+  Import took 0.017948 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 284.206656 seconds.
+  path: Assets/SkySerie Freebie/6SidedFluffball.mat
+  artifactKey: Guid(efd1c33efd2d58340b88804268e6833f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/6SidedFluffball.mat using Guid(efd1c33efd2d58340b88804268e6833f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '10b9b361cedcfa93363bc24d88dd3aaf') in 0.460664 seconds
+  Import took 0.464453 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000139 seconds.
+  path: Assets/SkySerie Freebie/HighFantasy.mat
+  artifactKey: Guid(e2341a9d03e86ec4290c72b1e22bbc7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/HighFantasy.mat using Guid(e2341a9d03e86ec4290c72b1e22bbc7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b89188d7ce6b74c460c668336914f1bf') in 1.704288 seconds
+  Import took 1.706866 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000192 seconds.
+  path: Assets/SkySerie Freebie/UnderTheSea4k.mat
+  artifactKey: Guid(119ec07f1c7ed204db46bd8465fd5a50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/UnderTheSea4k.mat using Guid(119ec07f1c7ed204db46bd8465fd5a50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5048f619556631c08e6bb49a8e38486c') in 1.667720 seconds
+  Import took 1.670733 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000156 seconds.
+  path: Assets/SkySerie Freebie/UnearthlyRed.mat
+  artifactKey: Guid(5d133deeaa66ed445853e946ff25e073) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/UnearthlyRed.mat using Guid(5d133deeaa66ed445853e946ff25e073) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '763f83c3e22c1e9079a4f164c6a00f61') in 1.666079 seconds
+  Import took 1.668896 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000220 seconds.
+  path: Assets/SkySerie Freebie/CosmicCoolCloud.mat
+  artifactKey: Guid(f531e09e2ad2fb440b4eed7605863143) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/CosmicCoolCloud.mat using Guid(f531e09e2ad2fb440b4eed7605863143) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6cf01c40cb51578ee29b7581426d43b8') in 1.328335 seconds
+  Import took 1.331031 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000209 seconds.
+  path: Assets/SkySerie Freebie/SunlessCirruscover.mat
+  artifactKey: Guid(4e154bf235e41704bbd6bbc6fd6c63f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/SunlessCirruscover.mat using Guid(4e154bf235e41704bbd6bbc6fd6c63f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f0dc8d6f5d054c98959e43ad36d9d66d') in 1.537870 seconds
+  Import took 1.541454 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000161 seconds.
+  path: Assets/SkySerie Freebie/6SidedMegaSun.mat
+  artifactKey: Guid(c52c5d7968fa6c9499b0b5752f899bfb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/6SidedMegaSun.mat using Guid(c52c5d7968fa6c9499b0b5752f899bfb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f5648d2cde69fa279f3989abcd33115') in 0.367649 seconds
+  Import took 0.370113 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000149 seconds.
+  path: Assets/SkySerie Freebie/DayInTheClouds.mat
+  artifactKey: Guid(3e5399bd195de7649b874f58c1b9f8a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/DayInTheClouds.mat using Guid(3e5399bd195de7649b874f58c1b9f8a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2dd1867ba34f22676b0889b5dee882b2') in 1.652597 seconds
+  Import took 1.655456 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000220 seconds.
+  path: Assets/SkySerie Freebie/Cloudymorning.mat
+  artifactKey: Guid(d9dca9ae1786c394f9e79c637aa9a7bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/Cloudymorning.mat using Guid(d9dca9ae1786c394f9e79c637aa9a7bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c3993ebaf9e6f06b84e0fe223eea28b5') in 1.587888 seconds
+  Import took 1.590839 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000207 seconds.
+  path: Assets/SkySerie Freebie/CoriolisNight4k.mat
+  artifactKey: Guid(d4454f71d85928744be7771e2143dab7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/CoriolisNight4k.mat using Guid(d4454f71d85928744be7771e2143dab7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'abc3cab25a3b0c4ebfcf6ea4709f6666') in 1.323747 seconds
+  Import took 1.326199 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000223 seconds.
+  path: Assets/SkySerie Freebie/SkyhighFluffycloudField.mat
+  artifactKey: Guid(f15c336556dd74f40aaca655f7767970) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/SkyhighFluffycloudField.mat using Guid(f15c336556dd74f40aaca655f7767970) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '844fc7074fd748bb5a71e1b619b6ab3e') in 1.657621 seconds
+  Import took 1.660525 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000115 seconds.
+  path: Assets/SkySerie Freebie/PlanetaryEarth.mat
+  artifactKey: Guid(16bc8a9d5451ca44d8f70575adbece3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/PlanetaryEarth.mat using Guid(16bc8a9d5451ca44d8f70575adbece3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '12073ce91e255c0f1f02562cca886202') in 1.144339 seconds
+  Import took 1.147175 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000192 seconds.
+  path: Assets/SkySerie Freebie/DarkStorm.mat
+  artifactKey: Guid(2039a0ad0a9d05549928b70362f54902) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/DarkStorm.mat using Guid(2039a0ad0a9d05549928b70362f54902) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7993a13d461fa519c90368bb5b0c6968') in 1.232825 seconds
+  Import took 1.235535 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000190 seconds.
+  path: Assets/SkySerie Freebie/AmbienceExposure.mat
+  artifactKey: Guid(72deae4d18418f94688abef8e8483df0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/AmbienceExposure.mat using Guid(72deae4d18418f94688abef8e8483df0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3d9bcd0ddebe25010db558263ed7bb6b') in 1.511297 seconds
+  Import took 1.514208 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000133 seconds.
+  path: Assets/SkySerie Freebie/CloudedSunGlow.mat
+  artifactKey: Guid(e391f00234292cc4f935308c11cf0e54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/CloudedSunGlow.mat using Guid(e391f00234292cc4f935308c11cf0e54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9c36ee9492227aeff1f2669bfab73489') in 1.615389 seconds
+  Import took 1.617912 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000157 seconds.
+  path: Assets/SkySerie Freebie/FluffballDay.mat
+  artifactKey: Guid(20d4f77b9022eab48b4d94599ed4bf82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FluffballDay.mat using Guid(20d4f77b9022eab48b4d94599ed4bf82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38131b9a2b3fe3edf3b57c46439659f4') in 1.372387 seconds
+  Import took 1.375617 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000143 seconds.
+  path: Assets/SkySerie Freebie/CasualDay.mat
+  artifactKey: Guid(85cf0b004bc4a654b9e501efcce47902) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/CasualDay.mat using Guid(85cf0b004bc4a654b9e501efcce47902) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9083a5d138d32d85ce8497dba395af96') in 1.639754 seconds
+  Import took 1.642194 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000220 seconds.
+  path: Assets/SkySerie Freebie/MegaSun.mat
+  artifactKey: Guid(cede08c9fc471e64884909cd4bbeaf59) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/MegaSun.mat using Guid(cede08c9fc471e64884909cd4bbeaf59) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c4c2257b354caee5626057276c3503a4') in 1.101963 seconds
+  Import took 1.104928 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 54.939360 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/PlanetaryEarth4k.hdr
+  artifactKey: Guid(3675d0c3c874f6b479bab57eb7e68c90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/PlanetaryEarth4k.hdr using Guid(3675d0c3c874f6b479bab57eb7e68c90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f4d49d8f70c9f586d938fe656d7572e4') in 1.889185 seconds
+  Import took 1.892667 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001599 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/PlanetaryEarth4k.hdr
+  artifactKey: Guid(3675d0c3c874f6b479bab57eb7e68c90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/PlanetaryEarth4k.hdr using Guid(3675d0c3c874f6b479bab57eb7e68c90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f4d49d8f70c9f586d938fe656d7572e4') in 1.137732 seconds
+  Import took 1.140758 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.011073 seconds.
+Registered in 0.010378 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
 Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
@@ -128,8 +424,8 @@ Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 0.66 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.09 ms.
+Refreshing native plugins compatible for Editor in 0.73 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.10 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
@@ -140,123 +436,22 @@ NullReferenceException: Object reference not set to an instance of an object
 (Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
 
 Mono: successfully reloaded assembly
-- Completed reload, in  1.009 seconds
+- Completed reload, in  1.156 seconds
 Platform modules already initialized, skipping
 Assertion failed on expression: 'reloadOk'
 
-Refreshing native plugins compatible for Editor in 0.67 ms, found 8 plugins.
+Switching build target platform(5) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(524294) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 0.69 ms, found 8 plugins.
 Preloading 1 native plugins for Editor in 0.07 ms.
-Unloading 2004 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 131.5 MB.
-System memory in use after: 131.5 MB.
+Unloading 2008 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.4 MB.
+System memory in use after: 126.4 MB.
 
-Unloading 50 unused Assets to reduce memory usage. Loaded Objects now: 2557.
-Total: 2.039500 ms (FindLiveObjects: 0.191700 ms CreateObjectMapping: 0.077100 ms MarkObjects: 1.630900 ms  DeleteObjects: 0.138900 ms)
+Unloading 49 unused Assets to reduce memory usage. Loaded Objects now: 2590.
+Total: 2.160800 ms (FindLiveObjects: 0.265800 ms CreateObjectMapping: 0.110200 ms MarkObjects: 1.639400 ms  DeleteObjects: 0.144700 ms)
 
-========================================================================
-Received Import Request.
-  Time since last request: 692.460325 seconds.
-  path: Assets/Resources/Prefabs/3.0/Players/XR Rig.prefab
-  artifactKey: Guid(deaf761c35b3def408bffd10dd23a04d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/Players/XR Rig.prefab using Guid(deaf761c35b3def408bffd10dd23a04d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '10ca6ac5442d2a41503dc1b7f60946e9') in 0.083719 seconds
-  Import took 0.087859 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.010228 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Native extension for LinuxStandalone target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 0.65 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.08 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-NullReferenceException: Object reference not set to an instance of an object
-  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
-  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
-
-(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
-
-Mono: successfully reloaded assembly
-- Completed reload, in  1.004 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Refreshing native plugins compatible for Editor in 0.66 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.07 ms.
-Unloading 2004 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 131.6 MB.
-System memory in use after: 131.5 MB.
-
-Unloading 50 unused Assets to reduce memory usage. Loaded Objects now: 2562.
-Total: 2.027100 ms (FindLiveObjects: 0.187800 ms CreateObjectMapping: 0.073000 ms MarkObjects: 1.570600 ms  DeleteObjects: 0.194700 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 428.698009 seconds.
-  path: Assets/Resources/Prefabs/3.0/Players/XR Rig.prefab
-  artifactKey: Guid(deaf761c35b3def408bffd10dd23a04d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/Players/XR Rig.prefab using Guid(deaf761c35b3def408bffd10dd23a04d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '56c3d52c8afc9992c7560fd968a6ca42') in 0.084273 seconds
-  Import took 0.087357 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.011124 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Native extension for LinuxStandalone target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 0.77 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.08 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-NullReferenceException: Object reference not set to an instance of an object
-  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
-  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
-
-(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
-
-Mono: successfully reloaded assembly
-- Completed reload, in  1.010 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Refreshing native plugins compatible for Editor in 0.66 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.07 ms.
-Unloading 2004 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 131.6 MB.
-System memory in use after: 131.6 MB.
-
-Unloading 50 unused Assets to reduce memory usage. Loaded Objects now: 2567.
-Total: 1.869800 ms (FindLiveObjects: 0.174600 ms CreateObjectMapping: 0.077400 ms MarkObjects: 1.459400 ms  DeleteObjects: 0.157600 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 100.322940 seconds.
-  path: Assets/Resources/Prefabs/3.0/Players/XR Rig.prefab
-  artifactKey: Guid(deaf761c35b3def408bffd10dd23a04d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/Players/XR Rig.prefab using Guid(deaf761c35b3def408bffd10dd23a04d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '50536b1fb8a71c6fa94904937480b0c2') in 0.076390 seconds
-  Import took 0.079786 seconds .
-
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
@@ -272,6 +467,116 @@ Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.70 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.041 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Switching build target platform(5) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(524294) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 0.67 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.08 ms.
+Unloading 2008 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.5 MB.
+System memory in use after: 126.4 MB.
+
+Unloading 49 unused Assets to reduce memory usage. Loaded Objects now: 2594.
+Total: 2.184800 ms (FindLiveObjects: 0.296600 ms CreateObjectMapping: 0.088400 ms MarkObjects: 1.610300 ms  DeleteObjects: 0.188600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+========================================================================
+Received Import Request.
+  Time since last request: 593.426546 seconds.
+  path: Assets/Scenes/InitialScene.unity
+  artifactKey: Guid(8cf0fa1fd3940494bae7bd743db8ebcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/InitialScene.unity using Guid(8cf0fa1fd3940494bae7bd743db8ebcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b11f14fa1b29c96c41a50c66eb2bf356') in 0.015057 seconds
+  Import took 0.018406 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.010153 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.75 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.08 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  0.992 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Switching build target platform(5) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(524294) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 0.73 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 2008 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.5 MB.
+System memory in use after: 126.5 MB.
+
+Unloading 49 unused Assets to reduce memory usage. Loaded Objects now: 2598.
+Total: 2.003100 ms (FindLiveObjects: 0.201700 ms CreateObjectMapping: 0.070500 ms MarkObjects: 1.588500 ms  DeleteObjects: 0.141800 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+========================================================================
+Received Import Request.
+  Time since last request: 152.692220 seconds.
+  path: Assets/Resources/Prefabs/3.0/Environments/Spaceship.prefab
+  artifactKey: Guid(f45054302bde9bf47adf9d5ad871e0bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/Environments/Spaceship.prefab using Guid(f45054302bde9bf47adf9d5ad871e0bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9e592c40e1e2156235f5292eb6fbdb8b') in 0.076433 seconds
+  Import took 0.079469 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 24.619553 seconds.
+  path: Assets/Resources/Prefabs/3.0/Environments/Spaceship.prefab
+  artifactKey: Guid(f45054302bde9bf47adf9d5ad871e0bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/Environments/Spaceship.prefab using Guid(f45054302bde9bf47adf9d5ad871e0bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '83a7ef80bb6e1b1afe45df0d35a68945') in 0.022595 seconds
+  Import took 0.026391 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.010208 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
 Refreshing native plugins compatible for Editor in 0.66 ms, found 8 plugins.
 Preloading 1 native plugins for Editor in 0.08 ms.
 Invoked RoslynAnalysisRunner static constructor.
@@ -284,39 +589,136 @@ NullReferenceException: Object reference not set to an instance of an object
 (Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
 
 Mono: successfully reloaded assembly
-- Completed reload, in  1.003 seconds
+- Completed reload, in  1.008 seconds
 Platform modules already initialized, skipping
 Assertion failed on expression: 'reloadOk'
 
-Refreshing native plugins compatible for Editor in 0.66 ms, found 8 plugins.
+Switching build target platform(5) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(524294) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 0.67 ms, found 8 plugins.
 Preloading 1 native plugins for Editor in 0.07 ms.
-Unloading 2004 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 131.7 MB.
-System memory in use after: 131.6 MB.
+Unloading 2008 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.6 MB.
+System memory in use after: 126.6 MB.
 
-Unloading 50 unused Assets to reduce memory usage. Loaded Objects now: 2572.
-Total: 1.917000 ms (FindLiveObjects: 0.169200 ms CreateObjectMapping: 0.080500 ms MarkObjects: 1.499700 ms  DeleteObjects: 0.166300 ms)
+Unloading 49 unused Assets to reduce memory usage. Loaded Objects now: 2605.
+Total: 1.921600 ms (FindLiveObjects: 0.188300 ms CreateObjectMapping: 0.072800 ms MarkObjects: 1.513200 ms  DeleteObjects: 0.146800 ms)
 
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
 ========================================================================
 Received Import Request.
-  Time since last request: 814.835136 seconds.
-  path: Assets/Scenes/InitialScene.unity
-  artifactKey: Guid(8cf0fa1fd3940494bae7bd743db8ebcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/InitialScene.unity using Guid(8cf0fa1fd3940494bae7bd743db8ebcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9395de375df741a4b2abdbe0f5980f10') in 0.018790 seconds
-  Import took 0.022307 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 72.227237 seconds.
-  path: Assets/Scenes/MainScene.unity
-  artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/MainScene.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6279629f460c0850e79f9015fdf68bbd') in 0.006272 seconds
-  Import took 0.009421 seconds .
+  Time since last request: 176.369436 seconds.
+  path: Assets/Resources/Prefabs/3.0/Environments/Spaceship.prefab
+  artifactKey: Guid(f45054302bde9bf47adf9d5ad871e0bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/Environments/Spaceship.prefab using Guid(f45054302bde9bf47adf9d5ad871e0bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b608df5666519a7f0c0fb943a4635fd9') in 0.071858 seconds
+  Import took 0.075051 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.010070 seconds.
+Registered in 0.010073 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.66 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.031 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Switching build target platform(5) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(524294) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 0.64 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 2008 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.6 MB.
+System memory in use after: 126.6 MB.
+
+Unloading 49 unused Assets to reduce memory usage. Loaded Objects now: 2610.
+Total: 1.835800 ms (FindLiveObjects: 0.205600 ms CreateObjectMapping: 0.068900 ms MarkObjects: 1.423500 ms  DeleteObjects: 0.137300 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.009692 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.63 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.08 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.024 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Switching build target platform(5) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(524294) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 0.77 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 2008 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.7 MB.
+System memory in use after: 126.6 MB.
+
+Unloading 49 unused Assets to reduce memory usage. Loaded Objects now: 2614.
+Total: 2.127700 ms (FindLiveObjects: 0.280900 ms CreateObjectMapping: 0.082500 ms MarkObjects: 1.618300 ms  DeleteObjects: 0.145200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+========================================================================
+Received Import Request.
+  Time since last request: 2678.764930 seconds.
+  path: Assets/Resources/Sprites/ship_normal.png
+  artifactKey: Guid(d517d9216ac78a744b66358e3e160cfc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprites/ship_normal.png using Guid(d517d9216ac78a744b66358e3e160cfc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7de0e6e65db0f4bb217cd98c7269bc3b') in 0.193113 seconds
+  Import took 0.200186 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000141 seconds.
+  path: Assets/Resources/Sprites/ship_tex.png
+  artifactKey: Guid(0052d5d4b8564bf49bc32bae46c51d47) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprites/ship_tex.png using Guid(0052d5d4b8564bf49bc32bae46c51d47) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '226aaf94a0a9d1f62f853064c7c42a93') in 0.073104 seconds
+  Import took 0.075945 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011313 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
 Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
@@ -340,71 +742,42 @@ NullReferenceException: Object reference not set to an instance of an object
 (Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
 
 Mono: successfully reloaded assembly
-- Completed reload, in  0.982 seconds
+- Completed reload, in  1.060 seconds
 Platform modules already initialized, skipping
 Assertion failed on expression: 'reloadOk'
 
-Refreshing native plugins compatible for Editor in 0.70 ms, found 8 plugins.
+Switching build target platform(5) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(524294) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 0.64 ms, found 8 plugins.
 Preloading 1 native plugins for Editor in 0.07 ms.
-Unloading 2004 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 131.7 MB.
-System memory in use after: 131.6 MB.
+Unloading 2008 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.7 MB.
+System memory in use after: 126.6 MB.
 
-Unloading 49 unused Assets to reduce memory usage. Loaded Objects now: 2576.
-Total: 1.972400 ms (FindLiveObjects: 0.212400 ms CreateObjectMapping: 0.078300 ms MarkObjects: 1.519300 ms  DeleteObjects: 0.161400 ms)
+Unloading 49 unused Assets to reduce memory usage. Loaded Objects now: 2620.
+Total: 1.858700 ms (FindLiveObjects: 0.177400 ms CreateObjectMapping: 0.074000 ms MarkObjects: 1.457900 ms  DeleteObjects: 0.148900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+========================================================================
+Received Import Request.
+  Time since last request: 1693.639553 seconds.
+  path: Assets/Resources/Sprites/ship_normal.png
+  artifactKey: Guid(d517d9216ac78a744b66358e3e160cfc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprites/ship_normal.png using Guid(d517d9216ac78a744b66358e3e160cfc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fe4688767b7e95e1af9d7a368e5badb3') in 0.098888 seconds
+  Import took 0.101602 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 323.759052 seconds.
-  path: Assets/Resources/Prefabs/3.0/Players/XR Rig.prefab
-  artifactKey: Guid(deaf761c35b3def408bffd10dd23a04d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/3.0/Players/XR Rig.prefab using Guid(deaf761c35b3def408bffd10dd23a04d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3398054c44f298a7444bb3fb5e445e70') in 0.082091 seconds
-  Import took 0.086327 seconds .
+  Time since last request: 147.573980 seconds.
+  path: Assets/Resources/Prefabs/3.0/UI/Menu.prefab
+  artifactKey: Guid(fb745a6f83285354d926519301bc2f75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/UI/Menu.prefab using Guid(fb745a6f83285354d926519301bc2f75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0eb7bc937ac372d974de047aa6cf6bdd') in 0.082654 seconds
+  Import took 0.085861 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.009539 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Native extension for LinuxStandalone target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 0.73 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.08 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-NullReferenceException: Object reference not set to an instance of an object
-  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
-  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
-
-(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
-
-Mono: successfully reloaded assembly
-- Completed reload, in  0.981 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Refreshing native plugins compatible for Editor in 0.67 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.07 ms.
-Unloading 2004 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 131.7 MB.
-System memory in use after: 131.7 MB.
-
-Unloading 50 unused Assets to reduce memory usage. Loaded Objects now: 2581.
-Total: 1.926700 ms (FindLiveObjects: 0.165200 ms CreateObjectMapping: 0.072300 ms MarkObjects: 1.523100 ms  DeleteObjects: 0.165000 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.010411 seconds.
+Registered in 0.010666 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
 Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
@@ -428,23 +801,34 @@ NullReferenceException: Object reference not set to an instance of an object
 (Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
 
 Mono: successfully reloaded assembly
-- Completed reload, in  0.978 seconds
+- Completed reload, in  1.022 seconds
 Platform modules already initialized, skipping
 Assertion failed on expression: 'reloadOk'
 
+Switching build target platform(5) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(524294) extendedPlatform(0)
 Refreshing native plugins compatible for Editor in 0.67 ms, found 8 plugins.
 Preloading 1 native plugins for Editor in 0.07 ms.
-Unloading 2004 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 131.7 MB.
-System memory in use after: 131.7 MB.
+Unloading 2008 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.8 MB.
+System memory in use after: 126.7 MB.
 
-Unloading 49 unused Assets to reduce memory usage. Loaded Objects now: 2585.
-Total: 2.042400 ms (FindLiveObjects: 0.208600 ms CreateObjectMapping: 0.091500 ms MarkObjects: 1.570900 ms  DeleteObjects: 0.170700 ms)
+Unloading 53 unused Assets to reduce memory usage. Loaded Objects now: 2624.
+Total: 2.082800 ms (FindLiveObjects: 0.172600 ms CreateObjectMapping: 0.067700 ms MarkObjects: 1.625900 ms  DeleteObjects: 0.215600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+========================================================================
+Received Import Request.
+  Time since last request: 24.949919 seconds.
+  path: Assets/Resources/Prefabs/3.0/Environments/Spaceship.prefab
+  artifactKey: Guid(f45054302bde9bf47adf9d5ad871e0bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/Environments/Spaceship.prefab using Guid(f45054302bde9bf47adf9d5ad871e0bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aec29a11bc808d55f9965fa3a4265dd1') in 0.306362 seconds
+  Import took 0.309590 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.009636 seconds.
+Registered in 0.011919 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
 Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
@@ -456,7 +840,7 @@ Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 0.69 ms, found 8 plugins.
+Refreshing native plugins compatible for Editor in 0.64 ms, found 8 plugins.
 Preloading 1 native plugins for Editor in 0.08 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
@@ -468,34 +852,26 @@ NullReferenceException: Object reference not set to an instance of an object
 (Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
 
 Mono: successfully reloaded assembly
-- Completed reload, in  0.971 seconds
+- Completed reload, in  0.988 seconds
 Platform modules already initialized, skipping
 Assertion failed on expression: 'reloadOk'
 
-Refreshing native plugins compatible for Editor in 0.68 ms, found 8 plugins.
+Switching build target platform(5) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(524294) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 0.67 ms, found 8 plugins.
 Preloading 1 native plugins for Editor in 0.07 ms.
-Unloading 2004 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 131.7 MB.
-System memory in use after: 131.7 MB.
+Unloading 2008 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.8 MB.
+System memory in use after: 126.8 MB.
 
-Unloading 49 unused Assets to reduce memory usage. Loaded Objects now: 2589.
-Total: 1.932100 ms (FindLiveObjects: 0.191000 ms CreateObjectMapping: 0.089500 ms MarkObjects: 1.488000 ms  DeleteObjects: 0.162700 ms)
+Unloading 49 unused Assets to reduce memory usage. Loaded Objects now: 2629.
+Total: 2.065300 ms (FindLiveObjects: 0.280500 ms CreateObjectMapping: 0.173400 ms MarkObjects: 1.471600 ms  DeleteObjects: 0.139100 ms)
 
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 8.76 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.08 ms.
-Unloading 46 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 93.0 MB.
-System memory in use after: 93.0 MB.
-
-Unloading 46 unused Assets to reduce memory usage. Loaded Objects now: 2589.
-Total: 2.342200 ms (FindLiveObjects: 0.239800 ms CreateObjectMapping: 0.101800 ms MarkObjects: 1.770100 ms  DeleteObjects: 0.229800 ms)
-
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.009818 seconds.
+Registered in 0.010243 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
 Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
@@ -507,7 +883,7 @@ Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 0.68 ms, found 8 plugins.
+Refreshing native plugins compatible for Editor in 0.76 ms, found 8 plugins.
 Preloading 1 native plugins for Editor in 0.09 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
@@ -519,45 +895,26 @@ NullReferenceException: Object reference not set to an instance of an object
 (Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
 
 Mono: successfully reloaded assembly
-- Completed reload, in  1.044 seconds
+- Completed reload, in  1.030 seconds
 Platform modules already initialized, skipping
 Assertion failed on expression: 'reloadOk'
 
-Refreshing native plugins compatible for Editor in 0.67 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.07 ms.
-Unloading 2004 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 131.7 MB.
-System memory in use after: 131.7 MB.
-
-Unloading 49 unused Assets to reduce memory usage. Loaded Objects now: 2593.
-Total: 2.071300 ms (FindLiveObjects: 0.207900 ms CreateObjectMapping: 0.088300 ms MarkObjects: 1.583300 ms  DeleteObjects: 0.190100 ms)
-
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 9.12 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.07 ms.
-Unloading 46 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 93.0 MB.
-System memory in use after: 93.0 MB.
-
-Unloading 46 unused Assets to reduce memory usage. Loaded Objects now: 2593.
-Total: 2.074400 ms (FindLiveObjects: 0.205000 ms CreateObjectMapping: 0.091200 ms MarkObjects: 1.600200 ms  DeleteObjects: 0.176800 ms)
-
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 8.65 ms, found 8 plugins.
+Switching build target platform(5) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(524294) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 0.64 ms, found 8 plugins.
 Preloading 1 native plugins for Editor in 0.06 ms.
-Unloading 46 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 93.0 MB.
-System memory in use after: 93.0 MB.
+Unloading 2008 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.8 MB.
+System memory in use after: 126.8 MB.
 
-Unloading 46 unused Assets to reduce memory usage. Loaded Objects now: 2593.
-Total: 2.538400 ms (FindLiveObjects: 0.244600 ms CreateObjectMapping: 0.075900 ms MarkObjects: 1.995800 ms  DeleteObjects: 0.221200 ms)
+Unloading 49 unused Assets to reduce memory usage. Loaded Objects now: 2633.
+Total: 2.114300 ms (FindLiveObjects: 0.244000 ms CreateObjectMapping: 0.086300 ms MarkObjects: 1.583200 ms  DeleteObjects: 0.200200 ms)
 
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.009723 seconds.
+Registered in 0.010055 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
 Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
@@ -569,7 +926,7 @@ Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 0.72 ms, found 8 plugins.
+Refreshing native plugins compatible for Editor in 0.64 ms, found 8 plugins.
 Preloading 1 native plugins for Editor in 0.08 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
@@ -585,41 +942,54 @@ Mono: successfully reloaded assembly
 Platform modules already initialized, skipping
 Assertion failed on expression: 'reloadOk'
 
-Refreshing native plugins compatible for Editor in 0.69 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.07 ms.
-Unloading 2004 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 131.7 MB.
-System memory in use after: 131.7 MB.
+Switching build target platform(5) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(524294) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 0.67 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.08 ms.
+Unloading 2008 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.8 MB.
+System memory in use after: 126.8 MB.
 
-Unloading 49 unused Assets to reduce memory usage. Loaded Objects now: 2597.
-Total: 2.314100 ms (FindLiveObjects: 0.217700 ms CreateObjectMapping: 0.080500 ms MarkObjects: 1.829400 ms  DeleteObjects: 0.185200 ms)
+Unloading 49 unused Assets to reduce memory usage. Loaded Objects now: 2637.
+Total: 2.344300 ms (FindLiveObjects: 0.337500 ms CreateObjectMapping: 0.126300 ms MarkObjects: 1.682800 ms  DeleteObjects: 0.197000 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+========================================================================
+Received Import Request.
+  Time since last request: 619.865089 seconds.
+  path: Assets/Resources/Prefabs/3.0/Environments/Spaceship.prefab
+  artifactKey: Guid(f45054302bde9bf47adf9d5ad871e0bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/Environments/Spaceship.prefab using Guid(f45054302bde9bf47adf9d5ad871e0bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4fcfed2b6db5a819fcf459ea46b4b70d') in 0.151052 seconds
+  Import took 0.154289 seconds .
 
 ========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 8.82 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.06 ms.
-Unloading 46 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 93.1 MB.
-System memory in use after: 93.0 MB.
-
-Unloading 46 unused Assets to reduce memory usage. Loaded Objects now: 2597.
-Total: 2.169400 ms (FindLiveObjects: 0.195300 ms CreateObjectMapping: 0.082800 ms MarkObjects: 1.703300 ms  DeleteObjects: 0.187000 ms)
+Received Import Request.
+  Time since last request: 60.498782 seconds.
+  path: Assets/Materials/Environments/Spaceship/Floor.mat
+  artifactKey: Guid(a284598b1d7915346b37a6a6b0cc9e6e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Environments/Spaceship/Floor.mat using Guid(a284598b1d7915346b37a6a6b0cc9e6e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '46a657290aa57e7ddae8bc4f1519e982') in 0.109418 seconds
+  Import took 0.113247 seconds .
 
 ========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 8.72 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.06 ms.
-Unloading 46 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 93.1 MB.
-System memory in use after: 93.0 MB.
+Received Import Request.
+  Time since last request: 0.000162 seconds.
+  path: Assets/Materials/Environments/Spaceship/Glass.mat
+  artifactKey: Guid(486406addf487294d8c3fc10268d4163) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Environments/Spaceship/Glass.mat using Guid(486406addf487294d8c3fc10268d4163) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a8fde3d4415563079e1ec7aa44a2da1') in 0.020618 seconds
+  Import took 0.024294 seconds .
 
-Unloading 46 unused Assets to reduce memory usage. Loaded Objects now: 2597.
-Total: 2.260800 ms (FindLiveObjects: 0.255300 ms CreateObjectMapping: 0.078100 ms MarkObjects: 1.717600 ms  DeleteObjects: 0.209100 ms)
+========================================================================
+Received Import Request.
+  Time since last request: 0.000306 seconds.
+  path: Assets/Materials/Environments/Spaceship/Walls.mat
+  artifactKey: Guid(0e3e8893e62465b45885bd8da1828b40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Environments/Spaceship/Walls.mat using Guid(0e3e8893e62465b45885bd8da1828b40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '201a198ae7306b1ed7837ba66f65e237') in 0.097323 seconds
+  Import took 0.100832 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.009926 seconds.
+Registered in 0.010886 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
 Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
@@ -631,7 +1001,50 @@ Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.76 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.078 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Switching build target platform(5) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(524294) extendedPlatform(0)
 Refreshing native plugins compatible for Editor in 0.69 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.08 ms.
+Unloading 2008 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.9 MB.
+System memory in use after: 126.8 MB.
+
+Unloading 50 unused Assets to reduce memory usage. Loaded Objects now: 2643.
+Total: 2.127700 ms (FindLiveObjects: 0.199000 ms CreateObjectMapping: 0.081300 ms MarkObjects: 1.651100 ms  DeleteObjects: 0.195500 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.009799 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.68 ms, found 8 plugins.
 Preloading 1 native plugins for Editor in 0.08 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
@@ -643,45 +1056,160 @@ NullReferenceException: Object reference not set to an instance of an object
 (Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
 
 Mono: successfully reloaded assembly
-- Completed reload, in  1.018 seconds
+- Completed reload, in  1.057 seconds
 Platform modules already initialized, skipping
 Assertion failed on expression: 'reloadOk'
 
-Refreshing native plugins compatible for Editor in 0.69 ms, found 8 plugins.
+Switching build target platform(5) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(524294) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 0.64 ms, found 8 plugins.
 Preloading 1 native plugins for Editor in 0.07 ms.
-Unloading 2004 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 131.7 MB.
-System memory in use after: 131.7 MB.
+Unloading 2008 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.9 MB.
+System memory in use after: 126.8 MB.
 
-Unloading 49 unused Assets to reduce memory usage. Loaded Objects now: 2601.
-Total: 2.073100 ms (FindLiveObjects: 0.204900 ms CreateObjectMapping: 0.092500 ms MarkObjects: 1.599700 ms  DeleteObjects: 0.175400 ms)
+Unloading 49 unused Assets to reduce memory usage. Loaded Objects now: 2647.
+Total: 2.187800 ms (FindLiveObjects: 0.314200 ms CreateObjectMapping: 0.079500 ms MarkObjects: 1.608800 ms  DeleteObjects: 0.184000 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+========================================================================
+Received Import Request.
+  Time since last request: 735.495457 seconds.
+  path: Assets/Materials/Environments/Spaceship/Floor.mat
+  artifactKey: Guid(a284598b1d7915346b37a6a6b0cc9e6e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Environments/Spaceship/Floor.mat using Guid(a284598b1d7915346b37a6a6b0cc9e6e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '77d4c508b48f7123ba74bfd4f3e6c16e') in 0.135062 seconds
+  Import took 0.138812 seconds .
 
 ========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 9.56 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.06 ms.
-Unloading 46 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 93.1 MB.
-System memory in use after: 93.0 MB.
-
-Unloading 46 unused Assets to reduce memory usage. Loaded Objects now: 2601.
-Total: 2.033700 ms (FindLiveObjects: 0.254200 ms CreateObjectMapping: 0.091500 ms MarkObjects: 1.518300 ms  DeleteObjects: 0.168700 ms)
-
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 8.87 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.06 ms.
-Unloading 46 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 93.0 MB.
-System memory in use after: 93.0 MB.
-
-Unloading 46 unused Assets to reduce memory usage. Loaded Objects now: 2601.
-Total: 2.511500 ms (FindLiveObjects: 0.259500 ms CreateObjectMapping: 0.097200 ms MarkObjects: 1.915500 ms  DeleteObjects: 0.238600 ms)
+Received Import Request.
+  Time since last request: 0.000152 seconds.
+  path: Assets/Materials/Environments/Spaceship/Glass.mat
+  artifactKey: Guid(486406addf487294d8c3fc10268d4163) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Environments/Spaceship/Glass.mat using Guid(486406addf487294d8c3fc10268d4163) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '917003a97a6d5f5ac1cff95734204872') in 0.012759 seconds
+  Import took 0.015666 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.009781 seconds.
+Registered in 0.010375 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.71 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.08 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.017 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Switching build target platform(5) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(524294) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 0.63 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.06 ms.
+Unloading 2008 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.9 MB.
+System memory in use after: 126.9 MB.
+
+Unloading 49 unused Assets to reduce memory usage. Loaded Objects now: 2652.
+Total: 2.154500 ms (FindLiveObjects: 0.180600 ms CreateObjectMapping: 0.061900 ms MarkObjects: 1.721400 ms  DeleteObjects: 0.189900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+========================================================================
+Received Import Request.
+  Time since last request: 178.560161 seconds.
+  path: Assets/Materials/Environments/Spaceship/Floor.mat
+  artifactKey: Guid(a284598b1d7915346b37a6a6b0cc9e6e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Environments/Spaceship/Floor.mat using Guid(a284598b1d7915346b37a6a6b0cc9e6e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00db3f984f2b7e91eed53b0830402ac3') in 0.120895 seconds
+  Import took 0.123545 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000151 seconds.
+  path: Assets/Materials/Environments/Spaceship/Walls.mat
+  artifactKey: Guid(0e3e8893e62465b45885bd8da1828b40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Environments/Spaceship/Walls.mat using Guid(0e3e8893e62465b45885bd8da1828b40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c1905309536dae44eac37e2bafd6f8a6') in 0.082851 seconds
+  Import took 0.085464 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 112.287628 seconds.
+  path: Assets/Resources/Prefabs/3.0/Environments/Spaceship.prefab
+  artifactKey: Guid(f45054302bde9bf47adf9d5ad871e0bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/3.0/Environments/Spaceship.prefab using Guid(f45054302bde9bf47adf9d5ad871e0bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7153169b4cd23a704d4e72e11e26f28c') in 0.123565 seconds
+  Import took 0.128170 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.010782 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.64 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.010 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Switching build target platform(5) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(524294) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 0.65 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.11 ms.
+Unloading 2008 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 126.9 MB.
+System memory in use after: 126.9 MB.
+
+Unloading 50 unused Assets to reduce memory usage. Loaded Objects now: 2657.
+Total: 2.231400 ms (FindLiveObjects: 0.205500 ms CreateObjectMapping: 0.074200 ms MarkObjects: 1.746200 ms  DeleteObjects: 0.204800 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+========================================================================
+Received Import Request.
+  Time since last request: 134.627964 seconds.
+  path: Assets/Materials/Environments/Spaceship/Stairs.mat
+  artifactKey: Guid(b679a4697e22ce24ab642e4c7e0952bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Environments/Spaceship/Stairs.mat using Guid(b679a4697e22ce24ab642e4c7e0952bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b54421bd526f996d3233aba66a1bf6c') in 0.049050 seconds
+  Import took 0.051788 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.010894 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
 Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
@@ -705,64 +1233,565 @@ NullReferenceException: Object reference not set to an instance of an object
 (Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
 
 Mono: successfully reloaded assembly
-- Completed reload, in  1.092 seconds
+- Completed reload, in  1.009 seconds
 Platform modules already initialized, skipping
 Assertion failed on expression: 'reloadOk'
 
 Switching build target platform(5) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(524294) extendedPlatform(0)
-Refreshing native plugins compatible for Editor in 0.66 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.07 ms.
+Refreshing native plugins compatible for Editor in 0.63 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.06 ms.
 Unloading 2008 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 129.5 MB.
-System memory in use after: 129.4 MB.
+System memory in use before: 127.0 MB.
+System memory in use after: 127.0 MB.
 
-Unloading 49 unused Assets to reduce memory usage. Loaded Objects now: 2605.
-Total: 2.420100 ms (FindLiveObjects: 0.230400 ms CreateObjectMapping: 0.095900 ms MarkObjects: 1.858900 ms  DeleteObjects: 0.210600 ms)
+Unloading 49 unused Assets to reduce memory usage. Loaded Objects now: 2662.
+Total: 1.961900 ms (FindLiveObjects: 0.166400 ms CreateObjectMapping: 0.071100 ms MarkObjects: 1.540400 ms  DeleteObjects: 0.183500 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
 ========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 9.20 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.06 ms.
-Unloading 46 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 90.9 MB.
-System memory in use after: 90.9 MB.
+Received Import Request.
+  Time since last request: 263.444097 seconds.
+  path: Assets/Materials/Environments/Spaceship/Stairs.mat
+  artifactKey: Guid(b679a4697e22ce24ab642e4c7e0952bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Environments/Spaceship/Stairs.mat using Guid(b679a4697e22ce24ab642e4c7e0952bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '53bd2d8b245994a070b8511382e50c98') in 0.046093 seconds
+  Import took 0.048931 seconds .
 
-Unloading 46 unused Assets to reduce memory usage. Loaded Objects now: 2605.
-Total: 2.379300 ms (FindLiveObjects: 0.228800 ms CreateObjectMapping: 0.127100 ms MarkObjects: 1.836100 ms  DeleteObjects: 0.186700 ms)
+========================================================================
+Received Import Request.
+  Time since last request: 0.000291 seconds.
+  path: Assets/Materials/Environments/Spaceship/Floor.mat
+  artifactKey: Guid(a284598b1d7915346b37a6a6b0cc9e6e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Environments/Spaceship/Floor.mat using Guid(a284598b1d7915346b37a6a6b0cc9e6e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5028d929b1c54e0cd7adb25918c689f1') in 0.089950 seconds
+  Import took 0.092463 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000196 seconds.
+  path: Assets/Materials/Environments/Spaceship/Walls.mat
+  artifactKey: Guid(0e3e8893e62465b45885bd8da1828b40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Environments/Spaceship/Walls.mat using Guid(0e3e8893e62465b45885bd8da1828b40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '118318e667f3f671cebc4c7271a118b2') in 0.087448 seconds
+  Import took 0.090077 seconds .
 
 ========================================================================
 Received Prepare
-Refreshing native plugins compatible for Editor in 8.74 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.06 ms.
-Unloading 46 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 90.9 MB.
-System memory in use after: 90.9 MB.
+Registering precompiled user dll's ...
+Registered in 0.010197 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
 
-Unloading 46 unused Assets to reduce memory usage. Loaded Objects now: 2605.
-Total: 2.089300 ms (FindLiveObjects: 0.204400 ms CreateObjectMapping: 0.101300 ms MarkObjects: 1.625900 ms  DeleteObjects: 0.157000 ms)
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.64 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.002 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.82 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 2004 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 129.3 MB.
+System memory in use after: 129.2 MB.
+
+Unloading 49 unused Assets to reduce memory usage. Loaded Objects now: 2667.
+Total: 2.166600 ms (FindLiveObjects: 0.213000 ms CreateObjectMapping: 0.088400 ms MarkObjects: 1.680100 ms  DeleteObjects: 0.184200 ms)
 
 ========================================================================
 Received Prepare
-Refreshing native plugins compatible for Editor in 10.18 ms, found 8 plugins.
+Refreshing native plugins compatible for Editor in 10.10 ms, found 8 plugins.
 Preloading 1 native plugins for Editor in 0.06 ms.
 Unloading 46 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 90.9 MB.
-System memory in use after: 90.9 MB.
+System memory in use before: 90.5 MB.
+System memory in use after: 90.5 MB.
 
-Unloading 46 unused Assets to reduce memory usage. Loaded Objects now: 2605.
-Total: 2.451900 ms (FindLiveObjects: 0.208200 ms CreateObjectMapping: 0.078500 ms MarkObjects: 2.010500 ms  DeleteObjects: 0.154000 ms)
+Unloading 46 unused Assets to reduce memory usage. Loaded Objects now: 2667.
+Total: 2.869400 ms (FindLiveObjects: 0.270100 ms CreateObjectMapping: 0.158400 ms MarkObjects: 2.204900 ms  DeleteObjects: 0.235400 ms)
 
 ========================================================================
 Received Prepare
-Refreshing native plugins compatible for Editor in 9.08 ms, found 8 plugins.
+Refreshing native plugins compatible for Editor in 8.68 ms, found 8 plugins.
 Preloading 1 native plugins for Editor in 0.06 ms.
 Unloading 46 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 90.9 MB.
-System memory in use after: 90.9 MB.
+System memory in use before: 90.5 MB.
+System memory in use after: 90.5 MB.
 
-Unloading 46 unused Assets to reduce memory usage. Loaded Objects now: 2605.
-Total: 2.842900 ms (FindLiveObjects: 0.298000 ms CreateObjectMapping: 0.089200 ms MarkObjects: 2.264200 ms  DeleteObjects: 0.190500 ms)
+Unloading 46 unused Assets to reduce memory usage. Loaded Objects now: 2667.
+Total: 2.165900 ms (FindLiveObjects: 0.220900 ms CreateObjectMapping: 0.088200 ms MarkObjects: 1.658800 ms  DeleteObjects: 0.196600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011046 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.72 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.10 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.092 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.70 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 2004 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 129.2 MB.
+System memory in use after: 129.2 MB.
+
+Unloading 49 unused Assets to reduce memory usage. Loaded Objects now: 2671.
+Total: 2.235200 ms (FindLiveObjects: 0.237700 ms CreateObjectMapping: 0.091800 ms MarkObjects: 1.710200 ms  DeleteObjects: 0.194400 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 806.564289 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/AmbienceExposure4k.hdr
+  artifactKey: Guid(c9bc6cdb7a2e78b4c85ae74715b0a355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/AmbienceExposure4k.hdr using Guid(c9bc6cdb7a2e78b4c85ae74715b0a355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c2b587cd56c0be552c6b1ffd3c95a551') in 0.100276 seconds
+  Import took 0.105415 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000213 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/FluffballDayLeft.hdr
+  artifactKey: Guid(a78d8299279fda54098aca1c72ecfae1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/FluffballDayLeft.hdr using Guid(a78d8299279fda54098aca1c72ecfae1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c76570120edd22a21862a559db602e69') in 0.027691 seconds
+  Import took 0.031873 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000286 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/SunlessCirruscover4k.hdr
+  artifactKey: Guid(99af420a4ccafa74abdc47436d8b0685) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/SunlessCirruscover4k.hdr using Guid(99af420a4ccafa74abdc47436d8b0685) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '663f7490b16a1e78970a5f6ae4ae8991') in 0.036236 seconds
+  Import took 0.040851 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000139 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/CasualDay4K.hdr
+  artifactKey: Guid(1153dc89e66880c4eb7adc16ba588855) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/CasualDay4K.hdr using Guid(1153dc89e66880c4eb7adc16ba588855) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '86ae80e5cb460ec6dba9b37d5b15bb6e') in 0.039602 seconds
+  Import took 0.045249 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000213 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/CosmicCoolCloudBack.hdr
+  artifactKey: Guid(a779becf00399924184cd13e046a100e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/CosmicCoolCloudBack.hdr using Guid(a779becf00399924184cd13e046a100e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6400520a7eee13e59481de5b594343e5') in 0.024049 seconds
+  Import took 0.026890 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000136 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/FluffballDayTop.hdr
+  artifactKey: Guid(c769857dc541ab7449d1352d7ff46ce8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/FluffballDayTop.hdr using Guid(c769857dc541ab7449d1352d7ff46ce8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fc4efc83de1a6111e44c8fef7031980e') in 0.019417 seconds
+  Import took 0.022385 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000186 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/MegaSunLeft.hdr
+  artifactKey: Guid(7f0373fb8ec72a142898c7984aada4b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/MegaSunLeft.hdr using Guid(7f0373fb8ec72a142898c7984aada4b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b4651e2b534402a0c7bfa7f4c093af0a') in 0.018563 seconds
+  Import took 0.021603 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000149 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/CosmicCoolCloudRight.hdr
+  artifactKey: Guid(438e868ac8cccca4e81873838a67c003) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/CosmicCoolCloudRight.hdr using Guid(438e868ac8cccca4e81873838a67c003) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6577f1f82e64b7557888e057870330aa') in 0.017514 seconds
+  Import took 0.020694 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000180 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/CosmicCoolCloudTop.hdr
+  artifactKey: Guid(a199da0432efa6a489df8883d1f3bfe0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/CosmicCoolCloudTop.hdr using Guid(a199da0432efa6a489df8883d1f3bfe0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '064e5a4a801edfe88696e07449168793') in 0.018846 seconds
+  Import took 0.023456 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000123 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/CosmicCoolCloudLeft.hdr
+  artifactKey: Guid(740f96d568f4f3e40b049c40f11603e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/CosmicCoolCloudLeft.hdr using Guid(740f96d568f4f3e40b049c40f11603e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0685d21e09b7fc4ea96209a7ae62bddb') in 0.019793 seconds
+  Import took 0.022774 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000198 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/DayInTheClouds4k.hdr
+  artifactKey: Guid(90196f2c2d8d2f2448717676e1a09894) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/DayInTheClouds4k.hdr using Guid(90196f2c2d8d2f2448717676e1a09894) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4f4db144e32ce8302aaa914a7ff1f0fe') in 0.075284 seconds
+  Import took 0.079699 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000131 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/FluffballDayFront.hdr
+  artifactKey: Guid(4499836ec803a0443834895abc208fba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/FluffballDayFront.hdr using Guid(4499836ec803a0443834895abc208fba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03b590e9027426211a03c072818cf203') in 0.017487 seconds
+  Import took 0.020426 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000128 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/MegaSunFront.hdr
+  artifactKey: Guid(b915aaf1fa7dbd54a9e60e42712933a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/MegaSunFront.hdr using Guid(b915aaf1fa7dbd54a9e60e42712933a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd6928eb22a7db5a817863c3f90aca9c0') in 0.034693 seconds
+  Import took 0.037327 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000124 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/MegaSunRight.hdr
+  artifactKey: Guid(f5760fc943c5eb643a2291630888f6a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/MegaSunRight.hdr using Guid(f5760fc943c5eb643a2291630888f6a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f033cb1caa06df48ed20a3775d223cb') in 0.016600 seconds
+  Import took 0.019279 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000141 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/UnderTheSea4k.hdr
+  artifactKey: Guid(26cddb2a3a1bc804d8e9ca09b109793a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/UnderTheSea4k.hdr using Guid(26cddb2a3a1bc804d8e9ca09b109793a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '635714090b5c1ab5a449ae3ae91e03b6') in 0.038465 seconds
+  Import took 0.043084 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000183 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/CloudedSunGlow4k.hdr
+  artifactKey: Guid(12c15a8e5a294be45819b1dd4b9b08d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/CloudedSunGlow4k.hdr using Guid(12c15a8e5a294be45819b1dd4b9b08d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb004f82e2e246dfaf7db537ff4781e1') in 0.036202 seconds
+  Import took 0.040792 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000129 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/CoriolisNight4k.hdr
+  artifactKey: Guid(354036e57ae357148aed267204ce73a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/CoriolisNight4k.hdr using Guid(354036e57ae357148aed267204ce73a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '237ee5c59e94f4d3c842787b3c0ec921') in 0.034968 seconds
+  Import took 0.039482 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000180 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/HighFantasy4k.hdr
+  artifactKey: Guid(6e998e53d0a82bb45928cd08a0fcfff3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/HighFantasy4k.hdr using Guid(6e998e53d0a82bb45928cd08a0fcfff3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3010835156ae70cb08191127abdf92e') in 0.035746 seconds
+  Import took 0.040198 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000128 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/FluffballDayBack.hdr
+  artifactKey: Guid(50762494be58d144d98d179cd6ba1470) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/FluffballDayBack.hdr using Guid(50762494be58d144d98d179cd6ba1470) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '61544a8dfc0376ebcaaf9522ac73cdfe') in 0.016822 seconds
+  Import took 0.019995 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000139 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/CosmicCoolCloudFront.hdr
+  artifactKey: Guid(d822c5eff7d42f04691027bc8c2b0716) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/CosmicCoolCloudFront.hdr using Guid(d822c5eff7d42f04691027bc8c2b0716) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fa2866477ac19c9b4e0f15e3550e0ee4') in 0.018752 seconds
+  Import took 0.022282 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000192 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/PlanetaryEarth4k.hdr
+  artifactKey: Guid(3675d0c3c874f6b479bab57eb7e68c90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/PlanetaryEarth4k.hdr using Guid(3675d0c3c874f6b479bab57eb7e68c90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9f34ec7515977161a0646a5844247cbc') in 0.036149 seconds
+  Import took 0.040539 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000131 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/MegaSunTop.hdr
+  artifactKey: Guid(47d70ba0d1c1c3e4ab451b6bc37b0ebe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/MegaSunTop.hdr using Guid(47d70ba0d1c1c3e4ab451b6bc37b0ebe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '14768136893a326141559a4c682805ca') in 0.018498 seconds
+  Import took 0.021781 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000119 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/SkyhighFluffycloudField4k.hdr
+  artifactKey: Guid(18a0be10f0f64ac4c9f679d68e2cf857) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/SkyhighFluffycloudField4k.hdr using Guid(18a0be10f0f64ac4c9f679d68e2cf857) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3de8bb9fa8052d170724676096731ca8') in 0.037992 seconds
+  Import took 0.042437 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000205 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/CosmicCoolCloudBottom.hdr
+  artifactKey: Guid(94b877781ad034640abce933599b6f2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/CosmicCoolCloudBottom.hdr using Guid(94b877781ad034640abce933599b6f2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e0f76634179ff1b13da6e2fab9696b0') in 0.016960 seconds
+  Import took 0.020034 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000146 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/MegaSun4k.hdr
+  artifactKey: Guid(8967f190ed29c46418093a47d66daee8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/MegaSun4k.hdr using Guid(8967f190ed29c46418093a47d66daee8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd17c75e5c79bb9ae4a32e3210a699374') in 0.038439 seconds
+  Import took 0.042912 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000234 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/Cloudymorning4k.hdr
+  artifactKey: Guid(3b5d67736d7b8ad4f8da4d58eaef0b98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/Cloudymorning4k.hdr using Guid(3b5d67736d7b8ad4f8da4d58eaef0b98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '32f5622bc230a395a079aa86776937b7') in 0.037630 seconds
+  Import took 0.042214 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000132 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/FluffballDayBottom.hdr
+  artifactKey: Guid(42e0664ae4c5c424ebcd980a10687e18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/FluffballDayBottom.hdr using Guid(42e0664ae4c5c424ebcd980a10687e18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '07951a643c6d826df47e4142fe80c432') in 0.017177 seconds
+  Import took 0.020310 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000155 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/UnearthlyRed4k.hdr
+  artifactKey: Guid(a3de28b69b48944438c87668bd722ae7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/UnearthlyRed4k.hdr using Guid(a3de28b69b48944438c87668bd722ae7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0c724a85aa2bcd1ca6828d5640f0348b') in 0.038494 seconds
+  Import took 0.043292 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000142 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/FluffballDay4k.hdr
+  artifactKey: Guid(3e80b688af9b1d84ea52c5d36bb1cbbd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/FluffballDay4k.hdr using Guid(3e80b688af9b1d84ea52c5d36bb1cbbd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '23debd5c70f64b5a52d411342c4adbfe') in 0.035192 seconds
+  Import took 0.039792 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000133 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/MegaSunBack.hdr
+  artifactKey: Guid(4e52cbaf92b83a94cb86bed75ed34652) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/MegaSunBack.hdr using Guid(4e52cbaf92b83a94cb86bed75ed34652) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '229002f754aa086a93a3ba987c147a1c') in 0.015152 seconds
+  Import took 0.018558 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000142 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/MegaSunBottom.hdr
+  artifactKey: Guid(3de85f3af41435a4c8f9d237bc1f19ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/MegaSunBottom.hdr using Guid(3de85f3af41435a4c8f9d237bc1f19ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5129ff38282f921ecea651b71f2bc302') in 0.015017 seconds
+  Import took 0.018554 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000274 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/FluffballDayRight.hdr
+  artifactKey: Guid(669daa4bd63e4204dacb9aa01a164a7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/FluffballDayRight.hdr using Guid(669daa4bd63e4204dacb9aa01a164a7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '037d80b11986c0707ff1478e6a407f33') in 0.019816 seconds
+  Import took 0.022783 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000145 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri
+  artifactKey: Guid(d78fe5a22bec38d43bbe7e846ac3925a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri using Guid(d78fe5a22bec38d43bbe7e846ac3925a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '584285e19131efb469378a5ebcd9cf68') in 0.007352 seconds
+  Import took 0.010311 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000281 seconds.
+  path: Assets/SkySerie Freebie/FreebieHdri/DarkStorm4K.hdr
+  artifactKey: Guid(762f22ba43541df4e95e0e7126e8d96c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SkySerie Freebie/FreebieHdri/DarkStorm4K.hdr using Guid(762f22ba43541df4e95e0e7126e8d96c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '626e1110641f6abc6e99a5760e46eabc') in 0.041150 seconds
+  Import took 0.046446 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 71.203030 seconds.
+  path: Assets/Textures/T_Grey.png
+  artifactKey: Guid(0116079cc2a22d245b07e3ffdd859d17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/T_Grey.png using Guid(0116079cc2a22d245b07e3ffdd859d17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78724e9d7362021ac6d2efb55a95ba2b') in 0.016035 seconds
+  Import took 0.019577 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000198 seconds.
+  path: Assets/Textures/T_Red.png
+  artifactKey: Guid(cccf6f43e5117e646b13095bb3ca74e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/T_Red.png using Guid(cccf6f43e5117e646b13095bb3ca74e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '497f1ec79eefab0333ef36bc513c7967') in 0.021974 seconds
+  Import took 0.025355 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000227 seconds.
+  path: Assets/Textures/T_LightGrey_02.png
+  artifactKey: Guid(76e1cf6aaefa2c142b399782021b299b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/T_LightGrey_02.png using Guid(76e1cf6aaefa2c142b399782021b299b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0d55f83868b53211c243747453602e47') in 0.017064 seconds
+  Import took 0.020671 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000269 seconds.
+  path: Assets/Textures/T_LightGrey.png
+  artifactKey: Guid(e24ba4a92f5a22045a62c674263614cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/T_LightGrey.png using Guid(e24ba4a92f5a22045a62c674263614cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd33a84a73ade00f5107f64dda217025b') in 0.015102 seconds
+  Import took 0.018539 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 55.637172 seconds.
+  path: Assets/Resources/Sprites/ship_normal.png
+  artifactKey: Guid(d517d9216ac78a744b66358e3e160cfc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprites/ship_normal.png using Guid(d517d9216ac78a744b66358e3e160cfc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0535ce1dbb779adb61ad1408dfa5391a') in 0.017590 seconds
+  Import took 0.022812 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000144 seconds.
+  path: Assets/Resources/Sprites/ship_tex.png
+  artifactKey: Guid(0052d5d4b8564bf49bc32bae46c51d47) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprites/ship_tex.png using Guid(0052d5d4b8564bf49bc32bae46c51d47) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '106719500454ef6228c94c8c0eb78fbc') in 0.022215 seconds
+  Import took 0.025153 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000323 seconds.
+  path: Assets/Resources/Sprites/trashcan.png
+  artifactKey: Guid(e6c10d661aa186c42a49cf04583084ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprites/trashcan.png using Guid(e6c10d661aa186c42a49cf04583084ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58febcad0badde7ad6bcbaeefefb4165') in 0.373949 seconds
+  Import took 0.376775 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000269 seconds.
+  path: Assets/Resources/Sprites/ship_tex.png
+  artifactKey: Guid(0052d5d4b8564bf49bc32bae46c51d47) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprites/ship_tex.png using Guid(0052d5d4b8564bf49bc32bae46c51d47) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '106719500454ef6228c94c8c0eb78fbc') in 0.007245 seconds
+  Import took 0.009874 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 39.662319 seconds.
+  path: Assets/Textures
+  artifactKey: Guid(bbea920ab8c02a746a93652ecd649279) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures using Guid(bbea920ab8c02a746a93652ecd649279) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e703d1e1c2f1627c1b0933774d6b3f0') in 0.006583 seconds
+  Import took 0.009299 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 15.997325 seconds.
+  path: Assets/ComponentCopier/Editor
+  artifactKey: Guid(e00b86e4cad34f045b55b2e8301b2463) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ComponentCopier/Editor using Guid(e00b86e4cad34f045b55b2e8301b2463) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '103f900275574f8dd2e8108ac694232b') in 0.007215 seconds
+  Import took 0.010146 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.906457 seconds.
+  path: Assets/ComponentCopier/Editor/ComponentCopier.cs
+  artifactKey: Guid(f47a2b9a5a9444e50baf325d51549824) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ComponentCopier/Editor/ComponentCopier.cs using Guid(f47a2b9a5a9444e50baf325d51549824) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a15ada06883a5bf65227814f01924a3e') in 0.011535 seconds
+  Import took 0.014726 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.013399 seconds.
+  path: Assets/ComponentCopier/Editor/ComponentCopier.cs
+  artifactKey: Guid(f47a2b9a5a9444e50baf325d51549824) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ComponentCopier/Editor/ComponentCopier.cs using Guid(f47a2b9a5a9444e50baf325d51549824) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a15ada06883a5bf65227814f01924a3e') in 0.002657 seconds
+  Import took 0.005491 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.010672 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.98 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.029 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.68 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 2004 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 129.4 MB.
+System memory in use after: 129.3 MB.
+
+Unloading 49 unused Assets to reduce memory usage. Loaded Objects now: 2678.
+Total: 1.966200 ms (FindLiveObjects: 0.184100 ms CreateObjectMapping: 0.078100 ms MarkObjects: 1.528600 ms  DeleteObjects: 0.174600 ms)
+
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 8.87 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.06 ms.
+Unloading 46 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 90.7 MB.
+System memory in use after: 90.6 MB.
+
+Unloading 46 unused Assets to reduce memory usage. Loaded Objects now: 2678.
+Total: 2.165200 ms (FindLiveObjects: 0.221500 ms CreateObjectMapping: 0.104300 ms MarkObjects: 1.639100 ms  DeleteObjects: 0.199600 ms)
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
