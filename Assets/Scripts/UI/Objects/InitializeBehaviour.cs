@@ -9,22 +9,20 @@ using TMPro;
 
 public class InitializeBehaviour : MonoBehaviour
 {
+    public Image panel;
     public TMP_InputField logText;
     public TMP_InputField field;
     public TMP_InputField keyboardTarget;
     public GameObject loadingWheel;
     public GameObject keyboardsGameObject;
-    public Image panel;
     public AutocompleteWordPicker wordPicker;
     public int lastCaretPosition = 0;
     public int lastAnchorPosition = 0;
-    public float sizeVariance = 20;
-    public float scaleVariance = .2f;
     public bool fromUIClick = false;
     public bool freezeRotation = true;
 
-    //Transform baseParent;
-    //Vector3 baseScale;
+    float sizeVariance = 20;
+    float scaleVariance = .2f;
 
     void Start()
     {
