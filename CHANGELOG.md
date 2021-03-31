@@ -1,5 +1,10 @@
 # PharoVRIDE's Channel Log
 
+## V0.26.0 (31/03/2021)
+* Added new keys to Virtual Keyboard
+* Virtual Keyboard can now be dragged
+* Improved Space Ship
+
 ## V0.25.0 (25/03/2021)
 * Windows can be dragged forward and backward.
 * It is possible to change between VR Hands and Sticks.

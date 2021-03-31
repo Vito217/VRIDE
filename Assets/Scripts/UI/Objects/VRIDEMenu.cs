@@ -32,9 +32,6 @@ public class VRIDEMenu : InitializeBehaviour
         SaveAndLoadModule.browsers.Add(browser);
         InteractionLogger.Count("Browser", browser.GetInstanceID().ToString());
 
-        if (keyboardToggle.isOn)
-            browser.ToggleKeyboard();
-
         Destroy(gameObject);
     }
 
@@ -44,9 +41,6 @@ public class VRIDEMenu : InitializeBehaviour
         playground.Initialize();
         SaveAndLoadModule.playgrounds.Add(playground);
         InteractionLogger.Count("Playground", playground.GetInstanceID().ToString());
-
-        if (keyboardToggle.isOn)
-            playground.ToggleKeyboard();
 
         Destroy(gameObject);
     }

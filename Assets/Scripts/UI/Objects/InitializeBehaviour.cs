@@ -33,6 +33,10 @@ public class InitializeBehaviour : MonoBehaviour
     public IEnumerator Coroutine()
     {
         if(panel != null) panel.color = UnityEngine.Random.ColorHSV();
+
+        if (keyboardsGameObject != null && !VRIDEMenu.keyboardToggleState)
+            ToggleKeyboard();
+
         yield return innerStart();
     }
 
