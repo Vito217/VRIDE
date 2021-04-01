@@ -16,36 +16,35 @@ public class InitializeBehaviour : MonoBehaviour
     public GameObject loadingWheel;
     public GameObject keyboardsGameObject;
     public AutocompleteWordPicker wordPicker;
-    public int lastCaretPosition = 0;
-    public int lastAnchorPosition = 0;
-    public bool fromUIClick = false;
     public bool freezeRotation = true;
 
+    [HideInInspector]
+    public int lastCaretPosition = 0;
+    [HideInInspector]
+    public int lastAnchorPosition = 0;
+    [HideInInspector]
+    public bool fromUIClick = false;
+    
     float sizeVariance = 20;
     float scaleVariance = .2f;
 
     void Start()
     {
         GetComponent<Canvas>().worldCamera = Camera.main;
+        if (panel != null) panel.color = UnityEngine.Random.ColorHSV();
+        if (keyboardsGameObject != null && !VRIDEMenu.keyboardToggleState) ToggleKeyboard();
+
         StartCoroutine(Coroutine());
     }
 
     public IEnumerator Coroutine()
     {
-        if(panel != null) panel.color = UnityEngine.Random.ColorHSV();
-
-        if (keyboardsGameObject != null && !VRIDEMenu.keyboardToggleState)
-            ToggleKeyboard();
-
         yield return innerStart();
     }
 
     void Update()
     {
-        if(freezeRotation)
-            transform.forward = new Vector3(
-                transform.forward.x, 0f, transform.forward.z);
-
+        if(freezeRotation) transform.forward = new Vector3(transform.forward.x, 0f, transform.forward.z);
         innerBehaviour();
     }
 
@@ -123,8 +122,7 @@ public class InitializeBehaviour : MonoBehaviour
 
     public void OnDrag(BaseEventData data)
     {
-        Transform player = ((PointerEventData) data).enterEventCamera.transform.root;
-        StartCoroutine(HandleDrag(player));
+        StartCoroutine(HandleDrag(((PointerEventData)data).enterEventCamera.transform.root));
     }
 
     IEnumerator HandleDrag(Transform player)
@@ -157,15 +155,9 @@ public class InitializeBehaviour : MonoBehaviour
             name.Replace("(Clone)", ""), GetInstanceID().ToString());
     }
 
-    public void DeactivateTemporarily()
-    {
-        loadingWheel.SetActive(true);
-    }
+    public void DeactivateTemporarily() { loadingWheel.SetActive(true); }
 
-    public void Reactivate()
-    {
-        loadingWheel.SetActive(false);
-    }
+    public void Reactivate() { loadingWheel.SetActive(false); }
 
     public void KeepActiveOnSlide()
     {
@@ -190,7 +182,7 @@ public class InitializeBehaviour : MonoBehaviour
 
     public virtual void OnSelect(BaseEventData data) {
         keyboardTarget = data.selectedObject.GetComponent<TMP_InputField>();
-        wordPicker.TextField = keyboardTarget;
+        if (wordPicker != null) wordPicker.TextField = keyboardTarget;
     }
 
     public virtual void OnDeselect(BaseEventData data) {}
@@ -259,7 +251,8 @@ public class InitializeBehaviour : MonoBehaviour
 
     public virtual void onClose() { Destroy(gameObject); }
 
-    public virtual void innerBehaviour() {
+    public virtual void innerBehaviour() 
+    {
         if (keyboardTarget != null && keyboardTarget.isFocused)
         {
             if (fromUIClick)
@@ -274,10 +267,7 @@ public class InitializeBehaviour : MonoBehaviour
         }
     }
 
-    public virtual IEnumerator innerStart()
-    {
-        yield return null;
-    }
+    public virtual IEnumerator innerStart() { yield return null; }
 
     public void ToggleKeyboard()
     {

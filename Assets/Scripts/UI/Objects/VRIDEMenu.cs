@@ -4,6 +4,9 @@ using LoggingModule;
 using SaveAndLoad;
 using System.Collections;
 using UnityEngine.EventSystems;
+using TMPro;
+using PharoModule;
+using System.Text.RegularExpressions;
 
 public class VRIDEMenu : InitializeBehaviour
 {
@@ -17,6 +20,9 @@ public class VRIDEMenu : InitializeBehaviour
     public Material spaceSkyBox;
     public Material forestSkyBox;
     public Material defaultSkyBox;
+
+    public TMP_InputField pharoIP;
+    public TMP_InputField pharoPort;
 
     public override IEnumerator innerStart()
     {
@@ -138,5 +144,10 @@ public class VRIDEMenu : InitializeBehaviour
         vrHandsToggleState = vrHandsToggle.isOn;
         Transform player = ((PointerEventData)data).enterEventCamera.transform.root;
         player.gameObject.GetComponent<VRIDEController>().ExchangeHandsAndSpheres();
+    }
+
+    public void UpdatePharoIPAndPort()
+    {
+        Pharo.IP = Regex.Replace("http://" + pharoIP.text + ":" + pharoPort.text + "/repl", @"\n|\s|\t", @"");
     }
 }
