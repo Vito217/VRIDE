@@ -159,7 +159,7 @@ public class Key : MonoBehaviour
 		// InitializeBehaviour window = transform.parent.parent.parent.parent.parent
 		//	.parent.parent.gameObject.GetComponent<InitializeBehaviour>();
 
-		if (!window.loadingWheel.activeSelf)
+		if (window.loadingWheel == null || !window.loadingWheel.activeSelf)
 		{
 			int lcp = window.lastCaretPosition;
 			int lap = window.lastAnchorPosition;

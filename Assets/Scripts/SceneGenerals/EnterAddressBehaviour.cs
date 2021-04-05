@@ -26,6 +26,7 @@ public class EnterAddressBehaviour : InitializeBehaviour
     public void OnSubmit()
     {
         loadingWheel.SetActive(true);
+        SaveAndLoadModule.username = username.text;
         SaveAndLoadModule.sessionPath = Path.Combine(Application.persistentDataPath, username.text + ".data");
         InteractionLogger.persistentPath = Path.Combine(Application.persistentDataPath, username.text + "_log.txt");
         SceneManager.LoadSceneAsync("MainScene");

@@ -16,6 +16,7 @@ namespace SaveAndLoad
     public class SaveAndLoadModule : MonoBehaviour
     {
         public static string sessionPath;
+        public static string username = "default";
         
         public static string transcriptContents = "";
         public static List<Browser> browsers = new List<Browser>();

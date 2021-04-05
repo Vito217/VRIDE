@@ -85,6 +85,14 @@ public class VRIDEMenu : InitializeBehaviour
         Destroy(gameObject);
     }
 
+    public void GenerateExplorer()
+    {
+        FileExplorer explorer = Instantiator.Instance.FileExplorer();
+        explorer.Initialize();
+
+        Destroy(gameObject);
+    }
+
     public void Exit()
     {
         SaveAndLoadModule.Save();

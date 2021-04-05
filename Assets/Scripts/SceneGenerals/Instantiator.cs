@@ -23,10 +23,15 @@ public class Instantiator: MonoBehaviour
     public Board boardPrefab;
     public GameObject aframePrefab;
     public TextMeshPro textPrefab;
+    public FileExplorer fileExplorerPrefab;
 
     public GameObject defaultGround;
     public GameObject spaceShip;
     public GameObject forest;
+
+    public GameObject explorerFilePrefab;
+    public GameObject explorerDirectoryPrefab;
+
 
     public static GameObject currentEnvironment;
 
@@ -201,6 +206,11 @@ public class Instantiator: MonoBehaviour
         return Instantiate(aframePrefab);
     }
 
+    public FileExplorer FileExplorer()
+    {
+        return Instantiate(fileExplorerPrefab);
+    }
+
     /// <summary>
     /// Creates a TaskList
     /// </summary>
@@ -226,5 +236,19 @@ public class Instantiator: MonoBehaviour
         TextMeshPro t = Instantiate(textPrefab, parent);
         t.text = content;
         return t;
+    }
+
+    public GameObject ExplorerFile(string name, Transform parent)
+    {
+        GameObject file = Instantiate(explorerFilePrefab, parent, false);
+        file.GetComponent<TextMeshProUGUI>().text = name;
+        return file;
+    }
+
+    public GameObject ExplorerDirectory(string name, Transform parent)
+    {
+        GameObject dir = Instantiate(explorerDirectoryPrefab, parent, false);
+        dir.GetComponent<TextMeshProUGUI>().text = name;
+        return dir;
     }
 }
