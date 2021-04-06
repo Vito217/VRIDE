@@ -1,5 +1,5 @@
-# Pharo Virtual Reality IDE (PharoVRIDE)
-A Virtual Reality Interactive Development Environment made in Unity that supports Pharo programming language.
+# Virtual Reality Interactive Development Environment (VRIDE)
+A VR IDE made in Unity that supports Pharo programming language.
 
 <i><b>Note:</b> This is still an early WIP, so there could be lot of features missing</i>
 
