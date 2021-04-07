@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class PythonEditor : InitializeBehaviour
 {
-    
+    [HideInInspector]
+    public string fullpath;
 }

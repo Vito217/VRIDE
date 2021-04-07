@@ -10,11 +10,12 @@ public class IPython : MonoBehaviour
 {
     public MemoryStream stream;
     public Microsoft.Scripting.Hosting.ScriptEngine pythonEngine;
-    public static Microsoft.Scripting.Hosting.ScriptScope pythonScope;
+    public Microsoft.Scripting.Hosting.ScriptScope pythonScope;
 
+    public Button saveButton;
     public Button runButton;
     public Button stopButton;
-    public TextMeshProUGUI outputText;
+    public TMP_InputField outputText;
     public TMP_InputField pythonCode;
 
     Thread execution;
@@ -62,6 +63,16 @@ public class IPython : MonoBehaviour
         execution.Abort();
     }
 
+    public void Save()
+    {
+        string path = GetComponent<PythonEditor>().fullpath;
+        string code = GetComponent<PythonEditor>().keyboardTarget.text;
+
+        File.WriteAllText(path, code);
+
+        saveButton.interactable = false;
+    }
+
     IEnumerator LogOutputText()
     {
         if (outputText != null)
@@ -71,5 +82,10 @@ public class IPython : MonoBehaviour
                 yield return null;
             }
         yield return null;
+    }
+
+    public void OnFileChange()
+    {
+        saveButton.interactable = true;
     }
 }
