@@ -9,7 +9,7 @@ public class ShiftKeyBehaviour : MonoBehaviour
 	private GameObject keyCap;
 
 	private Key shiftKeyController; 
-	private GameObject[] keys;
+	public GameObject[] keys;
 	private Key[] keyControllers;
 	private bool shiftToggle = true;
 
@@ -18,7 +18,7 @@ public class ShiftKeyBehaviour : MonoBehaviour
 		Key.keyPressed += ShiftKeyPressed;
 
 		shiftKeyController = this.gameObject.GetComponent<Key> ();
-		keys = GameObject.FindGameObjectsWithTag ("Key");
+		//keys = GameObject.FindGameObjectsWithTag ("Key");
 		keyControllers = new Key[keys.Length];
 		for (int i = 0; i < keys.Length; i++)
 		{

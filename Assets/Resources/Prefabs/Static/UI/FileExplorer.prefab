@@ -1039,7 +1039,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1195134875727690780}
   m_HandleRect: {fileID: 1010627850299371624}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2769,6 +2769,7 @@ GameObject:
   - component: {fileID: 1651626217546058010}
   - component: {fileID: 5690174770653858470}
   - component: {fileID: 8715335229172320537}
+  - component: {fileID: 4616341391024236058}
   m_Layer: 0
   m_Name: InputField (TMP)
   m_TagString: Untagged
@@ -2977,6 +2978,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &4616341391024236058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3207352995339326430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d5dc629e817c4e80a6667285496075d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NGramHandler: {fileID: 1047407902244424040}
 --- !u!1 &3277814256085093158
 GameObject:
   m_ObjectHideFlags: 0
@@ -4215,7 +4229,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3198209381627180573}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8542001194028003676}
+        m_TargetAssemblyTypeName: FileExplorer, Assembly-CSharp
+        m_MethodName: EditFile
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4562566295611634372
 GameObject:
   m_ObjectHideFlags: 0
@@ -6544,6 +6570,7 @@ GameObject:
   - component: {fileID: 7212548448849811397}
   - component: {fileID: 368735906553992732}
   - component: {fileID: 5970966687376446960}
+  - component: {fileID: 4759168319123992035}
   m_Layer: 0
   m_Name: InputField (TMP)
   m_TagString: Untagged
@@ -6752,6 +6779,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &4759168319123992035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7488589214789688997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d5dc629e817c4e80a6667285496075d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NGramHandler: {fileID: 1047407902244424040}
 --- !u!1 &7846663197409440581
 GameObject:
   m_ObjectHideFlags: 0
@@ -7165,7 +7205,7 @@ GameObject:
   - component: {fileID: 2243762607639742804}
   - component: {fileID: 6125184499582782112}
   m_Layer: 0
-  m_Name: Panel (1)
+  m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8087,6 +8127,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 2147483647
+  m_RaycastTriggerInteraction: 1
 --- !u!114 &8542001194028003676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8504,7 +8545,7 @@ PrefabInstance:
     - target: {fileID: 8251592563098711619, guid: 85305bd961128dd48b7b3b50bc622259,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.011582702
+      value: 0.0035662204
       objectReference: {fileID: 0}
     - target: {fileID: 8251592563098711619, guid: 85305bd961128dd48b7b3b50bc622259,
         type: 3}
@@ -8909,7 +8950,7 @@ PrefabInstance:
     - target: {fileID: 3813723429116472293, guid: c3196275f8a467548b7939a150347be7,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3813723429116472293, guid: c3196275f8a467548b7939a150347be7,
         type: 3}
@@ -8924,7 +8965,7 @@ PrefabInstance:
     - target: {fileID: 3813723429116472293, guid: c3196275f8a467548b7939a150347be7,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3813723429116472293, guid: c3196275f8a467548b7939a150347be7,
         type: 3}
@@ -8934,7 +8975,7 @@ PrefabInstance:
     - target: {fileID: 3813723429116472293, guid: c3196275f8a467548b7939a150347be7,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3813723429116472293, guid: c3196275f8a467548b7939a150347be7,
         type: 3}
@@ -8989,7 +9030,7 @@ PrefabInstance:
     - target: {fileID: 3813723429116472293, guid: c3196275f8a467548b7939a150347be7,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -200
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 3813723429116472293, guid: c3196275f8a467548b7939a150347be7,
         type: 3}
@@ -9125,6 +9166,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2055461383958900025}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1047407902244424040 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1301352056850768977, guid: c3196275f8a467548b7939a150347be7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2055461383958900025}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cbbd76f43b70435dae57870c3e1019b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1047407903669725442 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1301352058545013819, guid: c3196275f8a467548b7939a150347be7,

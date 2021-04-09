@@ -4,7 +4,7 @@ using TMPro;
 /// <summary>
 /// Instantiates many prefabs assigned by the user. 
 /// </summary>
-public class Instantiator: MonoBehaviour
+public class Instantiator : MonoBehaviour
 {
     public BrowserClass browserClassPrefab;
     public BrowserMethod browserMethodPrefab;
@@ -24,6 +24,7 @@ public class Instantiator: MonoBehaviour
     public GameObject aframePrefab;
     public TextMeshPro textPrefab;
     public FileExplorer fileExplorerPrefab;
+    public PythonEditor pythonEditorPrefab;
 
     public GameObject defaultGround;
     public GameObject spaceShip;
@@ -31,7 +32,6 @@ public class Instantiator: MonoBehaviour
 
     public GameObject explorerFilePrefab;
     public GameObject explorerDirectoryPrefab;
-
 
     public static GameObject currentEnvironment;
 
@@ -223,6 +223,11 @@ public class Instantiator: MonoBehaviour
     public Board Board()
     {
         return Instantiate(boardPrefab);
+    }
+
+    public PythonEditor PythonEditor()
+    {
+        return Instantiate(pythonEditorPrefab);
     }
 
     /// <summary>

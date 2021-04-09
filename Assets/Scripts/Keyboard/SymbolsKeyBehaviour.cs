@@ -5,7 +5,7 @@ public class SymbolsKeyBehaviour : MonoBehaviour
 	public ShiftKeyBehaviour ShiftBehaviour;
 
 	private Key symbolKeyController; 
-	private GameObject[] keys;
+	public GameObject[] keys;
 	private Key[] keyControllers;
 	private bool symbolToggle = true;
 
@@ -13,8 +13,8 @@ public class SymbolsKeyBehaviour : MonoBehaviour
 	{
 		Key.keyPressed += SpecialKeyPressed;
 
-		symbolKeyController = this.gameObject.GetComponent<Key> ();
-		keys = GameObject.FindGameObjectsWithTag ("Key");
+		symbolKeyController = GetComponent<Key>();
+		//keys = GameObject.FindGameObjectsWithTag ("Key");
 		keyControllers = new Key[keys.Length];
 		for (int i = 0; i < keys.Length; i++)
 		{

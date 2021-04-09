@@ -860,7 +860,6 @@ public class Playground : InitializeBehaviour
         }
         catch (Exception e)
         {
-            //output = " <color=#b32d00>[Error] " + e.Message + "</color>";
             logText.text = "<color=#C63737>[Error] " + e.Message + "</color>";
         }
         Reactivate();
@@ -885,7 +884,6 @@ public class Playground : InitializeBehaviour
                 @"VRIDE[\n\s]+log:[\n\s\t]+(.*)(\.|\s*\Z)", "");
 
             string res = await Pharo.Print(selection);
-            //output = " <color=#b32d00>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>";
 
             logText.text = Regex.Match(res, @"Error|Exception|Notification").Success ?
                 "<color=#C63737>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>" :
@@ -895,7 +893,6 @@ public class Playground : InitializeBehaviour
         }
         catch (Exception e)
         {
-            //output = " <color=#b32d00>[Error] " + e.Message + "</color>";
             logText.text = "<color=#C63737>[Error] " + e.Message + "</color>";
         }
         Reactivate();
@@ -913,27 +910,27 @@ public class Playground : InitializeBehaviour
             {
                 if (insp == null)
                 {
-                    float width = GetComponent<RectTransform>().sizeDelta.x;
+                    float width = GetComponent<RectTransform>().sizeDelta.x * transform.Find("Panel").localScale.x;
                     Vector3 newWorldPos = transform.TransformPoint(new Vector3(width, 0, 0));
-                    insp = Instantiator.Instance.Inspector() as Inspector;
+
+                    insp = Instantiator.Instance.Inspector();
+                    insp.transform.position = newWorldPos;
+                    insp.transform.forward = transform.forward;
+
                     SaveAndLoadModule.inspectors.Add(insp);
-                    insp.Initialize();
                     InteractionLogger.Count("Inspector", insp.GetInstanceID().ToString());
                 }
                 insp.setContent(res);
             }
             else
             {
-                //output = " <color=#b32d00>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>";
-                logText.text =
-                    "<color=#C63737>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>";
+                logText.text = "<color=#C63737>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>";
             }
 
             InteractionLogger.RegisterCodeInspection(selection, res);
         }
         catch (Exception e)
         {
-            //output = " <color=#b32d00>[Error] " + e.Message + "</color>";
             logText.text = "<color=#C63737>[Error] " + e.Message + "</color>";
         }
         Reactivate();

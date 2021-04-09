@@ -118,6 +118,18 @@ public class FileExplorer : InitializeBehaviour
         RestartContent();
     }
 
+    public void EditFile()
+    {
+        PythonEditor editor = Instantiator.Instance.PythonEditor();
+        editor.fullpath = lastSelected.fullPath;
+        editor.pythonCode.text = File.ReadAllText(editor.fullpath);
+
+        float width = GetComponent<RectTransform>().sizeDelta.x * transform.Find("Panel").localScale.x;
+        Vector3 newWorldPos = transform.TransformPoint(new Vector3(width, 0, 0));
+        editor.transform.position = newWorldPos;
+        editor.transform.forward = transform.forward;
+    }
+
     void RestartContent()
     {
         Clean();
@@ -144,4 +156,6 @@ public class FileExplorer : InitializeBehaviour
         foreach (Transform child in contentList)
             Destroy(child.gameObject);
     }
+
+
 }

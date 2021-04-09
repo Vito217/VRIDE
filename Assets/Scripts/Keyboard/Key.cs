@@ -153,11 +153,8 @@ public class Key : MonoBehaviour
 
 	IEnumerator WriteStringToTarget()
     {
-		if (!InteractionLogger.isUsingVirtualKeyboard) 
+		if (!InteractionLogger.isUsingVirtualKeyboard)
 			InteractionLogger.RegisterVirtualKeyboard();
-
-		// InitializeBehaviour window = transform.parent.parent.parent.parent.parent
-		//	.parent.parent.gameObject.GetComponent<InitializeBehaviour>();
 
 		if (window.loadingWheel == null || !window.loadingWheel.activeSelf)
 		{

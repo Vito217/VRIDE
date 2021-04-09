@@ -3412,6 +3412,7 @@ GameObject:
   - component: {fileID: 8055939937372423066}
   - component: {fileID: 7062328855112802148}
   - component: {fileID: 916741497952460196}
+  - component: {fileID: 5079579036633921338}
   m_Layer: 5
   m_Name: InputField (TMP)
   m_TagString: Untagged
@@ -3632,6 +3633,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &5079579036633921338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822242259886126266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d5dc629e817c4e80a6667285496075d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NGramHandler: {fileID: 8286333913588722136}
 --- !u!1 &3905708756066070039
 GameObject:
   m_ObjectHideFlags: 0
@@ -5843,6 +5857,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 2147483647
+  m_RaycastTriggerInteraction: 1
 --- !u!1 &6167334370616902874
 GameObject:
   m_ObjectHideFlags: 0
@@ -6101,6 +6116,7 @@ GameObject:
   - component: {fileID: 8652622318164657188}
   - component: {fileID: 490268642168309321}
   - component: {fileID: 239552849957202560}
+  - component: {fileID: 8405992942133517553}
   m_Layer: 5
   m_Name: InputField (TMP)
   m_TagString: Untagged
@@ -6321,6 +6337,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &8405992942133517553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6562677760807479717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d5dc629e817c4e80a6667285496075d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NGramHandler: {fileID: 8286333913588722136}
 --- !u!1 &6711102800542345183
 GameObject:
   m_ObjectHideFlags: 0
@@ -9710,7 +9739,7 @@ PrefabInstance:
     - target: {fileID: 3813723429116472293, guid: c3196275f8a467548b7939a150347be7,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3813723429116472293, guid: c3196275f8a467548b7939a150347be7,
         type: 3}
@@ -9725,7 +9754,7 @@ PrefabInstance:
     - target: {fileID: 3813723429116472293, guid: c3196275f8a467548b7939a150347be7,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3813723429116472293, guid: c3196275f8a467548b7939a150347be7,
         type: 3}
@@ -9735,7 +9764,7 @@ PrefabInstance:
     - target: {fileID: 3813723429116472293, guid: c3196275f8a467548b7939a150347be7,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3813723429116472293, guid: c3196275f8a467548b7939a150347be7,
         type: 3}
@@ -9790,7 +9819,7 @@ PrefabInstance:
     - target: {fileID: 3813723429116472293, guid: c3196275f8a467548b7939a150347be7,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -200
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 3813723429116472293, guid: c3196275f8a467548b7939a150347be7,
         type: 3}
@@ -9926,6 +9955,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6985553645876678025}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8286333913588722136 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1301352056850768977, guid: c3196275f8a467548b7939a150347be7,
+    type: 3}
+  m_PrefabInstance: {fileID: 6985553645876678025}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cbbd76f43b70435dae57870c3e1019b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8286333914308839858 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1301352058545013819, guid: c3196275f8a467548b7939a150347be7,

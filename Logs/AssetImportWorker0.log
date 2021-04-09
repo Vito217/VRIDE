@@ -1,10 +1,10 @@
 Using pre-set license
-Built from '2020.3/release' branch; Version is '2020.3.1f1 (77a89f25062f) revision 7841951'; Using compiler version '192528614'; Build Type 'Release'
+Built from '2020.3/staging' branch; Version is '2020.3.3f1 (76626098c1c4) revision 7758432'; Using compiler version '192528614'; Build Type 'Release'
 OS: 'Windows 10 Home Single Language; OS build 18363.1440; Version 1909; 64bit' Language: 'es' Physical Memory: 16251 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
  COMMAND LINE ARGUMENTS:
-D:\Unity\2020.3.1f1\Editor\Unity.exe
+D:\Unity\2020.3.3f1\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
@@ -15,14 +15,14 @@ C:/Users/alexa/Documents/Unity Projects/PharoVRIDE
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-65060
+55470
 Successfully changed project path to: C:/Users/alexa/Documents/Unity Projects/PharoVRIDE
 C:/Users/alexa/Documents/Unity Projects/PharoVRIDE
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 45.95 ms, found 8 plugins.
+Refreshing native plugins compatible for Editor in 50.11 ms, found 8 plugins.
 Preloading 1 native plugins for Editor in 0.72 ms.
-Initialize engine version: 2020.3.1f1 (77a89f25062f)
-[Subsystems] Discovering subsystems at path D:/Unity/2020.3.1f1/Editor/Data/Resources/UnitySubsystems
+Initialize engine version: 2020.3.3f1 (76626098c1c4)
+[Subsystems] Discovering subsystems at path D:/Unity/2020.3.3f1/Editor/Data/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path C:/Users/alexa/Documents/Unity Projects/PharoVRIDE/Assets
 GfxDevice: creating device client; threaded=0
 Direct3D:
@@ -32,29 +32,29 @@ Direct3D:
     VRAM:     5980 MB
     Driver:   27.21.14.5256
 Initialize mono
-Mono path[0] = 'D:/Unity/2020.3.1f1/Editor/Data/Managed'
-Mono path[1] = 'D:/Unity/2020.3.1f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
-Mono config path = 'D:/Unity/2020.3.1f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56336
+Mono path[0] = 'D:/Unity/2020.3.3f1/Editor/Data/Managed'
+Mono path[1] = 'D:/Unity/2020.3.3f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'D:/Unity/2020.3.3f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56908
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: D:/Unity/2020.3.1f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
-Register platform support module: D:/Unity/2020.3.1f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Register platform support module: D:/Unity/2020.3.1f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
-Registered in 0.000892 seconds.
+Register platform support module: D:/Unity/2020.3.3f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Register platform support module: D:/Unity/2020.3.3f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Register platform support module: D:/Unity/2020.3.3f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
+Registered in 0.001026 seconds.
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 34.60 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.08 ms.
+Refreshing native plugins compatible for Editor in 44.30 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.073 seconds
+- Completed reload, in  1.182 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.011357 seconds.
+Registered in 0.012592 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
 Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
@@ -66,8 +66,8 @@ Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 37.67 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.10 ms.
+Refreshing native plugins compatible for Editor in 37.88 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
@@ -82,313 +82,52 @@ NullReferenceException: Object reference not set to an instance of an object
 (Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
 
 Mono: successfully reloaded assembly
-- Completed reload, in  1.091 seconds
+- Completed reload, in  1.355 seconds
 Platform modules already initialized, skipping
 Assertion failed on expression: 'reloadOk'
 
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
-Refreshing native plugins compatible for Editor in 0.64 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.11 ms.
-Unloading 1911 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 118.0 MB.
-System memory in use after: 117.8 MB.
-
-Unloading 70 unused Assets to reduce memory usage. Loaded Objects now: 2352.
-Total: 1.993000 ms (FindLiveObjects: 0.204700 ms CreateObjectMapping: 0.101400 ms MarkObjects: 1.494800 ms  DeleteObjects: 0.191600 ms)
-
-========================================================================
-Received Import Request.
-  path: Assets/Resources/Prefabs/Static/UI/Browser.prefab
-  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Static/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e2963aca523f792de562582a74611b69') in 0.205245 seconds
-  Import took 0.209756 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 260.297785 seconds.
-  path: Assets/Resources/Prefabs/Static/UI/Browser.prefab
-  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Static/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '55bdce3bb81a9d2a4a6488535bbdb403') in 0.068840 seconds
-  Import took 0.074287 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 4.853817 seconds.
-  path: Assets/Resources/Prefabs/Static/UI/Browser.prefab
-  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Static/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c180ba49171c25a0860fe6ea6ca730e0') in 0.070950 seconds
-  Import took 0.075804 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 71.411692 seconds.
-  path: Assets/Resources/Prefabs/Static/UI/FileExplorer.prefab
-  artifactKey: Guid(f19632e6c3b2e5141b776e9bacd30122) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Static/UI/FileExplorer.prefab using Guid(f19632e6c3b2e5141b776e9bacd30122) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '30b52e68c57c16491ba67e9f451c9d99') in 0.066340 seconds
-  Import took 0.071071 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 90.173669 seconds.
-  path: Assets/Resources/Prefabs/Static/UI/Menu.prefab
-  artifactKey: Guid(fb745a6f83285354d926519301bc2f75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Static/UI/Menu.prefab using Guid(fb745a6f83285354d926519301bc2f75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b9db3f8c1dd30e467c09a19f7635ec4b') in 0.058189 seconds
-  Import took 0.062823 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 256.567828 seconds.
-  path: Assets/Resources/Prefabs/Static/UI/Playground.prefab
-  artifactKey: Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Static/UI/Playground.prefab using Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e9e161b4ddbd3fe6867c931260b36a6c') in 0.080994 seconds
-  Import took 0.085527 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 74.424778 seconds.
-  path: Assets/Resources/Prefabs/Static/UI/Browser.prefab
-  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Static/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5c5c94f8508266f688282810ea3bc573') in 0.068682 seconds
-  Import took 0.073436 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 633.102193 seconds.
-  path: Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab
-  artifactKey: Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab using Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b8861a1e13bc68f5d48bac1cffcebd8') in 0.062006 seconds
-  Import took 0.067030 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 162.176738 seconds.
-  path: Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab
-  artifactKey: Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab using Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1206a03a047daa739ab9964526a08dee') in 0.055954 seconds
-  Import took 0.060127 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 4.998284 seconds.
-  path: Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab
-  artifactKey: Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab using Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1206a03a047daa739ab9964526a08dee') in 0.058875 seconds
-  Import took 0.064271 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 159.911282 seconds.
-  path: Assets/Resources/Prefabs/Dynamic/ExplorerDirectory.prefab
-  artifactKey: Guid(384c7f36751b6a34ebf228f9645e5b35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Dynamic/ExplorerDirectory.prefab using Guid(384c7f36751b6a34ebf228f9645e5b35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ba7b2264407c0f3bf8c2de7d9aaebc4') in 0.013175 seconds
-  Import took 0.016720 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000198 seconds.
-  path: Assets/Resources/Prefabs/Dynamic/ExplorerFile.prefab
-  artifactKey: Guid(0d8b123067795bf46885425c2bc4a2df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Dynamic/ExplorerFile.prefab using Guid(0d8b123067795bf46885425c2bc4a2df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4741061f3007a9841eb853d8e7103bbf') in 0.011890 seconds
-  Import took 0.014394 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.011057 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Native extension for LinuxStandalone target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 0.70 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.16 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-NullReferenceException: Object reference not set to an instance of an object
-  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
-  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
-
-(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
-
-Mono: successfully reloaded assembly
-- Completed reload, in  1.044 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Refreshing native plugins compatible for Editor in 0.67 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.08 ms.
-Unloading 1832 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 114.6 MB.
-System memory in use after: 114.6 MB.
-
-Unloading 59 unused Assets to reduce memory usage. Loaded Objects now: 2370.
-Total: 1.919400 ms (FindLiveObjects: 0.176500 ms CreateObjectMapping: 0.083400 ms MarkObjects: 1.483400 ms  DeleteObjects: 0.175300 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 437.208548 seconds.
-  path: Assets/Scenes/MainScene.unity
-  artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/MainScene.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '60791baffc2187c35feefa0093554663') in 0.022443 seconds
-  Import took 0.025654 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 17.533952 seconds.
-  path: Assets/Resources/Prefabs/Dynamic/Editor.prefab
-  artifactKey: Guid(49284f16fccc7ef49bc9c625b19f6c36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Dynamic/Editor.prefab using Guid(49284f16fccc7ef49bc9c625b19f6c36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9085a1bb40246e2f4bb4348cdcbd0709') in 0.077919 seconds
-  Import took 0.080710 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.010585 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Native extension for LinuxStandalone target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 0.97 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.13 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-NullReferenceException: Object reference not set to an instance of an object
-  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
-  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
-
-(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
-
-Mono: successfully reloaded assembly
-- Completed reload, in  1.211 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Refreshing native plugins compatible for Editor in 0.69 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.08 ms.
-Unloading 1832 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 114.6 MB.
-System memory in use after: 114.6 MB.
-
-Unloading 56 unused Assets to reduce memory usage. Loaded Objects now: 2374.
-Total: 2.078800 ms (FindLiveObjects: 0.208600 ms CreateObjectMapping: 0.079000 ms MarkObjects: 1.596500 ms  DeleteObjects: 0.193900 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 164.957194 seconds.
-  path: Assets/Resources/Prefabs/Static/UI/Inspector.prefab
-  artifactKey: Guid(8edb5bebbffcf3341af87069bb0c36e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Static/UI/Inspector.prefab using Guid(8edb5bebbffcf3341af87069bb0c36e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a6eb5d2fce0695d163b649572330d60e') in 0.109589 seconds
-  Import took 0.113860 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000217 seconds.
-  path: Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab
-  artifactKey: Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab using Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3c695e23260bfae322ae1722242595a8') in 0.099141 seconds
-  Import took 0.103337 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000286 seconds.
-  path: Assets/Resources/Prefabs/Static/UI/Transcript.prefab
-  artifactKey: Guid(91399c91e41a50c46b88f339e9d07cff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Static/UI/Transcript.prefab using Guid(91399c91e41a50c46b88f339e9d07cff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc1393fb2998faee1bba87a2a17810bc') in 0.026578 seconds
-  Import took 0.029241 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 74.876500 seconds.
-  path: Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab
-  artifactKey: Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab using Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b266713f928c1d570488c18c8a03ee89') in 0.054503 seconds
-  Import took 0.059244 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.011098 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
-
-Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
-Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
-
-Native extension for LinuxStandalone target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 0.65 ms, found 8 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.85 ms, found 8 plugins.
 Preloading 1 native plugins for Editor in 0.09 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-NullReferenceException: Object reference not set to an instance of an object
-  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
-  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+Unloading 1915 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 118.4 MB.
+System memory in use after: 118.2 MB.
 
-(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
-
-Mono: successfully reloaded assembly
-- Completed reload, in  1.010 seconds
-Platform modules already initialized, skipping
-Assertion failed on expression: 'reloadOk'
-
-Refreshing native plugins compatible for Editor in 0.77 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.08 ms.
-Unloading 1832 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 114.7 MB.
-System memory in use after: 114.7 MB.
-
-Unloading 57 unused Assets to reduce memory usage. Loaded Objects now: 2379.
-Total: 2.044400 ms (FindLiveObjects: 0.243600 ms CreateObjectMapping: 0.079100 ms MarkObjects: 1.536900 ms  DeleteObjects: 0.183800 ms)
+Unloading 71 unused Assets to reduce memory usage. Loaded Objects now: 2355.
+Total: 2.134400 ms (FindLiveObjects: 0.230800 ms CreateObjectMapping: 0.126300 ms MarkObjects: 1.599000 ms  DeleteObjects: 0.177600 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 119.273390 seconds.
   path: Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab
   artifactKey: Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab using Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bab998007131594e702a1caa071d676a') in 0.163917 seconds
-  Import took 0.168543 seconds .
+Start importing Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab using Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e8247f14f43835563fd4638aeeb2969') in 0.206360 seconds
+  Import took 0.210863 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 55.256589 seconds.
+  Time since last request: 0.035810 seconds.
   path: Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab
   artifactKey: Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab using Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e7168f24e35814314b2ff885bc214fc') in 0.059885 seconds
-  Import took 0.064694 seconds .
+Start importing Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab using Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e8247f14f43835563fd4638aeeb2969') in 0.058335 seconds
+  Import took 0.062629 seconds .
 
 ========================================================================
-Received Import Request.
-  Time since last request: 10.373326 seconds.
-  path: Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab
-  artifactKey: Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab using Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3cc1ba452456266245b068713a3bac6b') in 0.059825 seconds
-  Import took 0.065006 seconds .
+Received Prepare
+Refreshing native plugins compatible for Editor in 10.34 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.06 ms.
+Unloading 51 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 80.4 MB.
+System memory in use after: 80.3 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2361.
+Total: 3.004100 ms (FindLiveObjects: 0.207300 ms CreateObjectMapping: 0.075700 ms MarkObjects: 2.531900 ms  DeleteObjects: 0.188300 ms)
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.011076 seconds.
+Registered in 0.011989 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
 Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
@@ -400,8 +139,8 @@ Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 0.65 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.11 ms.
+Refreshing native plugins compatible for Editor in 1.07 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.10 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
@@ -412,47 +151,167 @@ NullReferenceException: Object reference not set to an instance of an object
 (Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
 
 Mono: successfully reloaded assembly
-- Completed reload, in  1.069 seconds
+- Completed reload, in  1.122 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.66 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1836 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 113.6 MB.
+System memory in use after: 113.5 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2365.
+Total: 2.052100 ms (FindLiveObjects: 0.225000 ms CreateObjectMapping: 0.085300 ms MarkObjects: 1.572400 ms  DeleteObjects: 0.168300 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 512.999027 seconds.
+  path: Assets/Scripts/SceneGenerals/VRIDEWrit.cs
+  artifactKey: Guid(3de95de1daef1ff4ba1184eaf73b8909) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SceneGenerals/VRIDEWrit.cs using Guid(3de95de1daef1ff4ba1184eaf73b8909) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5aebf09c1a9515ed9a956ae477bca3ea') in 0.235402 seconds
+  Import took 0.238251 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.017314 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.71 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.08 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.104 seconds
 Platform modules already initialized, skipping
 Assertion failed on expression: 'reloadOk'
 
 Refreshing native plugins compatible for Editor in 0.68 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.08 ms.
-Unloading 1832 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 114.8 MB.
-System memory in use after: 114.7 MB.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 113.6 MB.
+System memory in use after: 113.6 MB.
 
-Unloading 56 unused Assets to reduce memory usage. Loaded Objects now: 2384.
-Total: 1.895700 ms (FindLiveObjects: 0.165600 ms CreateObjectMapping: 0.071900 ms MarkObjects: 1.475900 ms  DeleteObjects: 0.181700 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 85.860983 seconds.
-  path: Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab
-  artifactKey: Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab using Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '19dbc330067572448aba0f60e5a95a5c') in 0.150541 seconds
-  Import took 0.155945 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 58.790597 seconds.
-  path: Assets/Resources/Prefabs/Static/UI/Playground.prefab
-  artifactKey: Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Static/UI/Playground.prefab using Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd5e775b484efac9820819ea24514ca7f') in 0.076987 seconds
-  Import took 0.081643 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 62.199239 seconds.
-  path: Assets/Resources/Prefabs/Static/UI/Browser.prefab
-  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Prefabs/Static/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dfb4d96ce20b383f843f875e1b134dab') in 0.076770 seconds
-  Import took 0.082017 seconds .
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2370.
+Total: 2.684300 ms (FindLiveObjects: 0.351000 ms CreateObjectMapping: 0.130100 ms MarkObjects: 1.958400 ms  DeleteObjects: 0.242900 ms)
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.011081 seconds.
+Registered in 0.013683 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.71 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.15 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.099 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.67 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1836 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 113.6 MB.
+System memory in use after: 113.6 MB.
+
+Unloading 55 unused Assets to reduce memory usage. Loaded Objects now: 2373.
+Total: 1.967400 ms (FindLiveObjects: 0.171200 ms CreateObjectMapping: 0.069700 ms MarkObjects: 1.555300 ms  DeleteObjects: 0.170600 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 28.707354 seconds.
+  path: Assets/Scripts/SceneGenerals/VRIDEWritter.cs
+  artifactKey: Guid(876b88dcec7962343bc31c11f420223c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SceneGenerals/VRIDEWritter.cs using Guid(876b88dcec7962343bc31c11f420223c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '936f3a43dd06984f5dcfb5223354e525') in 0.009070 seconds
+  Import took 0.011936 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.014812 seconds.
+  path: Assets/Scripts/SceneGenerals/VRIDEWritter.cs
+  artifactKey: Guid(876b88dcec7962343bc31c11f420223c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SceneGenerals/VRIDEWritter.cs using Guid(876b88dcec7962343bc31c11f420223c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '936f3a43dd06984f5dcfb5223354e525') in 0.002892 seconds
+  Import took 0.005609 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.013318 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.69 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.08 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.055 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.74 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 113.7 MB.
+System memory in use after: 113.6 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2378.
+Total: 2.093000 ms (FindLiveObjects: 0.216300 ms CreateObjectMapping: 0.072700 ms MarkObjects: 1.632500 ms  DeleteObjects: 0.170600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.019427 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
 Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
@@ -465,6 +324,62 @@ Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Refreshing native plugins compatible for Editor in 0.66 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.08 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.056 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.66 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1836 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 113.7 MB.
+System memory in use after: 113.6 MB.
+
+Unloading 55 unused Assets to reduce memory usage. Loaded Objects now: 2381.
+Total: 2.323700 ms (FindLiveObjects: 0.253700 ms CreateObjectMapping: 0.071200 ms MarkObjects: 1.828700 ms  DeleteObjects: 0.169500 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 28.421744 seconds.
+  path: Assets/Scripts/SceneGenerals/VRIDEWriter.cs
+  artifactKey: Guid(c607a9b83b67e5d43b47a7afd38ceb90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SceneGenerals/VRIDEWriter.cs using Guid(c607a9b83b67e5d43b47a7afd38ceb90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6305584a53563297fa9d1611bf71fd58') in 0.008537 seconds
+  Import took 0.011703 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.016176 seconds.
+  path: Assets/Scripts/SceneGenerals/VRIDEWriter.cs
+  artifactKey: Guid(c607a9b83b67e5d43b47a7afd38ceb90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SceneGenerals/VRIDEWriter.cs using Guid(c607a9b83b67e5d43b47a7afd38ceb90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6305584a53563297fa9d1611bf71fd58') in 0.002932 seconds
+  Import took 0.005851 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011675 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.82 ms, found 8 plugins.
 Preloading 1 native plugins for Editor in 0.10 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
@@ -476,17 +391,1417 @@ NullReferenceException: Object reference not set to an instance of an object
 (Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
 
 Mono: successfully reloaded assembly
-- Completed reload, in  1.063 seconds
+- Completed reload, in  1.137 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.68 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 113.7 MB.
+System memory in use after: 113.6 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2386.
+Total: 2.144700 ms (FindLiveObjects: 0.185800 ms CreateObjectMapping: 0.070200 ms MarkObjects: 1.591500 ms  DeleteObjects: 0.296300 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.012263 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.72 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.114 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.76 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 113.7 MB.
+System memory in use after: 113.6 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2390.
+Total: 1.907600 ms (FindLiveObjects: 0.166000 ms CreateObjectMapping: 0.060400 ms MarkObjects: 1.510800 ms  DeleteObjects: 0.169500 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 484.472981 seconds.
+  path: Assets/Scripts/SceneGenerals/VRIDEWriter.cs
+  artifactKey: Guid(c607a9b83b67e5d43b47a7afd38ceb90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SceneGenerals/VRIDEWriter.cs using Guid(c607a9b83b67e5d43b47a7afd38ceb90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7624dac792a63dae854ad6557f940410') in 0.004066 seconds
+  Import took 0.006553 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011463 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.76 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.068 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.67 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 113.7 MB.
+System memory in use after: 113.6 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2394.
+Total: 2.057900 ms (FindLiveObjects: 0.199500 ms CreateObjectMapping: 0.082400 ms MarkObjects: 1.594200 ms  DeleteObjects: 0.180900 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011517 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.67 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.08 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.066 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.68 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 113.7 MB.
+System memory in use after: 113.7 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2398.
+Total: 2.170900 ms (FindLiveObjects: 0.213200 ms CreateObjectMapping: 0.091700 ms MarkObjects: 1.700900 ms  DeleteObjects: 0.164200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011606 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.67 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.087 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.68 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 113.7 MB.
+System memory in use after: 113.7 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2402.
+Total: 2.024400 ms (FindLiveObjects: 0.195800 ms CreateObjectMapping: 0.077600 ms MarkObjects: 1.573800 ms  DeleteObjects: 0.176500 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 1499.664485 seconds.
+  path: Assets/Resources/Prefabs/Static/UI/FileExplorer.prefab
+  artifactKey: Guid(f19632e6c3b2e5141b776e9bacd30122) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Static/UI/FileExplorer.prefab using Guid(f19632e6c3b2e5141b776e9bacd30122) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '84172944452165705ba1830d2c2cb7c3') in 0.187936 seconds
+  Import took 0.193307 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.012215 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.85 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.096 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.68 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 114.5 MB.
+System memory in use after: 114.4 MB.
+
+Unloading 60 unused Assets to reduce memory usage. Loaded Objects now: 2407.
+Total: 1.886200 ms (FindLiveObjects: 0.159000 ms CreateObjectMapping: 0.062300 ms MarkObjects: 1.479700 ms  DeleteObjects: 0.184400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011843 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.68 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.080 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.71 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 114.5 MB.
+System memory in use after: 114.4 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2411.
+Total: 2.259600 ms (FindLiveObjects: 0.206200 ms CreateObjectMapping: 0.075700 ms MarkObjects: 1.800300 ms  DeleteObjects: 0.176600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011214 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.66 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.12 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.034 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.67 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 114.5 MB.
+System memory in use after: 114.4 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2415.
+Total: 1.926900 ms (FindLiveObjects: 0.161900 ms CreateObjectMapping: 0.063000 ms MarkObjects: 1.528900 ms  DeleteObjects: 0.172300 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011846 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.77 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.057 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.66 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 114.5 MB.
+System memory in use after: 114.4 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2419.
+Total: 2.150600 ms (FindLiveObjects: 0.203800 ms CreateObjectMapping: 0.073100 ms MarkObjects: 1.656200 ms  DeleteObjects: 0.216600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011673 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.70 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.099 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.68 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 114.5 MB.
+System memory in use after: 114.4 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2423.
+Total: 2.016900 ms (FindLiveObjects: 0.183700 ms CreateObjectMapping: 0.070800 ms MarkObjects: 1.580900 ms  DeleteObjects: 0.180500 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.012290 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 1.15 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.089 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.84 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 114.5 MB.
+System memory in use after: 114.4 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2427.
+Total: 2.583800 ms (FindLiveObjects: 0.248600 ms CreateObjectMapping: 0.087500 ms MarkObjects: 2.026800 ms  DeleteObjects: 0.219900 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 1484.162403 seconds.
+  path: Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab
+  artifactKey: Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab using Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45979b47537e2ba51be94a05111b3fe3') in 0.170823 seconds
+  Import took 0.175871 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 36.169346 seconds.
+  path: Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab
+  artifactKey: Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab using Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '21fd23e0f6541b336515a8085e8635d1') in 0.057936 seconds
+  Import took 0.062385 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011972 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 1.03 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.10 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.086 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.66 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 114.7 MB.
+System memory in use after: 114.6 MB.
+
+Unloading 57 unused Assets to reduce memory usage. Loaded Objects now: 2432.
+Total: 1.972100 ms (FindLiveObjects: 0.177400 ms CreateObjectMapping: 0.074500 ms MarkObjects: 1.529700 ms  DeleteObjects: 0.189900 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.012026 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.89 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.12 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.090 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.66 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 114.7 MB.
+System memory in use after: 114.6 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2436.
+Total: 2.163200 ms (FindLiveObjects: 0.307000 ms CreateObjectMapping: 0.092100 ms MarkObjects: 1.581600 ms  DeleteObjects: 0.181600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.013362 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.73 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.078 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.67 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 114.7 MB.
+System memory in use after: 114.6 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2440.
+Total: 2.045000 ms (FindLiveObjects: 0.255000 ms CreateObjectMapping: 0.083100 ms MarkObjects: 1.537900 ms  DeleteObjects: 0.168200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011668 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.69 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.057 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.70 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 114.7 MB.
+System memory in use after: 114.6 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2444.
+Total: 2.392700 ms (FindLiveObjects: 0.224000 ms CreateObjectMapping: 0.080700 ms MarkObjects: 1.855000 ms  DeleteObjects: 0.232200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011747 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.68 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.050 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.68 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 114.7 MB.
+System memory in use after: 114.6 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2448.
+Total: 2.110600 ms (FindLiveObjects: 0.286300 ms CreateObjectMapping: 0.073400 ms MarkObjects: 1.575000 ms  DeleteObjects: 0.175000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011569 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.73 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.08 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.045 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.66 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 114.7 MB.
+System memory in use after: 114.6 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2452.
+Total: 2.029800 ms (FindLiveObjects: 0.204200 ms CreateObjectMapping: 0.078800 ms MarkObjects: 1.566200 ms  DeleteObjects: 0.179800 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 1877.254453 seconds.
+  path: Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab
+  artifactKey: Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab using Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c48067c5ba30eb77850f24fcbdd399da') in 0.164790 seconds
+  Import took 0.169402 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011967 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.73 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.038 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.70 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 114.7 MB.
+System memory in use after: 114.6 MB.
+
+Unloading 57 unused Assets to reduce memory usage. Loaded Objects now: 2457.
+Total: 2.011000 ms (FindLiveObjects: 0.178900 ms CreateObjectMapping: 0.070700 ms MarkObjects: 1.568300 ms  DeleteObjects: 0.192300 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011879 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.67 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.092 seconds
 Platform modules already initialized, skipping
 Assertion failed on expression: 'reloadOk'
 
 Refreshing native plugins compatible for Editor in 0.69 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.08 ms.
-Unloading 1832 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 115.2 MB.
-System memory in use after: 115.1 MB.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 114.7 MB.
+System memory in use after: 114.7 MB.
 
-Unloading 58 unused Assets to reduce memory usage. Loaded Objects now: 2389.
-Total: 1.974700 ms (FindLiveObjects: 0.191100 ms CreateObjectMapping: 0.077700 ms MarkObjects: 1.513200 ms  DeleteObjects: 0.191700 ms)
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2461.
+Total: 2.084400 ms (FindLiveObjects: 0.193500 ms CreateObjectMapping: 0.089700 ms MarkObjects: 1.616300 ms  DeleteObjects: 0.184200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011939 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.82 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.08 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.009 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.68 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 114.7 MB.
+System memory in use after: 114.7 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2465.
+Total: 1.998300 ms (FindLiveObjects: 0.186300 ms CreateObjectMapping: 0.079100 ms MarkObjects: 1.558100 ms  DeleteObjects: 0.174000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.012290 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.69 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.14 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.085 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.66 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 114.7 MB.
+System memory in use after: 114.7 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2469.
+Total: 2.162000 ms (FindLiveObjects: 0.207100 ms CreateObjectMapping: 0.074800 ms MarkObjects: 1.663400 ms  DeleteObjects: 0.215700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011593 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.72 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.097 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.67 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.08 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 114.8 MB.
+System memory in use after: 114.7 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2473.
+Total: 2.176400 ms (FindLiveObjects: 0.253600 ms CreateObjectMapping: 0.081500 ms MarkObjects: 1.668800 ms  DeleteObjects: 0.171700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011397 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.69 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.053 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.67 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 114.8 MB.
+System memory in use after: 114.7 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2477.
+Total: 2.120000 ms (FindLiveObjects: 0.192900 ms CreateObjectMapping: 0.074500 ms MarkObjects: 1.651500 ms  DeleteObjects: 0.200400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.012147 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.77 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.099 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.71 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 114.8 MB.
+System memory in use after: 114.7 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2481.
+Total: 2.053200 ms (FindLiveObjects: 0.250200 ms CreateObjectMapping: 0.073900 ms MarkObjects: 1.549900 ms  DeleteObjects: 0.178500 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.012462 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.68 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.059 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.68 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.11 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 114.8 MB.
+System memory in use after: 114.7 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2485.
+Total: 2.446300 ms (FindLiveObjects: 0.297500 ms CreateObjectMapping: 0.077500 ms MarkObjects: 1.820300 ms  DeleteObjects: 0.250100 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011374 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.69 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.035 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.68 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 114.8 MB.
+System memory in use after: 114.7 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2489.
+Total: 2.275400 ms (FindLiveObjects: 0.320900 ms CreateObjectMapping: 0.080500 ms MarkObjects: 1.687800 ms  DeleteObjects: 0.185100 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 1412.978592 seconds.
+  path: Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab
+  artifactKey: Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab using Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '812fa0fe9487b62a171a564503b11f13') in 0.164749 seconds
+  Import took 0.169583 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011785 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.82 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.078 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.67 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 114.8 MB.
+System memory in use after: 114.8 MB.
+
+Unloading 57 unused Assets to reduce memory usage. Loaded Objects now: 2494.
+Total: 1.996400 ms (FindLiveObjects: 0.215000 ms CreateObjectMapping: 0.085800 ms MarkObjects: 1.513300 ms  DeleteObjects: 0.181800 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.012138 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.71 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.075 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.67 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 114.8 MB.
+System memory in use after: 114.8 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2498.
+Total: 2.001900 ms (FindLiveObjects: 0.187100 ms CreateObjectMapping: 0.064400 ms MarkObjects: 1.552300 ms  DeleteObjects: 0.197300 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.016216 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.68 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.08 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.056 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.69 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 114.8 MB.
+System memory in use after: 114.8 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2502.
+Total: 2.408400 ms (FindLiveObjects: 0.213200 ms CreateObjectMapping: 0.071900 ms MarkObjects: 1.929800 ms  DeleteObjects: 0.192800 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 615.038110 seconds.
+  path: Assets/Resources/Prefabs/Static/UI/Browser.prefab
+  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Static/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ab10d681f018df2ccceb0ac1971f0822') in 0.277942 seconds
+  Import took 0.283572 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.612327 seconds.
+  path: Assets/Resources/Prefabs/Static/UI/Playground.prefab
+  artifactKey: Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Static/UI/Playground.prefab using Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b33076d45768d502036ce4482d3c38f') in 0.101422 seconds
+  Import took 0.106069 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 37.859344 seconds.
+  path: Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab
+  artifactKey: Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab using Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf0549d360f8b2cf9f12d618b6c50245') in 0.052086 seconds
+  Import took 0.057160 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 136.457061 seconds.
+  path: Assets/Resources/Prefabs/Static/UI/Playground.prefab
+  artifactKey: Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Static/UI/Playground.prefab using Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '599159544148aec98363f6c451f737b8') in 0.059270 seconds
+  Import took 0.064159 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011971 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.71 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.091 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.68 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 115.4 MB.
+System memory in use after: 115.3 MB.
+
+Unloading 59 unused Assets to reduce memory usage. Loaded Objects now: 2515.
+Total: 2.029600 ms (FindLiveObjects: 0.172700 ms CreateObjectMapping: 0.069800 ms MarkObjects: 1.588400 ms  DeleteObjects: 0.198100 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011861 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.68 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.08 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.043 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.69 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 115.4 MB.
+System memory in use after: 115.3 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 2519.
+Total: 2.195900 ms (FindLiveObjects: 0.236000 ms CreateObjectMapping: 0.068000 ms MarkObjects: 1.587900 ms  DeleteObjects: 0.303200 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 166.042131 seconds.
+  path: Assets/Resources/Prefabs/Static/UI/Playground.prefab
+  artifactKey: Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Static/UI/Playground.prefab using Guid(450e17a1d9a87614e8aff7ea7d71181d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd084cb74c972e8554ae42dae438e198') in 0.187816 seconds
+  Import took 0.192814 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 41.657900 seconds.
+  path: Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab
+  artifactKey: Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab using Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '61b0c01706b2792288b5fe9fbbb64288') in 0.053317 seconds
+  Import took 0.057760 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 44.679566 seconds.
+  path: Assets/Resources/Prefabs/Static/UI/Menu.prefab
+  artifactKey: Guid(fb745a6f83285354d926519301bc2f75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Static/UI/Menu.prefab using Guid(fb745a6f83285354d926519301bc2f75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4002c1427b490b22689feffe5a9873c9') in 0.073704 seconds
+  Import took 0.078678 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 114.114329 seconds.
+  path: Assets/Resources/Prefabs/Static/UI/FileExplorer.prefab
+  artifactKey: Guid(f19632e6c3b2e5141b776e9bacd30122) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Static/UI/FileExplorer.prefab using Guid(f19632e6c3b2e5141b776e9bacd30122) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd6a3f4d3c9a727d8beed457cec132997') in 0.066763 seconds
+  Import took 0.071461 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 46.840814 seconds.
+  path: Assets/Resources/Prefabs/Static/UI/CodeCanvas.prefab
+  artifactKey: Guid(c95da6e2a42ee2f45a2dd710e94456d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Static/UI/CodeCanvas.prefab using Guid(c95da6e2a42ee2f45a2dd710e94456d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90a828d1515d957ab655cdb5cd140251') in 0.056665 seconds
+  Import took 0.061821 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000193 seconds.
+  path: Assets/Resources/Prefabs/Static/UI/CodeCanvasClass.prefab
+  artifactKey: Guid(cc3c10e741e300c44b203b22faf67006) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Static/UI/CodeCanvasClass.prefab using Guid(cc3c10e741e300c44b203b22faf67006) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '39ba027a7b9ca037614d07f6597f1525') in 0.031835 seconds
+  Import took 0.034713 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 56.289747 seconds.
+  path: Assets/Resources/Prefabs/Static/UI/CodeCanvas.prefab
+  artifactKey: Guid(c95da6e2a42ee2f45a2dd710e94456d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Static/UI/CodeCanvas.prefab using Guid(c95da6e2a42ee2f45a2dd710e94456d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3404ce78f0dc5abbf6f7f365655188de') in 0.055450 seconds
+  Import took 0.059818 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 31.187138 seconds.
+  path: Assets/Resources/Prefabs/Static/UI/CodeCanvas.prefab
+  artifactKey: Guid(c95da6e2a42ee2f45a2dd710e94456d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Static/UI/CodeCanvas.prefab using Guid(c95da6e2a42ee2f45a2dd710e94456d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e71aaa5ed73d308b7370d20ee2c2efbd') in 0.055172 seconds
+  Import took 0.059490 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 52.769005 seconds.
+  path: Assets/Resources/Prefabs/Static/UI/Browser.prefab
+  artifactKey: Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Static/UI/Browser.prefab using Guid(98088061314bfa54cab46daa4c1bb778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '87cc6908fb649d96cd581b5c8bbb58f1') in 0.067728 seconds
+  Import took 0.072508 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011931 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Failed loading assembly 'Assets/Plugins/System.Drawing.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.dll" reason: File does not contain a valid CIL image
+
+Failed loading assembly 'Assets/Plugins/System.Drawing.Design.dll' reason: File does not contain a valid CIL image
+Loading assembly failed: "Assets/Plugins/System.Drawing.Design.dll" reason: File does not contain a valid CIL image
+
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.66 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Users\alexa\Documents\Unity Projects\PharoVRIDE\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.067 seconds
+Platform modules already initialized, skipping
+Assertion failed on expression: 'reloadOk'
+
+Refreshing native plugins compatible for Editor in 0.68 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 1837 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 116.0 MB.
+System memory in use after: 115.9 MB.
+
+Unloading 61 unused Assets to reduce memory usage. Loaded Objects now: 2524.
+Total: 2.056300 ms (FindLiveObjects: 0.228100 ms CreateObjectMapping: 0.071300 ms MarkObjects: 1.562200 ms  DeleteObjects: 0.193900 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 135.977874 seconds.
+  path: Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab
+  artifactKey: Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Static/UI/PythonEditor.prefab using Guid(a2d970592a0d63147bfb4a8424356a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '43fe6df0a85210327bb9e2dec0f304b2') in 0.168351 seconds
+  Import took 0.172935 seconds .
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
