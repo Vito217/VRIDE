@@ -1,24 +1,22 @@
 using System.IO;
-using System.Text;
+using System.Collections.Generic;
 
 public class VRIDEWriter : StreamWriter
 {
-    StringBuilder buffer;
+    public readonly Queue<string> buffer;
 
     public VRIDEWriter(Stream s) : base(s)
 	{
-        buffer = new StringBuilder();
+        buffer = new Queue<string>();
 	}
 
     public override void Write(string value)
     {
-        buffer.Append(value);
+        buffer.Enqueue(value);
 	}
 
     public string GetContentFromBuffer()
     {
-        string content = buffer.ToString();
-        buffer.Clear();
-        return content;
+        return buffer.Dequeue();
     }
 }

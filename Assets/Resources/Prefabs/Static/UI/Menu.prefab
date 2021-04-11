@@ -3412,7 +3412,6 @@ GameObject:
   - component: {fileID: 8055939937372423066}
   - component: {fileID: 7062328855112802148}
   - component: {fileID: 916741497952460196}
-  - component: {fileID: 5079579036633921338}
   m_Layer: 5
   m_Name: InputField (TMP)
   m_TagString: Untagged
@@ -3531,7 +3530,7 @@ MonoBehaviour:
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
-  m_HideMobileInput: 0
+  m_HideMobileInput: 1
   m_HideSoftKeyboard: 0
   m_CharacterValidation: 0
   m_RegexValue: 
@@ -3577,12 +3576,12 @@ MonoBehaviour:
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
   m_Text: 1701
-  m_CaretBlinkRate: 0.85
+  m_CaretBlinkRate: 4
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_RichText: 1
   m_GlobalFontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_OnFocusSelectAll: 1
+  m_OnFocusSelectAll: 0
   m_ResetOnDeActivation: 1
   m_RestoreOriginalTextOnEscape: 1
   m_isRichTextEditingAllowed: 0
@@ -3633,19 +3632,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &5079579036633921338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3822242259886126266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d5dc629e817c4e80a6667285496075d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NGramHandler: {fileID: 8286333913588722136}
 --- !u!1 &3905708756066070039
 GameObject:
   m_ObjectHideFlags: 0
@@ -5826,7 +5812,6 @@ MonoBehaviour:
   keyboardTarget: {fileID: 490268642168309321}
   loadingWheel: {fileID: 0}
   keyboardsGameObject: {fileID: 4831319339571699087}
-  wordPicker: {fileID: 8286333914308839858}
   freezeRotation: 1
   lastCaretPosition: 0
   lastAnchorPosition: 0
@@ -6116,7 +6101,6 @@ GameObject:
   - component: {fileID: 8652622318164657188}
   - component: {fileID: 490268642168309321}
   - component: {fileID: 239552849957202560}
-  - component: {fileID: 8405992942133517553}
   m_Layer: 5
   m_Name: InputField (TMP)
   m_TagString: Untagged
@@ -6235,7 +6219,7 @@ MonoBehaviour:
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
-  m_HideMobileInput: 0
+  m_HideMobileInput: 1
   m_HideSoftKeyboard: 0
   m_CharacterValidation: 0
   m_RegexValue: 
@@ -6281,12 +6265,12 @@ MonoBehaviour:
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
   m_Text: localhost
-  m_CaretBlinkRate: 0.85
+  m_CaretBlinkRate: 4
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_RichText: 1
   m_GlobalFontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_OnFocusSelectAll: 1
+  m_OnFocusSelectAll: 0
   m_ResetOnDeActivation: 1
   m_RestoreOriginalTextOnEscape: 1
   m_isRichTextEditingAllowed: 0
@@ -6337,19 +6321,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &8405992942133517553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6562677760807479717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d5dc629e817c4e80a6667285496075d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NGramHandler: {fileID: 8286333913588722136}
 --- !u!1 &6711102800542345183
 GameObject:
   m_ObjectHideFlags: 0
@@ -9955,27 +9926,3 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6985553645876678025}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8286333913588722136 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1301352056850768977, guid: c3196275f8a467548b7939a150347be7,
-    type: 3}
-  m_PrefabInstance: {fileID: 6985553645876678025}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cbbd76f43b70435dae57870c3e1019b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8286333914308839858 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1301352058545013819, guid: c3196275f8a467548b7939a150347be7,
-    type: 3}
-  m_PrefabInstance: {fileID: 6985553645876678025}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2033247aef52475fb55995eb59623ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

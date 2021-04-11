@@ -88,7 +88,6 @@ GameObject:
   - component: {fileID: 1870110942460678359}
   - component: {fileID: 5567259039884519919}
   - component: {fileID: 1844821299240652339}
-  - component: {fileID: 6116267136412597653}
   m_Layer: 0
   m_Name: Editor
   m_TagString: Untagged
@@ -254,15 +253,15 @@ MonoBehaviour:
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
   m_Text: 
-  m_CaretBlinkRate: 0.85
+  m_CaretBlinkRate: 4
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_RichText: 1
   m_GlobalFontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_OnFocusSelectAll: 1
+  m_OnFocusSelectAll: 0
   m_ResetOnDeActivation: 1
   m_RestoreOriginalTextOnEscape: 1
-  m_isRichTextEditingAllowed: 1
+  m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
 --- !u!114 &1844821299240652339
@@ -310,19 +309,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &6116267136412597653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 712830212308231881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d5dc629e817c4e80a6667285496075d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NGramHandler: {fileID: 6361639622586232338}
 --- !u!1 &736553992055552222
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,7 +625,6 @@ MonoBehaviour:
   keyboardTarget: {fileID: 5567259039884519919}
   loadingWheel: {fileID: 8301894938099840451}
   keyboardsGameObject: {fileID: 7618865804344449605}
-  wordPicker: {fileID: 6361639624247447160}
   freezeRotation: 1
   lastCaretPosition: 0
   lastAnchorPosition: 0
@@ -650,6 +635,7 @@ MonoBehaviour:
   stopButton: {fileID: 4883730829213520510}
   pythonCode: {fileID: 5567259039884519919}
   filename: {fileID: 3392521181580885716}
+  outputScrollBar: {fileID: 6412726171522078937}
 --- !u!114 &908458128027123547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7029,18 +7015,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cbbd76f43b70435dae57870c3e1019b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6361639624247447160 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1301352058545013819, guid: c3196275f8a467548b7939a150347be7,
-    type: 3}
-  m_PrefabInstance: {fileID: 5352036971803642435}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2033247aef52475fb55995eb59623ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7992465769139662869
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7217,5 +7191,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6412726171522078937 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3896850900960241868, guid: 49284f16fccc7ef49bc9c625b19f6c36,
+    type: 3}
+  m_PrefabInstance: {fileID: 7992465769139662869}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

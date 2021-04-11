@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class ExplorerFile : ExplorerObject
 {
     public override void onSelect()
@@ -13,6 +9,7 @@ public class ExplorerFile : ExplorerObject
         explorer.newFile.interactable = false;
         explorer.deleteElem.interactable = true;
         explorer.editElem.interactable = true;
+        explorer.renameElem.interactable = true;
 
         base.onSelect();
     }

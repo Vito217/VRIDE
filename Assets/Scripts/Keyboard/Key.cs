@@ -160,8 +160,10 @@ public class Key : MonoBehaviour
 		{
 			int lcp = window.lastCaretPosition;
 			int lap = window.lastAnchorPosition;
+
 			window.keyboardTarget.ActivateInputField();
 			yield return null;
+
 			window.keyboardTarget.caretPosition = lcp;
 			window.keyboardTarget.selectionAnchorPosition = lap;
 
@@ -209,19 +211,60 @@ public class Key : MonoBehaviour
             {
 				if(name.Contains("LeftArrowKey"))
                 {
-					StartCoroutine(MoveCaretLeft());
+					int c = lcp > 0 ? lcp - 1 : 0;
+					window.keyboardTarget.caretPosition = c;
+					window.keyboardTarget.selectionAnchorPosition = c;
+					window.lastCaretPosition = c;
+					window.lastAnchorPosition = c;
 				}
 				else if(name.Contains("RightArrowKey"))
                 {
-					StartCoroutine(MoveCaretRight());
+					int l = window.keyboardTarget.text.Length;
+					int c = lcp < l ? lcp + 1 : l;
+					window.keyboardTarget.caretPosition = c;
+					window.keyboardTarget.selectionAnchorPosition = c;
+					window.lastCaretPosition = c;
+					window.lastAnchorPosition = c;
 				}
 				else if (name.Contains("UpArrowKey"))
 				{
-					StartCoroutine(MoveCaretUp());
+					int leftDist = 0;
+					int rightDist = 0;
+					int leftInd, rightInd;
+
+					for (leftInd = lcp - 1; leftInd >= 0 && window.keyboardTarget.text[leftInd] != '\n'; leftInd--)
+						leftDist += 1;
+
+					for (rightInd = lcp; rightInd < window.keyboardTarget.text.Length && window.keyboardTarget.text[rightInd] != '\n'; rightInd++)
+						rightDist += 1;
+
+					int finalInd = lcp - rightDist - leftDist;
+					int c = finalInd >= 0 ? finalInd : 0;
+
+					window.keyboardTarget.caretPosition = c;
+					window.keyboardTarget.selectionAnchorPosition = c;
+					window.lastCaretPosition = c;
+					window.lastAnchorPosition = c;
 				}
-				else if (name.Contains("DownArrowKey"))
+				else
 				{
-					StartCoroutine(MoveCaretDown());
+					int leftDist = 0;
+					int rightDist = 0;
+					int leftInd, rightInd;
+
+					for (leftInd = lcp - 1; leftInd >= 0 && window.keyboardTarget.text[leftInd] != '\n'; leftInd--)
+						leftDist += 1;
+
+					for (rightInd = lcp; rightInd < window.keyboardTarget.text.Length && window.keyboardTarget.text[rightInd] != '\n'; rightInd++)
+						rightDist += 1;
+
+					int finalInd = lcp + rightDist + leftDist;
+					int c = finalInd > window.keyboardTarget.text.Length ? window.keyboardTarget.text.Length : finalInd;
+
+					window.keyboardTarget.caretPosition = c;
+					window.keyboardTarget.selectionAnchorPosition = c;
+					window.lastCaretPosition = c;
+					window.lastAnchorPosition = c;
 				}
 			}
 			else
@@ -252,103 +295,6 @@ public class Key : MonoBehaviour
 		if (!isSpecialKey) StartCoroutine(WriteStringToTarget());
 		keySoundController.StartKeySound(this.gameObject.transform);
 		checkForButton = false;
-	}
-
-	IEnumerator MoveCaretLeft()
-    {
-		int lcp = window.lastCaretPosition;
-		int c = lcp > 0 ? lcp - 1 : 0;
-
-		EventSystem.current.SetSelectedGameObject(null);
-		window.keyboardTarget.ActivateInputField();
-
-		yield return null;
-
-		window.keyboardTarget.caretPosition = c;
-		window.keyboardTarget.selectionAnchorPosition = c;
-		window.lastCaretPosition = c;
-		window.lastAnchorPosition = c;
-
-		yield return null;
-	}
-
-	IEnumerator MoveCaretRight()
-    {
-		int lcp = window.lastCaretPosition;
-		int l = window.keyboardTarget.text.Length;
-		int c = lcp < l ? lcp + 1 : l;
-
-		EventSystem.current.SetSelectedGameObject(null);
-		window.keyboardTarget.ActivateInputField();
-
-		yield return null;
-
-		window.keyboardTarget.caretPosition = c;
-		window.keyboardTarget.selectionAnchorPosition = c;
-		window.lastCaretPosition = c;
-		window.lastAnchorPosition = c;
-
-		yield return null;
-	}
-
-	IEnumerator MoveCaretUp()
-	{
-		int lcp = window.lastCaretPosition;
-
-		int leftDist = 0;
-		int rightDist = 0;
-		int leftInd, rightInd;
-
-		for (leftInd = lcp - 1; leftInd >= 0 && window.keyboardTarget.text[leftInd] != '\n'; leftInd--) 
-			leftDist += 1;
-
-		for (rightInd = lcp; rightInd < window.keyboardTarget.text.Length && window.keyboardTarget.text[rightInd] != '\n'; rightInd++)
-			rightDist += 1;
-
-		int finalInd = lcp - rightDist - leftDist;
-		int c = finalInd >= 0 ? finalInd : 0;
-		
-		EventSystem.current.SetSelectedGameObject(null);
-		window.keyboardTarget.ActivateInputField();
-
-		yield return null;
-
-		window.keyboardTarget.caretPosition = c;
-		window.keyboardTarget.selectionAnchorPosition = c;
-		window.lastCaretPosition = c;
-		window.lastAnchorPosition = c;
-
-		yield return null;
-	}
-
-	IEnumerator MoveCaretDown()
-	{
-		int lcp = window.lastCaretPosition;
-
-		int leftDist = 0;
-		int rightDist = 0;
-		int leftInd, rightInd;
-
-		for (leftInd = lcp - 1; leftInd >= 0 && window.keyboardTarget.text[leftInd] != '\n'; leftInd--)
-			leftDist += 1;
-
-		for (rightInd = lcp; rightInd < window.keyboardTarget.text.Length && window.keyboardTarget.text[rightInd] != '\n'; rightInd++)
-			rightDist += 1;
-
-		int finalInd = lcp + rightDist + leftDist;
-		int c = finalInd > window.keyboardTarget.text.Length ? window.keyboardTarget.text.Length : finalInd;
-
-		EventSystem.current.SetSelectedGameObject(null);
-		window.keyboardTarget.ActivateInputField();
-
-		yield return null;
-
-		window.keyboardTarget.caretPosition = c;
-		window.keyboardTarget.selectionAnchorPosition = c;
-		window.lastCaretPosition = c;
-		window.lastAnchorPosition = c;
-
-		yield return null;
 	}
 
 	IEnumerator Supr()

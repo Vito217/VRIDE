@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.114102125, g: 0.32948005, b: 0.71094096, a: 1}
+  m_IndirectSpecularColor: {r: 0.1144524, g: 0.3299516, b: 0.71226037, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1229,7 +1229,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1278344703}
         m_TargetAssemblyTypeName: InitializeBehaviour, Assembly-CSharp
         m_MethodName: ToggleKeyboard
         m_Mode: 1
@@ -1744,6 +1744,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 2147483647
+  m_RaycastTriggerInteraction: 1
 --- !u!114 &791648280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1834,7 +1835,6 @@ MonoBehaviour:
   keyboardTarget: {fileID: 0}
   loadingWheel: {fileID: 0}
   keyboardsGameObject: {fileID: 0}
-  wordPicker: {fileID: 0}
   freezeRotation: 1
   lastCaretPosition: 0
   lastAnchorPosition: 0
@@ -4153,18 +4153,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3196275f8a467548b7939a150347be7, type: 3}
---- !u!114 &1246215002 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1301352056850768977, guid: c3196275f8a467548b7939a150347be7,
-    type: 3}
-  m_PrefabInstance: {fileID: 1246215001}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cbbd76f43b70435dae57870c3e1019b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1278344696
 GameObject:
   m_ObjectHideFlags: 0
@@ -4205,6 +4193,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 2147483647
+  m_RaycastTriggerInteraction: 1
 --- !u!222 &1278344698
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4314,7 +4303,6 @@ MonoBehaviour:
   keyboardTarget: {fileID: 1482382306}
   loadingWheel: {fileID: 179381198}
   keyboardsGameObject: {fileID: 1976915286}
-  wordPicker: {fileID: 1735811417}
   freezeRotation: 1
   lastCaretPosition: 0
   lastAnchorPosition: 0
@@ -4542,9 +4530,8 @@ GameObject:
   - component: {fileID: 1482382305}
   - component: {fileID: 1482382304}
   - component: {fileID: 1482382306}
-  - component: {fileID: 1482382303}
-  - component: {fileID: 1482382302}
   - component: {fileID: 1482382301}
+  - component: {fileID: 1482382303}
   m_Layer: 5
   m_Name: Username
   m_TagString: Untagged
@@ -4585,19 +4572,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   submitButton: {fileID: 1472759382}
---- !u!114 &1482382302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1482382299}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d5dc629e817c4e80a6667285496075d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NGramHandler: {fileID: 1246215002}
 --- !u!114 &1482382303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4615,7 +4589,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1278344703}
           m_TargetAssemblyTypeName: InitializeBehaviour, Assembly-CSharp
           m_MethodName: OnSelect
           m_Mode: 0
@@ -4631,7 +4605,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1278344703}
           m_TargetAssemblyTypeName: InitializeBehaviour, Assembly-CSharp
           m_MethodName: OnDeselect
           m_Mode: 0
@@ -4776,7 +4750,7 @@ MonoBehaviour:
   m_OnFocusSelectAll: 1
   m_ResetOnDeActivation: 1
   m_RestoreOriginalTextOnEscape: 1
-  m_isRichTextEditingAllowed: 1
+  m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
 --- !u!1 &1649976311
@@ -5023,7 +4997,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1278344703}
           m_TargetAssemblyTypeName: InitializeBehaviour, Assembly-CSharp
           m_MethodName: OnDrag
           m_Mode: 0
@@ -5039,7 +5013,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1278344703}
           m_TargetAssemblyTypeName: InitializeBehaviour, Assembly-CSharp
           m_MethodName: OnEndDrag
           m_Mode: 0
@@ -5133,18 +5107,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1708398773}
   m_CullTransparentMesh: 0
---- !u!114 &1735811417 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1301352058545013819, guid: c3196275f8a467548b7939a150347be7,
-    type: 3}
-  m_PrefabInstance: {fileID: 1246215001}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2033247aef52475fb55995eb59623ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1744761048
 GameObject:
   m_ObjectHideFlags: 0

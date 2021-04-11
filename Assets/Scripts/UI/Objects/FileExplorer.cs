@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using SaveAndLoad;
 using TMPro;
+using System;
 
 public class FileExplorer : InitializeBehaviour
 {
@@ -17,13 +18,16 @@ public class FileExplorer : InitializeBehaviour
     public Button newFile;
     public Button deleteElem;
     public Button editElem;
+    public Button renameElem;
 
     public TMP_Dropdown fileExtension;
     public TMP_InputField filename;
     public TMP_InputField dirname;
+    public TMP_InputField newName;
 
     public GameObject fileCreationPanel;
     public GameObject dirCreationPanel;
+    public GameObject renamePanel;
 
     [HideInInspector]
     public ExplorerObject lastSelected;
@@ -74,38 +78,38 @@ public class FileExplorer : InitializeBehaviour
         yield return null;
     }
 
-    public void FileCreation()
-    {
-        fileCreationPanel.SetActive(!fileCreationPanel.activeSelf);
-    }
-
-    public void DirectoryCreation()
-    {
-        dirCreationPanel.SetActive(!dirCreationPanel.activeSelf);
-    }
+    public void FileCreation() { fileCreationPanel.SetActive(!fileCreationPanel.activeSelf); }
+    public void DirectoryCreation() { dirCreationPanel.SetActive(!dirCreationPanel.activeSelf); }
+    public void Renaming() { renamePanel.SetActive(!renamePanel.activeSelf); }
 
     public void GenerateNewFile()
     {
-        string extension = "";
-        if (fileExtension.value == 0) //Python
-            extension = ".py";
+        if (!String.IsNullOrWhiteSpace(filename.text))
+        {
+            string extension = "";
+            if (fileExtension.value == 0) //Python
+                extension = ".py";
 
-        string filePath = Path.Combine(lastSelected.fullPath, filename.text + extension);
-        File.Create(filePath);
+            string filePath = Path.Combine(lastSelected.fullPath, filename.text + extension);
+            File.Create(filePath);
 
-        fileCreationPanel.SetActive(false);
+            fileCreationPanel.SetActive(false);
 
-        RestartContent();
+            RestartContent();
+        }
     }
 
     public void GenerateNewDirectory()
     {
-        string dirPath = Path.Combine(lastSelected.fullPath, dirname.text);
-        Directory.CreateDirectory(dirPath);
+        if (!String.IsNullOrWhiteSpace(dirname.text))
+        {
+            string dirPath = Path.Combine(lastSelected.fullPath, dirname.text);
+            Directory.CreateDirectory(dirPath);
 
-        dirCreationPanel.SetActive(false);
+            dirCreationPanel.SetActive(false);
 
-        RestartContent();
+            RestartContent();
+        }
     }
 
     public void DeleteElement()
@@ -120,14 +124,61 @@ public class FileExplorer : InitializeBehaviour
 
     public void EditFile()
     {
-        PythonEditor editor = Instantiator.Instance.PythonEditor();
-        editor.fullpath = lastSelected.fullPath;
-        editor.pythonCode.text = File.ReadAllText(editor.fullpath);
+        PythonEditor editor;
+        GameObject editorObject = GameObject.Find(Path.GetFileName(lastSelected.fullPath));
 
-        float width = GetComponent<RectTransform>().sizeDelta.x * transform.Find("Panel").localScale.x;
-        Vector3 newWorldPos = transform.TransformPoint(new Vector3(width, 0, 0));
-        editor.transform.position = newWorldPos;
+        if(editorObject != null)
+        {
+            editor = editorObject.GetComponent<PythonEditor>();
+        }
+        else
+        {
+            editor = Instantiator.Instance.PythonEditor();
+            editor.fullpath = lastSelected.fullPath;
+            editor.pythonCode.text = File.ReadAllText(editor.fullpath);
+        }
+
+        float width = GetComponent<RectTransform>().sizeDelta.x * transform.Find("Panel").GetComponent<RectTransform>().localScale.x;
+        editor.GetComponent<RectTransform>().sizeDelta = GetComponent<RectTransform>().sizeDelta;
+        editor.transform.position = transform.TransformPoint(width, 0f, 0f);
         editor.transform.forward = transform.forward;
+    }
+
+    public void RenameSelectedElement()
+    {
+        if (!String.IsNullOrWhiteSpace(newName.text))
+        {
+            string baseFolder = Path.GetDirectoryName(lastSelected.fullPath);
+            string previousElement = lastSelected.fullPath;
+            string newElement = Path.Combine(baseFolder, newName.text);
+
+            if (lastSelected.GetType() == typeof(ExplorerDirectory))
+            {
+                Directory.CreateDirectory(newElement);
+                Directory.Move(previousElement, newElement);
+                Directory.Delete(previousElement);
+            }
+            else
+            {
+                newElement += Path.GetExtension(previousElement);
+
+                //File.Create(newElement);
+                File.Move(previousElement, newElement);
+                File.Delete(previousElement);
+
+                GameObject editor = GameObject.Find(Path.GetFileName(previousElement));
+                if (editor != null)
+                {
+                    editor.name = newName.text;
+                    editor.GetComponent<PythonEditor>().filename.text = newName.text;
+                    editor.GetComponent<PythonEditor>().fullpath = newElement;
+                }
+            }
+
+            renamePanel.SetActive(false);
+
+            RestartContent();
+        }
     }
 
     void RestartContent()
@@ -149,6 +200,7 @@ public class FileExplorer : InitializeBehaviour
         newFile.interactable = false;
         deleteElem.interactable = false;
         editElem.interactable = false;
+        renameElem.interactable = false;
     }
 
     void Clean()
@@ -156,6 +208,4 @@ public class FileExplorer : InitializeBehaviour
         foreach (Transform child in contentList)
             Destroy(child.gameObject);
     }
-
-
 }

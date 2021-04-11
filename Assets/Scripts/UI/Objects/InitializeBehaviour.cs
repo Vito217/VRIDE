@@ -15,7 +15,6 @@ public class InitializeBehaviour : MonoBehaviour
     public TMP_InputField keyboardTarget;
     public GameObject loadingWheel;
     public GameObject keyboardsGameObject;
-    public AutocompleteWordPicker wordPicker;
     public bool freezeRotation = true;
 
     [HideInInspector]
@@ -182,7 +181,6 @@ public class InitializeBehaviour : MonoBehaviour
 
     public virtual void OnSelect(BaseEventData data) {
         keyboardTarget = data.selectedObject.GetComponent<TMP_InputField>();
-        if (wordPicker != null) wordPicker.TextField = keyboardTarget;
     }
 
     public virtual void OnDeselect(BaseEventData data) {}

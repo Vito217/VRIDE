@@ -910,11 +910,11 @@ public class Playground : InitializeBehaviour
             {
                 if (insp == null)
                 {
-                    float width = GetComponent<RectTransform>().sizeDelta.x * transform.Find("Panel").localScale.x;
-                    Vector3 newWorldPos = transform.TransformPoint(new Vector3(width, 0, 0));
-
                     insp = Instantiator.Instance.Inspector();
-                    insp.transform.position = newWorldPos;
+
+                    float width = GetComponent<RectTransform>().sizeDelta.x * transform.Find("Panel").GetComponent<RectTransform>().localScale.x;
+                    insp.GetComponent<RectTransform>().sizeDelta = GetComponent<RectTransform>().sizeDelta;
+                    insp.transform.position = transform.TransformPoint(width, 0f, 0f);
                     insp.transform.forward = transform.forward;
 
                     SaveAndLoadModule.inspectors.Add(insp);

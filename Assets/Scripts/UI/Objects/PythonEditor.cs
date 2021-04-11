@@ -1,6 +1,6 @@
+using System;
 using System.Collections;
 using System.IO;
-using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using TMPro;
@@ -17,6 +17,7 @@ public class PythonEditor : InitializeBehaviour
     public Button stopButton;
     public TMP_InputField pythonCode;
     public TextMeshProUGUI filename;
+    public Scrollbar outputScrollBar;
 
     Thread execution;
     IPython engine;
@@ -24,8 +25,8 @@ public class PythonEditor : InitializeBehaviour
     public override IEnumerator innerStart()
     {
         engine = GetComponent<IPython>();
-        filename.text = Regex.Match(fullpath, "([a-zA-Z0-9]+.py)").Value;
-        StartCoroutine(LogOutput());
+        name = Path.GetFileName(fullpath);
+        filename.text = name;
         yield return base.innerStart();
     }
 
@@ -41,26 +42,22 @@ public class PythonEditor : InitializeBehaviour
 
     async void HandleRun()
     {
+        logText.text = "";
         runButton.interactable = false;
         stopButton.interactable = true;
 
         await Task.Run(() =>
         {
             engine.ResetStream();
+            execution = new Thread(() => engine.Execute(pythonCode.text));
+            execution.Start();
         });
 
-        execution = new Thread(() =>
-        {
-            engine.Execute(pythonCode.text);
-        });
+        StartCoroutine(LogOutput());
 
         await Task.Run(() =>
         {
-            try
-            {
-                execution.Start();
-                execution.Join();
-            }
+            try { execution.Join(); }
             catch { }
         });
 
@@ -86,10 +83,22 @@ public class PythonEditor : InitializeBehaviour
 
     IEnumerator LogOutput()
     {
-        while (true)
+        while (engine.writer.buffer.Count == 0)
+            yield return null;
+
+        bool empty = false;
+        while (!empty)
         {
-            logText.text += engine.writer.GetContentFromBuffer();
-            yield return new WaitForSeconds(1);
+            try 
+            {
+                logText.text += engine.writer.GetContentFromBuffer();
+                outputScrollBar.value = 1f;
+            }
+            catch (InvalidOperationException)
+            {
+                empty = true;
+            }
+            yield return null;
         }
     }
 }
