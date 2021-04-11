@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Copy : VRKey
 {
@@ -6,16 +7,21 @@ public class Copy : VRKey
     {
         if (keyboard.window != null && !keyboard.window.loadingWheel.activeSelf)
         {
-            int lcp = keyboard.window.lastCaretPosition;
-            int lap = keyboard.window.lastAnchorPosition;
-            keyboard.window.keyboardTarget.ActivateInputField();
-            string selection = keyboard.window.getSelectedCode(keyboard.window.field.text, true);
-            GUIUtility.systemCopyBuffer = selection;
-            keyboard.window.keyboardTarget.caretPosition = lcp;
-            keyboard.window.keyboardTarget.selectionAnchorPosition = lap;
-            keyboard.window.lastCaretPosition = lcp;
-            keyboard.window.lastAnchorPosition = lap;
-            keyboard.window.fromUIClick = true;
+            StartCoroutine(Copying());
         }
+    }
+
+    IEnumerator Copying()
+    {
+        int lcp = keyboard.window.keyboardTarget.caretPosition;
+        int lap = keyboard.window.keyboardTarget.selectionAnchorPosition;
+        keyboard.window.keyboardTarget.ActivateInputField();
+
+        yield return null;
+
+        string selection = keyboard.window.getSelectedCode(keyboard.window.field.text, true);
+        GUIUtility.systemCopyBuffer = selection;
+        keyboard.window.keyboardTarget.caretPosition = lcp;
+        keyboard.window.keyboardTarget.selectionAnchorPosition = lap;
     }
 }

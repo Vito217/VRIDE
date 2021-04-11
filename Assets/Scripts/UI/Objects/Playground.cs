@@ -995,12 +995,14 @@ public class Playground : InitializeBehaviour
     {
         if (keyboardTarget.isFocused)
         {
+            /**
             if (fromUIClick)
             {
                 fromUIClick = false;
                 keyboardTarget.caretPosition = lastCaretPosition;
                 keyboardTarget.selectionAnchorPosition = lastAnchorPosition;
             }
+            **/
 
             if (Input.anyKeyDown && !loadingWheel.activeSelf)
             {
@@ -1036,8 +1038,9 @@ public class Playground : InitializeBehaviour
                 //else
                 //    onChangeInput();
             }
-            lastCaretPosition = keyboardTarget.caretPosition;
-            lastAnchorPosition = keyboardTarget.selectionAnchorPosition;
+
+            //lastCaretPosition = keyboardTarget.caretPosition;
+            //lastAnchorPosition = keyboardTarget.selectionAnchorPosition;
         }
     }
 

@@ -158,10 +158,11 @@ public class Key : MonoBehaviour
 
 		if (window.loadingWheel == null || !window.loadingWheel.activeSelf)
 		{
-			int lcp = window.lastCaretPosition;
-			int lap = window.lastAnchorPosition;
+			int lcp = window.keyboardTarget.caretPosition;
+			int lap = window.keyboardTarget.selectionAnchorPosition;
 
 			window.keyboardTarget.ActivateInputField();
+
 			yield return null;
 
 			window.keyboardTarget.caretPosition = lcp;
@@ -178,8 +179,6 @@ public class Key : MonoBehaviour
 						window.keyboardTarget.text = window.keyboardTarget.text.Remove(lcp - 1, 1);
 						window.keyboardTarget.caretPosition = lcp - 1;
 						window.keyboardTarget.selectionAnchorPosition = lap - 1;
-						window.lastCaretPosition = lcp - 1;
-						window.lastAnchorPosition = lap - 1;
 					} catch { }
 				}
 			}
@@ -189,8 +188,6 @@ public class Key : MonoBehaviour
 				window.keyboardTarget.text = window.keyboardTarget.text.Insert(lcp, "\n");
 				window.keyboardTarget.caretPosition = lcp + 1;
 				window.keyboardTarget.selectionAnchorPosition = lap + 1;
-				window.lastCaretPosition = lcp + 1;
-				window.lastAnchorPosition = lap + 1;
 			}
 			else if (name.Contains("Del"))
             {
@@ -203,8 +200,6 @@ public class Key : MonoBehaviour
 
 					window.keyboardTarget.caretPosition = lcp;
 					window.keyboardTarget.selectionAnchorPosition = lcp;
-					window.lastCaretPosition = lcp;
-					window.lastAnchorPosition = lcp;
 				}
 			}
 			else if (name.Contains("Tab"))
@@ -212,8 +207,6 @@ public class Key : MonoBehaviour
 				window.keyboardTarget.text = window.keyboardTarget.text.Insert(Math.Min(lcp, lap), "\t");
 				window.keyboardTarget.caretPosition = lcp + 1;
 				window.keyboardTarget.selectionAnchorPosition = lap + 1;
-				window.lastCaretPosition = lcp + 1;
-				window.lastAnchorPosition = lap + 1;
 			}
 			else if (name.Contains("ArrowKey"))
             {
@@ -222,8 +215,6 @@ public class Key : MonoBehaviour
 					int c = lcp > 0 ? lcp - 1 : 0;
 					window.keyboardTarget.caretPosition = c;
 					window.keyboardTarget.selectionAnchorPosition = c;
-					window.lastCaretPosition = c;
-					window.lastAnchorPosition = c;
 				}
 				else if(name.Contains("RightArrowKey"))
                 {
@@ -231,8 +222,6 @@ public class Key : MonoBehaviour
 					int c = lcp < l ? lcp + 1 : l;
 					window.keyboardTarget.caretPosition = c;
 					window.keyboardTarget.selectionAnchorPosition = c;
-					window.lastCaretPosition = c;
-					window.lastAnchorPosition = c;
 				}
 				else if (name.Contains("UpArrowKey"))
 				{
@@ -251,8 +240,6 @@ public class Key : MonoBehaviour
 
 					window.keyboardTarget.caretPosition = c;
 					window.keyboardTarget.selectionAnchorPosition = c;
-					window.lastCaretPosition = c;
-					window.lastAnchorPosition = c;
 				}
 				else
 				{
@@ -271,8 +258,6 @@ public class Key : MonoBehaviour
 
 					window.keyboardTarget.caretPosition = c;
 					window.keyboardTarget.selectionAnchorPosition = c;
-					window.lastCaretPosition = c;
-					window.lastAnchorPosition = c;
 				}
 			}
 			else
@@ -281,8 +266,6 @@ public class Key : MonoBehaviour
 				window.keyboardTarget.text = window.keyboardTarget.text.Insert(lcp, keyCapText.text);
 				window.keyboardTarget.caretPosition = lcp + 1;
 				window.keyboardTarget.selectionAnchorPosition = lap + 1;
-				window.lastCaretPosition = lcp + 1;
-				window.lastAnchorPosition = lap + 1;
 			}
 		}
 	}

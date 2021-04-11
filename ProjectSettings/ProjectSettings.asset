@@ -40,7 +40,7 @@ PlayerSettings:
     width: 1
     height: 1
   m_SplashScreenLogos: []
-  m_VirtualRealitySplashScreen: {fileID: 2800000, guid: ea526bed0ad4e7d4cb7647da581d36a4,
+  m_VirtualRealitySplashScreen: {fileID: 2800000, guid: 90cbe820afea603478482431976f253e,
     type: 3}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1024
@@ -223,7 +223,9 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 11400000, guid: cd731ae23d83e78429f8e2f3d6d3ed4f, type: 2}
-  - {fileID: -8245632201146259280, guid: a076dd0c04ebd6e459ce7102d2028c33, type: 2}
+  - {fileID: 7107306622528270979, guid: a076dd0c04ebd6e459ce7102d2028c33, type: 2}
+  - {fileID: 0}
+  - {fileID: 1600446187884061802, guid: 0c4f70d08a255ce4f9ef97fd0f0ab560, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -241,7 +243,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.objectprofile.pharovride
+    Android: com.objectprofile.vride
     Standalone: com.objectprofile.pharovride
   buildNumber:
     Standalone: 0
@@ -357,7 +359,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: ea526bed0ad4e7d4cb7647da581d36a4, type: 3}
+      m_Icon: {fileID: 2800000, guid: 90cbe820afea603478482431976f253e, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
@@ -786,9 +788,9 @@ PlayerSettings:
   ps4IncludedModules: []
   ps4attribVROutputEnabled: 0
   monoEnv: 
-  splashScreenBackgroundSourceLandscape: {fileID: 21300000, guid: ea526bed0ad4e7d4cb7647da581d36a4,
+  splashScreenBackgroundSourceLandscape: {fileID: 21300000, guid: 90cbe820afea603478482431976f253e,
     type: 3}
-  splashScreenBackgroundSourcePortrait: {fileID: 21300000, guid: ea526bed0ad4e7d4cb7647da581d36a4,
+  splashScreenBackgroundSourcePortrait: {fileID: 21300000, guid: 90cbe820afea603478482431976f253e,
     type: 3}
   blurSplashScreenBackground: 1
   spritePackerPolicy: 
@@ -855,6 +857,7 @@ PlayerSettings:
   metroSplashScreenUseBackgroundColor: 0
   platformCapabilities:
     WindowsStoreApps:
+      EnterpriseAuthentication: False
       VideosLibrary: False
       Location: False
       HumanInterfaceDevice: False
@@ -867,7 +870,6 @@ PlayerSettings:
       InternetClientServer: False
       OfflineMapsManagement: False
       Objects3D: False
-      InternetClient: False
       RemoteSystem: False
       BlockedChatMessages: False
       PhoneCall: False
@@ -889,10 +891,10 @@ PlayerSettings:
       PointOfService: False
       RecordedCallsFolder: False
       Contacts: False
-      Proximity: False
+      InternetClient: False
       CodeGeneration: False
       BackgroundMediaPlayback: False
-      EnterpriseAuthentication: False
+      Proximity: False
   metroTargetDeviceFamilies:
     Desktop: False
     Holographic: False

@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Collections;
+using System.Threading;
 using UnityEngine;
 
 public class Paste : VRKey
@@ -7,27 +8,34 @@ public class Paste : VRKey
     {
         if (keyboard.window != null && !keyboard.window.loadingWheel.activeSelf)
         {
-            string selection = GUIUtility.systemCopyBuffer;
-            int lcp = keyboard.window.lastCaretPosition;
-            int lap = keyboard.window.lastAnchorPosition;
-            keyboard.window.keyboardTarget.ActivateInputField();
-            if (lcp != lap)
-            {
-                if (lcp < lap) lap = Interlocked.Exchange(ref lcp, lap);
-                keyboard.window.keyboardTarget.text = 
-                    keyboard.window.keyboardTarget.text.Remove(Mathf.Min(lcp, lap), lcp - lap);
-                keyboard.window.keyboardTarget.caretPosition = Mathf.Min(lcp, lap);
-                lcp = Mathf.Min(lcp, lap);
-            }
-            keyboard.window.keyboardTarget.text = keyboard.window.keyboardTarget.text.Insert(
-                lcp,
-                selection
-            );
-            keyboard.window.keyboardTarget.caretPosition = lcp + selection.Length;
-            keyboard.window.keyboardTarget.selectionAnchorPosition = lcp + selection.Length;
-            keyboard.window.lastCaretPosition = lcp + selection.Length;
-            keyboard.window.lastAnchorPosition = lcp + selection.Length;
-            keyboard.window.fromUIClick = true;
+            StartCoroutine(Pasting());
         }
+    }
+
+    IEnumerator Pasting()
+    {
+        string selection = GUIUtility.systemCopyBuffer;
+        int lcp = keyboard.window.keyboardTarget.caretPosition;
+        int lap = keyboard.window.keyboardTarget.selectionAnchorPosition;
+        keyboard.window.keyboardTarget.ActivateInputField();
+
+        yield return null;
+
+        if (lcp != lap)
+        {
+            if (lcp < lap) lap = Interlocked.Exchange(ref lcp, lap);
+            keyboard.window.keyboardTarget.text =
+                keyboard.window.keyboardTarget.text.Remove(Mathf.Min(lcp, lap), lcp - lap);
+            keyboard.window.keyboardTarget.caretPosition = Mathf.Min(lcp, lap);
+            lcp = Mathf.Min(lcp, lap);
+        }
+
+        keyboard.window.keyboardTarget.text = keyboard.window.keyboardTarget.text.Insert(
+            lcp,
+            selection
+        );
+
+        keyboard.window.keyboardTarget.caretPosition = lcp + selection.Length;
+        keyboard.window.keyboardTarget.selectionAnchorPosition = lcp + selection.Length;
     }
 }

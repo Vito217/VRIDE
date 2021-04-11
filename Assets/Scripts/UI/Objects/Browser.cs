@@ -215,12 +215,14 @@ public class Browser : InitializeBehaviour
         }
         else if (keyboardTarget.isFocused)
         {
+            /**
             if (fromUIClick)
             {
                 fromUIClick = false;
                 keyboardTarget.caretPosition = lastCaretPosition;
                 keyboardTarget.selectionAnchorPosition = lastAnchorPosition;
             }
+            **/
 
             if (Input.anyKeyDown && !loadingWheel.activeSelf)
             {
@@ -237,8 +239,9 @@ public class Browser : InitializeBehaviour
                 if ((cmd && s) || f6)
                     PharoDefine();
             }
-            lastCaretPosition = keyboardTarget.caretPosition;
-            lastAnchorPosition = keyboardTarget.selectionAnchorPosition;
+
+            //lastCaretPosition = keyboardTarget.caretPosition;
+            //lastAnchorPosition = keyboardTarget.selectionAnchorPosition;
         }
     }
 

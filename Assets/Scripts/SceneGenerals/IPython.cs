@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
@@ -11,6 +12,13 @@ public class IPython : MonoBehaviour
     void Awake()
     {   
         pythonEngine = IronPython.Hosting.Python.CreateEngine();
+
+        pythonEngine.SetSearchPaths(new List<string>() 
+        { 
+            Application.streamingAssetsPath,
+            Application.persistentDataPath
+        });
+
         pythonScope = pythonEngine.CreateScope();
         InitializeStream();
     }

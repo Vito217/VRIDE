@@ -16,13 +16,6 @@ public class InitializeBehaviour : MonoBehaviour
     public GameObject loadingWheel;
     public GameObject keyboardsGameObject;
     public bool freezeRotation = true;
-
-    [HideInInspector]
-    public int lastCaretPosition = 0;
-    [HideInInspector]
-    public int lastAnchorPosition = 0;
-    [HideInInspector]
-    public bool fromUIClick = false;
     
     float sizeVariance = 20;
     float scaleVariance = .2f;
@@ -161,8 +154,6 @@ public class InitializeBehaviour : MonoBehaviour
     public void KeepActiveOnSlide()
     {
         keyboardTarget.ActivateInputField();
-        keyboardTarget.caretPosition = lastCaretPosition;
-        keyboardTarget.selectionAnchorPosition = lastAnchorPosition;
     }
 
     public virtual void Initialize()
@@ -243,6 +234,7 @@ public class InitializeBehaviour : MonoBehaviour
 
     public virtual void innerBehaviour() 
     {
+        /**
         if (keyboardTarget != null && keyboardTarget.isFocused)
         {
             if (fromUIClick)
@@ -255,6 +247,7 @@ public class InitializeBehaviour : MonoBehaviour
             lastCaretPosition = keyboardTarget.caretPosition;
             lastAnchorPosition = keyboardTarget.selectionAnchorPosition;
         }
+        **/
     }
 
     public virtual IEnumerator innerStart() { yield return null; }
