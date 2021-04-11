@@ -196,8 +196,16 @@ public class Key : MonoBehaviour
             {
 				if (lcp != lap)
 					DeleteSelection(ref lcp, ref lap, window);
-				else
-					StartCoroutine(Supr());
+                else
+                {
+					if (lcp < window.keyboardTarget.text.Length)
+						window.keyboardTarget.text = window.keyboardTarget.text.Remove(lcp, 1);
+
+					window.keyboardTarget.caretPosition = lcp;
+					window.keyboardTarget.selectionAnchorPosition = lcp;
+					window.lastCaretPosition = lcp;
+					window.lastAnchorPosition = lcp;
+				}
 			}
 			else if (name.Contains("Tab"))
 			{
@@ -295,25 +303,5 @@ public class Key : MonoBehaviour
 		if (!isSpecialKey) StartCoroutine(WriteStringToTarget());
 		keySoundController.StartKeySound(this.gameObject.transform);
 		checkForButton = false;
-	}
-
-	IEnumerator Supr()
-    {
-		int lcp = window.lastCaretPosition;
-
-		EventSystem.current.SetSelectedGameObject(null);
-		window.keyboardTarget.ActivateInputField();
-
-		if (lcp < window.keyboardTarget.text.Length)
-			window.keyboardTarget.text = window.keyboardTarget.text.Remove(lcp, 1);
-
-		yield return null;
-
-		window.keyboardTarget.caretPosition = lcp;
-		window.keyboardTarget.selectionAnchorPosition = lcp;
-		window.lastCaretPosition = lcp;
-		window.lastAnchorPosition = lcp;
-
-		yield return null;
 	}
 }
