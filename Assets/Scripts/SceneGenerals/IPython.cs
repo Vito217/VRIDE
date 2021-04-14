@@ -39,7 +39,27 @@ public class IPython : MonoBehaviour
         }
         catch (Exception e)
         {
-            writer.Write("<color=#C63737>[Error] " + e.Message + "\n" + e.StackTrace + "</color>");
+            writer.Write(e.Message + "\n" + e.StackTrace);
+            writer.Write("\n\nProgram failed execution.");
+        }
+    }
+
+    public void ExecuteFile(string path)
+    {
+        try
+        {
+            //pythonEngine.ExecuteFile(path, pythonScope);
+
+            Microsoft.Scripting.Hosting.ScriptSource pythonScript =
+                pythonEngine.CreateScriptSourceFromFile(path);
+
+            pythonScript.Execute(pythonScope);
+
+            writer.Write("\n\nProgram executed successfully.");
+        }
+        catch (Exception e)
+        {
+            writer.Write(e.Message + "\n" + e.StackTrace);
             writer.Write("\n\nProgram failed execution.");
         }
     }

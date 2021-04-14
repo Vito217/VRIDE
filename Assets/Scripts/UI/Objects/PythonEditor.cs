@@ -93,6 +93,8 @@ public class PythonEditor : InitializeBehaviour
 
     async void HandleRun()
     {
+        Save();
+
         logText.text = "";
         runButton.interactable = false;
         stopButton.interactable = true;
@@ -100,7 +102,7 @@ public class PythonEditor : InitializeBehaviour
         await Task.Run(() =>
         {
             engine.ResetStream();
-            execution = new Thread(() => engine.Execute(pythonCode.text));
+            execution = new Thread(() => engine.ExecuteFile(fullpath));
             execution.Start();
         });
 
