@@ -92,6 +92,7 @@ public class PythonEditor : InitializeBehaviour
             try 
             {
                 logText.text += engine.writer.GetContentFromBuffer();
+                logText.text += engine.errorWriter.GetContentFromBuffer();
                 outputScrollBar.value = 1f;
             }
             catch (InvalidOperationException)

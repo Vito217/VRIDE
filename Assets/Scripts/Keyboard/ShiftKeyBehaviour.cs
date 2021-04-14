@@ -41,13 +41,13 @@ public class ShiftKeyBehaviour : MonoBehaviour
 			if (shiftToggle)
 			{
 				shiftKeyController.KeycapColor = shiftKeyController.PressedKeycapColor;
-				InputSimulator.SimulateKeyPress(VirtualKeyCode.CAPITAL);
+				//InputSimulator.SimulateKeyPress(VirtualKeyCode.CAPITAL);
 				shiftToggle = false;
 			}
 			else if (!shiftToggle)
 			{
 				shiftKeyController.KeycapColor = shiftKeyController.InitialKeycapColor;
-				InputSimulator.SimulateKeyPress(VirtualKeyCode.CAPITAL);
+				//InputSimulator.SimulateKeyPress(VirtualKeyCode.CAPITAL);
 				shiftToggle = true;
 			}
 		}
@@ -67,7 +67,7 @@ public class ShiftKeyBehaviour : MonoBehaviour
 		Key.keyPressed -= ShiftKeyPressed;
 		if (!shiftToggle)
 		{
-			InputSimulator.SimulateKeyPress(VirtualKeyCode.CAPITAL);
+			//InputSimulator.SimulateKeyPress(VirtualKeyCode.CAPITAL);
 		}
 	}
 }
