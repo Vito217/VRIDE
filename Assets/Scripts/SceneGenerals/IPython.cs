@@ -8,9 +8,6 @@ public class IPython : MonoBehaviour
     public MemoryStream stream;
     public VRIDEWriter writer;
 
-    public MemoryStream errorStream;
-    public VRIDEWriter errorWriter;
-
     public Microsoft.Scripting.Hosting.ScriptEngine pythonEngine;
     public Microsoft.Scripting.Hosting.ScriptScope pythonScope;
 
@@ -38,10 +35,12 @@ public class IPython : MonoBehaviour
         try 
         {
             pythonEngine.Execute(code, pythonScope);
+            writer.Write("\n\nProgram executed successfully.");
         }
         catch (Exception e)
         {
-            errorWriter.Write(e.StackTrace);
+            writer.Write("<color=#C63737>[Error] " + e.Message + "\n" + e.StackTrace + "</color>");
+            writer.Write("\n\nProgram failed execution.");
         }
     }
 
@@ -50,19 +49,14 @@ public class IPython : MonoBehaviour
         stream = new MemoryStream();
         writer = new VRIDEWriter(stream);
 
-        errorStream = new MemoryStream();
-        errorWriter = new VRIDEWriter(errorStream);
-
         pythonEngine.Runtime.IO.SetOutput(stream, writer);
-        pythonEngine.Runtime.IO.SetErrorOutput(errorStream, errorWriter);
+        pythonEngine.Runtime.IO.SetErrorOutput(stream, writer);
     }
 
     public void ResetStream()
     {
         if (stream != null) stream.Dispose();
         if (writer != null) writer.Dispose();
-        if (errorStream != null) errorStream.Dispose();
-        if (errorWriter != null) errorWriter.Dispose();
         InitializeStream();
     }
 }

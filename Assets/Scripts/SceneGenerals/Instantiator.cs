@@ -33,6 +33,8 @@ public class Instantiator : MonoBehaviour
     public GameObject explorerFilePrefab;
     public GameObject explorerDirectoryPrefab;
 
+    public Material lineRendererMaterial;
+
     public static GameObject currentEnvironment;
 
     private static Instantiator _instance;

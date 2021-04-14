@@ -1,5 +1,10 @@
 # PharoVRIDE's Channel Log
 
+## V0.27.1 (14/04/2021)
+* Fixed Python Err Output
+* Added line to imported files
+* Fixed Virtual Keyboard's Shift key 
+
 ## V0.27.0 (11/04/2021)
 * VRIDE has now expanded to Python! New File Explorer and Python Editor to create and run Python files.
 * Fixed bugs.

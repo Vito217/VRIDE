@@ -178,7 +178,7 @@ public class InitializeBehaviour : MonoBehaviour
 
     public virtual void HorizontalExpand()
     {
-        transform.Find("Panel").gameObject.GetComponent<RectTransform>().sizeDelta += new Vector2(sizeVariance, 0f);
+        GetComponent<RectTransform>().sizeDelta += new Vector2(sizeVariance, 0f);
         if (loadingWheel != null)
             loadingWheel.GetComponent<RectTransform>().sizeDelta += new Vector2(sizeVariance, 0f);
 
@@ -187,7 +187,7 @@ public class InitializeBehaviour : MonoBehaviour
 
     public virtual void VerticalExpand()
     {
-        transform.Find("Panel").gameObject.GetComponent<RectTransform>().sizeDelta += new Vector2(0f, sizeVariance);
+        GetComponent<RectTransform>().sizeDelta += new Vector2(0f, sizeVariance);
         if (loadingWheel != null)    
             loadingWheel.GetComponent<RectTransform>().sizeDelta += new Vector2(0f, sizeVariance);
 
@@ -196,7 +196,7 @@ public class InitializeBehaviour : MonoBehaviour
 
     public virtual void HorizontalContract()
     {
-        transform.Find("Panel").gameObject.GetComponent<RectTransform>().sizeDelta -= new Vector2(sizeVariance, 0f);
+        GetComponent<RectTransform>().sizeDelta -= new Vector2(sizeVariance, 0f);
         if (loadingWheel != null)
             loadingWheel.GetComponent<RectTransform>().sizeDelta -= new Vector2(sizeVariance, 0f);
 
@@ -205,7 +205,7 @@ public class InitializeBehaviour : MonoBehaviour
 
     public virtual void VerticalContract()
     {
-        transform.Find("Panel").gameObject.GetComponent<RectTransform>().sizeDelta -= new Vector2(0f, sizeVariance);
+        GetComponent<RectTransform>().sizeDelta -= new Vector2(0f, sizeVariance);
         if (loadingWheel != null)
             loadingWheel.GetComponent<RectTransform>().sizeDelta -= new Vector2(0f, sizeVariance);
 

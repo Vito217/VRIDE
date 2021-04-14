@@ -913,6 +913,7 @@ public class Playground : InitializeBehaviour
                     insp = Instantiator.Instance.Inspector();
 
                     float width = GetComponent<RectTransform>().sizeDelta.x * transform.Find("Panel").GetComponent<RectTransform>().localScale.x;
+                    insp.transform.Find("Panel").GetComponent<RectTransform>().localScale = transform.Find("Panel").GetComponent<RectTransform>().localScale;
                     insp.GetComponent<RectTransform>().sizeDelta = GetComponent<RectTransform>().sizeDelta;
                     insp.transform.position = transform.TransformPoint(width, 0f, 0f);
                     insp.transform.forward = transform.forward;

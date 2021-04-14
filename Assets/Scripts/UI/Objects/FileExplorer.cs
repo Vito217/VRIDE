@@ -139,6 +139,7 @@ public class FileExplorer : InitializeBehaviour
         }
 
         float width = GetComponent<RectTransform>().sizeDelta.x * transform.Find("Panel").GetComponent<RectTransform>().localScale.x;
+        editor.transform.Find("Panel").GetComponent<RectTransform>().localScale = transform.Find("Panel").GetComponent<RectTransform>().localScale;
         editor.GetComponent<RectTransform>().sizeDelta = GetComponent<RectTransform>().sizeDelta;
         editor.transform.position = transform.TransformPoint(width, 0f, 0f);
         editor.transform.forward = transform.forward;
