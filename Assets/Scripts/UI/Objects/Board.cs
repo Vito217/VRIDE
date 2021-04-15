@@ -1,8 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using LoggingModule;
 
 public class Board : InitializeBehaviour
 {
-   
+    public override void onClose()
+    {
+        InteractionLogger.Discount("Board", GetInstanceID().ToString());
+
+        base.onClose();
+    }
 }

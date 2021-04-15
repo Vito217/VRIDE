@@ -30,6 +30,7 @@ namespace LoggingModule
             { "totalBrowserMilliseconds" , 0 },
             { "totalInspectorMilliseconds" , 0 },
             { "totalTranscriptMilliseconds" , 0 },
+            { "totalPythonEditorMilliseconds", 0 },
             { "totalWindowDraggingMilliseconds", 0 }
         };
 
@@ -38,7 +39,8 @@ namespace LoggingModule
             { "BrowserInteraction" , null },
             { "InspectorInteraction" , null },
             { "WindowDraggingInteraction" , null },
-            { "TranscriptInteraction" , null }
+            { "TranscriptInteraction" , null },
+            { "PythonEditorInteraction", null }
         };
 
         /// <summary>
@@ -162,6 +164,20 @@ namespace LoggingModule
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="response"></param>
+        public static void RegisterPythonExecution(string pythonFile, string code, string response)
+        {
+            if (!inEditor)
+                writeLineToLog(
+                   "[ " + DateTime.Now + " ] Executed python file " + pythonFile + " with code:\n" +
+                   code + "\nand response:\n" + response
+                );
+        }
+
+        /// <summary>
         /// Register the end of a session
         /// </summary>
         public static void SessionEnd()
@@ -212,6 +228,12 @@ namespace LoggingModule
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
         public static void RegisterPlayerPosition(float x, float y, float z)
         {
             if (!inEditor)
@@ -220,6 +242,14 @@ namespace LoggingModule
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        /// <param name="window"></param>
+        /// <param name="id"></param>
         public static void RegisterWindowDraggingStart(float x, float y, float z, string window, string id)
         {
             if (!inEditor)
@@ -229,6 +259,14 @@ namespace LoggingModule
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        /// <param name="window"></param>
+        /// <param name="id"></param>
         public static void RegisterWindowDraggingEnd(float x, float y, float z, string window, string id)
         {
             if (!inEditor)
@@ -238,6 +276,13 @@ namespace LoggingModule
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="increasedOrDecreased"></param>
+        /// <param name="window"></param>
+        /// <param name="id"></param>
+        /// <param name="property"></param>
         public static void RegisterWindowChange(string increasedOrDecreased, string window, string id, string property)
         {
             if (!inEditor)

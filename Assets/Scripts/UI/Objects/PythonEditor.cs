@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using LoggingModule;
+using UnityEngine.EventSystems;
+using SaveAndLoad;
 
 public class PythonEditor : InitializeBehaviour
 {
@@ -81,9 +84,28 @@ public class PythonEditor : InitializeBehaviour
 
     public override void onClose()
     {
-        base.onClose();
-        foreach (GameObject import in importLines.Values)
-            Destroy(import);
+        if (!execution.ThreadState.Equals(ThreadState.Running))
+        {
+            foreach (GameObject import in importLines.Values)
+                Destroy(import);
+
+            InteractionLogger.Discount("PythonEditor", GetInstanceID().ToString());
+            SaveAndLoadModule.pyEditors.Remove(this);
+
+            base.onClose();
+        }
+    }
+
+    public override void OnSelect(BaseEventData data)
+    {
+        base.OnSelect(data);
+        InteractionLogger.StartTimerFor("PythonEditor", GetInstanceID().ToString());
+    }
+
+    public override void OnDeselect(BaseEventData data)
+    {
+        base.OnDeselect(data);
+        InteractionLogger.EndTimerFor("PythonEditor", GetInstanceID().ToString());
     }
 
     public void Run()
@@ -119,6 +141,8 @@ public class PythonEditor : InitializeBehaviour
 
         runButton.interactable = true;
         stopButton.interactable = false;
+
+        InteractionLogger.RegisterPythonExecution(fullpath, pythonCode.text, logText.text);
     }
 
     public void Stop()

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using SaveAndLoad;
 using TMPro;
 using System;
+using LoggingModule;
 
 public class FileExplorer : InitializeBehaviour
 {
@@ -143,6 +144,8 @@ public class FileExplorer : InitializeBehaviour
         editor.GetComponent<RectTransform>().sizeDelta = GetComponent<RectTransform>().sizeDelta;
         editor.transform.position = transform.TransformPoint(width, 0f, 0f);
         editor.transform.forward = transform.forward;
+
+        SaveAndLoadModule.pyEditors.Add(editor);
     }
 
     public void RenameSelectedElement()
@@ -208,5 +211,12 @@ public class FileExplorer : InitializeBehaviour
     {
         foreach (Transform child in contentList)
             Destroy(child.gameObject);
+    }
+
+    public override void onClose()
+    {
+        InteractionLogger.Discount("FileExplorer", GetInstanceID().ToString());
+
+        base.onClose();
     }
 }

@@ -66,6 +66,8 @@ public class VRIDEMenu : InitializeBehaviour
         RoassalExamples re = Instantiator.Instance.RoassalExamples();
         re.Initialize();
 
+        InteractionLogger.Count("RoassalExamples", re.GetInstanceID().ToString());
+
         Destroy(gameObject);
     }
 
@@ -73,6 +75,8 @@ public class VRIDEMenu : InitializeBehaviour
     {
         WebcamView wc = Instantiator.Instance.WebCam();
         wc.Initialize();
+
+        InteractionLogger.Count("Webcam", wc.GetInstanceID().ToString());
 
         Destroy(gameObject);
     }
@@ -82,6 +86,8 @@ public class VRIDEMenu : InitializeBehaviour
         Board board = Instantiator.Instance.Board();
         board.Initialize();
 
+        InteractionLogger.Count("Board", board.GetInstanceID().ToString());
+
         Destroy(gameObject);
     }
 
@@ -89,6 +95,8 @@ public class VRIDEMenu : InitializeBehaviour
     {
         FileExplorer explorer = Instantiator.Instance.FileExplorer();
         explorer.Initialize();
+
+        InteractionLogger.Count("FileExplorer", explorer.GetInstanceID().ToString());
 
         Destroy(gameObject);
     }

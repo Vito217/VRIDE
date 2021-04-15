@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using PharoModule;
 using LoggingModule;
+using UnityEngine;
 
 public class RoassalMethod : RoassalObject
 {
@@ -25,13 +26,21 @@ public class RoassalMethod : RoassalObject
                 sourceCode, @"\A([a-zA-Z0-9\n\s\t<>:']*)(\|.*\|)", "$2");
 
             Playground playground = Instantiator.Instance.Playground();
-            playground.transform.position = roassal.transform.position;
+
+            float width = roassal.GetComponent<RectTransform>().sizeDelta.x * 
+                roassal.transform.Find("Panel").GetComponent<RectTransform>().localScale.x;
+
+            playground.transform.Find("Panel").GetComponent<RectTransform>().localScale = 
+                roassal.transform.Find("Panel").GetComponent<RectTransform>().localScale;
+
+            playground.GetComponent<RectTransform>().sizeDelta = roassal.GetComponent<RectTransform>().sizeDelta;
+            playground.transform.position = roassal.transform.TransformPoint(width, 0f, 0f);
             playground.transform.forward = roassal.transform.forward;
             playground.field.text = sourceCode;
 
             InteractionLogger.RegisterRoassalExample(name);
 
-            Destroy(roassal.gameObject);
+            //Destroy(roassal.gameObject);
         }
         catch (Exception e)
         {

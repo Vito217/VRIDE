@@ -24,6 +24,7 @@ namespace SaveAndLoad
         public static List<Inspector> inspectors = new List<Inspector>();
         public static List<Graph> graphs = new List<Graph>();
         public static List<Transcript> transcripts = new List<Transcript>();
+        public static List<PythonEditor> pyEditors = new List<PythonEditor>();
 
         /// <summary>
         /// Stores browsers data
@@ -76,7 +77,7 @@ namespace SaveAndLoad
                 else browser.onSelectInstanceSide();
 
                 browsers.Add(browser);
-                InteractionLogger.Count("Browser", browser.GetInstanceID().ToString());
+                //InteractionLogger.Count("Browser", browser.GetInstanceID().ToString());
             }
         }
 
@@ -112,7 +113,7 @@ namespace SaveAndLoad
                 playground.transform.forward = new Vector3(pdata.forward.x, pdata.forward.y, pdata.forward.z);
                 playground.field.text = pdata.sourceCode;
                 playgrounds.Add(playground);
-                InteractionLogger.Count("Playground", playground.GetInstanceID().ToString());
+                //InteractionLogger.Count("Playground", playground.GetInstanceID().ToString());
             }
         }
 
@@ -150,7 +151,7 @@ namespace SaveAndLoad
 
                 inspectors.Add(inspector);
 
-                InteractionLogger.Count("Inspector", inspector.GetInstanceID().ToString());
+                //InteractionLogger.Count("Inspector", inspector.GetInstanceID().ToString());
             }
         }
 
@@ -191,7 +192,41 @@ namespace SaveAndLoad
                 graph.transform.forward = new Vector3(gdata.forward.x, gdata.forward.y, gdata.forward.z);
                 graphs.Add(graph);
 
-                InteractionLogger.Count("GraphObject", graph.GetInstanceID().ToString());
+                //InteractionLogger.Count("GraphObject", graph.GetInstanceID().ToString());
+            }
+        }
+
+        public static List<PythonEditorData> SerializePythonEditors()
+        {
+            List<PythonEditorData> pyEditorsData = new List<PythonEditorData>();
+            foreach (PythonEditor pyEditor in pyEditors)
+            {
+                Vector3 pos = pyEditor.transform.position;
+                Vector3 fwd = pyEditor.transform.forward;
+                pyEditorsData.Add(
+                    new PythonEditorData(pos, fwd, pyEditor.filename.text, pyEditor.fullpath, pyEditor.pythonCode.text, pyEditor.logText.text));
+            }
+            return pyEditorsData;
+        }
+
+        public static void DeserializePythonEditors(Session session)
+        {
+            List<PythonEditorData> pyEditorsData = session.pythonEditors;
+
+            foreach (PythonEditorData pyData in pyEditorsData)
+            {
+                PythonEditor pyEditor = Instantiator.Instance.PythonEditor();
+
+                pyEditor.transform.position = new Vector3(pyData.position.x, pyData.position.y, pyData.position.z);
+                pyEditor.transform.forward = new Vector3(pyData.forward.x, pyData.forward.y, pyData.forward.z);
+                pyEditor.name = pyData.filename;
+                pyEditor.filename.text = pyData.filename;
+                pyEditor.pythonCode.text = pyData.code;
+                pyEditor.logText.text = pyData.output;
+
+                pyEditors.Add(pyEditor);
+
+                //InteractionLogger.Count("PythonEditor", pyEditor.GetInstanceID().ToString());
             }
         }
 
@@ -210,7 +245,8 @@ namespace SaveAndLoad
                     SerializeBrowsers(),
                     SerializePlaygrounds(),
                     SerializeInspectors(),
-                    SerializeGraphs()
+                    SerializeGraphs(),
+                    SerializePythonEditors()
                 );
 
                 AsynchronousSerializer.Serialize(sessionPath, s);
@@ -235,6 +271,7 @@ namespace SaveAndLoad
                     DeserializePlaygrounds(session);
                     DeserializeInspectors(session);
                     DeserializeGraphs(session);
+                    DeserializePythonEditors(session);
                 }
             }
         }
