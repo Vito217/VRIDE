@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
-using LoggingModule;
 using AsyncSerializer;
 using System.Threading.Tasks;
 
@@ -59,25 +58,31 @@ namespace SaveAndLoad
         /// <param name="session">Previous session</param>
         public static void DeserializeBrowsers(Session session)
         {
-            List<BrowserData> browsersData = session.browsers;
-
-            foreach (BrowserData bdata in browsersData)
+            try
             {
-                Browser browser = Instantiator.Instance.Browser();
-                browser.transform.position = new Vector3(bdata.position.x, bdata.position.y, bdata.position.z);
-                browser.transform.forward = new Vector3(bdata.forward.x, bdata.forward.y, bdata.forward.z);
-                Transform lsp = browser.package_list.transform.Find(bdata.lastSelectedPackage);
-                if (lsp != null && bdata.lastSelectedPackage != "")
-                {
-                    lsp.gameObject.GetComponent<BrowserPackage>().click();
-                    BrowserClass lsc = browser.class_list.last_selected as BrowserClass;
-                    if (lsc != null) lsc.click();
-                }
-                if (bdata.lastSelectedSide == "ClassSide") browser.onSelectClassSide();
-                else browser.onSelectInstanceSide();
+                List<BrowserData> browsersData = session.browsers;
 
-                browsers.Add(browser);
-                //InteractionLogger.Count("Browser", browser.GetInstanceID().ToString());
+                foreach (BrowserData bdata in browsersData)
+                {
+                    Browser browser = Instantiator.Instance.Browser();
+                    browser.transform.position = new Vector3(bdata.position.x, bdata.position.y, bdata.position.z);
+                    browser.transform.forward = new Vector3(bdata.forward.x, bdata.forward.y, bdata.forward.z);
+                    Transform lsp = browser.package_list.transform.Find(bdata.lastSelectedPackage);
+                    if (lsp != null && bdata.lastSelectedPackage != "")
+                    {
+                        lsp.gameObject.GetComponent<BrowserPackage>().click();
+                        BrowserClass lsc = browser.class_list.last_selected as BrowserClass;
+                        if (lsc != null) lsc.click();
+                    }
+                    if (bdata.lastSelectedSide == "ClassSide") browser.onSelectClassSide();
+                    else browser.onSelectInstanceSide();
+
+                    browsers.Add(browser);
+                }
+            }
+            catch
+            {
+
             }
         }
 
@@ -104,17 +109,24 @@ namespace SaveAndLoad
         /// <param name="session">Previous session</param>
         public static void DeserializePlaygrounds(Session session)
         {
-            List<PlaygroundData> playgroundsData = session.playgrounds;
-
-            foreach (PlaygroundData pdata in playgroundsData)
+            try
             {
-                Playground playground = Instantiator.Instance.Playground();
-                playground.transform.position = new Vector3(pdata.position.x, pdata.position.y, pdata.position.z);
-                playground.transform.forward = new Vector3(pdata.forward.x, pdata.forward.y, pdata.forward.z);
-                playground.field.text = pdata.sourceCode;
-                playgrounds.Add(playground);
-                //InteractionLogger.Count("Playground", playground.GetInstanceID().ToString());
+                List<PlaygroundData> playgroundsData = session.playgrounds;
+
+                foreach (PlaygroundData pdata in playgroundsData)
+                {
+                    Playground playground = Instantiator.Instance.Playground();
+                    playground.transform.position = new Vector3(pdata.position.x, pdata.position.y, pdata.position.z);
+                    playground.transform.forward = new Vector3(pdata.forward.x, pdata.forward.y, pdata.forward.z);
+                    playground.field.text = pdata.sourceCode;
+
+                    playgrounds.Add(playground);
+                }
             }
+            catch
+            {
+
+            }            
         }
 
         /// <summary>
@@ -140,18 +152,23 @@ namespace SaveAndLoad
         /// <param name="session">Previous session</param>
         public static void DeserializeInspectors(Session session)
         {
-            List<InspectorData> inspectorsData = session.inspectors;
-
-            foreach (InspectorData idata in inspectorsData)
+            try
             {
-                Inspector inspector = Instantiator.Instance.Inspector();
-                inspector.setContent(idata.rows);
-                inspector.transform.position = new Vector3(idata.position.x, idata.position.y, idata.position.z);
-                inspector.transform.forward = new Vector3(idata.forward.x, idata.forward.y, idata.forward.z);
+                List<InspectorData> inspectorsData = session.inspectors;
 
-                inspectors.Add(inspector);
+                foreach (InspectorData idata in inspectorsData)
+                {
+                    Inspector inspector = Instantiator.Instance.Inspector();
+                    inspector.setContent(idata.rows);
+                    inspector.transform.position = new Vector3(idata.position.x, idata.position.y, idata.position.z);
+                    inspector.transform.forward = new Vector3(idata.forward.x, idata.forward.y, idata.forward.z);
 
-                //InteractionLogger.Count("Inspector", inspector.GetInstanceID().ToString());
+                    inspectors.Add(inspector);
+                }
+            }
+            catch
+            {
+
             }
         }
 
@@ -179,20 +196,26 @@ namespace SaveAndLoad
         /// <param name="session">Previous session</param>
         public static void DeserializeGraphs(Session session)
         {
-            List<SVGData> graphsData = session.graphs;
-
-            foreach (SVGData gdata in graphsData)
+            try
             {
-                string rawImage = gdata.rawImage;
-                string type = gdata.type;
+                List<SVGData> graphsData = session.graphs;
 
-                Graph graph = Instantiator.Instance.Graph();
-                graph.setSprite(rawImage, type);
-                graph.transform.position = new Vector3(gdata.position.x, gdata.position.y, gdata.position.z);
-                graph.transform.forward = new Vector3(gdata.forward.x, gdata.forward.y, gdata.forward.z);
-                graphs.Add(graph);
+                foreach (SVGData gdata in graphsData)
+                {
+                    string rawImage = gdata.rawImage;
+                    string type = gdata.type;
 
-                //InteractionLogger.Count("GraphObject", graph.GetInstanceID().ToString());
+                    Graph graph = Instantiator.Instance.Graph();
+                    graph.setSprite(rawImage, type);
+                    graph.transform.position = new Vector3(gdata.position.x, gdata.position.y, gdata.position.z);
+                    graph.transform.forward = new Vector3(gdata.forward.x, gdata.forward.y, gdata.forward.z);
+
+                    graphs.Add(graph);
+                }
+            }
+            catch
+            {
+
             }
         }
 
@@ -203,30 +226,40 @@ namespace SaveAndLoad
             {
                 Vector3 pos = pyEditor.transform.position;
                 Vector3 fwd = pyEditor.transform.forward;
-                pyEditorsData.Add(
-                    new PythonEditorData(pos, fwd, pyEditor.filename.text, pyEditor.fullpath, pyEditor.pythonCode.text, pyEditor.logText.text));
+                string filename = pyEditor.filename.text;
+                string code = pyEditor.pythonCode.text;
+                string fullpath = pyEditor.fullpath;
+                string log = pyEditor.logText.text;
+
+                pyEditorsData.Add(new PythonEditorData(pos, fwd, filename, fullpath, code, log));
             }
             return pyEditorsData;
         }
 
         public static void DeserializePythonEditors(Session session)
         {
-            List<PythonEditorData> pyEditorsData = session.pythonEditors;
-
-            foreach (PythonEditorData pyData in pyEditorsData)
+            try
             {
-                PythonEditor pyEditor = Instantiator.Instance.PythonEditor();
+                List<PythonEditorData> pyEditorsData = session.pythonEditors;
 
-                pyEditor.transform.position = new Vector3(pyData.position.x, pyData.position.y, pyData.position.z);
-                pyEditor.transform.forward = new Vector3(pyData.forward.x, pyData.forward.y, pyData.forward.z);
-                pyEditor.name = pyData.filename;
-                pyEditor.filename.text = pyData.filename;
-                pyEditor.pythonCode.text = pyData.code;
-                pyEditor.logText.text = pyData.output;
+                foreach (PythonEditorData pyData in pyEditorsData)
+                {
+                    PythonEditor pyEditor = Instantiator.Instance.PythonEditor();
 
-                pyEditors.Add(pyEditor);
+                    pyEditor.transform.position = new Vector3(pyData.position.x, pyData.position.y, pyData.position.z);
+                    pyEditor.transform.forward = new Vector3(pyData.forward.x, pyData.forward.y, pyData.forward.z);
+                    pyEditor.fullpath = pyData.fullpath;
+                    pyEditor.name = Path.GetFileName(pyData.fullpath);
+                    pyEditor.filename.text = Path.GetFileName(pyData.fullpath);
+                    pyEditor.pythonCode.text = pyData.code;
+                    pyEditor.logText.text = pyData.output;
 
-                //InteractionLogger.Count("PythonEditor", pyEditor.GetInstanceID().ToString());
+                    pyEditors.Add(pyEditor);
+                }
+            }
+            catch
+            {
+
             }
         }
 

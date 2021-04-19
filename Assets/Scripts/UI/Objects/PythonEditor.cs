@@ -84,7 +84,7 @@ public class PythonEditor : InitializeBehaviour
 
     public override void onClose()
     {
-        if (!execution.ThreadState.Equals(ThreadState.Running))
+        if ((execution != null && !execution.ThreadState.Equals(ThreadState.Running)) || execution == null)
         {
             foreach (GameObject import in importLines.Values)
                 Destroy(import);

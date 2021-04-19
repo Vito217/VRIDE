@@ -1,4 +1,8 @@
-# PharoVRIDE's Channel Log
+# VRIDE's Channel Log
+
+## V0.27.2 (19/04/2021)
+* Fixed intense white on UI highlighting
+* Added Python Editor to session and log files
 
 ## V0.27.1 (14/04/2021)
 * Fixed Python Err Output

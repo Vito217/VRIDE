@@ -45,6 +45,9 @@ public class RoassalMethod : RoassalObject
         catch (Exception e)
         {
             roassal.logText.text = "<color=#C63737>[Error] " + e.Message + "</color>";
+        }
+        finally
+        {
             roassal.Reactivate();
         }
     }

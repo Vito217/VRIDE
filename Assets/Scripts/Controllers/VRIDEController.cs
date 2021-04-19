@@ -134,8 +134,9 @@ public class VRIDEController : MonoBehaviour
         InitializeBehaviour window = hand.gameObject.GetComponentInChildren<InitializeBehaviour>();
         if (window != null)
         {
-            Vector3 dir = (hand.position - window.transform.position).normalized;
-            if (isForward) dir *= -1f;
+            //Vector3 dir = (hand.position - window.transform.position).normalized;
+            Vector3 dir = hand.forward;
+            if (!isForward) dir *= -1f;
             window.transform.localPosition = window.transform.localPosition + dir  * .01f;
         }
     }
