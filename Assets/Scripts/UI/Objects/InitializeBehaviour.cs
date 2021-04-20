@@ -13,6 +13,7 @@ public class InitializeBehaviour : MonoBehaviour
     public TMP_InputField logText;
     public TMP_InputField field;
     public TMP_InputField keyboardTarget;
+    public TextMeshProUGUI lineCounter;
     public GameObject loadingWheel;
     public GameObject keyboardsGameObject;
     public bool freezeRotation = true;
@@ -41,47 +42,6 @@ public class InitializeBehaviour : MonoBehaviour
     }
 
     /**
-    StringBuilder sb = new StringBuilder();
-    List<char> notAN = new List<char> { ' ', '\n', '\t', '\r' };
-
-    public async void onChangeInput()
-    {
-        try
-        {
-            string text = field.text;
-            text = Regex.Replace(text, @"<color=#b32d00>|<color=#00ffffff>|</color>|<b>|</b>", "");
-            text = Regex.Replace(text, @"\t", "".PadRight(4));
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
-            {
-                int i;
-                for (i = field.caretPosition - 1; i >= 0 && !notAN.Contains(text[i]); i--)
-                    sb.Insert(0, text[i].ToString(), 1);
-                string previous_word = sb.ToString();
-                int pw_len = previous_word.Length;
-                for (i = i; i >= 0 && notAN.Contains(text[i]); i--) { }
-                if ((i == -1) || (i >= 0 && text[i] == '.') || (pw_len > 0 && previous_word[0] == '#'))
-                    field.caretPosition += 1;
-                sb.Clear();
-            }
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                field.caretPosition += 4;
-                if (text[field.caretPosition - 1] != ' ')
-                    field.caretPosition -= 1;
-            }
-            text = Regex.Replace(text, @"(\A|\.\s*\n*\s*)([a-zA-Z0-9]+)(\s|\n)", "$1<b>$2</b>$3");
-            text = Regex.Replace(text, @"(\n?\s*)(#[a-zA-Z0-9]+)(\n?\s*)", "$1<color=#00ffffff>$2</color>$3");
-            field.text = text;
-        }
-        catch
-        {
-            await SaveAndLoadModule.Save(player);
-            await Pharo.Execute("SmalltalkImage current snapshot: true andQuit: true.");
-            InteractionLogger.SessionEnd();
-            Application.Quit();
-        }
-    }
-
     public string cleanCode(string code)
     {
         return Regex.Replace(code, @"<color=#b32d00>|<color=#00ffffff>|</color>|<b>|</b>", "");
@@ -232,23 +192,7 @@ public class InitializeBehaviour : MonoBehaviour
 
     public virtual void onClose() { Destroy(gameObject); }
 
-    public virtual void innerBehaviour() 
-    {
-        /**
-        if (keyboardTarget != null && keyboardTarget.isFocused)
-        {
-            if (fromUIClick)
-            {
-                fromUIClick = false;
-                keyboardTarget.caretPosition = lastCaretPosition;
-                keyboardTarget.selectionAnchorPosition = lastAnchorPosition;
-            }
-
-            lastCaretPosition = keyboardTarget.caretPosition;
-            lastAnchorPosition = keyboardTarget.selectionAnchorPosition;
-        }
-        **/
-    }
+    public virtual void innerBehaviour() { }
 
     public virtual IEnumerator innerStart() { yield return null; }
 
@@ -263,5 +207,17 @@ public class InitializeBehaviour : MonoBehaviour
         cg.interactable = !cg.interactable;
         cg.blocksRaycasts = !cg.blocksRaycasts;
         cg.alpha = Mathf.Abs(1f - cg.alpha);
+    }
+
+    public void CountLines()
+    {
+        string t = "1";
+        int lines = 1;
+
+        foreach (char c in field.text) 
+            if (c == '\n') 
+                t += "\n" + ++lines;
+
+        lineCounter.text = t;
     }
 }

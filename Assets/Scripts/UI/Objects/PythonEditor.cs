@@ -82,6 +82,11 @@ public class PythonEditor : InitializeBehaviour
         }
     }
 
+    void LateUpdate()
+    {
+        CountLines();
+    }
+
     public override void onClose()
     {
         if ((execution != null && !execution.ThreadState.Equals(ThreadState.Running)) || execution == null)

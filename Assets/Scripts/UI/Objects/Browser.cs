@@ -215,15 +215,6 @@ public class Browser : InitializeBehaviour
         }
         else if (keyboardTarget.isFocused)
         {
-            /**
-            if (fromUIClick)
-            {
-                fromUIClick = false;
-                keyboardTarget.caretPosition = lastCaretPosition;
-                keyboardTarget.selectionAnchorPosition = lastAnchorPosition;
-            }
-            **/
-
             if (Input.anyKeyDown && !loadingWheel.activeSelf)
             {
                 bool cmd = Input.GetKey(KeyCode.LeftCommand) ||
@@ -233,16 +224,16 @@ public class Browser : InitializeBehaviour
                 bool f6 = Input.GetKeyDown(KeyCode.F6);
                 bool s = Input.GetKeyDown("s");
 
-                //if (!(leftCmd || leftCtrl || f6 || s))
-                //    onChangeInput();
-
                 if ((cmd && s) || f6)
                     PharoDefine();
             }
-
-            //lastCaretPosition = keyboardTarget.caretPosition;
-            //lastAnchorPosition = keyboardTarget.selectionAnchorPosition;
         }
+    }
+
+    void LateUpdate()
+    {
+        CountLines();
+        HighlightCode();
     }
 
     public void LoadPackages()
@@ -292,5 +283,49 @@ public class Browser : InitializeBehaviour
         classFilter.interactable = false;
         packageRemover.interactable = false;
         package_list.Load();
+    }
+
+    void HighlightCode()
+    {
+        TMP_TextInfo textInfo = field.textComponent.textInfo;
+
+        foreach(TMP_WordInfo wordInfo in textInfo.wordInfo) 
+            PaintWord(textInfo, wordInfo, Color.white);
+
+        for(int i = 0; i < textInfo.wordInfo.Length; i++)
+        {
+            try
+            {
+                TMP_WordInfo wordInfo = textInfo.wordInfo[i];
+                if (Regex.Match(field.text, @"subclass:[\s]+#").Success)
+                {
+                    if (i == 0)
+                        PaintWord(textInfo, wordInfo, Color.cyan);
+                    else if (i == 2)
+                        PaintWord(textInfo, wordInfo, Color.green);
+                }
+            }
+            catch
+            {
+                continue;
+            }
+        }
+        field.textComponent.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+    }
+
+    private void PaintWord(TMP_TextInfo textInfo, TMP_WordInfo wordInfo, Color color)
+    {
+        for (int i = 0; i < wordInfo.characterCount; ++i)
+        {
+            int charIndex = wordInfo.firstCharacterIndex + i;
+            int meshIndex = textInfo.characterInfo[charIndex].materialReferenceIndex;
+            int vertexIndex = textInfo.characterInfo[charIndex].vertexIndex;
+
+            Color32[] vertexColors = field.textComponent.textInfo.meshInfo[meshIndex].colors32;
+            vertexColors[vertexIndex + 0] = color;
+            vertexColors[vertexIndex + 1] = color;
+            vertexColors[vertexIndex + 2] = color;
+            vertexColors[vertexIndex + 3] = color;
+        }
     }
 }

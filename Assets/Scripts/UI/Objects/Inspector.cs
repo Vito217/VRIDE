@@ -28,7 +28,7 @@ public class Inspector : InitializeBehaviour
             InspectorRow new_row = Instantiator.Instance.InspectorDataRow();
             new_row.setContent(pair[0], pair[1], inspector_content, this);
             if (pair[0] == "self")
-                text = "'" + pair[1].Replace("\n", "'\n") + pair[0] + "\n";
+                text = pair[1] + "\n" + pair[0] + "\n";
         }
         field.text = text;
         LayoutRebuilder.ForceRebuildLayoutImmediate(inspectorText);

@@ -994,17 +994,8 @@ public class Playground : InitializeBehaviour
 
     public override void innerBehaviour()
     {
-        if (keyboardTarget.isFocused)
+        if (field.isFocused)
         {
-            /**
-            if (fromUIClick)
-            {
-                fromUIClick = false;
-                keyboardTarget.caretPosition = lastCaretPosition;
-                keyboardTarget.selectionAnchorPosition = lastAnchorPosition;
-            }
-            **/
-
             if (Input.anyKeyDown && !loadingWheel.activeSelf)
             {
                 bool cmd = Input.GetKey(KeyCode.LeftCommand) ||
@@ -1039,10 +1030,12 @@ public class Playground : InitializeBehaviour
                 //else
                 //    onChangeInput();
             }
-
-            //lastCaretPosition = keyboardTarget.caretPosition;
-            //lastAnchorPosition = keyboardTarget.selectionAnchorPosition;
         }
+    }
+
+    void LateUpdate()
+    {
+        CountLines();
     }
 
     async Task<String> TryGetImageFile(Match match, string type, string selectedCode)
