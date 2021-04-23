@@ -13,8 +13,8 @@ namespace PharoModule
     /// </summary>
     public static class Pharo
     {
-        public static string IP = "http://localhost:1701/repl";
-        public static readonly HttpClient client = new HttpClient();
+        public static string pharoIP;
+        public static readonly HttpClient pharoClient = new HttpClient();
 
         /// <summary>
         /// Starts a local Pharo server as a background task (EXPERIMENTAL)
@@ -32,9 +32,9 @@ namespace PharoModule
         /// <returns>Response string</returns>
         public static async Task<string> Execute(string code)
         {
-            var request = await client.PostAsync
+            var request = await pharoClient.PostAsync
             (
-                IP, 
+                pharoIP, 
                 new StringContent
                 (
                     "[" + code + "]\n" +

@@ -28,6 +28,25 @@ public class PythonEditor : InitializeBehaviour
     Thread execution;
     IPython engine;
 
+    Dictionary<string, Color> colorDict = new Dictionary<string, Color>()
+    {
+        { "def", Color.yellow },
+        { "if", Color.yellow },
+        { "elif", Color.yellow },
+        { "else", Color.yellow },
+        { "print", Color.cyan },
+        { "import", Color.green },
+        { "True", Color.blue },
+        { "False", Color.blue },
+        { "for", Color.yellow },
+        { "in", Color.yellow },
+        { "from", Color.green },
+        { "None", Color.red },
+        { "class", Color.green },
+        { "break", Color.yellow },
+        { "pass", Color.yellow }
+    };
+
     public override IEnumerator innerStart()
     {
         importLines = new Dictionary<string, GameObject>();
@@ -85,6 +104,7 @@ public class PythonEditor : InitializeBehaviour
     void LateUpdate()
     {
         CountLines();
+        HighlightCode();
     }
 
     public override void onClose()
@@ -185,5 +205,29 @@ public class PythonEditor : InitializeBehaviour
             }
             yield return null;
         }
+    }
+
+    void HighlightCode()
+    {
+        TMP_TextInfo textInfo = field.textComponent.textInfo;
+
+        foreach (TMP_WordInfo wordInfo in textInfo.wordInfo)
+            PaintWord(textInfo, wordInfo, Color.white);
+
+        for (int i = 0; i < textInfo.wordInfo.Length; i++)
+        {
+            try
+            {
+                TMP_WordInfo wordInfo = textInfo.wordInfo[i];
+                string word = wordInfo.GetWord();
+                Color color = colorDict[word];
+                PaintWord(textInfo, wordInfo, color);
+            }
+            catch
+            {
+                continue;
+            }
+        }
+        field.textComponent.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
     }
 }

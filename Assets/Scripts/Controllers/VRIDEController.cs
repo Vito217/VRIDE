@@ -10,6 +10,8 @@ public class VRIDEController : MonoBehaviour
     public GameObject leftHand, rightHand;
     public Transform leftTransform, rightTransform;
 
+    public GameObject currentActivePointer;
+
     Vector3 currentPosition = Vector3.zero;
 
     void Awake()
@@ -62,15 +64,25 @@ public class VRIDEController : MonoBehaviour
             GenerateMenu();
 
         // Grab interactions
-        if (rightForwardAxis && rightTrigger)
-            MoveGrabbedObject(true, true);
-        else if (rightBackAxis && rightTrigger)
-            MoveGrabbedObject(false, true);
+        if (rightTrigger)
+        {
+            currentActivePointer = rightHand.transform.parent.gameObject;
 
-        if (leftForwardAxis && leftTrigger)
-            MoveGrabbedObject(true, false);
-        else if (leftBackAxis && leftTrigger)
-            MoveGrabbedObject(false, false);
+            if (rightForwardAxis)
+                MoveGrabbedObject(true, true);
+            else if (rightBackAxis)
+                MoveGrabbedObject(false, true);
+        }
+
+        if (leftTrigger)
+        {
+            currentActivePointer = leftHand.transform.parent.gameObject;
+
+            if (leftForwardAxis)
+                MoveGrabbedObject(true, false);
+            else if (leftBackAxis)
+                MoveGrabbedObject(false, false);
+        }
 
         // Position log
         if (currentPosition != transform.position)

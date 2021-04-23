@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -17,44 +16,6 @@ namespace ImageUtils
     /// </summary>
     public static class ImageModule
     {
-        /// <summary>
-        /// Convert bytearray to Iamge
-        /// </summary>
-        /// <param name="array">the bytearray</param>
-        /// <returns>An Image object</returns>
-        public static Image LoadFromByteArray(byte[] array)
-        {
-            return (Bitmap)((new ImageConverter()).ConvertFrom(array));
-        }
-
-        /// <summary>
-        /// Stores bytearray as image file.
-        /// </summary>
-        /// <param name="array">The bytearray</param>
-        /// <param name="path">Dir. path</param>
-        public static void SaveImage(byte[] array, string path)
-        {
-            Image img = LoadFromByteArray(array);
-            img.Save(path);
-        }
-
-        /// <summary>
-        /// Loads image from path
-        /// </summary>
-        /// <param name="path">Dir. path</param>
-        /// <returns>Image bytes</returns>
-        public static byte[] ReadImage(string path)
-        {
-            Image img = Image.FromFile(path);
-            byte[] arr;
-            using (MemoryStream ms = new MemoryStream())
-            {
-                img.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-                arr = ms.ToArray();
-            }
-            return arr;
-        }
-
         /// <summary>
         /// Convert string-formated bytearray to bytearray
         /// </summary>

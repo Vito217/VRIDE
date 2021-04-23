@@ -18,8 +18,8 @@ public class IPython : MonoBehaviour
         var paths = new[] {
             Path.Combine(Application.persistentDataPath),
             Path.Combine(Application.streamingAssetsPath),
-            Path.Combine(Application.streamingAssetsPath, "Lib"),
-            Path.Combine(Application.streamingAssetsPath, "Lib", "site-packages"),
+            Path.Combine(Application.streamingAssetsPath, "Python", "Lib"),
+            Path.Combine(Application.streamingAssetsPath, "Python", "Lib", "site-packages"),
             Path.Combine(Application.persistentDataPath, SaveAndLoadModule.username)
         };
 

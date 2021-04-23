@@ -304,6 +304,9 @@ public class Browser : InitializeBehaviour
                     else if (i == 2)
                         PaintWord(textInfo, wordInfo, Color.green);
                 }
+                else
+                    if (i == 0)
+                        PaintWord(textInfo, wordInfo, Color.magenta);
             }
             catch
             {
@@ -311,21 +314,5 @@ public class Browser : InitializeBehaviour
             }
         }
         field.textComponent.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
-    }
-
-    private void PaintWord(TMP_TextInfo textInfo, TMP_WordInfo wordInfo, Color color)
-    {
-        for (int i = 0; i < wordInfo.characterCount; ++i)
-        {
-            int charIndex = wordInfo.firstCharacterIndex + i;
-            int meshIndex = textInfo.characterInfo[charIndex].materialReferenceIndex;
-            int vertexIndex = textInfo.characterInfo[charIndex].vertexIndex;
-
-            Color32[] vertexColors = field.textComponent.textInfo.meshInfo[meshIndex].colors32;
-            vertexColors[vertexIndex + 0] = color;
-            vertexColors[vertexIndex + 1] = color;
-            vertexColors[vertexIndex + 2] = color;
-            vertexColors[vertexIndex + 3] = color;
-        }
     }
 }

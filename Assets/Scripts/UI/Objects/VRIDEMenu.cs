@@ -7,11 +7,20 @@ using UnityEngine.EventSystems;
 using TMPro;
 using PharoModule;
 using System.Text.RegularExpressions;
+using System.Net;
 
 public class VRIDEMenu : InitializeBehaviour
 {
-    public static bool keyboardToggleState;
-    public static bool vrHandsToggleState;
+    private static IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
+    private static string localhost = host.AddressList[host.AddressList.Length - 1].ToString();
+
+    public static string pharoIPState = localhost;
+    public static string streamerIPState = localhost;
+    public static string pharoPortState = "1701";
+    public static string streamerPortState = "5000";
+
+    public static bool keyboardToggleState = false;
+    public static bool vrHandsToggleState = false;
 
     public Toggle keyboardToggle;
     public Toggle vrHandsToggle;
@@ -24,10 +33,23 @@ public class VRIDEMenu : InitializeBehaviour
     public TMP_InputField pharoIP;
     public TMP_InputField pharoPort;
 
+    public TMP_InputField streamerIP;
+    public TMP_InputField streamerPort;
+
     public override IEnumerator innerStart()
     {
         keyboardToggle.isOn = keyboardToggleState;
         vrHandsToggle.isOn = vrHandsToggleState;
+
+        pharoIP.text = pharoIPState;
+        pharoPort.text = pharoPortState;
+
+        streamerIP.text = streamerIPState;
+        streamerPort.text = streamerPortState;
+
+        UpdatePharoIPAndPort();
+        UpdateStreamerIPAndPort();
+
         return base.innerStart();
     }
 
@@ -101,6 +123,16 @@ public class VRIDEMenu : InitializeBehaviour
         Destroy(gameObject);
     }
 
+    public void GenerateDesktopView()
+    {
+        DesktopView dv = Instantiator.Instance.DesktopView();
+        dv.Initialize();
+
+        InteractionLogger.Count("DesktopView", dv.GetInstanceID().ToString());
+
+        Destroy(gameObject);
+    }
+
     public void Exit()
     {
         SaveAndLoadModule.Save();
@@ -164,6 +196,15 @@ public class VRIDEMenu : InitializeBehaviour
 
     public void UpdatePharoIPAndPort()
     {
-        Pharo.IP = Regex.Replace("http://" + pharoIP.text + ":" + pharoPort.text + "/repl", @"\n|\s|\t", @"");
+        pharoIPState = pharoIP.text;
+        pharoPortState = pharoPort.text;
+        Pharo.pharoIP = "http://" + pharoIP.text + ":" + pharoPort.text + "/repl";
+    }
+
+    public void UpdateStreamerIPAndPort()
+    {
+        streamerIPState = streamerIP.text;
+        streamerPortState = streamerPort.text;
+        DesktopView.streamerIP = "http://" + streamerIP.text + ":" + streamerPort.text + "/";
     }
 }

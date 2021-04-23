@@ -41,13 +41,6 @@ public class InitializeBehaviour : MonoBehaviour
         innerBehaviour();
     }
 
-    /**
-    public string cleanCode(string code)
-    {
-        return Regex.Replace(code, @"<color=#b32d00>|<color=#00ffffff>|</color>|<b>|</b>", "");
-    }
-    **/
-
     public string getSelectedCode(string clean_code, bool includesEmpty)
     {
         int start = field.selectionAnchorPosition;
@@ -219,5 +212,21 @@ public class InitializeBehaviour : MonoBehaviour
                 t += "\n" + ++lines;
 
         lineCounter.text = t;
+    }
+
+    protected void PaintWord(TMP_TextInfo textInfo, TMP_WordInfo wordInfo, Color color)
+    {
+        for (int i = 0; i < wordInfo.characterCount; ++i)
+        {
+            int charIndex = wordInfo.firstCharacterIndex + i;
+            int meshIndex = textInfo.characterInfo[charIndex].materialReferenceIndex;
+            int vertexIndex = textInfo.characterInfo[charIndex].vertexIndex;
+
+            Color32[] vertexColors = field.textComponent.textInfo.meshInfo[meshIndex].colors32;
+            vertexColors[vertexIndex + 0] = color;
+            vertexColors[vertexIndex + 1] = color;
+            vertexColors[vertexIndex + 2] = color;
+            vertexColors[vertexIndex + 3] = color;
+        }
     }
 }

@@ -25,6 +25,7 @@ public class Instantiator : MonoBehaviour
     public TextMeshPro textPrefab;
     public FileExplorer fileExplorerPrefab;
     public PythonEditor pythonEditorPrefab;
+    public DesktopView desktopViewPrefab;
 
     public GameObject defaultGround;
     public GameObject spaceShip;
@@ -257,5 +258,10 @@ public class Instantiator : MonoBehaviour
         GameObject dir = Instantiate(explorerDirectoryPrefab, parent, false);
         dir.GetComponent<TextMeshProUGUI>().text = name;
         return dir;
+    }
+
+    public DesktopView DesktopView()
+    {
+        return Instantiate(desktopViewPrefab);
     }
 }
