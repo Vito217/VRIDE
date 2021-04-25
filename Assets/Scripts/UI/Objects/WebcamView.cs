@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class WebcamView : InitializeBehaviour
@@ -7,8 +8,7 @@ public class WebcamView : InitializeBehaviour
 #endif
     public GameObject quad;
 
-    // Start is called before the first frame update
-    void Start()
+    public override IEnumerator innerStart()
     {
 #if UNITY_EDITOR_WIN || UNITY_EDITOR_LINUX || UNITY_STANDALONE_WIN || UNITY_STANDALONE_LINUX
         GetComponent<Canvas>().worldCamera = Camera.main;
@@ -17,6 +17,7 @@ public class WebcamView : InitializeBehaviour
         quad.GetComponent<Renderer>().material.mainTexture = webcamTexture;
         webcamTexture.Play();
 #endif
+        return base.innerStart();
     }
 
     public override void innerBehaviour()

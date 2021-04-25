@@ -9,14 +9,17 @@ public class DesktopView : InitializeBehaviour
 {
     public Image img;
     public static string streamerIP;
-    public static readonly HttpClient streamerClient = new HttpClient();
 
     private bool click = false;
     private bool keepRequesting = true;
     private Vector2 coords = Vector2.zero;
 
+    private HttpClient streamerClient;
+
     public override IEnumerator innerStart()
     {
+        streamerClient = new HttpClient();
+
         ReadFromURL();
         return base.innerStart();
     }
@@ -26,7 +29,8 @@ public class DesktopView : InitializeBehaviour
         click = true;
         Vector3 hitWorldPosition = ((PointerEventData)data).pointerCurrentRaycast.worldPosition;
         Vector2 hitLocalPosition = img.transform.InverseTransformPoint(hitWorldPosition);
-        coords = Vector2Int.RoundToInt(hitLocalPosition + GetComponent<RectTransform>().sizeDelta);
+        Vector2 delta = GetComponent<RectTransform>().sizeDelta / 2;
+        coords = Vector2Int.RoundToInt(new Vector2(hitLocalPosition.x + delta.x, delta.y - hitLocalPosition.y));
     }
 
     async void ReadFromURL()
@@ -36,12 +40,14 @@ public class DesktopView : InitializeBehaviour
             try
             {
                 // Building the data
-                HttpContent content = new ByteArrayContent(Encoding.UTF8.GetBytes(click + " " + coords.x + " " + coords.y));
+                string data = click + " " + coords.x + " " + coords.y;
+
+                if (click) click = false;
+
+                HttpContent content = new ByteArrayContent(Encoding.UTF8.GetBytes(data));
                 HttpResponseMessage response = await streamerClient.PostAsync(streamerIP, content);
-
-                click = false;
-
                 byte[] result = await response.Content.ReadAsByteArrayAsync();
+
                 Texture2D tex = new Texture2D(1, 1);
                 tex.LoadImage(result);
 
