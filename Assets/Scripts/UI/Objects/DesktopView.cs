@@ -7,16 +7,13 @@ using UnityEngine.UI;
 
 public class DesktopView : InitializeBehaviour
 {
+    public Image img;
     public static string streamerIP;
     public static readonly HttpClient streamerClient = new HttpClient();
 
-    public Image img;
-    private bool mouseOver = false;
-    private bool mouseClicked = false;
-    private GameObject pointer;
-    private Vector2 coordinates = Vector2.zero; 
-
-    bool keepRequesting = true;
+    private bool click = false;
+    private bool keepRequesting = true;
+    private Vector2 coords = Vector2.zero;
 
     public override IEnumerator innerStart()
     {
@@ -24,36 +21,12 @@ public class DesktopView : InitializeBehaviour
         return base.innerStart();
     }
 
-    public override void innerBehaviour()
+    public void OnPointerClick(BaseEventData data)
     {
-        base.innerBehaviour();
-        if (mouseOver) OnHover();
-    }
-
-    void OnHover()
-    {
-        LineRenderer line = pointer.GetComponent<LineRenderer>();
-        Vector3 endPoint = line.GetPosition(1);
-        Vector3 hitLocalPosition = img.transform.InverseTransformPoint(endPoint);
-
-        var sizeDelta = GetComponent<RectTransform>().sizeDelta;
-        Vector2 mouseCoords = new Vector2(hitLocalPosition.x, hitLocalPosition.y) + sizeDelta;
-        coordinates = mouseCoords;
-
-        VRIDEInputHandler inputs = pointer.transform.root.GetComponent<VRIDEInputHandler>();
-        mouseClicked = inputs.LeftTrigger || inputs.RightTrigger;
-    }
-
-    public void OnPointerEnter(BaseEventData data)
-    {
-        mouseOver = true;
-        Transform player = ((PointerEventData)data).enterEventCamera.transform.root;
-        pointer = player.GetComponent<VRIDEController>().currentActivePointer;
-    }
-
-    public void OnPointerExit(BaseEventData data)
-    {
-        mouseOver = false;
+        click = true;
+        Vector3 hitWorldPosition = ((PointerEventData)data).pointerCurrentRaycast.worldPosition;
+        Vector2 hitLocalPosition = img.transform.InverseTransformPoint(hitWorldPosition);
+        coords = Vector2Int.RoundToInt(hitLocalPosition + GetComponent<RectTransform>().sizeDelta);
     }
 
     async void ReadFromURL()
@@ -63,17 +36,12 @@ public class DesktopView : InitializeBehaviour
             try
             {
                 // Building the data
-                string isMouseOver = mouseOver.ToString();
-                string isMouseClicked = mouseClicked.ToString();
-                string xCoord = Mathf.Round(coordinates.x).ToString();
-                string yCoord = Mathf.Round(coordinates.y).ToString();
-                string sContent = isMouseOver + " " + isMouseClicked + " " + xCoord + " " + yCoord;
-
-                HttpContent content = new ByteArrayContent(Encoding.UTF8.GetBytes(sContent));
-
+                HttpContent content = new ByteArrayContent(Encoding.UTF8.GetBytes(click + " " + coords.x + " " + coords.y));
                 HttpResponseMessage response = await streamerClient.PostAsync(streamerIP, content);
-                byte[] result = await response.Content.ReadAsByteArrayAsync();
 
+                click = false;
+
+                byte[] result = await response.Content.ReadAsByteArrayAsync();
                 Texture2D tex = new Texture2D(1, 1);
                 tex.LoadImage(result);
 
@@ -84,8 +52,7 @@ public class DesktopView : InitializeBehaviour
                 GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
 
                 // Updating image
-                Sprite sprite = Sprite.Create(tex, new Rect(0, 0, width, height), new Vector2(width * .5f, height * .5f));
-                img.sprite = sprite;
+                img.sprite = Sprite.Create(tex, new Rect(0, 0, width, height), new Vector2(width * .5f, height * .5f));
             }
             catch { }
         }
