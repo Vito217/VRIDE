@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Text;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 
 public class DesktopView : InitializeBehaviour
@@ -14,13 +15,14 @@ public class DesktopView : InitializeBehaviour
     private bool keepRequesting = true;
     private Vector2 coords = Vector2.zero;
 
-    private HttpClient streamerClient;
+    //private HttpClient streamerClient;
 
     public override IEnumerator innerStart()
     {
-        streamerClient = new HttpClient();
+        //streamerClient = new HttpClient();
+        //ReadFromURL();
 
-        ReadFromURL();
+        StartCoroutine(RequestForImage());
         return base.innerStart();
     }
 
@@ -33,6 +35,7 @@ public class DesktopView : InitializeBehaviour
         coords = Vector2Int.RoundToInt(new Vector2(hitLocalPosition.x + delta.x, delta.y - hitLocalPosition.y));
     }
 
+    /**
     async void ReadFromURL()
     {
         while (keepRequesting)
@@ -63,10 +66,28 @@ public class DesktopView : InitializeBehaviour
             catch { }
         }
     }
+    **/
+
+    IEnumerator RequestForImage()
+    {
+        while (keepRequesting)
+        {
+            string data = click + " " + coords.x + " " + coords.y;
+            if (click) click = false;
+            using (UnityWebRequest uwr = UnityWebRequest.Post(streamerIP, data))
+            {
+                yield return uwr.SendWebRequest();
+                byte[] result = uwr.downloadHandler.data;
+                Texture2D t = new Texture2D(1, 1); t.LoadImage(result);
+                GetComponent<RectTransform>().sizeDelta = new Vector2(t.width, t.height);
+                img.sprite = Sprite.Create(t, new Rect(0, 0, t.width, t.height), new Vector2(t.width * .5f, t.height * .5f));
+            }
+        }
+    }
 
     private void OnDestroy()
     {
         keepRequesting = false;
-        streamerClient.Dispose();
+        //streamerClient.Dispose();
     }
 }
