@@ -1,9 +1,10 @@
 # Virtual Reality Interactive Development Environment (VRIDE)
-A VR IDE made in Unity that supports Pharo programming language.
+A VR IDE made in Unity that supports Pharo and Python programming language.
 
 <i><b>Note:</b> This is still an early WIP, so there could be lot of features missing</i>
 
 <h1><a href="https://github.com/Vito217/VRIDE/releases/tag/v0.28.0">Download VRIDE v0.28.0</a></h1>
+<h1><a href="https://github.com/Vito217/VRIDEStreamer/releases/tag/v1.0.0">Download VRIDE Streamer App v1.0.0</a></h1>
 
 ![alt text](https://github.com/Vito217/VRIDE/blob/master/Screenshots/2020-07-15.png)
 ![alt text](https://github.com/Vito217/VRIDE/blob/master/Screenshots/2020-10-27.png)
@@ -13,9 +14,9 @@ A VR IDE made in Unity that supports Pharo programming language.
 
 [![Alt text for your video](https://img.youtube.com/vi/rulEHAiN-3M/0.jpg)](http://www.youtube.com/watch?v=rulEHAiN-3M)
 
-## What is PharoVRIDE?
+## What is VRIDE?
 
-PharoVRIDE is an attempt to make an entire IDE inside a VR game. The main goal of this project is having a big and personalized space, where the programmer can not only develop software in Pharo, but also see and interact with 3D representations of the IDE and Objects in real time.
+VRIDE is an attempt to make an entire IDE inside a VR game. The main goal of this project is having a big and personalized space, where the programmer can not only develop software in languages like Pharo and Python, but also see and interact with 3D representations of the IDE and Objects in real time.
 
 Our main goals for this project are:
 <ul>
@@ -26,21 +27,7 @@ Our main goals for this project are:
   <li>Connecting with other programmers on the same space</li>
 </ul>
 
-It works much like the Pharo IDE: create and search for classes using the System Browser, instantiate objects using the Playground, and inspect their variables using the inspector.
-
-### The System Browser
-
-Just like Pharo's System Browser, you can use the text editor to create your own classes. In order to do so, write your piece of code and execute the corresponding shorcut. Classes are shown in the left window, while their methods are shown in the right window. Once you select one of the objects, you can see its source code.
-
-![alt text](https://github.com/Vito217/VRIDE/blob/master/Screenshots/2020-04-22-(2).png)
-![alt text](https://github.com/Vito217/VRIDE/blob/master/Screenshots/2020-04-22-(3).png)
-![alt text](https://github.com/Vito217/VRIDE/blob/master/Screenshots/2020-05-02.png)
-
-### The Playground
-Once you've defined your own objects, or if you just want to play with some basic operations, write some code using the playground's text editor. Depending on the shorcut you use, you can either execute your code or print the result after selecting a statement.
-
-![alt text](https://github.com/Vito217/VRIDE/blob/master/Screenshots/2020-04-22-(4).png)
-![alt text](https://github.com/Vito217/VRIDE/blob/master/Screenshots/2020-05-02_(1).png)
+Pharo in VRIDE works much like the Pharo IDE: create and search for classes using the System Browser, instantiate objects using the Playground, and inspect their variables using the inspector. VRIDE also lets you create .py file and execute them.
 
 ## How does it work?
 
@@ -282,3 +269,5 @@ Finally, put on your VR headset, and try some stuff!
 ## Download
 
 <a href="https://github.com/Vito217/VRIDE/releases/tag/v0.28.0">Download VRIDE v0.28.0</a>
+<br>
+<a href="https://github.com/Vito217/VRIDEStreamer/releases/tag/v1.0.0">Download VRIDE Streamer App v1.0.0</a>
