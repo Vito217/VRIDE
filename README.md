@@ -3,7 +3,7 @@ A VR IDE made in Unity that supports Pharo programming language.
 
 <i><b>Note:</b> This is still an early WIP, so there could be lot of features missing</i>
 
-<h1><a href="https://github.com/Vito217/VRIDE/releases/tag/v0.27.2">Download VRIDE v0.27.2 - The Python Update</a></h1>
+<h1><a href="https://github.com/Vito217/VRIDE/releases/tag/v0.28.0">Download VRIDE v0.28.0</a></h1>
 
 ![alt text](https://github.com/Vito217/VRIDE/blob/master/Screenshots/2020-07-15.png)
 ![alt text](https://github.com/Vito217/VRIDE/blob/master/Screenshots/2020-10-27.png)
@@ -89,6 +89,30 @@ Pharo will warn you that there may be linebreaks inside your Pharo code, but it 
 
 Once a new class or method is created, a new Unity GameObject is created and placed in its corresponding scrollable window.
 
+### Executing Python code
+
+VRIDE currently uses IronPython 3.4 Alpha. The code used to run Python is as follows:
+
+```
+Microsoft.Scripting.Hosting.ScriptEngine pythonEngine = IronPython.Hosting.Python.CreateEngine();
+
+var paths = new[] {
+    Path.Combine(Application.persistentDataPath),
+    Path.Combine(Application.streamingAssetsPath),
+    Path.Combine(Application.streamingAssetsPath, "Python", "Lib"),
+    Path.Combine(Application.streamingAssetsPath, "Python", "Lib", "site-packages"),
+    Path.Combine(Application.persistentDataPath, SaveAndLoadModule.username)
+};
+
+pythonEngine.SetSearchPaths(paths);
+
+Microsoft.Scripting.Hosting.ScriptScope pythonScope = pythonEngine.CreateScope();
+
+Microsoft.Scripting.Hosting.ScriptSource pythonScript = pythonEngine.CreateScriptSourceFromFile(path);
+
+pythonScript.Execute(pythonScope);
+```
+
 ### Working with prefabs
 
 Each element is instantiated as a prefab, and most of the prefabs are Canvas. The most relevant prefabs are the following:
@@ -105,6 +129,45 @@ Each element is instantiated as a prefab, and most of the prefabs are Canvas. Th
 
 The text highlightning is based on regular expressions. You can specify a list of keywords to be used, and define regular expressions that matches those keywords.
 
+```
+Dictionary<string, Color> colorDict = new Dictionary<string, Color>()
+    {
+        { "def", Color.yellow },
+        { "if", Color.yellow },
+        { "else", Color.yellow },
+        ...
+    };
+    
+TMP_TextInfo textInfo = field.textComponent.textInfo;
+
+for (int i = 0; i < textInfo.wordInfo.Length; i++)
+{
+    try
+    {
+        TMP_WordInfo wordInfo = textInfo.wordInfo[i];
+        string word = wordInfo.GetWord();
+        Color color = colorDict[word];
+        for (int i = 0; i < wordInfo.characterCount; ++i)
+        {
+            int charIndex = wordInfo.firstCharacterIndex + i;
+            int meshIndex = textInfo.characterInfo[charIndex].materialReferenceIndex;
+            int vertexIndex = textInfo.characterInfo[charIndex].vertexIndex;
+
+            Color32[] vertexColors = field.textComponent.textInfo.meshInfo[meshIndex].colors32;
+            vertexColors[vertexIndex + 0] = color;
+            vertexColors[vertexIndex + 1] = color;
+            vertexColors[vertexIndex + 2] = color;
+            vertexColors[vertexIndex + 3] = color;
+        }
+    }
+    catch
+    {
+        continue;
+    }
+}
+field.textComponent.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+```
+
 ## What is currently working:
 
 <ul>
@@ -112,22 +175,15 @@ The text highlightning is based on regular expressions. You can specify a list o
   <li>Playground: writes code and prints its result.</li>
   <li>Inspector: inspect a variable and its value.</li>
   <li>Some Roassal2 RTGraphs as SVG and PNG.</li>
-  <li>Some Roassal3 RSCanvas as PNG.</li>
-  <li>Desktop Mode controls (mouse + keyboard)</li>
-  <li>VR Mode controls for HTC VIVE</li>
+  <li>Some Roassal3 RSCanvas as PNG and AFrames</li>
+  <li>Basic Python coding, like methods, classes and .py files</li>
 </ul>
 
 ## What is NOT entirely working (a.k.a. TODO)
 
 <ul>
-  <li>A list of bugs (shown below).</li>
-</ul>
-
-## List of Bugs
-
-<ul>
-  <li>Some details in the text editor, such as incorrect highlightning, coloring, blank spaces, etc.</li>
   <li>Not every SVG extracted from Roassal2 and Roassal3 is compatible with Unity. In that case, an [Error] code wil be thrown.</li>
+  <li>Not every Python library is available yet.</li>
 </ul>
 
 ## Controls
@@ -148,13 +204,11 @@ The text highlightning is based on regular expressions. You can specify a list o
   <li>F9: Open Menu</li>
 </ul>
 
-### HTC VIVE Cosmos
+### VR Controls
 
 * Y or B: Open Menu.
 * Left/Right trigger: Pointer Click/Drag.
 * Left/Right grip: Teleport, Grab 3D Objects.
-
-All previous commands can be executed using the VR and physical keyboards.
 
 ## Installation and Setup
 
@@ -195,7 +249,7 @@ If you are using Oculus Quest, or if you just want to connect remotely to your l
     yourself
 ```
 
-If it doesn't work on Mac, you can manually enter the IP address:
+You can also manually enter the IP address:
 
 ```
 (ZnServer on: 1701)
@@ -227,4 +281,4 @@ Finally, put on your VR headset, and try some stuff!
 
 ## Download
 
-<a href="https://github.com/Vito217/VRIDE/releases/tag/v0.27.2">Download VRIDE v0.27.2</a>
+<a href="https://github.com/Vito217/VRIDE/releases/tag/v0.28.0">Download VRIDE v0.28.0</a>
