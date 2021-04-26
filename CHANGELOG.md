@@ -1,5 +1,9 @@
 # VRIDE's Channel Log
 
+## V0.28.0 (26/04/2021)
+* Enhanced editors. Text Highlighting has been restored, and line counters have been added.
+* Desktop Streaming: Now it is possible to stream a desktop from a PC to VRIDE. 
+
 ## V0.27.2 (19/04/2021)
 * Fixed intense white on UI highlighting
 * Added Python Editor to session and log files
