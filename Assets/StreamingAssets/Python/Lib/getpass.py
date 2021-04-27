@@ -15,11 +15,7 @@ On the Mac EasyDialogs.AskPassword is used, if available.
 #          Guido van Rossum (Windows support and cleanup)
 #          Gregory P. Smith (tty support & GetPassWarning)
 
-import contextlib
-import io
-import os
-import sys
-import warnings
+import os, sys, warnings
 
 __all__ = ["getpass","getuser","GetPassWarning"]
 
@@ -42,57 +38,52 @@ def unix_getpass(prompt='Password: ', stream=None):
 
     Always restores terminal settings before returning.
     """
-    passwd = None
-    with contextlib.ExitStack() as stack:
+    fd = None
+    tty = None
+    try:
+        # Always try reading and writing directly on the tty first.
+        fd = os.open('/dev/tty', os.O_RDWR|os.O_NOCTTY)
+        tty = os.fdopen(fd, 'w+', 1)
+        input = tty
+        if not stream:
+            stream = tty
+    except EnvironmentError, e:
+        # If that fails, see if stdin can be controlled.
         try:
-            # Always try reading and writing directly on the tty first.
-            fd = os.open('/dev/tty', os.O_RDWR|os.O_NOCTTY)
-            tty = io.FileIO(fd, 'w+')
-            stack.enter_context(tty)
-            input = io.TextIOWrapper(tty)
-            stack.enter_context(input)
-            if not stream:
-                stream = input
-        except OSError as e:
-            # If that fails, see if stdin can be controlled.
-            stack.close()
-            try:
-                fd = sys.stdin.fileno()
-            except (AttributeError, ValueError):
-                fd = None
-                passwd = fallback_getpass(prompt, stream)
-            input = sys.stdin
-            if not stream:
-                stream = sys.stderr
+            fd = sys.stdin.fileno()
+        except (AttributeError, ValueError):
+            passwd = fallback_getpass(prompt, stream)
+        input = sys.stdin
+        if not stream:
+            stream = sys.stderr
 
-        if fd is not None:
+    if fd is not None:
+        passwd = None
+        try:
+            old = termios.tcgetattr(fd)     # a copy to save
+            new = old[:]
+            new[3] &= ~termios.ECHO  # 3 == 'lflags'
+            tcsetattr_flags = termios.TCSAFLUSH
+            if hasattr(termios, 'TCSASOFT'):
+                tcsetattr_flags |= termios.TCSASOFT
             try:
-                old = termios.tcgetattr(fd)     # a copy to save
-                new = old[:]
-                new[3] &= ~termios.ECHO  # 3 == 'lflags'
-                tcsetattr_flags = termios.TCSAFLUSH
-                if hasattr(termios, 'TCSASOFT'):
-                    tcsetattr_flags |= termios.TCSASOFT
-                try:
-                    termios.tcsetattr(fd, tcsetattr_flags, new)
-                    passwd = _raw_input(prompt, stream, input=input)
-                finally:
-                    termios.tcsetattr(fd, tcsetattr_flags, old)
-                    stream.flush()  # issue7208
-            except termios.error:
-                if passwd is not None:
-                    # _raw_input succeeded.  The final tcsetattr failed.  Reraise
-                    # instead of leaving the terminal in an unknown state.
-                    raise
-                # We can't control the tty or stdin.  Give up and use normal IO.
-                # fallback_getpass() raises an appropriate warning.
-                if stream is not input:
-                    # clean up unused file objects before blocking
-                    stack.close()
-                passwd = fallback_getpass(prompt, stream)
+                termios.tcsetattr(fd, tcsetattr_flags, new)
+                passwd = _raw_input(prompt, stream, input=input)
+            finally:
+                termios.tcsetattr(fd, tcsetattr_flags, old)
+                stream.flush()  # issue7208
+        except termios.error, e:
+            if passwd is not None:
+                # _raw_input succeeded.  The final tcsetattr failed.  Reraise
+                # instead of leaving the terminal in an unknown state.
+                raise
+            # We can't control the tty or stdin.  Give up and use normal IO.
+            # fallback_getpass() raises an appropriate warning.
+            del input, tty  # clean up unused file objects before blocking
+            passwd = fallback_getpass(prompt, stream)
 
-        stream.write('\n')
-        return passwd
+    stream.write('\n')
+    return passwd
 
 
 def win_getpass(prompt='Password: ', stream=None):
@@ -101,10 +92,10 @@ def win_getpass(prompt='Password: ', stream=None):
         return fallback_getpass(prompt, stream)
     import msvcrt
     for c in prompt:
-        msvcrt.putwch(c)
+        msvcrt.putch(c)
     pw = ""
     while 1:
-        c = msvcrt.getwch()
+        c = msvcrt.getch()
         if c == '\r' or c == '\n':
             break
         if c == '\003':
@@ -113,8 +104,8 @@ def win_getpass(prompt='Password: ', stream=None):
             pw = pw[:-1]
         else:
             pw = pw + c
-    msvcrt.putwch('\r')
-    msvcrt.putwch('\n')
+    msvcrt.putch('\r')
+    msvcrt.putch('\n')
     return pw
 
 
@@ -123,25 +114,20 @@ def fallback_getpass(prompt='Password: ', stream=None):
                   stacklevel=2)
     if not stream:
         stream = sys.stderr
-    print("Warning: Password input may be echoed.", file=stream)
+    print >>stream, "Warning: Password input may be echoed."
     return _raw_input(prompt, stream)
 
 
 def _raw_input(prompt="", stream=None, input=None):
-    # This doesn't save the string in the GNU readline history.
+    # A raw_input() replacement that doesn't save the string in the
+    # GNU readline history.
     if not stream:
         stream = sys.stderr
     if not input:
         input = sys.stdin
     prompt = str(prompt)
     if prompt:
-        try:
-            stream.write(prompt)
-        except UnicodeEncodeError:
-            # Use replace error handler to get as much as possible printed.
-            prompt = prompt.encode(stream.encoding, 'replace')
-            prompt = prompt.decode(stream.encoding)
-            stream.write(prompt)
+        stream.write(prompt)
         stream.flush()
     # NOTE: The Python C API calls flockfile() (and unlock) during readline.
     line = input.readline()
@@ -159,6 +145,8 @@ def getuser():
     database.  This works on Windows as long as USERNAME is set.
 
     """
+
+    import os
 
     for name in ('LOGNAME', 'USER', 'LNAME', 'USERNAME'):
         user = os.environ.get(name)
@@ -179,7 +167,12 @@ except (ImportError, AttributeError):
     try:
         import msvcrt
     except ImportError:
-        getpass = fallback_getpass
+        try:
+            from EasyDialogs import AskPassword
+        except ImportError:
+            getpass = fallback_getpass
+        else:
+            getpass = AskPassword
     else:
         getpass = win_getpass
 else:

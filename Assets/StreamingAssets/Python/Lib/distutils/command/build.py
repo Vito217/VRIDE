@@ -2,16 +2,17 @@
 
 Implements the Distutils 'build' command."""
 
+__revision__ = "$Id$"
+
 import sys, os
+
+from distutils.util import get_platform
 from distutils.core import Command
 from distutils.errors import DistutilsOptionError
-from distutils.util import get_platform
-
 
 def show_compilers():
     from distutils.ccompiler import show_compilers
     show_compilers()
-
 
 class build(Command):
 
@@ -113,7 +114,7 @@ class build(Command):
             self.build_scripts = os.path.join(self.build_base,
                                               'scripts-' + sys.version[0:3])
 
-        if self.executable is None:
+        if self.executable is None and sys.executable:
             self.executable = os.path.normpath(sys.executable)
 
     def run(self):
@@ -125,21 +126,19 @@ class build(Command):
         for cmd_name in self.get_sub_commands():
             self.run_command(cmd_name)
 
-
     # -- Predicates for the sub-command list ---------------------------
 
-    def has_pure_modules(self):
+    def has_pure_modules (self):
         return self.distribution.has_pure_modules()
 
-    def has_c_libraries(self):
+    def has_c_libraries (self):
         return self.distribution.has_c_libraries()
 
-    def has_ext_modules(self):
+    def has_ext_modules (self):
         return self.distribution.has_ext_modules()
 
-    def has_scripts(self):
+    def has_scripts (self):
         return self.distribution.has_scripts()
-
 
     sub_commands = [('build_py',      has_pure_modules),
                     ('build_clib',    has_c_libraries),

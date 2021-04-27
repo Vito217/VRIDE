@@ -26,7 +26,7 @@ class FileWrapper:
     def __iter__(self):
         return self
 
-    def __next__(self):
+    def next(self):
         data = self.filelike.read(self.blksize)
         if data:
             return data
@@ -43,7 +43,7 @@ def guess_scheme(environ):
 def application_uri(environ):
     """Return the application's base URI (no PATH_INFO or QUERY_STRING)"""
     url = environ['wsgi.url_scheme']+'://'
-    from urllib.parse import quote
+    from urllib import quote
 
     if environ.get('HTTP_HOST'):
         url += environ['HTTP_HOST']
@@ -57,14 +57,14 @@ def application_uri(environ):
             if environ['SERVER_PORT'] != '80':
                 url += ':' + environ['SERVER_PORT']
 
-    url += quote(environ.get('SCRIPT_NAME') or '/', encoding='latin1')
+    url += quote(environ.get('SCRIPT_NAME') or '/')
     return url
 
-def request_uri(environ, include_query=True):
+def request_uri(environ, include_query=1):
     """Return the full request URI, optionally including the query string"""
     url = application_uri(environ)
-    from urllib.parse import quote
-    path_info = quote(environ.get('PATH_INFO',''), safe='/;=,', encoding='latin1')
+    from urllib import quote
+    path_info = quote(environ.get('PATH_INFO',''),safe='/;=,')
     if not environ.get('SCRIPT_NAME'):
         url += path_info[1:]
     else:
@@ -142,8 +142,8 @@ def setup_testing_defaults(environ):
     environ.setdefault('wsgi.multithread', 0)
     environ.setdefault('wsgi.multiprocess', 0)
 
-    from io import StringIO, BytesIO
-    environ.setdefault('wsgi.input', BytesIO())
+    from StringIO import StringIO
+    environ.setdefault('wsgi.input', StringIO(""))
     environ.setdefault('wsgi.errors', StringIO())
     environ.setdefault('wsgi.url_scheme',guess_scheme(environ))
 

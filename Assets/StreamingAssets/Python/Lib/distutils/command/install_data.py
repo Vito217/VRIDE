@@ -5,6 +5,8 @@ platform-independent data files."""
 
 # contributed by Bastian Kleineidam
 
+__revision__ = "$Id$"
+
 import os
 from distutils.core import Command
 from distutils.util import change_root, convert_path

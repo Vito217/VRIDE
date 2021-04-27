@@ -1,3 +1,5 @@
+# -*- coding: latin-1 -*-
+
 """Heap queue algorithm (a.k.a. priority queue).
 
 Heaps are arrays for which a[k] <= a[2*k+1] and a[k] <= a[2*k+2] for
@@ -32,7 +34,7 @@ maintains the heap invariant!
 
 __about__ = """Heap queues
 
-[explanation by FranÃ§ois Pinard]
+[explanation by François Pinard]
 
 Heaps are arrays for which a[k] <= a[2*k+1] and a[k] <= a[2*k+2] for
 all k, counting elements from 0.  For the sake of comparison,
@@ -54,7 +56,7 @@ representation for a tournament.  The numbers below are `k', not a[k]:
 
 
 In the tree above, each cell `k' is topping `2*k+1' and `2*k+2'.  In
-an usual binary tournament we see in sports, each cell is the winner
+a usual binary tournament we see in sports, each cell is the winner
 over the two cells it tops, and we can trace the winner down the tree
 to see all opponents s/he had.  However, in many computer applications
 of such tournaments, we do not need to trace the history of a winner.
@@ -127,7 +129,13 @@ From all times, sorting has always been a Great Art! :-)
 __all__ = ['heappush', 'heappop', 'heapify', 'heapreplace', 'merge',
            'nlargest', 'nsmallest', 'heappushpop']
 
-from itertools import islice, count, tee, chain
+from itertools import islice, count, imap, izip, tee, chain
+from operator import itemgetter
+
+def cmp_lt(x, y):
+    # Use __lt__ if available; otherwise, try __le__.
+    # In Py3.x, only __lt__ will be called.
+    return (x < y) if hasattr(x, '__lt__') else (not y <= x)
 
 def heappush(heap, item):
     """Push item onto heap, maintaining the heap invariant."""
@@ -163,7 +171,7 @@ def heapreplace(heap, item):
 
 def heappushpop(heap, item):
     """Fast version of a heappush followed by a heappop."""
-    if heap and heap[0] < item:
+    if heap and cmp_lt(heap[0], item):
         item, heap[0] = heap[0], item
         _siftup(heap, 0)
     return item
@@ -176,12 +184,12 @@ def heapify(x):
     # or i < (n-1)/2.  If n is even = 2*j, this is (2*j-1)/2 = j-1/2 so
     # j-1 is the largest, which is n//2 - 1.  If n is odd = 2*j+1, this is
     # (2*j+1-1)/2 = j so j-1 is the largest, and that's again n//2-1.
-    for i in reversed(range(n//2)):
+    for i in reversed(xrange(n//2)):
         _siftup(x, i)
 
 def _heappushpop_max(heap, item):
     """Maxheap version of a heappush followed by a heappop."""
-    if heap and item < heap[0]:
+    if heap and cmp_lt(item, heap[0]):
         item, heap[0] = heap[0], item
         _siftup_max(heap, 0)
     return item
@@ -238,7 +246,7 @@ def _siftdown(heap, startpos, pos):
     while pos > startpos:
         parentpos = (pos - 1) >> 1
         parent = heap[parentpos]
-        if newitem < parent:
+        if cmp_lt(newitem, parent):
             heap[pos] = parent
             pos = parentpos
             continue
@@ -260,7 +268,7 @@ def _siftdown(heap, startpos, pos):
 #
 # Cutting the # of comparisons is important, since these routines have no
 # way to extract "the priority" from an array element, so that intelligence
-# is likely to be hiding in custom comparison methods, or in array elements
+# is likely to be hiding in custom __cmp__ methods, or in array elements
 # storing (priority, record) tuples.  Comparisons are thus potentially
 # expensive.
 #
@@ -293,7 +301,7 @@ def _siftup(heap, pos):
     while childpos < endpos:
         # Set childpos to index of smaller child.
         rightpos = childpos + 1
-        if rightpos < endpos and not heap[childpos] < heap[rightpos]:
+        if rightpos < endpos and not cmp_lt(heap[childpos], heap[rightpos]):
             childpos = rightpos
         # Move the smaller child up.
         heap[pos] = heap[childpos]
@@ -312,7 +320,7 @@ def _siftdown_max(heap, startpos, pos):
     while pos > startpos:
         parentpos = (pos - 1) >> 1
         parent = heap[parentpos]
-        if parent < newitem:
+        if cmp_lt(parent, newitem):
             heap[pos] = parent
             pos = parentpos
             continue
@@ -329,7 +337,7 @@ def _siftup_max(heap, pos):
     while childpos < endpos:
         # Set childpos to index of larger child.
         rightpos = childpos + 1
-        if rightpos < endpos and not heap[rightpos] < heap[childpos]:
+        if rightpos < endpos and not cmp_lt(heap[rightpos], heap[childpos]):
             childpos = rightpos
         # Move the larger child up.
         heap[pos] = heap[childpos]
@@ -364,7 +372,7 @@ def merge(*iterables):
     h_append = h.append
     for itnum, it in enumerate(map(iter, iterables)):
         try:
-            next = it.__next__
+            next = it.next
             h_append([next(), itnum, next])
         except _StopIteration:
             pass
@@ -372,7 +380,7 @@ def merge(*iterables):
 
     while _len(h) > 1:
         try:
-            while True:
+            while 1:
                 v, itnum, next = s = h[0]
                 yield v
                 s[0] = next()               # raises StopIteration when exhausted
@@ -383,7 +391,8 @@ def merge(*iterables):
         # fast case when only a single iterator remains
         v, itnum, next = h[0]
         yield v
-        yield from next.__self__
+        for v in next.__self__:
+            yield v
 
 # Extend the implementations of nsmallest and nlargest to use a key= argument
 _nsmallest = nsmallest
@@ -413,15 +422,15 @@ def nsmallest(n, iterable, key=None):
 
     # When key is none, use simpler decoration
     if key is None:
-        it = zip(iterable, count())                         # decorate
+        it = izip(iterable, count())                        # decorate
         result = _nsmallest(n, it)
-        return [r[0] for r in result]                       # undecorate
+        return map(itemgetter(0), result)                   # undecorate
 
     # General case, slowest method
     in1, in2 = tee(iterable)
-    it = zip(map(key, in1), count(), in2)                   # decorate
+    it = izip(imap(key, in1), count(), in2)                 # decorate
     result = _nsmallest(n, it)
-    return [r[2] for r in result]                           # undecorate
+    return map(itemgetter(2), result)                       # undecorate
 
 _nlargest = nlargest
 def nlargest(n, iterable, key=None):
@@ -451,15 +460,15 @@ def nlargest(n, iterable, key=None):
 
     # When key is none, use simpler decoration
     if key is None:
-        it = zip(iterable, count(0,-1))                     # decorate
+        it = izip(iterable, count(0,-1))                    # decorate
         result = _nlargest(n, it)
-        return [r[0] for r in result]                       # undecorate
+        return map(itemgetter(0), result)                   # undecorate
 
     # General case, slowest method
     in1, in2 = tee(iterable)
-    it = zip(map(key, in1), count(0,-1), in2)               # decorate
+    it = izip(imap(key, in1), count(0,-1), in2)             # decorate
     result = _nlargest(n, it)
-    return [r[2] for r in result]                           # undecorate
+    return map(itemgetter(2), result)                       # undecorate
 
 if __name__ == "__main__":
     # Simple sanity test
@@ -470,7 +479,7 @@ if __name__ == "__main__":
     sort = []
     while heap:
         sort.append(heappop(heap))
-    print(sort)
+    print sort
 
     import doctest
     doctest.testmod()

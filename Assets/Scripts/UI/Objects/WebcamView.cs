@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class WebcamView : InitializeBehaviour
 {
-#if UNITY_EDITOR_WIN || UNITY_EDITOR_LINUX || UNITY_STANDALONE_WIN || UNITY_STANDALONE_LINUX
+#if UNITY_EDITOR_WIN || UNITY_EDITOR_LINUX || UNITY_STANDALONE_WIN || UNITY_STANDALONE_LINUX || UNITY_ANDROID
     WebCamTexture webcamTexture;
 #endif
     public GameObject quad;
 
     public override IEnumerator innerStart()
     {
-#if UNITY_EDITOR_WIN || UNITY_EDITOR_LINUX || UNITY_STANDALONE_WIN || UNITY_STANDALONE_LINUX
+#if UNITY_EDITOR_WIN || UNITY_EDITOR_LINUX || UNITY_STANDALONE_WIN || UNITY_STANDALONE_LINUX || UNITY_ANDROID
         GetComponent<Canvas>().worldCamera = Camera.main;
         Application.RequestUserAuthorization(UserAuthorization.WebCam);
         webcamTexture = new WebCamTexture();

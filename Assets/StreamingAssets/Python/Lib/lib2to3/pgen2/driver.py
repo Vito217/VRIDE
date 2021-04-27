@@ -17,9 +17,10 @@ __all__ = ["Driver", "load_grammar"]
 
 # Python imports
 import codecs
-import io
 import os
 import logging
+import pkgutil
+import StringIO
 import sys
 
 # Pgen imports
@@ -43,7 +44,7 @@ class Driver(object):
         lineno = 1
         column = 0
         type = value = start = end = line_text = None
-        prefix = ""
+        prefix = u""
         for quintuple in tokens:
             type, value, start, end, line_text = quintuple
             if start != (lineno, column):
@@ -102,8 +103,15 @@ class Driver(object):
 
     def parse_string(self, text, debug=False):
         """Parse a string and return the syntax tree."""
-        tokens = tokenize.generate_tokens(io.StringIO(text).readline)
+        tokens = tokenize.generate_tokens(StringIO.StringIO(text).readline)
         return self.parse_tokens(tokens, debug)
+
+
+def _generate_pickle_name(gt):
+    head, tail = os.path.splitext(gt)
+    if tail == ".txt":
+        tail = ""
+    return head + tail + ".".join(map(str, sys.version_info)) + ".pickle"
 
 
 def load_grammar(gt="Grammar.txt", gp=None,
@@ -111,11 +119,7 @@ def load_grammar(gt="Grammar.txt", gp=None,
     """Load the grammar (maybe from a pickle)."""
     if logger is None:
         logger = logging.getLogger()
-    if gp is None:
-        head, tail = os.path.splitext(gt)
-        if tail == ".txt":
-            tail = ""
-        gp = head + tail + ".".join(map(str, sys.version_info)) + ".pickle"
+    gp = _generate_pickle_name(gt) if gp is None else gp
     if force or not _newer(gp, gt):
         logger.info("Generating grammar tables from %s", gt)
         g = pgen.generate_grammar(gt)
@@ -123,8 +127,8 @@ def load_grammar(gt="Grammar.txt", gp=None,
             logger.info("Writing grammar tables to %s", gp)
             try:
                 g.dump(gp)
-            except OSError as e:
-                logger.info("Writing failed:"+str(e))
+            except IOError as e:
+                logger.info("Writing failed: %s", e)
     else:
         g = grammar.Grammar()
         g.load(gp)
@@ -138,6 +142,26 @@ def _newer(a, b):
     if not os.path.exists(b):
         return True
     return os.path.getmtime(a) >= os.path.getmtime(b)
+
+
+def load_packaged_grammar(package, grammar_source):
+    """Normally, loads a pickled grammar by doing
+        pkgutil.get_data(package, pickled_grammar)
+    where *pickled_grammar* is computed from *grammar_source* by adding the
+    Python version and using a ``.pickle`` extension.
+
+    However, if *grammar_source* is an extant file, load_grammar(grammar_source)
+    is called instead. This facilitates using a packaged grammar file when needed
+    but preserves load_grammar's automatic regeneration behavior when possible.
+
+    """
+    if os.path.isfile(grammar_source):
+        return load_grammar(grammar_source)
+    pickled_name = _generate_pickle_name(os.path.basename(grammar_source))
+    data = pkgutil.get_data(package, pickled_name)
+    g = grammar.Grammar()
+    g.loads(data)
+    return g
 
 
 def main(*args):

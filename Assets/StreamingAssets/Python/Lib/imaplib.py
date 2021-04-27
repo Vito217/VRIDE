@@ -22,22 +22,14 @@ Public functions:       Internaldate2tuple
 
 __version__ = "2.58"
 
-import binascii, errno, random, re, socket, subprocess, sys, time, calendar
-from datetime import datetime, timezone, timedelta
-from io import DEFAULT_BUFFER_SIZE
-
-try:
-    import ssl
-    HAVE_SSL = True
-except ImportError:
-    HAVE_SSL = False
+import binascii, errno, random, re, socket, subprocess, sys, time
 
 __all__ = ["IMAP4", "IMAP4_stream", "Internaldate2tuple",
            "Int2AP", "ParseFlags", "Time2Internaldate"]
 
 #       Globals
 
-CRLF = b'\r\n'
+CRLF = '\r\n'
 Debug = 0
 IMAP4_PORT = 143
 IMAP4_SSL_PORT = 993
@@ -78,6 +70,7 @@ Commands = {
         'LOGIN':        ('NONAUTH',),
         'LOGOUT':       ('NONAUTH', 'AUTH', 'SELECTED', 'LOGOUT'),
         'LSUB':         ('AUTH', 'SELECTED'),
+        'MOVE':         ('SELECTED',),
         'NAMESPACE':    ('AUTH', 'SELECTED'),
         'NOOP':         ('NONAUTH', 'AUTH', 'SELECTED', 'LOGOUT'),
         'PARTIAL':      ('SELECTED',),                                  # NB: obsolete
@@ -89,7 +82,6 @@ Commands = {
         'SETANNOTATION':('AUTH', 'SELECTED'),
         'SETQUOTA':     ('AUTH', 'SELECTED'),
         'SORT':         ('SELECTED',),
-        'STARTTLS':     ('NONAUTH',),
         'STATUS':       ('AUTH', 'SELECTED'),
         'STORE':        ('SELECTED',),
         'SUBSCRIBE':    ('AUTH', 'SELECTED'),
@@ -100,19 +92,18 @@ Commands = {
 
 #       Patterns to match server responses
 
-Continuation = re.compile(br'\+( (?P<data>.*))?')
-Flags = re.compile(br'.*FLAGS \((?P<flags>[^\)]*)\)')
-InternalDate = re.compile(br'.*INTERNALDATE "'
-        br'(?P<day>[ 0123][0-9])-(?P<mon>[A-Z][a-z][a-z])-(?P<year>[0-9][0-9][0-9][0-9])'
-        br' (?P<hour>[0-9][0-9]):(?P<min>[0-9][0-9]):(?P<sec>[0-9][0-9])'
-        br' (?P<zonen>[-+])(?P<zoneh>[0-9][0-9])(?P<zonem>[0-9][0-9])'
-        br'"')
-Literal = re.compile(br'.*{(?P<size>\d+)}$', re.ASCII)
-MapCRLF = re.compile(br'\r\n|\r|\n')
-Response_code = re.compile(br'\[(?P<type>[A-Z-]+)( (?P<data>[^\]]*))?\]')
-Untagged_response = re.compile(br'\* (?P<type>[A-Z-]+)( (?P<data>.*))?')
-Untagged_status = re.compile(
-    br'\* (?P<data>\d+) (?P<type>[A-Z-]+)( (?P<data2>.*))?', re.ASCII)
+Continuation = re.compile(r'\+( (?P<data>.*))?')
+Flags = re.compile(r'.*FLAGS \((?P<flags>[^\)]*)\)')
+InternalDate = re.compile(r'.*INTERNALDATE "'
+        r'(?P<day>[ 0123][0-9])-(?P<mon>[A-Z][a-z][a-z])-(?P<year>[0-9][0-9][0-9][0-9])'
+        r' (?P<hour>[0-9][0-9]):(?P<min>[0-9][0-9]):(?P<sec>[0-9][0-9])'
+        r' (?P<zonen>[-+])(?P<zoneh>[0-9][0-9])(?P<zonem>[0-9][0-9])'
+        r'"')
+Literal = re.compile(r'.*{(?P<size>\d+)}$')
+MapCRLF = re.compile(r'\r\n|\r|\n')
+Response_code = re.compile(r'\[(?P<type>[A-Z-]+)( (?P<data>[^\]]*))?\]')
+Untagged_response = re.compile(r'\* (?P<type>[A-Z-]+)( (?P<data>.*))?')
+Untagged_status = re.compile(r'\* (?P<data>\d+) (?P<type>[A-Z-]+)( (?P<data2>.*))?')
 
 
 
@@ -166,6 +157,8 @@ class IMAP4:
     class abort(error): pass        # Service errors - close and retry
     class readonly(abort): pass     # Mailbox status changed to READ-ONLY
 
+    mustquote = re.compile(r"[^\w!#$%&'*+,.:;<=>?^`|~-]")
+
     def __init__(self, host = '', port = IMAP4_PORT):
         self.debug = Debug
         self.state = 'LOGOUT'
@@ -175,30 +168,18 @@ class IMAP4:
         self.continuation_response = '' # Last continuation response
         self.is_readonly = False        # READ-ONLY desired state
         self.tagnum = 0
-        self._tls_established = False
 
         # Open socket to server.
 
         self.open(host, port)
 
-        try:
-            self._connect()
-        except Exception:
-            try:
-                self.shutdown()
-            except OSError:
-                pass
-            raise
-
-
-    def _connect(self):
         # Create unique tag for this session,
         # and compile tagged response matcher.
 
         self.tagpre = Int2AP(random.randint(4096, 65535))
-        self.tagre = re.compile(br'(?P<tag>'
+        self.tagre = re.compile(r'(?P<tag>'
                         + self.tagpre
-                        + br'\d+) (?P<type>[A-Z]+) (?P<data>.*)', re.ASCII)
+                        + r'\d+) (?P<type>[A-Z]+) (?P<data>.*)')
 
         # Get server welcome message,
         # request and store CAPABILITY response.
@@ -219,7 +200,11 @@ class IMAP4:
         else:
             raise self.error(self.welcome)
 
-        self._get_capabilities()
+        typ, dat = self.capability()
+        if dat == [None]:
+            raise self.error('no CAPABILITY response from server')
+        self.capabilities = tuple(dat[-1].upper().split())
+
         if __debug__:
             if self.debug >= 3:
                 self._mesg('CAPABILITIES: %r' % (self.capabilities,))
@@ -244,9 +229,6 @@ class IMAP4:
     #       Overridable methods
 
 
-    def _create_socket(self):
-        return socket.create_connection((self.host, self.port))
-
     def open(self, host = '', port = IMAP4_PORT):
         """Setup connection to remote server on "host:port"
             (default: localhost:standard IMAP4 port).
@@ -255,7 +237,7 @@ class IMAP4:
         """
         self.host = host
         self.port = port
-        self.sock = self._create_socket()
+        self.sock = socket.create_connection((host, port))
         self.file = self.sock.makefile('rb')
 
 
@@ -282,9 +264,11 @@ class IMAP4:
         self.file.close()
         try:
             self.sock.shutdown(socket.SHUT_RDWR)
-        except OSError as e:
-            # The server might already have closed the connection
-            if e.errno != errno.ENOTCONN:
+        except socket.error as e:
+            # The server might already have closed the connection.
+            # On Windows, this may result in WSAEINVAL (error 10022):
+            # An invalid operation was attempted.
+            if e.errno not in (errno.ENOTCONN, 10022):
                 raise
         finally:
             self.sock.close()
@@ -367,10 +351,10 @@ class IMAP4:
 
                 data = authobject(response)
 
-        It will be called to process server continuation responses; the
-        response argument it is passed will be a bytes.  It should return bytes
-        data that will be base64 encoded and sent to the server.  It should
-        return None if the client abort response '*' should be sent instead.
+        It will be called to process server continuation responses.
+        It should return data that will be encoded and sent to server.
+        It should return None if the client abort response '*' should
+        be sent instead.
         """
         mech = mechanism.upper()
         # XXX: shouldn't this code be removed, not commented out?
@@ -553,9 +537,7 @@ class IMAP4:
     def _CRAM_MD5_AUTH(self, challenge):
         """ Authobject to use with CRAM-MD5 authentication. """
         import hmac
-        pwd = (self.password.encode('ASCII') if isinstance(self.password, str)
-                                             else self.password)
-        return self.user + " " + hmac.HMAC(pwd, challenge, 'md5').hexdigest()
+        return self.user + " " + hmac.HMAC(self.password, challenge).hexdigest()
 
 
     def logout(self):
@@ -733,29 +715,6 @@ class IMAP4:
         return self._untagged_response(typ, dat, name)
 
 
-    def starttls(self, ssl_context=None):
-        name = 'STARTTLS'
-        if not HAVE_SSL:
-            raise self.error('SSL support missing')
-        if self._tls_established:
-            raise self.abort('TLS session already established')
-        if name not in self.capabilities:
-            raise self.abort('TLS not supported by server')
-        # Generate a default SSL context if none was passed.
-        if ssl_context is None:
-            ssl_context = ssl._create_stdlib_context()
-        typ, dat = self._simple_command(name)
-        if typ == 'OK':
-            self.sock = ssl_context.wrap_socket(self.sock,
-                                                server_hostname=self.host)
-            self.file = self.sock.makefile('rb')
-            self._tls_established = True
-            self._get_capabilities()
-        else:
-            raise self.error("Couldn't establish TLS session")
-        return self._untagged_response(typ, dat, name)
-
-
     def status(self, mailbox, names):
         """Request named status conditions for mailbox.
 
@@ -853,12 +812,12 @@ class IMAP4:
 
 
     def _append_untagged(self, typ, dat):
-        if dat is None:
-            dat = b''
+
+        if dat is None: dat = ''
         ur = self.untagged_responses
         if __debug__:
             if self.debug >= 5:
-                self._mesg('untagged_responses[%s] %s += ["%r"]' %
+                self._mesg('untagged_responses[%s] %s += ["%s"]' %
                         (typ, len(ur.get(typ,'')), dat))
         if typ in ur:
             ur[typ].append(dat)
@@ -869,7 +828,7 @@ class IMAP4:
     def _check_bye(self):
         bye = self.untagged_responses.get('BYE')
         if bye:
-            raise self.abort(bye[-1].decode('ascii', 'replace'))
+            raise self.abort(bye[-1])
 
 
     def _command(self, name, *args):
@@ -890,13 +849,10 @@ class IMAP4:
             raise self.readonly('mailbox status changed to READ-ONLY')
 
         tag = self._new_tag()
-        name = bytes(name, 'ASCII')
-        data = tag + b' ' + name
+        data = '%s %s' % (tag, name)
         for arg in args:
             if arg is None: continue
-            if isinstance(arg, str):
-                arg = bytes(arg, "ASCII")
-            data = data + b' ' + arg
+            data = '%s %s' % (data, self._checkquote(arg))
 
         literal = self.literal
         if literal is not None:
@@ -905,17 +861,17 @@ class IMAP4:
                 literator = literal
             else:
                 literator = None
-                data = data + bytes(' {%s}' % len(literal), 'ASCII')
+                data = '%s {%s}' % (data, len(literal))
 
         if __debug__:
             if self.debug >= 4:
-                self._mesg('> %r' % data)
+                self._mesg('> %s' % data)
             else:
-                self._log('> %r' % data)
+                self._log('> %s' % data)
 
         try:
-            self.send(data + CRLF)
-        except OSError as val:
+            self.send('%s%s' % (data, CRLF))
+        except (socket.error, OSError), val:
             raise self.abort('socket error: %s' % val)
 
         if literal is None:
@@ -940,7 +896,7 @@ class IMAP4:
             try:
                 self.send(literal)
                 self.send(CRLF)
-            except OSError as val:
+            except (socket.error, OSError), val:
                 raise self.abort('socket error: %s' % val)
 
             if not literator:
@@ -955,24 +911,15 @@ class IMAP4:
             self._check_bye()
         try:
             typ, data = self._get_tagged_response(tag)
-        except self.abort as val:
+        except self.abort, val:
             raise self.abort('command: %s => %s' % (name, val))
-        except self.error as val:
+        except self.error, val:
             raise self.error('command: %s => %s' % (name, val))
         if name != 'LOGOUT':
             self._check_bye()
         if typ == 'BAD':
             raise self.error('%s command error: %s %s' % (name, typ, data))
         return typ, data
-
-
-    def _get_capabilities(self):
-        typ, dat = self.capability()
-        if dat == [None]:
-            raise self.error('no CAPABILITY response from server')
-        dat = str(dat[-1], "ASCII")
-        dat = dat.upper()
-        self.capabilities = tuple(dat.split())
 
 
     def _get_response(self):
@@ -992,7 +939,6 @@ class IMAP4:
                 raise self.abort('unexpected tagged response: %s' % resp)
 
             typ = self.mo.group('type')
-            typ = str(typ, 'ASCII')
             dat = self.mo.group('data')
             self.tagged_commands[tag] = (typ, [dat])
         else:
@@ -1014,10 +960,9 @@ class IMAP4:
                 raise self.abort("unexpected response: '%s'" % resp)
 
             typ = self.mo.group('type')
-            typ = str(typ, 'ascii')
             dat = self.mo.group('data')
-            if dat is None: dat = b''        # Null untagged response
-            if dat2: dat = dat + b' ' + dat2
+            if dat is None: dat = ''        # Null untagged response
+            if dat2: dat = dat + ' ' + dat2
 
             # Is there a literal to come?
 
@@ -1044,13 +989,11 @@ class IMAP4:
         # Bracketed response information?
 
         if typ in ('OK', 'NO', 'BAD') and self._match(Response_code, dat):
-            typ = self.mo.group('type')
-            typ = str(typ, "ASCII")
-            self._append_untagged(typ, self.mo.group('data'))
+            self._append_untagged(self.mo.group('type'), self.mo.group('data'))
 
         if __debug__:
             if self.debug >= 1 and typ in ('NO', 'BAD', 'BYE'):
-                self._mesg('%s response: %r' % (typ, dat))
+                self._mesg('%s response: %s' % (typ, dat))
 
         return resp
 
@@ -1075,7 +1018,7 @@ class IMAP4:
 
             try:
                 self._get_response()
-            except self.abort as val:
+            except self.abort, val:
                 if __debug__:
                     if self.debug >= 1:
                         self.print_log()
@@ -1089,15 +1032,15 @@ class IMAP4:
             raise self.abort('socket error: EOF')
 
         # Protocol mandates all lines terminated by CRLF
-        if not line.endswith(b'\r\n'):
-            raise self.abort('socket error: unterminated line: %r' % line)
+        if not line.endswith('\r\n'):
+            raise self.abort('socket error: unterminated line')
 
         line = line[:-2]
         if __debug__:
             if self.debug >= 4:
-                self._mesg('< %r' % line)
+                self._mesg('< %s' % line)
             else:
-                self._log('< %r' % line)
+                self._log('< %s' % line)
         return line
 
 
@@ -1109,16 +1052,30 @@ class IMAP4:
         self.mo = cre.match(s)
         if __debug__:
             if self.mo is not None and self.debug >= 5:
-                self._mesg("\tmatched r'%r' => %r" % (cre.pattern, self.mo.groups()))
+                self._mesg("\tmatched r'%s' => %r" % (cre.pattern, self.mo.groups()))
         return self.mo is not None
 
 
     def _new_tag(self):
 
-        tag = self.tagpre + bytes(str(self.tagnum), 'ASCII')
+        tag = '%s%s' % (self.tagpre, self.tagnum)
         self.tagnum = self.tagnum + 1
         self.tagged_commands[tag] = None
         return tag
+
+
+    def _checkquote(self, arg):
+
+        # Must quote command args if non-alphanumeric chars present,
+        # and not already quoted.
+
+        if type(arg) is not type(''):
+            return arg
+        if len(arg) >= 2 and (arg[0],arg[-1]) in (('(',')'),('"','"')):
+            return arg
+        if arg and self.mustquote.search(arg) is None:
+            return arg
+        return self._quote(arg)
 
 
     def _quote(self, arg):
@@ -1126,7 +1083,7 @@ class IMAP4:
         arg = arg.replace('\\', '\\\\')
         arg = arg.replace('"', '\\"')
 
-        return '"' + arg + '"'
+        return '"%s"' % arg
 
 
     def _simple_command(self, name, *args):
@@ -1135,6 +1092,7 @@ class IMAP4:
 
 
     def _untagged_response(self, typ, dat, name):
+
         if typ == 'NO':
             return typ, dat
         if not name in self.untagged_responses:
@@ -1184,55 +1142,77 @@ class IMAP4:
                 n -= 1
 
 
-if HAVE_SSL:
 
+try:
+    import ssl
+except ImportError:
+    pass
+else:
     class IMAP4_SSL(IMAP4):
 
         """IMAP4 client class over SSL connection
 
-        Instantiate with: IMAP4_SSL([host[, port[, keyfile[, certfile[, ssl_context]]]]])
+        Instantiate with: IMAP4_SSL([host[, port[, keyfile[, certfile]]]])
 
                 host - host's name (default: localhost);
-                port - port number (default: standard IMAP4 SSL port);
+                port - port number (default: standard IMAP4 SSL port).
                 keyfile - PEM formatted file that contains your private key (default: None);
                 certfile - PEM formatted certificate chain file (default: None);
-                ssl_context - a SSLContext object that contains your certificate chain
-                              and private key (default: None)
-                Note: if ssl_context is provided, then parameters keyfile or
-                certfile should not be set otherwise ValueError is raised.
 
         for more documentation see the docstring of the parent class IMAP4.
         """
 
 
-        def __init__(self, host='', port=IMAP4_SSL_PORT, keyfile=None, certfile=None, ssl_context=None):
-            if ssl_context is not None and keyfile is not None:
-                raise ValueError("ssl_context and keyfile arguments are mutually "
-                                 "exclusive")
-            if ssl_context is not None and certfile is not None:
-                raise ValueError("ssl_context and certfile arguments are mutually "
-                                 "exclusive")
-
+        def __init__(self, host = '', port = IMAP4_SSL_PORT, keyfile = None, certfile = None):
             self.keyfile = keyfile
             self.certfile = certfile
-            if ssl_context is None:
-                ssl_context = ssl._create_stdlib_context(certfile=certfile,
-                                                         keyfile=keyfile)
-            self.ssl_context = ssl_context
             IMAP4.__init__(self, host, port)
 
-        def _create_socket(self):
-            sock = IMAP4._create_socket(self)
-            return self.ssl_context.wrap_socket(sock,
-                                                server_hostname=self.host)
 
-        def open(self, host='', port=IMAP4_SSL_PORT):
+        def open(self, host = '', port = IMAP4_SSL_PORT):
             """Setup connection to remote server on "host:port".
                 (default: localhost:standard IMAP4 SSL port).
             This connection will be used by the routines:
                 read, readline, send, shutdown.
             """
-            IMAP4.open(self, host, port)
+            self.host = host
+            self.port = port
+            self.sock = socket.create_connection((host, port))
+            self.sslobj = ssl.wrap_socket(self.sock, self.keyfile, self.certfile)
+            self.file = self.sslobj.makefile('rb')
+
+
+        def send(self, data):
+            """Send data to remote."""
+            bytes = len(data)
+            while bytes > 0:
+                sent = self.sslobj.write(data)
+                if sent == bytes:
+                    break    # avoid copy
+                data = data[sent:]
+                bytes = bytes - sent
+
+
+        def shutdown(self):
+            """Close I/O established in "open"."""
+            self.file.close()
+            self.sock.close()
+
+
+        def socket(self):
+            """Return socket instance used to connect to IMAP4 server.
+
+            socket = <instance>.socket()
+            """
+            return self.sock
+
+
+        def ssl(self):
+            """Return SSLObject instance used to communicate with the IMAP4 server.
+
+            ssl = ssl.wrap_socket(<instance>.socket)
+            """
+            return self.sslobj
 
     __all__.append("IMAP4_SSL")
 
@@ -1264,11 +1244,11 @@ class IMAP4_stream(IMAP4):
         self.sock = None
         self.file = None
         self.process = subprocess.Popen(self.command,
-            bufsize=DEFAULT_BUFFER_SIZE,
             stdin=subprocess.PIPE, stdout=subprocess.PIPE,
             shell=True, close_fds=True)
         self.writefile = self.process.stdin
         self.readfile = self.process.stdout
+
 
     def read(self, size):
         """Read 'size' bytes from remote."""
@@ -1306,7 +1286,7 @@ class _Authenticator:
     def process(self, data):
         ret = self.mech(self.decode(data))
         if ret is None:
-            return b'*'     # Abort conversation
+            return '*'      # Abort conversation
         return self.encode(ret)
 
     def encode(self, inp):
@@ -1318,16 +1298,14 @@ class _Authenticator:
         #  so when it gets to the end of the 8-bit input
         #  there's no partial 6-bit output.
         #
-        oup = b''
-        if isinstance(inp, str):
-            inp = inp.encode('ASCII')
+        oup = ''
         while inp:
             if len(inp) > 48:
                 t = inp[:48]
                 inp = inp[48:]
             else:
                 t = inp
-                inp = b''
+                inp = ''
             e = binascii.b2a_base64(t)
             if e:
                 oup = oup + e[:-1]
@@ -1335,17 +1313,19 @@ class _Authenticator:
 
     def decode(self, inp):
         if not inp:
-            return b''
+            return ''
         return binascii.a2b_base64(inp)
 
-Months = ' Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec'.split(' ')
-Mon2num = {s.encode():n+1 for n, s in enumerate(Months[1:])}
+
+
+Mon2num = {'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6,
+        'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12}
 
 def Internaldate2tuple(resp):
     """Parse an IMAP4 INTERNALDATE string.
 
     Return corresponding local time.  The return value is a
-    time.struct_time tuple or None if the string has wrong format.
+    time.struct_time instance or None if the string has wrong format.
     """
 
     mo = InternalDate.match(resp)
@@ -1366,13 +1346,23 @@ def Internaldate2tuple(resp):
     # INTERNALDATE timezone must be subtracted to get UT
 
     zone = (zoneh*60 + zonem)*60
-    if zonen == b'-':
+    if zonen == '-':
         zone = -zone
 
     tt = (year, mon, day, hour, min, sec, -1, -1, -1)
-    utc = calendar.timegm(tt) - zone
 
-    return time.localtime(utc)
+    utc = time.mktime(tt)
+
+    # Following is necessary because the time module has no 'mkgmtime'.
+    # 'mktime' assumes arg in local timezone, so adds timezone/altzone.
+
+    lt = time.localtime(utc)
+    if time.daylight and lt[-1]:
+        zone = zone + time.altzone
+    else:
+        zone = zone + time.timezone
+
+    return time.localtime(utc - zone)
 
 
 
@@ -1380,11 +1370,11 @@ def Int2AP(num):
 
     """Convert integer to A-P string representation."""
 
-    val = b''; AP = b'ABCDEFGHIJKLMNOP'
+    val = ''; AP = 'ABCDEFGHIJKLMNOP'
     num = int(abs(num))
     while num:
         num, mod = divmod(num, 16)
-        val = AP[mod:mod+1] + val
+        val = AP[mod] + val
     return val
 
 
@@ -1407,37 +1397,28 @@ def Time2Internaldate(date_time):
     Return string in form: '"DD-Mmm-YYYY HH:MM:SS +HHMM"'.  The
     date_time argument can be a number (int or float) representing
     seconds since epoch (as returned by time.time()), a 9-tuple
-    representing local time, an instance of time.struct_time (as
-    returned by time.localtime()), an aware datetime instance or a
+    representing local time (as returned by time.localtime()), or a
     double-quoted string.  In the last case, it is assumed to already
     be in the correct format.
     """
-    if isinstance(date_time, (int, float)):
-        dt = datetime.fromtimestamp(date_time,
-                                    timezone.utc).astimezone()
-    elif isinstance(date_time, tuple):
-        try:
-            gmtoff = date_time.tm_gmtoff
-        except AttributeError:
-            if time.daylight:
-                dst = date_time[8]
-                if dst == -1:
-                    dst = time.localtime(time.mktime(date_time))[8]
-                gmtoff = -(time.timezone, time.altzone)[dst]
-            else:
-                gmtoff = -time.timezone
-        delta = timedelta(seconds=gmtoff)
-        dt = datetime(*date_time[:6], tzinfo=timezone(delta))
-    elif isinstance(date_time, datetime):
-        if date_time.tzinfo is None:
-            raise ValueError("date_time must be aware")
-        dt = date_time
+
+    if isinstance(date_time, (int, long, float)):
+        tt = time.localtime(date_time)
+    elif isinstance(date_time, (tuple, time.struct_time)):
+        tt = date_time
     elif isinstance(date_time, str) and (date_time[0],date_time[-1]) == ('"','"'):
         return date_time        # Assume in correct format
     else:
         raise ValueError("date_time not of a known type")
-    fmt = '"%d-{}-%Y %H:%M:%S %z"'.format(Months[dt.month])
-    return dt.strftime(fmt)
+
+    dt = time.strftime("%d-%b-%Y %H:%M:%S", tt)
+    if dt[0] == '0':
+        dt = ' ' + dt[1:]
+    if time.daylight and tt[-1]:
+        zone = -time.altzone
+    else:
+        zone = -time.timezone
+    return '"' + dt + " %+03d%02d" % divmod(zone//60, 60) + '"'
 
 
 
@@ -1451,7 +1432,7 @@ if __name__ == '__main__':
 
     try:
         optlist, args = getopt.getopt(sys.argv[1:], 'd:s:')
-    except getopt.error as val:
+    except getopt.error, val:
         optlist, args = (), ()
 
     stream_command = None
@@ -1534,15 +1515,15 @@ if __name__ == '__main__':
             run('uid', ('FETCH', '%s' % uid[-1],
                     '(FLAGS INTERNALDATE RFC822.SIZE RFC822.HEADER RFC822.TEXT)'))
 
-        print('\nAll tests OK.')
+        print '\nAll tests OK.'
 
     except:
-        print('\nTests failed.')
+        print '\nTests failed.'
 
         if not Debug:
-            print('''
+            print '''
 If you would like to see debugging output,
 try: %s -d5
-''' % sys.argv[0])
+''' % sys.argv[0]
 
         raise

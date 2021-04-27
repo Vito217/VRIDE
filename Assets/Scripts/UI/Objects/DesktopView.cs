@@ -39,19 +39,24 @@ public class DesktopView : InitializeBehaviour
             using (UnityWebRequest uwr = UnityWebRequest.Post(streamerIP, data))
             {
                 yield return uwr.SendWebRequest();
-                byte[] result = uwr.downloadHandler.data;
 
-                if (firstRequest)
+                try
                 {
-                    firstRequest = false;
-                    Texture2D t = new Texture2D(1, 1); t.LoadImage(result);
-                    img.sprite = Sprite.Create(t, new Rect(0, 0, t.width, t.height), new Vector2(t.width/2, t.height/2));
-                    GetComponent<RectTransform>().sizeDelta = new Vector2(t.width, t.height);
+                    byte[] result = uwr.downloadHandler.data;
+
+                    if (firstRequest)
+                    {
+                        firstRequest = false;
+                        Texture2D t = new Texture2D(1, 1); t.LoadImage(result);
+                        img.sprite = Sprite.Create(t, new Rect(0, 0, t.width, t.height), new Vector2(t.width / 2, t.height / 2));
+                        GetComponent<RectTransform>().sizeDelta = new Vector2(t.width, t.height);
+                    }
+                    else
+                    {
+                        img.sprite.texture.LoadImage(result);
+                    }
                 }
-                else
-                {
-                    img.sprite.texture.LoadImage(result);
-                }
+                catch { }
             }
         }
     }

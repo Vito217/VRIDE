@@ -4,7 +4,6 @@
 """Base class for fixers (optional, but recommended)."""
 
 # Python imports
-import logging
 import itertools
 
 # Local imports
@@ -27,6 +26,7 @@ class BaseFix(object):
     pattern_tree = None # Tree representation of the pattern
     options = None  # Options object passed to initializer
     filename = None # The filename (set by set_filename)
+    logger = None   # A logger (set by set_filename)
     numbers = itertools.count(1) # For new_name()
     used_names = set() # A set of all used NAMEs
     order = "post" # Does the fixer prefer pre- or post-order traversal
@@ -49,7 +49,7 @@ class BaseFix(object):
         """Initializer.  Subclass may override.
 
         Args:
-            options: an dict containing the options passed to RefactoringTool
+            options: a dict containing the options passed to RefactoringTool
             that could be used to customize the fixer through the command line.
             log: a list to append warnings and other messages to.
         """
@@ -69,7 +69,7 @@ class BaseFix(object):
                                                                  with_tree=True)
 
     def set_filename(self, filename):
-        """Set the filename.
+        """Set the filename, and a logger derived from it.
 
         The main refactoring tool should call this.
         """
@@ -103,14 +103,14 @@ class BaseFix(object):
         """
         raise NotImplementedError()
 
-    def new_name(self, template="xxx_todo_changeme"):
+    def new_name(self, template=u"xxx_todo_changeme"):
         """Return a string suitable for use as an identifier
 
         The new name is guaranteed not to conflict with other identifiers.
         """
         name = template
         while name in self.used_names:
-            name = template + str(next(self.numbers))
+            name = template + unicode(self.numbers.next())
         self.used_names.add(name)
         return name
 
@@ -129,7 +129,7 @@ class BaseFix(object):
         """
         lineno = node.get_lineno()
         for_output = node.clone()
-        for_output.prefix = ""
+        for_output.prefix = u""
         msg = "Line %d: could not convert: %s"
         self.log_message(msg % (lineno, for_output))
         if reason:

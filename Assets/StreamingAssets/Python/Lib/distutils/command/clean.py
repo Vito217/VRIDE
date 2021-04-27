@@ -4,6 +4,8 @@ Implements the Distutils 'clean' command."""
 
 # contributed by Bastian Kleineidam <calvin@cs.uni-sb.de>, added 2000-03-18
 
+__revision__ = "$Id$"
+
 import os
 from distutils.core import Command
 from distutils.dir_util import remove_tree
@@ -74,3 +76,5 @@ class clean(Command):
                 log.info("removing '%s'", self.build_base)
             except OSError:
                 pass
+
+# class clean

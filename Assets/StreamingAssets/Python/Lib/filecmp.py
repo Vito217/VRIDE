@@ -4,29 +4,21 @@ Classes:
     dircmp
 
 Functions:
-    cmp(f1, f2, shallow=True) -> int
+    cmp(f1, f2, shallow=1) -> int
     cmpfiles(a, b, common) -> ([], [], [])
-    clear_cache()
 
 """
 
 import os
 import stat
-from itertools import filterfalse
+from itertools import ifilter, ifilterfalse, imap, izip
 
-__all__ = ['clear_cache', 'cmp', 'dircmp', 'cmpfiles', 'DEFAULT_IGNORES']
+__all__ = ["cmp","dircmp","cmpfiles"]
 
 _cache = {}
-BUFSIZE = 8*1024
+BUFSIZE=8*1024
 
-DEFAULT_IGNORES = [
-    'RCS', 'CVS', 'tags', '.git', '.hg', '.bzr', '_darcs', '__pycache__']
-
-def clear_cache():
-    """Clear the filecmp cache."""
-    _cache.clear()
-
-def cmp(f1, f2, shallow=True):
+def cmp(f1, f2, shallow=1):
     """Compare two files.
 
     Arguments:
@@ -36,15 +28,14 @@ def cmp(f1, f2, shallow=True):
     f2 -- Second file name
 
     shallow -- Just check stat signature (do not read the files).
-               defaults to True.
+               defaults to 1.
 
     Return value:
 
     True if the files are the same, False otherwise.
 
     This function uses a cache for past comparisons and the results,
-    with cache entries invalidated if their stat information
-    changes.  The cache may be cleared by calling clear_cache().
+    with a cache invalidation mechanism relying on stale signatures.
 
     """
 
@@ -61,7 +52,7 @@ def cmp(f1, f2, shallow=True):
     if outcome is None:
         outcome = _do_cmp(f1, f2)
         if len(_cache) > 100:      # limit the maximum size of the cache
-            clear_cache()
+            _cache.clear()
         _cache[f1, f2, s1, s2] = outcome
     return outcome
 
@@ -86,10 +77,10 @@ def _do_cmp(f1, f2):
 class dircmp:
     """A class that manages the comparison of 2 directories.
 
-    dircmp(a, b, ignore=None, hide=None)
+    dircmp(a,b,ignore=None,hide=None)
       A and B are directories.
       IGNORE is a list of names to ignore,
-        defaults to DEFAULT_IGNORES.
+        defaults to ['RCS', 'CVS', 'tags'].
       HIDE is a list of names to hide,
         defaults to [os.curdir, os.pardir].
 
@@ -125,7 +116,7 @@ class dircmp:
         else:
             self.hide = hide
         if ignore is None:
-            self.ignore = DEFAULT_IGNORES
+            self.ignore = ['RCS', 'CVS', 'tags'] # Names ignored in comparison
         else:
             self.ignore = ignore
 
@@ -138,11 +129,11 @@ class dircmp:
         self.right_list.sort()
 
     def phase1(self): # Compute common names
-        a = dict(zip(map(os.path.normcase, self.left_list), self.left_list))
-        b = dict(zip(map(os.path.normcase, self.right_list), self.right_list))
-        self.common = list(map(a.__getitem__, filter(b.__contains__, a)))
-        self.left_only = list(map(a.__getitem__, filterfalse(b.__contains__, a)))
-        self.right_only = list(map(b.__getitem__, filterfalse(a.__contains__, b)))
+        a = dict(izip(imap(os.path.normcase, self.left_list), self.left_list))
+        b = dict(izip(imap(os.path.normcase, self.right_list), self.right_list))
+        self.common = map(a.__getitem__, ifilter(b.__contains__, a))
+        self.left_only = map(a.__getitem__, ifilterfalse(b.__contains__, a))
+        self.right_only = map(b.__getitem__, ifilterfalse(a.__contains__, b))
 
     def phase2(self): # Distinguish files, directories, funnies
         self.common_dirs = []
@@ -156,13 +147,13 @@ class dircmp:
             ok = 1
             try:
                 a_stat = os.stat(a_path)
-            except OSError as why:
-                # print('Can\'t stat', a_path, ':', why.args[1])
+            except os.error, why:
+                # print 'Can\'t stat', a_path, ':', why[1]
                 ok = 0
             try:
                 b_stat = os.stat(b_path)
-            except OSError as why:
-                # print('Can\'t stat', b_path, ':', why.args[1])
+            except os.error, why:
+                # print 'Can\'t stat', b_path, ':', why[1]
                 ok = 0
 
             if ok:
@@ -195,44 +186,44 @@ class dircmp:
 
     def phase4_closure(self): # Recursively call phase4() on subdirectories
         self.phase4()
-        for sd in self.subdirs.values():
+        for sd in self.subdirs.itervalues():
             sd.phase4_closure()
 
     def report(self): # Print a report on the differences between a and b
         # Output format is purposely lousy
-        print('diff', self.left, self.right)
+        print 'diff', self.left, self.right
         if self.left_only:
             self.left_only.sort()
-            print('Only in', self.left, ':', self.left_only)
+            print 'Only in', self.left, ':', self.left_only
         if self.right_only:
             self.right_only.sort()
-            print('Only in', self.right, ':', self.right_only)
+            print 'Only in', self.right, ':', self.right_only
         if self.same_files:
             self.same_files.sort()
-            print('Identical files :', self.same_files)
+            print 'Identical files :', self.same_files
         if self.diff_files:
             self.diff_files.sort()
-            print('Differing files :', self.diff_files)
+            print 'Differing files :', self.diff_files
         if self.funny_files:
             self.funny_files.sort()
-            print('Trouble with common files :', self.funny_files)
+            print 'Trouble with common files :', self.funny_files
         if self.common_dirs:
             self.common_dirs.sort()
-            print('Common subdirectories :', self.common_dirs)
+            print 'Common subdirectories :', self.common_dirs
         if self.common_funny:
             self.common_funny.sort()
-            print('Common funny cases :', self.common_funny)
+            print 'Common funny cases :', self.common_funny
 
     def report_partial_closure(self): # Print reports on self and on subdirs
         self.report()
-        for sd in self.subdirs.values():
-            print()
+        for sd in self.subdirs.itervalues():
+            print
             sd.report()
 
     def report_full_closure(self): # Report on self and subdirs recursively
         self.report()
-        for sd in self.subdirs.values():
-            print()
+        for sd in self.subdirs.itervalues():
+            print
             sd.report_full_closure()
 
     methodmap = dict(subdirs=phase4,
@@ -243,11 +234,11 @@ class dircmp:
 
     def __getattr__(self, attr):
         if attr not in self.methodmap:
-            raise AttributeError(attr)
+            raise AttributeError, attr
         self.methodmap[attr](self)
         return getattr(self, attr)
 
-def cmpfiles(a, b, common, shallow=True):
+def cmpfiles(a, b, common, shallow=1):
     """Compare common files in two directories.
 
     a, b -- directory names
@@ -277,14 +268,14 @@ def cmpfiles(a, b, common, shallow=True):
 def _cmp(a, b, sh, abs=abs, cmp=cmp):
     try:
         return not abs(cmp(a, b, sh))
-    except OSError:
+    except (os.error, IOError):
         return 2
 
 
 # Return a copy with items that occur in skip removed.
 #
 def _filter(flist, skip):
-    return list(filterfalse(skip.__contains__, flist))
+    return list(ifilterfalse(skip.__contains__, flist))
 
 
 # Demonstration and testing.

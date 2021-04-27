@@ -40,8 +40,9 @@ class install_egg_info(Command):
                          "Creating "+self.install_dir)
         log.info("Writing %s", target)
         if not self.dry_run:
-            with open(target, 'w', encoding='UTF-8') as f:
-                self.distribution.metadata.write_pkg_file(f)
+            f = open(target, 'w')
+            self.distribution.metadata.write_pkg_file(f)
+            f.close()
 
     def get_outputs(self):
         return self.outputs

@@ -4,17 +4,40 @@
 # multiprocessing/sharedctypes.py
 #
 # Copyright (c) 2006-2008, R Oudkerk
-# Licensed to PSF under a Contributor Agreement.
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+#
+# 1. Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+# 3. Neither the name of author nor the names of any contributors may be
+#    used to endorse or promote products derived from this software
+#    without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS "AS IS" AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+# OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+# HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+# LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+# OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+# SUCH DAMAGE.
 #
 
+import sys
 import ctypes
 import weakref
 
-from . import heap
-from . import get_context
-
-from .context import assert_spawning
-from .reduction import ForkingPickler
+from multiprocessing import heap, RLock
+from multiprocessing.forking import assert_spawning, ForkingPickler
 
 __all__ = ['RawValue', 'RawArray', 'Value', 'Array', 'copy', 'synchronized']
 
@@ -23,13 +46,18 @@ __all__ = ['RawValue', 'RawArray', 'Value', 'Array', 'copy', 'synchronized']
 #
 
 typecode_to_type = {
-    'c': ctypes.c_char,  'u': ctypes.c_wchar,
+    'c': ctypes.c_char,
     'b': ctypes.c_byte,  'B': ctypes.c_ubyte,
     'h': ctypes.c_short, 'H': ctypes.c_ushort,
     'i': ctypes.c_int,   'I': ctypes.c_uint,
     'l': ctypes.c_long,  'L': ctypes.c_ulong,
     'f': ctypes.c_float, 'd': ctypes.c_double
     }
+try:
+    typecode_to_type['u'] = ctypes.c_wchar
+except AttributeError:
+    pass
+
 
 #
 #
@@ -55,7 +83,7 @@ def RawArray(typecode_or_type, size_or_initializer):
     Returns a ctypes array allocated from shared memory
     '''
     type_ = typecode_to_type.get(typecode_or_type, typecode_or_type)
-    if isinstance(size_or_initializer, int):
+    if isinstance(size_or_initializer, (int, long)):
         type_ = type_ * size_or_initializer
         obj = _new_value(type_)
         ctypes.memset(ctypes.addressof(obj), 0, ctypes.sizeof(obj))
@@ -66,49 +94,52 @@ def RawArray(typecode_or_type, size_or_initializer):
         result.__init__(*size_or_initializer)
         return result
 
-def Value(typecode_or_type, *args, lock=True, ctx=None):
+def Value(typecode_or_type, *args, **kwds):
     '''
     Return a synchronization wrapper for a Value
     '''
+    lock = kwds.pop('lock', None)
+    if kwds:
+        raise ValueError('unrecognized keyword argument(s): %s' % kwds.keys())
     obj = RawValue(typecode_or_type, *args)
     if lock is False:
         return obj
     if lock in (True, None):
-        ctx = ctx or get_context()
-        lock = ctx.RLock()
+        lock = RLock()
     if not hasattr(lock, 'acquire'):
         raise AttributeError("'%r' has no method 'acquire'" % lock)
-    return synchronized(obj, lock, ctx=ctx)
+    return synchronized(obj, lock)
 
-def Array(typecode_or_type, size_or_initializer, *, lock=True, ctx=None):
+def Array(typecode_or_type, size_or_initializer, **kwds):
     '''
     Return a synchronization wrapper for a RawArray
     '''
+    lock = kwds.pop('lock', None)
+    if kwds:
+        raise ValueError('unrecognized keyword argument(s): %s' % kwds.keys())
     obj = RawArray(typecode_or_type, size_or_initializer)
     if lock is False:
         return obj
     if lock in (True, None):
-        ctx = ctx or get_context()
-        lock = ctx.RLock()
+        lock = RLock()
     if not hasattr(lock, 'acquire'):
         raise AttributeError("'%r' has no method 'acquire'" % lock)
-    return synchronized(obj, lock, ctx=ctx)
+    return synchronized(obj, lock)
 
 def copy(obj):
     new_obj = _new_value(type(obj))
     ctypes.pointer(new_obj)[0] = obj
     return new_obj
 
-def synchronized(obj, lock=None, ctx=None):
+def synchronized(obj, lock=None):
     assert not isinstance(obj, SynchronizedBase), 'object already synchronized'
-    ctx = ctx or get_context()
 
     if isinstance(obj, ctypes._SimpleCData):
-        return Synchronized(obj, lock, ctx)
+        return Synchronized(obj, lock)
     elif isinstance(obj, ctypes.Array):
         if obj._type_ is ctypes.c_char:
-            return SynchronizedString(obj, lock, ctx)
-        return SynchronizedArray(obj, lock, ctx)
+            return SynchronizedString(obj, lock)
+        return SynchronizedArray(obj, lock)
     else:
         cls = type(obj)
         try:
@@ -118,7 +149,7 @@ def synchronized(obj, lock=None, ctx=None):
             d = dict((name, make_property(name)) for name in names)
             classname = 'Synchronized' + cls.__name__
             scls = class_cache[cls] = type(classname, (SynchronizedBase,), d)
-        return scls(obj, lock, ctx)
+        return scls(obj, lock)
 
 #
 # Functions for pickling/unpickling
@@ -135,8 +166,7 @@ def rebuild_ctype(type_, wrapper, length):
     if length is not None:
         type_ = type_ * length
     ForkingPickler.register(type_, reduce_ctype)
-    buf = wrapper.create_memoryview()
-    obj = type_.from_buffer(buf)
+    obj = type_.from_address(wrapper.get_address())
     obj._wrapper = wrapper
     return obj
 
@@ -149,7 +179,7 @@ def make_property(name):
         return prop_cache[name]
     except KeyError:
         d = {}
-        exec(template % ((name,)*7), d)
+        exec template % ((name,)*7) in d
         prop_cache[name] = d[name]
         return d[name]
 
@@ -178,13 +208,9 @@ class_cache = weakref.WeakKeyDictionary()
 
 class SynchronizedBase(object):
 
-    def __init__(self, obj, lock=None, ctx=None):
+    def __init__(self, obj, lock=None):
         self._obj = obj
-        if lock:
-            self._lock = lock
-        else:
-            ctx = ctx or get_context(force=True)
-            self._lock = ctx.RLock()
+        self._lock = lock or RLock()
         self.acquire = self._lock.acquire
         self.release = self._lock.release
 

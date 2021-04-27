@@ -24,6 +24,8 @@ public class PythonEditor : InitializeBehaviour
     public TextMeshProUGUI filename;
     public Scrollbar outputScrollBar;
 
+    public TextMeshPro textPrefab;
+
     Dictionary<string, GameObject> importLines;
     Thread execution;
     IPython engine;
@@ -72,10 +74,10 @@ public class PythonEditor : InitializeBehaviour
         }
 
         // Check for imports
-        MatchCollection imports = Regex.Matches(pythonCode.text, @"import ([a-zA-Z0-9]+)");
+        MatchCollection imports = Regex.Matches(pythonCode.text, @"(from|import)\s+([a-zA-Z0-9]+)");
         foreach(Match import in imports)
         {
-            string importedFile = import.Groups[1].Value + ".py";
+            string importedFile = import.Groups[2].Value + ".py";
             GameObject editor = GameObject.Find(importedFile);
 
             if (editor)
@@ -89,6 +91,9 @@ public class PythonEditor : InitializeBehaviour
                     line.material = Instantiator.Instance.lineRendererMaterial;
                     line.startWidth = .002f;
                     line.endWidth = .002f;
+
+                    TextMeshPro text = Instantiate(textPrefab, line.transform, false);
+                    text.fontSize = 0.25f;
                 }
                 else
                 {
@@ -97,6 +102,24 @@ public class PythonEditor : InitializeBehaviour
                 
                 line.SetPosition(0, transform.Find("Panel/Toolbar").position);
                 line.SetPosition(1, editor.transform.Find("Panel/Toolbar").position);
+
+                line.transform.GetChild(0).position = (line.GetPosition(0) + line.GetPosition(1)) / 2;
+                line.transform.GetChild(0).GetComponent<TextMeshPro>().text = 
+                    name.Replace(".py", "") + " imports " + importedFile.Replace(".py", "") + "\n";
+
+                MatchCollection extends = Regex.Matches(pythonCode.text, @"class\s+([a-zA-Z0-9]+)\(\s*([a-zA-Z0-9.]+)\s*\)");
+                foreach (Match extend in extends)
+                {
+                    string className = extend.Groups[1].Value;
+                    string[] baseClassImport = extend.Groups[2].Value.Split('.');
+                    string baseClass = baseClassImport[baseClassImport.Length - 1];
+
+                    string importedCode = editor.GetComponent<PythonEditor>().pythonCode.text;
+
+                    if (Regex.Match(importedCode, @"class\s*" + baseClass).Success)
+                        line.transform.GetChild(0).GetComponent<TextMeshPro>().text +=
+                            "class " + className + " extends " + baseClass + "\n";
+                }
             }
         }
     }

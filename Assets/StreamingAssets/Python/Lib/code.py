@@ -12,6 +12,19 @@ from codeop import CommandCompiler, compile_command
 __all__ = ["InteractiveInterpreter", "InteractiveConsole", "interact",
            "compile_command"]
 
+def softspace(file, newvalue):
+    oldvalue = 0
+    try:
+        oldvalue = file.softspace
+    except AttributeError:
+        pass
+    try:
+        file.softspace = newvalue
+    except (AttributeError, TypeError):
+        # "attribute-less object" or "read-only attributes"
+        pass
+    return oldvalue
+
 class InteractiveInterpreter:
     """Base class for InteractiveConsole.
 
@@ -87,11 +100,14 @@ class InteractiveInterpreter:
 
         """
         try:
-            exec(code, self.locals)
+            exec code in self.locals
         except SystemExit:
             raise
         except:
             self.showtraceback()
+        else:
+            if softspace(sys.stdout, 0):
+                print
 
     def showsyntaxerror(self, filename=None):
         """Display the syntax error that just occurred.
@@ -105,28 +121,22 @@ class InteractiveInterpreter:
         The output is written by self.write(), below.
 
         """
-        type, value, tb = sys.exc_info()
+        type, value, sys.last_traceback = sys.exc_info()
         sys.last_type = type
         sys.last_value = value
-        sys.last_traceback = tb
         if filename and type is SyntaxError:
             # Work hard to stuff the correct filename in the exception
             try:
-                msg, (dummy_filename, lineno, offset, line) = value.args
-            except ValueError:
+                msg, (dummy_filename, lineno, offset, line) = value
+            except:
                 # Not the format we expect; leave it alone
                 pass
             else:
                 # Stuff in the right filename
                 value = SyntaxError(msg, (filename, lineno, offset, line))
                 sys.last_value = value
-        if sys.excepthook is sys.__excepthook__:
-            lines = traceback.format_exception_only(type, value)
-            self.write(''.join(lines))
-        else:
-            # If someone has set sys.excepthook, we let that take precedence
-            # over self.write
-            sys.excepthook(type, value, tb)
+        list = traceback.format_exception_only(type, value)
+        map(self.write, list)
 
     def showtraceback(self):
         """Display the exception that just occurred.
@@ -143,18 +153,13 @@ class InteractiveInterpreter:
             sys.last_traceback = tb
             tblist = traceback.extract_tb(tb)
             del tblist[:1]
-            lines = traceback.format_list(tblist)
-            if lines:
-                lines.insert(0, "Traceback (most recent call last):\n")
-            lines.extend(traceback.format_exception_only(type, value))
+            list = traceback.format_list(tblist)
+            if list:
+                list.insert(0, "Traceback (most recent call last):\n")
+            list[len(list):] = traceback.format_exception_only(type, value)
         finally:
             tblist = tb = None
-        if sys.excepthook is sys.__excepthook__:
-            self.write(''.join(lines))
-        else:
-            # If someone has set sys.excepthook, we let that take precedence
-            # over self.write
-            sys.excepthook(type, value, tb)
+        map(self.write, list)
 
     def write(self, data):
         """Write a string.
@@ -195,7 +200,7 @@ class InteractiveConsole(InteractiveInterpreter):
     def interact(self, banner=None):
         """Closely emulate the interactive Python console.
 
-        The optional banner argument specifies the banner to print
+        The optional banner argument specify the banner to print
         before the first interaction; by default it prints a banner
         similar to the one printed by the real Python interpreter,
         followed by the current class name in parentheses (so as not
@@ -216,7 +221,7 @@ class InteractiveConsole(InteractiveInterpreter):
             self.write("Python %s on %s\n%s\n(%s)\n" %
                        (sys.version, sys.platform, cprt,
                         self.__class__.__name__))
-        elif banner:
+        else:
             self.write("%s\n" % str(banner))
         more = 0
         while 1:
@@ -227,6 +232,10 @@ class InteractiveConsole(InteractiveInterpreter):
                     prompt = sys.ps1
                 try:
                     line = self.raw_input(prompt)
+                    # Can be None if sys.stdin was redefined
+                    encoding = getattr(sys.stdin, "encoding", None)
+                    if encoding and not isinstance(line, unicode):
+                        line = line.decode(encoding)
                 except EOFError:
                     self.write("\n")
                     break
@@ -265,12 +274,11 @@ class InteractiveConsole(InteractiveInterpreter):
         When the user enters the EOF key sequence, EOFError is raised.
 
         The base implementation uses the built-in function
-        input(); a subclass may replace this with a different
+        raw_input(); a subclass may replace this with a different
         implementation.
 
         """
-        return input(prompt)
-
+        return raw_input(prompt)
 
 
 def interact(banner=None, readfunc=None, local=None):

@@ -2,7 +2,10 @@
 
 Implements the Distutils 'check' command.
 """
+__revision__ = "$Id$"
+
 from distutils.core import Command
+from distutils.dist import PKG_INFO_ENCODING
 from distutils.errors import DistutilsSetupError
 
 try:
@@ -11,7 +14,7 @@ try:
     from docutils.parsers.rst import Parser
     from docutils import frontend
     from docutils import nodes
-    from io import StringIO
+    from StringIO import StringIO
 
     class SilentReporter(Reporter):
 
@@ -28,9 +31,8 @@ try:
                                         *children, **kwargs)
 
     HAS_DOCUTILS = True
-except Exception:
-    # Catch all exceptions because exceptions besides ImportError probably
-    # indicate that docutils is not ported to Py3k.
+except ImportError:
+    # docutils is not installed
     HAS_DOCUTILS = False
 
 class check(Command):
@@ -110,6 +112,8 @@ class check(Command):
     def check_restructuredtext(self):
         """Checks if the long string fields are reST-compliant."""
         data = self.distribution.get_long_description()
+        if not isinstance(data, unicode):
+            data = data.decode(PKG_INFO_ENCODING)
         for warning in self._check_rst_data(data):
             line = warning[-1].get('line')
             if line is None:
@@ -120,7 +124,8 @@ class check(Command):
 
     def _check_rst_data(self, data):
         """Returns warnings when the provided data doesn't compile."""
-        source_path = StringIO()
+        # the include and csv_table directives need this to be a path
+        source_path = self.distribution.script_name or 'setup.py'
         parser = Parser()
         settings = frontend.OptionParser(components=(Parser,)).get_default_values()
         settings.tab_width = 4

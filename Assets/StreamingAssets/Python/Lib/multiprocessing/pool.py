@@ -4,27 +4,48 @@
 # multiprocessing/pool.py
 #
 # Copyright (c) 2006-2008, R Oudkerk
-# Licensed to PSF under a Contributor Agreement.
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+#
+# 1. Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+# 3. Neither the name of author nor the names of any contributors may be
+#    used to endorse or promote products derived from this software
+#    without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS "AS IS" AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+# OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+# HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+# LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+# OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+# SUCH DAMAGE.
 #
 
-__all__ = ['Pool', 'ThreadPool']
+__all__ = ['Pool']
 
 #
 # Imports
 #
 
 import threading
-import queue
+import Queue
 import itertools
 import collections
-import os
 import time
-import traceback
 
-# If threading is available then ThreadPool should be provided.  Therefore
-# we avoid top-level imports which are liable to fail on some systems.
-from . import util
-from . import get_context, TimeoutError
+from multiprocessing import Process, cpu_count, TimeoutError
+from multiprocessing.util import Finalize, debug
 
 #
 # Constants representing the state of a pool
@@ -41,33 +62,7 @@ TERMINATE = 2
 job_counter = itertools.count()
 
 def mapstar(args):
-    return list(map(*args))
-
-def starmapstar(args):
-    return list(itertools.starmap(args[0], args[1]))
-
-#
-# Hack to embed stringification of remote traceback in local traceback
-#
-
-class RemoteTraceback(Exception):
-    def __init__(self, tb):
-        self.tb = tb
-    def __str__(self):
-        return self.tb
-
-class ExceptionWithTraceback:
-    def __init__(self, exc, tb):
-        tb = traceback.format_exception(type(exc), exc, tb)
-        tb = ''.join(tb)
-        self.exc = exc
-        self.tb = '\n"""\n%s"""' % tb
-    def __reduce__(self):
-        return rebuild_exc, (self.exc, self.tb)
-
-def rebuild_exc(exc, tb):
-    exc.__cause__ = RemoteTraceback(tb)
-    return exc
+    return map(*args)
 
 #
 # Code run by worker processes
@@ -90,9 +85,8 @@ class MaybeEncodingError(Exception):
         return "<MaybeEncodingError: %s>" % str(self)
 
 
-def worker(inqueue, outqueue, initializer=None, initargs=(), maxtasks=None,
-           wrap_exception=False):
-    assert maxtasks is None or (type(maxtasks) == int and maxtasks > 0)
+def worker(inqueue, outqueue, initializer=None, initargs=(), maxtasks=None):
+    assert maxtasks is None or (type(maxtasks) in (int, long) and maxtasks > 0)
     put = outqueue.put
     get = inqueue.get
     if hasattr(inqueue, '_writer'):
@@ -106,30 +100,30 @@ def worker(inqueue, outqueue, initializer=None, initargs=(), maxtasks=None,
     while maxtasks is None or (maxtasks and completed < maxtasks):
         try:
             task = get()
-        except (EOFError, OSError):
-            util.debug('worker got EOFError or OSError -- exiting')
+        except (EOFError, IOError):
+            debug('worker got EOFError or IOError -- exiting')
             break
 
         if task is None:
-            util.debug('worker got sentinel -- exiting')
+            debug('worker got sentinel -- exiting')
             break
 
         job, i, func, args, kwds = task
         try:
             result = (True, func(*args, **kwds))
-        except Exception as e:
-            if wrap_exception:
-                e = ExceptionWithTraceback(e, e.__traceback__)
+        except Exception, e:
             result = (False, e)
         try:
             put((job, i, result))
         except Exception as e:
             wrapped = MaybeEncodingError(e, result[1])
-            util.debug("Possible encoding error while sending result: %s" % (
+            debug("Possible encoding error while sending result: %s" % (
                 wrapped))
             put((job, i, (False, wrapped)))
+
+        task = job = result = func = args = kwds = None
         completed += 1
-    util.debug('worker exiting after %d tasks' % completed)
+    debug('worker exiting after %d tasks' % completed)
 
 #
 # Class representing a process pool
@@ -137,18 +131,14 @@ def worker(inqueue, outqueue, initializer=None, initargs=(), maxtasks=None,
 
 class Pool(object):
     '''
-    Class which supports an async version of applying functions to arguments.
+    Class which supports an async version of the `apply()` builtin
     '''
-    _wrap_exception = True
-
-    def Process(self, *args, **kwds):
-        return self._ctx.Process(*args, **kwds)
+    Process = Process
 
     def __init__(self, processes=None, initializer=None, initargs=(),
-                 maxtasksperchild=None, context=None):
-        self._ctx = context or get_context()
+                 maxtasksperchild=None):
         self._setup_queues()
-        self._taskqueue = queue.Queue()
+        self._taskqueue = Queue.Queue()
         self._cache = {}
         self._state = RUN
         self._maxtasksperchild = maxtasksperchild
@@ -156,11 +146,14 @@ class Pool(object):
         self._initargs = initargs
 
         if processes is None:
-            processes = os.cpu_count() or 1
+            try:
+                processes = cpu_count()
+            except NotImplementedError:
+                processes = 1
         if processes < 1:
             raise ValueError("Number of processes must be at least 1")
 
-        if initializer is not None and not callable(initializer):
+        if initializer is not None and not hasattr(initializer, '__call__'):
             raise TypeError('initializer must be a callable')
 
         self._processes = processes
@@ -193,7 +186,7 @@ class Pool(object):
         self._result_handler._state = RUN
         self._result_handler.start()
 
-        self._terminate = util.Finalize(
+        self._terminate = Finalize(
             self, self._terminate_pool,
             args=(self._taskqueue, self._inqueue, self._outqueue, self._pool,
                   self._worker_handler, self._task_handler,
@@ -210,7 +203,7 @@ class Pool(object):
             worker = self._pool[i]
             if worker.exitcode is not None:
                 # worker exited
-                util.debug('cleaning up worker %d' % i)
+                debug('cleaning up worker %d' % i)
                 worker.join()
                 cleaned = True
                 del self._pool[i]
@@ -224,14 +217,13 @@ class Pool(object):
             w = self.Process(target=worker,
                              args=(self._inqueue, self._outqueue,
                                    self._initializer,
-                                   self._initargs, self._maxtasksperchild,
-                                   self._wrap_exception)
+                                   self._initargs, self._maxtasksperchild)
                             )
             self._pool.append(w)
             w.name = w.name.replace('Process', 'PoolWorker')
             w.daemon = True
             w.start()
-            util.debug('added worker')
+            debug('added worker')
 
     def _maintain_pool(self):
         """Clean up any exited workers and start replacements for them.
@@ -240,47 +232,31 @@ class Pool(object):
             self._repopulate_pool()
 
     def _setup_queues(self):
-        self._inqueue = self._ctx.SimpleQueue()
-        self._outqueue = self._ctx.SimpleQueue()
+        from .queues import SimpleQueue
+        self._inqueue = SimpleQueue()
+        self._outqueue = SimpleQueue()
         self._quick_put = self._inqueue._writer.send
         self._quick_get = self._outqueue._reader.recv
 
     def apply(self, func, args=(), kwds={}):
         '''
-        Equivalent of `func(*args, **kwds)`.
+        Equivalent of `apply()` builtin
         '''
         assert self._state == RUN
         return self.apply_async(func, args, kwds).get()
 
     def map(self, func, iterable, chunksize=None):
         '''
-        Apply `func` to each element in `iterable`, collecting the results
-        in a list that is returned.
+        Equivalent of `map()` builtin
         '''
-        return self._map_async(func, iterable, mapstar, chunksize).get()
-
-    def starmap(self, func, iterable, chunksize=None):
-        '''
-        Like `map()` method but the elements of the `iterable` are expected to
-        be iterables as well and will be unpacked as arguments. Hence
-        `func` and (a, b) becomes func(a, b).
-        '''
-        return self._map_async(func, iterable, starmapstar, chunksize).get()
-
-    def starmap_async(self, func, iterable, chunksize=None, callback=None,
-            error_callback=None):
-        '''
-        Asynchronous version of `starmap()` method.
-        '''
-        return self._map_async(func, iterable, starmapstar, chunksize,
-                               callback, error_callback)
+        assert self._state == RUN
+        return self.map_async(func, iterable, chunksize).get()
 
     def imap(self, func, iterable, chunksize=1):
         '''
-        Equivalent of `map()` -- can be MUCH slower than `Pool.map()`.
+        Equivalent of `itertools.imap()` -- can be MUCH slower than `Pool.map()`
         '''
-        if self._state != RUN:
-            raise ValueError("Pool not running")
+        assert self._state == RUN
         if chunksize == 1:
             result = IMapIterator(self._cache)
             self._taskqueue.put((((result._job, i, func, (x,), {})
@@ -296,10 +272,9 @@ class Pool(object):
 
     def imap_unordered(self, func, iterable, chunksize=1):
         '''
-        Like `imap()` method but ordering of results is arbitrary.
+        Like `imap()` method but ordering of results is arbitrary
         '''
-        if self._state != RUN:
-            raise ValueError("Pool not running")
+        assert self._state == RUN
         if chunksize == 1:
             result = IMapUnorderedIterator(self._cache)
             self._taskqueue.put((((result._job, i, func, (x,), {})
@@ -313,32 +288,20 @@ class Pool(object):
                      for i, x in enumerate(task_batches)), result._set_length))
             return (item for chunk in result for item in chunk)
 
-    def apply_async(self, func, args=(), kwds={}, callback=None,
-            error_callback=None):
+    def apply_async(self, func, args=(), kwds={}, callback=None):
         '''
-        Asynchronous version of `apply()` method.
+        Asynchronous equivalent of `apply()` builtin
         '''
-        if self._state != RUN:
-            raise ValueError("Pool not running")
-        result = ApplyResult(self._cache, callback, error_callback)
+        assert self._state == RUN
+        result = ApplyResult(self._cache, callback)
         self._taskqueue.put(([(result._job, None, func, args, kwds)], None))
         return result
 
-    def map_async(self, func, iterable, chunksize=None, callback=None,
-            error_callback=None):
+    def map_async(self, func, iterable, chunksize=None, callback=None):
         '''
-        Asynchronous version of `map()` method.
+        Asynchronous equivalent of `map()` builtin
         '''
-        return self._map_async(func, iterable, mapstar, chunksize, callback,
-            error_callback)
-
-    def _map_async(self, func, iterable, mapper, chunksize=None, callback=None,
-            error_callback=None):
-        '''
-        Helper function to implement map, starmap and their async counterparts.
-        '''
-        if self._state != RUN:
-            raise ValueError("Pool not running")
+        assert self._state == RUN
         if not hasattr(iterable, '__len__'):
             iterable = list(iterable)
 
@@ -350,9 +313,8 @@ class Pool(object):
             chunksize = 0
 
         task_batches = Pool._get_tasks(func, iterable, chunksize)
-        result = MapResult(self._cache, chunksize, len(iterable), callback,
-                           error_callback=error_callback)
-        self._taskqueue.put((((result._job, i, mapper, (x,), {})
+        result = MapResult(self._cache, chunksize, len(iterable), callback)
+        self._taskqueue.put((((result._job, i, mapstar, (x,), {})
                               for i, x in enumerate(task_batches)), None))
         return result
 
@@ -367,7 +329,7 @@ class Pool(object):
             time.sleep(0.1)
         # send sentinel to stop workers
         pool._taskqueue.put(None)
-        util.debug('worker handler exiting')
+        debug('worker handler exiting')
 
     @staticmethod
     def _handle_tasks(taskqueue, put, outqueue, pool, cache):
@@ -379,7 +341,7 @@ class Pool(object):
             try:
                 for i, task in enumerate(taskseq):
                     if thread._state:
-                        util.debug('task handler found thread._state != RUN')
+                        debug('task handler found thread._state != RUN')
                         break
                     try:
                         put(task)
@@ -391,7 +353,7 @@ class Pool(object):
                             pass
                 else:
                     if set_length:
-                        util.debug('doing set_length()')
+                        debug('doing set_length()')
                         set_length(i+1)
                     continue
                 break
@@ -400,25 +362,26 @@ class Pool(object):
                 if job in cache:
                     cache[job]._set(ind + 1, (False, ex))
                 if set_length:
-                    util.debug('doing set_length()')
+                    debug('doing set_length()')
                     set_length(i+1)
+            finally:
+                task = taskseq = job = None
         else:
-            util.debug('task handler got sentinel')
-
+            debug('task handler got sentinel')
 
         try:
             # tell result handler to finish when cache is empty
-            util.debug('task handler sending sentinel to result handler')
+            debug('task handler sending sentinel to result handler')
             outqueue.put(None)
 
             # tell workers there is no more work
-            util.debug('task handler sending sentinel to workers')
+            debug('task handler sending sentinel to workers')
             for p in pool:
                 put(None)
-        except OSError:
-            util.debug('task handler got OSError when sending sentinels')
+        except IOError:
+            debug('task handler got IOError when sending sentinels')
 
-        util.debug('task handler exiting')
+        debug('task handler exiting')
 
     @staticmethod
     def _handle_results(outqueue, get, cache):
@@ -427,17 +390,17 @@ class Pool(object):
         while 1:
             try:
                 task = get()
-            except (OSError, EOFError):
-                util.debug('result handler got EOFError/OSError -- exiting')
+            except (IOError, EOFError):
+                debug('result handler got EOFError/IOError -- exiting')
                 return
 
             if thread._state:
                 assert thread._state == TERMINATE
-                util.debug('result handler found thread._state=TERMINATE')
+                debug('result handler found thread._state=TERMINATE')
                 break
 
             if task is None:
-                util.debug('result handler got sentinel')
+                debug('result handler got sentinel')
                 break
 
             job, i, obj = task
@@ -445,25 +408,27 @@ class Pool(object):
                 cache[job]._set(i, obj)
             except KeyError:
                 pass
+            task = job = obj = None
 
         while cache and thread._state != TERMINATE:
             try:
                 task = get()
-            except (OSError, EOFError):
-                util.debug('result handler got EOFError/OSError -- exiting')
+            except (IOError, EOFError):
+                debug('result handler got EOFError/IOError -- exiting')
                 return
 
             if task is None:
-                util.debug('result handler ignoring extra sentinel')
+                debug('result handler ignoring extra sentinel')
                 continue
             job, i, obj = task
             try:
                 cache[job]._set(i, obj)
             except KeyError:
                 pass
+            task = job = obj = None
 
         if hasattr(outqueue, '_reader'):
-            util.debug('ensuring that outqueue is not full')
+            debug('ensuring that outqueue is not full')
             # If we don't make room available in outqueue then
             # attempts to add the sentinel (None) to outqueue may
             # block.  There is guaranteed to be no more than 2 sentinels.
@@ -472,10 +437,10 @@ class Pool(object):
                     if not outqueue._reader.poll():
                         break
                     get()
-            except (OSError, EOFError):
+            except (IOError, EOFError):
                 pass
 
-        util.debug('result handler exiting: len(cache)=%s, thread._state=%s',
+        debug('result handler exiting: len(cache)=%s, thread._state=%s',
               len(cache), thread._state)
 
     @staticmethod
@@ -493,19 +458,19 @@ class Pool(object):
               )
 
     def close(self):
-        util.debug('closing pool')
+        debug('closing pool')
         if self._state == RUN:
             self._state = CLOSE
             self._worker_handler._state = CLOSE
 
     def terminate(self):
-        util.debug('terminating pool')
+        debug('terminating pool')
         self._state = TERMINATE
         self._worker_handler._state = TERMINATE
         self._terminate()
 
     def join(self):
-        util.debug('joining pool')
+        debug('joining pool')
         assert self._state in (CLOSE, TERMINATE)
         self._worker_handler.join()
         self._task_handler.join()
@@ -516,7 +481,7 @@ class Pool(object):
     @staticmethod
     def _help_stuff_finish(inqueue, task_handler, size):
         # task_handler may be blocked trying to put items on inqueue
-        util.debug('removing tasks from inqueue until task handler finished')
+        debug('removing tasks from inqueue until task handler finished')
         inqueue._rlock.acquire()
         while task_handler.is_alive() and inqueue._reader.poll():
             inqueue._reader.recv()
@@ -526,12 +491,12 @@ class Pool(object):
     def _terminate_pool(cls, taskqueue, inqueue, outqueue, pool,
                         worker_handler, task_handler, result_handler, cache):
         # this is guaranteed to only be called once
-        util.debug('finalizing pool')
+        debug('finalizing pool')
 
         worker_handler._state = TERMINATE
         task_handler._state = TERMINATE
 
-        util.debug('helping task handler/workers to finish')
+        debug('helping task handler/workers to finish')
         cls._help_stuff_finish(inqueue, task_handler, len(pool))
 
         assert result_handler.is_alive() or len(cache) == 0
@@ -541,38 +506,32 @@ class Pool(object):
 
         # We must wait for the worker handler to exit before terminating
         # workers because we don't want workers to be restarted behind our back.
-        util.debug('joining worker handler')
+        debug('joining worker handler')
         if threading.current_thread() is not worker_handler:
-            worker_handler.join()
+            worker_handler.join(1e100)
 
         # Terminate workers which haven't already finished.
         if pool and hasattr(pool[0], 'terminate'):
-            util.debug('terminating workers')
+            debug('terminating workers')
             for p in pool:
                 if p.exitcode is None:
                     p.terminate()
 
-        util.debug('joining task handler')
+        debug('joining task handler')
         if threading.current_thread() is not task_handler:
-            task_handler.join()
+            task_handler.join(1e100)
 
-        util.debug('joining result handler')
+        debug('joining result handler')
         if threading.current_thread() is not result_handler:
-            result_handler.join()
+            result_handler.join(1e100)
 
         if pool and hasattr(pool[0], 'terminate'):
-            util.debug('joining pool workers')
+            debug('joining pool workers')
             for p in pool:
                 if p.is_alive():
                     # worker has not yet exited
-                    util.debug('cleaning up worker %d' % p.pid)
+                    debug('cleaning up worker %d' % p.pid)
                     p.join()
-
-    def __enter__(self):
-        return self
-
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        self.terminate()
 
 #
 # Class whose instances are returned by `Pool.apply_async()`
@@ -580,27 +539,32 @@ class Pool(object):
 
 class ApplyResult(object):
 
-    def __init__(self, cache, callback, error_callback):
-        self._event = threading.Event()
-        self._job = next(job_counter)
+    def __init__(self, cache, callback):
+        self._cond = threading.Condition(threading.Lock())
+        self._job = job_counter.next()
         self._cache = cache
+        self._ready = False
         self._callback = callback
-        self._error_callback = error_callback
         cache[self._job] = self
 
     def ready(self):
-        return self._event.is_set()
+        return self._ready
 
     def successful(self):
-        assert self.ready()
+        assert self._ready
         return self._success
 
     def wait(self, timeout=None):
-        self._event.wait(timeout)
+        self._cond.acquire()
+        try:
+            if not self._ready:
+                self._cond.wait(timeout)
+        finally:
+            self._cond.release()
 
     def get(self, timeout=None):
         self.wait(timeout)
-        if not self.ready():
+        if not self._ready:
             raise TimeoutError
         if self._success:
             return self._value
@@ -611,9 +575,12 @@ class ApplyResult(object):
         self._success, self._value = obj
         if self._callback and self._success:
             self._callback(self._value)
-        if self._error_callback and not self._success:
-            self._error_callback(self._value)
-        self._event.set()
+        self._cond.acquire()
+        try:
+            self._ready = True
+            self._cond.notify()
+        finally:
+            self._cond.release()
         del self._cache[self._job]
 
 AsyncResult = ApplyResult       # create alias -- see #17805
@@ -624,15 +591,14 @@ AsyncResult = ApplyResult       # create alias -- see #17805
 
 class MapResult(ApplyResult):
 
-    def __init__(self, cache, chunksize, length, callback, error_callback):
-        ApplyResult.__init__(self, cache, callback,
-                             error_callback=error_callback)
+    def __init__(self, cache, chunksize, length, callback):
+        ApplyResult.__init__(self, cache, callback)
         self._success = True
         self._value = [None] * length
         self._chunksize = chunksize
         if chunksize <= 0:
             self._number_left = 0
-            self._event.set()
+            self._ready = True
             del cache[self._job]
         else:
             self._number_left = length//chunksize + bool(length % chunksize)
@@ -646,14 +612,23 @@ class MapResult(ApplyResult):
                 if self._callback:
                     self._callback(self._value)
                 del self._cache[self._job]
-                self._event.set()
+                self._cond.acquire()
+                try:
+                    self._ready = True
+                    self._cond.notify()
+                finally:
+                    self._cond.release()
+
         else:
             self._success = False
             self._value = result
-            if self._error_callback:
-                self._error_callback(self._value)
             del self._cache[self._job]
-            self._event.set()
+            self._cond.acquire()
+            try:
+                self._ready = True
+                self._cond.notify()
+            finally:
+                self._cond.release()
 
 #
 # Class whose instances are returned by `Pool.imap()`
@@ -663,7 +638,7 @@ class IMapIterator(object):
 
     def __init__(self, cache):
         self._cond = threading.Condition(threading.Lock())
-        self._job = next(job_counter)
+        self._job = job_counter.next()
         self._cache = cache
         self._items = collections.deque()
         self._index = 0
@@ -750,19 +725,15 @@ class IMapUnorderedIterator(IMapIterator):
 #
 
 class ThreadPool(Pool):
-    _wrap_exception = False
 
-    @staticmethod
-    def Process(*args, **kwds):
-        from .dummy import Process
-        return Process(*args, **kwds)
+    from .dummy import Process
 
     def __init__(self, processes=None, initializer=None, initargs=()):
         Pool.__init__(self, processes, initializer, initargs)
 
     def _setup_queues(self):
-        self._inqueue = queue.Queue()
-        self._outqueue = queue.Queue()
+        self._inqueue = Queue.Queue()
+        self._outqueue = Queue.Queue()
         self._quick_put = self._inqueue.put
         self._quick_get = self._outqueue.get
 

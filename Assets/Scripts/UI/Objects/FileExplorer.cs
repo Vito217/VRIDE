@@ -92,10 +92,8 @@ public class FileExplorer : InitializeBehaviour
                 extension = ".py";
 
             string filePath = Path.Combine(lastSelected.fullPath, filename.text + extension);
-            File.Create(filePath);
-
+            using FileStream fs = File.Create(filePath);
             fileCreationPanel.SetActive(false);
-
             RestartContent();
         }
     }
@@ -166,7 +164,6 @@ public class FileExplorer : InitializeBehaviour
             {
                 newElement += Path.GetExtension(previousElement);
 
-                //File.Create(newElement);
                 File.Move(previousElement, newElement);
                 File.Delete(previousElement);
 
