@@ -26,6 +26,9 @@ public class Instantiator : MonoBehaviour
     public FileExplorer fileExplorerPrefab;
     public PythonEditor pythonEditorPrefab;
     public DesktopView desktopViewPrefab;
+    public DesktopWindowObject desktopWindowObjectPrefab;
+    public DesktopWindowsExplorer desktopWindowsExplorerPrefab;
+    public Keyboards virtualKeyBoardPrefab;
 
     public GameObject defaultGround;
     public GameObject spaceShip;
@@ -209,6 +212,10 @@ public class Instantiator : MonoBehaviour
         return Instantiate(aframePrefab);
     }
 
+    /// <summary>
+    /// Creates a file explorer
+    /// </summary>
+    /// <returns></returns>
     public FileExplorer FileExplorer()
     {
         return Instantiate(fileExplorerPrefab);
@@ -223,6 +230,10 @@ public class Instantiator : MonoBehaviour
         return Instantiate(webcamPrefab);
     }
 
+    /// <summary>
+    /// Creates a board
+    /// </summary>
+    /// <returns></returns>
     public Board Board()
     {
         return Instantiate(boardPrefab);
@@ -246,6 +257,12 @@ public class Instantiator : MonoBehaviour
         return t;
     }
 
+    /// <summary>
+    /// Creates a file as a child of a explorer
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="parent"></param>
+    /// <returns></returns>
     public GameObject ExplorerFile(string name, Transform parent)
     {
         GameObject file = Instantiate(explorerFilePrefab, parent, false);
@@ -253,6 +270,12 @@ public class Instantiator : MonoBehaviour
         return file;
     }
 
+    /// <summary>
+    /// Creates a dir as a child of a explorer
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="parent"></param>
+    /// <returns></returns>
     public GameObject ExplorerDirectory(string name, Transform parent)
     {
         GameObject dir = Instantiate(explorerDirectoryPrefab, parent, false);
@@ -260,8 +283,55 @@ public class Instantiator : MonoBehaviour
         return dir;
     }
 
-    public DesktopView DesktopView()
+    /// <summary>
+    /// Creates a streaming remote window
+    /// </summary>
+    /// <param name="hwnd"></param>
+    /// <param name="windowName"></param>
+    /// <returns></returns>
+    public DesktopView DesktopView(string hwnd, string windowName)
     {
-        return Instantiate(desktopViewPrefab);
+        DesktopView dv = Instantiate(desktopViewPrefab);
+        dv.transform.Find("Panel/Toolbar/Button/Text (TMP)").GetComponent<TextMeshProUGUI>().text = windowName;
+        dv.name = "ExtWindow:" + hwnd;
+        dv.key = hwnd;
+
+        return dv;
+    }
+
+    /// <summary>
+    /// Creates a list of available streaming windows
+    /// </summary>
+    /// <returns></returns>
+    public DesktopWindowsExplorer DesktopWindowsExplorer()
+    {
+        return Instantiate(desktopWindowsExplorerPrefab);
+    }
+
+    /// <summary>
+    /// Creates a virtual keyboard
+    /// </summary>
+    /// <returns></returns>
+    public Keyboards VirtualKeyboard()
+    {
+        return Instantiate(virtualKeyBoardPrefab);
+    }
+
+    /// <summary>
+    /// Creates a child of streaming windows list
+    /// </summary>
+    /// <param name="hwnd"></param>
+    /// <param name="windowName"></param>
+    /// <param name="explorer"></param>
+    /// <returns></returns>
+    public DesktopWindowObject DesktopWindowObject(string hwnd, string windowName, DesktopWindowsExplorer explorer)
+    {
+        DesktopWindowObject ob = Instantiate(desktopWindowObjectPrefab, explorer.contentList);
+        ob.GetComponent<TextMeshProUGUI>().text = windowName;
+        ob.windowName = windowName;
+        ob.explorer = explorer;
+        ob.hwnd = hwnd;
+
+        return ob;
     }
 }

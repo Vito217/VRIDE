@@ -1,27 +1,26 @@
-﻿using System.Collections;
+﻿using System.Threading;
+using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Copy : VRKey
+public class Copy : MonoBehaviour
 {
-    public override void OnClick()
+    public void OnClick()
     {
-        if (keyboard.window != null && !keyboard.window.loadingWheel.activeSelf)
+        try
         {
-            StartCoroutine(Copying());
+            TMP_InputField target = EventSystem.current.currentSelectedGameObject.GetComponent<TMP_InputField>();
+
+            if (target.interactable)
+            {
+                target.ActivateInputField();
+                int start = target.selectionAnchorPosition;
+                int end = target.caretPosition;
+                if (end < start) start = Interlocked.Exchange(ref end, start);
+                string selection = target.text.Substring(start, end - start);
+                GUIUtility.systemCopyBuffer = selection;
+            }
         }
-    }
-
-    IEnumerator Copying()
-    {
-        int lcp = keyboard.window.keyboardTarget.caretPosition;
-        int lap = keyboard.window.keyboardTarget.selectionAnchorPosition;
-        keyboard.window.keyboardTarget.ActivateInputField();
-
-        yield return null;
-
-        string selection = keyboard.window.getSelectedCode(keyboard.window.field.text, true);
-        GUIUtility.systemCopyBuffer = selection;
-        keyboard.window.keyboardTarget.caretPosition = lcp;
-        keyboard.window.keyboardTarget.selectionAnchorPosition = lap;
+        catch { }
     }
 }

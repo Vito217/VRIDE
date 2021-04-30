@@ -15,7 +15,6 @@ public class InitializeBehaviour : MonoBehaviour
     public TMP_InputField keyboardTarget;
     public TextMeshProUGUI lineCounter;
     public GameObject loadingWheel;
-    public GameObject keyboardsGameObject;
     public bool freezeRotation = true;
     
     float sizeVariance = 20;
@@ -25,7 +24,6 @@ public class InitializeBehaviour : MonoBehaviour
     {
         GetComponent<Canvas>().worldCamera = Camera.main;
         if (panel != null) panel.color = UnityEngine.Random.ColorHSV();
-        if (keyboardsGameObject != null && !VRIDEMenu.keyboardToggleState) ToggleKeyboard();
 
         StartCoroutine(Coroutine());
     }
@@ -188,19 +186,6 @@ public class InitializeBehaviour : MonoBehaviour
     public virtual void innerBehaviour() { }
 
     public virtual IEnumerator innerStart() { yield return null; }
-
-    public void ToggleKeyboard()
-    {
-        Renderer[] lChildRenderers = keyboardsGameObject.GetComponentsInChildren<Renderer>();
-        BoxCollider[] lChildColliders = keyboardsGameObject.GetComponentsInChildren<BoxCollider>();
-        foreach (Renderer lRenderer in lChildRenderers) lRenderer.enabled = !lRenderer.enabled;
-        foreach (BoxCollider lCollider in lChildColliders) lCollider.enabled = !lCollider.enabled;
-
-        CanvasGroup cg = keyboardsGameObject.GetComponent<CanvasGroup>();
-        cg.interactable = !cg.interactable;
-        cg.blocksRaycasts = !cg.blocksRaycasts;
-        cg.alpha = Mathf.Abs(1f - cg.alpha);
-    }
 
     public void CountLines()
     {

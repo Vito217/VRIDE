@@ -1,19 +1,20 @@
-using System.Collections;
+using TMPro;
+using UnityEngine.EventSystems;
 
 public class SelectAll : VRKey
 {
     public override void OnClick()
     {
-        StartCoroutine(SelectingAll());
-    }
+        try
+        {
+            TMP_InputField target = EventSystem.current.currentSelectedGameObject.GetComponent<TMP_InputField>();
 
-    IEnumerator SelectingAll()
-    {
-        keyboard.window.keyboardTarget.onFocusSelectAll = true;
-        keyboard.window.keyboardTarget.ActivateInputField();
-
-        yield return null;
-
-        keyboard.window.keyboardTarget.onFocusSelectAll = false;
+            if (target.interactable)
+            {
+                target.ActivateInputField();
+                target.onFocusSelectAll = true;
+            }
+        }
+        catch { }
     }
 }
