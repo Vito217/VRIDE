@@ -20,13 +20,17 @@ public class DesktopWindowsExplorer : InitializeBehaviour
         ColorUtility.TryParseHtmlString("#00FFFF", out skyBlue);
         ColorUtility.TryParseHtmlString("#9D9D9D", out gray);
 
-        Fill();
+        Debug.Log("Filling");
+
+        StartCoroutine(Fill());
 
         yield return base.innerStart();
     }
 
     IEnumerator Fill()
     {
+        
+
         loadingWheel.SetActive(true);
         yield return null;
 
@@ -38,7 +42,11 @@ public class DesktopWindowsExplorer : InitializeBehaviour
             yield return uwr.SendWebRequest();
             try
             {
+
                 string result = uwr.downloadHandler.text;
+
+                Debug.Log("result");
+
                 string[] pairList = result.Split(';');
                 foreach(string pair in pairList)
                 {

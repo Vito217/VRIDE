@@ -12,8 +12,12 @@ public class Key : MonoBehaviour
 {
 	public delegate void OnKeyPressed();
 	public static OnKeyPressed keyPressed;
+
 	public string KeyCapChar;
+	public int keyCode;
 	public string AlterateKeyCapChar;
+	public int alterateKeyCode;
+
 	public Rigidbody Rigidbody;
 	public bool KeyPressed = false;
 	public Color PressedKeycapColor;
@@ -38,27 +42,27 @@ public class Key : MonoBehaviour
 
 	void Start()
 	{
-		//keycodeAdder = this.gameObject.GetComponent<KeycodeAdder> ();
+		//keycodeAdder = GetComponent<KeycodeAdder> ();
 
-		keyCapText = this.gameObject.GetComponentInChildren<Text> ();
-		KeycapColor = this.gameObject.GetComponent<Renderer> ().material.color;
+		keyCapText = GetComponentInChildren<Text> ();
+		KeycapColor = GetComponent<Renderer> ().material.color;
 		InitialKeycapColor = KeycapColor;
 
-		initialPosition = new GameObject(string.Format("[{0}] initialPosition", this.gameObject.name)).transform;
-		initialPosition.parent = this.transform.parent;
+		initialPosition = new GameObject(string.Format("[{0}] initialPosition", name)).transform;
+		initialPosition.parent = transform.parent;
 		initialPosition.localPosition = Vector3.zero;
 		initialPosition.localRotation = Quaternion.identity;
 
-		if(Rigidbody == null) Rigidbody = GetComponent<Rigidbody>();
+		if(Rigidbody == null) 
+			Rigidbody = GetComponent<Rigidbody>();
 
-		initialLocalPosition = this.transform.localPosition;
-		initialLocalRotation = this.transform.localRotation;
+		initialLocalPosition = transform.localPosition;
+		initialLocalRotation = transform.localRotation;
 
 		constrainedPosition = initialLocalPosition;
 		constrainedRotation = initialLocalRotation;
 
-		keySoundController = transform.root.Find("Keyboards/Punchkeyboard")
-			.gameObject.GetComponent<KeySoundController> ();
+		keySoundController = transform.root.Find("Punchkeyboard").GetComponent<KeySoundController> ();
 
 		SwitchKeycapCharCase ();
 
@@ -103,18 +107,18 @@ public class Key : MonoBehaviour
 	void ChangeKeyColorOnPress()
 	{
 		if (KeyPressed)
-			gameObject.GetComponent<Renderer> ().material.color = PressedKeycapColor;
+			GetComponent<Renderer> ().material.color = PressedKeycapColor;
 		else
-			gameObject.GetComponent<Renderer> ().material.color = KeycapColor;
+			GetComponent<Renderer> ().material.color = KeycapColor;
 	}
 
 	void ConstrainPosition()
 	{
-		constrainedPosition.y = this.transform.localPosition.y;
-		if (this.transform.localPosition.y > initialLocalPosition.y)
+		constrainedPosition.y = transform.localPosition.y;
+		if (transform.localPosition.y > initialLocalPosition.y)
 			constrainedPosition.y = initialLocalPosition.y;
-		this.transform.localPosition = constrainedPosition;
-		this.transform.localRotation = constrainedRotation;
+		transform.localPosition = constrainedPosition;
+		transform.localRotation = constrainedRotation;
 	}
 
 	public void SwitchKeycapCharCase()
@@ -279,7 +283,7 @@ public class Key : MonoBehaviour
 				}
 				else if (name.Contains("SelectAll"))
                 {
-					target.onFocusSelectAll = true;
+					StartCoroutine(SelectingAllText(target));
 				}
 				else
 				{
@@ -308,5 +312,16 @@ public class Key : MonoBehaviour
 		if (!isSpecialKey) WriteStringToTarget();
 		keySoundController.StartKeySound(this.gameObject.transform);
 		checkForButton = false;
+	}
+
+	IEnumerator SelectingAllText(TMP_InputField target)
+    {
+		EventSystem.current.SetSelectedGameObject(null);
+		yield return null;
+		target.onFocusSelectAll = true;
+		yield return null;
+		target.ActivateInputField();
+		yield return null;
+		target.onFocusSelectAll = false;
 	}
 }

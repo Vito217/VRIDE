@@ -9,11 +9,12 @@ public class Keyboards : MonoBehaviour
     void Start()
     {
         baseParent = transform.parent;
+        GetComponent<Canvas>().worldCamera = Camera.main;
     }
 
     void Update()
     {
-        transform.localRotation = Quaternion.Euler(0, 0, 0);
+        transform.forward = new Vector3(transform.forward.x, 0f, transform.forward.z);
     }
 
     public void GrabKeyboard(BaseEventData data)

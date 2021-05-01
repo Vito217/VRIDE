@@ -9,7 +9,6 @@ public class DesktopView : InitializeBehaviour
     public Image img;
     public string key;
 
-    private bool click = false;
     private bool keepRequesting = true;
     private Vector2 coords = Vector2.zero;
 
@@ -21,14 +20,12 @@ public class DesktopView : InitializeBehaviour
 
     public void OnPointerClick(BaseEventData data)
     {
-        click = true;
         Vector3 hitWorldPosition = ((PointerEventData)data).pointerCurrentRaycast.worldPosition;
         Vector2 hitLocalPosition = img.transform.InverseTransformPoint(hitWorldPosition);
         Vector2 delta = GetComponent<RectTransform>().sizeDelta / 2;
         coords = Vector2Int.RoundToInt(new Vector2(hitLocalPosition.x + delta.x, delta.y - hitLocalPosition.y));
 
-        // string requestData = click + "." + coords.x + "." + coords.y;
-        // using (UnityWebRequest uwr = UnityWebRequest.Post(DesktopWindowsExplorer.streamerIP + "click/", requestData))
+        StartCoroutine(RequestForClick());
     }
 
     IEnumerator RequestForImage()
@@ -36,8 +33,6 @@ public class DesktopView : InitializeBehaviour
         bool firstRequest = true;
         while (keepRequesting)
         {
-            if (click) click = false;
-
             using (UnityWebRequest uwr = UnityWebRequest.Get(DesktopWindowsExplorer.streamerIP + key + "/"))
             {
                 yield return uwr.SendWebRequest();
@@ -60,6 +55,15 @@ public class DesktopView : InitializeBehaviour
                 }
                 catch { }
             }
+        }
+    }
+
+    IEnumerator RequestForClick()
+    {
+        string requestData = key + "." + coords.x + "." + coords.y;
+        using (UnityWebRequest uwr = UnityWebRequest.Post(DesktopWindowsExplorer.streamerIP + "click/", requestData))
+        {
+            yield return uwr.SendWebRequest();
         }
     }
 
