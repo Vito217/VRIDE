@@ -6,8 +6,6 @@ public class UndoKey : VRKey
 {
     public override void OnClick()
     {
-        if (keyboard.window != null && !keyboard.window.loadingWheel.activeSelf)
-        {
-        }
+       
     }
 }

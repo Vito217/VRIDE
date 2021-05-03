@@ -817,7 +817,6 @@ MonoBehaviour:
   keyboardTarget: {fileID: 5567259039884519919}
   lineCounter: {fileID: 1651878247473941290}
   loadingWheel: {fileID: 8301894938099840451}
-  keyboardsGameObject: {fileID: 0}
   freezeRotation: 1
   AFrameCube: {fileID: 4770452102599372922, guid: 2a5bce944c0ee424fa75b5265779af50,
     type: 3}
@@ -2466,7 +2465,6 @@ GameObject:
   - component: {fileID: 6821624970696451227}
   - component: {fileID: 6119328686449627508}
   - component: {fileID: 5738142972346671346}
-  - component: {fileID: 1491124458214195608}
   m_Layer: 5
   m_Name: Inspect
   m_TagString: Untagged
@@ -2576,9 +2574,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1491124458214195608}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: OnClick
+      - m_Target: {fileID: 4528608663118621400}
+        m_TargetAssemblyTypeName: Playground, Assembly-CSharp
+        m_MethodName: Inspect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2588,20 +2586,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1491124458214195608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4413548675757957053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07df4619d31649e468bdf0f390e22b7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyboard: {fileID: 0}
-  visibleText: {fileID: 7395213968782489553}
 --- !u!1 &4515101204645184361
 GameObject:
   m_ObjectHideFlags: 0
@@ -3611,7 +3595,6 @@ GameObject:
   - component: {fileID: 374665200894997682}
   - component: {fileID: 204206114805562344}
   - component: {fileID: 4070163732115549568}
-  - component: {fileID: 3419286927318088869}
   m_Layer: 5
   m_Name: Do
   m_TagString: Untagged
@@ -3721,9 +3704,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3419286927318088869}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: OnClick
+      - m_Target: {fileID: 4528608663118621400}
+        m_TargetAssemblyTypeName: Playground, Assembly-CSharp
+        m_MethodName: PharoDo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3733,20 +3716,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3419286927318088869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6747392409492616379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbd2c0cce8d861348b0f171044e96c33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyboard: {fileID: 0}
-  visibleText: {fileID: 2106375106204623431}
 --- !u!1 &6974606979326788857
 GameObject:
   m_ObjectHideFlags: 0
@@ -3834,7 +3803,6 @@ GameObject:
   - component: {fileID: 7656818790293843048}
   - component: {fileID: 439165030987597651}
   - component: {fileID: 3211413367499141607}
-  - component: {fileID: 2573786494540093076}
   m_Layer: 5
   m_Name: Print
   m_TagString: Untagged
@@ -3944,9 +3912,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2573786494540093076}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: OnClick
+      - m_Target: {fileID: 4528608663118621400}
+        m_TargetAssemblyTypeName: Playground, Assembly-CSharp
+        m_MethodName: PharoPrint
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3956,20 +3924,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2573786494540093076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7601084796085023891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee850d109b3979b4ea721aec1ab59631, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyboard: {fileID: 0}
-  visibleText: {fileID: 9103386278849713911}
 --- !u!1 &7738904483729303955
 GameObject:
   m_ObjectHideFlags: 0

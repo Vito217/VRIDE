@@ -898,6 +898,11 @@ public class Playground : InitializeBehaviour
         Reactivate();
     }
 
+    public void Inspect()
+    {
+        _ = PharoInspect();
+    }
+
     public async Task PharoInspect()
     {
         DeactivateTemporarily();
