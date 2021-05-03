@@ -29,6 +29,7 @@ public class Instantiator : MonoBehaviour
     public DesktopWindowObject desktopWindowObjectPrefab;
     public DesktopWindowsExplorer desktopWindowsExplorerPrefab;
     public Keyboards virtualKeyBoardPrefab;
+    public Keyboards virtualKeyBoard2Prefab;
 
     public GameObject defaultGround;
     public GameObject spaceShip;
@@ -315,6 +316,11 @@ public class Instantiator : MonoBehaviour
     public Keyboards VirtualKeyboard()
     {
         return Instantiate(virtualKeyBoardPrefab);
+    }
+
+    public Keyboards VirtualKeyboard2()
+    {
+        return Instantiate(virtualKeyBoard2Prefab);
     }
 
     /// <summary>

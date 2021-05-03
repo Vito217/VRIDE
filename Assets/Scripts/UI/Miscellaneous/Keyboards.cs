@@ -1,10 +1,13 @@
 ﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Keyboards : MonoBehaviour
 {
     Transform baseParent;
+
+    public static TMP_InputField lastSelectedTextField;
 
     void Start()
     {
@@ -15,6 +18,14 @@ public class Keyboards : MonoBehaviour
     void Update()
     {
         transform.forward = new Vector3(transform.forward.x, 0f, transform.forward.z);
+
+        GameObject lastSelected = EventSystem.current.currentSelectedGameObject;
+        if (lastSelected != null)
+        {
+            TMP_InputField lastTextField = lastSelected.GetComponent<TMP_InputField>();
+            if (lastTextField != null)
+                lastSelectedTextField = lastTextField;
+        }
     }
 
     public void GrabKeyboard(BaseEventData data)

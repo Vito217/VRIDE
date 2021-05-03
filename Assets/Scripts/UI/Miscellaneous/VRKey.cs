@@ -8,17 +8,20 @@ public class VRKey : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(keycode))
+        if (keycode != KeyCode.None)
         {
-            var colors = GetComponent<Button>().colors;
-            colors.normalColor = colors.pressedColor;
-            GetComponent<Button>().colors = colors;
-        }
-        else if (Input.GetKeyUp(keycode))
-        {
-            var colors = GetComponent<Button>().colors;
-            colors.normalColor = colors.selectedColor;
-            GetComponent<Button>().colors = colors;
+            if (Input.GetKeyDown(keycode))
+            {
+                var colors = GetComponent<Button>().colors;
+                colors.normalColor = colors.pressedColor;
+                GetComponent<Button>().colors = colors;
+            }
+            else if (Input.GetKeyUp(keycode))
+            {
+                var colors = GetComponent<Button>().colors;
+                colors.normalColor = colors.selectedColor;
+                GetComponent<Button>().colors = colors;
+            }
         }
     }
 

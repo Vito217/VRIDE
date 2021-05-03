@@ -141,6 +141,15 @@ public class VRIDEMenu : InitializeBehaviour
 
         Destroy(gameObject);
     }
+    public void GenerateVirtualKeyBoard2()
+    {
+        Keyboards vk = Instantiator.Instance.VirtualKeyboard2();
+        vk.Initialize();
+
+        InteractionLogger.Count("VirtualKeyboard2", vk.GetInstanceID().ToString());
+
+        Destroy(gameObject);
+    }
 
     public void Exit()
     {

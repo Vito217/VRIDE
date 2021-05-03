@@ -157,7 +157,7 @@ public class Key : MonoBehaviour
 
         try
         {
-			TMP_InputField target = EventSystem.current.currentSelectedGameObject.GetComponent<TMP_InputField>();
+			TMP_InputField target = Keyboards.lastSelectedTextField;
 
 			if (target.interactable)
 			{
