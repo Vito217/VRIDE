@@ -78,7 +78,7 @@ Once a new class or method is created, a new Unity GameObject is created and pla
 
 ### Executing Python code
 
-VRIDE currently uses IronPython 3.4 Alpha. The code used to run Python is as follows:
+VRIDE currently uses IronPython 2.7.11. The code used to run Python is as follows:
 
 ```
 Microsoft.Scripting.Hosting.ScriptEngine pythonEngine = IronPython.Hosting.Python.CreateEngine();
