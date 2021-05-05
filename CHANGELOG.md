@@ -1,5 +1,12 @@
 # VRIDE's Channel Log
 
+## V0.29.0 (04/05/2021)
+* Added streaming for separate windows (Windows 10 only)
+* Added a 2D UI Keyboard, which reacts to the inputs of the physical one connected to the PC
+* Added some icons to the main menu
+* Now every keyboard must be instantiated from the menu, in favor of a better use of space.
+* Fixed some bugs.
+
 ## V0.28.0 (26/04/2021)
 * Enhanced editors. Text Highlighting has been restored, and line counters have been added.
 * Desktop Streaming: Now it is possible to stream a desktop from a PC to VRIDE. 
