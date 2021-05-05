@@ -10,11 +10,13 @@ public class EnterAddressBehaviour : InitializeBehaviour
 {
     public TMP_InputField username;
     public GameObject aboutSection, mainSection;
+    public Keyboards vk1;
 
     public override IEnumerator innerStart()
     {
         Initialize();
         aboutSection.transform.position = transform.TransformPoint(GetComponent<RectTransform>().sizeDelta.x, 0f, 0f);
+        vk1.transform.position = transform.TransformPoint(0f, -300f, -200f);
         return base.innerStart();
     }
 

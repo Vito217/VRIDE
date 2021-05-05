@@ -20,6 +20,8 @@ public class IPython : MonoBehaviour
             Path.Combine(Application.streamingAssetsPath),
             Path.Combine(Application.streamingAssetsPath, "Python", "Lib"),
             Path.Combine(Application.streamingAssetsPath, "Python", "Lib", "site-packages"),
+            Path.Combine(Application.streamingAssetsPath, "Python", "Lib", "site-packages", "numpy-2.0.0b2-1.egg"),
+            Path.Combine(Application.streamingAssetsPath, "Python", "Lib", "site-packages", "scipy-1.0.0b2-1.egg"),
             Path.Combine(Application.persistentDataPath, SaveAndLoadModule.username)
         };
 
