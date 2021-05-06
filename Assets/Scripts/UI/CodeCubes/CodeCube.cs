@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class CodeCube : MonoBehaviour
 {
@@ -8,20 +8,17 @@ public class CodeCube : MonoBehaviour
     public float rotationSpeed = 2f;
     public float scalingSpeed = 2f;
 
-    List<CodeCube> childCubes;
-
+    private Transform baseParent;
+   
     // Start is called before the first frame update
     void Start()
     {
-        childCubes = new List<CodeCube>();
-        foreach (Transform child in transform)
-            childCubes.Add(child.gameObject.GetComponent<CodeCube>());
+        InnerStart();
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual void InnerStart()
     {
-        
+        GetComponent<XRSimpleInteractable>().interactionManager = GameObject.Find("XR Interaction Manager").GetComponent<XRInteractionManager>();
     }
 
     public void RotateLocally(float degrees)
@@ -43,8 +40,8 @@ public class CodeCube : MonoBehaviour
     {
         while(transform.localPosition != target)
         {
-            transform.position = Vector3.MoveTowards(
-                transform.position, target, Time.deltaTime * movementSpeed
+            transform.localPosition = Vector3.MoveTowards(
+                transform.localPosition, target, Time.deltaTime * movementSpeed
             );
 
             yield return null;
@@ -57,7 +54,7 @@ public class CodeCube : MonoBehaviour
         while(Mathf.Abs(degreeCounter) <= Mathf.Abs(degrees))
         {
             float degreesRotated = rotationSpeed * Time.deltaTime;
-            transform.Rotate(0f, 0f, degreesRotated);
+            transform.Rotate(0f, degreesRotated, 0f);
             degreeCounter += degreesRotated;
             yield return null;
         }
@@ -75,15 +72,14 @@ public class CodeCube : MonoBehaviour
         }
     }
 
-    public void OnClick()
+    public void OnSelectEnter(SelectEnterEventArgs eventArgs)
     {
-        RotateLocally(360);
-        ScaleTo(new Vector3(.4f, .4f, .4f));
-        childCubes[0].MoveLocallyTo(new Vector3(1f, 0f, 0f));
-        childCubes[1].MoveLocallyTo(new Vector3(0f, 1f, 0f));
-        childCubes[2].MoveLocallyTo(new Vector3(0f, 0f, 1f));
-        childCubes[3].MoveLocallyTo(new Vector3(-1f, 0f, 0f));
-        childCubes[4].MoveLocallyTo(new Vector3(0f, -1f, 0f));
-        childCubes[5].MoveLocallyTo(new Vector3(0f, 0f, -1f));
+        baseParent = transform.parent;
+        transform.SetParent(eventArgs.interactor.transform);
+    }
+
+    public void OnSelectExit()
+    {
+        transform.SetParent(baseParent);
     }
 }
