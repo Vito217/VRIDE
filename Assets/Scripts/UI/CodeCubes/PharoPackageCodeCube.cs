@@ -8,4 +8,9 @@ public class PharoPackageCodeCube : PharoCodeCube
     public string packageName;
 
     public List<PharoClassCodeCube> classes;
+
+    public override void InnerStart()
+    {
+        base.InnerStart();
+    }
 }

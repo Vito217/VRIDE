@@ -4,4 +4,8 @@ using UnityEngine;
 
 public class PharoCodeCube : CodeCube
 {
+    public override void InnerStart()
+    {
+        base.InnerStart();
+    }
 }

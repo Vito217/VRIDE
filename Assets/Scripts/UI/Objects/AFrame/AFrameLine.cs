@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class AFrameLine : MonoBehaviour
 {
@@ -8,23 +9,40 @@ public class AFrameLine : MonoBehaviour
     public Vector3 start;
     public Vector3 end;
 
-    void Update()
+    void Start()
     {
-        if (startObject != null)
-            start = transform.parent.InverseTransformPoint(
-                startObject.transform.position);
+        StartCoroutine(UpdateLine());
+    }
 
-        if (endObject != null)
-            end = transform.parent.InverseTransformPoint(
-                endObject.transform.position);
+    IEnumerator UpdateLine()
+    {
+        while (gameObject)
+        {
+            if (startObject != null && endObject != null)
+            {
+                start = transform.parent.InverseTransformPoint(
+                    startObject.transform.position);
 
-        Vector3 lineDir = end - start;
-        Vector3 baseDir = new Vector3(lineDir.x, start.y, lineDir.z);
-        Vector3 center = (start + end) * 0.5f;
-        float mag = lineDir.magnitude;
+                yield return null;
 
-        transform.localPosition = center;
-        transform.localScale = new Vector3(.02f, .02f, mag);
-        transform.LookAt(transform.parent.TransformPoint(end));
+                end = transform.parent.InverseTransformPoint(
+                    endObject.transform.position);
+
+                yield return null;
+
+                transform.LookAt(transform.parent.TransformPoint(end));
+
+                yield return null;
+
+                Vector3 lineDir = end - start;
+                Vector3 center = (start + end) * 0.5f;
+
+                transform.localPosition = center;
+
+                var scale = transform.localScale;
+                scale.z = lineDir.magnitude;
+                transform.localScale = scale;
+            }
+        }
     }
 }

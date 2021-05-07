@@ -6,4 +6,9 @@ public class PharoVarCodeCube : PharoCodeCube
 {
     [HideInInspector]
     public string varName;
+
+    public override void InnerStart()
+    {
+        base.InnerStart();
+    }
 }

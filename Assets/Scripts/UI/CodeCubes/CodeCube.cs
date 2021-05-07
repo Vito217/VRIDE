@@ -4,21 +4,24 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class CodeCube : MonoBehaviour
 {
-    public float movementSpeed = 2f;
+    public float movementSpeed = 5f;
     public float rotationSpeed = 1000f;
-    public float scalingSpeed = 2f;
+    public float scalingSpeed = 5f;
 
     private Transform baseParent;
    
     // Start is called before the first frame update
     void Start()
     {
+        GetComponent<XRSimpleInteractable>().interactionManager = 
+            GameObject.Find("XR Interaction Manager").GetComponent<XRInteractionManager>();
+
         InnerStart();
     }
 
     public virtual void InnerStart()
     {
-        GetComponent<XRSimpleInteractable>().interactionManager = GameObject.Find("XR Interaction Manager").GetComponent<XRInteractionManager>();
+        
     }
 
     public void RotateLocally(float degrees)
