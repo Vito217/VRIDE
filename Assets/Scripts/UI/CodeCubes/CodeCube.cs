@@ -5,7 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class CodeCube : MonoBehaviour
 {
     public float movementSpeed = 2f;
-    public float rotationSpeed = 2f;
+    public float rotationSpeed = 1000f;
     public float scalingSpeed = 2f;
 
     private Transform baseParent;

@@ -21,6 +21,7 @@ public class BrowserClass : BrowserObject
                 theBrowser.methodFilter.interactable = true;
                 theBrowser.methodList.Load();
                 theBrowser.classRemover.interactable = true;
+                theBrowser.codeCubeLoader.interactable = true;
             }
             catch (Exception e)
             {

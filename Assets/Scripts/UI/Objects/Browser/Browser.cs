@@ -22,7 +22,10 @@ public class Browser : InitializeBehaviour
     public Button methodRemover;
     public Button classRemover;
     public Button packageRemover;
+    public Button codeCubeLoader;
     private bool loadingPackages = false;
+
+    public PharoClassCodeCube pharoClassCodeCubePrefab;
 
     public async void PharoDefine()
     {
@@ -230,6 +233,13 @@ public class Browser : InitializeBehaviour
         }
     }
 
+    public void LoadCodeCube()
+    {
+        PharoClassCodeCube classCodeCube = Instantiate(pharoClassCodeCubePrefab);
+        classCodeCube.transform.position = transform.position;
+        classCodeCube.className = class_list.last_selected.name;
+    }
+
     void LateUpdate()
     {
         CountLines();
@@ -238,17 +248,20 @@ public class Browser : InitializeBehaviour
 
     public void LoadPackages()
     {
+        codeCubeLoader.interactable = false;
         loadingPackages = true;
     }
 
     public void RemoveLastSelectedPackage()
     {
+        codeCubeLoader.interactable = false;
         string packageName = package_list.last_selected.name;
         DeletePackage(packageName);
     }
 
     public void RemoveLastSelectedClass()
     {
+        codeCubeLoader.interactable = false;
         string className = class_list.last_selected.name;
         DeleteClass(className);
     }
