@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class PharoClassCodeCube : PharoCodeCube
 {
@@ -28,18 +30,13 @@ public class PharoClassCodeCube : PharoCodeCube
     public PharoVarCodeCube varCodeCubePrefab;
     public PharoMethodCodeCube methodCodeCubePrefab;
     public PharoPackageCodeCube packageCodeCubePrefab;
+    public CodeCubeText codeCubeTextPrefab;
     public AFrameLine aFrameLinePrefab;
 
     public List<Transform> childLists;
 
     private bool opened = false;
-    private bool firstOpen = true;
     private bool loading = false;
-
-    public override void InnerStart()
-    {
-        base.InnerStart();
-    }
 
     public void OnActivate()
     {
@@ -68,52 +65,80 @@ public class PharoClassCodeCube : PharoCodeCube
         packageName = Regex.Match(code, @"package:\s+'+\s*([a-zA-Z0-9-]+)\s*'+").Groups[1].Value;
         instanceVars = Regex.Match(code, @"instanceVariableNames:\s+'+([a-zA-Z0-9\s]+)'+").Groups[1].Value.Split(' ');
         classVars = Regex.Match(code, @"classVariableNames:\s+'+([a-zA-Z0-9\s]+)'+").Groups[1].Value.Split(' ');
-        parentClassName = Regex.Match(code, @"\A\s*([a-zA-Z0-9]+)\s+subclass:").Groups[1].Value;
+        parentClassName = Regex.Match(code, @"([a-zA-Z0-9]+)\s+subclass:").Groups[1].Value;
     }
 
     void GenerateCubes()
     {
         foreach(string instanceVar in instanceVars)
         {
-            PharoVarCodeCube var = Instantiate(varCodeCubePrefab, childLists[0]);
-            var.varName = instanceVar;
+            if (!string.IsNullOrWhiteSpace(instanceVar))
+            {
+                PharoVarCodeCube var = Instantiate(varCodeCubePrefab, childLists[0]);
+                var.GetComponent<Renderer>().material.color = Color.green;
+                var.isInstance = true;
+                var.varName = instanceVar;
 
-            AddLine(var.gameObject, Color.green);
+                AddLine(var.gameObject, Color.green);
+            }
         }
 
         foreach(string classVar in classVars)
         {
-            PharoVarCodeCube var = Instantiate(varCodeCubePrefab, childLists[1]);
-            var.varName = classVar;
+            if (!string.IsNullOrWhiteSpace(classVar))
+            {
+                PharoVarCodeCube var = Instantiate(varCodeCubePrefab, childLists[1]);
+                var.GetComponent<Renderer>().material.color = Color.red;
+                var.isInstance = false;
+                var.varName = classVar;
 
-            AddLine(var.gameObject, Color.red);
+                AddLine(var.gameObject, Color.red);
+            }
         }
 
         foreach(string instanceMethod in instanceMethods)
         {
-            PharoMethodCodeCube method = Instantiate(methodCodeCubePrefab, childLists[2]);
-            method.methodName = instanceMethod;
+            if (!string.IsNullOrWhiteSpace(instanceMethod))
+            {
+                PharoMethodCodeCube method = Instantiate(methodCodeCubePrefab, childLists[2]);
+                method.GetComponent<Renderer>().material.color = Color.blue;
+                method.isInstance = true;
+                method.methodName = instanceMethod;
 
-            AddLine(method.gameObject, Color.blue);
+                AddLine(method.gameObject, Color.blue);
+            }
         }
 
         foreach(string classMethod in classMethods)
         {
-            PharoMethodCodeCube method = Instantiate(methodCodeCubePrefab, childLists[3]);
-            method.methodName = classMethod;
+            if (!string.IsNullOrWhiteSpace(classMethod))
+            {
+                PharoMethodCodeCube method = Instantiate(methodCodeCubePrefab, childLists[3]);
+                method.GetComponent<Renderer>().material.color = Color.yellow;
+                method.isInstance = false;
+                method.methodName = classMethod;
 
-            AddLine(method.gameObject, Color.yellow);
+                AddLine(method.gameObject, Color.yellow);
+            } 
         }
 
-        PharoPackageCodeCube pack = Instantiate(packageCodeCubePrefab, childLists[4]); 
-        pack.packageName = packageName;
+        if (!string.IsNullOrWhiteSpace(packageName))
+        {
+            PharoPackageCodeCube pack = Instantiate(packageCodeCubePrefab, childLists[4]);
+            pack.GetComponent<Renderer>().material.color = Color.cyan;
+            pack.packageName = packageName;
 
-        AddLine(pack.gameObject, Color.cyan);
+            AddLine(pack.gameObject, Color.cyan);
+        }
 
-        PharoClassCodeCube parent = Instantiate(classCodeCubePrefab, childLists[5]);
-        parent.className = parentClassName;
+        if (!string.IsNullOrWhiteSpace(parentClassName))
+        {
+            PharoClassCodeCube parent = Instantiate(classCodeCubePrefab, childLists[5]);
+            parent.GetComponent<Renderer>().material.color = Color.magenta;
+            parent.className = parentClassName;
 
-        AddLine(parent.gameObject, Color.magenta);
+            AddLine(parent.gameObject, Color.magenta);
+        }
     }
 
     void MoveChildren()
@@ -274,5 +299,20 @@ public class PharoClassCodeCube : PharoCodeCube
         line.endObject = ob;
 
         line.GetComponent<Renderer>().material.color = c;
+    }
+
+    public void OnHoverEnter(HoverEnterEventArgs args)
+    {
+        if (!isDragged)
+        {
+            CodeCubeText text = Instantiate(codeCubeTextPrefab, transform);
+            text.GetComponent<TextMeshPro>().text = "class: " + className;
+        }
+    }
+
+    public void OnHoverExit(HoverExitEventArgs args)
+    {
+        Transform text = transform.Find("CodeCubeText(Clone)");
+        if (text) Destroy(text.gameObject);
     }
 }

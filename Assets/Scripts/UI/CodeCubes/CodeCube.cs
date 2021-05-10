@@ -9,6 +9,7 @@ public class CodeCube : MonoBehaviour
     public float scalingSpeed = 5f;
 
     private Transform baseParent;
+    protected bool isDragged = false;
    
     // Start is called before the first frame update
     void Start()
@@ -77,12 +78,17 @@ public class CodeCube : MonoBehaviour
 
     public void OnSelectEnter(SelectEnterEventArgs eventArgs)
     {
+        isDragged = true;
         baseParent = transform.parent;
         transform.SetParent(eventArgs.interactor.transform);
+
+        Transform text = transform.Find("CodeCubeText(Clone)");
+        if (text) Destroy(text.gameObject);
     }
 
     public void OnSelectExit()
     {
+        isDragged = false;
         transform.SetParent(baseParent);
     }
 }
