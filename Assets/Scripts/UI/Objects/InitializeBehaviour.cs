@@ -98,9 +98,9 @@ public class InitializeBehaviour : MonoBehaviour
             name.Replace("(Clone)", ""), GetInstanceID().ToString());
     }
 
-    public void DeactivateTemporarily() { loadingWheel.SetActive(true); }
+    public void DeactivateTemporarily() { if (loadingWheel != null) loadingWheel.SetActive(true); }
 
-    public void Reactivate() { loadingWheel.SetActive(false); }
+    public void Reactivate() { if (loadingWheel != null) loadingWheel.SetActive(false); }
 
     public void KeepActiveOnSlide()
     {

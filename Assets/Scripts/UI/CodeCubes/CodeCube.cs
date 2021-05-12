@@ -20,6 +20,16 @@ public class CodeCube : MonoBehaviour
         InnerStart();
     }
 
+    void Update()
+    {
+        if (isDragged)
+        {
+            VRIDEInputHandler inputs = transform.parent.root.GetComponent<VRIDEInputHandler>();
+            if (inputs.LeftPrimaryButtonDown || inputs.RightPrimaryButtonDown)
+                Destroy(gameObject);                
+        }
+    }
+
     public virtual void InnerStart()
     {
         
