@@ -989,7 +989,7 @@ public class Playground : InitializeBehaviour
 
     public override void onClose()
     {
-        if (loadingWheel == null || !loadingWheel.activeSelf)
+        if (!SomethingIsLoading())
         {
             SaveAndLoadModule.playgrounds.Remove(this);
             InteractionLogger.Discount("Playground", GetInstanceID().ToString());
@@ -1001,7 +1001,7 @@ public class Playground : InitializeBehaviour
     {
         if (field.isFocused)
         {
-            if (Input.anyKeyDown && !loadingWheel.activeSelf)
+            if (Input.anyKeyDown && !SomethingIsLoading())
             {
                 bool cmd = Input.GetKey(KeyCode.LeftCommand) ||
                            Input.GetKey(KeyCode.LeftControl) ||
@@ -1018,22 +1018,12 @@ public class Playground : InitializeBehaviour
                 bool v = Input.GetKeyDown("v");
                 bool b = Input.GetKeyDown("b");
 
-                //if (!(leftCmd || leftCtrl || f3 || f4 || f5))
-                //    onChangeInput();
-
                 if ((cmd && d) || f3)
                     PharoDo();
                 else if ((cmd && p) || f4)
                     PharoPrint();
                 else if ((cmd && i) || f5)
                     _ = PharoInspect();
-
-                //else if (((leftCmd || leftCtrl) && b) || f8)
-                //    PharoBrowse();
-                //else if (((leftCmd || leftCtrl) && v) || ((leftCmd || leftCtrl) && c))
-                //    onChangeInput();
-                //else
-                //    onChangeInput();
             }
         }
     }
@@ -1041,6 +1031,7 @@ public class Playground : InitializeBehaviour
     void LateUpdate()
     {
         CountLines();
+        HighlightCode();
     }
 
     async Task<String> TryGetImageFile(Match match, string type, string selectedCode)
@@ -1167,5 +1158,10 @@ public class Playground : InitializeBehaviour
                     );
             }
         }
+    }
+
+    void HighlightCode()
+    {
+
     }
 }

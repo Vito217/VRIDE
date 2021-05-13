@@ -27,9 +27,7 @@ public class DesktopWindowsExplorer : InitializeBehaviour
 
     IEnumerator Fill()
     {
-        
-
-        loadingWheel.SetActive(true);
+        DeactivateTemporarily();
         yield return null;
 
         Instantiator.Instance.DesktopWindowObject("desktop", "Desktop", this);
@@ -54,7 +52,7 @@ public class DesktopWindowsExplorer : InitializeBehaviour
             }
             finally
             {
-                loadingWheel.SetActive(false);
+                Reactivate();
             }
         }
     }

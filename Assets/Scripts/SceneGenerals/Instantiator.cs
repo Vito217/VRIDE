@@ -30,6 +30,8 @@ public class Instantiator : MonoBehaviour
     public DesktopWindowsExplorer desktopWindowsExplorerPrefab;
     public Keyboards virtualKeyBoardPrefab;
     public Keyboards virtualKeyBoard2Prefab;
+    public BrowserWindowCube browserWindowCubePrefab;
+    public PlaygroundWindowCube playgroundWindowCubePrefab;
 
     public GameObject defaultGround;
     public GameObject spaceShip;
@@ -339,5 +341,15 @@ public class Instantiator : MonoBehaviour
         ob.hwnd = hwnd;
 
         return ob;
+    }
+
+    public BrowserWindowCube BrowserWindowCube()
+    {
+        return Instantiate(browserWindowCubePrefab);
+    }
+
+    public PlaygroundWindowCube PlaygroundWindowCube()
+    {
+        return Instantiate(playgroundWindowCubePrefab);
     }
 }

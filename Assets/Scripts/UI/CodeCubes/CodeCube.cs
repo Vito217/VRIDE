@@ -10,8 +10,7 @@ public class CodeCube : MonoBehaviour
 
     private Transform baseParent;
     protected bool isDragged = false;
-   
-    // Start is called before the first frame update
+  
     void Start()
     {
         GetComponent<XRSimpleInteractable>().interactionManager = 
@@ -26,7 +25,7 @@ public class CodeCube : MonoBehaviour
         {
             VRIDEInputHandler inputs = transform.parent.root.GetComponent<VRIDEInputHandler>();
             if (inputs.LeftPrimaryButtonDown || inputs.RightPrimaryButtonDown)
-                Destroy(gameObject);                
+                Destroy(gameObject);            
         }
     }
 
@@ -40,9 +39,9 @@ public class CodeCube : MonoBehaviour
         StartCoroutine(RotateLocallyBy(degrees));
     }
 
-    public void MoveLocallyTo(Vector3 target)
+    public void MoveLocallyTo(Transform t, Vector3 target)
     {
-        StartCoroutine(MoveLocallyToTarget(target));
+        StartCoroutine(MoveLocallyToTarget(t, target));
     }
 
     public void ScaleTo(Vector3 target)
@@ -50,19 +49,19 @@ public class CodeCube : MonoBehaviour
         StartCoroutine(ScaleBy(target));
     }
 
-    private IEnumerator MoveLocallyToTarget(Vector3 target)
+    private IEnumerator MoveLocallyToTarget(Transform t, Vector3 target)
     {
-        while(transform.localPosition != target)
+        while (t.localPosition != target)
         {
-            transform.localPosition = Vector3.MoveTowards(
-                transform.localPosition, target, Time.deltaTime * movementSpeed
+            t.localPosition = Vector3.MoveTowards(
+                t.localPosition, target, Time.deltaTime * movementSpeed
             );
 
             yield return null;
         }
     }
 
-    private IEnumerator RotateLocallyBy(float degrees)
+    protected IEnumerator RotateLocallyBy(float degrees)
     {
         float degreeCounter = 0f;
         while(Mathf.Abs(degreeCounter) <= Mathf.Abs(degrees))
@@ -74,7 +73,7 @@ public class CodeCube : MonoBehaviour
         }
     }
 
-    private IEnumerator ScaleBy(Vector3 target)
+    protected IEnumerator ScaleBy(Vector3 target)
     {
         while (transform.localScale != target)
         {
@@ -86,14 +85,11 @@ public class CodeCube : MonoBehaviour
         }
     }
 
-    public void OnSelectEnter(SelectEnterEventArgs eventArgs)
+    public virtual void OnSelectEnter(SelectEnterEventArgs eventArgs)
     {
         isDragged = true;
         baseParent = transform.parent;
         transform.SetParent(eventArgs.interactor.transform);
-
-        Transform text = transform.Find("CodeCubeText(Clone)");
-        if (text) Destroy(text.gameObject);
     }
 
     public void OnSelectExit()

@@ -64,7 +64,7 @@ public class PharoPackageCodeCube : PharoCodeCube
         {
             CodeCube child = transform.GetChild(i).GetComponent<CodeCube>();
             child.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
-            child.MoveLocallyTo(new Vector3(2 * (i + 1), 0f, 0f));
+            MoveLocallyTo(child.transform, new Vector3(2 * (i + 1), 0f, 0f));
             child.ScaleTo(child.transform.localScale / transform.localScale.x);
         }
     }
@@ -75,7 +75,7 @@ public class PharoPackageCodeCube : PharoCodeCube
         {
             CodeCube child = transform.GetChild(i).GetComponent<CodeCube>();
             child.ScaleTo(child.transform.localScale * transform.localScale.x);
-            child.MoveLocallyTo(new Vector3(0f, 0f, 0f));
+            MoveLocallyTo(child.transform, new Vector3(0f, 0f, 0f));
         }
     }
 

@@ -2,11 +2,15 @@
 using LoggingModule;
 using SaveAndLoad;
 using Unity.VectorGraphics;
+using UnityEngine;
 
 public class Graph : InitializeBehaviour
 {
     public SVGImage graph_panel;
+
+    [HideInInspector]
     public string raw_image;
+    [HideInInspector]
     public string type;
 
     public void setSprite(string raw, string tp)
@@ -20,7 +24,7 @@ public class Graph : InitializeBehaviour
 
     public override void onClose()
     {
-        if (loadingWheel == null || !loadingWheel.activeSelf)
+        if (!SomethingIsLoading())
         {
             SaveAndLoadModule.graphs.Remove(this);
             InteractionLogger.Discount("GraphObject", GetInstanceID().ToString());

@@ -148,7 +148,7 @@ public class PharoClassCodeCube : PharoCodeCube
         {
             CodeCube child = childLists[0].GetChild(i).GetComponent<CodeCube>();
             child.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
-            child.MoveLocallyTo(new Vector3(2 * (i + 1), 0f, 0f));
+            MoveLocallyTo(child.transform, new Vector3(2 * (i + 1), 0f, 0f));
             child.ScaleTo(child.transform.localScale / transform.localScale.x);
         }
 
@@ -157,7 +157,7 @@ public class PharoClassCodeCube : PharoCodeCube
         {
             CodeCube child = childLists[1].GetChild(i).GetComponent<CodeCube>();
             child.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
-            child.MoveLocallyTo(new Vector3(0f, 2 * (i + 1), 0f));
+            MoveLocallyTo(child.transform, new Vector3(0f, 2 * (i + 1), 0f));
             child.ScaleTo(child.transform.localScale / transform.localScale.x);
         }
 
@@ -166,7 +166,7 @@ public class PharoClassCodeCube : PharoCodeCube
         {
             CodeCube child = childLists[2].GetChild(i).GetComponent<CodeCube>();
             child.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
-            child.MoveLocallyTo(new Vector3(0f, 0f, 2 * (i + 1)));
+            MoveLocallyTo(child.transform, new Vector3(0f, 0f, 2 * (i + 1)));
             child.ScaleTo(child.transform.localScale / transform.localScale.x);
         }
 
@@ -175,7 +175,7 @@ public class PharoClassCodeCube : PharoCodeCube
         {
             CodeCube child = childLists[3].GetChild(i).GetComponent<CodeCube>();
             child.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
-            child.MoveLocallyTo(new Vector3(-2 * (i + 1), 0f, 0f));
+            MoveLocallyTo(child.transform, new Vector3(-2 * (i + 1), 0f, 0f));
             child.ScaleTo(child.transform.localScale / transform.localScale.x);
         }
 
@@ -184,7 +184,7 @@ public class PharoClassCodeCube : PharoCodeCube
         {
             CodeCube child = childLists[4].GetChild(i).GetComponent<CodeCube>();
             child.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
-            child.MoveLocallyTo(new Vector3(0f, -2 * (i + 1), 0f));
+            MoveLocallyTo(child.transform, new Vector3(0f, -2 * (i + 1), 0f));
             child.ScaleTo(child.transform.localScale / transform.localScale.x);
         }
 
@@ -193,7 +193,7 @@ public class PharoClassCodeCube : PharoCodeCube
         {
             CodeCube child = childLists[5].GetChild(i).GetComponent<CodeCube>();
             child.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
-            child.MoveLocallyTo(new Vector3(0f, 0f, -2 * (i + 1)));
+            MoveLocallyTo(child.transform, new Vector3(0f, 0f, -2 * (i + 1)));
             child.ScaleTo(child.transform.localScale / transform.localScale.x);
         }
     }
@@ -205,7 +205,7 @@ public class PharoClassCodeCube : PharoCodeCube
         {
             CodeCube child = childLists[0].GetChild(i).GetComponent<CodeCube>();
             child.ScaleTo(child.transform.localScale * transform.localScale.x);
-            child.MoveLocallyTo(new Vector3(0f, 0f, 0f));
+            MoveLocallyTo(child.transform, new Vector3(0f, 0f, 0f));
         }
 
         // CLASS VARS
@@ -213,7 +213,7 @@ public class PharoClassCodeCube : PharoCodeCube
         {
             CodeCube child = childLists[1].GetChild(i).GetComponent<CodeCube>();
             child.ScaleTo(child.transform.localScale * transform.localScale.x);
-            child.MoveLocallyTo(new Vector3(0f, 0f, 0f));
+            MoveLocallyTo(child.transform, new Vector3(0f, 0f, 0f));
         }
 
         // INSTANCE METHODS
@@ -221,7 +221,7 @@ public class PharoClassCodeCube : PharoCodeCube
         {
             CodeCube child = childLists[2].GetChild(i).GetComponent<CodeCube>();
             child.ScaleTo(child.transform.localScale * transform.localScale.x);
-            child.MoveLocallyTo(new Vector3(0f, 0f, 0f));
+            MoveLocallyTo(child.transform, new Vector3(0f, 0f, 0f));
         }
 
         // CLASS METHODS
@@ -229,7 +229,7 @@ public class PharoClassCodeCube : PharoCodeCube
         {
             CodeCube child = childLists[3].GetChild(i).GetComponent<CodeCube>();
             child.ScaleTo(child.transform.localScale * transform.localScale.x);
-            child.MoveLocallyTo(new Vector3(0f, 0f, 0f));
+            MoveLocallyTo(child.transform, new Vector3(0f, 0f, 0f));
         }
 
         // PACKAGE
@@ -237,7 +237,7 @@ public class PharoClassCodeCube : PharoCodeCube
         {
             CodeCube child = childLists[4].GetChild(i).GetComponent<CodeCube>();
             child.ScaleTo(child.transform.localScale * transform.localScale.x);
-            child.MoveLocallyTo(new Vector3(0f, 0f, 0f));
+            MoveLocallyTo(child.transform, new Vector3(0f, 0f, 0f));
         }
 
         // SUPERCLASS
@@ -245,7 +245,7 @@ public class PharoClassCodeCube : PharoCodeCube
         {
             CodeCube child = childLists[5].GetChild(i).GetComponent<CodeCube>();
             child.ScaleTo(child.transform.localScale * transform.localScale.x);
-            child.MoveLocallyTo(new Vector3(0f, 0f, 0f));
+            MoveLocallyTo(child.transform, new Vector3(0f, 0f, 0f));
         }
     }
     void CleanCubes()

@@ -5,7 +5,7 @@ public class Transcript : InitializeBehaviour
 {
     public override void onClose()
     {
-        if(loadingWheel == null || !loadingWheel.activeSelf)
+        if(!SomethingIsLoading())
         {
             SaveAndLoadModule.transcripts.Remove(this);
             InteractionLogger.Discount("Transcript", GetInstanceID().ToString());

@@ -15,7 +15,7 @@ public class Browser : InitializeBehaviour
     public ClassWindow class_list;
     public MethodWindow methodList;
     public Toggle classSideToggle, instanceSideToggle;
-    public Color white, skyBlue, gray;
+    public PharoClassCodeCube pharoClassCodeCubePrefab;
     public TMP_InputField packageFilter;
     public TMP_InputField classFilter;
     public TMP_InputField methodFilter;
@@ -23,9 +23,11 @@ public class Browser : InitializeBehaviour
     public Button classRemover;
     public Button packageRemover;
     public Button codeCubeLoader;
-    private bool loadingPackages = false;
+    
+    [HideInInspector]
+    public Color white, skyBlue, gray;
 
-    public PharoClassCodeCube pharoClassCodeCubePrefab;
+    private bool loadingPackages = false;
 
     public async void PharoDefine()
     {
@@ -191,7 +193,7 @@ public class Browser : InitializeBehaviour
 
     public override void onClose()
     {
-        if (loadingWheel == null || !loadingWheel.activeSelf)
+        if (!SomethingIsLoading())
         {
             SaveAndLoadModule.browsers.Remove(this);
             InteractionLogger.Discount("Browser", GetInstanceID().ToString());
@@ -218,7 +220,7 @@ public class Browser : InitializeBehaviour
         }
         else if (keyboardTarget.isFocused)
         {
-            if (Input.anyKeyDown && !loadingWheel.activeSelf)
+            if (Input.anyKeyDown && !SomethingIsLoading())
             {
                 bool cmd = Input.GetKey(KeyCode.LeftCommand) ||
                            Input.GetKey(KeyCode.LeftControl) ||

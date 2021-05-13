@@ -8,6 +8,8 @@ public class Inspector : InitializeBehaviour
 {
     public Transform inspector_content;
     public RectTransform inspectorText;
+
+    [HideInInspector]
     public string data;
 
     public void setContent(string response) {
@@ -36,7 +38,7 @@ public class Inspector : InitializeBehaviour
 
     public override void onClose()
     {
-        if (loadingWheel == null || !loadingWheel.activeSelf)
+        if (!SomethingIsLoading())
         {
             SaveAndLoadModule.inspectors.Remove(this);
             InteractionLogger.Discount("Inspector", GetInstanceID().ToString());

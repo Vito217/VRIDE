@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using LoggingModule;
 using TMPro;
+using System.Collections.Generic;
 
 public class InitializeBehaviour : MonoBehaviour
 {
@@ -14,9 +15,10 @@ public class InitializeBehaviour : MonoBehaviour
     public TMP_InputField field;
     public TMP_InputField keyboardTarget;
     public TextMeshProUGUI lineCounter;
-    public GameObject loadingWheel;
     public bool freezeRotation = true;
-    
+
+    public List<GameObject> loadingWheels;
+
     float sizeVariance = 20;
     float scaleVariance = .2f;
 
@@ -98,9 +100,17 @@ public class InitializeBehaviour : MonoBehaviour
             name.Replace("(Clone)", ""), GetInstanceID().ToString());
     }
 
-    public void DeactivateTemporarily() { if (loadingWheel != null) loadingWheel.SetActive(true); }
+    public void DeactivateTemporarily() 
+    { 
+        foreach (GameObject loadingWheel in loadingWheels)
+            loadingWheel.SetActive(true); 
+    }
 
-    public void Reactivate() { if (loadingWheel != null) loadingWheel.SetActive(false); }
+    public void Reactivate() 
+    {
+        foreach (GameObject loadingWheel in loadingWheels)
+            loadingWheel.SetActive(false); 
+    }
 
     public void KeepActiveOnSlide()
     {
@@ -130,7 +140,7 @@ public class InitializeBehaviour : MonoBehaviour
     public virtual void HorizontalExpand()
     {
         GetComponent<RectTransform>().sizeDelta += new Vector2(sizeVariance, 0f);
-        if (loadingWheel != null)
+        foreach (GameObject loadingWheel in loadingWheels)
             loadingWheel.GetComponent<RectTransform>().sizeDelta += new Vector2(sizeVariance, 0f);
 
         InteractionLogger.RegisterWindowChange("Increased", name.Replace("(Clone)", ""), GetInstanceID().ToString(), "width");
@@ -139,7 +149,7 @@ public class InitializeBehaviour : MonoBehaviour
     public virtual void VerticalExpand()
     {
         GetComponent<RectTransform>().sizeDelta += new Vector2(0f, sizeVariance);
-        if (loadingWheel != null)    
+        foreach (GameObject loadingWheel in loadingWheels)
             loadingWheel.GetComponent<RectTransform>().sizeDelta += new Vector2(0f, sizeVariance);
 
         InteractionLogger.RegisterWindowChange("Increased", name.Replace("(Clone)", ""), GetInstanceID().ToString(), "height");
@@ -148,7 +158,7 @@ public class InitializeBehaviour : MonoBehaviour
     public virtual void HorizontalContract()
     {
         GetComponent<RectTransform>().sizeDelta -= new Vector2(sizeVariance, 0f);
-        if (loadingWheel != null)
+        foreach (GameObject loadingWheel in loadingWheels)
             loadingWheel.GetComponent<RectTransform>().sizeDelta -= new Vector2(sizeVariance, 0f);
 
         InteractionLogger.RegisterWindowChange("Decreased", name.Replace("(Clone)", ""), GetInstanceID().ToString(), "width");
@@ -157,7 +167,7 @@ public class InitializeBehaviour : MonoBehaviour
     public virtual void VerticalContract()
     {
         GetComponent<RectTransform>().sizeDelta -= new Vector2(0f, sizeVariance);
-        if (loadingWheel != null)
+        foreach (GameObject loadingWheel in loadingWheels)
             loadingWheel.GetComponent<RectTransform>().sizeDelta -= new Vector2(0f, sizeVariance);
 
         InteractionLogger.RegisterWindowChange("Decreased", name.Replace("(Clone)", ""), GetInstanceID().ToString(), "height");
@@ -166,7 +176,7 @@ public class InitializeBehaviour : MonoBehaviour
     public virtual void IncreaseScale()
     {
         transform.Find("Panel").gameObject.GetComponent<RectTransform>().localScale += new Vector3(scaleVariance, scaleVariance, scaleVariance);
-        if (loadingWheel != null)
+        foreach (GameObject loadingWheel in loadingWheels)
             loadingWheel.GetComponent<RectTransform>().localScale += new Vector3(scaleVariance, scaleVariance, scaleVariance);
 
         InteractionLogger.RegisterWindowChange("Increased", name.Replace("(Clone)", ""), GetInstanceID().ToString(), "scale");
@@ -175,7 +185,7 @@ public class InitializeBehaviour : MonoBehaviour
     public virtual void DecreaseScale()
     {
         transform.Find("Panel").gameObject.GetComponent<RectTransform>().localScale -= new Vector3(scaleVariance, scaleVariance, scaleVariance);
-        if (loadingWheel != null)
+        foreach (GameObject loadingWheel in loadingWheels)
             loadingWheel.GetComponent<RectTransform>().localScale -= new Vector3(scaleVariance, scaleVariance, scaleVariance);
 
         InteractionLogger.RegisterWindowChange("Decreased", name.Replace("(Clone)", ""), GetInstanceID().ToString(), "scale");
@@ -213,5 +223,13 @@ public class InitializeBehaviour : MonoBehaviour
             vertexColors[vertexIndex + 2] = color;
             vertexColors[vertexIndex + 3] = color;
         }
+    }
+
+    public bool SomethingIsLoading()
+    {
+        foreach (GameObject loadingWheel in loadingWheels)
+            if (loadingWheel.activeSelf)
+                return true;
+        return false;
     }
 }

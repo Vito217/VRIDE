@@ -151,6 +151,22 @@ public class VRIDEMenu : InitializeBehaviour
         Destroy(gameObject);
     }
 
+    public void GenerateBrowserWindowCube()
+    {
+        BrowserWindowCube bwc = Instantiator.Instance.BrowserWindowCube();
+        bwc.Initialize();
+
+        Destroy(gameObject);
+    }
+
+    public void GeneratePlaygroundWindowCube()
+    {
+        PlaygroundWindowCube bwc = Instantiator.Instance.PlaygroundWindowCube();
+        bwc.Initialize();
+
+        Destroy(gameObject);
+    }
+
     public void Exit()
     {
         SaveAndLoadModule.Save();
