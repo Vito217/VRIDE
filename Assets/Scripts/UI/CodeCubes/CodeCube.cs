@@ -25,7 +25,15 @@ public class CodeCube : MonoBehaviour
         {
             VRIDEInputHandler inputs = transform.parent.root.GetComponent<VRIDEInputHandler>();
             if (inputs.LeftPrimaryButtonDown || inputs.RightPrimaryButtonDown)
-                Destroy(gameObject);            
+                Destroy(gameObject);
+            else if (inputs.LeftAxisLeft || inputs.RightAxisLeft)
+                transform.Rotate(0f, -100f * Time.deltaTime, 0f, Space.World);
+            else if(inputs.LeftAxisRight || inputs.RightAxisRight)
+                transform.Rotate(0f, 100f * Time.deltaTime, 0f, Space.World);
+            else if (inputs.LeftAxisUp || inputs.RightAxisUp)
+                transform.Rotate(-100f * Time.deltaTime, 0f, 0f, Space.World);
+            else if (inputs.LeftAxisDown || inputs.RightAxisDown)
+                transform.Rotate(100f * Time.deltaTime, 0f, 0f, Space.World);
         }
     }
 

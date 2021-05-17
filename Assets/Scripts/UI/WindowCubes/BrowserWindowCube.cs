@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Linq;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +19,11 @@ public class BrowserWindowCube : Browser
         innerBehaviour();
     }
 
+    public override IEnumerator innerStart()
+    {
+        return base.innerStart();
+    }
+
     public override void innerBehaviour()
     {
         base.innerBehaviour();
@@ -26,8 +33,17 @@ public class BrowserWindowCube : Browser
     void UpdateMetrics()
     {
         metrics.text = "Number of Packages: " + package_list.transform.childCount + "\n" +
-                       "Number of classes from selected package: " + class_list.transform.childCount + "\n" +
-                       "Number of methods from selected class: " + methodList.transform.childCount + "\n" +
-                       "Number of lines of code: " + field.text.Count(c => c == '\n');
+                       "Number of classes from selected package: " + (class_list.transform.childCount - 1) + "\n" +
+                       "Number of methods from selected class: " + (methodList.transform.childCount - 1) + "\n" +
+                       "Number of lines of code: " + (field.text.Count(c => c == '\n') + 1) + "\n";
+
+        if(class_list.last_selected != null)
+        {
+            int instanceVars = Regex.Match(field.text, @"instanceVariableNames:\s+'+([a-zA-Z0-9\s]+)'+").Groups[1].Value.Split(' ').Length;
+            int classVars = Regex.Match(field.text, @"classVariableNames:\s+'+([a-zA-Z0-9\s]+)'+").Groups[1].Value.Split(' ').Length;
+
+            metrics.text += "Number of Inst. Vars: " + instanceVars + "\n" +
+                            "Number of Class. Vars: " + classVars + "\n";
+        }
     }
 }

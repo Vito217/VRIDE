@@ -43,29 +43,54 @@ public class VRIDEInputHandler : MonoBehaviour
     public bool LeftSecondaryButtonUp;
     public bool RightSecondaryButtonUp;
 
-    public bool LeftTriggerDownFlag;
-    public bool LeftTriggerUpFlag;
-    public bool LeftPrimaryButtonUpFlag;
-    public bool LeftPrimaryButtonDownFlag;
-    public bool LeftSecondaryButtonUpFlag;
-    public bool LeftSecondaryButtonDownFlag;
+    public bool LeftAxisLeft;
+    public bool LeftAxisLeftRelease;
+    public bool LeftAxisLeftHold;
+    public bool LeftAxisRight;
 
-    public bool RightTriggerDownFlag;
-    public bool RightTriggerUpFlag;
-    public bool RightPrimaryButtonUpFlag;
-    public bool RightPrimaryButtonDownFlag;
-    public bool RightSecondaryButtonUpFlag;
-    public bool RightSecondaryButtonDownFlag;
+    public bool LeftAxisRightHold;
+    public bool LeftAxisRightRelease;
+    public bool RightAxisLeft;
+    public bool RightAxisLeftHold;
+    public bool RightAxisLeftRelease;
+    public bool RightAxisRight;
 
-    public bool LeftAxisUpHoldFlag;
-    public bool LeftAxisUpReleaseFlag;
-    public bool RightAxisUpHoldFlag;
-    public bool RightAxisUpReleaseFlag;
+    public bool RightAxisRightHold;
+    public bool RightAxisRightRelease;
 
-    public bool LeftAxisDownHoldFlag;
-    public bool LeftAxisDownReleaseFlag;
-    public bool RightAxisDownHoldFlag;
-    public bool RightAxisDownReleaseFlag;
+    bool LeftTriggerDownFlag;
+    bool LeftTriggerUpFlag;
+    bool LeftPrimaryButtonUpFlag;
+    bool LeftPrimaryButtonDownFlag;
+    bool LeftSecondaryButtonUpFlag;
+    bool LeftSecondaryButtonDownFlag;
+
+    bool RightTriggerDownFlag;
+    bool RightTriggerUpFlag;
+    bool RightPrimaryButtonUpFlag;
+    bool RightPrimaryButtonDownFlag;
+    bool RightSecondaryButtonUpFlag;
+    bool RightSecondaryButtonDownFlag;
+
+    bool LeftAxisUpHoldFlag;
+    bool LeftAxisUpReleaseFlag;
+    bool RightAxisUpHoldFlag;
+    bool RightAxisUpReleaseFlag;
+
+    bool LeftAxisDownHoldFlag;
+    bool LeftAxisDownReleaseFlag;
+    bool RightAxisDownHoldFlag;
+    bool RightAxisDownReleaseFlag;
+    bool LeftAxisLeftReleaseFlag;
+    bool LeftAxisLeftHoldFlag;
+    bool LeftAxisRightReleaseFlag;
+    bool LeftAxisRightHoldFlag;
+
+    bool RightAxisLeftReleaseFlag;
+    bool RightAxisLeftHoldFlag;
+
+    bool RightAxisRightReleaseFlag;
+    bool RightAxisRightHoldFlag;
 
     // Start is called before the first frame update
     void Start()
@@ -150,6 +175,32 @@ public class VRIDEInputHandler : MonoBehaviour
                         ref LeftAxisDownHoldFlag,
                         ref LeftAxisDownReleaseFlag,
                         ref LeftAxisDownRelease);
+
+                // LEFT AXIS LEFT
+                device.IsPressed(InputHelpers.Button.PrimaryAxis2DLeft, out LeftAxisLeft);
+                if (LeftAxisLeft)
+                    UpdateFlag(
+                        ref LeftAxisLeftReleaseFlag,
+                        ref LeftAxisLeftHoldFlag,
+                        ref LeftAxisLeftHold);
+                else
+                    UpdateFlag(
+                        ref LeftAxisLeftHoldFlag,
+                        ref LeftAxisLeftReleaseFlag,
+                        ref LeftAxisLeftRelease);
+
+                // LEFT AXIS RIGHT
+                device.IsPressed(InputHelpers.Button.PrimaryAxis2DRight, out LeftAxisRight);
+                if (LeftAxisRight)
+                    UpdateFlag(
+                        ref LeftAxisRightReleaseFlag,
+                        ref LeftAxisRightHoldFlag,
+                        ref LeftAxisRightHold);
+                else
+                    UpdateFlag(
+                        ref LeftAxisRightHoldFlag,
+                        ref LeftAxisRightReleaseFlag,
+                        ref LeftAxisRightRelease);
             }
 
             else if (device.characteristics.HasFlag(InputDeviceCharacteristics.Right))
@@ -218,6 +269,32 @@ public class VRIDEInputHandler : MonoBehaviour
                         ref RightAxisDownHoldFlag,
                         ref RightAxisDownReleaseFlag,
                         ref RightAxisDownRelease);
+
+                // RIGHT AXIS LEFT
+                device.IsPressed(InputHelpers.Button.PrimaryAxis2DLeft, out RightAxisLeft);
+                if (RightAxisLeft)
+                    UpdateFlag(
+                        ref RightAxisLeftReleaseFlag,
+                        ref RightAxisLeftHoldFlag,
+                        ref RightAxisLeftHold);
+                else
+                    UpdateFlag(
+                        ref RightAxisLeftHoldFlag,
+                        ref RightAxisLeftReleaseFlag,
+                        ref RightAxisLeftRelease);
+
+                // RIGHT AXIS RIGHT
+                device.IsPressed(InputHelpers.Button.PrimaryAxis2DRight, out RightAxisRight);
+                if (RightAxisRight)
+                    UpdateFlag(
+                        ref RightAxisRightReleaseFlag,
+                        ref RightAxisRightHoldFlag,
+                        ref RightAxisRightHold);
+                else
+                    UpdateFlag(
+                        ref RightAxisRightHoldFlag,
+                        ref RightAxisRightReleaseFlag,
+                        ref RightAxisRightRelease);
             }
         }
     }
