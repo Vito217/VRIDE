@@ -1,0 +1,1258 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>System.Speech</name>
+    </assembly>
+    <members>
+        <member name="P:System.SR.PlatformNotSupported_SystemSpeech">
+            <summary>Speech is not supported on this platform.</summary>
+        </member>
+        <member name="P:System.SR.NullParamIllegal">
+            <summary>'{0}' parameter cannot be null.</summary>
+        </member>
+        <member name="P:System.SR.ArrayOfNullIllegal">
+            <summary>Array cannot contain null value.</summary>
+        </member>
+        <member name="P:System.SR.ParamsEntryNullIllegal">
+            <summary>Variable parameter list cannot contain 'null' value.</summary>
+        </member>
+        <member name="P:System.SR.Unavailable">
+            <summary>Additional exception information unavailable.</summary>
+        </member>
+        <member name="P:System.SR.UnexpectedError">
+            <summary>Unexpected error '{0:x}'.</summary>
+        </member>
+        <member name="P:System.SR.CollectionReadOnly">
+            <summary>Collection is read-only.</summary>
+        </member>
+        <member name="P:System.SR.StringCanNotBeEmpty">
+            <summary>'{0}' cannot be an empty string.</summary>
+        </member>
+        <member name="P:System.SR.EnumInvalid">
+            <summary>'{0}' enumeration value is not valid.</summary>
+        </member>
+        <member name="P:System.SR.NotSupportedWithThisVersionOfSAPI">
+            <summary>This feature is not supported with this version of the speech platform.</summary>
+        </member>
+        <member name="P:System.SR.NotSupportedWithThisVersionOfSAPI2">
+            <summary>The property '{0}' is not supported with this version of the speech platform.</summary>
+        </member>
+        <member name="P:System.SR.NotSupportedWithThisVersionOfSAPIBaseUri">
+            <summary>'BaseUri' is not supported with this version of the speech platform.</summary>
+        </member>
+        <member name="P:System.SR.NotSupportedWithThisVersionOfSAPITagFormat">
+            <summary>This semantic interpretation type 'tag-format' is not supported with this version of the speech platform.</summary>
+        </member>
+        <member name="P:System.SR.NotSupportedWithThisVersionOfSAPICompareOption">
+            <summary>This 'CompareOption' value is not supported with this version of the speech platform.</summary>
+        </member>
+        <member name="P:System.SR.MustBeGreaterThanZero">
+            <summary>This argument must be greater than zero.</summary>
+        </member>
+        <member name="P:System.SR.InvalidXml">
+            <summary>XML content not valid.</summary>
+        </member>
+        <member name="P:System.SR.OperationAborted">
+            <summary>Operation stopped.</summary>
+        </member>
+        <member name="P:System.SR.InvariantCultureInfo">
+            <summary>'CultureInfo.InvariantCulture' is not a valid value for this operation.</summary>
+        </member>
+        <member name="P:System.SR.DuplicatedEntry">
+            <summary>Duplicated entry.</summary>
+        </member>
+        <member name="P:System.SR.StreamMustBeReadable">
+            <summary>Stream must support read operation.</summary>
+        </member>
+        <member name="P:System.SR.StreamMustBeWriteable">
+            <summary>Stream must support write operation.</summary>
+        </member>
+        <member name="P:System.SR.StreamMustBeSeekable">
+            <summary>Stream must support seek operation.</summary>
+        </member>
+        <member name="P:System.SR.StreamEndedUnexpectedly">
+            <summary>Stream ended unexpectedly.</summary>
+        </member>
+        <member name="P:System.SR.CannotReadFromDirectory">
+            <summary>'{0}' file name cannot point to a directory.</summary>
+        </member>
+        <member name="P:System.SR.UnknownMimeFormat">
+            <summary>Unknown 'MIME' format.</summary>
+        </member>
+        <member name="P:System.SR.CannotLoadResourceFromManifest">
+            <summary>Cannot load the required resource '{0}' from the manifest of assembly '{1}'.</summary>
+        </member>
+        <member name="P:System.SR.TokenInUse">
+            <summary>Token in use.</summary>
+        </member>
+        <member name="P:System.SR.TokenDeleted">
+            <summary>Token deleted.</summary>
+        </member>
+        <member name="P:System.SR.TokenUninitialized">
+            <summary>Token uninitialized.</summary>
+        </member>
+        <member name="P:System.SR.InvalidTokenId">
+            <summary>Token ID not valid.</summary>
+        </member>
+        <member name="P:System.SR.NotFound">
+            <summary>Token not found.</summary>
+        </member>
+        <member name="P:System.SR.NoBackSlash">
+            <summary>Backslashes not found in the path specified by '{0}'.</summary>
+        </member>
+        <member name="P:System.SR.InvalidRegistryEntry">
+            <summary>'{0}' string format not valid. It must contain backslashes or a percent sign.</summary>
+        </member>
+        <member name="P:System.SR.TokenCannotCreateInstance">
+            <summary>Failed to create an instance for the CLSID associated with this token.</summary>
+        </member>
+        <member name="P:System.SR.InvalidXmlFormat">
+            <summary>XML grammar format not valid. Cannot load grammar into XML Document Object Model.</summary>
+        </member>
+        <member name="P:System.SR.IncorrectAttributeValue">
+            <summary>Incorrect value '{0}' for attribute '{1}'.</summary>
+        </member>
+        <member name="P:System.SR.MissingRequiredAttribute">
+            <summary>'{1}' requires attribute '{0}'.</summary>
+        </member>
+        <member name="P:System.SR.InvalidRuleRefSelf">
+            <summary>Rule reference not valid. Uri cannot explicitly reference the same grammar file.</summary>
+        </member>
+        <member name="P:System.SR.InvalidDynamicExport">
+            <summary>'{0}' exported rule contains direct or indirect reference to a dynamic rule.</summary>
+        </member>
+        <member name="P:System.SR.InvalidToken">
+            <summary>Content of token tag is not valid.</summary>
+        </member>
+        <member name="P:System.SR.MetaNameHTTPEquiv">
+            <summary>Name and http-equiv attributes cannot be used together in metadata.</summary>
+        </member>
+        <member name="P:System.SR.EmptyRule">
+            <summary>Empty rule is not allowed.</summary>
+        </member>
+        <member name="P:System.SR.InvalidTokenString">
+            <summary>Token string cannot contain double quote character.</summary>
+        </member>
+        <member name="P:System.SR.InvalidQuotedString">
+            <summary>Double-quoted string not valid.</summary>
+        </member>
+        <member name="P:System.SR.ExportDynamicRule">
+            <summary>Dynamic rule cannot be root or public.</summary>
+        </member>
+        <member name="P:System.SR.EmptyDisplayString">
+            <summary>'Display' string cannot be empty.</summary>
+        </member>
+        <member name="P:System.SR.EmptyPronunciationString">
+            <summary>'pron' string cannot be empty.</summary>
+        </member>
+        <member name="P:System.SR.InvalidPhoneme">
+            <summary>Invalid phoneme '{0}'.</summary>
+        </member>
+        <member name="P:System.SR.MuliplePronunciationString">
+            <summary>Cannot have multiple 'pron' strings.</summary>
+        </member>
+        <member name="P:System.SR.MultipleDisplayString">
+            <summary>Cannot have multiple 'display' strings.</summary>
+        </member>
+        <member name="P:System.SR.RuleRedefinition">
+            <summary>Cannot have duplicate rule '{0}'.</summary>
+        </member>
+        <member name="P:System.SR.EmptyOneOf">
+            <summary>'one-of' must contain at least one 'item' element.</summary>
+        </member>
+        <member name="P:System.SR.InvalidGrammarOrdering">
+            <summary>'lexicon' and 'meta', 'metadata' must be defined before 'rule'.</summary>
+        </member>
+        <member name="P:System.SR.MinMaxOutOfRange">
+            <summary>Repeat count out of range. Expect 0 &lt;= min ({0}) &lt;= max ({1}) &lt; 256.</summary>
+        </member>
+        <member name="P:System.SR.InvalidExampleOrdering">
+            <summary>'example' can only be defined at the beginning of a rule.</summary>
+        </member>
+        <member name="P:System.SR.GrammarDefTwice">
+            <summary>SRGS source not valid. Cannot have multiple 'grammar' elements.</summary>
+        </member>
+        <member name="P:System.SR.UnsupportedFormat">
+            <summary>Unsupported Grammar Format.</summary>
+        </member>
+        <member name="P:System.SR.InvalidImport">
+            <summary>Rule cannot be marked as both Import and TopLevel/Active/Root.</summary>
+        </member>
+        <member name="P:System.SR.DuplicatedRuleName">
+            <summary>Duplicate rule name.</summary>
+        </member>
+        <member name="P:System.SR.RootRuleAlreadyDefined">
+            <summary>Root rule already defined.</summary>
+        </member>
+        <member name="P:System.SR.RuleNameIdConflict">
+            <summary>Name and ID conflict.</summary>
+        </member>
+        <member name="P:System.SR.RuleNotDynamic">
+            <summary>Rule must be marked dynamic.</summary>
+        </member>
+        <member name="P:System.SR.StateWithNoArcs">
+            <summary>Internal Compiler Error, State has no transition.</summary>
+        </member>
+        <member name="P:System.SR.NoTerminatingRulePath">
+            <summary>No terminating rule path.</summary>
+        </member>
+        <member name="P:System.SR.RuleRefNoUri">
+            <summary>Special RuleRef does not have URI.</summary>
+        </member>
+        <member name="P:System.SR.UnavailableProperty">
+            <summary>Must set property value before it can be read.</summary>
+        </member>
+        <member name="P:System.SR.MinGreaterThanMax">
+            <summary>'Min' value must be smaller than or equal to 'Max' value.</summary>
+        </member>
+        <member name="P:System.SR.ReqConfidenceNotSupported">
+            <summary>'Required Confidence' attribute is not supported for SrgsDocuments.</summary>
+        </member>
+        <member name="P:System.SR.SapiPropertiesAndSemantics">
+            <summary>'SrgsNameValueTag' and 'SrgsSemanticInterpretationTag' cannot be used together in an Srgs Document.</summary>
+        </member>
+        <member name="P:System.SR.InvalidAttributeDefinedTwice">
+            <summary>'{0}' attribute value of '{1}' element is defined more than once.</summary>
+        </member>
+        <member name="P:System.SR.GrammarCompilerError">
+            <summary>{0}</summary>
+        </member>
+        <member name="P:System.SR.RuleScriptNotFound">
+            <summary>'{0}' method in rule '{1}' for '{2}' is undefined.</summary>
+        </member>
+        <member name="P:System.SR.DynamicRuleNotFound">
+            <summary>The dynamic rule '{0}' is undefined. The rule must be created in 'OnInit' method.</summary>
+        </member>
+        <member name="P:System.SR.RuleScriptInvalidParameters">
+            <summary>Parameters not valid for method '{0}' in rule '{1}'.</summary>
+        </member>
+        <member name="P:System.SR.RuleScriptInvalidReturnType">
+            <summary>Return type not valid for method '{0}' in rule '{1}'.</summary>
+        </member>
+        <member name="P:System.SR.NoClassname">
+            <summary>'classname' is undefined.</summary>
+        </member>
+        <member name="P:System.SR.EmbeddedClassLibraryFailed">
+            <summary>Failed to load embedded class library '{0}'.</summary>
+        </member>
+        <member name="P:System.SR.CannotFindClass">
+            <summary>'{0}' class name not found in namespace '{1}'. Verify that the class is marked public.</summary>
+        </member>
+        <member name="P:System.SR.StrongTypedGrammarNotAGrammar">
+            <summary>Custom grammars must derive from Grammar class.</summary>
+        </member>
+        <member name="P:System.SR.NoScriptsForRules">
+            <summary>No semantic processing defined for the rules.</summary>
+        </member>
+        <member name="P:System.SR.ClassNotPublic">
+            <summary>'{0}' class must be 'public'. The grammar cannot be instantiated.</summary>
+        </member>
+        <member name="P:System.SR.MethodNotPublic">
+            <summary>'{0}' method for rule '{1}' must be 'public'. The method cannot be invoked.</summary>
+        </member>
+        <member name="P:System.SR.IncompatibleLanguageProperties">
+            <summary>Must use same .NET language on all grammars.</summary>
+        </member>
+        <member name="P:System.SR.IncompatibleNamespaceProperties">
+            <summary>Must use same namespace on all grammars.</summary>
+        </member>
+        <member name="P:System.SR.IncompatibleDebugProperties">
+            <summary>Must use same Debug settings on all grammars.</summary>
+        </member>
+        <member name="P:System.SR.CannotLoadDotNetSemanticCode">
+            <summary>Cannot load semantic interpretation script.</summary>
+        </member>
+        <member name="P:System.SR.InvalidSemanticProcessingType">
+            <summary>The 'tag-format' for grammars that include .NET semantics must be 'tag-format="properties-ms/1.0"'</summary>
+        </member>
+        <member name="P:System.SR.InvalidScriptDefinition">
+            <summary>Script attribute not valid. Unrecognized rule '{0}'.</summary>
+        </member>
+        <member name="P:System.SR.InvalidMethodName">
+            <summary>Invalid characters in method name '{0}'.</summary>
+        </member>
+        <member name="P:System.SR.ConstructorNotAllowed">
+            <summary>Method name cannot be the same as name of rule '{0}'.</summary>
+        </member>
+        <member name="P:System.SR.OverloadNotAllowed">
+            <summary>'{0}' method cannot have multiple overloads.</summary>
+        </member>
+        <member name="P:System.SR.OnInitOnPublicRule">
+            <summary>'{0}' not valid on private rule '{1}'.</summary>
+        </member>
+        <member name="P:System.SR.ArgumentMismatch">
+            <summary>'OnInit' arguments have type mismatch.</summary>
+        </member>
+        <member name="P:System.SR.CantGetPropertyFromSerializedInfo">
+            <summary>'{0}' property not supported for recognition results built from a serialized stream.</summary>
+        </member>
+        <member name="P:System.SR.CantFindAConstructor">
+            <summary>Cannot find a matching constructor in grammar '{0}' for rule '{1}.
+            Possible constructors are: '{2}'.</summary>
+        </member>
+        <member name="P:System.SR.TooManyArcs">
+            <summary>Too many arcs. Maximum is 0x3FFFFF.</summary>
+        </member>
+        <member name="P:System.SR.TooManyRulesWithSemanticsGlobals">
+            <summary>Exceeded symbols tables capacity.</summary>
+        </member>
+        <member name="P:System.SR.MaxTransitionsCount">
+            <summary>Maximum transition count is reached. Transition count cannot exceed 256.</summary>
+        </member>
+        <member name="P:System.SR.UnknownElement">
+            <summary>Unrecognized element '{0}'.</summary>
+        </member>
+        <member name="P:System.SR.CircularRuleRef">
+            <summary>Circular rule reference in rule '{0}'.</summary>
+        </member>
+        <member name="P:System.SR.InvalidFlagsSet">
+            <summary>Undefined attribute flag set or import/export flags simultaneously set.</summary>
+        </member>
+        <member name="P:System.SR.RuleDefinedMultipleTimes">
+            <summary>'{0}' rule defined multiple times.</summary>
+        </member>
+        <member name="P:System.SR.RuleDefinedMultipleTimes2">
+            <summary>'{0}' rule defined in more than one file.</summary>
+        </member>
+        <member name="P:System.SR.RuleNotDefined">
+            <summary>'{0}' rule not defined in this grammar.</summary>
+        </member>
+        <member name="P:System.SR.RootNotDefined">
+            <summary>'{0}' root rule is undefined.</summary>
+        </member>
+        <member name="P:System.SR.InvalidLanguage">
+            <summary>Language not valid.</summary>
+        </member>
+        <member name="P:System.SR.InvalidRuleId">
+            <summary>'{0}' rule ID not valid.</summary>
+        </member>
+        <member name="P:System.SR.InvalidRepeatProbability">
+            <summary>'{0}' repeat probability not valid. RepeatProbability must be between 0.0 and 1.0, inclusively.</summary>
+        </member>
+        <member name="P:System.SR.InvalidConfidence">
+            <summary>confidence must be between 0.0 and 1.0, inclusively.</summary>
+        </member>
+        <member name="P:System.SR.InvalidMinRepeat">
+            <summary>'{0}' minRepeat not valid; must be greater than or equal to zero.</summary>
+        </member>
+        <member name="P:System.SR.InvalidMaxRepeat">
+            <summary>'{0}' maxRepeat not valid; must be greater than or equal to zero.</summary>
+        </member>
+        <member name="P:System.SR.InvalidWeight">
+            <summary>'{0}' weight not valid; must be greater than 0.0.</summary>
+        </member>
+        <member name="P:System.SR.InvalidName">
+            <summary>Name must be a nonempty string.</summary>
+        </member>
+        <member name="P:System.SR.InvalidValueType">
+            <summary>Value type not valid; must be of type String, Boolean, Int32, or Double.</summary>
+        </member>
+        <member name="P:System.SR.TagFormatNotSet">
+            <summary>TagFormat must be specified before adding SrgsTag elements to SrgsDocument.</summary>
+        </member>
+        <member name="P:System.SR.NoName">
+            <summary>Name must be specified.</summary>
+        </member>
+        <member name="P:System.SR.NoName1">
+            <summary>Name must be specified '{0}'.</summary>
+        </member>
+        <member name="P:System.SR.InvalidSpecialRuleRef">
+            <summary>Invalid special ruleref 'uri'. Expected: 'NULL', 'VOID', or 'GARBAGE'.</summary>
+        </member>
+        <member name="P:System.SR.InvalidRuleRef">
+            <summary>Rule reference not valid. Must specify 'uri' or 'special'.</summary>
+        </member>
+        <member name="P:System.SR.InvalidNotEmptyElement">
+            <summary>'{0}' SRGS element cannot have content.</summary>
+        </member>
+        <member name="P:System.SR.InvalidEmptyElement">
+            <summary>SRGS element cannot be empty '{0}'.</summary>
+        </member>
+        <member name="P:System.SR.InvalidEmptyRule">
+            <summary>'{0}' element cannot be empty; {0}='{1}'.</summary>
+        </member>
+        <member name="P:System.SR.UndefRuleRef">
+            <summary>'{0}' rule reference not defined in this grammar.</summary>
+        </member>
+        <member name="P:System.SR.UnsupportedLanguage">
+            <summary>Unsupported language '{0}'.</summary>
+        </member>
+        <member name="P:System.SR.UnsupportedPhoneticAlphabet">
+            <summary>Unsupported phonetic alphabet '{0}'.</summary>
+        </member>
+        <member name="P:System.SR.UnsupportedLexicon">
+            <summary>The 'lexicon' element is not supported.</summary>
+        </member>
+        <member name="P:System.SR.InvalidScriptAttribute">
+            <summary>Script attribute not valid.</summary>
+        </member>
+        <member name="P:System.SR.NoLanguageSet">
+            <summary>Must set 'language' attribute for grammars with scripts.</summary>
+        </member>
+        <member name="P:System.SR.MethodAttributeDefinedMultipeTimes">
+            <summary>Attribute 'method' in 'script' defined more than once.</summary>
+        </member>
+        <member name="P:System.SR.RuleAttributeDefinedMultipeTimes">
+            <summary>Attribute 'rule' in 'script'  defined more than once.</summary>
+        </member>
+        <member name="P:System.SR.InvalidAssemblyReferenceAttribute">
+            <summary>Unknown 'assembly reference' attribute.</summary>
+        </member>
+        <member name="P:System.SR.InvalidImportNamespaceAttribute">
+            <summary>Unknown 'import namespace' attribute.</summary>
+        </member>
+        <member name="P:System.SR.NoUriForSpecialRuleRef">
+            <summary>Special 'ruleref' cannot have a 'uri' attribute.</summary>
+        </member>
+        <member name="P:System.SR.NoAliasForSpecialRuleRef">
+            <summary>Special 'ruleref' cannot have 'semantic-key' or 'params' attributes.</summary>
+        </member>
+        <member name="P:System.SR.NoSmlData">
+            <summary>Error in SML generation.</summary>
+        </member>
+        <member name="P:System.SR.InvalidNameValueProperty">
+            <summary>Invalid type for value '{1}' in 'tag' '{0}={1}'. The value should be either a boolean, an integer, a float or a double quoted string.</summary>
+        </member>
+        <member name="P:System.SR.InvalidTagInAnEmptyItem">
+            <summary>Ambiguous construct. An 'item' having a repeat count where the minimum and maximum value are different cannot contain only tag elements.</summary>
+        </member>
+        <member name="P:System.SR.InvalidSrgs">
+            <summary>SRGS not valid: no 'grammar' element found.</summary>
+        </member>
+        <member name="P:System.SR.InvalidSrgsNamespace">
+            <summary>SRGS grammar not valid. SRGS namespace is not defined 'http://www.w3.org/2001/06/grammar'.</summary>
+        </member>
+        <member name="P:System.SR.Line">
+            <summary>Line</summary>
+        </member>
+        <member name="P:System.SR.Position">
+            <summary>Position</summary>
+        </member>
+        <member name="P:System.SR.InvalidVersion">
+            <summary>Version number not valid. Expected '1.0'.</summary>
+        </member>
+        <member name="P:System.SR.InvalidTagFormat">
+            <summary>Tag format not valid. Expected format is: 'semantics-ms/1.0' or 'properties-ms/1.0'.</summary>
+        </member>
+        <member name="P:System.SR.MissingTagFormat">
+            <summary>Missing "tag-format" in the 'grammar' element. This attribute must be set in SRGS grammars containing 'tag' elements.</summary>
+        </member>
+        <member name="P:System.SR.InvalidGrammarMode">
+            <summary>Grammar mode value not valid</summary>
+        </member>
+        <member name="P:System.SR.InvalidGrammarAttribute">
+            <summary>'{0}' attribute in 'grammar' not valid.</summary>
+        </member>
+        <member name="P:System.SR.InvalidRuleAttribute">
+            <summary>'{0}' attribute in 'rule' not valid.</summary>
+        </member>
+        <member name="P:System.SR.InvalidRulerefAttribute">
+            <summary>'{0}' attribute in 'ruleref' not valid.</summary>
+        </member>
+        <member name="P:System.SR.InvalidOneOfAttribute">
+            <summary>'{0}' attribute in 'one-of' not valid.</summary>
+        </member>
+        <member name="P:System.SR.InvalidItemAttribute">
+            <summary>'{0}' attribute in 'item' not valid.</summary>
+        </member>
+        <member name="P:System.SR.InvalidTokenAttribute">
+            <summary>'{0}' attribute in 'token' not valid.</summary>
+        </member>
+        <member name="P:System.SR.InvalidItemRepeatAttribute">
+            <summary>'{0}' attribute in 'item repeat' not valid.</summary>
+        </member>
+        <member name="P:System.SR.InvalidReqConfAttribute">
+            <summary>Value not valid for 'sapi:reqconf' attribute '{0}' in 'token'.</summary>
+        </member>
+        <member name="P:System.SR.InvalidTagAttribute">
+            <summary>'{0}' attribute in 'tag' not valid.</summary>
+        </member>
+        <member name="P:System.SR.InvalidLexiconAttribute">
+            <summary>'{0}' attribute in 'Lexicon' not valid.</summary>
+        </member>
+        <member name="P:System.SR.InvalidMetaAttribute">
+            <summary>'{0}' attribute in 'Meta' not valid.</summary>
+        </member>
+        <member name="P:System.SR.InvalidItemAttribute2">
+            <summary>Attribute in 'item' not valid; 'repeat' expected.</summary>
+        </member>
+        <member name="P:System.SR.InvalidElement">
+            <summary>'{0}' element not valid.</summary>
+        </member>
+        <member name="P:System.SR.InvalidRuleScope">
+            <summary>Rule scope value not valid.</summary>
+        </member>
+        <member name="P:System.SR.InvalidDynamicSetting">
+            <summary>Rule dynamic value not valid.</summary>
+        </member>
+        <member name="P:System.SR.InvalidSubsetAttribute">
+            <summary>'{0}' attribute not valid in 'subset'.</summary>
+        </member>
+        <member name="P:System.SR.InvalidVoiceElementInPromptOutput">
+            <summary>The 'voice' element in 'prompt_output' is not valid.</summary>
+        </member>
+        <member name="P:System.SR.NoRuleId">
+            <summary>Rule without ID in 'rule'.</summary>
+        </member>
+        <member name="P:System.SR.PromptBuilderInvalideState">
+            <summary>Cannot generate SSML data:</summary>
+        </member>
+        <member name="P:System.SR.PromptBuilderStateEnded">
+            <summary>SSML data was already generated.</summary>
+        </member>
+        <member name="P:System.SR.PromptBuilderStateSentence">
+            <summary>Sentence not closed.</summary>
+        </member>
+        <member name="P:System.SR.PromptBuilderStateParagraph">
+            <summary>Paragraph not closed.</summary>
+        </member>
+        <member name="P:System.SR.PromptBuilderStateVoice">
+            <summary>Voice element not closed.</summary>
+        </member>
+        <member name="P:System.SR.PromptBuilderStateStyle">
+            <summary>Style element not closed.</summary>
+        </member>
+        <member name="P:System.SR.PromptBuilderAgeOutOfRange">
+            <summary>Age must be in the range '2' to '100'.</summary>
+        </member>
+        <member name="P:System.SR.PromptBuilderMismatchStyle">
+            <summary>'EndStyle' requires matching 'StartStyle'.</summary>
+        </member>
+        <member name="P:System.SR.PromptBuilderMismatchVoice">
+            <summary>'EndVoice' requires matching 'StartVoice'.</summary>
+        </member>
+        <member name="P:System.SR.PromptBuilderMismatchParagraph">
+            <summary>'EndParagraph' requires matching 'StartParagraph'.</summary>
+        </member>
+        <member name="P:System.SR.PromptBuilderMismatchSentence">
+            <summary>'EndSentence' requires matching 'StartSentence'.</summary>
+        </member>
+        <member name="P:System.SR.PromptBuilderNestedParagraph">
+            <summary>Cannot nest paragraph in another paragraph or sentence in SSML document.</summary>
+        </member>
+        <member name="P:System.SR.PromptBuilderNestedSentence">
+            <summary>Cannot nest sentences in SSML document.</summary>
+        </member>
+        <member name="P:System.SR.PromptBuilderInvalidAttribute">
+            <summary>Unrecognized attribute in SSML header.</summary>
+        </member>
+        <member name="P:System.SR.PromptBuilderInvalidElement">
+            <summary>Malformed SSML document. '{0}' SSML element is not valid in the context of '{1}'.</summary>
+        </member>
+        <member name="P:System.SR.PromptBuilderInvalidVariant">
+            <summary>Voice variant cannot be negative.</summary>
+        </member>
+        <member name="P:System.SR.PromptBuilderDatabaseName">
+            <summary>The path to the database must point to a local or network file.</summary>
+        </member>
+        <member name="P:System.SR.PromptAsyncOperationCancelled">
+            <summary>Async operation canceled.</summary>
+        </member>
+        <member name="P:System.SR.SynthesizerPauseResumeMismatched">
+            <summary>Synthesizer is not in 'Paused' mode.</summary>
+        </member>
+        <member name="P:System.SR.SynthesizerInvalidMediaType">
+            <summary>Media type not valid.</summary>
+        </member>
+        <member name="P:System.SR.SynthesizerUnknownMediaType">
+            <summary>Unrecognized media type.</summary>
+        </member>
+        <member name="P:System.SR.SynthesizerSpeakError">
+            <summary>Speak error '{0:x}'.</summary>
+        </member>
+        <member name="P:System.SR.SynthesizerInvalidWaveFile">
+            <summary>Wave file not valid.</summary>
+        </member>
+        <member name="P:System.SR.SynthesizerPromptInUse">
+            <summary>This prompt is already in use on a synthesizer or is being reused.</summary>
+        </member>
+        <member name="P:System.SR.SynthesizerUnknownPriority">
+            <summary>Unrecognized Priority.</summary>
+        </member>
+        <member name="P:System.SR.SynthesizerUnknownEvent">
+            <summary>Unrecognized Event.</summary>
+        </member>
+        <member name="P:System.SR.SynthesizerVoiceFailed">
+            <summary>No voice installed on the system or none available with the current security setting.</summary>
+        </member>
+        <member name="P:System.SR.SynthesizerSetVoiceNoMatch">
+            <summary>Cannot set voice. No matching voice is installed or the voice was disabled.</summary>
+        </member>
+        <member name="P:System.SR.SynthesizerNoCulture">
+            <summary>Culture must be provided.</summary>
+        </member>
+        <member name="P:System.SR.SynthesizerSyncSpeakWhilePaused">
+            <summary>Cannot perform synchronous 'Speak' operation while synthesizer is paused.</summary>
+        </member>
+        <member name="P:System.SR.SynthesizerSyncSetOutputWhilePaused">
+            <summary>The speech output device cannot be changed when the synthesizer is paused.</summary>
+        </member>
+        <member name="P:System.SR.SynthesizerNoCulture2">
+            <summary>Cannot find the Culture for a voice.</summary>
+        </member>
+        <member name="P:System.SR.SynthesizerNoSpeak">
+            <summary>SSML input not valid; cannot find 'speak' element.</summary>
+        </member>
+        <member name="P:System.SR.SynthesizerSetOutputSpeaking">
+            <summary>Cannot change synthesizer's output while speaking.</summary>
+        </member>
+        <member name="P:System.SR.InvalidSpeakAttribute">
+            <summary>'{0}' attribute in '{1}' not valid.</summary>
+        </member>
+        <member name="P:System.SR.UnsupportedAlphabet">
+            <summary>'{0}' alphabet in 'phoneme' is not supported.</summary>
+        </member>
+        <member name="P:System.SR.GrammarInvalidWeight">
+            <summary>Weight must be between 0.0 and 1.0.</summary>
+        </member>
+        <member name="P:System.SR.GrammarInvalidPriority">
+            <summary>Priority must be between -128 and 127.</summary>
+        </member>
+        <member name="P:System.SR.DictationInvalidTopic">
+            <summary>Parameter must be of the form grammar:dictation#topic.</summary>
+        </member>
+        <member name="P:System.SR.DictationTopicNotFound">
+            <summary>'{0}' dictation topic not found.</summary>
+        </member>
+        <member name="P:System.SR.RecognizerGrammarNotFound">
+            <summary>Grammar file not found.</summary>
+        </member>
+        <member name="P:System.SR.RecognizerRuleNotFound">
+            <summary>'{0}' rule in grammar file '{1}' not found or not public.</summary>
+        </member>
+        <member name="P:System.SR.RecognizerInvalidBinaryGrammar">
+            <summary>Binary grammar not valid.</summary>
+        </member>
+        <member name="P:System.SR.RecognizerRuleNotFoundStream">
+            <summary>'{0}' rule not found or not public.</summary>
+        </member>
+        <member name="P:System.SR.RecognizerNoRootRuleToActivate">
+            <summary>Grammar has no root rule. You must specify a rule to activate in the grammar constructor.</summary>
+        </member>
+        <member name="P:System.SR.RecognizerNoRootRuleToActivate1">
+            <summary>Grammar file '{0}' has no root rule. You must specify a rule to activate in the grammar constructor.</summary>
+        </member>
+        <member name="P:System.SR.RecognizerRuleActivationFailed">
+            <summary>Cannot activate rule in grammar.</summary>
+        </member>
+        <member name="P:System.SR.RecognizerAlreadyRecognizing">
+            <summary>Cannot perform this operation while the recognizer is doing recognition.</summary>
+        </member>
+        <member name="P:System.SR.RecognizerHasNoGrammar">
+            <summary>At least one grammar must be loaded before doing a recognition.</summary>
+        </member>
+        <member name="P:System.SR.NegativeTimesNotSupported">
+            <summary>Negative TimeSpan values not supported.</summary>
+        </member>
+        <member name="P:System.SR.AudioDeviceFormatError">
+            <summary>Audio format is not supported.</summary>
+        </member>
+        <member name="P:System.SR.AudioDeviceError">
+            <summary>Audio device error encountered.</summary>
+        </member>
+        <member name="P:System.SR.AudioDeviceInternalError">
+            <summary>Internal error occurred in the recognition process.</summary>
+        </member>
+        <member name="P:System.SR.RecognizerNotFound">
+            <summary>No recognizer of the required ID found.</summary>
+        </member>
+        <member name="P:System.SR.RecognizerNotEnabled">
+            <summary>Recognizer is not enabled.</summary>
+        </member>
+        <member name="P:System.SR.RecognitionNotSupported">
+            <summary>Speech Recognition is not available on this system. SAPI and Speech Recognition engines cannot be found.</summary>
+        </member>
+        <member name="P:System.SR.RecognitionNotSupportedOn64bit">
+            <summary>Speech Recognition not supported on 64-bit versions of Windows XP and Windows Server 2003.</summary>
+        </member>
+        <member name="P:System.SR.GrammarAlreadyLoaded">
+            <summary>Cannot load grammar that is already loaded.</summary>
+        </member>
+        <member name="P:System.SR.RecognizerNoInputSource">
+            <summary>No audio input is supplied to this recognizer. Use the method SetInputToDefaultAudioDevice if a microphone is connected to the system, otherwise use SetInputToWaveFile, SetInputToWaveStream or SetInputToAudioStream to perform speech recognition from pre-re ...</summary>
+        </member>
+        <member name="P:System.SR.GrammarNotLoaded">
+            <summary>Grammar is not loaded into this recognizer.</summary>
+        </member>
+        <member name="P:System.SR.GrammarLoadingInProgress">
+            <summary>Grammar is being loaded into the recognizer.</summary>
+        </member>
+        <member name="P:System.SR.GrammarLoadFailed">
+            <summary>Grammar loading failed.</summary>
+        </member>
+        <member name="P:System.SR.GrammarWrongRecognizer">
+            <summary>Grammar is not loaded into this Recognizer.</summary>
+        </member>
+        <member name="P:System.SR.NotSupportedOnDictationGrammars">
+            <summary>Not supported on DictationGrammar objects.</summary>
+        </member>
+        <member name="P:System.SR.LocalFilesOnly">
+            <summary>Only supported on local files with 'file:' scheme.</summary>
+        </member>
+        <member name="P:System.SR.NotValidAudioFile">
+            <summary>'{0}' file is not a valid audio file or the audio format is not supported.</summary>
+        </member>
+        <member name="P:System.SR.NotValidAudioStream">
+            <summary>File not a valid audio stream.</summary>
+        </member>
+        <member name="P:System.SR.FileNotFound">
+            <summary>'{0}' file not found.</summary>
+        </member>
+        <member name="P:System.SR.CannotSetPriorityOnDictation">
+            <summary>Cannot Set Priority On DictationGrammar objects.</summary>
+        </member>
+        <member name="P:System.SR.RecognizerUpdateTableTooLarge">
+            <summary>Recognizer Update table too large.</summary>
+        </member>
+        <member name="P:System.SR.MaxAlternatesInvalid">
+            <summary>MaxAlternates value must be greater than or equal to zero.</summary>
+        </member>
+        <member name="P:System.SR.RecognizerSettingGetError">
+            <summary>Error obtaining recognizer setting.</summary>
+        </member>
+        <member name="P:System.SR.RecognizerSettingUpdateError">
+            <summary>Error updating recognizer setting.</summary>
+        </member>
+        <member name="P:System.SR.RecognizerSettingNotSupported">
+            <summary>Recognizer setting not supported by recognizer.</summary>
+        </member>
+        <member name="P:System.SR.ResourceUsageOutOfRange">
+            <summary>ResourceUsage cannot be negative or greater than 100.</summary>
+        </member>
+        <member name="P:System.SR.RateOutOfRange">
+            <summary>Rate must be from -10 through 10.</summary>
+        </member>
+        <member name="P:System.SR.EndSilenceOutOfRange">
+            <summary>Property cannot be negative or greater than 100 seconds.</summary>
+        </member>
+        <member name="P:System.SR.RejectionThresholdOutOfRange">
+            <summary>RejectionThreshold must be between 0.0 and 1.0.</summary>
+        </member>
+        <member name="P:System.SR.ReferencedGrammarNotFound">
+            <summary>Cannot find grammar referenced by this grammar.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorRuleNotFound2">
+            <summary>Rule '{0}' not found in grammar '{1}'.</summary>
+        </member>
+        <member name="P:System.SR.NoAudioAvailable">
+            <summary>No audio data is available. Set the RecognizedAudio property to true on your recognizer to receive audio data.</summary>
+        </member>
+        <member name="P:System.SR.ResultNotGrammarAvailable">
+            <summary>No grammar available for deserialized result.</summary>
+        </member>
+        <member name="P:System.SR.ResultInvalidFormat">
+            <summary>Serialized format not valid.</summary>
+        </member>
+        <member name="P:System.SR.UnhandledVariant">
+            <summary>Unhandled 'VARIANT' type.</summary>
+        </member>
+        <member name="P:System.SR.DupSemanticKey">
+            <summary>Duplicated semantic key '{0}' in rule '{1}.</summary>
+        </member>
+        <member name="P:System.SR.DupSemanticValue">
+            <summary>The semantic value in rule '{0}' was already set and cannot be changed.</summary>
+        </member>
+        <member name="P:System.SR.CannotUseCustomFormat">
+            <summary>Cannot use AudioFormatTag.Custom with this constructor.</summary>
+        </member>
+        <member name="P:System.SR.NoPromptEngine">
+            <summary>No prompt engine in the system.</summary>
+        </member>
+        <member name="P:System.SR.NoPromptEngineInterface">
+            <summary>Cannot find prompt engine interface on this object.</summary>
+        </member>
+        <member name="P:System.SR.SeekNotSupported">
+            <summary>Seeking not supported on this Stream at this point.</summary>
+        </member>
+        <member name="P:System.SR.ExtraDataNotPresent">
+            <summary>Extra wave header data not present.</summary>
+        </member>
+        <member name="P:System.SR.BitsPerSampleInvalid">
+            <summary>BitsPerSample field not valid.</summary>
+        </member>
+        <member name="P:System.SR.DataBlockSizeInvalid">
+            <summary>Invalid Audio header info. Cannot calculate data block size because blockAlign or metadata size not valid.</summary>
+        </member>
+        <member name="P:System.SR.NotWholeNumberBlocks">
+            <summary>Whole number of blocks not present.</summary>
+        </member>
+        <member name="P:System.SR.BlockSignatureInvalid">
+            <summary>Metadata block signature not valid.</summary>
+        </member>
+        <member name="P:System.SR.NumberOfSamplesInvalid">
+            <summary>Number of samples in data block not valid.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorUninitialized">
+            <summary>Object is not initialized.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorAlreadyInitialized">
+            <summary>Object is already initialized.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorNotSupportedFormat">
+            <summary>Unsupported format.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorInvalidFlags">
+            <summary>Invalid flags for this operation.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorEndOfStream">
+            <summary>The operation has reached the end of the stream.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorDeviceBusy">
+            <summary>The wave device is busy.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorDeviceNotSupported">
+            <summary>The wave device is not supported.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorDeviceNotEnabled">
+            <summary>The wave device is not enabled.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorNoDriver">
+            <summary>There is no wave driver installed.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorFileMustBeUnicode">
+            <summary>The file must be Unicode.</summary>
+        </member>
+        <member name="P:System.SR.InsufficientData">
+            <summary>Insufficient data.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorInvalidPhraseID">
+            <summary>The phrase ID specified does not exist or is out of range.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorBufferTooSmall">
+            <summary>The caller provided a buffer too small to return a result.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorFormatNotSpecified">
+            <summary>Caller did not specify a format prior to opening a stream.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorAudioStopped0">
+            <summary>This method is deprecated.</summary>
+        </member>
+        <member name="P:System.SR.AudioPaused">
+            <summary>Reads on paused streams will not block, and this return code indicates that all of the data has been removed from the stream.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorRuleNotFound">
+            <summary>Rule not found in grammar '{0}'.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorTTSEngineException">
+            <summary>An exception was raised during a call to the current TTS driver.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorTTSNLPException">
+            <summary>An exception was raised during a call to an application sentence filter.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorEngineBUSY">
+            <summary>In speech recognition, the current method can not be performed while a grammar rule is active.</summary>
+        </member>
+        <member name="P:System.SR.AudioConversionEnabled">
+            <summary>The operation was successful, but only with automatic stream format conversion.</summary>
+        </member>
+        <member name="P:System.SR.NoHypothesisAvailable">
+            <summary>There is currently no hypothesis recognition available.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorCantCreate">
+            <summary>Cannot create a new object instance for the specified object category.</summary>
+        </member>
+        <member name="P:System.SR.AlreadyInLex">
+            <summary>The word, pronunciation, or POS pair being added is already in lexicon.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorNotInLex">
+            <summary>The word does not exist in the lexicon.</summary>
+        </member>
+        <member name="P:System.SR.LexNothingToSync">
+            <summary>The client is currently synced with the lexicon.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorLexVeryOutOfSync">
+            <summary>The client is excessively out of sync with the lexicon. Mismatches may not be incrementally synced.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorUndefinedForwardRuleRef">
+            <summary>A rule reference in a grammar was made to a named rule that was never defined.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorEmptyRule">
+            <summary>A non dynamic grammar rule is empty.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorGrammarCompilerInternalError">
+            <summary>The grammar compiler failed due to an internal state error.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorRuleNotDynamic">
+            <summary>An attempt was made to modify a non-dynamic rule.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorDuplicateRuleName">
+            <summary>Duplicated rule name.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorDuplicateResourceName">
+            <summary>A resource name was duplicated for a given rule.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorTooManyGrammars">
+            <summary>Too many grammars have been loaded. Number of grammars cannot exceed 1024.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorCircularReference">
+            <summary>Circular reference in import rules of grammars.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorInvalidImport">
+            <summary>A rule reference to an imported grammar cannot be resolved.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorInvalidWAVFile">
+            <summary>The format of the WAV file is not supported.</summary>
+        </member>
+        <member name="P:System.SR.RequestPending">
+            <summary>A Speech Recognizer method called with the SPRIF_ASYNC flag is being processed.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorAllWordsOptional">
+            <summary>A grammar rule was defined with a null path through the rule.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorInstanceChangeInvalid">
+            <summary>SelectEngine called while a recognition context exists, or SetInput called in the shared instance case.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorRuleNameIdConflict">
+            <summary>A rule exists with matching IDs (names) but different names (IDs).</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorNoRules">
+            <summary>A grammar contains no top-level, dynamic, or exported rules.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorCircularRuleRef">
+            <summary>Rule 'A' refers to a second rule 'B' which, in turn, refers to rule 'A'.</summary>
+        </member>
+        <member name="P:System.SR.NoParseFound">
+            <summary>Parse path cannot be parsed given the currently active rules.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorInvalidHandle">
+            <summary>Invalid handle.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorRemoteCallTimedout">
+            <summary>A marshaled remote call failed to respond.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorAudioBufferOverflow">
+            <summary>Input stream is paused because the Speech Recognizer driver has not retrieved data recently.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorNoAudioData">
+            <summary>The result does not contain any audio, nor does the portion of the element chain of the result contain any audio.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorDeadAlternate">
+            <summary>This alternate is no longer a valid alternate to the result it was obtained from.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorHighLowConfidence">
+            <summary>The result does not contain any audio, nor does the portion of the element chain of the result contain any audio.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorInvalidFormatString">
+            <summary>The XML format string for this 'ruleref' is not valid. It must be a 'Guid' or 'RefClsId'.</summary>
+        </member>
+        <member name="P:System.SR.SPNotSupportedOnStreamInput">
+            <summary>The operation is not supported for stream input.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorAppLexReadOnly">
+            <summary>The operation is invalid for all but newly created application lexicons.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorNoTerminatingRulePath">
+            <summary>Terminating rule path is missing.</summary>
+        </member>
+        <member name="P:System.SR.WordExistsWithoutPronunciation">
+            <summary>The word exists but without pronunciation.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorStreamClosed">
+            <summary>Cannot perform operation on a closed stream object.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorNoMoreItems">
+            <summary>When enumerating items, the requested index is greater than the count of items.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorNotFound">
+            <summary>Cannot find the requested data item, such as a data key or value.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorInvalidAudioState">
+            <summary>Audio state passed to SetState() is invalid.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorGenericMMSYS">
+            <summary>MMSYS error occurred.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorMarshalerException">
+            <summary>An error occurred during a call to the marshaling code</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorNotDynamicGrammar">
+            <summary>Attempt was made to manipulate a non-dynamic grammar.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorAmbiguousProperty">
+            <summary>Cannot add ambiguous property.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorInvalidRegistrykey">
+            <summary>The key specified is invalid.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorInvalidTokenId">
+            <summary>The token specified is invalid.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorXMLBadSyntax">
+            <summary>The XML parser failed due to bad syntax.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorXMLResourceNotFound">
+            <summary>The XML parser cannot find a required resource, such as a voice or a phonetic converter.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorTokenInUse">
+            <summary>Attempted to remove registry data from a token that is already in use elsewhere.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorTokenDeleted">
+            <summary>Cannot perform action on this object because its associated registry key was deleted.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorMultilingualNotSupported">
+            <summary>The selected voice was registered as multilingual. SAPI does not support multilingual registration.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorExportDynamicRule">
+            <summary>Exported rules cannot refer directly or indirectly to a dynamic rule.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorSTGF">
+            <summary>Error parsing the SAPI Text Grammar Format (XML grammar).</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorWordFormat">
+            <summary>Incorrect word format, probably due to incorrect pronunciation string.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorStreamNotActive">
+            <summary>Methods associated with active audio stream cannot be called unless stream is active.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorEngineResponseInvalid">
+            <summary>Arguments or data supplied by the engine are in an invalid format or are inconsistent.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorSREngineException">
+            <summary>Error during a call to the current Speech Recognizer engine.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorStreamPosInvalid">
+            <summary>Stream position information supplied from engine is inconsistent.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorRecognizerInactive">
+            <summary>Operation could not be completed because the recognizer is inactive.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorRemoteCallOnWrongThread">
+            <summary>Remote call to the server was made on the wrong thread.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorRemoteProcessTerminated">
+            <summary>The remote process terminated unexpectedly.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorRemoteProcessAlreadyRunning">
+            <summary>The remote process is already running; it cannot be started a second time.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorLangIdMismatch">
+            <summary>The language for the grammar does not match the language of the speech recognizer.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorPartialParseFound">
+            <summary>A grammar-ending parse does not use all available words.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorNotTopLevelRule">
+            <summary>Only a top-level rule can be activated or deactivated.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorNoRuleActive">
+            <summary>Cannot parse until a rule is active.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorLexRequiresCookie">
+            <summary>Cannot request all words at once from a container lexicon.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorStreamUninitialized">
+            <summary>The local recognizer cannot activate a rule, dictation, or other stream until it is initialized. Call SetInput first.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorUnused0">
+            <summary></summary>
+        </member>
+        <member name="P:System.SR.SapiErrorUnused1">
+            <summary></summary>
+        </member>
+        <member name="P:System.SR.SapiErrorUnused2">
+            <summary></summary>
+        </member>
+        <member name="P:System.SR.SapiErrorUnused3">
+            <summary></summary>
+        </member>
+        <member name="P:System.SR.SapiErrorUnused4">
+            <summary></summary>
+        </member>
+        <member name="P:System.SR.SapiErrorUnused5">
+            <summary></summary>
+        </member>
+        <member name="P:System.SR.SapiErrorUnused6">
+            <summary></summary>
+        </member>
+        <member name="P:System.SR.SapiErrorUnused7">
+            <summary></summary>
+        </member>
+        <member name="P:System.SR.SapiErrorUnused8">
+            <summary></summary>
+        </member>
+        <member name="P:System.SR.SapiErrorUnused9">
+            <summary></summary>
+        </member>
+        <member name="P:System.SR.SapiErrorUnused10">
+            <summary></summary>
+        </member>
+        <member name="P:System.SR.SapiErrorUnused11">
+            <summary></summary>
+        </member>
+        <member name="P:System.SR.SapiErrorUnused12">
+            <summary></summary>
+        </member>
+        <member name="P:System.SR.SapiErrorNotSupportedLang">
+            <summary>The requested language is not supported.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorVoicePaused">
+            <summary>The operation cannot be performed because the voice is currently paused.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorAudioBufferUnderflow">
+            <summary>The real-time audio device stopped returning expected data.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorAudioStoppedUnexpectedly">
+            <summary>An audio device stopped returning data from the Read method even though it is in the run state.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorNoWordPronunciation">
+            <summary>The Speech Recognizer engine is unable to add this word to a grammar. The application may need to supply an explicit pronunciation for this word.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorAlternatesWouldBeInconsistent">
+            <summary>The Speech Recognizer engine is unable to add this word to a grammar. The application may need to supply an explicit pronunciation for this word.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorNotSupportedForSharedRecognizer">
+            <summary>The method called is not supported for the shared recognizer.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorTimeOut">
+            <summary>A task could not complete because the Speech Recognizer engine had timed out.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorReenterSynchronize">
+            <summary>A Speech Recognizer engine called synchronize while inside of a synchronize call.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorStateWithNoArcs">
+            <summary>The grammar contains a node that does not have arcs.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorNotActiveSession">
+            <summary>Audio output and input are not supported for non-active console sessions.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorAlreadyDeleted">
+            <summary>The object is a stale reference and is invalid to use.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorAudioStopped">
+            <summary>Stream is stopped during read or write call.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorRecoXMLGenerationFail">
+            <summary>The Recognition Parse Tree couldn't be generated.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorSMLGenerationFail">
+            <summary>The Semantic Markup Language cannot be generated. This may be caused by an XLST template that is not formed correctly.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorNotPromptVoice">
+            <summary>The current voice is not a prompt voice.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorRootRuleAlreadyDefined">
+            <summary>There is already a root rule for this grammar.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorScriptDisallowed">
+            <summary>Support for embedded script not supported because browser security settings have disabled it.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorRemoteCallTimedOutStart">
+            <summary>A timeout occurred starting the SAPI Server.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorRemoteCallTimedOutConnect">
+            <summary>A timeout occurred obtaining the lock for starting or connecting to SAPI Server.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorSecMgrChangeNotAllowed">
+            <summary>The security manager cannot be changed while a grammar is loaded.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorCompleteButExtendable">
+            <summary>Parse is valid but could be extensible (internal use only)</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorFailedToDeleteFile">
+            <summary>Tried and failed to delete an existing file.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorSharedEngineDisabled">
+            <summary>The user has chosen to disable speech from running on the machine, or the system is not set up to run speech.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorRecognizerNotFound">
+            <summary>No recognizer is installed.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorAudioNotFound">
+            <summary>No audio device is installed.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorNoVowel">
+            <summary>Word must contain a vowel.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorNotSupportedPhoneme">
+            <summary>Unknown phoneme.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorNoRulesToActivate">
+            <summary>The grammar does not have any root or top-level active rules to activate.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorNoWordEntryNotification">
+            <summary>The engine does not need SAPI word entry handles for this grammar.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorWordNeedsNormalization">
+            <summary>Must normalize word before passing to the GetPronunciations interface.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorCannotNormalize">
+            <summary>The word passed to the normalize interface cannot be normalized.</summary>
+        </member>
+        <member name="P:System.SR.LimitReached">
+            <summary>The word being normalized has generated more than the maximum number of allowed normalized results.</summary>
+        </member>
+        <member name="P:System.SR.NotSupported">
+            <summary>This combination of function call and input is not supported.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorTopicNotAdaptable">
+            <summary>This topic cannot be modified.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorPhonemeConversion">
+            <summary>Cannot convert the phonemes to the specified phonetic alphabet.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorNotSupportedForInprocRecognizer">
+            <summary>The method called is not supported for the in-process recognizer.</summary>
+        </member>
+        <member name="P:System.SR.SapiLexInvalidData">
+            <summary>The lexicon data is invalid or corrupted.</summary>
+        </member>
+        <member name="P:System.SR.SapiLexUnexpectedFormat">
+            <summary>The lexicon is not in the expected format.</summary>
+        </member>
+        <member name="P:System.SR.SapiNonWordTransition">
+            <summary>One of the parse transitions is not a word transition.</summary>
+        </member>
+        <member name="P:System.SR.SapiSisrAttributesNotAllowed">
+            <summary>Attributes are not allowed at the top level.</summary>
+        </member>
+        <member name="P:System.SR.SapiSisrMixedNotAllowed">
+            <summary>Mixed content is not allowed at the top level.</summary>
+        </member>
+        <member name="P:System.SR.SapiStringEmpty">
+            <summary>The string cannot be empty.</summary>
+        </member>
+        <member name="P:System.SR.SapiStringTooLong">
+            <summary>The string is too long.</summary>
+        </member>
+        <member name="P:System.SR.SapiVoiceNotFound">
+            <summary>No given voice is found.</summary>
+        </member>
+        <member name="P:System.SR.SapiErrorOverload">
+            <summary>The operation cannot be carried out due to overload and should be attempted again.</summary>
+        </member>
+        <member name="P:System.SR.SapiConfigInvalidData">
+            <summary>The data in the CFG grammar is invalid or corrupted.</summary>
+        </member>
+        <member name="T:System.Runtime.Versioning.OSPlatformAttribute">
+            <summary>
+            Base type for all platform-specific API attributes.
+            </summary>
+        </member>
+        <member name="T:System.Runtime.Versioning.TargetPlatformAttribute">
+            <summary>
+            Records the platform that the project targeted.
+            </summary>
+        </member>
+        <member name="T:System.Runtime.Versioning.SupportedOSPlatformAttribute">
+             <summary>
+             Records the operating system (and minimum version) that supports an API. Multiple attributes can be
+             applied to indicate support on multiple operating systems.
+             </summary>
+             <remarks>
+             Callers can apply a <see cref="T:System.Runtime.Versioning.SupportedOSPlatformAttribute" />
+             or use guards to prevent calls to APIs on unsupported operating systems.
+            
+             A given platform should only be specified once.
+             </remarks>
+        </member>
+        <member name="T:System.Runtime.Versioning.UnsupportedOSPlatformAttribute">
+            <summary>
+            Marks APIs that were removed in a given operating system version.
+            </summary>
+            <remarks>
+            Primarily used by OS bindings to indicate APIs that are only available in
+            earlier versions.
+            </remarks>
+        </member>
+    </members>
+</doc>

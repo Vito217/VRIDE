@@ -6,10 +6,10 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class VRIDEController : MonoBehaviour
 {
     private VRIDEMenu menu;
+
     public GameObject leftStick, rightStick;
     public GameObject leftHand, rightHand;
     public Transform leftTransform, rightTransform;
-
     public GameObject currentActivePointer;
 
     Vector3 currentPosition = Vector3.zero;
@@ -17,6 +17,14 @@ public class VRIDEController : MonoBehaviour
     void Awake()
     {
         GetComponent<XRRig>().cameraYOffset = 1.5f;
+
+        if (Application.platform == RuntimePlatform.WindowsPlayer)
+            Camera.main.gameObject.AddComponent<DictationScript>();
+        else if (Application.platform == RuntimePlatform.Android)
+        {
+            Camera.main.gameObject.AddComponent<Test>();
+            Camera.main.gameObject.AddComponent<ReceiveResult>();
+        }
     }
 
     void Update()

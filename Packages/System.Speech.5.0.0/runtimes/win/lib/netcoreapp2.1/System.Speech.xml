@@ -1,0 +1,2812 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>System.Speech</name>
+    </assembly>
+    <members>
+        <member name="M:System.Speech.Internal.AudioFormatConverter.ConvertFormat(System.Speech.Internal.AudioFormatConverter.StreamFormat)">
+            <summary>
+            This method converts the specified stream format into a wave format
+            </summary>
+        </member>
+        <member name="T:System.Speech.Internal.AlphabetConverter">
+            <summary>
+            This class allows conversion between SAPI and IPA phonemes.
+            Objects of this class are not thread safe for modifying state.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.AlphabetConverter.SapiToIpa(System.Char[])">
+            <summary>
+            Convert from SAPI phonemes to IPA phonemes.
+            </summary>
+            <returns>
+            Return an array of unicode characters each of which represents an IPA phoneme if the SAPI phonemes are valid.
+            Otherwise, return null.
+            </returns>
+        </member>
+        <member name="M:System.Speech.Internal.AlphabetConverter.IpaToSapi(System.Char[])">
+            <summary>
+            Convert from IPA phonemes to SAPI phonemes.
+            </summary>
+            Return an array of unicode characters each of which represents a SAPI phoneme if the IPA phonemes are valid.
+            Otherwise, return null.
+        </member>
+        <member name="M:System.Speech.Internal.AlphabetConverter.IsPrefix(System.String,System.Boolean)">
+            <summary>
+            Determines whether a given string of SAPI ids can be potentially converted using a single
+            conversion unit, that is, a prefix of some convertible string.
+            </summary>
+            <param name="phonemes">The string of SAPI or UPS phoneme ids</param>
+            <param name="isSapi">To indicate whether parameter phonemes is in SAPI or UPS phonemes</param>
+        </member>
+        <member name="M:System.Speech.Internal.AlphabetConverter.PhoneMapData.InitializePrefix(System.Boolean)">
+            <summary>
+            Create a hash table of all possible prefix substrings for each ConversionUnit
+            </summary>
+            <param name="isSapi">Creating a SAPI or UPS prefix table</param>
+        </member>
+        <member name="T:System.Speech.Internal.HGlobalSafeHandle">
+            <summary>
+            Encapsulate SafeHandle for Win32 Memory Handles
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.HGlobalSafeHandle.IsInvalid">
+            <summary>
+            True if the no memory is allocated
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.HGlobalSafeHandle.ReleaseHandle">
+            <summary>
+            Releases the Win32 Memory handle
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.PhonemeConverter.UpsConverter">
+            <summary>
+            Returns the cached version of the universal phone converter.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.PhonemeConverter.ConvertPronToId(System.String,System.Int32)">
+            <summary>
+            Convert a pronunciation string to code points
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.PhonemeConverter.ConvertPronToId(System.String)">
+            <summary>
+            Convert an internal phone string to Id code string
+            The internal phones are space separated and may have a space
+            at the end.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.PhonemeConverter.DecompressPhoneMaps(System.Speech.Internal.PhonemeConverter.PhoneMapCompressed[])">
+            <summary>
+            Builds the Phoneme maps from the compressed form.
+            </summary>
+        </member>
+        <member name="T:System.Speech.Internal.PhonemeConverter.PhoneMapCompressed">
+            <summary>
+            Compressed version for the phone map so that the size for the pronunciation table is small in the dll.
+            A single large arrays of bytes (ASCII) is used to store the 'pron' string. Each string is zero terminated.
+            A single large array of char is used to store the code point for the 'pron' string. Each binary array for the pron by default
+            has a length of 1 character. If the length is greater than 1, then the 'pron' string is appended with -1 values, one per extra code
+            point.
+            </summary>
+        </member>
+        <member name="T:System.Speech.Internal.RedBlackList">
+            <summary>
+            Sorted List using the Red-Black algorithm
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ResourceLoader.LoadFile(System.Uri,System.String@,System.Uri@,System.String@)">
+            <summary>
+            Load a file either from a local network or from the Internet.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ResourceLoader.UnloadFile(System.String)">
+            <summary>
+            Release a file from a cache if any
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ResourceLoader.DownloadData(System.Uri,System.Uri@)">
+            <summary>
+            Download data from the web.
+            Set the redirectUri as the location of the file could be redirected in ASP pages.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.StringBlob.FromOffset(System.Int32)">
+            <summary>
+            Only DEBUG code should use this
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.GrammarBuilding.BuilderElements.Optimize(System.Collections.ObjectModel.Collection{System.Speech.Internal.GrammarBuilding.RuleElement})">
+            <summary>
+            Optimization for a element tree
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.GrammarBuilding.GrammarBuilderBase.Count">
+            <summary>
+            Used by the GrammarBuilder optimizer to count the number of children and descendant for
+            an element
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.GrammarBuilding.GrammarBuilderBase.Marked">
+            <summary>
+            Marker to know if an element has already been visited.
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.GrammarBuilding.GrammarBuilderBase.Parent">
+            <summary>
+            Marker to know if an element has already been visited.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.ObjectToken.Open(System.Speech.Internal.SapiInterop.ISpObjectToken)">
+            <summary>
+            Creates a ObjectToken from an already-existing ISpObjectToken.
+            Assumes the token was created through enumeration, thus should not be disposed by us.
+            </summary>
+            <returns>ObjectToken object</returns>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.ObjectToken.Open(System.String,System.String,System.Boolean)">
+            <summary>
+            Creates a new ObjectToken from a category
+            Unlike the other Open overload, this one creates a new SAPI object, so Dispose must be called if
+            you are creating ObjectTokens with this function.
+            </summary>
+            <returns>ObjectToken object</returns>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.ObjectToken.Equals(System.Object)">
+            <summary>
+            Tests whether two AutomationIdentifier objects are equivalent
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.ObjectToken.GetHashCode">
+            <summary>
+            Overrides Object.GetHashCode()
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.ObjectTokens.ObjectToken.Age">
+            <summary>
+            Returns the Age from a voice token
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.ObjectTokens.ObjectToken.Gender">
+            <summary>
+            Returns the gender
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.ObjectToken.TokenName">
+            <summary>
+            Returns the Name for the voice
+            Look first in the Name attribute, if not available then get the default string
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.ObjectTokens.ObjectToken.Culture">
+            <summary>
+            Returns the Culture defined in the Language field for a token
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.ObjectTokens.ObjectToken.Description">
+            <summary>
+            Returns the Culture defined in the Language field for a token
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.ObjectToken.MatchesAttributes(System.String[])">
+            <summary>
+            Check if the token supports the attributes list given in. The
+            attributes list has the same format as the required attributes given to
+            SpEnumTokens.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.RegistryDataKey.Dispose">
+            <summary>
+            Needed by IEnumerable
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.RegistryDataKey.SetData(System.String,System.UInt32,System.Byte[])">
+            <summary>
+            Writes the specified binary data to the registry.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.RegistryDataKey.GetData(System.String,System.UInt32@,System.Byte[])">
+            <summary>
+            Reads the specified binary data from the registry.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.RegistryDataKey.SetStringValue(System.String,System.String)">
+            <summary>
+            Writes the specified string value from the registry. If valueName
+            is NULL then the default value of the registry key is read.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.RegistryDataKey.GetStringValue(System.String,System.String@)">
+            <summary>
+            Reads the specified string value to the registry. If valueName is
+            NULL then the default value of the registry key is read.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.RegistryDataKey.SetDWORD(System.String,System.UInt32)">
+            <summary>
+            Writes the specified DWORD to the registry.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.RegistryDataKey.GetDWORD(System.String,System.UInt32@)">
+            <summary>
+            Reads the specified DWORD from the registry.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.RegistryDataKey.OpenKey(System.String,System.Speech.Internal.SapiInterop.ISpDataKey@)">
+            <summary>
+            Opens a sub-key and returns a new object which supports SpDataKey
+            for the specified sub-key.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.RegistryDataKey.CreateKey(System.String,System.Speech.Internal.SapiInterop.ISpDataKey@)">
+            <summary>
+            Creates a sub-key and returns a new object which supports SpDataKey
+            for the specified sub-key.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.RegistryDataKey.DeleteKey(System.String)">
+            <summary>
+            Deletes the specified key.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.RegistryDataKey.DeleteValue(System.String)">
+            <summary>
+            Deletes the specified value from the key.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.RegistryDataKey.EnumKeys(System.UInt32,System.String@)">
+            <summary>
+            Retrieve a key name by index
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.RegistryDataKey.EnumValues(System.UInt32,System.String@)">
+            <summary>
+            Retrieves a key value by index
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.ObjectTokens.RegistryDataKey.Id">
+            <summary>
+            Full path and name for the key
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.ObjectTokens.RegistryDataKey.Name">
+            <summary>
+            Key Name (no path)
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.RegistryDataKey.TryGetString(System.String,System.String@)">
+            <summary>
+            Reads the specified string value to the registry. If valueName is
+            NULL then the default value of the registry key is read.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.RegistryDataKey.HasValue(System.String)">
+            <summary>
+            Opens a sub-key and returns a new object which supports SpDataKey
+            for the specified sub-key.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.RegistryDataKey.TryGetDWORD(System.String,System.UInt32@)">
+            <summary>
+            Reads the specified DWORD from the registry.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.RegistryDataKey.OpenKey(System.String)">
+            <summary>
+            Opens a sub-key and returns a new object which supports SpDataKey
+            for the specified sub-key.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.RegistryDataKey.CreateKey(System.String)">
+            <summary>
+            Creates a sub-key and returns a new object which supports SpDataKey
+            for the specified sub-key.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.RegistryDataKey.GetValueNames">
+            <summary>
+            returns the name for all the values in this registry entry
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.SAPICategories.DefaultDeviceOut">
+            <summary>
+            Retrieve the Multimedia device ID. If the entry 'DefaultTokenId' is defined in the registry
+            under 'HKEY_CURRENT_USER\SOFTWARE\Microsoft\Speech\AudioOutput' then a multimedia device is looked
+            for with this token. Otherwise, picks the default WAVE_MAPPER is returned.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.SAPICategories.GetPreference(System.String,System.String)">
+            <summary>
+            Try to get the preferred token for a category
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.SAPICategories.CompareTokenVersions(System.Speech.Internal.ObjectTokens.ObjectToken,System.Speech.Internal.ObjectTokens.ObjectToken,System.Boolean@)">
+            <summary>
+            Takes two tokens and compares them using version info.
+            Note only tokens that match on Vendor, ProductLine, Language get compared, the pfDidCompare flag indicates this
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.SAPICategories.CompareVersions(System.String,System.String)">
+            <summary>
+            Takes two version number strings and compares them.
+            If V1 or V2 invalid format then the valid string is returned as being greater.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.ObjectTokens.SAPICategories.ParseVersion(System.String,System.UInt16[])">
+            <summary>
+            Takes a version number string, checks it is valid, and fills the four
+            values in the Version array. Valid version stings are "a[.b[.c[.d]]]",
+            where a,b,c,d are +ve integers, 0 . 9999. If b,c,d are missing those
+            version values are set as zero.
+            </summary>
+        </member>
+        <member name="T:System.Speech.Internal.SapiInterop.EventNotify">
+            Dispatches events from ISpEventSource to DispatchEventDelegate on a thread
+            compatible with the application model of the thread that created this object.
+        </member>
+        <member name="T:System.Speech.Internal.SapiInterop.SPSERIALIZEDPHRASEALT">
+            Note:   This structure doesn't exist in SAPI.idl but is related to SPPHRASEALT.
+                    We use it to map memory contained in the serialized result (instead of reading sequentially)
+        </member>
+        <member name="M:System.Speech.Internal.SapiInterop.SPPHRASE.CreatePhraseFromText(System.String,System.Globalization.CultureInfo,System.Runtime.InteropServices.GCHandle[]@,System.IntPtr@)">
+            <summary>
+            Helper function used to create a new phrase object from a
+            test string. Each word in the string is converted to a phrase element.
+            This is useful to create a phrase to pass to the EmulateRecognition method.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SapiInterop.SPPHRASE.CreatePhraseFromWordUnits(System.Speech.Recognition.RecognizedWordUnit[],System.Globalization.CultureInfo,System.Runtime.InteropServices.GCHandle[]@,System.IntPtr@)">
+            <summary>
+            Helper function used to create a new phrase object from a
+            test string. Each word in the string is converted to a phrase element.
+            This is useful to create a phrase to pass to the EmulateRecognition method.
+            </summary>
+        </member>
+        <member name="T:System.Speech.Internal.SapiInterop.ISpGrammarResourceLoader">
+            <summary>
+            Resource Loader interface definition
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SapiInterop.ISpGrammarResourceLoader.LoadResource(System.String,System.Boolean,System.Runtime.InteropServices.ComTypes.IStream@,System.String@,System.Int16@,System.String@)">
+            <summary>
+            Load some data
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SapiInterop.ISpGrammarResourceLoader.GetLocalCopy(System.Uri,System.String@,System.Uri@)">
+            <summary>
+            Converts the resourcePath to a location in the file cache and returns a reference into the
+            cache
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SapiInterop.ISpGrammarResourceLoader.ReleaseLocalCopy(System.String)">
+            <summary>
+            Mark an entry in the file cache as unused.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SapiInterop.SpAudioStreamWrapper.GetStreamOffsets(System.IO.Stream)">
+            <summary>
+            Builds the
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.AppDomainGrammarProxy.MatchInitParameters(System.String,System.String,System.String,System.String)">
+            <summary>
+            Construct a list of parameters from a sapi:params string.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.AppDomainGrammarProxy.ParseValue(System.Type,System.String)">
+            <summary>
+            Parse the value for a type from a string to a strong type.
+            If the type does not support the Parse method then the operation fails.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.AppDomainGrammarProxy.FormatConstructorParameters(System.Reflection.MethodInfo[],System.String)">
+            <summary>
+            Returns the list of the possible parameter names and type for a grammar
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.AppDomainGrammarProxy.ParseInitParams(System.String)">
+            <summary>
+            Split the init parameter strings into an array of name/values
+            The format must be "name:value". If the ':' then parameter is anonymous.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Arc.CompareForDuplicateInputTransitions(System.Speech.Internal.SrgsCompiler.Arc,System.Speech.Internal.SrgsCompiler.Arc)">
+            <summary>
+            Compare the contents and number of output arcs from the start state.
+            The comparison is done by Arc content, number of arcs at then and the id for the last arc
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Arc.CompareForDuplicateOutputTransitions(System.Speech.Internal.SrgsCompiler.Arc,System.Speech.Internal.SrgsCompiler.Arc)">
+            <summary>
+            Compare the contents and number of input arcs to the end state.
+            The comparison is done by Arc content, number of arcs at then and the id for the last arc
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Arc.CompareIdenticalTransitions(System.Speech.Internal.SrgsCompiler.Arc,System.Speech.Internal.SrgsCompiler.Arc)">
+            <summary>
+            Compare the contents and start/end states of two arcs.
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.SrgsCompiler.Arc.IsEpsilonTransition">
+            <summary>
+            Is the arc an epsilon transition?
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.SrgsCompiler.Arc.IsPropertylessTransition">
+            <summary>
+            Is this arc an arc without attached properties?
+            </summary>
+            <returns>Is this arc an arc without attached properties?</returns>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.ArcList.ToList">
+            <summary>
+            Build a List with all the arcs
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Backend.Optimize">
+            <summary>
+            Optimizes the grammar network by removing the epsilon states and merging
+            duplicate transitions.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Backend.Commit(System.Speech.Internal.StreamMarshaler)">
+            <summary>
+            Performs consistency checks of the grammar structure, creates the
+            serialized format and either saves it to the stream provided by SetSaveOptions,
+            or reloads it into the CFG engine.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Backend.CombineGrammar(System.String,System.Speech.Internal.SrgsCompiler.Backend,System.Speech.Internal.SrgsCompiler.Backend)">
+            <summary>
+            Description:
+            Combine the current data in a grammar with one coming from a CFG
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Backend.CreateRule(System.String,System.Speech.Internal.SrgsCompiler.SPCFGRULEATTRIBUTES)">
+             <summary>
+             Tries to find the rule's initial state handle. If both a name and an id
+             are provided, then both have to match in order for this call to succeed.
+             If the rule doesn't already exist then we define it if fCreateIfNotExists,
+             otherwise we return an error ().
+            
+                 - pszRuleName   name of rule to find/define     (null: don't care)
+                 - ruleId      id of rule to find/define       (0: don't care)
+                 - dwAttribute   rule attribute for defining the rule
+                 - fCreateIfNotExists    creates the rule using name, id, and attributes
+                                         in case the rule doesn't already exist
+            
+             throws:
+                   S_OK, E_INVALIDARG, E_OUTOFMEMORY
+                   SPERR_RULE_NOT_FOUND        -- no rule found and we don't create a new one
+                   SPERR_RULE_NAME_ID_CONFLICT -- rule name and id don't match
+             </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Backend.FindRule(System.String)">
+            <summary>
+            Internal method for finding rule in rule list
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Backend.WordTransition(System.String,System.Single,System.Int32)">
+            <summary>
+            Adds a word transition from hFromState to hToState. If hToState == null
+            then the arc will be to the (implicit) terminal state. If psz == null then
+            we add an epsilon transition. Properties are pushed back to the
+            first un-ambiguous arc in case we can share a common initial state path.
+            The weight will be placed on the first arc (if there exists an arc with
+            the same word but different weight we will create a new arc).
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Backend.RuleTransition(System.Speech.Internal.SrgsCompiler.Rule,System.Speech.Internal.SrgsCompiler.Rule,System.Single)">
+            <summary>
+            Adds a rule (reference) transition from hFromState to hToState.
+            hRule can also be one of these special transition handles:
+                SPRULETRANS_WILDCARD   :    "WILDCARD" transition
+                SPRULETRANS_DICTATION  :    single word from dictation
+                SPRULETRANS_TEXTBUFFER :    "TEXTBUFFER" transition
+            </summary>
+            <param name="rule">must be initial state of rule</param>
+            <param name="parentRule">Rule calling the ruleref</param>
+            <param name="flWeight">Weight</param>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Backend.EpsilonTransition(System.Single)">
+            <summary>
+            Adds a word transition from hFromState to hToState. If hToState == null
+            then the arc will be to the (implicit) terminal state. If psz == null then
+            we add an epsilon transition. Properties are pushed back to the
+            first un-ambiguous arc in case we can share a common initial state path.
+            The weight will be placed on the first arc (if there exists an arc with
+            the same word but different weight we will create a new arc).
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Backend.CloneSubGraph(System.Speech.Internal.SrgsCompiler.State,System.Speech.Internal.SrgsCompiler.State,System.Speech.Internal.SrgsCompiler.State)">
+            <summary>
+            Traverse the graph starting from SrcStartState, cloning each state as we go along,
+            cloning each transition except ones originating from SrcEndState, and return
+            the cloned state corresponding to SrcEndState.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Backend.CloneSubGraph(System.Speech.Internal.SrgsCompiler.Rule,System.Speech.Internal.SrgsCompiler.Backend,System.Speech.Internal.SrgsCompiler.Backend,System.Collections.Generic.Dictionary{System.Speech.Internal.SrgsCompiler.State,System.Speech.Internal.SrgsCompiler.State},System.Boolean)">
+            <summary>
+            Traverse the graph starting from SrcStartState, cloning each state as we go along,
+            cloning each transition except ones originating from SrcEndState, and return
+            the cloned state corresponding to SrcEndState.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Backend.DeleteSubGraph(System.Speech.Internal.SrgsCompiler.State)">
+            <summary>
+            Delete disconnected subgraph starting at hState.
+            Traverse the graph starting from SrcStartState, and delete each state as we go along.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Backend.SetRuleAttributes(System.Speech.Internal.SrgsCompiler.Rule,System.Speech.Internal.SrgsCompiler.SPCFGRULEATTRIBUTES)">
+            <summary>
+            Modify the placeholder rule attributes after it has been created.
+            This is only safe to use in the context of SrgsGrammarCompiler.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Backend.SetBasePath(System.String)">
+            <summary>
+            Set the path from which relative grammar imports are calculated. As specified by xml:base / meta base
+            Null or empty string will clear any existing base path.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Backend.NormalizeTokenWhiteSpace(System.String)">
+            <summary>
+            Perform white space normalization in place.
+            - Trim leading/trailing white spaces.
+            - Collapse white space sequences to a single ' '.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Backend.InitFromBinaryGrammar(System.Speech.Internal.StreamMarshaler)">
+            <summary>
+            Description:
+            Load compiled grammar data. This overwrites any existing data in the grammar
+            We end up with containers of words, symbols, rules, arcs, states and state handles, etc.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Backend.AddArc(System.Speech.Internal.SrgsCompiler.Arc)">
+            <summary>
+            Connect arc to the state graph.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.CustomGrammar.Combine(System.Speech.Internal.SrgsCompiler.CustomGrammar,System.String)">
+            <summary>
+            Add the scripts defined in 'cg' to the set of scripts defined in 'cgCombined'.
+            Build the union of t codebehind files and assembly references
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.SrgsCompiler.GrammarElement.System#Speech#Internal#SrgsParser#IGrammar#XmlBase">
+            <summary>
+            Base URI of grammar (xml:base)
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.SrgsCompiler.GrammarElement.System#Speech#Internal#SrgsParser#IGrammar#Culture">
+            <summary>
+            GrammarElement language (xml:lang)
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.SrgsCompiler.GrammarElement.System#Speech#Internal#SrgsParser#IGrammar#Mode">
+            <summary>
+            GrammarElement mode.  voice or dtmf
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.SrgsCompiler.GrammarElement.System#Speech#Internal#SrgsParser#IGrammar#PhoneticAlphabet">
+            <summary>
+            GrammarElement mode.  voice or dtmf
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.SrgsCompiler.GrammarElement.System#Speech#Internal#SrgsParser#IGrammar#TagFormat">
+            <summary>
+            Tag format (srgs:tag-format)
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.SrgsCompiler.GrammarElement.System#Speech#Internal#SrgsParser#IGrammar#GlobalTags">
+            <summary>
+            Tag format (srgs:tag-format)
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.SrgsCompiler.GrammarElement.System#Speech#Internal#SrgsParser#IGrammar#Language">
+            <summary>
+            language
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.SrgsCompiler.GrammarElement.System#Speech#Internal#SrgsParser#IGrammar#Namespace">
+            <summary>
+            namespace
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.SrgsCompiler.GrammarElement.System#Speech#Internal#SrgsParser#IGrammar#CodeBehind">
+            <summary>
+            CodeBehind
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.SrgsCompiler.GrammarElement.System#Speech#Internal#SrgsParser#IGrammar#Debug">
+            <summary>
+            Add #line statements to the inline scripts if set
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.SrgsCompiler.GrammarElement.System#Speech#Internal#SrgsParser#IGrammar#ImportNamespaces">
+            <summary>
+            ImportNameSpaces
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.SrgsCompiler.GrammarElement.System#Speech#Internal#SrgsParser#IGrammar#AssemblyReferences">
+            <summary>
+            ImportNameSpaces
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.GrammarElement.GetRule(System.String,System.Speech.Internal.SrgsCompiler.SPCFGRULEATTRIBUTES)">
+            <summary>
+            Create a new rule with the specified name and attribute, and return the initial state.
+            Verify if Rule is unique.  A Rule may already have been created as a placeholder during RuleRef.
+            </summary>
+            <param name="sRuleId">Rule name</param>
+            <param name="dwAttributes">Rule attributes</param>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Graph.CreateNewState(System.Speech.Internal.SrgsCompiler.Rule)">
+            <summary>
+            Creates a new state handle in a given rule
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Graph.DeleteState(System.Speech.Internal.SrgsCompiler.State)">
+            <summary>
+            Delete a state
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Graph.Optimize">
+            <summary>
+            Optimizes the grammar network by removing the epsilon states and merging
+            duplicate transitions.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Graph.MoveInputTransitionsAndDeleteState(System.Speech.Internal.SrgsCompiler.State,System.Speech.Internal.SrgsCompiler.State)">
+             <summary>
+             Description:
+                 Change all transitions ending at SourceState to end at DestState, instead.
+                 Replace references to SourceState with references to DestState before deleting SourceState.
+                 - There may be additional duplicate input transitions at DestState after the move.
+            
+             Assumptions:
+             - SourceState == !null, RuleInitialState, !DestState,   ...
+             - DestState   ==  null, RuleInitialState, !SourceState, ...
+             - SourceState.OutputArc.IsEmpty
+             - !(SourceState == RuleInitialState AND DestState == null)
+            
+             Algorithm:
+             - For each input transition into SourceState
+               - Transition.EndState = DestState
+               - If DestState != null, DestState.InputArcs += Transition
+               - SourceState.InputArcs -= Transition
+             - SourceState.InputArcs.Clear()
+             - If SourceState == RuleInitialState, RuleInitialState = DestState
+             - Delete SourceState
+             </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Graph.MoveOutputTransitionsAndDeleteState(System.Speech.Internal.SrgsCompiler.State,System.Speech.Internal.SrgsCompiler.State)">
+             <summary>
+             Description:
+                 Change all transitions starting at SourceState to start at DestState, instead.
+                 Deleting SourceState.
+                 - The weights on the transitions have been properly adjusted.
+                     The weights are not changed when moving transitions.
+                 - There may be additional duplicate input transitions at DestState after the move.
+            
+             Assumptions:
+             - SourceState == !null, !RuleInitialState, !DestState,   ...
+             - DestState   == !null,  RuleInitialState, !SourceState, ...
+             - SourceState.InputArc.IsEmpty
+            
+             Algorithm:
+             - For each output transition from SourceState
+               - Transition.StartState = DestState
+               - DestState.OutputArcs += Transition
+             - Delete SourceState
+             </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Graph.MergeDuplicateTransitions">
+             <summary>
+             Description:
+                 Remove duplicate transitions starting from the same state, or ending at the same state.
+            
+             Algorithm:
+             - Add all states to ToDoList
+             - For each state left in the ToDoList,
+               - Merge any duplicate output transitions.
+             - Add all states to ToDoList in reverse order.
+             - Remove duplicate transitions to null (special case since there is no state for FinalState)
+             - For each state left in the ToDoList,
+               - Merge any duplicate input transitions.
+            
+             Notes:
+             - For best optimization, we need to move semantic properties referencing the transitions.
+             </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Graph.MergeDuplicateInputTransitions(System.Speech.Internal.SrgsCompiler.ArcList,System.Collections.Generic.Stack{System.Speech.Internal.SrgsCompiler.State})">
+             <summary>
+             Description:
+                    Sort and iterate through the input arcs and remove duplicate input transitions.
+            
+             Algorithm:
+               - MergeIdenticalTransitions(Arcs)
+               - Sort the input transitions from the state (by content and # output arcs from start state)
+               - For each set of transitions with identical content and StartState.OutputArcs.Count() == 1
+                        - Move semantic properties to the left, if necessary.
+                        - Label the first property-less transition as CommonArc
+                        - For each successive property-less transition (DuplicateArc)
+                        - Delete DuplicateArc
+                        - MoveInputTransitionsAndDeleteState(DuplicateArc.StartState, CommonArc.StartState)
+                        - Add CommonArc.StartState to ToDoList if not there already.
+            
+              Moving SemanticTag:
+              - Duplicate input transitions can move its semantic tag ownerships/references to the left.
+             </summary>
+             <param name="arcs">Collection of input transitions to collapse</param>
+             <param name="mergeStates">Collection of states with potential transitions to merge</param>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Graph.MergeDuplicateOutputTransitions(System.Speech.Internal.SrgsCompiler.ArcList,System.Collections.Generic.Stack{System.Speech.Internal.SrgsCompiler.State})">
+             <summary>
+             Description:
+                 Sort and iterate through the output arcs and remove duplicate output transitions.
+            
+             Algorithm:
+               - MergeIdenticalTransitions(Arcs)
+               - Sort the output transitions from the state (by content and # input arcs from end state)
+               - For each set of transitions with identical content, EndState != null, and EndState.InputArcs.Count() == 1
+                 - Move semantic properties to the right, if necessary.
+                 - Label the first property-less transition as CommonArc
+                 - For each property-less transition (DuplicateArc) including CommonArc
+                   - Multiply the weights of output transitions from DuplicateArc.EndState by DuplicateArc.Weight.
+                   - If DuplicateArc != CommonArc
+                   - CommonArc.Weight += DuplicateArc.Weight
+                   - Delete DuplicateArc
+                   - MoveOutputTransitionsAndDeleteState(DuplicateArc.EndState, CommonArc.EndState)
+                 - Normalize weights of output transitions from CommonArc.EndState.
+                 - Add CommonArc.EndtState to ToDoList if not there already.
+            
+             Moving SemanticTag:
+             - Duplicate output transitions can move its semantic tag ownerships/references to the right.
+             </summary>
+             <param name="arcs">Collection of output transitions to collapse</param>
+             <param name="mergeStates">Collection of states with potential transitions to merge</param>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Graph.MoveSemanticTagLeft(System.Speech.Internal.SrgsCompiler.Arc)">
+             <summary>
+             Move any semantic tag ownership and optionally references to a unique
+             previous arc, if possible.
+            
+             MoveReferences = true:  Return if arc is propertyless after the move.
+             MoveReferences = false: Return if arc does not own semantic tag after the move.
+                                     The arc can still be referenced by other semantic tags.
+             </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Graph.MoveSemanticTagRight(System.Speech.Internal.SrgsCompiler.Arc)">
+             <summary>
+             Move any semantic tag ownership and optionally references to a unique
+             next arc, if possible.
+            
+             MoveReferences = true:  Return if arc is propertyless after the move.
+             MoveReferences = false: Return if arc does not own semantic tag after the move.
+                                     The arc can still be referenced by other semantic tags.
+            
+             Force semantic tag references to always move with tag.
+                  This changes the range of words spanned by the tag, which is a bug for SAPI grammars.
+             </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Graph.CanTagsBeMoved(System.Speech.Internal.SrgsCompiler.Arc,System.Speech.Internal.SrgsCompiler.Arc)">
+            <summary>
+            Check if tags can be moved from a source arc to a destination
+                - Semantic interpretation. Tags cannot be moved if they would end up over a rule ref.
+                - Sapi properties. Tag can be put anywhere.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Graph.DeleteTransition(System.Speech.Internal.SrgsCompiler.Arc)">
+             <summary>
+             Description:
+                    Detach and delete the specified transition from the graph.
+                    Relocate or delete referencing semantic tags before deleting the transition.
+            
+             Special Case:
+                    Arc.EndState == null
+                    Arc.Optional == true
+             </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Graph.MergeIdenticalTransitions(System.Speech.Internal.SrgsCompiler.ArcList,System.Collections.Generic.List{System.Speech.Internal.SrgsCompiler.Arc})">
+             <summary>
+             Description:
+                Merge identical transitions with identical content, StartState, and EndState.
+            
+             </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Graph.MergeIdenticalTransitions(System.Collections.Generic.List{System.Speech.Internal.SrgsCompiler.Arc})">
+             <summary>
+             Description:
+                Merge identical transitions with identical content, StartState, and EndState.
+            
+             Algorithm:
+             - LastArc = Arcs[0]
+             - For each Arc in Arcs[1-],
+               - If Arc is identical to LastArc,
+               - LastArc.Weight += Arc.Weight
+               - Delete Arc
+               - Else LastArc = Arc
+            
+             Moving SemanticTag:
+             - Identical transitions have identical semantic tags.  Currently impossible to have identical
+             non-null tags.
+             - MoveSemanticTagReferences(DuplicateArc, CommonArc)
+             </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Graph.NormalizeTransitionWeights(System.Speech.Internal.SrgsCompiler.State)">
+            <summary>
+            Normalize the weights of output transitions from this state.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Item.System#Speech#Internal#SrgsParser#IElement#PostParse(System.Speech.Internal.SrgsParser.IElement)">
+            <summary>
+             Process the '/item' element.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.OneOf.#ctor(System.Speech.Internal.SrgsCompiler.Rule,System.Speech.Internal.SrgsCompiler.Backend)">
+            <summary>
+            Process the 'one-of' element.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.OneOf.System#Speech#Internal#SrgsParser#IElement#PostParse(System.Speech.Internal.SrgsParser.IElement)">
+             <summary>
+             Process the '/one-of' element.
+             Connects all the arcs into an exit end point.
+            
+             Verify OneOf contains at least one child 'item'.
+             </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.OneOf.AddArc(System.Speech.Internal.SrgsCompiler.Arc,System.Speech.Internal.SrgsCompiler.Arc)">
+            <summary>
+            Adds a new arc to the one-of
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.ParseElementCollection.AddSemanticInterpretationTag(System.Speech.Internal.SrgsCompiler.CfgGrammar.CfgProperty)">
+            <summary>
+            Attach a semantic tag to word. If the word is a rule ref then an
+            epsilon transition must be created
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.ParseElementCollection.InsertState(System.Speech.Internal.SrgsCompiler.Arc,System.Single,System.Speech.Internal.SrgsCompiler.ParseElementCollection.Position)">
+            <summary>
+            Insert an epsilon state either before or after the current arc
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.ParseElementCollection.TrimStart(System.Speech.Internal.SrgsCompiler.Arc,System.Speech.Internal.SrgsCompiler.Backend)">
+            <summary>
+            Remove all the epsilon transitions at the beginning of a sub graph
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.ParseElementCollection.TrimEnd(System.Speech.Internal.SrgsCompiler.Arc,System.Speech.Internal.SrgsCompiler.Backend)">
+            <summary>
+            Remove all the epsilon transition at the end
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.ParseElementCollection.AddArc(System.Speech.Internal.SrgsCompiler.Arc,System.Speech.Internal.SrgsCompiler.Arc)">
+            <summary>
+            New sets of arcs are added after the last arc
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.RuleRef.#ctor(System.Speech.Internal.SrgsCompiler.RuleRef.SpecialRuleRefType,System.Speech.Internal.SrgsCompiler.Rule)">
+            <summary>
+            Special private constructor for Special Rulerefs
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.RuleRef.#ctor(System.Speech.Internal.SrgsCompiler.ParseElementCollection,System.Speech.Internal.SrgsCompiler.Backend,System.Uri,System.Collections.Generic.List{System.Speech.Internal.SrgsCompiler.Rule},System.String,System.String)">
+            <summary>
+            Add transition corresponding to Special or Uri.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.RuleRef.InitSpecialRuleRef(System.Speech.Internal.SrgsCompiler.Backend,System.Speech.Internal.SrgsCompiler.ParseElementCollection)">
+            <summary>
+            Returns the initial state of a special rule.
+            For each type of special rule we make a rule with a numeric id and return a reference to it.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.RuleRef.GetRuleRef(System.Speech.Internal.SrgsCompiler.Backend,System.String,System.Collections.Generic.List{System.Speech.Internal.SrgsCompiler.Rule})">
+            <summary>
+            Return the initial state of the rule with the specified name.
+            If the rule is not defined yet, create a placeholder Rule.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.SrgsCompiler.CompileStream(System.Xml.XmlReader[],System.String,System.IO.Stream,System.Boolean,System.Uri,System.String[],System.String)">
+            <summary>
+            Loads the SRGS XML grammar and produces the binary grammar format.
+            </summary>
+            <param name="xmlReaders">Source SRGS XML streams</param>
+            <param name="filename">filename to compile to</param>
+            <param name="stream">stream to compile to</param>
+            <param name="fOutputCfg">Compile for CFG or DLL</param>
+            <param name="originalUri">in xmlReader.Count == 1, name of the original file</param>
+            <param name="referencedAssemblies">List of referenced assemblies</param>
+            <param name="keyFile">Strong name</param>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.SrgsCompiler.CompileStream(System.Speech.Recognition.SrgsGrammar.SrgsDocument,System.String,System.IO.Stream,System.Boolean,System.String[],System.String)">
+            <summary>
+            Produces the binary grammar format.
+            </summary>
+            <param name="srgsGrammar">Source SRGS XML streams</param>
+            <param name="filename">filename to compile to</param>
+            <param name="stream">stream to compile to</param>
+            <param name="fOutputCfg">Compile for CFG or DLL</param>
+            <param name="referencedAssemblies">List of referenced assemblies</param>
+            <param name="keyFile">Strong name</param>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.SrgsCompiler.CreateAssembly(System.Speech.Internal.SrgsCompiler.Backend,System.Speech.Internal.SrgsCompiler.CustomGrammar)">
+            <summary>
+            Generate the assembly code for a back. The scripts are defined in custom
+            grammars.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.SrgsElementCompilerFactory.System#Speech#Internal#SrgsParser#IElementFactory#RemoveAllRules">
+            <summary>
+            Clear all the rules
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.SrgsElementCompilerFactory.ParseToken(System.Speech.Internal.SrgsCompiler.ParseElementCollection,System.String,System.String,System.String,System.Single)">
+             <summary>
+             Add transition representing the normalized token.
+            
+             White Space Normalization - Trim leading/trailing white spaces.
+                                         Collapse white space sequences to a single ' '.
+             Restrictions - Normalized token cannot be empty.
+                            Normalized token cannot contain double-quote.
+            
+             If (Parent == Token) And (Parent.SAPIPron.Length > 0) Then
+                 Escape normalized token.  "/" -> "\/", "\" -> "\\"
+                 Build /D/L/P; form from the escaped token and SAPIPron.
+            
+             SAPIPron may be a semi-colon delimited list of pronunciations.
+             In this case, a transition for each of the pronunciations will be added.
+            
+             AddTransition(NormalizedToken, Parent.EndState, NewState)
+             Parent.EndState = NewState
+             </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.SrgsElementCompilerFactory.EscapeToken(System.String)">
+            <summary>
+            Escape token.  "/" -> "\/", "\" -> "\\"
+            </summary>
+        </member>
+        <member name="T:System.Speech.Internal.SrgsCompiler.State">
+            <summary>
+            Class representing a state in the grammar. Note that states are not stored in the binary format
+            instead all the arcs are, with a flag to indicate the end arc out of a state */
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsCompiler.Subset.#ctor(System.Speech.Internal.SrgsCompiler.ParseElementCollection,System.Speech.Internal.SrgsCompiler.Backend,System.String,System.Speech.Internal.SrgsParser.MatchMode)">
+            <summary>
+            Process the 'subset' element.
+            </summary>
+        </member>
+        <member name="T:System.Speech.Internal.SrgsParser.IElement">
+            <summary>
+            Interface definition for the IElement
+            </summary>
+        </member>
+        <member name="T:System.Speech.Internal.SrgsParser.IElementFactory">
+            <summary>
+            Interface definition for the IElementFactory
+            </summary>
+        </member>
+        <member name="T:System.Speech.Internal.SrgsParser.IElementText">
+            <summary>
+            Interface definition for the IElementText
+            </summary>
+        </member>
+        <member name="T:System.Speech.Internal.SrgsParser.IGrammar">
+            <summary>
+            Interface definition for the IGrammar
+            </summary>
+        </member>
+        <member name="T:System.Speech.Internal.SrgsParser.IItem">
+            <summary>
+            Interface definition for the IItem
+            </summary>
+        </member>
+        <member name="T:System.Speech.Internal.SrgsParser.IOneOf">
+            <summary>
+            Interface definition for the IOneOf
+            </summary>
+        </member>
+        <member name="T:System.Speech.Internal.SrgsParser.IPropertyTag">
+            <summary>
+            Interface definition for the IElementTag
+            </summary>
+        </member>
+        <member name="T:System.Speech.Internal.SrgsParser.IRuleRef">
+            <summary>
+            Interface definition for the IRuleRef
+            </summary>
+        </member>
+        <member name="T:System.Speech.Internal.SrgsParser.IScript">
+            <summary>
+            Interface definition for the IScript
+            </summary>
+        </member>
+        <member name="T:System.Speech.Internal.SrgsParser.ISemanticTag">
+            <summary>
+            Interface definition for the IElementTag
+            </summary>
+        </member>
+        <member name="T:System.Speech.Internal.SrgsParser.ISubset">
+            <summary>
+            Interface definition for the ISubset
+            </summary>
+        </member>
+        <member name="T:System.Speech.Internal.SrgsParser.IToken">
+            <summary>
+            Interface definition for the IToken
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsParser.SrgsDocumentParser.ProcessGrammarElement(System.Speech.Recognition.SrgsGrammar.SrgsGrammar,System.Speech.Internal.SrgsParser.IGrammar)">
+            <summary>
+            Process the top level grammar element
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsParser.SrgsDocumentParser.ParseRule(System.Speech.Internal.SrgsParser.IGrammar,System.Speech.Recognition.SrgsGrammar.SrgsRule)">
+            <summary>
+            Parse a rule
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsParser.SrgsDocumentParser.ParseRuleRef(System.Speech.Recognition.SrgsGrammar.SrgsRuleRef,System.Speech.Internal.SrgsParser.IElement)">
+            <summary>
+            Parse a ruleref
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsParser.SrgsDocumentParser.ParseOneOf(System.Speech.Recognition.SrgsGrammar.SrgsOneOf,System.Speech.Internal.SrgsParser.IElement,System.Speech.Internal.SrgsParser.IRule)">
+            <summary>
+            Parse a One-Of
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsParser.SrgsDocumentParser.ParseItem(System.Speech.Recognition.SrgsGrammar.SrgsItem,System.Speech.Internal.SrgsParser.IElement,System.Speech.Internal.SrgsParser.IRule)">
+            <summary>
+            Parse Item
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsParser.SrgsDocumentParser.ParseToken(System.Speech.Recognition.SrgsGrammar.SrgsToken,System.Speech.Internal.SrgsParser.IElement)">
+            <summary>
+            Parse Token
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsParser.SrgsDocumentParser.ParseText(System.Speech.Internal.SrgsParser.IElement,System.String,System.String,System.String,System.Single)">
+             <summary>
+             Break the string into individual tokens and ParseToken() each individual token.
+            
+             Token string is a sequence of 0 or more white space delimited tokens.
+             Tokens may also be delimited by double quotes.  In these cases, the double
+             quotes token must be surrounded by white space or string boundary.
+             </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsParser.SrgsDocumentParser.ParseSubset(System.Speech.Recognition.SrgsGrammar.SrgsSubset,System.Speech.Internal.SrgsParser.IElement)">
+            <summary>
+            Parse tag
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsParser.SrgsDocumentParser.ParseSemanticTag(System.Speech.Recognition.SrgsGrammar.SrgsSemanticInterpretationTag,System.Speech.Internal.SrgsParser.IElement)">
+            <summary>
+            Parse tag
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsParser.SrgsDocumentParser.ParseNameValueTag(System.Speech.Recognition.SrgsGrammar.SrgsNameValueTag,System.Speech.Internal.SrgsParser.IElement)">
+            <summary>
+            ParseNameValueTag tag
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsParser.SrgsDocumentParser.ProcessChildNodes(System.Speech.Recognition.SrgsGrammar.SrgsElement,System.Speech.Internal.SrgsParser.IElement,System.Speech.Internal.SrgsParser.IRule)">
+            <summary>
+            Calls the appropriate Parsing function based on the element type
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsParser.XmlParser.ParseText(System.Speech.Internal.SrgsParser.IElement,System.String,System.String,System.String,System.Single,System.Speech.Internal.SrgsParser.CreateTokenCallback)">
+             <summary>
+             Break the string into individual tokens and ParseToken() each individual token.
+            
+             Token string is a sequence of 0 or more white space delimited tokens.
+             Tokens may also be delimited by double quotes.  In these cases, the double
+             quotes token must be surrounded by white space or string boundary.
+             </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsParser.XmlParser.ThrowSrgsException(System.Speech.SRID,System.Object[])">
+            <summary>
+            Throws an Exception with the error specified by the resource ID.
+            Add the line and column number if the XmlReader is a TextReader
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsParser.XmlParser.ThrowSrgsExceptionWithPosition(System.String,System.Xml.XmlReader,System.String,System.Exception)">
+            <summary>
+            Throws an Exception with the error specified by the resource ID.
+            Add the line and column number if the XmlReader is a TextReader
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsParser.XmlParser.ParseText(System.Speech.Internal.SrgsParser.IElement,System.String,System.String,System.String,System.Single)">
+             <summary>
+             Break the string into individual tokens and ParseToken() each individual token.
+            
+             Token string is a sequence of 0 or more white space delimited tokens.
+             Tokens may also be delimited by double quotes.  In these cases, the double
+             quotes token must be surrounded by white space or string boundary.
+             </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsParser.XmlParser.ParseLexicon(System.Xml.XmlReader)">
+             <summary>
+             Parse the lexicon Element
+            
+             Attributes:
+                 uri: required
+                 type: optional
+             </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsParser.XmlParser.ParseMeta(System.Xml.XmlReader)">
+             <summary>
+             Parse the Meta Element
+            
+             Attributes:
+                 name and http-equiv: one or the other but not both
+                 content: required
+             </summary>
+        </member>
+        <member name="M:System.Speech.Internal.SrgsParser.XmlParser.SetRepeatValues(System.String,System.Int32@,System.Int32@)">
+            <summary>
+            Convert integer range string to MinValue and MaxValue.
+            For n- format, MaxValue = Int32.MaxValue
+            Valid formats: n|n-|n-m     n,m integers
+                           integer = [whitespace] [+] [0[{x|X}]] [digits]
+            </summary>
+        </member>
+        <member name="T:System.Speech.Internal.Synthesis.AudioBase">
+            <summary>
+            Encapsulates Waveform Audio Interface playback functions and provides a simple
+            interface for playing audio.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioBase.#ctor">
+            <summary>
+            Create an instance of AudioBase.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioBase.Begin(System.Byte[])">
+            <summary>
+            Play a wave file.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioBase.End">
+            <summary>
+            Play a wave file.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioBase.Play(System.IntPtr,System.Int32)">
+            <summary>
+            Play a wave file.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioBase.Play(System.Byte[])">
+            <summary>
+            Play a wave file.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioBase.Pause">
+            <summary>
+            Pause the playback of a sound.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioBase.Resume">
+            <summary>
+            Resume the playback of a paused sound.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioBase.InjectEvent(System.Speech.Internal.Synthesis.TTSEvent)">
+            <summary>
+            Throw an event synchronized with the audio stream
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioBase.WaitUntilDone">
+            <summary>
+            File operation are synchronous no wait
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioBase.Abort">
+            <summary>
+            Wait for all the queued buffers to be played
+            </summary>
+        </member>
+        <member name="T:System.Speech.Internal.Synthesis.AudioDeviceOut">
+            <summary>
+            Encapsulates Waveform Audio Interface playback functions and provides a simple
+            interface for playing audio.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioDeviceOut.#ctor(System.Int32,System.Speech.Internal.IAsyncDispatch)">
+            <summary>
+            Create an instance of AudioDeviceOut.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioDeviceOut.Begin(System.Byte[])">
+            <summary>
+            Begin to play
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioDeviceOut.End">
+            <summary>
+            Begin to play
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioDeviceOut.Play(System.Byte[])">
+            <summary>
+            Play a wave file.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioDeviceOut.Pause">
+            <summary>
+            Pause the playback of a sound.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioDeviceOut.Resume">
+            <summary>
+            Resume the playback of a paused sound.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioDeviceOut.Abort">
+            <summary>
+            Wait for all the queued buffers to be played
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioDeviceOut.WaitUntilDone">
+            <summary>
+            Wait for all the queued buffers to be played
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioDeviceOut.NumDevices">
+            <summary>
+             Determine the number of available playback devices.
+            </summary>
+            <returns>Number of output devices</returns>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioDeviceOut.GetDeviceName(System.Int32,System.String@)">
+            <summary>
+            Get the name of the specified playback device.
+            </summary>
+            <param name="deviceId">ID of the device</param>
+            <param name="prodName">Destination string assigned the name</param>
+            <returns>MMSYSERR.NOERROR if successful</returns>
+        </member>
+        <member name="T:System.Speech.Internal.Synthesis.AudioDeviceOut.InItem">
+            <summary>
+            This object must keep a reference to the waveHeader object
+            so that the pinned buffer containing the data is not
+            released before it is finished being played
+            </summary>
+        </member>
+        <member name="T:System.Speech.Internal.Synthesis.AudioFileOut">
+            <summary>
+            Encapsulates Waveform Audio Interface playback functions and provides a simple
+            interface for playing audio.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioFileOut.#ctor(System.IO.Stream,System.Speech.AudioFormat.SpeechAudioFormatInfo,System.Boolean,System.Speech.Internal.IAsyncDispatch)">
+            <summary>
+            Create an instance of AudioFileOut.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioFileOut.Begin(System.Byte[])">
+            <summary>
+            Begin to play
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioFileOut.End">
+            <summary>
+            Begin to play
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioFileOut.Play(System.Byte[])">
+            <summary>
+            Play a wave file.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioFileOut.Pause">
+            <summary>
+            Pause the playback of a sound.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioFileOut.Resume">
+            <summary>
+            Resume the playback of a paused sound.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioFileOut.Abort">
+            <summary>
+            Wait for all the queued buffers to be played
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioFileOut.WaitUntilDone">
+            <summary>
+            File operation are basically synchronous
+            </summary>
+        </member>
+        <member name="T:System.Speech.Internal.Synthesis.AudioFormatConverter">
+            <summary>
+            AudioFormatConverter takes its conversion tables from ...\scg\tts\common\vapiio\alaw_ULaw.cpp
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioFormatConverter.Convert(System.Byte[],System.Speech.Internal.Synthesis.AudioCodec,System.Speech.Internal.Synthesis.AudioCodec)">
+            <summary>
+            Finds the converting method based on the specified formats.
+            </summary>
+            <param name="data">Reference to the buffer of audio data.</param>
+            <param name="from">Audio format that the data will be converted from.</param>
+            <param name="to">Audio format that the data will be converted to.</param>
+            <returns>New array with the audio data in requested format.</returns>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioFormatConverter.Convert(System.Int16[],System.Speech.Internal.Synthesis.AudioCodec,System.Speech.Internal.Synthesis.AudioCodec)">
+            <summary>
+            Finds the converting method based on the specified formats.
+            </summary>
+            <param name="data">Reference to the buffer of audio data.</param>
+            <param name="from">Audio format that the data will be converted from.</param>
+            <param name="to">Audio format that the data will be converted to.</param>
+            <returns>New array with the audio data in requested format.</returns>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioFormatConverter.ConvertLinear2ULaw(System.Int16[],System.Int32)">
+            <summary>
+            This routine converts from 16 bit linear to ULaw by direct access to the conversion table.
+            </summary>
+            <param name="data">Array of 16 bit linear samples.</param>
+            <param name="size">Size of the data in the array.</param>
+            <returns>New buffer of 8 bit ULaw samples.</returns>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioFormatConverter.ConvertULaw2Linear(System.Byte[],System.Int32)">
+            <summary>
+            This routine converts from ULaw to 16 bit linear by direct access to the conversion table.
+            </summary>
+            <param name="data">Array of 8 bit ULaw samples.</param>
+            <param name="size">Size of the data in the array.</param>
+            <returns>New buffer of signed 16 bit linear samples</returns>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioFormatConverter.CalcLinear2ULawTable">
+             <summary>
+             This routine converts from linear to ULaw.
+            
+             Craig Reese: IDA/Supercomputing Research Center
+             Joe Campbell: Department of Defense
+             29 September 1989
+            
+             References:
+             1) CCITT Recommendation G.711  (very difficult to follow)
+             2) "A New Digital Technique for Implementation of Any
+                 Continuous PCM Companding Law," Villeret, Michel,
+                 et al. 1973 IEEE Int. Conf. on Communications, Vol 1,
+                 1973, pg. 11.12-11.17
+             3) MIL-STD-188-113,"Interoperability and Performance Standards
+                 for Analog-to_Digital Conversion Techniques,"
+                 17 February 1987
+             </summary>
+             <returns>New buffer of 8 bit ULaw samples</returns>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioFormatConverter.ConvertLinear2ALaw(System.Int16[],System.Int32)">
+            <summary>
+            This routine converts from 16 bit linear to ALaw by direct access to the conversion table.
+            </summary>
+            <param name="data">Array of 16 bit linear samples.</param>
+            <param name="size">Size of the data in the array.</param>
+            <returns>New buffer of 8 bit ALaw samples.</returns>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioFormatConverter.ConvertALaw2Linear(System.Byte[],System.Int32)">
+            <summary>
+            This routine converts from ALaw to 16 bit linear by direct access to the conversion table.
+            </summary>
+            <param name="data">Array of 8 bit ALaw samples.</param>
+            <param name="size">Size of the data in the array.</param>
+            <returns>New buffer of signed 16 bit linear samples</returns>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioFormatConverter.CalcLinear2ALawTable">
+             <summary>
+             This routine converts from linear to ALaw.
+            
+             Craig Reese: IDA/Supercomputing Research Center
+             Joe Campbell: Department of Defense
+             29 September 1989
+            
+             References:
+             1) CCITT Recommendation G.711  (very difficult to follow)
+             2) "A New Digital Technique for Implementation of Any
+                 Continuous PCM Companding Law," Villeret, Michel,
+                 et al. 1973 IEEE Int. Conf. on Communications, Vol 1,
+                 1973, pg. 11.12-11.17
+             3) MIL-STD-188-113,"Interoperability and Performance Standards
+                 for Analog-to_Digital Conversion Techniques,"
+                 17 February 1987
+             </summary>
+             <returns>New buffer of 8 bit ALaw samples</returns>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioFormatConverter.ConvertLinear2LinearByteShort(System.Byte[],System.Int32)">
+            <summary>
+            Empty linear conversion (does nothing, for table consistency).
+            </summary>
+            <param name="data">Array of audio data in linear format.</param>
+            <param name="size">Size of the data in the array.</param>
+            <returns>The same array in linear format.</returns>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioFormatConverter.ConvertLinear8LinearByteShort(System.Byte[],System.Int32)">
+            <summary>
+            Empty linear conversion (does nothing, for table consistency).
+            </summary>
+            <param name="data">Array of audio data in linear format.</param>
+            <param name="size">Size of the data in the array.</param>
+            <returns>The same array in linear format.</returns>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioFormatConverter.ConvertLinear2LinearShortByte(System.Int16[],System.Int32)">
+            <summary>
+            Empty linear conversion (does nothing, for table consistency).
+            </summary>
+            <param name="data">Array of audio data in linear format.</param>
+            <param name="size">Size of the data in the array.</param>
+            <returns>The same array in linear format.</returns>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioFormatConverter.ConvertLinear8LinearShortByte(System.Int16[],System.Int32)">
+            <summary>
+            Empty linear conversion (does nothing, for table consistency).
+            </summary>
+            <param name="data">Array of audio data in linear format.</param>
+            <param name="size">Size of the data in the array.</param>
+            <returns>The same array in linear format.</returns>
+        </member>
+        <member name="F:System.Speech.Internal.Synthesis.AudioFormatConverter.s_ULaw_exp_table">
+            <summary>
+            Table to converts ULaw values to Linear
+            </summary>
+        </member>
+        <member name="F:System.Speech.Internal.Synthesis.AudioFormatConverter.s_ALaw_exp_table">
+            <summary>
+            Table to converts ALaw values to Linear
+            </summary>
+        </member>
+        <member name="T:System.Speech.Internal.Synthesis.AudioCodec">
+            <summary>
+            Supported formats for audio transcoding in SES
+            </summary>
+        </member>
+        <member name="F:System.Speech.Internal.Synthesis.AudioCodec.PCM16">
+            <summary>
+            Audio format PCM 16 bit
+            </summary>
+        </member>
+        <member name="F:System.Speech.Internal.Synthesis.AudioCodec.PCM8">
+            <summary>
+            Audio format PCM 16 bit
+            </summary>
+        </member>
+        <member name="F:System.Speech.Internal.Synthesis.AudioCodec.G711U">
+            <summary>
+            Audio format G.711 mu-law
+            </summary>
+        </member>
+        <member name="F:System.Speech.Internal.Synthesis.AudioCodec.G711A">
+            <summary>
+            AudioFormat G.711 A-law
+            </summary>
+        </member>
+        <member name="F:System.Speech.Internal.Synthesis.AudioCodec.Undefined">
+            <summary>
+            No audio format specified
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.ConvertTextFrag.SapiRate(System.Speech.Synthesis.TtsEngine.ProsodyNumber)">
+            <summary>
+            Produces the SAPI "RATE" tag
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.EngineSite.AddEvents(System.Speech.Synthesis.TtsEngine.SpeechEventInfo[],System.Int32)">
+            <summary>
+            Adds events directly to an event sink.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.EngineSite.Write(System.IntPtr,System.Int32)">
+            <summary>
+            Queries the voice object to determine which real-time action(s) to perform.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.EngineSite.GetSkipInfo">
+            <summary>
+            Retrieves the number and type of items to be skipped in the text stream.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.EngineSite.CompleteSkip(System.Int32)">
+            <summary>
+            Notifies that the last skip request has been completed and to pass it the results.
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.Synthesis.EngineSite.EventInterest">
+            <summary>
+            Passes back the event interest for the voice.
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.Synthesis.EngineSite.Actions">
+            <summary>
+             Queries the voice object to determine which real-time action(s) to perform
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.Synthesis.EngineSite.Rate">
+            <summary>
+             Retrieves the current TTS rendering rate adjustment that should be used by the engine.
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.Synthesis.EngineSite.Volume">
+            <summary>
+            Retrieves the base output volume level the engine should use during synthesis.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.EngineSite.LoadResource(System.Uri,System.String)">
+            <summary>
+            Load a file either from a local network or from the Internet.
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.Synthesis.EngineSite.VoiceRate">
+            <summary>
+             Retrieves the current TTS rendering rate adjustment that should be used by the engine.
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.Synthesis.EngineSite.VoiceVolume">
+            <summary>
+            Retrieves the base output volume level the engine should use during synthesis.
+            </summary>
+        </member>
+        <member name="P:System.Speech.Internal.Synthesis.EngineSite.LastException">
+            <summary>
+            Set and reset the last exception
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.EngineSiteSapi.System#Speech#Internal#Synthesis#ISpEngineSite#AddEvents(System.Speech.Internal.Synthesis.SpeechEventSapi[],System.Int32)">
+            <summary>
+            Adds events directly to an event sink.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.EngineSiteSapi.System#Speech#Internal#Synthesis#ISpEngineSite#GetEventInterest(System.Int64@)">
+            <summary>
+            Passes back the event interest for the voice.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.EngineSiteSapi.System#Speech#Internal#Synthesis#ISpEngineSite#GetActions">
+            <summary>
+             Queries the voice object to determine which real-time action(s) to perform
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.EngineSiteSapi.System#Speech#Internal#Synthesis#ISpEngineSite#Write(System.IntPtr,System.Int32,System.IntPtr)">
+            <summary>
+            Queries the voice object to determine which real-time action(s) to perform.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.EngineSiteSapi.System#Speech#Internal#Synthesis#ISpEngineSite#GetRate(System.Int32@)">
+            <summary>
+             Retrieves the current TTS rendering rate adjustment that should be used by the engine.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.EngineSiteSapi.System#Speech#Internal#Synthesis#ISpEngineSite#GetVolume(System.Int16@)">
+            <summary>
+            Retrieves the base output volume level the engine should use during synthesis.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.EngineSiteSapi.System#Speech#Internal#Synthesis#ISpEngineSite#GetSkipInfo(System.Int32@,System.Int32@)">
+            <summary>
+            Retrieves the number and type of items to be skipped in the text stream.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.EngineSiteSapi.System#Speech#Internal#Synthesis#ISpEngineSite#CompleteSkip(System.Int32)">
+            <summary>
+            Notifies that the last skip request has been completed and to pass it the results.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.EngineSiteSapi.System#Speech#Internal#Synthesis#ISpEngineSite#LoadResource(System.String,System.String@,System.Runtime.InteropServices.ComTypes.IStream@)">
+            <summary>
+            Load a file either from a local network or from the Internet.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.LexiconEntry.Equals(System.Object)">
+            <summary>
+            Tests whether two objects are equivalent
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.LexiconEntry.GetHashCode">
+            <summary>
+            Overrides Object.GetHashCode()
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.PcmConverter.PrepareConverter(System.Speech.Internal.Synthesis.WAVEFORMATEX@,System.Speech.Internal.Synthesis.WAVEFORMATEX@)">
+            <summary>
+              Description:
+              first read samples into VAPI_PCM16, then judge cases :
+              1. STEREO -> mono + resampling
+                 STEREO  -> 1 mono -> reSampling
+              2. mono  -> STEREO + resampling
+                 mono   -> reSampling -> STEREO
+              3. STEREO  -> STEREO + resampling
+                 STEREO  -> 2 MONO - > reSampling -> 2 MONO -> STEREO
+              4. mono  -> mono + resampling
+                 mono  -> reSampling -> mono
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.PcmConverter.ConvertSamples(System.Byte[])">
+            <summary>
+              Description:
+              first read samples into VAPI_PCM16, then judge cases :
+              1. STEREO -> mono + resampling
+                 STEREO  -> 1 mono -> reSampling
+              2. mono  -> STEREO + resampling
+                 mono   -> reSampling -> STEREO
+              3. STEREO  -> STEREO + resampling
+                 STEREO  -> 2 MONO - > reSampling -> 2 MONO -> STEREO
+              4. mono  -> mono + resampling
+                 mono  -> reSampling -> mono
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.PcmConverter.Resample(System.Speech.Internal.Synthesis.WAVEFORMATEX,System.Speech.Internal.Synthesis.WAVEFORMATEX,System.Int16[],System.Single[])">
+            <summary>
+            Convert the data from one sample rate to an another
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.PcmConverter.Short2Float(System.Int16[])">
+            <summary>
+            convert short array to float array
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.PcmConverter.Float2Short(System.Single[])">
+            <summary>
+            convert float array to short array
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.PcmConverter.Mono2Stereo(System.Int16[])">
+            <summary>
+            convert mono speech to stereo speech
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.PcmConverter.Stereo2Mono(System.Int16[])">
+            <summary>
+            convert stereo speech to mono speech
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.PcmConverter.MergeStereo(System.Int16[],System.Int16[])">
+            <summary>
+            merge 2 channel signals into one signal
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.PcmConverter.SplitStereo(System.Int16[],System.Int16[]@,System.Int16[]@)">
+            <summary>
+            split stereo signals into 2 channel mono signals
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.PcmConverter.WindowedLowPass(System.Single,System.Single)">
+            <summary>
+            Creates a low pass filter using the windowing method.
+            dCutOff is spec. in normalized frequency
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.PcmConverter.Blackman(System.Int32,System.Boolean)">
+            <summary>
+            Returns a vector with a Blackman window of the specified length.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.SafeNativeMethods.waveOutPrepareHeader(System.IntPtr,System.IntPtr,System.Int32)">
+            <summary>
+            This function prepares a waveform data block for playback.
+            </summary>
+            <param name="hwo">Handle to the waveform-audio output device.</param>
+            <param name="pwh">Pointer to a WaveHeader structure that identifies the data
+            block to be prepared. The buffer's base address must be aligned with the
+            respect to the sample size.</param>
+            <param name="cbwh">Size, in bytes, of the WaveHeader structure.</param>
+            <returns>MMSYSERR</returns>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.SafeNativeMethods.waveOutWrite(System.IntPtr,System.IntPtr,System.Int32)">
+            <summary>
+            This function sends a data block to the specified waveform output device.
+            </summary>
+            <param name="hwo">Handle to the waveform-audio output device.</param>
+            <param name="pwh">Pointer to a WaveHeader structure containing information
+            about the data block.</param>
+            <param name="cbwh">Size, in bytes, of the WaveHeader structure.</param>
+            <returns>MMSYSERR</returns>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.SafeNativeMethods.waveOutUnprepareHeader(System.IntPtr,System.IntPtr,System.Int32)">
+            <summary>
+            This function cleans up the preparation performed by waveOutPrepareHeader.
+            The function must be called after the device driver is finished with a data
+            block. You must call this function before freeing the data buffer.
+            </summary>
+            <param name="hwo">Handle to the waveform-audio output device.</param>
+            <param name="pwh">Pointer to a WaveHeader structure identifying the data block
+            to be cleaned up.</param>
+            <param name="cbwh">Size, in bytes, of the WaveHeader structure.</param>
+            <returns>MMSYSERR</returns>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.SafeNativeMethods.waveOutOpen(System.IntPtr@,System.Int32,System.Byte[],System.Speech.Internal.Synthesis.SafeNativeMethods.WaveOutProc,System.IntPtr,System.UInt32)">
+            <summary>
+            This function opens a specified waveform output device for playback.
+            </summary>
+            <param name="phwo">Address filled with a handle identifying the open
+            waveform-audio output device. Use the handle to identify the device
+            when calling other waveform-audio output functions. This parameter might
+            be NULL if the WAVE_FORMAT_QUERY flag is specified for fdwOpen.</param>
+            <param name="uDeviceID">Identifier of the waveform-audio output device to
+            open. It can be either a device identifier or a Handle to an open
+            waveform-audio input device.</param>
+            <param name="pwfx">Pointer to a WaveFormat structure that identifies
+            the format of the waveform-audio data to be sent to the device. You can
+            free this structure immediately after passing it to waveOutOpen.</param>
+            <param name="dwCallback">Specifies the address of a fixed callback function,
+            an event handle, a handle to a window, or the identifier of a thread to be
+            called during waveform-audio playback to process messages related to the
+            progress of the playback. If no callback function is required, this value
+            can be zero.</param>
+            <param name="dwInstance">Specifies user-instance data passed to the
+            callback mechanism. This parameter is not used with the window callback
+            mechanism.</param>
+            <param name="fdwOpen">Flags for opening the device.</param>
+            <returns>MMSYSERR</returns>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.SafeNativeMethods.waveOutClose(System.IntPtr)">
+            <summary>
+            This function closes the specified waveform output device.
+            </summary>
+            <param name="hwo">Handle to the waveform-audio output device. If the function
+            succeeds, the handle is no longer valid after this call.</param>
+            <returns>MMSYSERR</returns>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.SafeNativeMethods.waveOutReset(System.IntPtr)">
+            <summary>
+            This function stops playback on a specified waveform output device and
+            resets the current position to 0. All pending playback buffers are marked
+            as done and returned to the application.
+            </summary>
+            <param name="hwo">Handle to the waveform-audio output device.</param>
+            <returns>MMSYSERR</returns>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.SafeNativeMethods.waveOutPause(System.IntPtr)">
+            <summary>
+            This function pauses playback on a specified waveform output device. The
+            current playback position is saved. Use waveOutRestart to resume playback
+            from the current playback position.
+            </summary>
+            <param name="hwo">Handle to the waveform-audio output device.</param>
+            <returns>MMSYSERR</returns>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.SafeNativeMethods.waveOutRestart(System.IntPtr)">
+            <summary>
+            This function restarts a paused waveform output device.
+            </summary>
+            <param name="hwo">Handle to the waveform-audio output device.</param>
+            <returns>MMSYSERR</returns>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.SafeNativeMethods.waveOutGetDevCaps(System.IntPtr,System.Speech.Internal.Synthesis.SafeNativeMethods.WAVEOUTCAPS@,System.Int32)">
+            <summary>
+            This function queries a specified waveform device to determine its
+            capabilities.
+            </summary>
+            <param name="uDeviceID">Identifier of the waveform-audio output device.
+            It can be either a device identifier or a Handle to an open waveform-audio
+            output device.</param>
+            <param name="caps">Pointer to a WAVEOUTCAPS structure to be filled with
+            information about the capabilities of the device.</param>
+            <param name="cbwoc">Size, in bytes, of the WAVEOUTCAPS structure.</param>
+            <returns>MMSYSERR</returns>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.SafeNativeMethods.waveOutGetNumDevs">
+            <summary>
+            This function retrieves the number of waveform output devices present
+            in the system.
+            </summary>
+            <returns>The number of devices indicates success. Zero indicates that
+            no devices are present or that an error occurred.</returns>
+        </member>
+        <member name="T:System.Speech.Internal.Synthesis.WAVEHDR">
+            <summary>
+            MM WAVEHDR structure
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.SpeakInfo.#ctor(System.Speech.Internal.Synthesis.VoiceSynthesis,System.Speech.Internal.Synthesis.TTSVoice)">
+            <param name="voiceSynthesis">Voice synthesizer used</param>
+            <param name="ttsVoice">Default engine to use</param>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.AudioData.Dispose">
+            <summary>
+            Needed by IEnumerable!!!
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.SsmlParser.Parse(System.String,System.Speech.Internal.Synthesis.ISsmlParser,System.Object)">
+            <summary>
+            Parse an SSML stream and build a set of SSML Text Fragments
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.SsmlParser.Parse(System.Xml.XmlReader,System.Speech.Internal.Synthesis.ISsmlParser,System.Object)">
+            <summary>
+            Parse an SSML stream and build a set of SSML Text Fragments
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.SsmlParser.ProcessSpeakElement(System.Xml.XmlReader,System.Speech.Internal.Synthesis.ISsmlParser,System.Object)">
+            <summary>
+            Validate the Speak element
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.SsmlParser.ProcessElement(System.Xml.XmlReader,System.Speech.Internal.Synthesis.ISsmlParser,System.String,System.Speech.Internal.Synthesis.SsmlElement,System.Speech.Internal.Synthesis.SsmlParser.SsmlAttributes,System.Boolean,System.Collections.Generic.List{System.Speech.Internal.Synthesis.SsmlXmlAttribute})">
+            <summary>
+            Generic method to process an SSML element.
+            The element name is fetch from the element name array and
+            the delegate for that element will be called.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.SsmlParser.ValidateElement(System.Speech.Internal.Synthesis.SsmlElement,System.Speech.Internal.Synthesis.SsmlElement,System.String)">
+            <summary>
+            Ensure the this element is properly placed in the SSML markup
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.SsmlParser.ThrowFormatException(System.Speech.SRID,System.Object[])">
+            <summary>
+            Throws an Exception with the error specified by the resource ID.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.SsmlParser.ThrowFormatException(System.Exception,System.Speech.SRID,System.Object[])">
+            <summary>
+            Throws an Exception with the error specified by the resource ID.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.SsmlParser.NoOp(System.Xml.XmlReader,System.Speech.Internal.Synthesis.ISsmlParser,System.Speech.Internal.Synthesis.SsmlElement,System.Speech.Internal.Synthesis.SsmlParser.SsmlAttributes,System.Boolean)">
+            <summary>
+            Non speakable element
+            </summary>
+        </member>
+        <member name="F:System.Speech.Internal.Synthesis.SsmlParser.s_breakEmphasis">
+            <summary>
+            Must be in the same order as the _breakStrength enumeration
+            </summary>
+        </member>
+        <member name="F:System.Speech.Internal.Synthesis.SsmlParser.s_emphasisWord">
+            <summary>
+            Must be in the same order as the _emphasisNames enumeration
+            </summary>
+        </member>
+        <member name="F:System.Speech.Internal.Synthesis.SsmlParser.s_pitchWords">
+            <summary>
+            Must be in the same order as the _emphasisNames enumeration
+            </summary>
+        </member>
+        <member name="F:System.Speech.Internal.Synthesis.SsmlParser.s_rangeWords">
+            <summary>
+            Must be in the same order as the _emphasisNames enumeration
+            </summary>
+        </member>
+        <member name="F:System.Speech.Internal.Synthesis.SsmlParser.s_rateWords">
+            <summary>
+            Must be in the same order as the _emphasisNames enumeration
+            </summary>
+        </member>
+        <member name="F:System.Speech.Internal.Synthesis.SsmlParser.s_volumeWords">
+            <summary>
+            Must be in the same order as the _emphasisNames enumeration
+            </summary>
+        </member>
+        <member name="F:System.Speech.Internal.Synthesis.SsmlParserHelpers.s_genders">
+            <summary>
+            Must be in the same order as the _genderNames enumeration
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.TtsProxySsml.ReleaseInterface">
+            <summary>
+            Release the COM interface for COM object
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.TtsProxySapi.ReleaseInterface">
+            <summary>
+            Release the COM interface for COM object
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.TTSVoice.Equals(System.Object)">
+            <summary>
+            Tests whether two objects are equivalent
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.TTSVoice.GetHashCode">
+            <summary>
+            Overrides Object.GetHashCode()
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.VoiceSynthesis.Abort">
+            <summary>
+            Description:
+                This method synchronously purges all data that is currently in the
+            rendering pipeline.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.VoiceSynthesis.Abort(System.Speech.Synthesis.Prompt)">
+            <summary>
+            Description:
+                This method synchronously purges all data that is currently in the
+            rendering pipeline.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.VoiceSynthesis.Pause">
+            <summary>
+            Pause the audio
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.VoiceSynthesis.Resume">
+            <summary>
+            Resume the audio
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.VoiceSynthesis.GetEngine(System.String,System.Globalization.CultureInfo,System.Speech.Synthesis.VoiceGender,System.Speech.Synthesis.VoiceAge,System.Int32,System.Boolean)">
+            <summary>
+            This method is used to create the Engine voice and initialize the culture
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.VoiceSynthesis.GetInstalledVoices(System.Globalization.CultureInfo)">
+            <summary>
+            Returns the voices for a given (or all cultures)
+            </summary>
+            <param name="culture">Culture or null for all culture</param>
+        </member>
+        <member name="P:System.Speech.Internal.Synthesis.VoiceSynthesis.Voice">
+            <summary>
+            Set/Get the default voice
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.VoiceSynthesis.CurrentVoice(System.Boolean)">
+            <summary>
+            Set/Get the default voice
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.VoiceSynthesis.ThreadProc">
+            <summary>
+            This method is the task proc used for text rendering and for event
+            forwarding.  It may be called on a worker thread for asynchronous speaking, or
+            it may be called on the client thread for synchronous speaking.  If it is
+            called on the client thread, the hExitThreadEvent handle will be null.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.VoiceSynthesis.SpeakText(System.Speech.Internal.Synthesis.SpeakInfo,System.Speech.Synthesis.Prompt,System.Collections.Generic.List{System.Speech.Internal.Synthesis.LexiconEntry})">
+            <summary>
+            This method renders the current speak info structure. It may be
+            made up of one or more speech segments, each intended for a different
+            voice/engine.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.VoiceSynthesis.GetDefaultRate">
+            <summary>
+            Get the user's default rate from the registry
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.VoiceSynthesis.OnStateChanged(System.Speech.Synthesis.SynthesizerState)">
+            <summary>
+            Calls the client notification delegate.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.VoiceSynthesis.ChangeStateToReady(System.Speech.Synthesis.Prompt,System.Exception)">
+            <summary>
+            Set the state to ready if nothing anymore needs to be spoken.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.VoiceSynthesis.GetVoice(System.Speech.Synthesis.VoiceInfo,System.Boolean)">
+            <summary>
+            This method is used to create the Engine voice and initialize
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.VoiceSynthesis.MatchVoice(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Try to find a voice for a given name
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.VoiceSynthesis.GetVoice(System.Boolean)">
+            <summary>
+            Returns the default voice for the synth
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.VoiceSynthesis.Speak(System.String,System.Speech.Synthesis.Prompt,System.Boolean)">
+            <summary>
+            This method is used to speak a text buffer.
+            </summary>
+        </member>
+        <member name="F:System.Speech.Internal.Synthesis.VoiceSynthesis._ttsEvents">
+            <summary>
+            Could be a phrase of an SSML doc or a file reference
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.WaveHeader.#ctor(System.Byte[])">
+            <summary>
+            Initialize an instance of a byte array.
+            </summary>
+            <returns>MMSYSERR.NOERROR if successful</returns>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.WaveHeader.Finalize">
+            <summary>
+            Frees any memory allocated for the buffer.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Internal.Synthesis.WaveHeader.Dispose(System.Boolean)">
+            <summary>
+            Frees any memory allocated for the buffer.
+            </summary>
+        </member>
+        <member name="F:System.Speech.Internal.Synthesis.WaveHeader.WHDR_DONE">
+            <summary>
+            Used by dwFlags in WaveHeader
+            Set by the device driver to indicate that it is finished with the buffer
+            and is returning it to the application.
+            </summary>
+        </member>
+        <member name="F:System.Speech.Internal.Synthesis.WaveHeader.WHDR_PREPARED">
+            <summary>
+            Used by dwFlags in WaveHeader
+            Set by Windows to indicate that the buffer has been prepared with the
+            waveInPrepareHeader or waveOutPrepareHeader function.
+            </summary>
+        </member>
+        <member name="F:System.Speech.Internal.Synthesis.WaveHeader.WHDR_BEGINLOOP">
+            <summary>
+            Used by dwFlags in WaveHeader
+            This buffer is the first buffer in a loop. This flag is used only with
+            output buffers.
+            </summary>
+        </member>
+        <member name="F:System.Speech.Internal.Synthesis.WaveHeader.WHDR_ENDLOOP">
+            <summary>
+            Used by dwFlags in WaveHeader
+            This buffer is the last buffer in a loop. This flag is used only with
+            output buffers.
+            </summary>
+        </member>
+        <member name="F:System.Speech.Internal.Synthesis.WaveHeader.WHDR_INQUEUE">
+            <summary>
+            Used by dwFlags in WaveHeader
+            Set by Windows to indicate that the buffer is queued for playback.
+            </summary>
+        </member>
+        <member name="F:System.Speech.Internal.Synthesis.WaveHeader.WAVE_FORMAT_PCM">
+            <summary>
+            Set in WaveFormat.wFormatTag to specify PCM data.
+            </summary>
+        </member>
+        <member name="F:System.Speech.Internal.Synthesis.WaveHeader._gcHandle">
+            <summary>
+            Long pointer to the address of the waveform buffer. This buffer must
+            be block-aligned according to the nBlockAlign member of the
+            WaveFormat structure used to open the device.
+            </summary>
+        </member>
+        <member name="F:System.Speech.Internal.Synthesis.WaveHeader._dwBufferLength">
+            <summary>
+            Specifies the length, in bytes, of the buffer.
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.Grammar.IsStg">
+            <summary>
+            Is the grammar a strongly typed grammar?
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.Grammar.IsSrgsDocument">
+            <summary>
+            Is the grammar built from an srgs document?
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.Grammar.Create(System.String,System.String,System.String,System.Uri@)">
+             <summary>
+             Called by the grammar resource loader to load ruleref. Ruleref have a name, a rule name et eventually
+             parameters.
+            
+             The grammar name can be either pointing to a CFG, an Srgs or DLL (stand alone or GAC).
+             </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.Grammar.Find(System.Int64)">
+            <summary>
+            Find a grammar in a tree or rule refs grammar from the SAPI grammar Id
+            </summary>
+            <param name="grammarId">SAPI id</param>
+            <returns>null if not found</returns>
+        </member>
+        <member name="M:System.Speech.Recognition.Grammar.Find(System.String)">
+            <summary>
+            Find a grammar in a tree or rule refs grammar from a rule name
+            </summary>
+            <returns>null if not found</returns>
+        </member>
+        <member name="M:System.Speech.Recognition.Grammar.AddRuleRef(System.Speech.Recognition.Grammar,System.UInt32)">
+            <summary>
+            Add a rule ref grammar to a grammar.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.Grammar.LoadCfg(System.Boolean,System.Boolean)">
+            <summary>
+            Returns a stream object for a grammar.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.Grammar.LoadGrammarFromAssembly(System.Reflection.Assembly,System.String,System.String)">
+             <summary>
+             Look for a grammar by rule name in a loaded assembly.
+            
+             The search goes over the base type for the grammar "rule name" and all of its derived language
+             dependent classes.
+             The matching algorithm pick a class that match the culture.
+             </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.Grammar.MatchInitParameters(System.Type,System.String,System.String,System.String)">
+            <summary>
+            Construct a list of parameters from a sapi:params string.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.Grammar.ParseValue(System.Type,System.String)">
+            <summary>
+            Parse the value for a type from a string to a strong type.
+            If the type does not support the Parse method then the operation fails.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.Grammar.FormatConstructorParameters(System.Reflection.ConstructorInfo[])">
+            <summary>
+            Returns the list of the possible parameter names and type for a grammar
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.Grammar.ParseInitParams(System.String)">
+            <summary>
+            Split the init parameter strings into an array of name/values
+            The format must be "name:value". If the ':' then parameter is anonymous.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.GrammarBuilder.AppendRuleReference(System.String)">
+            <summary>
+            Append external rule ref
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.GrammarBuilder.AppendRuleReference(System.String,System.String)">
+            <summary>
+            Append external rule ref
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.RecognizerBase.SetInput(System.String)">
+            <summary>
+            Set the current input for the recognizer to a file
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.RecognizerBase.SetInput(System.IO.Stream,System.Speech.AudioFormat.SpeechAudioFormatInfo)">
+            <summary>
+            Set the current input for the recognizer to a file
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.RecognizerBase.SetInputToDefaultAudioDevice">
+            <summary>
+            Reset the recognizer input stream to the default audio device
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.RecognizerBase.System#Speech#Internal#SapiInterop#ISpGrammarResourceLoader#LoadResource(System.String,System.Boolean,System.Runtime.InteropServices.ComTypes.IStream@,System.String@,System.Int16@,System.String@)">
+             <summary>
+             Called to load a grammar and all of its dependent rule refs.
+            
+             Returns the CFG data for a given file and builds a tree of rule ref dependencies.
+             </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.RecognizerBase.System#Speech#Internal#SapiInterop#ISpGrammarResourceLoader#GetLocalCopy(System.Uri,System.String@,System.Uri@)">
+            <summary>
+            Unused
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.RecognizerBase.System#Speech#Internal#SapiInterop#ISpGrammarResourceLoader#ReleaseLocalCopy(System.String)">
+            <summary>
+            Unused
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.RecognizerBase.FireAudioStateChangedEvent(System.Speech.Recognition.AudioState)">
+            <summary>
+            Fire audio status changed event
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.RecognizerBase.FireSignalProblemOccurredEvent(System.Speech.Recognition.AudioSignalProblem)">
+            <summary>
+            Fire audio status changed event
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.RecognizerBase.FireAudioLevelUpdatedEvent(System.Int32)">
+            <summary>
+            Fire audio status changed event
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.RecognizerBase.FireSpeechDetectedEvent(System.TimeSpan)">
+            <summary>
+            Fire the SpeechDetected event.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.RecognizerBase.FireSpeechHypothesizedEvent(System.Speech.Recognition.RecognitionResult)">
+            <summary>
+            Fire the hypothesis event.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.RecognizerBase.FireSpeechRecognitionRejectedEvent(System.Speech.Recognition.RecognitionResult)">
+            <summary>
+            Fire the rejected recognition on the recognizer.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.RecognizerBase.FireSpeechRecognizedEvent(System.Speech.Recognition.SpeechRecognizedEventArgs)">
+            <summary>
+            Fire the recognition on the grammar.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.RecognizerBase.FireRecognizeCompletedEvent(System.Speech.Recognition.RecognitionResult,System.Boolean,System.Boolean,System.Boolean,System.TimeSpan,System.Exception,System.Boolean)">
+            <summary>
+            Fire the recognition completed event.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.RecognizerBase.FireEmulateRecognizeCompletedEvent(System.Speech.Recognition.RecognitionResult,System.Exception,System.Boolean)">
+            <summary>
+            Fire the emulate completed event.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.RecognizerBase.RecognizerBaseThunk.System#Speech#Internal#SapiInterop#ISpGrammarResourceLoader#LoadResource(System.String,System.Boolean,System.Runtime.InteropServices.ComTypes.IStream@,System.String@,System.Int16@,System.String@)">
+             <summary>
+             Called to load a grammar and all of its dependent rule refs.
+            
+             Returns the CFG data for a given file and builds a tree of rule ref dependencies.
+             </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.RecognizerBase.RecognizerBaseThunk.System#Speech#Internal#SapiInterop#ISpGrammarResourceLoader#GetLocalCopy(System.Uri,System.String@,System.Uri@)">
+            <summary>
+            Unused
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.RecognizerBase.RecognizerBaseThunk.System#Speech#Internal#SapiInterop#ISpGrammarResourceLoader#ReleaseLocalCopy(System.String)">
+            <summary>
+            Unused
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.RecognizerInfo.Dispose">
+            <summary>
+            For IDisposable.
+            RecognizerInfo can be constructed through creating a new object token (usage of _recognizerInfo in RecognizerBase),
+            so dispose needs to be called.
+            </summary>
+        </member>
+        <member name="T:System.Speech.Recognition.SrgsGrammar.SrgsDocument">
+            <summary>
+            This class allows a _grammar to be specified in SRGS form.
+            APITODO: needs programmatic access to SRGS DOM; PACOG
+            APITODO: needs rule activation/deactivation methods
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.SrgsGrammar.SrgsDocument.#ctor">
+            <summary>
+            The default constructor - creates an empty SrgsGrammar object
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsDocument.XmlBase">
+            <summary>
+            Base URI of _grammar (xml:base).
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsDocument.Culture">
+            <summary>
+            Grammar language (xml:lang)
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsDocument.Root">
+            <summary>
+            Root rule (srgs:root)
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsDocument.Mode">
+            <summary>
+            Grammar mode (srgs:mode) - voice, dtmf
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsDocument.PhoneticAlphabet">
+            <summary>
+            Grammar mode (srgs:mode) - voice, dtmf
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsDocument.Rules">
+            <summary>
+            A collection of rules that this _grammar houses.
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsDocument.Language">
+            <summary>
+            Programming Language used for the inline code; C#, VB or JScript
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsDocument.Namespace">
+            <summary>
+            namespace
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsDocument.CodeBehind">
+            <summary>
+            CodeBehind
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsDocument.Debug">
+            <summary>
+            Add #line statements to the inline scripts if set
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsDocument.Script">
+            <summary>
+            language
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsDocument.ImportNamespaces">
+            <summary>
+            ImportNameSpaces
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsDocument.AssemblyReferences">
+            <summary>
+            ImportNameSpaces
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsDocument.TagFormat">
+            <summary>
+            Tag format (srgs:tag-format)
+            </summary>summary>
+        </member>
+        <member name="T:System.Speech.Recognition.SrgsGrammar.SrgsElement">
+            <summary>
+            Base class for all SRGS object to build XML fragment corresponding to the object.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.SrgsGrammar.SrgsElement.Validate(System.Speech.Recognition.SrgsGrammar.SrgsGrammar)">
+            <summary>
+            Validate each element and recurse through all the children srgs
+            elements if any.
+            Any derived class implementing this method must call the base class
+            in order for the children to be processed.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.SrgsGrammar.SrgsElementFactory.System#Speech#Internal#SrgsParser#IElementFactory#RemoveAllRules">
+            <summary>
+            Clear all the rules
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.SrgsGrammar.SrgsGrammar.#ctor">
+            <summary>
+            Initializes a new instance of the Grammar class.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.SrgsGrammar.SrgsGrammar.WriteSrgs(System.Xml.XmlWriter)">
+            <summary>
+            Write the XML fragment describing the object.
+            </summary>
+            <param name="writer">XmlWriter to which to write the XML fragment.</param>
+        </member>
+        <member name="M:System.Speech.Recognition.SrgsGrammar.SrgsGrammar.Validate">
+            <summary>
+            Validate the SRGS element.
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsGrammar.System#Speech#Internal#SrgsParser#IGrammar#Root">
+            <summary>
+            Sets the Root element
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsGrammar.XmlBase">
+            <summary>
+            Base URI of grammar (xml:base)
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsGrammar.Culture">
+            <summary>
+            Grammar language (xml:lang)
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsGrammar.Mode">
+            <summary>
+            Grammar mode.  voice or dtmf
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsGrammar.PhoneticAlphabet">
+            <summary>
+            Pronunciation Alphabet, IPA or SAPI or UPS
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsGrammar.Root">
+            <summary>root
+            Root rule (srgs:root)
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsGrammar.TagFormat">
+            <summary>
+            Tag format (srgs:tag-format)
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsGrammar.GlobalTags">
+            <summary>
+            Tag format (srgs:tag-format)
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsGrammar.Language">
+            <summary>
+            language
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsGrammar.Namespace">
+            <summary>
+            namespace
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsGrammar.CodeBehind">
+            <summary>
+            CodeBehind
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsGrammar.Debug">
+            <summary>
+            Add #line statements to the inline scripts if set
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsGrammar.Script">
+            <summary>
+            Scripts
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsGrammar.ImportNamespaces">
+            <summary>
+            ImportNameSpaces
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsGrammar.AssemblyReferences">
+            <summary>
+            ImportNameSpaces
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsGrammar.Rules">
+            <summary>
+            A collection of _rules that this grammar houses.
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsGrammar.HasPronunciation">
+            <summary>
+            A collection of _rules that this grammar houses.
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsGrammar.HasPhoneticAlphabetBeenSet">
+            <summary>
+            A collection of _rules that this grammar houses.
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsGrammar.HasSapiExtension">
+            <summary>
+            A collection of _rules that this grammar houses.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.SrgsGrammar.SrgsGrammar.WriteSTGAttributes(System.Xml.XmlWriter)">
+            <summary>
+            Write the attributes of the grammar element for strongly typed grammars
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.SrgsGrammar.SrgsGrammar.WriteGrammarElements(System.Xml.XmlWriter)">
+            <summary>
+            Write the references to the referenced assemblies and the various scripts
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.SrgsGrammar.SrgsGrammar.WriteRules(System.Xml.XmlWriter)">
+            <summary>
+            Write all Rules.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.SrgsGrammar.SrgsGrammar.WriteGlobalScripts(System.Xml.XmlWriter)">
+            <summary>
+            Write the script that are global to this grammar
+            </summary>
+        </member>
+        <member name="T:System.Speech.Recognition.SrgsGrammar.SrgsGrammarCompiler">
+            <summary>
+            Compiles Xml Srgs data into a CFG
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.SrgsGrammar.SrgsGrammarCompiler.Compile(System.String,System.IO.Stream)">
+            <summary>
+            Compiles a grammar to a file
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.SrgsGrammar.SrgsGrammarCompiler.Compile(System.Speech.Recognition.SrgsGrammar.SrgsDocument,System.IO.Stream)">
+            <summary>
+            Compiles an Srgs document to a file
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.SrgsGrammar.SrgsGrammarCompiler.Compile(System.Xml.XmlReader,System.IO.Stream)">
+            <summary>
+            Compiles a grammar to a file
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.SrgsGrammar.SrgsGrammarCompiler.CompileClassLibrary(System.String[],System.String,System.String[],System.String)">
+            <summary>
+            Compiles a grammar to a file
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.SrgsGrammar.SrgsGrammarCompiler.CompileClassLibrary(System.Speech.Recognition.SrgsGrammar.SrgsDocument,System.String,System.String[],System.String)">
+            <summary>
+            Compiles an Srgs document to a file
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.SrgsGrammar.SrgsGrammarCompiler.CompileClassLibrary(System.Xml.XmlReader,System.String,System.String[],System.String)">
+            <summary>
+            Compiles a grammar to a file
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.SrgsGrammar.SrgsItem.WriteSrgs(System.Xml.XmlWriter)">
+            <summary>
+            Write the XML fragment describing the object.
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsItem.Children">
+            <summary>
+            Allows the Srgs Element base class to implement
+            features requiring recursion in the elements tree.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.SrgsGrammar.SrgsNameValueTag.GetTrimmedName(System.String,System.String)">
+            <summary>
+            Checks if the name is not null and just made of blanks
+            Returned the trimmed name
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsOneOf.Children">
+            <summary>
+            Allows the Srgs Element base class to implement
+            features requiring recursion in the elements tree.
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsRule.BaseClass">
+            <summary>
+            classname
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsRule.Script">
+            <summary>
+            OnInit
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsRule.OnInit">
+            <summary>
+            OnInit
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsRule.OnParse">
+            <summary>
+            OnParse
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsRule.OnError">
+            <summary>
+            OnError
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsRule.OnRecognition">
+            <summary>
+            OnRecognition
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.SrgsGrammar.SrgsRule.Validate(System.Speech.Recognition.SrgsGrammar.SrgsGrammar)">
+            <summary>
+            Validate each element and recurse through all the children srgs
+            elements if any.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.SrgsGrammar.SrgsRuleRef.#ctor(System.Speech.Recognition.SrgsGrammar.SrgsRuleRef.SpecialRuleRefType)">
+            <summary>
+            Special private constructor for Special Rulerefs
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsRuleRef.SemanticKey">
+            <summary>
+            Set the semanticKey for a Ruleref
+            </summary>
+        </member>
+        <member name="P:System.Speech.Recognition.SrgsGrammar.SrgsRuleRef.Params">
+            <summary>
+            Set the init parameters for a Ruleref
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.SrgsGrammar.SrgsRuleRef.Validate(System.Speech.Recognition.SrgsGrammar.SrgsGrammar)">
+            <summary>
+            Validate the SRGS element.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.SrgsGrammar.SrgsRuleRef.UriInit(System.Uri,System.String,System.String,System.String)">
+            <summary>
+            Call by constructors. No check is made on the parameters except for the Uri
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.SrgsGrammar.SrgsSemanticInterpretationTag.Validate(System.Speech.Recognition.SrgsGrammar.SrgsGrammar)">
+            <summary>
+            Validate each element and recurse through all the children srgs
+            elements if any.
+            </summary>
+        </member>
+        <member name="T:System.Speech.Recognition.SrgsGrammar.SrgsTagFormat">
+            <summary>
+            TagFormat extensible enumeration
+            </summary>
+        </member>
+        <member name="M:System.Speech.Recognition.RecognitionResult.ConvertPronunciation(System.String,System.Int32)">
+            <summary>
+            This method converts a given pronunciation from SAPI phonetic alphabet to IPA for a given language
+            </summary>
+            <returns>New pronunciation in IPA alphabet</returns>
+        </member>
+        <member name="M:System.Speech.Recognition.RecognizedPhrase.RuleNode.Find(System.UInt32,System.UInt32)">
+            <summary>
+            Find the rule enclosing a property.
+            </summary>
+            <param name="firstElement">First word matching the property</param>
+            <param name="count">Count of words</param>
+        </member>
+        <member name="P:System.Speech.Synthesis.Prompt.Exception">
+            <summary>
+            What errors occurred during this operation?
+            </summary>
+        </member>
+        <member name="F:System.Speech.Synthesis.Prompt._text">
+            <summary>
+            Could be some raw text or SSML doc or the file name (wave file)
+            </summary>
+        </member>
+        <member name="F:System.Speech.Synthesis.Prompt._audio">
+            <summary>
+            Audio data
+            </summary>
+        </member>
+        <member name="F:System.Speech.Synthesis.Prompt._media">
+            <summary>
+            Unused at this point
+            </summary>
+        </member>
+        <member name="F:System.Speech.Synthesis.Prompt._syncSpeak">
+            <summary>
+            Is this prompt played asynchronously
+            </summary>
+        </member>
+        <member name="F:System.Speech.Synthesis.Prompt._completed">
+            <summary>
+            Is this SpeakToken canceled before it was completed?
+            </summary>
+        </member>
+        <member name="F:System.Speech.Synthesis.Prompt._synthesizer">
+            <summary>
+            The synthesizer this prompt is played on
+            </summary>
+        </member>
+        <member name="M:System.Speech.Synthesis.PromptBuilder.ClearContent">
+            <summary>
+            Clear the content of the prompt builder
+            </summary>
+        </member>
+        <member name="M:System.Speech.Synthesis.PromptBuilder.AppendText(System.String)">
+            <summary>
+            Append Text to the SSML stream
+            </summary>
+        </member>
+        <member name="M:System.Speech.Synthesis.PromptBuilder.ValidateElement(System.Speech.Synthesis.PromptBuilder.StackElement,System.Speech.Internal.Synthesis.SsmlElement)">
+            <summary>
+            Ensure the this element is properly placed in the SSML markup
+            </summary>
+        </member>
+        <member name="M:System.Speech.Synthesis.SpeechSynthesizer.Pause">
+            <summary>
+            Pause the playback of all speech in this synthesizer.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Synthesis.SpeechSynthesizer.Resume">
+            <summary>
+            Resume the playback of all speech in this synthesizer.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Synthesis.SpeechSynthesizer.SpeakAsyncCancel(System.Speech.Synthesis.Prompt)">
+            <summary>
+            Cancel playback of all Prompts currently in the queue.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Synthesis.SpeechSynthesizer.SpeakAsyncCancelAll">
+            <summary>
+            Cancel playback of all Prompts currently in the queue.
+            </summary>
+        </member>
+        <member name="M:System.Speech.Synthesis.VoiceInfo.Equals(System.Object)">
+            <summary>
+            Tests whether two AutomationIdentifier objects are equivalent
+            </summary>
+        </member>
+        <member name="M:System.Speech.Synthesis.VoiceInfo.GetHashCode">
+            <summary>
+            Overrides Object.GetHashCode()
+            </summary>
+        </member>
+        <member name="P:System.Speech.Synthesis.VoiceInfo.Culture">
+             <summary>
+            
+             Return a copy of the internal Language set. This disable client
+             applications to modify the internal languages list.
+             </summary>
+        </member>
+        <member name="M:System.Speech.Synthesis.TtsEngine.TtsEngineSsml.#ctor(System.String)">
+            <summary>
+            Constructor for the TTS engine
+            </summary>
+            <param name="registryKey">Voice token registry entry
+            from where this engine was created from</param>
+        </member>
+        <member name="M:System.Speech.Synthesis.TtsEngine.TtsEngineSsml.GetOutputFormat(System.Speech.Synthesis.TtsEngine.SpeakOutputFormat,System.IntPtr)">
+            <summary>
+            Queries the engine about the output format it supports.
+            </summary>
+            <param name="speakOutputFormat">Wave or Text</param>
+            <param name="targetWaveFormat">Wave format header</param>
+            <returns>Returns the closest format that it supports</returns>
+        </member>
+        <member name="M:System.Speech.Synthesis.TtsEngine.TtsEngineSsml.AddLexicon(System.Uri,System.String,System.Speech.Synthesis.TtsEngine.ITtsEngineSite)">
+            <summary>
+            Add a lexicon for this engine
+            </summary>
+            <param name="uri">uri</param>
+            <param name="mediaType">media type</param>
+            <param name="site">Engine site</param>
+        </member>
+        <member name="M:System.Speech.Synthesis.TtsEngine.TtsEngineSsml.RemoveLexicon(System.Uri,System.Speech.Synthesis.TtsEngine.ITtsEngineSite)">
+            <summary>
+            Removes a lexicon for this engine
+            </summary>
+            <param name="uri">uri</param>
+            <param name="site">Engine site</param>
+        </member>
+        <member name="M:System.Speech.Synthesis.TtsEngine.TtsEngineSsml.Speak(System.Speech.Synthesis.TtsEngine.TextFragment[],System.IntPtr,System.Speech.Synthesis.TtsEngine.ITtsEngineSite)">
+            <summary>
+            Renders the specified text fragments array in the
+            specified output format.
+            </summary>
+            <param name="fragment">Text fragment with SSML
+            attributes information</param>
+            <param name="waveHeader">Wave format header</param>
+            <param name="site">Engine site</param>
+        </member>
+        <member name="P:System.Speech.Synthesis.TtsEngine.SpeechEventInfo.Param1">
+            <summary>
+            Always just a numeric type - contains no unmanaged resources so does not need special clean-up.
+            </summary>
+        </member>
+        <member name="P:System.Speech.Synthesis.TtsEngine.SpeechEventInfo.Param2">
+            <summary>
+            Can be a numeric type, or pointer to string.
+            </summary>
+        </member>
+        <member name="F:System.Speech.Synthesis.TtsEngine.EmphasisBreak.Default">
+            <summary>
+            Equivalent to the empty <Break />
+            </summary>
+        </member>
+        <member name="T:System.Runtime.Versioning.OSPlatformAttribute">
+            <summary>
+            Base type for all platform-specific API attributes.
+            </summary>
+        </member>
+        <member name="T:System.Runtime.Versioning.TargetPlatformAttribute">
+            <summary>
+            Records the platform that the project targeted.
+            </summary>
+        </member>
+        <member name="T:System.Runtime.Versioning.SupportedOSPlatformAttribute">
+             <summary>
+             Records the operating system (and minimum version) that supports an API. Multiple attributes can be
+             applied to indicate support on multiple operating systems.
+             </summary>
+             <remarks>
+             Callers can apply a <see cref="T:System.Runtime.Versioning.SupportedOSPlatformAttribute" />
+             or use guards to prevent calls to APIs on unsupported operating systems.
+            
+             A given platform should only be specified once.
+             </remarks>
+        </member>
+        <member name="T:System.Runtime.Versioning.UnsupportedOSPlatformAttribute">
+            <summary>
+            Marks APIs that were removed in a given operating system version.
+            </summary>
+            <remarks>
+            Primarily used by OS bindings to indicate APIs that are only available in
+            earlier versions.
+            </remarks>
+        </member>
+    </members>
+</doc>

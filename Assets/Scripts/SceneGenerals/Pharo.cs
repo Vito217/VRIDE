@@ -17,15 +17,6 @@ namespace PharoModule
         public static readonly HttpClient pharoClient = new HttpClient();
 
         /// <summary>
-        /// Starts a local Pharo server as a background task (EXPERIMENTAL)
-        /// </summary>
-        /// <returns></returns>
-        public static async Task Start()
-        {
-            await Task.Delay(2000);
-        }
-
-        /// <summary>
         /// Sends a pice of code to execute
         /// </summary>
         /// <param name="code">The code</param>

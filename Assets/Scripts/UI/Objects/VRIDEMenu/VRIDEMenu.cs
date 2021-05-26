@@ -17,6 +17,7 @@ public class VRIDEMenu : InitializeBehaviour
     public static string streamerIPState = localhost;
     public static string pharoPortState = "1701";
     public static string streamerPortState = "5000";
+    public static bool enableSpeechRecognition = false;
 
     public static bool keyboardToggleState = false;
     public static bool vrHandsToggleState = false;
