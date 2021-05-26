@@ -17,14 +17,6 @@ public class VRIDEController : MonoBehaviour
     void Awake()
     {
         GetComponent<XRRig>().cameraYOffset = 1.5f;
-
-        if (Application.platform == RuntimePlatform.WindowsPlayer)
-            Camera.main.gameObject.AddComponent<DictationScript>();
-        else if (Application.platform == RuntimePlatform.Android)
-        {
-            Camera.main.gameObject.AddComponent<Test>();
-            Camera.main.gameObject.AddComponent<ReceiveResult>();
-        }
     }
 
     void Update()
