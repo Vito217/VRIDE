@@ -18,8 +18,6 @@ public class VRIDEMenu : InitializeBehaviour
     public static string pharoPortState = "1701";
     public static string streamerPortState = "5000";
     public static bool enableSpeechRecognition = false;
-
-    public static bool keyboardToggleState = false;
     public static bool vrHandsToggleState = false;
 
     public Toggle keyboardToggle;
@@ -38,7 +36,6 @@ public class VRIDEMenu : InitializeBehaviour
 
     public override IEnumerator innerStart()
     {
-        keyboardToggle.isOn = keyboardToggleState;
         vrHandsToggle.isOn = vrHandsToggleState;
 
         pharoIP.text = pharoIPState;
