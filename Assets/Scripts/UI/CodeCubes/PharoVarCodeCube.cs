@@ -9,6 +9,9 @@ public class PharoVarCodeCube : PharoCodeCube
     [HideInInspector]
     public bool isInstance;
 
+    [HideInInspector]
+    public string classType;
+
     public CodeCubeText codeCubeTextPrefab;
 
     public override void InnerStart()
@@ -22,6 +25,9 @@ public class PharoVarCodeCube : PharoCodeCube
         {
             CodeCubeText text = Instantiate(codeCubeTextPrefab, transform);
             text.GetComponent<TextMeshPro>().text = isInstance ? " instanceVar: " + varName : "classVar: " + varName;
+
+            if (!string.IsNullOrWhiteSpace(classType))
+                text.GetComponent<TextMeshPro>().text += "\ntype: " + classType;
         }
     }
 

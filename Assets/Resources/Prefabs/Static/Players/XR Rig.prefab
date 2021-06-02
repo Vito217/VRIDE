@@ -94,7 +94,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1023895624
 GameObject:
@@ -221,7 +221,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1977546821
 GameObject:
@@ -465,9 +465,10 @@ MonoBehaviour:
   m_RigBaseGameObject: {fileID: 7236977680674023405}
   m_CameraFloorOffsetObject: {fileID: 7236977682611089896}
   m_CameraGameObject: {fileID: 7236977681792975150}
-  m_TrackingOriginMode: 1
-  m_TrackingSpace: 3
+  m_RequestedTrackingOriginMode: 1
   m_CameraYOffset: 1.5
+  m_TrackingSpace: 3
+  m_TrackingOriginMode: -2147483648
 --- !u!114 &7236977680674023401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -620,7 +621,8 @@ MonoBehaviour:
   m_EnableInputTracking: 1
   m_EnableInputActions: 1
   m_ModelPrefab: {fileID: 0}
-  m_ModelTransform: {fileID: 0}
+  m_ModelParent: {fileID: 0}
+  m_Model: {fileID: 0}
   m_AnimateModel: 0
   m_ModelSelectTransition: 
   m_ModelDeSelectTransition: 
@@ -1099,7 +1101,8 @@ MonoBehaviour:
   m_EnableInputTracking: 1
   m_EnableInputActions: 1
   m_ModelPrefab: {fileID: 0}
-  m_ModelTransform: {fileID: 0}
+  m_ModelParent: {fileID: 0}
+  m_Model: {fileID: 0}
   m_AnimateModel: 0
   m_ModelSelectTransition: 
   m_ModelDeSelectTransition: 

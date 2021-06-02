@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class VRIDEInputHandler : MonoBehaviour
 {
@@ -110,7 +111,7 @@ public class VRIDEInputHandler : MonoBehaviour
             if (device.characteristics.HasFlag(InputDeviceCharacteristics.Left))
             {
                 // LEFT TRIGGER
-                device.IsPressed(InputHelpers.Button.Trigger, out LeftTrigger);
+                device.IsPressed(UnityEngine.XR.Interaction.Toolkit.InputHelpers.Button.Trigger, out LeftTrigger);
                 if (LeftTrigger)
                     UpdateFlag(
                         ref LeftTriggerUpFlag,
@@ -124,7 +125,7 @@ public class VRIDEInputHandler : MonoBehaviour
 
 
                 // LEFT PRIMARY BUTTON
-                device.IsPressed(InputHelpers.Button.PrimaryButton, out LeftPrimaryButton);
+                device.IsPressed(UnityEngine.XR.Interaction.Toolkit.InputHelpers.Button.PrimaryButton, out LeftPrimaryButton);
                 if (LeftPrimaryButton)
                     UpdateFlag(
                         ref LeftPrimaryButtonUpFlag, 
@@ -138,7 +139,7 @@ public class VRIDEInputHandler : MonoBehaviour
 
 
                 // LEFT SECONDARY BUTTON
-                device.IsPressed(InputHelpers.Button.SecondaryButton, out LeftSecondaryButton);
+                device.IsPressed(UnityEngine.XR.Interaction.Toolkit.InputHelpers.Button.SecondaryButton, out LeftSecondaryButton);
                 if (LeftSecondaryButton)
                     UpdateFlag(
                         ref LeftPrimaryButtonUpFlag, 
@@ -151,7 +152,7 @@ public class VRIDEInputHandler : MonoBehaviour
                         ref LeftSecondaryButtonUp);
 
                 // LEFT AXIS UP
-                device.IsPressed(InputHelpers.Button.PrimaryAxis2DUp, out LeftAxisUp);
+                device.IsPressed(UnityEngine.XR.Interaction.Toolkit.InputHelpers.Button.PrimaryAxis2DUp, out LeftAxisUp);
                 if (LeftAxisUp)
                     UpdateFlag(
                         ref LeftAxisUpReleaseFlag,
@@ -164,7 +165,7 @@ public class VRIDEInputHandler : MonoBehaviour
                         ref LeftAxisUpRelease);
 
                 // LEFT AXIS DOWN
-                device.IsPressed(InputHelpers.Button.PrimaryAxis2DDown, out LeftAxisDown);
+                device.IsPressed(UnityEngine.XR.Interaction.Toolkit.InputHelpers.Button.PrimaryAxis2DDown, out LeftAxisDown);
                 if (LeftAxisDown)
                     UpdateFlag(
                         ref LeftAxisDownReleaseFlag,
@@ -177,7 +178,7 @@ public class VRIDEInputHandler : MonoBehaviour
                         ref LeftAxisDownRelease);
 
                 // LEFT AXIS LEFT
-                device.IsPressed(InputHelpers.Button.PrimaryAxis2DLeft, out LeftAxisLeft);
+                device.IsPressed(UnityEngine.XR.Interaction.Toolkit.InputHelpers.Button.PrimaryAxis2DLeft, out LeftAxisLeft);
                 if (LeftAxisLeft)
                     UpdateFlag(
                         ref LeftAxisLeftReleaseFlag,
@@ -190,7 +191,7 @@ public class VRIDEInputHandler : MonoBehaviour
                         ref LeftAxisLeftRelease);
 
                 // LEFT AXIS RIGHT
-                device.IsPressed(InputHelpers.Button.PrimaryAxis2DRight, out LeftAxisRight);
+                device.IsPressed(UnityEngine.XR.Interaction.Toolkit.InputHelpers.Button.PrimaryAxis2DRight, out LeftAxisRight);
                 if (LeftAxisRight)
                     UpdateFlag(
                         ref LeftAxisRightReleaseFlag,
@@ -206,7 +207,7 @@ public class VRIDEInputHandler : MonoBehaviour
             else if (device.characteristics.HasFlag(InputDeviceCharacteristics.Right))
             {
 
-                device.IsPressed(InputHelpers.Button.Trigger, out RightTrigger);
+                device.IsPressed(UnityEngine.XR.Interaction.Toolkit.InputHelpers.Button.Trigger, out RightTrigger);
                 if (RightTrigger)
                     UpdateFlag(
                         ref RightTriggerUpFlag, 
@@ -219,7 +220,7 @@ public class VRIDEInputHandler : MonoBehaviour
                         ref RightTriggerUp);
 
 
-                device.IsPressed(InputHelpers.Button.PrimaryButton, out RightPrimaryButton);
+                device.IsPressed(UnityEngine.XR.Interaction.Toolkit.InputHelpers.Button.PrimaryButton, out RightPrimaryButton);
                 if (RightPrimaryButton)
                     UpdateFlag(
                         ref RightPrimaryButtonUpFlag, 
@@ -232,7 +233,7 @@ public class VRIDEInputHandler : MonoBehaviour
                         ref RightPrimaryButtonUp);
 
 
-                device.IsPressed(InputHelpers.Button.SecondaryButton, out RightSecondaryButton);
+                device.IsPressed(UnityEngine.XR.Interaction.Toolkit.InputHelpers.Button.SecondaryButton, out RightSecondaryButton);
                 if (RightSecondaryButton)
                     UpdateFlag(
                         ref RightPrimaryButtonUpFlag, 
@@ -245,7 +246,7 @@ public class VRIDEInputHandler : MonoBehaviour
                         ref RightSecondaryButtonUp);
 
                 // RIGHT AXIS UP
-                device.IsPressed(InputHelpers.Button.PrimaryAxis2DUp, out RightAxisUp);
+                device.IsPressed(UnityEngine.XR.Interaction.Toolkit.InputHelpers.Button.PrimaryAxis2DUp, out RightAxisUp);
                 if (RightAxisUp)
                     UpdateFlag(
                         ref RightAxisUpReleaseFlag,
@@ -258,7 +259,7 @@ public class VRIDEInputHandler : MonoBehaviour
                         ref RightAxisUpRelease);
 
                 // RIGHT AXIS DOWN
-                device.IsPressed(InputHelpers.Button.PrimaryAxis2DDown, out RightAxisDown);
+                device.IsPressed(UnityEngine.XR.Interaction.Toolkit.InputHelpers.Button.PrimaryAxis2DDown, out RightAxisDown);
                 if (RightAxisDown)
                     UpdateFlag(
                         ref RightAxisDownReleaseFlag,
@@ -271,7 +272,7 @@ public class VRIDEInputHandler : MonoBehaviour
                         ref RightAxisDownRelease);
 
                 // RIGHT AXIS LEFT
-                device.IsPressed(InputHelpers.Button.PrimaryAxis2DLeft, out RightAxisLeft);
+                device.IsPressed(UnityEngine.XR.Interaction.Toolkit.InputHelpers.Button.PrimaryAxis2DLeft, out RightAxisLeft);
                 if (RightAxisLeft)
                     UpdateFlag(
                         ref RightAxisLeftReleaseFlag,
@@ -284,7 +285,7 @@ public class VRIDEInputHandler : MonoBehaviour
                         ref RightAxisLeftRelease);
 
                 // RIGHT AXIS RIGHT
-                device.IsPressed(InputHelpers.Button.PrimaryAxis2DRight, out RightAxisRight);
+                device.IsPressed(UnityEngine.XR.Interaction.Toolkit.InputHelpers.Button.PrimaryAxis2DRight, out RightAxisRight);
                 if (RightAxisRight)
                     UpdateFlag(
                         ref RightAxisRightReleaseFlag,

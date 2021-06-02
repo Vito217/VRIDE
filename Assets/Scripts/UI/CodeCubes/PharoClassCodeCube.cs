@@ -26,6 +26,13 @@ public class PharoClassCodeCube : PharoCodeCube
     [HideInInspector]
     public string sourceCode;
 
+    [HideInInspector]
+    public string objectName;
+    [HideInInspector]
+    public List<string> classVarsTypes;
+    [HideInInspector]
+    public List<string> instVarsTypes;
+
     public PharoClassCodeCube classCodeCubePrefab;
     public PharoVarCodeCube varCodeCubePrefab;
     public PharoMethodCodeCube methodCodeCubePrefab;
@@ -70,6 +77,7 @@ public class PharoClassCodeCube : PharoCodeCube
 
     void GenerateCubes()
     {
+        int index = 0;
         foreach(string instanceVar in instanceVars)
         {
             if (!string.IsNullOrWhiteSpace(instanceVar))
@@ -79,10 +87,16 @@ public class PharoClassCodeCube : PharoCodeCube
                 var.isInstance = true;
                 var.varName = instanceVar;
 
+                if (instVarsTypes != null && instVarsTypes.Count > 0)
+                    var.classType = instVarsTypes[index];
+
                 AddLine(var.gameObject, Color.green);
             }
+
+            index++;
         }
 
+        index = 0;
         foreach(string classVar in classVars)
         {
             if (!string.IsNullOrWhiteSpace(classVar))
@@ -92,8 +106,13 @@ public class PharoClassCodeCube : PharoCodeCube
                 var.isInstance = false;
                 var.varName = classVar;
 
+                if (classVarsTypes != null && classVarsTypes.Count > 0)
+                    var.classType = classVarsTypes[index];
+
                 AddLine(var.gameObject, Color.red);
             }
+
+            index++;
         }
 
         foreach(string instanceMethod in instanceMethods)
@@ -307,6 +326,9 @@ public class PharoClassCodeCube : PharoCodeCube
         {
             CodeCubeText text = Instantiate(codeCubeTextPrefab, transform);
             text.GetComponent<TextMeshPro>().text = "class: " + className;
+
+            if (!string.IsNullOrWhiteSpace(objectName))
+                text.GetComponent<TextMeshPro>().text += "\nname: " + objectName;
         }
     }
 

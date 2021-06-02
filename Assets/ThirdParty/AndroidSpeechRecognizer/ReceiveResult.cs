@@ -17,9 +17,8 @@ public class ReceiveResult : MonoBehaviour {
         //You can get the number of results with result.Length
         //And access a particular result with result[i] where i is an int
         //I have just assigned the best result to UI text
-        //GameObject.Find("Text").GetComponent<Text>().text = result[0];
+        GameObject.Find("Text").GetComponent<Text>().text = result[0];
 
-        Debug.Log(result[0]);
     }
 
 	// Update is called once per frame

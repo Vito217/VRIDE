@@ -10,6 +10,8 @@ using ImageUtils;
 
 public class Playground : InitializeBehaviour
 {
+    public PharoClassCodeCube codeCubePrefab;
+
     private Graph view;
     private Inspector insp;
 
@@ -35,6 +37,7 @@ public class Playground : InitializeBehaviour
 
             MatchCollection matches = Regex.Matches(selectedCode,
                 @"([a-zA-Z0-9]+)([\n\s\t]*)(:=)([\n\s\t]*)((?!Example)((RS|RT).*))([\n\s\t]+)(new)([\n\s\t]*)(\.)");
+
             if (matches.Count > 0)
             {
                 Match match = matches[0];
@@ -90,9 +93,44 @@ public class Playground : InitializeBehaviour
                     InteractionLogger.RegisterCodeExecution(selectedCode, res);
                 }
             }
-            else if (!String.IsNullOrWhiteSpace(selectedCode))
+            else if (!string.IsNullOrWhiteSpace(selectedCode))
             {
-                await PharoInspect();
+                float width = GetComponent<RectTransform>().sizeDelta.x * 
+                    transform.Find("Panel").GetComponent<RectTransform>().localScale.x;
+
+                PharoClassCodeCube cube = Instantiate(codeCubePrefab);
+                cube.transform.position = transform.TransformPoint(width, 0f, 0f);
+                cube.transform.forward = transform.forward;
+
+                string selection = getSelectedCode(field.text, false);
+                string res = await Pharo.Inspect(selection);
+
+                logText.text = res;
+
+                res = res.Replace("an OrderedCollection('", "");
+                res = res.Replace("')", "");
+
+                string[] vars = res.Split(new string[] { "' '" }, StringSplitOptions.None);
+                foreach (string tuple in vars)
+                {
+                    string[] pair = tuple.Replace("'", "").Split('=');
+                    string type = pair[1].Replace("a ", "");
+                    string obj = pair[0];
+
+                    if (obj == "self")
+                    {
+                        string code = "RPackageOrganizer packageOrganizer packageOfClassNamed: '" + type + "' .";
+                        string resPack = await Pharo.Execute(code);
+                        string packageName = Regex.Replace(resPack, @"a RPackage\(([a-zA-Z0-9]+)\)", "$1");
+
+                        cube.className = type;
+                        cube.packageName = packageName;
+                    }
+                    else
+                    {
+                        cube.instVarsTypes.Add(type);
+                    }
+                }       
             }
         }
         catch (Exception e)
@@ -156,7 +194,8 @@ public class Playground : InitializeBehaviour
                     insp = Instantiator.Instance.Inspector();
 
                     float width = GetComponent<RectTransform>().sizeDelta.x * transform.Find("Panel").GetComponent<RectTransform>().localScale.x;
-                    insp.transform.Find("Panel").GetComponent<RectTransform>().localScale = transform.Find("Panel").GetComponent<RectTransform>().localScale;
+                    insp.transform.Find("Panel").GetComponent<RectTransform>().localScale = 
+                        transform.Find("Panel").GetComponent<RectTransform>().localScale;
                     insp.GetComponent<RectTransform>().sizeDelta = GetComponent<RectTransform>().sizeDelta;
                     insp.transform.position = transform.TransformPoint(width, 0f, 0f);
                     insp.transform.forward = transform.forward;

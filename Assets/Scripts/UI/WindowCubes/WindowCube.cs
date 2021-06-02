@@ -22,12 +22,14 @@ public class WindowCube : CodeCube
 
     public void OnActivate()
     {
-        if (!opened) Open(); 
+        if (!opened) Open();
         else Close();
     }
 
     void Open()
     {
+        transform.rotation = Quaternion.Euler(Vector3.zero);
+
         MoveLocallyTo(face2, new Vector3(0f, 1f, -.5f));
         MoveLocallyTo(face3, new Vector3(0f, -1f, -.5f));
         MoveLocallyTo(face4, new Vector3(-1f, 0f, -.5f));
@@ -45,6 +47,8 @@ public class WindowCube : CodeCube
 
     void Close()
     {
+        transform.rotation = Quaternion.Euler(Vector3.zero);
+
         MoveLocallyTo(face2, new Vector3(0f, .5f, 0f));
         MoveLocallyTo(face3, new Vector3(0f, -.5f, 0f));
         MoveLocallyTo(face4, new Vector3(-.5f, 0f, 0f));
