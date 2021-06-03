@@ -24,8 +24,9 @@ public class VRIDEController : MonoBehaviour
         if (Input.anyKeyDown && Regex.Match(Input.inputString, @"[a-zA-Z0-9]").Success && !InteractionLogger.isUsingPhysicalKeyboard) 
             InteractionLogger.RegisterPhysicalKeyboard();
 
-        bool menuButton = GetComponent<VRIDEInputHandler>().RightSecondaryButtonDown ||
-                          GetComponent<VRIDEInputHandler>().LeftSecondaryButtonDown;
+        bool menuButton = (GetComponent<VRIDEInputHandler>().RightSecondaryButtonDown ||
+                          GetComponent<VRIDEInputHandler>().LeftSecondaryButtonDown) && 
+                          !(GetComponent<VRIDEInputHandler>().RightGrip || GetComponent<VRIDEInputHandler>().LeftGrip);
 
         bool rightTrigger = GetComponent<VRIDEInputHandler>().RightTrigger;
         bool leftTrigger = GetComponent<VRIDEInputHandler>().LeftTrigger;

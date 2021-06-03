@@ -18,7 +18,7 @@ public class AFrameLine : MonoBehaviour
     {
         while (gameObject)
         {
-            if (startObject != null && endObject != null)
+            if (startObject != null && endObject != null && transform.parent != null)
             {
                 start = transform.parent.InverseTransformPoint(
                     startObject.transform.position);
@@ -43,6 +43,7 @@ public class AFrameLine : MonoBehaviour
                 scale.z = lineDir.magnitude;
                 transform.localScale = scale;
             }
+            yield return null;
         }
     }
 }

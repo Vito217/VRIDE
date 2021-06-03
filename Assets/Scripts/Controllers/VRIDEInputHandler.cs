@@ -93,6 +93,18 @@ public class VRIDEInputHandler : MonoBehaviour
     bool RightAxisRightReleaseFlag;
     bool RightAxisRightHoldFlag;
 
+    public bool LeftGrip;
+    private bool LeftGripReleaseFlag;
+    private bool LeftGripDownFlag;
+    public bool LeftGripDown;
+    public bool LeftGripRelease;
+
+    public bool RightGrip;
+    private bool RightGripReleaseFlag;
+    public bool RightGripDown;
+    private bool RightGripDownFlag;
+    public bool RightGripRelease;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -202,6 +214,19 @@ public class VRIDEInputHandler : MonoBehaviour
                         ref LeftAxisRightHoldFlag,
                         ref LeftAxisRightReleaseFlag,
                         ref LeftAxisRightRelease);
+
+                // LEFT GRIP 
+                device.IsPressed(InputHelpers.Button.GripPressed, out LeftGrip);
+                if (LeftGrip)
+                    UpdateFlag(
+                        ref LeftGripReleaseFlag,
+                        ref LeftGripDownFlag,
+                        ref LeftGripDown);
+                else
+                    UpdateFlag(
+                        ref LeftGripDownFlag,
+                        ref LeftGripReleaseFlag,
+                        ref LeftGripRelease);
             }
 
             else if (device.characteristics.HasFlag(InputDeviceCharacteristics.Right))
@@ -296,6 +321,19 @@ public class VRIDEInputHandler : MonoBehaviour
                         ref RightAxisRightHoldFlag,
                         ref RightAxisRightReleaseFlag,
                         ref RightAxisRightRelease);
+
+                // RIGHT GRIP 
+                device.IsPressed(InputHelpers.Button.GripPressed, out RightGrip);
+                if (RightGrip)
+                    UpdateFlag(
+                        ref RightGripReleaseFlag,
+                        ref RightGripDownFlag,
+                        ref RightGripDown);
+                else
+                    UpdateFlag(
+                        ref RightGripDownFlag,
+                        ref RightGripReleaseFlag,
+                        ref RightGripRelease);
             }
         }
     }

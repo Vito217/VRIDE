@@ -10,6 +10,8 @@ public class CodeCube : MonoBehaviour
 
     private Transform baseParent;
     protected bool isDragged = false;
+
+    protected VRIDEInputHandler playerInputs;
   
     void Start()
     {
@@ -98,11 +100,13 @@ public class CodeCube : MonoBehaviour
         isDragged = true;
         baseParent = transform.parent;
         transform.SetParent(eventArgs.interactor.transform);
+        playerInputs = transform.parent.root.GetComponent<VRIDEInputHandler>();
     }
 
     public void OnSelectExit()
     {
         isDragged = false;
         transform.SetParent(baseParent);
+        playerInputs = null;
     }
 }

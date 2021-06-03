@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class PharoClassCodeCube : PharoCodeCube
@@ -39,6 +40,7 @@ public class PharoClassCodeCube : PharoCodeCube
     public PharoPackageCodeCube packageCodeCubePrefab;
     public CodeCubeText codeCubeTextPrefab;
     public AFrameLine aFrameLinePrefab;
+    public GameObject codeCubeMenuPrefab;
 
     public List<Transform> childLists;
 
@@ -51,7 +53,15 @@ public class PharoClassCodeCube : PharoCodeCube
         {
             if (!opened)
             {
-                Open();
+                Transform menu = transform.Find("CodeCubeMenu(Clone)");
+                if (menu)
+                    Destroy(menu.gameObject);
+                else
+                {
+                    Instantiate(codeCubeMenuPrefab, transform);
+                    transform.Find("CodeCubeMenu(Clone)/Button").GetComponent<Button>().onClick.AddListener(OnInspect);
+                    transform.Find("CodeCubeMenu(Clone)/Button (1)").GetComponent<Button>().onClick.AddListener(OnDependences);
+                }
             }
             else
             {
@@ -75,7 +85,7 @@ public class PharoClassCodeCube : PharoCodeCube
         parentClassName = Regex.Match(code, @"([a-zA-Z0-9]+)\s+subclass:").Groups[1].Value;
     }
 
-    void GenerateCubes()
+    void GenerateInspectionCubes()
     {
         int index = 0;
         foreach(string instanceVar in instanceVars)
@@ -140,7 +150,10 @@ public class PharoClassCodeCube : PharoCodeCube
                 AddLine(method.gameObject, Color.yellow);
             } 
         }
+    }
 
+    void GenerateDependencesCubes()
+    {
         if (!string.IsNullOrWhiteSpace(packageName))
         {
             PharoPackageCodeCube pack = Instantiate(packageCodeCubePrefab, childLists[4]);
@@ -160,7 +173,7 @@ public class PharoClassCodeCube : PharoCodeCube
         }
     }
 
-    void MoveChildren()
+    void MoveInspectChildren()
     {
         // INSTANCE VARS
         for (int i = 0; i < childLists[0].childCount; i++)
@@ -168,7 +181,7 @@ public class PharoClassCodeCube : PharoCodeCube
             CodeCube child = childLists[0].GetChild(i).GetComponent<CodeCube>();
             child.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
             MoveLocallyTo(child.transform, new Vector3(2 * (i + 1), 0f, 0f));
-            child.ScaleTo(child.transform.localScale / transform.localScale.x);
+            child.ScaleTo(Vector3.one);
         }
 
         // CLASS VARS
@@ -177,7 +190,7 @@ public class PharoClassCodeCube : PharoCodeCube
             CodeCube child = childLists[1].GetChild(i).GetComponent<CodeCube>();
             child.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
             MoveLocallyTo(child.transform, new Vector3(0f, 2 * (i + 1), 0f));
-            child.ScaleTo(child.transform.localScale / transform.localScale.x);
+            child.ScaleTo(Vector3.one);
         }
 
         // INSTANCE METHODS
@@ -185,8 +198,8 @@ public class PharoClassCodeCube : PharoCodeCube
         {
             CodeCube child = childLists[2].GetChild(i).GetComponent<CodeCube>();
             child.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
-            MoveLocallyTo(child.transform, new Vector3(0f, 0f, 2 * (i + 1)));
-            child.ScaleTo(child.transform.localScale / transform.localScale.x);
+            MoveLocallyTo(child.transform, new Vector3(0f, -2 * (i + 1), 0f));
+            child.ScaleTo(Vector3.one);
         }
 
         // CLASS METHODS
@@ -195,78 +208,31 @@ public class PharoClassCodeCube : PharoCodeCube
             CodeCube child = childLists[3].GetChild(i).GetComponent<CodeCube>();
             child.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
             MoveLocallyTo(child.transform, new Vector3(-2 * (i + 1), 0f, 0f));
-            child.ScaleTo(child.transform.localScale / transform.localScale.x);
-        }
-
-        // PACKAGE
-        for (int i = 0; i < childLists[4].childCount; i++)
-        {
-            CodeCube child = childLists[4].GetChild(i).GetComponent<CodeCube>();
-            child.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
-            MoveLocallyTo(child.transform, new Vector3(0f, -2 * (i + 1), 0f));
-            child.ScaleTo(child.transform.localScale / transform.localScale.x);
-        }
-
-        // SUPERCLASS
-        for (int i = 0; i < childLists[5].childCount; i++)
-        {
-            CodeCube child = childLists[5].GetChild(i).GetComponent<CodeCube>();
-            child.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
-            MoveLocallyTo(child.transform, new Vector3(0f, 0f, -2 * (i + 1)));
-            child.ScaleTo(child.transform.localScale / transform.localScale.x);
+            child.ScaleTo(Vector3.one);
         }
     }
 
-    void GetChildrenBack()
+    void MoveDependencesChildren()
     {
-        // INSTANCE VARS
-        for (int i = 0; i < childLists[0].childCount; i++)
-        {
-            CodeCube child = childLists[0].GetChild(i).GetComponent<CodeCube>();
-            child.ScaleTo(child.transform.localScale * transform.localScale.x);
-            MoveLocallyTo(child.transform, new Vector3(0f, 0f, 0f));
-        }
-
-        // CLASS VARS
-        for (int i = 0; i < childLists[1].childCount; i++)
-        {
-            CodeCube child = childLists[1].GetChild(i).GetComponent<CodeCube>();
-            child.ScaleTo(child.transform.localScale * transform.localScale.x);
-            MoveLocallyTo(child.transform, new Vector3(0f, 0f, 0f));
-        }
-
-        // INSTANCE METHODS
-        for (int i = 0; i < childLists[2].childCount; i++)
-        {
-            CodeCube child = childLists[2].GetChild(i).GetComponent<CodeCube>();
-            child.ScaleTo(child.transform.localScale * transform.localScale.x);
-            MoveLocallyTo(child.transform, new Vector3(0f, 0f, 0f));
-        }
-
-        // CLASS METHODS
-        for (int i = 0; i < childLists[3].childCount; i++)
-        {
-            CodeCube child = childLists[3].GetChild(i).GetComponent<CodeCube>();
-            child.ScaleTo(child.transform.localScale * transform.localScale.x);
-            MoveLocallyTo(child.transform, new Vector3(0f, 0f, 0f));
-        }
-
         // PACKAGE
         for (int i = 0; i < childLists[4].childCount; i++)
         {
             CodeCube child = childLists[4].GetChild(i).GetComponent<CodeCube>();
-            child.ScaleTo(child.transform.localScale * transform.localScale.x);
-            MoveLocallyTo(child.transform, new Vector3(0f, 0f, 0f));
+            child.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+            MoveLocallyTo(child.transform, new Vector3(0f, 2 * (i + 1), 0f));
+            child.ScaleTo(Vector3.one);
         }
 
         // SUPERCLASS
         for (int i = 0; i < childLists[5].childCount; i++)
         {
             CodeCube child = childLists[5].GetChild(i).GetComponent<CodeCube>();
-            child.ScaleTo(child.transform.localScale * transform.localScale.x);
-            MoveLocallyTo(child.transform, new Vector3(0f, 0f, 0f));
+            child.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+            MoveLocallyTo(child.transform, new Vector3(-2 * (i + 1), 0f, 0f));
+            child.ScaleTo(Vector3.one);
         }
     }
+
     void CleanCubes()
     {
         foreach(Transform child in transform)
@@ -278,18 +244,26 @@ public class PharoClassCodeCube : PharoCodeCube
         }
     }
 
-    async void Open()
+    async void Inspect()
     {
         loading = true;
-
         StartCoroutine(LoadingAnimation());
         await RetrieveInformation();
-
-        GenerateCubes();
+        GenerateInspectionCubes();
         RotateLocally(360);
+        MoveInspectChildren();
+        loading = false;
+        opened = true;
+    }
 
-        MoveChildren();
-
+    async void Dependences()
+    {
+        loading = true;
+        StartCoroutine(LoadingAnimation());
+        await RetrieveInformation();
+        GenerateDependencesCubes();
+        RotateLocally(360);
+        MoveDependencesChildren();
         loading = false;
         opened = true;
     }
@@ -298,7 +272,6 @@ public class PharoClassCodeCube : PharoCodeCube
     {
         opened = false;
         RotateLocally(-360);
-
         CleanCubes();
     }
 
@@ -324,6 +297,9 @@ public class PharoClassCodeCube : PharoCodeCube
     {
         if (!isDragged)
         {
+            Transform previousText = transform.Find("CodeCubeText(Clone)");
+            if (previousText) Destroy(previousText.gameObject);
+
             CodeCubeText text = Instantiate(codeCubeTextPrefab, transform);
             text.GetComponent<TextMeshPro>().text = "class: " + className;
 
@@ -336,5 +312,17 @@ public class PharoClassCodeCube : PharoCodeCube
     {
         Transform text = transform.Find("CodeCubeText(Clone)");
         if (text) Destroy(text.gameObject);
+    }
+
+    public void OnInspect()
+    {
+        Inspect();
+        Destroy(transform.Find("CodeCubeMenu(Clone)").gameObject);
+    }
+
+    public void OnDependences()
+    {
+        Dependences();
+        Destroy(transform.Find("CodeCubeMenu(Clone)").gameObject);
     }
 }

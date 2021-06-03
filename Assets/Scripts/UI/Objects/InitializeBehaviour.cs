@@ -123,7 +123,7 @@ public class InitializeBehaviour : MonoBehaviour
         Vector3 forw = Camera.main.transform.forward;
         Vector3 newFinalPos = new Vector3(
             pos.x + forw.x * .8f,
-            .9f * pos.y,
+            pos.y,
             pos.z + forw.z * .8f);
         Vector3 newForw = new Vector3(forw.x, 0, forw.z);
 

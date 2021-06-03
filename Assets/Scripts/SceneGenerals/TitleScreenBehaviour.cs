@@ -19,15 +19,15 @@ public class TitleScreenBehaviour : MonoBehaviour
         if (initializing)
             Init();
         slider.value += (limit - slider.value) * 0.01f;
+
+        var position = transform.position;
+        position.y = Camera.main.transform.position.y;
+        transform.position = position;
     }
 
     async void Init()
     {
         initializing = false;
-
-        var position = transform.position;
-        position.y = Camera.main.transform.position.y;
-        transform.position = position;
 
         InteractionLogger.SessionStart();
 

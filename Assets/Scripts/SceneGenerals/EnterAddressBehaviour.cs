@@ -9,15 +9,17 @@ using System.Collections;
 public class EnterAddressBehaviour : InitializeBehaviour
 {
     public TMP_InputField username;
-    public GameObject aboutSection, mainSection;
+    public GameObject aboutSection, mainSection, controlsSection;
     public Keyboards vk1;
 
     public override IEnumerator innerStart()
     {
+        yield return null;
         Initialize();
-        aboutSection.transform.position = transform.TransformPoint(GetComponent<RectTransform>().sizeDelta.x, 0f, 0f);
+        aboutSection.transform.position = transform.TransformPoint(GetComponent<RectTransform>().sizeDelta.x, 0f, -200f);
+        controlsSection.transform.position = transform.TransformPoint(-GetComponent<RectTransform>().sizeDelta.x, 0f, -200f);
         vk1.transform.position = transform.TransformPoint(0f, -300f, -200f);
-        return base.innerStart();
+        yield return base.innerStart();
     }
 
     public void OnButtonClick()
