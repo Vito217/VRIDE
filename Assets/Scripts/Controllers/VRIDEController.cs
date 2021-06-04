@@ -14,7 +14,7 @@ public class VRIDEController : MonoBehaviour
 
     Vector3 currentPosition = Vector3.zero;
 
-    void Awake()
+    void Start()
     {
         GetComponent<XRRig>().cameraYOffset = 1.5f;
     }

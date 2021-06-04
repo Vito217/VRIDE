@@ -59,8 +59,10 @@ public class PharoClassCodeCube : PharoCodeCube
                 else
                 {
                     Instantiate(codeCubeMenuPrefab, transform);
-                    transform.Find("CodeCubeMenu(Clone)/Button").GetComponent<Button>().onClick.AddListener(OnInspect);
-                    transform.Find("CodeCubeMenu(Clone)/Button (1)").GetComponent<Button>().onClick.AddListener(OnDependences);
+                    transform.Find("CodeCubeMenu(Clone)/Panel/Button").GetComponent<Button>().onClick.AddListener(OnInspect);
+                    transform.Find("CodeCubeMenu(Clone)/Panel/Button (1)").GetComponent<Button>().onClick.AddListener(OnDependences);
+                    transform.Find("CodeCubeMenu(Clone)/Panel (2)/Button (1)").GetComponent<Button>().onClick.AddListener(OnBrowse);
+                    transform.Find("CodeCubeMenu(Clone)/Panel (1)/Button (1)").GetComponent<Button>().onClick.AddListener(OnDestroyCube);
                 }
             }
             else
@@ -324,5 +326,29 @@ public class PharoClassCodeCube : PharoCodeCube
     {
         Dependences();
         Destroy(transform.Find("CodeCubeMenu(Clone)").gameObject);
+    }
+
+    public void OnBrowse()
+    {
+        BrowserWindowCube wc = Instantiator.Instance.BrowserWindowCube();
+        wc.transform.position = transform.position;
+        wc.transform.forward = transform.forward;
+
+        BrowserPackage p = Instantiator.Instance.PackageObject(packageName, wc);
+        BrowserClass c = Instantiator.Instance.ClassObject(className, wc);
+
+        p.GetComponent<TextMeshProUGUI>().color = Color.white;
+        c.GetComponent<TextMeshProUGUI>().color = Color.white;
+
+        foreach (Transform child in wc.transform)
+            LayoutRebuilder.ForceRebuildLayoutImmediate(child.GetComponent<RectTransform>());
+
+        //p.click();
+        c.click();
+    }
+
+    public void OnDestroyCube()
+    {
+        Destroy(gameObject);
     }
 }

@@ -240,6 +240,7 @@ public class Browser : InitializeBehaviour
         PharoClassCodeCube classCodeCube = Instantiate(pharoClassCodeCubePrefab);
         classCodeCube.transform.position = transform.position;
         classCodeCube.className = class_list.last_selected.name;
+        classCodeCube.packageName = package_list.last_selected.name;
 
         float width = GetComponent<RectTransform>().sizeDelta.x *
                     transform.Find("Panel").GetComponent<RectTransform>().localScale.x;
