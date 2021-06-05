@@ -121,12 +121,16 @@ BaseServer:
 
 # Author of the BaseServer patch: Luke Kenneth Casson Leighton
 
+# XXX Warning!
+# There is a test suite for this module, but it cannot be run by the
+# standard regression test.
+# To run it manually, run Lib/test/test_socketserver.py.
+
 __version__ = "0.4"
 
 
 import socket
 import select
-import sys
 import os
 import errno
 try:
@@ -134,10 +138,10 @@ try:
 except ImportError:
     import dummy_threading as threading
 
-__all__ = ["TCPServer","UDPServer","ForkingUDPServer","ForkingTCPServer",
-           "ThreadingUDPServer","ThreadingTCPServer","BaseRequestHandler",
-           "StreamRequestHandler","DatagramRequestHandler",
-           "ThreadingMixIn", "ForkingMixIn"]
+__all__ = ["BaseServer", "TCPServer", "UDPServer", "ForkingUDPServer",
+           "ForkingTCPServer", "ThreadingUDPServer", "ThreadingTCPServer",
+           "BaseRequestHandler", "StreamRequestHandler",
+           "DatagramRequestHandler", "ThreadingMixIn", "ForkingMixIn"]
 if hasattr(socket, "AF_UNIX"):
     __all__.extend(["UnixStreamServer","UnixDatagramServer",
                     "ThreadingUnixStreamServer",
@@ -148,8 +152,8 @@ def _eintr_retry(func, *args):
     while True:
         try:
             return func(*args)
-        except (OSError, select.error) as e:
-            if e.args[0] != errno.EINTR:
+        except OSError as e:
+            if e.errno != errno.EINTR:
                 raise
 
 class BaseServer:
@@ -175,6 +179,7 @@ class BaseServer:
     - process_request(request, client_address)
     - shutdown_request(request)
     - close_request(request)
+    - service_actions()
     - handle_error()
 
     Methods for derived classes:
@@ -229,11 +234,10 @@ class BaseServer:
                 # shutdown request and wastes cpu at all other times.
                 r, w, e = _eintr_retry(select.select, [self], [], [],
                                        poll_interval)
-                # bpo-35017: shutdown() called during select(), exit immediately.
-                if self.__shutdown_request:
-                    break
                 if self in r:
                     self._handle_request_noblock()
+
+                self.service_actions()
         finally:
             self.__shutdown_request = False
             self.__is_shut_down.set()
@@ -247,6 +251,14 @@ class BaseServer:
         """
         self.__shutdown_request = True
         self.__is_shut_down.wait()
+
+    def service_actions(self):
+        """Called by the serve_forever() loop.
+
+        May be overridden by a subclass / Mixin to implement any code that
+        needs to be run during the loop.
+        """
+        pass
 
     # The distinction between handling, getting, processing and
     # finishing a request is fairly arbitrary.  Remember:
@@ -286,7 +298,7 @@ class BaseServer:
         """
         try:
             request, client_address = self.get_request()
-        except socket.error:
+        except OSError:
             return
         if self.verify_request(request, client_address):
             try:
@@ -294,8 +306,6 @@ class BaseServer:
             except:
                 self.handle_error(request, client_address)
                 self.shutdown_request(request)
-        else:
-            self.shutdown_request(request)
 
     def handle_timeout(self):
         """Called if no new request arrives within self.timeout.
@@ -347,12 +357,12 @@ class BaseServer:
         The default is to print a traceback and continue.
 
         """
-        print '-'*40
-        print 'Exception happened during processing of request from',
-        print client_address
+        print('-'*40)
+        print('Exception happened during processing of request from', end=' ')
+        print(client_address)
         import traceback
         traceback.print_exc() # XXX But this goes to stderr!
-        print '-'*40
+        print('-'*40)
 
 
 class TCPServer(BaseServer):
@@ -472,7 +482,7 @@ class TCPServer(BaseServer):
             #explicitly shutdown.  socket.close() merely releases
             #the socket and waits for GC to perform the actual close.
             request.shutdown(socket.SHUT_WR)
-        except socket.error:
+        except OSError:
             pass #some platforms may raise ENOTCONN here
         self.close_request(request)
 
@@ -530,12 +540,13 @@ class ForkingMixIn:
             try:
                 pid, _ = os.waitpid(-1, 0)
                 self.active_children.discard(pid)
-            except OSError as e:
-                if e.errno == errno.ECHILD:
-                    # we don't have any children, we're done
-                    self.active_children.clear()
-                elif e.errno != errno.EINTR:
-                    break
+            except InterruptedError:
+                pass
+            except ChildProcessError:
+                # we don't have any children, we're done
+                self.active_children.clear()
+            except OSError:
+                break
 
         # Now reap all defunct children.
         for pid in self.active_children.copy():
@@ -544,10 +555,11 @@ class ForkingMixIn:
                 # if the child hasn't exited yet, pid will be 0 and ignored by
                 # discard() below
                 self.active_children.discard(pid)
-            except OSError as e:
-                if e.errno == errno.ECHILD:
-                    # someone else reaped it
-                    self.active_children.discard(pid)
+            except ChildProcessError:
+                # someone else reaped it
+                self.active_children.discard(pid)
+            except OSError:
+                pass
 
     def handle_timeout(self):
         """Wait for zombies after self.timeout seconds of inactivity.
@@ -556,16 +568,22 @@ class ForkingMixIn:
         """
         self.collect_children()
 
+    def service_actions(self):
+        """Collect the zombie child processes regularly in the ForkingMixIn.
+
+        service_actions is called in the BaseServer's serve_forver loop.
+        """
+        self.collect_children()
+
     def process_request(self, request, client_address):
         """Fork a new subprocess to process the request."""
-        self.collect_children()
         pid = os.fork()
         if pid:
             # Parent process
             if self.active_children is None:
                 self.active_children = set()
             self.active_children.add(pid)
-            self.close_request(request) #close handle in parent process
+            self.close_request(request)
             return
         else:
             # Child process.
@@ -642,7 +660,7 @@ class BaseRequestHandler:
     client address as self.client_address, and the server (in case it
     needs access to per-server information) as self.server.  Since a
     separate instance is created for each request, the handle() method
-    can define other arbitrary instance variables.
+    can define arbitrary other instance variariables.
 
     """
 
@@ -710,7 +728,7 @@ class StreamRequestHandler(BaseRequestHandler):
             try:
                 self.wfile.flush()
             except socket.error:
-                # A final socket error may have occurred here, such as
+                # An final socket error may have occurred here, such as
                 # the local error ECONNABORTED.
                 pass
         self.wfile.close()
@@ -719,16 +737,16 @@ class StreamRequestHandler(BaseRequestHandler):
 
 class DatagramRequestHandler(BaseRequestHandler):
 
+    # XXX Regrettably, I cannot get this working on Linux;
+    # s.recvfrom() doesn't return a meaningful client address.
+
     """Define self.rfile and self.wfile for datagram sockets."""
 
     def setup(self):
-        try:
-            from cStringIO import StringIO
-        except ImportError:
-            from StringIO import StringIO
+        from io import BytesIO
         self.packet, self.socket = self.request
-        self.rfile = StringIO(self.packet)
-        self.wfile = StringIO()
+        self.rfile = BytesIO(self.packet)
+        self.wfile = BytesIO()
 
     def finish(self):
         self.socket.sendto(self.wfile.getvalue(), self.client_address)

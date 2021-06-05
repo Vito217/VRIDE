@@ -2,7 +2,7 @@
 
 def _():
     import sys
-    if sys.platform == 'cli':
+    if sys.implementation.name == 'ironpython':
         import clr
         try:
             clr.AddReference('IronPython.Wpf')

@@ -55,6 +55,8 @@ all_feature_names = [
     "with_statement",
     "print_function",
     "unicode_literals",
+    "barry_as_FLUFL",
+    "generator_stop",
 ]
 
 __all__ = ["all_feature_names"] + all_feature_names
@@ -70,6 +72,8 @@ CO_FUTURE_ABSOLUTE_IMPORT = 0x4000 # perform absolute imports by default
 CO_FUTURE_WITH_STATEMENT  = 0x8000   # with statement
 CO_FUTURE_PRINT_FUNCTION  = 0x10000   # print function
 CO_FUTURE_UNICODE_LITERALS = 0x20000 # unicode string literals
+CO_FUTURE_BARRY_AS_BDFL = 0x40000
+CO_FUTURE_GENERATOR_STOP  = 0x80000 # StopIteration becomes RuntimeError in generators
 
 class _Feature:
     def __init__(self, optionalRelease, mandatoryRelease, compiler_flag):
@@ -126,3 +130,11 @@ print_function = _Feature((2, 6, 0, "alpha", 2),
 unicode_literals = _Feature((2, 6, 0, "alpha", 2),
                             (3, 0, 0, "alpha", 0),
                             CO_FUTURE_UNICODE_LITERALS)
+
+barry_as_FLUFL = _Feature((3, 1, 0, "alpha", 2),
+                         (3, 9, 0, "alpha", 0),
+                         CO_FUTURE_BARRY_AS_BDFL)
+
+generator_stop = _Feature((3, 5, 0, "beta", 1),
+                         (3, 7, 0, "alpha", 0),
+                         CO_FUTURE_GENERATOR_STOP)
