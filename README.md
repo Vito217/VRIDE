@@ -1,10 +1,10 @@
-# Virtual Reality Interactive Development Environment (VRIDE)
+# Virtual Reality Interactive Development Environment ([VR]IDE)
 A VR IDE made in Unity that supports Pharo and Python programming language.
 
 <i><b>Note:</b> This is still an early WIP, so there could be lot of features missing</i>
 
-<h1><a href="https://github.com/Vito217/VRIDE/releases/tag/v0.29.0">Download VRIDE v0.29.0</a></h1>
-<h1><a href="https://github.com/Vito217/VRIDEStreamer/releases/tag/v1.1.0">Download VRIDE Streamer App v1.1.0</a></h1>
+<h1><a href="https://github.com/Vito217/VRIDE/releases/tag/v0.30.0">Download [VR]IDE v0.29.0</a></h1>
+<h1><a href="https://github.com/Vito217/VRIDEStreamer/releases/tag/v1.1.0">Download [VR]IDE Streamer App v1.1.0</a></h1>
 
 ![alt text](https://github.com/Vito217/VRIDE/blob/master/Screenshots/2020-10-28.png)
 ![alt text](https://github.com/Vito217/VRIDE/blob/master/Screenshots/forest.png)
@@ -18,7 +18,7 @@ A VR IDE made in Unity that supports Pharo and Python programming language.
 
 [![Alt text for your video](https://img.youtube.com/vi/rulEHAiN-3M/0.jpg)](http://www.youtube.com/watch?v=rulEHAiN-3M)
 
-## What is VRIDE?
+## What is [VR]IDE?
 
 VRIDE is an attempt to make an entire IDE inside a VR game. The main goal of this project is having a big and personalized space, where the programmer can not only develop software in languages like Pharo and Python, but also see and interact with 3D representations of the IDE and Objects in real time.
 
@@ -272,6 +272,6 @@ Finally, put on your VR headset, and try some stuff!
 
 ## Download
 
-<a href="https://github.com/Vito217/VRIDE/releases/tag/v0.29.0">Download VRIDE v0.29.0</a>
+<a href="https://github.com/Vito217/VRIDE/releases/tag/v0.30.0">Download [VR]IDE v0.30.0</a>
 <br>
-<a href="https://github.com/Vito217/VRIDEStreamer/releases/tag/v1.1.0">Download VRIDE Streamer App v1.1.0</a>
+<a href="https://github.com/Vito217/VRIDEStreamer/releases/tag/v1.1.0">Download [VR]IDE Streamer App v1.1.0</a>
