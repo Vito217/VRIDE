@@ -20,12 +20,7 @@ public class Keyboards : MonoBehaviour
         transform.forward = new Vector3(transform.forward.x, 0f, transform.forward.z);
 
         GameObject lastSelected = EventSystem.current.currentSelectedGameObject;
-        if (lastSelected != null)
-        {
-            TMP_InputField lastTextField = lastSelected.GetComponent<TMP_InputField>();
-            if (lastTextField != null)
-                lastSelectedTextField = lastTextField;
-        }
+        if (lastSelected != null) lastSelectedTextField = lastSelected.GetComponent<TMP_InputField>();
     }
 
     public void GrabKeyboard(BaseEventData data)

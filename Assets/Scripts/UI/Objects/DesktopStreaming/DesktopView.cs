@@ -12,6 +12,8 @@ public class DesktopView : InitializeBehaviour
     private bool keepRequesting = true;
     private Vector2 coords = Vector2.zero;
 
+    public static string lastSelectedkey;
+
     public override IEnumerator innerStart()
     {
         StartCoroutine(RequestForImage());
@@ -24,6 +26,8 @@ public class DesktopView : InitializeBehaviour
         Vector2 hitLocalPosition = img.transform.InverseTransformPoint(hitWorldPosition);
         Vector2 delta = GetComponent<RectTransform>().sizeDelta / 2;
         coords = Vector2Int.RoundToInt(new Vector2(hitLocalPosition.x + delta.x, delta.y - hitLocalPosition.y));
+
+        lastSelectedkey = key;
 
         StartCoroutine(RequestForClick());
     }

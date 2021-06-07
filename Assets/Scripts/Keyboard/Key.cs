@@ -7,6 +7,9 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using LoggingModule;
 using TMPro;
+using UnityEngine.Networking;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 public class Key : MonoBehaviour
 {
@@ -25,7 +28,6 @@ public class Key : MonoBehaviour
 	public Color InitialKeycapColor;
 
 	protected Transform initialPosition;
-	//private KeycodeAdder keycodeAdder;
 	private Text keyCapText;
 	private Vector3 initialLocalPosition;
 	private Quaternion initialLocalRotation;
@@ -39,6 +41,35 @@ public class Key : MonoBehaviour
 	private KeySoundController keySoundController;
 	private float currentDistance = -1;
 	private bool isSpecialKey;
+
+	public static Dictionary<string, KeyCode> keycodes = new Dictionary<string, KeyCode>() {
+		{ "q", KeyCode.Q },
+		{ "w", KeyCode.W },
+		{ "e", KeyCode.E },
+		{ "r", KeyCode.R },
+		{ "t", KeyCode.T },
+		{ "y", KeyCode.Y },
+		{ "u", KeyCode.U },
+		{ "i", KeyCode.I },
+		{ "o", KeyCode.O },
+		{ "p", KeyCode.P },
+		{ "a", KeyCode.A },
+		{ "s", KeyCode.S },
+		{ "d", KeyCode.D },
+		{ "f", KeyCode.F },
+		{ "g", KeyCode.G },
+		{ "h", KeyCode.H },
+		{ "j", KeyCode.J },
+		{ "k", KeyCode.K },
+		{ "l", KeyCode.L },
+		{ "z", KeyCode.Z },
+		{ "x", KeyCode.X },
+		{ "c", KeyCode.C },
+		{ "v", KeyCode.V },
+		{ "b", KeyCode.B },
+		{ "n", KeyCode.N },
+		{ "m", KeyCode.M },
+	};
 
 	void Start()
 	{
@@ -294,7 +325,13 @@ public class Key : MonoBehaviour
 				}
 			}
 		}
-        catch { }
+        catch 
+		{
+#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+			// Try doing a request to Streamer App
+			StartCoroutine(ExternalInput());
+#endif
+		}
 	}
 
 	private void DeleteSelection(ref int lcp, ref int lap, TMP_InputField target)
@@ -324,4 +361,20 @@ public class Key : MonoBehaviour
 		yield return null;
 		target.onFocusSelectAll = false;
 	}
+
+#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+	IEnumerator ExternalInput()
+	{
+        if (keycodes.ContainsKey(keyCapText.text))
+        {
+			string keycode = keycodes[keyCapText.text].ToString();
+			string hwnd = DesktopView.lastSelectedkey;
+
+			using (UnityWebRequest uwr = UnityWebRequest.Post(DesktopWindowsExplorer.streamerIP + "keypress/", hwnd + "." + keycode))
+			{
+				yield return uwr.SendWebRequest();
+			}
+		}
+	}
+#endif
 }
