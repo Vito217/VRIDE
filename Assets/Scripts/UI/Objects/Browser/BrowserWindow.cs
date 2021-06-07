@@ -5,6 +5,8 @@ using UnityEngine;
 public abstract class BrowserWindow : MonoBehaviour
 {
     public Browser theBrowser;
+
+    [HideInInspector]
     public BrowserObject last_selected = null;
 
     bool step1 = false;

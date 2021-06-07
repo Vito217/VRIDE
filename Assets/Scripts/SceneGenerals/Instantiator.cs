@@ -9,6 +9,7 @@ public class Instantiator : MonoBehaviour
     public BrowserClass browserClassPrefab;
     public BrowserMethod browserMethodPrefab;
     public BrowserPackage browserPackagePrefab;
+    public BrowserSender browserSenderPrefab;
     public RoassalClass roassalClassPrefab;
     public RoassalMethod roassalMethodPrefab;
     public RoassalExamples roassalExamplesPrefab;
@@ -351,5 +352,14 @@ public class Instantiator : MonoBehaviour
     public PlaygroundWindowCube PlaygroundWindowCube()
     {
         return Instantiate(playgroundWindowCubePrefab);
+    }
+
+    public BrowserSender SenderObject(string senderName, Browser browser)
+    {
+        BrowserSender newSender = Instantiate(
+            browserSenderPrefab, browser.senderList.transform, false);
+        newSender.name = senderName;
+        newSender.theBrowser = browser;
+        return newSender;
     }
 }

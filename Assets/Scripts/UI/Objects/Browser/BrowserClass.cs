@@ -22,6 +22,12 @@ public class BrowserClass : BrowserObject
                 theBrowser.methodList.Load();
                 theBrowser.classRemover.interactable = true;
                 theBrowser.codeCubeLoader.interactable = true;
+
+                if(theBrowser.senderList != null)
+                {
+                    theBrowser.senderList.gameObject.SetActive(true);
+                    theBrowser.senderList.Load();
+                }
             }
             catch (Exception e)
             {
