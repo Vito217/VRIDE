@@ -43,6 +43,10 @@ public class AFrameLine : MonoBehaviour
                 scale.z = lineDir.magnitude;
                 transform.localScale = scale;
             }
+            else
+            {
+                Destroy(gameObject);
+            }
             yield return null;
         }
     }

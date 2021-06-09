@@ -17,6 +17,7 @@ public class Browser : InitializeBehaviour
     public SenderWindow senderList;
     public Toggle classSideToggle, instanceSideToggle;
     public PharoClassCodeCube pharoClassCodeCubePrefab;
+    public CodeCubeText codeCubeTextPrefab;
     public TMP_InputField packageFilter;
     public TMP_InputField classFilter;
     public TMP_InputField methodFilter;

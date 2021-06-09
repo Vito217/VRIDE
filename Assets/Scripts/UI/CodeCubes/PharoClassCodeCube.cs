@@ -46,6 +46,7 @@ public class PharoClassCodeCube : PharoCodeCube
 
     private bool opened = false;
     private bool loading = false;
+    private WindowCube browser;
 
     public void OnActivate()
     {
@@ -286,13 +287,15 @@ public class PharoClassCodeCube : PharoCodeCube
         }
     }
 
-    void AddLine(GameObject ob, Color c)
+    public AFrameLine AddLine(GameObject ob, Color c)
     {
         AFrameLine line = Instantiate(aFrameLinePrefab, transform.Find("Connecting Lines"));
         line.startObject = gameObject;
         line.endObject = ob;
 
         line.GetComponent<Renderer>().material.color = c;
+
+        return line;
     }
 
     public void OnHoverEnter(HoverEnterEventArgs args)
@@ -331,20 +334,22 @@ public class PharoClassCodeCube : PharoCodeCube
     public void OnBrowse()
     {
         BrowserWindowCube wc = Instantiator.Instance.BrowserWindowCube();
-        wc.transform.position = transform.position;
+        wc.transform.position = transform.position + transform.TransformPoint(1f, 0f, 0f);
         wc.transform.forward = transform.forward;
 
         BrowserPackage p = Instantiator.Instance.PackageObject(packageName, wc);
         BrowserClass c = Instantiator.Instance.ClassObject(className, wc);
+        c.click();
 
         p.GetComponent<TextMeshProUGUI>().color = Color.white;
-        c.GetComponent<TextMeshProUGUI>().color = Color.white;
+        c.GetComponent<TextMeshProUGUI>().color = Color.cyan;
 
         foreach (Transform child in wc.transform)
             LayoutRebuilder.ForceRebuildLayoutImmediate(child.GetComponent<RectTransform>());
 
-        //p.click();
-        c.click();
+        AFrameLine l = AddLine(wc.gameObject, Color.cyan);
+        CodeCubeText t = Instantiate(codeCubeTextPrefab, l.transform);
+        t.GetComponent<TextMeshPro>().text = "WindowCube";
     }
 
     public void OnDestroyCube()
