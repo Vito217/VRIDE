@@ -33,6 +33,7 @@ public class Instantiator : MonoBehaviour
     public Keyboards virtualKeyBoard2Prefab;
     public BrowserWindowCube browserWindowCubePrefab;
     public PlaygroundWindowCube playgroundWindowCubePrefab;
+    public ClassWindowCube classWindowCubePrefab;
 
     public GameObject defaultGround;
     public GameObject spaceShip;
@@ -361,5 +362,10 @@ public class Instantiator : MonoBehaviour
         newSender.name = senderName;
         newSender.theBrowser = browser;
         return newSender;
+    }
+
+    public ClassWindowCube ClassWindowCube()
+    {
+        return Instantiate(classWindowCubePrefab);
     }
 }

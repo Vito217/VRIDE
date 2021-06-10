@@ -23,6 +23,7 @@
         theBrowser.classFilter.interactable = true;
         theBrowser.methodFilter.interactable = false;
         theBrowser.codeCubeLoader.interactable = false;
+        theBrowser.codeCubeLoader2.interactable = false;
         theBrowser.class_list.Load();
         theBrowser.packageRemover.interactable = true;
         base.onSelect();

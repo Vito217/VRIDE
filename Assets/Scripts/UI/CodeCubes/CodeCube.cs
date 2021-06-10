@@ -49,9 +49,14 @@ public class CodeCube : MonoBehaviour
         StartCoroutine(RotateLocallyBy(degrees));
     }
 
-    public void MoveLocallyTo(Transform t, Vector3 target)
+    public void MoveTo(Transform t, Vector3 target, bool shouldDestroy)
     {
-        StartCoroutine(MoveLocallyToTarget(t, target));
+        StartCoroutine(MoveToTarget(t, target, shouldDestroy));
+    }
+
+    public void MoveLocallyTo(Transform t, Vector3 target, bool shouldDestroy)
+    {
+        StartCoroutine(MoveLocallyToTarget(t, target, shouldDestroy));
     }
 
     public void ScaleTo(Vector3 target)
@@ -59,7 +64,21 @@ public class CodeCube : MonoBehaviour
         StartCoroutine(ScaleBy(target));
     }
 
-    private IEnumerator MoveLocallyToTarget(Transform t, Vector3 target)
+    protected IEnumerator MoveToTarget(Transform t, Vector3 target, bool shouldDestroy)
+    {
+        while (t.position != target)
+        {
+            t.position = Vector3.MoveTowards(
+                t.position, target, Time.deltaTime * movementSpeed
+            );
+
+            yield return null;
+        }
+
+        if (shouldDestroy) Destroy(t.gameObject);
+    }
+
+    protected IEnumerator MoveLocallyToTarget(Transform t, Vector3 target, bool shouldDestroy)
     {
         while (t.localPosition != target)
         {
@@ -69,6 +88,8 @@ public class CodeCube : MonoBehaviour
 
             yield return null;
         }
+
+        if (shouldDestroy) Destroy(t.gameObject);
     }
 
     protected IEnumerator RotateLocallyBy(float degrees)

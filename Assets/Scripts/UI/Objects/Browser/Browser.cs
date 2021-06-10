@@ -17,6 +17,7 @@ public class Browser : InitializeBehaviour
     public SenderWindow senderList;
     public Toggle classSideToggle, instanceSideToggle;
     public PharoClassCodeCube pharoClassCodeCubePrefab;
+    public ClassWindowCube pharoClassWindowCubePrefab;
     public CodeCubeText codeCubeTextPrefab;
     public TMP_InputField packageFilter;
     public TMP_InputField classFilter;
@@ -25,6 +26,7 @@ public class Browser : InitializeBehaviour
     public Button classRemover;
     public Button packageRemover;
     public Button codeCubeLoader;
+    public Button codeCubeLoader2;
     
     [HideInInspector]
     public Color white, skyBlue, gray;
@@ -240,7 +242,6 @@ public class Browser : InitializeBehaviour
     public void LoadCodeCube()
     {
         PharoClassCodeCube classCodeCube = Instantiate(pharoClassCodeCubePrefab);
-        classCodeCube.transform.position = transform.position;
         classCodeCube.className = class_list.last_selected.name;
         classCodeCube.packageName = package_list.last_selected.name;
 
@@ -249,6 +250,30 @@ public class Browser : InitializeBehaviour
 
         classCodeCube.transform.position = transform.TransformPoint(width, 0f, 0f);
         classCodeCube.transform.forward = transform.forward;
+    }
+
+    public void LoadClassWindowCube()
+    {
+        HandleClassWindowCube();
+    }
+
+    private async void HandleClassWindowCube()
+    {
+        DeactivateTemporarily();
+        ClassWindowCube classCodeCube = Instantiate(pharoClassWindowCubePrefab);
+        classCodeCube.className = class_list.last_selected.name;
+        classCodeCube.sourceCode.text = field.text;
+
+
+        // TODO: Add senders, parent class, subclasses, etc.
+
+
+        float width = GetComponent<RectTransform>().sizeDelta.x *
+                    transform.Find("Panel").GetComponent<RectTransform>().localScale.x;
+
+        classCodeCube.transform.position = transform.TransformPoint(width, 0f, 0f);
+        classCodeCube.transform.forward = transform.forward;
+        Reactivate();
     }
 
     void LateUpdate()

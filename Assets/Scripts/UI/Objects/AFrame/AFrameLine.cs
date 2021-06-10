@@ -16,7 +16,7 @@ public class AFrameLine : MonoBehaviour
 
     IEnumerator UpdateLine()
     {
-        while (gameObject)
+        while (true)
         {
             if (startObject != null && endObject != null && transform.parent != null)
             {
@@ -45,9 +45,10 @@ public class AFrameLine : MonoBehaviour
             }
             else
             {
-                Destroy(gameObject);
+                break;
             }
             yield return null;
         }
+        Destroy(gameObject);
     }
 }
