@@ -254,19 +254,11 @@ public class Browser : InitializeBehaviour
 
     public void LoadClassWindowCube()
     {
-        HandleClassWindowCube();
-    }
-
-    private async void HandleClassWindowCube()
-    {
         DeactivateTemporarily();
         ClassWindowCube classCodeCube = Instantiate(pharoClassWindowCubePrefab);
         classCodeCube.className = class_list.last_selected.name;
         classCodeCube.sourceCode.text = field.text;
-
-
-        // TODO: Add senders, parent class, subclasses, etc.
-
+        classCodeCube.UpdateData();
 
         float width = GetComponent<RectTransform>().sizeDelta.x *
                     transform.Find("Panel").GetComponent<RectTransform>().localScale.x;

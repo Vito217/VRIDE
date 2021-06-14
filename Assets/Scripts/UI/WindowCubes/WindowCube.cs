@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit;
 
 public class WindowCube : CodeCube
 {
@@ -20,13 +17,13 @@ public class WindowCube : CodeCube
             c.worldCamera = Camera.main;
     }
 
-    public void OnActivate()
+    public virtual void OnActivate()
     {
         if (!opened) Open();
         else Close();
     }
 
-    void Open()
+    protected void Open()
     {
         transform.rotation = Quaternion.Euler(Vector3.zero);
 
@@ -45,7 +42,7 @@ public class WindowCube : CodeCube
         opened = true;
     }
 
-    void Close()
+    protected void Close()
     {
         transform.rotation = Quaternion.Euler(Vector3.zero);
 

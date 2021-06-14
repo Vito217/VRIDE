@@ -347,9 +347,7 @@ public class PharoClassCodeCube : PharoCodeCube
         foreach (Transform child in wc.transform)
             LayoutRebuilder.ForceRebuildLayoutImmediate(child.GetComponent<RectTransform>());
 
-        //AFrameLine l = AddLine(wc.gameObject, Color.cyan);
-        //CodeCubeText t = Instantiate(codeCubeTextPrefab, l.transform);
-        //t.GetComponent<TextMeshPro>().text = "WindowCube";
+        Destroy(transform.Find("CodeCubeMenu(Clone)").gameObject);
     }
 
     public void OnDestroyCube()
