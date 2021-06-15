@@ -23,16 +23,10 @@ public class AFrameLine : MonoBehaviour
                 start = transform.parent.InverseTransformPoint(
                     startObject.transform.position);
 
-                yield return null;
-
                 end = transform.parent.InverseTransformPoint(
                     endObject.transform.position);
 
-                yield return null;
-
                 transform.LookAt(transform.parent.TransformPoint(end));
-
-                yield return null;
 
                 Vector3 lineDir = end - start;
                 Vector3 center = (start + end) * 0.5f;
