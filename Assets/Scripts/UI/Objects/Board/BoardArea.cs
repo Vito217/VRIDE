@@ -11,6 +11,8 @@ public class BoardArea : MonoBehaviour
                         collider.name.Contains("AFrame") ||
                         collider.name.Contains("Graph") ||
                         collider.name.Contains("FileExplorer") ||
+                        collider.name.Contains("CodeCube") ||
+                        collider.name.Contains("WindowCube") ||
                         collider.name.Contains(".py");
 
         if (isWindow && collider.transform.parent == null)

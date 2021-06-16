@@ -43,6 +43,7 @@ public class PharoPackageCodeCube : PharoCodeCube
     async Task RetrieveInformation()
     {
         string res = await Pharo.Execute("(RPackageOrganizer packageOrganizer packageNamed: '" + packageName + "') classes asString .");
+        Debug.Log(res);
         classes = Regex.Replace(res, @"(a Set\()|\)|'|#|\n", "").Split(' ');
     }
 
@@ -66,16 +67,6 @@ public class PharoPackageCodeCube : PharoCodeCube
             child.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
             MoveLocallyTo(child.transform, new Vector3(2 * (i + 1), 0f, 0f), false);
             child.ScaleTo(child.transform.localScale / transform.localScale.x);
-        }
-    }
-
-    void GetChildrenBack()
-    {
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            CodeCube child = transform.GetChild(i).GetComponent<CodeCube>();
-            child.ScaleTo(child.transform.localScale * transform.localScale.x);
-            MoveLocallyTo(child.transform, new Vector3(0f, 0f, 0f), false);
         }
     }
 

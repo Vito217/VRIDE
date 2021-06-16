@@ -24,17 +24,19 @@ public class VRIDEController : MonoBehaviour
         if (Input.anyKeyDown && Regex.Match(Input.inputString, @"[a-zA-Z0-9]").Success && !InteractionLogger.isUsingPhysicalKeyboard) 
             InteractionLogger.RegisterPhysicalKeyboard();
 
-        bool menuButton = (GetComponent<VRIDEInputHandler>().RightSecondaryButtonDown ||
-                          GetComponent<VRIDEInputHandler>().LeftSecondaryButtonDown) && 
-                          !(GetComponent<VRIDEInputHandler>().RightGrip || GetComponent<VRIDEInputHandler>().LeftGrip);
+        VRIDEInputHandler inputHandler = GetComponent<VRIDEInputHandler>();
 
-        bool rightTrigger = GetComponent<VRIDEInputHandler>().RightTrigger;
-        bool leftTrigger = GetComponent<VRIDEInputHandler>().LeftTrigger;
+        bool menuButton = (inputHandler.RightSecondaryButtonDown ||
+                           inputHandler.LeftSecondaryButtonDown) && 
+                          !(inputHandler.RightGrip || inputHandler.LeftGrip);
 
-        bool rightForwardAxis = GetComponent<VRIDEInputHandler>().RightAxisUp;
-        bool leftForwardAxis = GetComponent<VRIDEInputHandler>().LeftAxisUp;
-        bool rightBackAxis = GetComponent<VRIDEInputHandler>().RightAxisDown;
-        bool leftBackAxis = GetComponent<VRIDEInputHandler>().LeftAxisDown;
+        bool rightTrigger = inputHandler.RightTrigger;
+        bool leftTrigger = inputHandler.LeftTrigger;
+
+        bool rightForwardAxis = inputHandler.RightAxisUp;
+        bool leftForwardAxis = inputHandler.LeftAxisUp;
+        bool rightBackAxis = inputHandler.RightAxisDown;
+        bool leftBackAxis = inputHandler.LeftAxisDown;
 
         // KeyBoard
         bool cmd = Input.GetKey(KeyCode.LeftCommand) ||
