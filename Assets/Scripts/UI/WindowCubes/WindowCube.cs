@@ -39,6 +39,8 @@ public class WindowCube : CodeCube
         face5.localRotation = Quaternion.Euler(Vector3.zero);
         face6.localRotation = Quaternion.Euler(Vector3.zero);
 
+        transform.forward = Camera.main.transform.forward;
+
         opened = true;
     }
 
@@ -57,6 +59,8 @@ public class WindowCube : CodeCube
         face4.localRotation = Quaternion.Euler(0f, 90f, 0f);
         face5.localRotation = Quaternion.Euler(0f, -90f, 0f);
         face6.localRotation = Quaternion.Euler(0f, 180f, 0f);
+
+        transform.forward = Camera.main.transform.forward;
 
         opened = false;
     }

@@ -338,7 +338,7 @@ public class Browser : InitializeBehaviour
             try
             {
                 TMP_WordInfo wordInfo = textInfo.wordInfo[i];
-                if (Regex.Match(field.text, @"subclass:[\s]+#").Success)
+                if (Regex.Match(field.text, @"(subclass|variableByteSubclass):[\s]+#").Success)
                 {
                     if (i == 0)
                         PaintWord(textInfo, wordInfo, Color.cyan);

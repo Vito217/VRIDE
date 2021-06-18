@@ -85,7 +85,7 @@ public class PharoClassCodeCube : PharoCodeCube
         packageName = Regex.Match(code, @"package:\s+'+\s*([a-zA-Z0-9-]+)\s*'+").Groups[1].Value;
         instanceVars = Regex.Match(code, @"instanceVariableNames:\s+'+([a-zA-Z0-9\s]+)'+").Groups[1].Value.Split(' ');
         classVars = Regex.Match(code, @"classVariableNames:\s+'+([a-zA-Z0-9\s]+)'+").Groups[1].Value.Split(' ');
-        parentClassName = Regex.Match(code, @"([a-zA-Z0-9]+)\s+subclass:").Groups[1].Value;
+        parentClassName = Regex.Match(code, @"([a-zA-Z0-9]+)\s+(subclass:|variableByteSubclass:)").Groups[1].Value;
     }
 
     void GenerateInspectionCubes()
@@ -250,10 +250,10 @@ public class PharoClassCodeCube : PharoCodeCube
     async void Inspect()
     {
         loading = true;
-        StartCoroutine(LoadingAnimation());
+        //StartCoroutine(LoadingAnimation());
         await RetrieveInformation();
         GenerateInspectionCubes();
-        RotateLocally(360);
+        //RotateLocally(360);
         MoveInspectChildren();
         loading = false;
         opened = true;
@@ -262,10 +262,10 @@ public class PharoClassCodeCube : PharoCodeCube
     async void Dependences()
     {
         loading = true;
-        StartCoroutine(LoadingAnimation());
+        //StartCoroutine(LoadingAnimation());
         await RetrieveInformation();
         GenerateDependencesCubes();
-        RotateLocally(360);
+        //RotateLocally(360);
         MoveDependencesChildren();
         loading = false;
         opened = true;
@@ -353,5 +353,10 @@ public class PharoClassCodeCube : PharoCodeCube
     public void OnDestroyCube()
     {
         Destroy(gameObject);
+    }
+
+    public void LockInteraction()
+    {
+        loading = true;
     }
 }

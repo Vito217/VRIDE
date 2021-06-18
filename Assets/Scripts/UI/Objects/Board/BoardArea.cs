@@ -19,8 +19,12 @@ public class BoardArea : MonoBehaviour
         {
             collider.transform.forward = transform.forward;
             collider.transform.SetParent(transform);
-            collider.GetComponent<Canvas>().enabled = false;
-            collider.GetComponent<Canvas>().enabled = true;
+
+            if (collider.GetComponent<Canvas>())
+            {
+                collider.GetComponent<Canvas>().enabled = false;
+                collider.GetComponent<Canvas>().enabled = true;
+            }
         }
     }
 }

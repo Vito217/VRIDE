@@ -127,7 +127,7 @@ public class CodeCube : MonoBehaviour
     public void OnSelectExit()
     {
         isDragged = false;
-        transform.SetParent(baseParent);
+        transform.SetParent(null);
         playerInputs = null;
     }
 }
