@@ -12,16 +12,12 @@ public class PharoScatterPlot : MonoBehaviour
 
     void Start()
     {
-        GenerateCubes();
+        //GenerateCubes();
     }
 
     void Update()
     {
-        if (attatch != null)
-        {
-            transform.position = attatch.TransformPoint(new Vector3(1f, 1f, 0f));
-            transform.forward = attatch.forward;
-        }
+
     }
 
     public void Attatch(Transform ob)
@@ -29,7 +25,7 @@ public class PharoScatterPlot : MonoBehaviour
         attatch = ob;
     }
 
-    async void GenerateCubes()
+    public async void GenerateCubes(string currentClass)
     {
         float maxX = float.MinValue;
         float maxY = float.MinValue;
@@ -40,16 +36,19 @@ public class PharoScatterPlot : MonoBehaviour
 
         foreach (string className in classes)
         {
-            string numberOfMethods = await Pharo.Execute(className + " numberOfMethods .");
-            string numberOfLinesOfCode = await Pharo.Execute(className + " numberOfLinesOfCode .");
+            if (className != "Object" && className != "nil" && !className.Contains("#"))
+            {
+                string numberOfMethods = await Pharo.Execute(className + " numberOfMethods .");
+                string numberOfLinesOfCode = await Pharo.Execute(className + " numberOfLinesOfCode .");
 
-            float x = float.Parse(numberOfMethods);
-            float y = float.Parse(numberOfLinesOfCode);
+                float x = float.Parse(numberOfMethods);
+                float y = float.Parse(numberOfLinesOfCode);
 
-            maxX = Mathf.Max(maxX, x); minX = Mathf.Min(minX, x);
-            maxY = Mathf.Max(maxY, y); minY = Mathf.Min(minY, y);
+                maxX = Mathf.Max(maxX, x); minX = Mathf.Min(minX, x);
+                maxY = Mathf.Max(maxY, y); minY = Mathf.Min(minY, y);
 
-            data.Add((x, y, className));
+                data.Add((x, y, className));
+            }
         }
 
         foreach ((float x, float y, string className) in data)
@@ -60,6 +59,9 @@ public class PharoScatterPlot : MonoBehaviour
             PharoClassCodeCube cube = Instantiate(classCodeCubePrefab, transform);
             cube.transform.localPosition = new Vector3(newX, newY, 0.5f);
             cube.className = className;
+
+            if (currentClass == className)
+                cube.GetComponent<Renderer>().material.color = Color.red;
 
             cube.LockInteraction();
         }

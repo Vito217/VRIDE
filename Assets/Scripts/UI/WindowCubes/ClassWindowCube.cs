@@ -113,6 +113,7 @@ public class ClassWindowCube : WindowCube
                 {
                     parentClass = CreateNewCube(parentName, new Vector3(0f, 1.1f, 0f));
                     parentClass.subClassesObjects = new List<ClassWindowCube>() { this };
+                    AddLine(parentClass.gameObject, Color.black);
                 }
                 else
                 {
@@ -328,7 +329,7 @@ public class ClassWindowCube : WindowCube
         MoveTo(cube.transform, globalTargetPosition, false);
 
         // Connecto boht parent and child with a line
-        AddLine(cube.gameObject, Color.blue);
+        //AddLine(cube.gameObject, Color.blue);
 
         return cube;
     }
@@ -337,9 +338,10 @@ public class ClassWindowCube : WindowCube
     {
         if (plot == null)
         {
-            plot = Instantiate(scatterPlotPrefab);
-            Transform parent = transform.Find("Cube");
-            plot.Attatch(parent);
+            plot = Instantiate(scatterPlotPrefab, transform.Find("Cube (5)/FaceChildren"));
+            plot.transform.localScale = new Vector3(.8f, .8f, 800f);
+            plot.transform.localPosition = new Vector3(-.4f, -.4f, -450f);
+            plot.GenerateCubes(className);
         }
         else
         {
