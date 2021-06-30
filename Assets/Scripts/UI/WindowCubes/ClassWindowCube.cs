@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using System;
 using System.Threading.Tasks;
 using System.Collections;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class ClassWindowCube : WindowCube
 {
@@ -320,6 +321,7 @@ public class ClassWindowCube : WindowCube
     private ClassWindowCube CreateNewCube(string cname, Vector3 localTargetPosition)
     {
         ClassWindowCube cube = Instantiator.Instance.ClassWindowCube();
+        //cube.transform.localScale = transform.localScale;
         cube.transform.position = transform.position;
         cube.transform.forward = transform.forward;
         cube.className = cname;
@@ -327,9 +329,6 @@ public class ClassWindowCube : WindowCube
         // Move Animation
         Vector3 globalTargetPosition = transform.TransformPoint(localTargetPosition);
         MoveTo(cube.transform, globalTargetPosition, false);
-
-        // Connecto boht parent and child with a line
-        //AddLine(cube.gameObject, Color.blue);
 
         return cube;
     }
@@ -477,5 +476,23 @@ public class ClassWindowCube : WindowCube
     {
         if (PharoScatterPlot.classes.Contains(className))
             PharoScatterPlot.classes.Remove(className);
+    }
+
+    public override void OnSelectEnter(SelectEnterEventArgs eventArgs)
+    {
+        base.OnSelectEnter(eventArgs);
+
+        foreach (Canvas c in GetComponentsInChildren<Canvas>())
+            if (!c.GetComponent<CodeCubeMenu>() && !c.GetComponent<CodeCubeText>())
+                c.enabled = false;
+    }
+
+    public override void OnSelectExit()
+    {
+        base.OnSelectExit();
+
+        foreach (Canvas c in GetComponentsInChildren<Canvas>())
+            if (!c.GetComponent<CodeCubeMenu>() && !c.GetComponent<CodeCubeText>())
+                c.enabled = true;
     }
 }

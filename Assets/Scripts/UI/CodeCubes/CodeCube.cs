@@ -124,7 +124,7 @@ public class CodeCube : MonoBehaviour
         playerInputs = transform.parent.root.GetComponent<VRIDEInputHandler>();
     }
 
-    public void OnSelectExit()
+    public virtual void OnSelectExit()
     {
         isDragged = false;
         transform.SetParent(null);

@@ -6,6 +6,9 @@ public class OffsetGrab : XRGrabInteractable
     private Vector3 interactorPosition = Vector3.zero;
     private Quaternion interactorRotation = Quaternion.identity;
 
+# pragma warning disable CS0672
+# pragma warning disable CS0618
+
     protected override void OnSelectEntered(XRBaseInteractor interactor)
     {
         base.OnSelectEntered(interactor);
