@@ -73,19 +73,6 @@ public class AFrameImporter : MonoBehaviour
         aFrameCanvas.transform.Find("Panel/Toolbar").localScale =
             new Vector3(finalToolbarScale, finalToolbarScale, finalToolbarScale);
 
-        /**
-        float scaledWidth = finalWidth * finalScale;
-        float scaledHeight = finalHeight * finalScale;
-
-        Vector3 aFramePos = transform.TransformPoint(
-            new Vector3(
-                -.5f * (GetComponent<RectTransform>().sizeDelta.x + scaledWidth),
-                transform.position.y < .5f * scaledHeight ?
-                    .5f * scaledHeight - transform.position.y :
-                    0f,
-                0f));
-        **/
-
         // Positioning
         aFrameCanvas.AddComponent<BoxCollider>();
         aFrameCanvas.GetComponent<InitializeBehaviour>().Initialize();
