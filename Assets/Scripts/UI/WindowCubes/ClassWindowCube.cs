@@ -67,13 +67,20 @@ public class ClassWindowCube : WindowCube
             PharoScatterPlot.classes.Add(className);
     }
 
-    IEnumerator GenerateSubClasses()
+    async void GenerateSubClasses()
     {
         if (!loading)
         {
             try
             {
                 ActivateLoadingWheels();
+
+                await Task.Run(() => { });
+
+                //string subclasses = await Pharo.Execute(className + " subclasses .");
+                //children = Regex.Replace(subclasses, @"an Array\(|\)|{|}|\.|#\(", "").Split(' ');
+                //childClassesList.text = "Subclasses:\n\n" + string.Join("\n", children);
+
                 if (subClassesObjects.Count == 0)
                 {
                     for (int i = 0; i < children.Length; i++)
@@ -81,7 +88,7 @@ public class ClassWindowCube : WindowCube
                         ClassWindowCube childClass = CreateNewCube(children[i], new Vector3(i * 1.1f, -1.1f, 0f));
                         AddLine(childClass.gameObject, Color.blue);
                         subClassesObjects.Add(childClass);
-                        yield return null;
+                        //yield return null;
                     }
                 }
                 else
@@ -89,7 +96,7 @@ public class ClassWindowCube : WindowCube
                     foreach (ClassWindowCube cube in subClassesObjects) 
                     {
                         Destroy(cube.gameObject);
-                        yield return null;        
+                        //yield return null;        
                     }
                     subClassesObjects = new List<ClassWindowCube>();
                 }
@@ -99,7 +106,7 @@ public class ClassWindowCube : WindowCube
                 Destroy(transform.Find("CodeCubeMenu2(Clone)").gameObject);
                 DeactivateLoadingWheels();
             }
-            yield return null;
+            //yield return null;
         }
     }
 
@@ -130,13 +137,19 @@ public class ClassWindowCube : WindowCube
         }
     }
 
-    IEnumerator GenerateIncomingClasses()
+    async void GenerateIncomingClasses()
     {
         if (!loading)
         {
             try
             {
                 ActivateLoadingWheels();
+
+                await Task.Run(() => { });
+
+                //string incoming = await Pharo.Execute("SystemNavigation default allReferencesTo: " + className + " binding .");
+                //incomingClasses = Regex.Replace(incoming, @"an OrderedCollection\(|\)|\n", "").Split(' ');
+                //incomeSendersList.text = "Incoming:\n\n" + string.Join("\n", incomingClasses);
 
                 if (incomeClassesObjects.Count == 0)
                 {
@@ -146,7 +159,7 @@ public class ClassWindowCube : WindowCube
                         ClassWindowCube incomingClass = CreateNewCube(incomingClassName, new Vector3(-(1f + i * 1.1f), 0f, 0f));
                         AddLine(incomingClass.gameObject, Color.red);
                         incomeClassesObjects.Add(incomingClass);
-                        yield return null;
+                        //yield return null;
                     }
                 }
                 else
@@ -154,7 +167,7 @@ public class ClassWindowCube : WindowCube
                     foreach (ClassWindowCube ob in incomeClassesObjects) 
                     {
                         Destroy(ob.gameObject);
-                        yield return null;
+                        //yield return null;
                     }
                     incomeClassesObjects = new List<ClassWindowCube>();
                 }
@@ -164,17 +177,23 @@ public class ClassWindowCube : WindowCube
                 Destroy(transform.Find("CodeCubeMenu2(Clone)").gameObject);
                 DeactivateLoadingWheels();
             }
-            yield return null;
+            //yield return null;
         }
     }
 
-    IEnumerator GenerateOutgoingClasses()
+    async void GenerateOutgoingClasses()
     {
         if (!loading)
         {
             try
             {
                 ActivateLoadingWheels();
+
+                await Task.Run(() => { });
+
+                //string outgoing = await Pharo.Execute(className + " dependentClasses .");
+                //outgoingClasses = Regex.Replace(outgoing, @"an Array\(|\)|{|}|\.", "").Split(' ');
+                //outgoingSendersList.text = "Outgoing:\n\n" + string.Join("\n", outgoingClasses);
 
                 if (outgoingClassesObjects.Count == 0)
                 {
@@ -183,7 +202,7 @@ public class ClassWindowCube : WindowCube
                         ClassWindowCube outgoingClass = CreateNewCube(outgoingClasses[i], new Vector3((1f + i * 1.1f), 0f, 0f));
                         AddLine(outgoingClass.gameObject, Color.magenta);
                         outgoingClassesObjects.Add(outgoingClass);
-                        yield return null;
+                        //yield return null;
                     }
                 }
                 else
@@ -191,7 +210,7 @@ public class ClassWindowCube : WindowCube
                     foreach (ClassWindowCube ob in outgoingClassesObjects) 
                     {
                         Destroy(ob.gameObject);
-                        yield return null;
+                        //yield return null;
                     }
                     outgoingClassesObjects = new List<ClassWindowCube>();
                 }
@@ -201,17 +220,27 @@ public class ClassWindowCube : WindowCube
                 Destroy(transform.Find("CodeCubeMenu2(Clone)").gameObject);
                 DeactivateLoadingWheels();
             }
-            yield return null;
+            //yield return null;
         }
     }
 
-    IEnumerator GenerateInspectElements()
+    async void GenerateInspectElements()
     {
         if (!loading)
         {
             try
             {
                 ActivateLoadingWheels();
+
+                await Task.Run(() => { });
+
+                //string im = await Pharo.Execute(className + " methodDict keys asString .");
+                //string cm = await Pharo.Execute("(" + className + " class) methodDict keys asString .");
+                //instanceMethods = Regex.Replace(im, @"'|\(|\)|#|\n", "").Split(' ');
+                //classMethods = Regex.Replace(cm, @"'|\(|\)|#|\n", "").Split(' ');
+                //instanceVars = Regex.Match(sourceCode.text, @"instanceVariableNames:\s+'+([a-zA-Z0-9\s]+)'+").Groups[1].Value.Split(' ');
+                //classVars = Regex.Match(sourceCode.text, @"classVariableNames:\s+'+([a-zA-Z0-9\s]+)'+").Groups[1].Value.Split(' ');
+
                 if (inspectObjects.Count == 0)
                 {
                     for (int i = 0; i < instanceVars.Length; i++)
@@ -227,7 +256,7 @@ public class ClassWindowCube : WindowCube
                             AddLine(var.gameObject, Color.green);
                             MoveTo(var.transform, transform.position + (new Vector3(i * .1f, 0f, -.2f)), false);
                             inspectObjects.Add(var);
-                            yield return null;
+                            //yield return null;
                         }
                     }
 
@@ -244,7 +273,7 @@ public class ClassWindowCube : WindowCube
                             AddLine(var.gameObject, Color.green);
                             MoveTo(var.transform, transform.position + (new Vector3(i * .1f, .1f, -.2f)), false);
                             inspectObjects.Add(var);
-                            yield return null;
+                            //yield return null;
                         }
                     }
 
@@ -258,19 +287,10 @@ public class ClassWindowCube : WindowCube
                             m.methodName = instanceMethods[i];
                             m.isInstance = true;
 
-                            /**
-                            string methodCode = m.isInstance ?
-                                "((" + className + " class)>>#" + m.methodName + ") sourceCode ." :
-                                "(" + className + ">>#" + m.methodName + ") sourceCode .";
-
-                            int linesOfCode = methodCode.Split('\n').Length;
-                            m.transform.localScale = m.transform.localScale + new Vector3(linesOfCode, linesOfCode, linesOfCode) * .01f;
-                            **/
-
                             AddLine(m.gameObject, Color.green);
                             MoveTo(m.transform, transform.position + (new Vector3(i * .1f, .2f, -.2f)), false);
                             inspectObjects.Add(m);
-                            yield return null;
+                            //yield return null;
                         }
                     }
 
@@ -284,19 +304,10 @@ public class ClassWindowCube : WindowCube
                             m.methodName = classMethods[i];
                             m.isInstance = false;
 
-                            /**
-                            string methodCode = m.isInstance ?
-                                "((" + className + " class)>>#" + m.methodName + ") sourceCode ." :
-                                "(" + className + ">>#" + m.methodName + ") sourceCode .";
-
-                            int linesOfCode = methodCode.Split('\n').Length;
-                            m.transform.localScale = m.transform.localScale + new Vector3(linesOfCode, linesOfCode, linesOfCode) * .01f;
-                            **/
-
                             AddLine(m.gameObject, Color.green);
                             MoveTo(m.transform, transform.position + (new Vector3(i * .1f, .3f, -.2f)), false);
                             inspectObjects.Add(m);
-                            yield return null;
+                            //yield return null;
                         }
                     }
                 }
@@ -305,7 +316,7 @@ public class ClassWindowCube : WindowCube
                     foreach (PharoCodeCube ob in inspectObjects) 
                     {
                         Destroy(ob.gameObject);
-                        yield return null;
+                        //yield return null;
                     }
                     inspectObjects = new List<PharoCodeCube>();
                 }
@@ -321,7 +332,6 @@ public class ClassWindowCube : WindowCube
     private ClassWindowCube CreateNewCube(string cname, Vector3 localTargetPosition)
     {
         ClassWindowCube cube = Instantiator.Instance.ClassWindowCube();
-        //cube.transform.localScale = transform.localScale;
         cube.transform.position = transform.position;
         cube.transform.forward = transform.forward;
         cube.className = cname;
@@ -397,9 +407,6 @@ public class ClassWindowCube : WindowCube
         incomeSendersList.text = "Incoming:\n\n" + string.Join("\n", incomingClasses);
         outgoingSendersList.text = "Outgoing:\n\n" + string.Join("\n", outgoingClasses);
 
-        //int classSize = instanceMethods.Length + classMethods.Length + instanceVars.Length + classVars.Length;
-        //transform.localScale = transform.localScale + (new Vector3(classSize, classSize, classSize)) * .001f;
-
         DeactivateLoadingWheels();
     }
 
@@ -429,17 +436,17 @@ public class ClassWindowCube : WindowCube
 
     public void OnIncome()
     {
-        StartCoroutine(GenerateIncomingClasses());
+        GenerateIncomingClasses();
     }
 
     public void OnInspect()
     {
-        StartCoroutine(GenerateInspectElements());
+        GenerateInspectElements();
     }
 
     public void OnOutgoing()
     {
-        StartCoroutine(GenerateOutgoingClasses());
+        GenerateOutgoingClasses();
     }
 
     public void OnParent()
@@ -449,7 +456,7 @@ public class ClassWindowCube : WindowCube
 
     public void OnChildren()
     {
-        StartCoroutine(GenerateSubClasses());
+        GenerateSubClasses();
     }
 
     public void OnOpen()
@@ -484,7 +491,10 @@ public class ClassWindowCube : WindowCube
 
         foreach (Canvas c in GetComponentsInChildren<Canvas>())
             if (!c.GetComponent<CodeCubeMenu>() && !c.GetComponent<CodeCubeText>())
+            {
                 c.enabled = false;
+                c.enabled = true;
+            }
     }
 
     public override void OnSelectExit()
@@ -493,6 +503,9 @@ public class ClassWindowCube : WindowCube
 
         foreach (Canvas c in GetComponentsInChildren<Canvas>())
             if (!c.GetComponent<CodeCubeMenu>() && !c.GetComponent<CodeCubeText>())
+            {
+                c.enabled = false;
                 c.enabled = true;
+            }
     }
 }
