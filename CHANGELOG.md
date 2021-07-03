@@ -1,5 +1,14 @@
 # VRIDE's Channel Log
 
+## V0.31.0 (03/07/2021)
+* Added new type of code cube. Now it contains the source code, incomnig classes and outgoing classes.
+
+## V0.30.0 (04/06/2021)
+* Introducing CodeCubes, a default visualization for Pharo classes. Classes can be visualized as cubes, which expand to other cubes representing its dependences and variables.
+* New WindowCubes: a more compact version of Playground and Browser.
+* Added a panel that teaches the controls.
+* Some minor bugs fixed.
+
 ## V0.29.0 (04/05/2021)
 * Added streaming for separate windows (Windows 10 only)
 * Added a 2D UI Keyboard, which reacts to the inputs of the physical one connected to the PC
