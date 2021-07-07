@@ -26,6 +26,7 @@ public class Instantiator : MonoBehaviour
     public TextMeshPro textPrefab;
     public FileExplorer fileExplorerPrefab;
     public PythonEditor pythonEditorPrefab;
+    public REditor rEditorPrefab;
     public DesktopView desktopViewPrefab;
     public DesktopWindowObject desktopWindowObjectPrefab;
     public DesktopWindowsExplorer desktopWindowsExplorerPrefab;
@@ -247,6 +248,11 @@ public class Instantiator : MonoBehaviour
     public PythonEditor PythonEditor()
     {
         return Instantiate(pythonEditorPrefab);
+    }
+
+    public REditor REditor()
+    {
+        return Instantiate(rEditorPrefab);
     }
 
     /// <summary>

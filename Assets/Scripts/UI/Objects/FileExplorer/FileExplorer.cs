@@ -90,6 +90,8 @@ public class FileExplorer : InitializeBehaviour
             string extension = "";
             if (fileExtension.value == 0) //Python
                 extension = ".py";
+            else if (fileExtension.value == 1) //R
+                extension = ".R";
 
             string filePath = Path.Combine(lastSelected.fullPath, filename.text + extension);
             using FileStream fs = File.Create(filePath);
@@ -123,18 +125,35 @@ public class FileExplorer : InitializeBehaviour
 
     public void EditFile()
     {
-        PythonEditor editor;
+        InitializeBehaviour editor = null;
         GameObject editorObject = GameObject.Find(Path.GetFileName(lastSelected.fullPath));
 
         if(editorObject != null)
         {
-            editor = editorObject.GetComponent<PythonEditor>();
+            if (lastSelected.fullPath.Contains(".py"))
+            {
+                editor = editorObject.GetComponent<PythonEditor>();
+                //SaveAndLoadModule.pyEditors.Add(editorObject.GetComponent<PythonEditor>());
+            }
+            else if (lastSelected.fullPath.Contains(".R"))
+            {
+                editor = editorObject.GetComponent<REditor>();
+            }
         }
         else
         {
-            editor = Instantiator.Instance.PythonEditor();
-            editor.fullpath = lastSelected.fullPath;
-            editor.pythonCode.text = File.ReadAllText(editor.fullpath);
+            if (lastSelected.fullPath.Contains(".py"))
+            {
+                editor = Instantiator.Instance.PythonEditor();
+                editor.GetComponent<PythonEditor>().fullpath = lastSelected.fullPath;
+                editor.GetComponent<PythonEditor>().pythonCode.text = File.ReadAllText(editor.GetComponent<PythonEditor>().fullpath);
+            }
+            else if (lastSelected.fullPath.Contains(".R"))
+            {
+                editor = Instantiator.Instance.REditor();
+                editor.GetComponent<REditor>().fullpath = lastSelected.fullPath;
+                editor.GetComponent<REditor>().rCode.text = File.ReadAllText(editor.GetComponent<REditor>().fullpath);
+            }
         }
 
         float width = GetComponent<RectTransform>().sizeDelta.x * transform.Find("Panel").GetComponent<RectTransform>().localScale.x;
@@ -143,7 +162,6 @@ public class FileExplorer : InitializeBehaviour
         editor.transform.position = transform.TransformPoint(width, 0f, 0f);
         editor.transform.forward = transform.forward;
 
-        SaveAndLoadModule.pyEditors.Add(editor);
     }
 
     public void RenameSelectedElement()

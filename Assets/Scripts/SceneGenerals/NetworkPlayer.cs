@@ -23,7 +23,7 @@ public class NetworkPlayer : MonoBehaviour
         leftHandRig = rig.transform.Find("Camera Offset/LeftHand Controller");
         rightHandRig = rig.transform.Find("Camera Offset/RightHand Controller");
 
-        if(photonView.IsMine)
+        if (photonView.IsMine)
             foreach (var item in GetComponentsInChildren<Renderer>())
                 item.enabled = false;
     }
@@ -39,8 +39,7 @@ public class NetworkPlayer : MonoBehaviour
     }
 
     void MapPosition(Transform target, Transform rigTransform)
-    { 
-
+    {
         target.position = rigTransform.position;
         target.rotation = rigTransform.rotation;
     }

@@ -42,35 +42,6 @@ public class Key : MonoBehaviour
 	private float currentDistance = -1;
 	private bool isSpecialKey;
 
-	public static Dictionary<string, KeyCode> keycodes = new Dictionary<string, KeyCode>() {
-		{ "q", KeyCode.Q },
-		{ "w", KeyCode.W },
-		{ "e", KeyCode.E },
-		{ "r", KeyCode.R },
-		{ "t", KeyCode.T },
-		{ "y", KeyCode.Y },
-		{ "u", KeyCode.U },
-		{ "i", KeyCode.I },
-		{ "o", KeyCode.O },
-		{ "p", KeyCode.P },
-		{ "a", KeyCode.A },
-		{ "s", KeyCode.S },
-		{ "d", KeyCode.D },
-		{ "f", KeyCode.F },
-		{ "g", KeyCode.G },
-		{ "h", KeyCode.H },
-		{ "j", KeyCode.J },
-		{ "k", KeyCode.K },
-		{ "l", KeyCode.L },
-		{ "z", KeyCode.Z },
-		{ "x", KeyCode.X },
-		{ "c", KeyCode.C },
-		{ "v", KeyCode.V },
-		{ "b", KeyCode.B },
-		{ "n", KeyCode.N },
-		{ "m", KeyCode.M },
-	};
-
 	void Start()
 	{
 		//keycodeAdder = GetComponent<KeycodeAdder> ();
@@ -365,15 +336,14 @@ public class Key : MonoBehaviour
 #if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
 	IEnumerator ExternalInput()
 	{
-        if (keycodes.ContainsKey(keyCapText.text))
-        {
-			string keycode = keycodes[keyCapText.text].ToString();
-			string hwnd = DesktopView.lastSelectedkey;
+		string keycode = keyCapText.text;
+		string hwnd = DesktopView.lastSelectedkey;
 
-			using (UnityWebRequest uwr = UnityWebRequest.Post(DesktopWindowsExplorer.streamerIP + "keypress/", hwnd + "." + keycode))
-			{
-				yield return uwr.SendWebRequest();
-			}
+		Debug.Log(hwnd + "." + keycode);
+
+		using (UnityWebRequest uwr = UnityWebRequest.Post(DesktopWindowsExplorer.streamerIP + "keypress/", hwnd + "." + keycode))
+		{
+			yield return uwr.SendWebRequest();
 		}
 	}
 #endif
