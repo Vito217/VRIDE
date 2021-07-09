@@ -92,6 +92,16 @@ public class FileExplorer : InitializeBehaviour
                 extension = ".py";
             else if (fileExtension.value == 1) //R
                 extension = ".R";
+            else if (fileExtension.value == 2) //Java
+                extension = ".java";
+            else if (fileExtension.value == 3) //c sharp
+                extension = ".cs";
+            else if (fileExtension.value == 4) //c header
+                extension = ".h";
+            else if (fileExtension.value == 5) //c
+                extension = ".c";
+            else if (fileExtension.value == 6) //c++
+                extension = ".cpp";
 
             string filePath = Path.Combine(lastSelected.fullPath, filename.text + extension);
             using FileStream fs = File.Create(filePath);
@@ -133,11 +143,14 @@ public class FileExplorer : InitializeBehaviour
             if (lastSelected.fullPath.Contains(".py"))
             {
                 editor = editorObject.GetComponent<PythonEditor>();
-                //SaveAndLoadModule.pyEditors.Add(editorObject.GetComponent<PythonEditor>());
             }
             else if (lastSelected.fullPath.Contains(".R"))
             {
                 editor = editorObject.GetComponent<REditor>();
+            }
+            else if (lastSelected.fullPath.Contains(".java"))
+            {
+                editor = editorObject.GetComponent<JavaEditor>();
             }
         }
         else
@@ -153,6 +166,12 @@ public class FileExplorer : InitializeBehaviour
                 editor = Instantiator.Instance.REditor();
                 editor.GetComponent<REditor>().fullpath = lastSelected.fullPath;
                 editor.GetComponent<REditor>().rCode.text = File.ReadAllText(editor.GetComponent<REditor>().fullpath);
+            }
+            else if (lastSelected.fullPath.Contains(".java"))
+            {
+                editor = Instantiator.Instance.JavaEditor();
+                editor.GetComponent<JavaEditor>().fullpath = lastSelected.fullPath;
+                editor.GetComponent<JavaEditor>().javaCode.text = File.ReadAllText(editor.GetComponent<JavaEditor>().fullpath);
             }
         }
 

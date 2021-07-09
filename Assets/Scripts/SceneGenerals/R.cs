@@ -8,14 +8,24 @@ public class R : MonoBehaviour
 {
     public REngine rEngine;
 
+    private void Start()
+    {
+        string dllPath = Path.Combine(Application.streamingAssetsPath, "R", "bin", "x64", "R.dll");
+        string rPath = Path.Combine(Application.streamingAssetsPath, "R", "bin", "x64");
+        string rHome = Path.Combine(Application.streamingAssetsPath, "R");
+
+        REngine.SetEnvironmentVariables(rPath, rHome);
+        rEngine = REngine.GetInstance();
+    }
+
     // Update is called once per frame
     public void Execute(string code)
     {
-        //REngine.SetEnvironmentVariables();
-        rEngine = REngine.GetInstance();
-        //var result = rEngine.Evaluate(code);
-        
-        
+        var result = rEngine.Evaluate(code);
+    }
+
+    private void OnDestroy()
+    {
         rEngine.Dispose();
     }
 }

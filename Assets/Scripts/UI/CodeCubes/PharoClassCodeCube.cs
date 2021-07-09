@@ -48,6 +48,16 @@ public class PharoClassCodeCube : PharoCodeCube
     private bool loading = false;
     private WindowCube browser;
 
+    void Awake()
+    {
+        OnAwake();
+    }
+
+    async void OnAwake()
+    {
+        await RetrieveInformation();
+    }
+
     public void OnActivate()
     {
         if (!loading)

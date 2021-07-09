@@ -339,8 +339,6 @@ public class Key : MonoBehaviour
 		string keycode = keyCapText.text;
 		string hwnd = DesktopView.lastSelectedkey;
 
-		Debug.Log(hwnd + "." + keycode);
-
 		using (UnityWebRequest uwr = UnityWebRequest.Post(DesktopWindowsExplorer.streamerIP + "keypress/", hwnd + "." + keycode))
 		{
 			yield return uwr.SendWebRequest();

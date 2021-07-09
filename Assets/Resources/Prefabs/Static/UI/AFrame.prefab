@@ -278,9 +278,9 @@ GameObject:
   - component: {fileID: 5295604083266625850}
   - component: {fileID: 4958088679135930470}
   - component: {fileID: 6638786136051839170}
-  - component: {fileID: 1314454748819678171}
   - component: {fileID: 3273179552845469314}
   - component: {fileID: 8662576062776599115}
+  - component: {fileID: 1314454748819678171}
   m_Layer: 5
   m_Name: AFrame
   m_TagString: Untagged
@@ -368,22 +368,9 @@ MonoBehaviour:
   logText: {fileID: 0}
   field: {fileID: 0}
   keyboardTarget: {fileID: 0}
-  loadingWheel: {fileID: 0}
-  keyboardsGameObject: {fileID: 0}
+  lineCounter: {fileID: 0}
   freezeRotation: 1
---- !u!114 &1314454748819678171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6867193263980873352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates: []
+  loadingWheels: []
 --- !u!114 &3273179552845469314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,6 +406,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &1314454748819678171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6867193263980873352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &7597114216920685742
 GameObject:
   m_ObjectHideFlags: 0

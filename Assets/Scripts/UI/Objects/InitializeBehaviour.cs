@@ -92,8 +92,11 @@ public class InitializeBehaviour : MonoBehaviour
         transform.position = gp;
         transform.rotation = r;
 
-        GetComponent<Canvas>().enabled = false;
-        GetComponent<Canvas>().enabled = true;
+        if (GetComponent<Canvas>())
+        {
+            GetComponent<Canvas>().enabled = false;
+            GetComponent<Canvas>().enabled = true;
+        }
 
         InteractionLogger.RegisterWindowDraggingEnd(
             transform.position.x, transform.position.y, transform.position.z,

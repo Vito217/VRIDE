@@ -26,6 +26,7 @@ public class Instantiator : MonoBehaviour
     public TextMeshPro textPrefab;
     public FileExplorer fileExplorerPrefab;
     public PythonEditor pythonEditorPrefab;
+    public JavaEditor javaEditorPrefab;
     public REditor rEditorPrefab;
     public DesktopView desktopViewPrefab;
     public DesktopWindowObject desktopWindowObjectPrefab;
@@ -35,6 +36,7 @@ public class Instantiator : MonoBehaviour
     public BrowserWindowCube browserWindowCubePrefab;
     public PlaygroundWindowCube playgroundWindowCubePrefab;
     public ClassWindowCube classWindowCubePrefab;
+    public PharoClassCodeCube pharoClassCodeCubePrefab;
 
     public GameObject defaultGround;
     public GameObject spaceShip;
@@ -245,14 +247,31 @@ public class Instantiator : MonoBehaviour
         return Instantiate(boardPrefab);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
     public PythonEditor PythonEditor()
     {
         return Instantiate(pythonEditorPrefab);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
     public REditor REditor()
     {
         return Instantiate(rEditorPrefab);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
+    public JavaEditor JavaEditor()
+    {
+        return Instantiate(javaEditorPrefab);
     }
 
     /// <summary>
@@ -351,16 +370,30 @@ public class Instantiator : MonoBehaviour
         return ob;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
     public BrowserWindowCube BrowserWindowCube()
     {
         return Instantiate(browserWindowCubePrefab);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
     public PlaygroundWindowCube PlaygroundWindowCube()
     {
         return Instantiate(playgroundWindowCubePrefab);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="senderName"></param>
+    /// <param name="browser"></param>
+    /// <returns></returns>
     public BrowserSender SenderObject(string senderName, Browser browser)
     {
         BrowserSender newSender = Instantiate(
@@ -370,8 +403,26 @@ public class Instantiator : MonoBehaviour
         return newSender;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
     public ClassWindowCube ClassWindowCube()
     {
         return Instantiate(classWindowCubePrefab);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="className"></param>
+    /// <param name="packageName"></param>
+    /// <returns></returns>
+    public PharoClassCodeCube PharoClassCodeCube(string className, string packageName)
+    {
+        PharoClassCodeCube classCodeCube = Instantiate(pharoClassCodeCubePrefab);
+        classCodeCube.className = className;
+        classCodeCube.packageName = packageName;
+        return classCodeCube;
     }
 }
