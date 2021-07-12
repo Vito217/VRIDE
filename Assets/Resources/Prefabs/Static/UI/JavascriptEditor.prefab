@@ -234,8 +234,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: REditor, Assembly-CSharp
+      - m_Target: {fileID: 5643977694741393565}
+        m_TargetAssemblyTypeName: JavascriptEditor, Assembly-CSharp
         m_MethodName: OnFileChange
         m_Mode: 1
         m_Arguments:
@@ -281,8 +281,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: REditor, Assembly-CSharp
+        - m_Target: {fileID: 5643977694741393565}
+          m_TargetAssemblyTypeName: JavascriptEditor, Assembly-CSharp
           m_MethodName: OnSelect
           m_Mode: 0
           m_Arguments:
@@ -297,8 +297,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: REditor, Assembly-CSharp
+        - m_Target: {fileID: 5643977694741393565}
+          m_TargetAssemblyTypeName: JavascriptEditor, Assembly-CSharp
           m_MethodName: OnDeselect
           m_Mode: 0
           m_Arguments:
@@ -459,9 +459,9 @@ GameObject:
   - component: {fileID: 8734383557425136837}
   - component: {fileID: 4203479551129659467}
   - component: {fileID: 557992795610081559}
-  - component: {fileID: 3618059345018414886}
+  - component: {fileID: 5643977694741393565}
   m_Layer: 0
-  m_Name: JavaEditor
+  m_Name: JavascriptEditor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -531,7 +531,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &8797576821972471117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -605,7 +605,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &3618059345018414886
+--- !u!114 &5643977694741393565
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -614,7 +614,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 876944620325929771}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd6e3d17247650940ae0c7536d1b28a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 58c7fb6d99f03fe47969e71a4e363cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 8320477055588778828}
@@ -623,11 +623,12 @@ MonoBehaviour:
   keyboardTarget: {fileID: 5567259039884519919}
   lineCounter: {fileID: 4522175483006108970}
   freezeRotation: 1
-  loadingWheels: []
+  loadingWheels:
+  - {fileID: 8301894938099840451}
   fullpath: 
   saveButton: {fileID: 3264666192125929742}
   compileButton: {fileID: 2834392441990617661}
-  javaCode: {fileID: 5567259039884519919}
+  jsCode: {fileID: 5567259039884519919}
   filename: {fileID: 3392521181580885716}
   outputScrollBar: {fileID: 6412726171522078937}
 --- !u!1 &1835285076221854847
@@ -751,7 +752,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3618059345018414886}
+      - m_Target: {fileID: 5643977694741393565}
         m_TargetAssemblyTypeName: InitializeBehaviour, Assembly-CSharp
         m_MethodName: HorizontalContract
         m_Mode: 1
@@ -1018,7 +1019,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3618059345018414886}
+      - m_Target: {fileID: 5643977694741393565}
         m_TargetAssemblyTypeName: InitializeBehaviour, Assembly-CSharp
         m_MethodName: VerticalContract
         m_Mode: 1
@@ -1285,8 +1286,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3618059345018414886}
-        m_TargetAssemblyTypeName: JavaEditor, Assembly-CSharp
+      - m_Target: {fileID: 5643977694741393565}
+        m_TargetAssemblyTypeName: JavascriptEditor, Assembly-CSharp
         m_MethodName: onClose
         m_Mode: 1
         m_Arguments:
@@ -1595,7 +1596,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3618059345018414886}
+      - m_Target: {fileID: 5643977694741393565}
         m_TargetAssemblyTypeName: InitializeBehaviour, Assembly-CSharp
         m_MethodName: DecreaseScale
         m_Mode: 1
@@ -2043,7 +2044,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3618059345018414886}
+      - m_Target: {fileID: 5643977694741393565}
         m_TargetAssemblyTypeName: InitializeBehaviour, Assembly-CSharp
         m_MethodName: VerticalExpand
         m_Mode: 1
@@ -2204,7 +2205,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3582859766689247649
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2220,10 +2221,10 @@ RectTransform:
   m_Father: {fileID: 1524867361190500201}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -75}
-  m_SizeDelta: {x: 100, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4986925763215823326
 CanvasRenderer:
@@ -2307,8 +2308,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: REditor, Assembly-CSharp
+      - m_Target: {fileID: 5643977694741393565}
+        m_TargetAssemblyTypeName: JavascriptEditor, Assembly-CSharp
         m_MethodName: Run
         m_Mode: 1
         m_Arguments:
@@ -2933,7 +2934,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 3618059345018414886}
+        - m_Target: {fileID: 5643977694741393565}
           m_TargetAssemblyTypeName: InitializeBehaviour, Assembly-CSharp
           m_MethodName: OnDrag
           m_Mode: 0
@@ -2949,7 +2950,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 3618059345018414886}
+        - m_Target: {fileID: 5643977694741393565}
           m_TargetAssemblyTypeName: InitializeBehaviour, Assembly-CSharp
           m_MethodName: OnEndDrag
           m_Mode: 0
@@ -3791,7 +3792,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3618059345018414886}
+      - m_Target: {fileID: 5643977694741393565}
         m_TargetAssemblyTypeName: InitializeBehaviour, Assembly-CSharp
         m_MethodName: IncreaseScale
         m_Mode: 1
@@ -3924,7 +3925,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3618059345018414886}
+      - m_Target: {fileID: 5643977694741393565}
         m_TargetAssemblyTypeName: InitializeBehaviour, Assembly-CSharp
         m_MethodName: HorizontalExpand
         m_Mode: 1

@@ -28,6 +28,7 @@ public class Instantiator : MonoBehaviour
     public PythonEditor pythonEditorPrefab;
     public JavaEditor javaEditorPrefab;
     public REditor rEditorPrefab;
+    public JavascriptEditor javascriptEditorPrefab;
     public DesktopView desktopViewPrefab;
     public DesktopWindowObject desktopWindowObjectPrefab;
     public DesktopWindowsExplorer desktopWindowsExplorerPrefab;
@@ -269,9 +270,9 @@ public class Instantiator : MonoBehaviour
     /// 
     /// </summary>
     /// <returns></returns>
-    public JavaEditor JavaEditor()
+    public JavascriptEditor JavascriptEditor()
     {
-        return Instantiate(javaEditorPrefab);
+        return Instantiate(javascriptEditorPrefab);
     }
 
     /// <summary>

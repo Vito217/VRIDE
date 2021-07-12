@@ -90,6 +90,10 @@ public class FileExplorer : InitializeBehaviour
             string extension = "";
             if (fileExtension.value == 0) //Python
                 extension = ".py";
+            else if (fileExtension.value == 1) //Javaascript
+                extension = ".js";
+
+            /**
             else if (fileExtension.value == 1) //R
                 extension = ".R";
             else if (fileExtension.value == 2) //Java
@@ -102,6 +106,7 @@ public class FileExplorer : InitializeBehaviour
                 extension = ".c";
             else if (fileExtension.value == 6) //c++
                 extension = ".cpp";
+            **/
 
             string filePath = Path.Combine(lastSelected.fullPath, filename.text + extension);
             using FileStream fs = File.Create(filePath);
@@ -144,6 +149,12 @@ public class FileExplorer : InitializeBehaviour
             {
                 editor = editorObject.GetComponent<PythonEditor>();
             }
+            else if (lastSelected.fullPath.Contains(".js"))
+            {
+                editor = editorObject.GetComponent<JavascriptEditor>();
+            }
+
+            /**
             else if (lastSelected.fullPath.Contains(".R"))
             {
                 editor = editorObject.GetComponent<REditor>();
@@ -152,6 +163,7 @@ public class FileExplorer : InitializeBehaviour
             {
                 editor = editorObject.GetComponent<JavaEditor>();
             }
+            **/
         }
         else
         {
@@ -161,6 +173,14 @@ public class FileExplorer : InitializeBehaviour
                 editor.GetComponent<PythonEditor>().fullpath = lastSelected.fullPath;
                 editor.GetComponent<PythonEditor>().pythonCode.text = File.ReadAllText(editor.GetComponent<PythonEditor>().fullpath);
             }
+            else if (lastSelected.fullPath.Contains(".js"))
+            {
+                editor = Instantiator.Instance.JavascriptEditor();
+                editor.GetComponent<JavascriptEditor>().fullpath = lastSelected.fullPath;
+                editor.GetComponent<JavascriptEditor>().jsCode.text = File.ReadAllText(editor.GetComponent<JavascriptEditor>().fullpath);
+            }
+
+            /**
             else if (lastSelected.fullPath.Contains(".R"))
             {
                 editor = Instantiator.Instance.REditor();
@@ -173,6 +193,7 @@ public class FileExplorer : InitializeBehaviour
                 editor.GetComponent<JavaEditor>().fullpath = lastSelected.fullPath;
                 editor.GetComponent<JavaEditor>().javaCode.text = File.ReadAllText(editor.GetComponent<JavaEditor>().fullpath);
             }
+            **/
         }
 
         float width = GetComponent<RectTransform>().sizeDelta.x * transform.Find("Panel").GetComponent<RectTransform>().localScale.x;

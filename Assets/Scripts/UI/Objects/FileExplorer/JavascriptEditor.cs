@@ -20,8 +20,6 @@ public class JavascriptEditor : InitializeBehaviour
     public TextMeshProUGUI filename;
     public Scrollbar outputScrollBar;
 
-    public IJavascript engine;
-
     Dictionary<string, Color> colorDict = new Dictionary<string, Color>()
     {
         { "<-", Color.green },
@@ -85,15 +83,19 @@ public class JavascriptEditor : InitializeBehaviour
 
         try
         {
+            string result = "";
+
             await Task.Run(() =>
             {
-                string result = engine.Execute(jsCode.text);
-                logText.text = result;
+                result = IJavascript.Execute(jsCode.text);
+                
             });
+
+            logText.text = result;
         }
         catch (Exception e)
         {
-            logText.text = e.Message;
+            logText.text = e.Message + "\n" + e.StackTrace;
         }
         finally
         {
