@@ -66,4 +66,11 @@ public class PharoScatterPlot : MonoBehaviour
             cube.LockInteraction();
         }
     }
+
+    public void Clean()
+    {
+        foreach (Transform t in transform)
+            if (t.name != "Base Objects")
+                Destroy(t.gameObject);
+    }
 }

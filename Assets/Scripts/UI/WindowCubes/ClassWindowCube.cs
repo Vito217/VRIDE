@@ -61,6 +61,7 @@ public class ClassWindowCube : WindowCube
         inspectObjects = new List<PharoCodeCube>();
         incomeClassesObjects = new List<ClassWindowCube>();
         outgoingClassesObjects = new List<ClassWindowCube>();
+        GenerateScatterPlot();
         UpdateData();
 
         if (!PharoScatterPlot.classes.Contains(className))
@@ -350,12 +351,16 @@ public class ClassWindowCube : WindowCube
             plot = Instantiate(scatterPlotPrefab, transform.Find("Cube (5)/FaceChildren"));
             plot.transform.localScale = new Vector3(.8f, .8f, 800f);
             plot.transform.localPosition = new Vector3(-.4f, -.4f, -450f);
-            plot.GenerateCubes(className);
         }
         else
         {
-            Destroy(plot.gameObject);
+            //Destroy(plot.gameObject);
+            plot.Clean();
         }
+
+        plot.GenerateCubes(className);
+
+        //Destroy(transform.Find("CodeCubeMenu2(Clone)").gameObject);
     }
 
     private void ActivateLoadingWheels()

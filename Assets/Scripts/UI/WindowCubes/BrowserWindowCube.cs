@@ -46,4 +46,25 @@ public class BrowserWindowCube : Browser
                             "Number of Class. Vars: " + classVars + "\n";
         }
     }
+
+    public new void LoadCodeCube()
+    {
+        PharoClassCodeCube classCodeCube = Instantiate(pharoClassCodeCubePrefab);
+        classCodeCube.className = class_list.last_selected.name;
+        classCodeCube.packageName = package_list.last_selected.name;
+        classCodeCube.transform.position = transform.TransformPoint(1f, 0f, -1f);
+        classCodeCube.transform.forward = transform.forward;
+    }
+
+    public new void LoadClassWindowCube()
+    {
+        DeactivateTemporarily();
+        ClassWindowCube classCodeCube = Instantiate(pharoClassWindowCubePrefab);
+        classCodeCube.className = class_list.last_selected.name;
+        classCodeCube.sourceCode.text = field.text;
+        classCodeCube.UpdateData();
+        classCodeCube.transform.position = transform.TransformPoint(1f, 0f, -1f);
+        classCodeCube.transform.forward = transform.forward;
+        Reactivate();
+    }
 }
