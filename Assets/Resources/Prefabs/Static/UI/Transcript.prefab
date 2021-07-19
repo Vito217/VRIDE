@@ -296,7 +296,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 533, y: 300}
+  m_SizeDelta: {x: 600, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2202359507917057684
 MonoBehaviour:
@@ -315,9 +315,8 @@ MonoBehaviour:
   field: {fileID: 5517324446377372436}
   keyboardTarget: {fileID: 0}
   lineCounter: {fileID: 0}
-  loadingWheel: {fileID: 0}
-  keyboardsGameObject: {fileID: 0}
   freezeRotation: 1
+  loadingWheels: []
 --- !u!223 &6877927472131900574
 Canvas:
   m_ObjectHideFlags: 0
@@ -462,7 +461,7 @@ RectTransform:
   m_GameObject: {fileID: 903777686569549383}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5563143028087264128}
   - {fileID: 5024933862735060497}
@@ -2445,6 +2444,11 @@ PrefabInstance:
     - target: {fileID: 2089797138330010477, guid: 49284f16fccc7ef49bc9c625b19f6c36,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2089797138330010477, guid: 49284f16fccc7ef49bc9c625b19f6c36,
+        type: 3}
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2693525693033378811, guid: 49284f16fccc7ef49bc9c625b19f6c36,

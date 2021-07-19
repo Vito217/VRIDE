@@ -95,42 +95,7 @@ public class Playground : InitializeBehaviour
             }
             else if (!string.IsNullOrWhiteSpace(selectedCode))
             {
-                float width = GetComponent<RectTransform>().sizeDelta.x * 
-                    transform.Find("Panel").GetComponent<RectTransform>().localScale.x;
-
-                PharoClassCodeCube cube = Instantiate(codeCubePrefab);
-                cube.transform.position = transform.TransformPoint(width, 0f, 0f);
-                cube.transform.forward = transform.forward;
-
-                string selection = getSelectedCode(field.text, false);
-                string res = await Pharo.Inspect(selection);
-
-                logText.text = res;
-
-                res = res.Replace("an OrderedCollection('", "");
-                res = res.Replace("')", "");
-
-                string[] vars = res.Split(new string[] { "' '" }, StringSplitOptions.None);
-                foreach (string tuple in vars)
-                {
-                    string[] pair = tuple.Replace("'", "").Split('=');
-                    string type = pair[1].Replace("a ", "");
-                    string obj = pair[0];
-
-                    if (obj == "self")
-                    {
-                        string code = "RPackageOrganizer packageOrganizer packageOfClassNamed: '" + type + "' .";
-                        string resPack = await Pharo.Execute(code);
-                        string packageName = Regex.Replace(resPack, @"a RPackage\(([a-zA-Z0-9]+)\)", "$1");
-
-                        cube.className = type;
-                        cube.packageName = packageName;
-                    }
-                    else
-                    {
-                        cube.instVarsTypes.Add(type);
-                    }
-                }       
+                GenerateCodeCube();
             }
         }
         catch (Exception e)
@@ -370,5 +335,51 @@ public class Playground : InitializeBehaviour
     void HighlightCode()
     {
 
+    }
+
+    async void GenerateCodeCube()
+    {
+        PharoClassCodeCube cube = InstantiateCube();
+        string selection = getSelectedCode(field.text, false);
+        string res = await Pharo.Inspect(selection);
+
+        logText.text = res;
+
+        res = res.Replace("an OrderedCollection('", "");
+        res = res.Replace("')", "");
+
+        string[] vars = res.Split(new string[] { "' '" }, StringSplitOptions.None);
+        foreach (string tuple in vars)
+        {
+            string[] pair = tuple.Replace("'", "").Split('=');
+            string type = pair[1].Replace("a ", "");
+            string obj = pair[0];
+
+            if (obj == "self")
+            {
+                string code = "RPackageOrganizer packageOrganizer packageOfClassNamed: '" + type + "' .";
+                string resPack = await Pharo.Execute(code);
+                string packageName = Regex.Replace(resPack, @"a RPackage\(([a-zA-Z0-9]+)\)", "$1");
+
+                cube.className = type;
+                cube.packageName = packageName;
+            }
+            else
+            {
+                cube.instVarsTypes.Add(type);
+            }
+        }
+    }
+
+    public virtual PharoClassCodeCube InstantiateCube()
+    {
+        float width = GetComponent<RectTransform>().sizeDelta.x *
+                    transform.Find("Panel").GetComponent<RectTransform>().localScale.x;
+
+        PharoClassCodeCube cube = Instantiate(codeCubePrefab);
+        cube.transform.position = transform.TransformPoint(width, 0f, 0f);
+        cube.transform.forward = transform.forward;
+
+        return cube;
     }
 }

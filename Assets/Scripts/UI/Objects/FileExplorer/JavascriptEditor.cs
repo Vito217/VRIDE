@@ -22,8 +22,33 @@ public class JavascriptEditor : InitializeBehaviour
 
     Dictionary<string, Color> colorDict = new Dictionary<string, Color>()
     {
-        { "<-", Color.green },
-        { "print", Color.green }
+        { "break", Color.magenta },
+        { "case", Color.magenta } ,
+        { "catch", Color.magenta} ,
+        { "continue", Color.magenta},
+        { "debugger", Color.magenta},
+        { "default", Color.magenta},
+        { "delete", Color.magenta},
+        { "do",Color.magenta } ,
+        { "else",  Color.magenta},
+        { "finally",Color.magenta },
+        { "for", Color.magenta},
+        { "function" , Color.magenta},
+        { "if", Color.magenta},
+        { "in",Color.magenta },
+        { "instanceof" , Color.magenta},
+        { "new", Color.magenta},
+        { "return", Color.magenta},
+        { "switch" , Color.magenta},
+        { "this" , Color.magenta},
+        { "throw" , Color.magenta},
+        { "try" , Color.magenta},
+        { "typeof" , Color.magenta},
+        { "var" , Color.magenta},
+        { "void", Color.magenta},
+        { "while", Color.magenta},
+        { "and", Color.magenta},
+        { "with" , Color.magenta}
     };
 
     public override IEnumerator innerStart()

@@ -579,7 +579,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1493,7 +1493,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7825538734447538305
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1509,10 +1509,10 @@ RectTransform:
   m_Father: {fileID: 7450160830204829913}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 361, y: -120.333336}
+  m_SizeDelta: {x: 361, y: 120.333336}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &2818295236404415074
 CanvasRenderer:
@@ -1596,7 +1596,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8947788703033765450}
         m_TargetAssemblyTypeName: Playground, Assembly-CSharp
         m_MethodName: Inspect
         m_Mode: 1
@@ -2697,7 +2697,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8947788703033765450}
         m_TargetAssemblyTypeName: Playground, Assembly-CSharp
         m_MethodName: PharoDo
         m_Mode: 1
@@ -3765,8 +3765,15 @@ MonoBehaviour:
   keyboardTarget: {fileID: 5123573550139232984}
   lineCounter: {fileID: 827000592675701620}
   freezeRotation: 0
-  loadingWheels: []
-  codeCubePrefab: {fileID: 0}
+  loadingWheels:
+  - {fileID: 344152797566447684}
+  - {fileID: 8433457910611720007}
+  - {fileID: 4864773597692323512}
+  - {fileID: 2331904214549689930}
+  - {fileID: 8158657527528815512}
+  - {fileID: 1909295088220853846}
+  codeCubePrefab: {fileID: 5573314057497506692, guid: abb334ab8c7e48c47913669eeab92697,
+    type: 3}
   metrics: {fileID: 3920583410558807829}
 --- !u!1 &7804756461454528152
 GameObject:
@@ -4059,7 +4066,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8947788703033765450}
         m_TargetAssemblyTypeName: Playground, Assembly-CSharp
         m_MethodName: PharoPrint
         m_Mode: 1

@@ -28,4 +28,13 @@ public class PlaygroundWindowCube : Playground
     {
         metrics.text = "Number of lines of code: " + field.text.Count(c => c == '\n');
     }
+
+    public override PharoClassCodeCube InstantiateCube()
+    {
+        PharoClassCodeCube cube = Instantiate(codeCubePrefab);
+        cube.transform.position = transform.TransformPoint(1f, 0f, -1f);
+        cube.transform.forward = transform.forward;
+
+        return cube;
+    }
 }
