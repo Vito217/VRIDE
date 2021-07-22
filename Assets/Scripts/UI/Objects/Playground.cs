@@ -156,14 +156,7 @@ public class Playground : InitializeBehaviour
             {
                 if (insp == null)
                 {
-                    insp = Instantiator.Instance.Inspector();
-
-                    float width = GetComponent<RectTransform>().sizeDelta.x * transform.Find("Panel").GetComponent<RectTransform>().localScale.x;
-                    insp.transform.Find("Panel").GetComponent<RectTransform>().localScale = 
-                        transform.Find("Panel").GetComponent<RectTransform>().localScale;
-                    insp.GetComponent<RectTransform>().sizeDelta = GetComponent<RectTransform>().sizeDelta;
-                    insp.transform.position = transform.TransformPoint(width, 0f, 0f);
-                    insp.transform.forward = transform.forward;
+                    insp = GenerateInspector();
 
                     SaveAndLoadModule.inspectors.Add(insp);
                     InteractionLogger.Count("Inspector", insp.GetInstanceID().ToString());
@@ -381,5 +374,19 @@ public class Playground : InitializeBehaviour
         cube.transform.forward = transform.forward;
 
         return cube;
+    }
+
+    public virtual Inspector GenerateInspector()
+    {
+        Inspector insp = Instantiator.Instance.Inspector();
+
+        float width = GetComponent<RectTransform>().sizeDelta.x * transform.Find("Panel").GetComponent<RectTransform>().localScale.x;
+        insp.transform.Find("Panel").GetComponent<RectTransform>().localScale =
+            transform.Find("Panel").GetComponent<RectTransform>().localScale;
+        insp.GetComponent<RectTransform>().sizeDelta = GetComponent<RectTransform>().sizeDelta;
+        insp.transform.position = transform.TransformPoint(width, 0f, 0f);
+        insp.transform.forward = transform.forward;
+
+        return insp;
     }
 }

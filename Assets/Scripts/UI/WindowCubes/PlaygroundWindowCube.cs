@@ -37,4 +37,13 @@ public class PlaygroundWindowCube : Playground
 
         return cube;
     }
+
+    public override Inspector GenerateInspector()
+    {
+        Inspector insp = Instantiator.Instance.Inspector();
+        insp.transform.position = transform.TransformPoint(1f, 0f, -1f);
+        insp.transform.forward = transform.forward;
+
+        return insp;
+    }
 }
