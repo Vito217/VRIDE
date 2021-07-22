@@ -1,5 +1,9 @@
 # VRIDE's Channel Log
 
+## V0.32.0 (19/07/2021)
+* Added new Javascript compiler: IronJS. Available in the File Explorer
+* Fixed some bugs.
+
 ## V0.31.0 (03/07/2021)
 * Added new type of code cube. Now it contains the source code, incomnig classes and outgoing classes.
 
