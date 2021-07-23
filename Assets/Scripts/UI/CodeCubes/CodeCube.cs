@@ -129,5 +129,11 @@ public class CodeCube : MonoBehaviour
         isDragged = false;
         transform.SetParent(null);
         playerInputs = null;
+
+        foreach (Canvas c in GetComponentsInChildren<Canvas>())
+        {
+            c.enabled = false;
+            c.enabled = true;
+        }
     }
 }
