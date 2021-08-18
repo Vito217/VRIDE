@@ -2,11 +2,14 @@
 using UnityEngine;
 using System.Text.RegularExpressions;
 using UnityEngine.XR.Interaction.Toolkit;
+using System.Collections;
+using System.IO;
 
 public class VRIDEController : MonoBehaviour
 {
     private VRIDEMenu menu;
 
+    public Transform cameraTransform;
     public GameObject leftStick, rightStick;
     public GameObject leftHand, rightHand;
     public Transform leftTransform, rightTransform;
@@ -17,6 +20,8 @@ public class VRIDEController : MonoBehaviour
     void Start()
     {
         GetComponent<XRRig>().cameraYOffset = 1.5f;
+
+        StartCoroutine(PositionLogCorountine());
     }
 
     void Update()
@@ -153,6 +158,27 @@ public class VRIDEController : MonoBehaviour
             Vector3 dir = hand.forward;
             if (!isForward) dir *= -1f;
             window.transform.localPosition = window.transform.localPosition + dir  * .01f;
+        }
+    }
+
+    IEnumerator PositionLogCorountine()
+    {
+        int time = 0;
+        string logFile = Path.Combine(Application.persistentDataPath, "positionData.csv");
+
+        if (File.Exists(logFile))
+            File.Delete(logFile);
+        File.AppendAllText(logFile, "X,Y,Z,Time\n");
+
+        while (true)
+        {
+            File.AppendAllText(logFile, 
+                cameraTransform.position.x.ToString().Replace(",", ".") + "," + 
+                cameraTransform.position.y.ToString().Replace(",", ".") + "," + 
+                cameraTransform.position.z.ToString().Replace(",", ".") + "," + time + "\n");
+
+            time++;
+            yield return new WaitForSeconds(1);
         }
     }
 }

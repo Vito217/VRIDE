@@ -1,4 +1,5 @@
 using System.Collections;
+using System.IO;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -19,6 +20,8 @@ public class CodeCube : MonoBehaviour
             GameObject.Find("XR Interaction Manager").GetComponent<XRInteractionManager>();
 
         InnerStart();
+
+        StartCoroutine(PositionLogCorountine());
     }
 
     void Update()
@@ -134,6 +137,27 @@ public class CodeCube : MonoBehaviour
         {
             c.enabled = false;
             c.enabled = true;
+        }
+    }
+
+    IEnumerator PositionLogCorountine()
+    {
+        int time = 0;
+        string logFile = Path.Combine(Application.persistentDataPath, gameObject.GetInstanceID() + ".csv");
+
+        if (File.Exists(logFile))
+            File.Delete(logFile);
+        File.AppendAllText(logFile, "X,Y,Z,Time\n");
+
+        while (true)
+        {
+            File.AppendAllText(logFile,
+                transform.position.x.ToString().Replace(",", ".") + "," +
+                transform.position.y.ToString().Replace(",", ".") + "," +
+                transform.position.z.ToString().Replace(",", ".") + "," + time + "\n");
+
+            time++;
+            yield return new WaitForSeconds(1);
         }
     }
 }

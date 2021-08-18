@@ -1565,7 +1565,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: <b>[VR]</b>IDE<size=16>v0.32.0</size>
+  m_Text: <b>[VR]</b>IDE<size=16>v0.32.1</size>
 --- !u!222 &1484179218
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1579,6 +1579,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7123990595358767916, guid: a896133c6ccde40489a76cfb52385a8a,
     type: 3}
   m_PrefabInstance: {fileID: 7123990595909278969}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1980028855 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7236977681792975146, guid: deaf761c35b3def408bffd10dd23a04d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7236977681675841135}
   m_PrefabAsset: {fileID: 0}
 --- !u!20 &2030350148 stripped
 Camera:
@@ -2010,6 +2016,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7236977680674023401, guid: deaf761c35b3def408bffd10dd23a04d,
+        type: 3}
+      propertyPath: cameraTransform
+      value: 
+      objectReference: {fileID: 1980028855}
     - target: {fileID: 7236977680674023403, guid: deaf761c35b3def408bffd10dd23a04d,
         type: 3}
       propertyPath: m_RootOrder
