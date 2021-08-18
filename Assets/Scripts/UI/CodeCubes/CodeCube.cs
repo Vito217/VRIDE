@@ -21,7 +21,7 @@ public class CodeCube : MonoBehaviour
 
         InnerStart();
 
-        StartCoroutine(PositionLogCorountine());
+        //StartCoroutine(PositionLogCorountine());
     }
 
     void Update()
@@ -140,6 +140,7 @@ public class CodeCube : MonoBehaviour
         }
     }
 
+    /**
     IEnumerator PositionLogCorountine()
     {
         int time = 0;
@@ -160,4 +161,5 @@ public class CodeCube : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
     }
+    **/
 }

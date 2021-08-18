@@ -21,7 +21,7 @@ public class VRIDEController : MonoBehaviour
     {
         GetComponent<XRRig>().cameraYOffset = 1.5f;
 
-        StartCoroutine(PositionLogCorountine());
+        //StartCoroutine(PositionLogCorountine());
     }
 
     void Update()
@@ -161,6 +161,7 @@ public class VRIDEController : MonoBehaviour
         }
     }
 
+    /**
     IEnumerator PositionLogCorountine()
     {
         int time = 0;
@@ -181,4 +182,5 @@ public class VRIDEController : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
     }
+    **/
 }
