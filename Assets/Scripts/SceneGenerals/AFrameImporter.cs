@@ -75,6 +75,7 @@ public class AFrameImporter : MonoBehaviour
 
         // Positioning
         aFrameCanvas.AddComponent<BoxCollider>();
+        aFrameCanvas.GetComponent<BoxCollider>().isTrigger = true;
         aFrameCanvas.GetComponent<InitializeBehaviour>().Initialize();
     }
 

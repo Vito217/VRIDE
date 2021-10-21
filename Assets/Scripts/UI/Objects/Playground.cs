@@ -95,7 +95,8 @@ public class Playground : InitializeBehaviour
             }
             else if (!string.IsNullOrWhiteSpace(selectedCode))
             {
-                GenerateCodeCube();
+                //GenerateCodeCube();
+                _ = PharoInspect();
             }
         }
         catch (Exception e)
