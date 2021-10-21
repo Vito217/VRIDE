@@ -1,5 +1,8 @@
 # VRIDE's Channel Log
 
+## V0.32.1 (26/09/2021)
+* Fixed class template and method template.
+
 ## V0.32.0 (19/07/2021)
 * Added new Javascript compiler: IronJS. Available in the File Explorer
 * Fixed some bugs.
