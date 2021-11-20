@@ -57,7 +57,7 @@ public class VRIDEMenu : InitializeBehaviour
         SaveAndLoadModule.browsers.Add(browser);
         InteractionLogger.Count("Browser", browser.GetInstanceID().ToString());
 
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     public void GeneratePlayground()
@@ -67,7 +67,7 @@ public class VRIDEMenu : InitializeBehaviour
         SaveAndLoadModule.playgrounds.Add(playground);
         InteractionLogger.Count("Playground", playground.GetInstanceID().ToString());
 
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     public void GenerateTranscript()
@@ -77,7 +77,7 @@ public class VRIDEMenu : InitializeBehaviour
         SaveAndLoadModule.transcripts.Add(transcript);
         InteractionLogger.Count("Transcript", transcript.GetInstanceID().ToString());
 
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     public void GenerateRoassalExamples()
@@ -87,7 +87,7 @@ public class VRIDEMenu : InitializeBehaviour
 
         InteractionLogger.Count("RoassalExamples", re.GetInstanceID().ToString());
 
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     public void GenerateWebcam()
@@ -97,7 +97,7 @@ public class VRIDEMenu : InitializeBehaviour
 
         InteractionLogger.Count("Webcam", wc.GetInstanceID().ToString());
 
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     public void GenerateBoard()
@@ -107,7 +107,7 @@ public class VRIDEMenu : InitializeBehaviour
 
         InteractionLogger.Count("Board", board.GetInstanceID().ToString());
 
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     public void GenerateFileExplorer()
@@ -117,7 +117,7 @@ public class VRIDEMenu : InitializeBehaviour
 
         InteractionLogger.Count("FileExplorer", explorer.GetInstanceID().ToString());
 
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     public void GenerateDesktopWindowsExplorer()
@@ -127,7 +127,7 @@ public class VRIDEMenu : InitializeBehaviour
 
         InteractionLogger.Count("DesktopWindowsExplorer", dv.GetInstanceID().ToString());
 
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     public void GenerateVirtualKeyBoard()
@@ -137,7 +137,7 @@ public class VRIDEMenu : InitializeBehaviour
 
         InteractionLogger.Count("VirtualKeyboard", vk.GetInstanceID().ToString());
 
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
     public void GenerateVirtualKeyBoard2()
     {
@@ -146,7 +146,7 @@ public class VRIDEMenu : InitializeBehaviour
 
         InteractionLogger.Count("VirtualKeyboard2", vk.GetInstanceID().ToString());
 
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     public void GenerateBrowserWindowCube()
@@ -154,7 +154,7 @@ public class VRIDEMenu : InitializeBehaviour
         BrowserWindowCube bwc = Instantiator.Instance.BrowserWindowCube();
         bwc.Initialize();
 
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     public void GeneratePlaygroundWindowCube()
@@ -162,7 +162,7 @@ public class VRIDEMenu : InitializeBehaviour
         PlaygroundWindowCube bwc = Instantiator.Instance.PlaygroundWindowCube();
         bwc.Initialize();
 
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     public void Exit()

@@ -24,16 +24,16 @@ public class Playground : InitializeBehaviour
             string selectedCode = getSelectedCode(field.text, false);
 
             // Getting Transcripts
-            string transcriptPattern =
-                @"(VRIDE[\n\s\t]+log:[\n\s\t]+|Transcript[\n\s\t]+show:[\n\s\t]+)(.*)(\.|\Z)";
-
-            foreach (Match m in Regex.Matches(selectedCode, transcriptPattern))
-            {
-                string response = await Pharo.Print(m.Groups[2].Value);
-                response = response.Replace("'", "").Replace("\"", "");
-                SaveAndLoadModule.transcriptContents += response + "\n";
-            }
-            selectedCode = Regex.Replace(selectedCode, transcriptPattern, "");
+            //string transcriptPattern =
+            //    @"(VRIDE[\n\s\t]+log:[\n\s\t]+|Transcript[\n\s\t]+show:[\n\s\t]+)(.*)(\.|\Z)";
+            //
+            //foreach (Match m in Regex.Matches(selectedCode, transcriptPattern))
+            //{
+            //   string response = await Pharo.Print(m.Groups[2].Value);
+            //    response = response.Replace("'", "").Replace("\"", "");
+            //    SaveAndLoadModule.transcriptContents += response + "\n";
+            //}
+            //selectedCode = Regex.Replace(selectedCode, transcriptPattern, "");
 
             MatchCollection matches = Regex.Matches(selectedCode,
                 @"([a-zA-Z0-9]+)([\n\s\t]*)(:=)([\n\s\t]*)((?!Example)((RS|RT).*))([\n\s\t]+)(new)([\n\s\t]*)(\.)");
@@ -84,12 +84,15 @@ public class Playground : InitializeBehaviour
                         catch { }
                     }
 
-                    throw new Exception("Couldn't export view.");
+                    throw new Exception("Couldn't export view. Make sure the desired view is compatible with VRIDE.");
                 }
                 else
                 {
                     string res = await Pharo.Print(selectedCode);
-                    logText.text = "<color=#C63737>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>";
+                    string log = "<color=#C63737>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>";
+                    SaveAndLoadModule.transcriptContents += log + "\n";
+                    logText.text = log;
+
                     InteractionLogger.RegisterCodeExecution(selectedCode, res);
                 }
             }
@@ -101,7 +104,9 @@ public class Playground : InitializeBehaviour
         }
         catch (Exception e)
         {
-            logText.text = "<color=#C63737>[Error] " + e.Message + "</color>";
+            string log = "<color=#C63737>[Error] " + e.Message + "</color>";
+            SaveAndLoadModule.transcriptContents += log + "\n";
+            logText.text = log;
         }
         Reactivation:
             Reactivate();
@@ -115,27 +120,32 @@ public class Playground : InitializeBehaviour
         {
             string selection = getSelectedCode(field.text, false);
 
-            foreach (Match m in Regex.Matches(selection,
-                @"VRIDE[\n\s]+log:[\n\s\t]+(.*)(\.|\s*\Z)"))
-            {
-                string response = await Pharo.Print(m.Groups[1].Value);
-                response = response.Replace("'", "").Replace("\"", "");
-                SaveAndLoadModule.transcriptContents += response + "\n";
-            }
-            selection = Regex.Replace(selection,
-                @"VRIDE[\n\s]+log:[\n\s\t]+(.*)(\.|\s*\Z)", "");
+            //foreach (Match m in Regex.Matches(selection,
+            //    @"VRIDE[\n\s]+log:[\n\s\t]+(.*)(\.|\s*\Z)"))
+            //{
+            //    string response = await Pharo.Print(m.Groups[1].Value);
+            //    response = response.Replace("'", "").Replace("\"", "");
+            //    SaveAndLoadModule.transcriptContents += response + "\n";
+            //}
+            //selection = Regex.Replace(selection,
+            //    @"VRIDE[\n\s]+log:[\n\s\t]+(.*)(\.|\s*\Z)", "");
 
             string res = await Pharo.Print(selection);
 
-            logText.text = Regex.Match(res, @"Error|Exception|Notification").Success ?
+            string log = Regex.Match(res, @"Error|Exception|Notification").Success ?
                 "<color=#C63737>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>" :
                 res.Remove(res.LastIndexOf("\n"), 1);
+
+            SaveAndLoadModule.transcriptContents += log + "\n";
+            logText.text = log;
 
             InteractionLogger.RegisterCodeExecution(selection, res);
         }
         catch (Exception e)
         {
-            logText.text = "<color=#C63737>[Error] " + e.Message + "</color>";
+            string log = "<color=#C63737>[Error] " + e.Message + "</color>";
+            SaveAndLoadModule.transcriptContents += log + "\n";
+            logText.text = log;
         }
         Reactivate();
     }
@@ -153,6 +163,7 @@ public class Playground : InitializeBehaviour
         {
             string selection = getSelectedCode(field.text, false);
             string res = await Pharo.Inspect(selection);
+
             if (res.Contains("OrderedCollection"))
             {
                 if (insp == null)
@@ -163,17 +174,23 @@ public class Playground : InitializeBehaviour
                     InteractionLogger.Count("Inspector", insp.GetInstanceID().ToString());
                 }
                 insp.setContent(res);
+
+                SaveAndLoadModule.transcriptContents += res + "\n";
             }
             else
             {
-                logText.text = "<color=#C63737>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>";
+                string log = "<color=#C63737>" + res.Remove(res.LastIndexOf("\n"), 1) + "</color>";
+                SaveAndLoadModule.transcriptContents += log + "\n";
+                logText.text = log;
             }
 
             InteractionLogger.RegisterCodeInspection(selection, res);
         }
         catch (Exception e)
         {
-            logText.text = "<color=#C63737>[Error] " + e.Message + "</color>";
+            string log = "<color=#C63737>[Error] " + e.Message + "</color>";
+            SaveAndLoadModule.transcriptContents += log + "\n";
+            logText.text = log;
         }
         Reactivate();
     }

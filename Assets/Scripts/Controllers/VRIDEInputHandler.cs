@@ -216,7 +216,7 @@ public class VRIDEInputHandler : MonoBehaviour
                         ref LeftAxisRightRelease);
 
                 // LEFT GRIP 
-                device.IsPressed(InputHelpers.Button.GripPressed, out LeftGrip);
+                device.IsPressed(InputHelpers.Button.GripButton, out LeftGrip);
                 if (LeftGrip)
                     UpdateFlag(
                         ref LeftGripReleaseFlag,
@@ -323,7 +323,7 @@ public class VRIDEInputHandler : MonoBehaviour
                         ref RightAxisRightRelease);
 
                 // RIGHT GRIP 
-                device.IsPressed(InputHelpers.Button.GripPressed, out RightGrip);
+                device.IsPressed(InputHelpers.Button.GripButton, out RightGrip);
                 if (RightGrip)
                     UpdateFlag(
                         ref RightGripReleaseFlag,

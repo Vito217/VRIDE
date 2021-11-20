@@ -105,11 +105,15 @@ public class Browser : InitializeBehaviour
                     // Getting or updating package
                     createOrUpdatePackage(packageName);
                     package_list.transform.Find(packageName).gameObject.GetComponent<BrowserPackage>().click();
+
+                    SaveAndLoadModule.transcriptContents += responseString + "\n";
                 }
                 else
                 {
-                    logText.text =
-                        "<color=#C63737>"+responseString.Remove(responseString.LastIndexOf("\n"), 1)+"</color>";
+                    string log = "<color=#C63737>" + responseString.Remove(responseString.LastIndexOf("\n"), 1) + "</color>";
+                    SaveAndLoadModule.transcriptContents += log + "\n";
+                    logText.text = log;
+                        ;
                 }
                 InteractionLogger.RegisterCodeDefinition("class", clean_code, responseString);
             }
@@ -129,18 +133,23 @@ public class Browser : InitializeBehaviour
                 if (responseString.Contains("#"))
                 {
                     class_list.last_selected.click();
+
+                    SaveAndLoadModule.transcriptContents += responseString + "\n";
                 }
                 else
                 {
-                    logText.text =
-                        "<color=#C63737>"+responseString.Remove(responseString.LastIndexOf("\n"), 1)+"</color>";
+                    string log = "<color=#C63737>" + responseString.Remove(responseString.LastIndexOf("\n"), 1) + "</color>";
+                    SaveAndLoadModule.transcriptContents += log + "\n";
+                    logText.text = log;
                 }
                 InteractionLogger.RegisterCodeDefinition("method", clean_code, responseString);
             }
         }
         catch (Exception e)
         {
-            logText.text = "<color=#C63737>[Error] " + e.Message + "</color>";
+            string log = "<color=#C63737>[Error] " + e.Message + "</color>";
+            SaveAndLoadModule.transcriptContents += log + "\n";
+            logText.text = log;
         }
         Reactivate();
     }

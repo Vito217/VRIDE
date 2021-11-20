@@ -281,14 +281,20 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
+  mixedModeIsReliable: 0
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
   - {fileID: 487749726}
   - {fileID: 487749727}
+  RpcMonoBehaviours: []
+  <IsMine>k__BackingField: 0
+  <CreatorActorNr>k__BackingField: 0
+  <AmOwner>k__BackingField: 0
   sceneViewId: 2
   InstantiationId: 0
   isRuntimeInstantiated: 0
+  removedFromLocalViewList: 0
 --- !u!114 &487749726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,6 +307,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pvCache: {fileID: 0}
+  m_Distance: 0
+  m_Angle: 0
+  m_Body: {fileID: 0}
+  m_NetworkPosition: {x: 0, y: 0, z: 0}
+  m_NetworkRotation: {x: 0, y: 0, z: 0, w: 0}
   m_SynchronizeVelocity: 1
   m_SynchronizeAngularVelocity: 1
   m_TeleportEnabled: 1
@@ -317,95 +329,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pvCache: {fileID: 0}
+  m_Distance: 0
+  m_Angle: 0
+  m_Direction: {x: 0, y: 0, z: 0}
+  m_NetworkPosition: {x: 0, y: 0, z: 0}
+  m_StoredPosition: {x: 0, y: 0, z: 0}
+  m_NetworkRotation: {x: 0, y: 0, z: 0, w: 0}
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+  m_firstTake: 0
 --- !u!4 &687607295 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8220382583261044741, guid: 50b0ad0913843dc4f820aae6010fc65f,
     type: 3}
   m_PrefabInstance: {fileID: 7236977680747813650}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &987703962
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7741638953806137600, guid: 64d466cb213ec2244846006fa73a61fd,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7741638953806137601, guid: 64d466cb213ec2244846006fa73a61fd,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7741638953806137601, guid: 64d466cb213ec2244846006fa73a61fd,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7741638953806137601, guid: 64d466cb213ec2244846006fa73a61fd,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7741638953806137601, guid: 64d466cb213ec2244846006fa73a61fd,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7741638953806137601, guid: 64d466cb213ec2244846006fa73a61fd,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7741638953806137601, guid: 64d466cb213ec2244846006fa73a61fd,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7741638953806137601, guid: 64d466cb213ec2244846006fa73a61fd,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7741638953806137601, guid: 64d466cb213ec2244846006fa73a61fd,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7741638953806137601, guid: 64d466cb213ec2244846006fa73a61fd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7741638953806137601, guid: 64d466cb213ec2244846006fa73a61fd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7741638953806137601, guid: 64d466cb213ec2244846006fa73a61fd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7741638953806137603, guid: 64d466cb213ec2244846006fa73a61fd,
-        type: 3}
-      propertyPath: m_Name
-      value: NetworkManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 7741638953806137603, guid: 64d466cb213ec2244846006fa73a61fd,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 64d466cb213ec2244846006fa73a61fd, type: 3}
 --- !u!1 &1032495876
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,12 +867,12 @@ PrefabInstance:
     - target: {fileID: 3859758012346331461, guid: 98088061314bfa54cab46daa4c1bb778,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -80.000015
+      value: -0.000030517578
       objectReference: {fileID: 0}
     - target: {fileID: 3859758012346331461, guid: 98088061314bfa54cab46daa4c1bb778,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 35.740036
+      value: 0.00005340576
       objectReference: {fileID: 0}
     - target: {fileID: 3861600413617885675, guid: 98088061314bfa54cab46daa4c1bb778,
         type: 3}
@@ -1226,12 +1167,12 @@ PrefabInstance:
     - target: {fileID: 8244505701222536138, guid: 98088061314bfa54cab46daa4c1bb778,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.000076293945
+      value: -0.0000076293945
       objectReference: {fileID: 0}
     - target: {fileID: 8244505701222536138, guid: 98088061314bfa54cab46daa4c1bb778,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 35.740036
+      value: 0.00005340576
       objectReference: {fileID: 0}
     - target: {fileID: 8335034754934039435, guid: 98088061314bfa54cab46daa4c1bb778,
         type: 3}
@@ -1457,60 +1398,80 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 212948864}
   m_Colliders: []
   m_InteractionLayerMask:
-    serializedVersion: 2
     m_Bits: 4294967295
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
+    m_CallsDirty: 1
   m_LastHoverExited:
     m_PersistentCalls:
       m_Calls: []
+    m_CallsDirty: 1
   m_HoverEntered:
     m_PersistentCalls:
       m_Calls: []
+    m_CallsDirty: 1
   m_HoverExited:
     m_PersistentCalls:
       m_Calls: []
+    m_CallsDirty: 1
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls: []
+    m_CallsDirty: 1
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
+    m_CallsDirty: 1
   m_Activated:
     m_PersistentCalls:
       m_Calls: []
+    m_CallsDirty: 1
   m_Deactivated:
     m_PersistentCalls:
       m_Calls: []
+    m_CallsDirty: 1
+  m_SelectingInteractor: {fileID: 0}
+  <isHovered>k__BackingField: 0
+  <isSelected>k__BackingField: 0
+  m_RegisteredInteractionManager: {fileID: 0}
   m_OnFirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
+    m_CallsDirty: 1
   m_OnLastHoverExited:
     m_PersistentCalls:
       m_Calls: []
+    m_CallsDirty: 1
   m_OnHoverEntered:
     m_PersistentCalls:
       m_Calls: []
+    m_CallsDirty: 1
   m_OnHoverExited:
     m_PersistentCalls:
       m_Calls: []
+    m_CallsDirty: 1
   m_OnSelectEntered:
     m_PersistentCalls:
       m_Calls: []
+    m_CallsDirty: 1
   m_OnSelectExited:
     m_PersistentCalls:
       m_Calls: []
+    m_CallsDirty: 1
   m_OnSelectCanceled:
     m_PersistentCalls:
       m_Calls: []
+    m_CallsDirty: 1
   m_OnActivate:
     m_PersistentCalls:
       m_Calls: []
+    m_CallsDirty: 1
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
+    m_CallsDirty: 1
   m_AttachTransform: {fileID: 0}
   m_AttachEaseInTime: 0.15
   m_MovementType: 2
@@ -1529,10 +1490,8 @@ MonoBehaviour:
   m_ThrowOnDetach: 1
   m_ThrowSmoothingDuration: 0.25
   m_ThrowSmoothingCurve:
-    serializedVersion: 2
     m_Curve:
-    - serializedVersion: 3
-      time: 1
+    - time: 1
       value: 1
       inSlope: 0
       outSlope: 0
@@ -1548,6 +1507,25 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+  m_InteractorLocalPosition: {x: 0, y: 0, z: 0}
+  m_InteractorLocalRotation: {x: 0, y: 0, z: 0, w: 0}
+  m_TargetWorldPosition: {x: 0, y: 0, z: 0}
+  m_TargetWorldRotation: {x: 0, y: 0, z: 0, w: 0}
+  m_CurrentAttachEaseTime: 0
+  m_CurrentMovementType: 0
+  m_DetachInLateUpdate: 0
+  m_DetachVelocity: {x: 0, y: 0, z: 0}
+  m_DetachAngularVelocity: {x: 0, y: 0, z: 0}
+  m_ThrowSmoothingCurrentFrame: 0
+  m_Rigidbody: {fileID: 0}
+  m_LastPosition: {x: 0, y: 0, z: 0}
+  m_LastRotation: {x: 0, y: 0, z: 0, w: 0}
+  m_WasKinematic: 0
+  m_UsedGravity: 0
+  m_OldDrag: 0
+  m_OldAngularDrag: 0
+  m_OriginalSceneParent: {fileID: 0}
+  photonView: {fileID: 0}
 --- !u!54 &1286358995
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1653,6 +1631,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pvCache: {fileID: 0}
+  m_Distance: 0
+  m_Angle: 0
+  m_Body: {fileID: 0}
+  m_NetworkPosition: {x: 0, y: 0, z: 0}
+  m_NetworkRotation: {x: 0, y: 0, z: 0, w: 0}
   m_SynchronizeVelocity: 1
   m_SynchronizeAngularVelocity: 1
   m_TeleportEnabled: 1
@@ -1673,14 +1657,20 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
+  mixedModeIsReliable: 0
   OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1286359000}
   - {fileID: 1286359002}
+  RpcMonoBehaviours: []
+  <IsMine>k__BackingField: 0
+  <CreatorActorNr>k__BackingField: 0
+  <AmOwner>k__BackingField: 0
   sceneViewId: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
+  removedFromLocalViewList: 0
 --- !u!114 &1286359002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1693,10 +1683,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pvCache: {fileID: 0}
+  m_Distance: 0
+  m_Angle: 0
+  m_Direction: {x: 0, y: 0, z: 0}
+  m_NetworkPosition: {x: 0, y: 0, z: 0}
+  m_StoredPosition: {x: 0, y: 0, z: 0}
+  m_NetworkRotation: {x: 0, y: 0, z: 0, w: 0}
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+  m_firstTake: 0
 --- !u!1 &1821038888
 GameObject:
   m_ObjectHideFlags: 0
@@ -1887,7 +1885,7 @@ Transform:
   m_Children:
   - {fileID: 7236977682795390765}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7236977680892375334
 MonoBehaviour:
@@ -2001,6 +1999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08ac4ff305fbd944901a1ec88783439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraTransform: {fileID: 0}
   leftStick: {fileID: 0}
   rightStick: {fileID: 0}
   leftHand: {fileID: 1147861361}
