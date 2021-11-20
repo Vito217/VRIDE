@@ -3,7 +3,7 @@ A VR IDE made in Unity that supports Pharo and Python programming language.
 
 <i><b>Note:</b> This is still an early WIP, so there could be lot of features missing</i>
 
-<h1><a href="https://github.com/Vito217/VRIDE/releases/tag/v0.32.1">Download [VR]IDE v0.32.1</a></h1>
+<h1><a href="https://github.com/Vito217/VRIDE/releases/tag/v0.32.2">Download [VR]IDE v0.32.2</a></h1>
 <h1><a href="https://github.com/Vito217/VRIDEStreamer/releases/tag/v1.2.0">Download [VR]IDE Streamer App v1.2.0</a></h1>
 
 ![alt text](https://github.com/Vito217/VRIDE/blob/master/Screenshots/2020-10-28.png)
@@ -272,6 +272,6 @@ Finally, put on your VR headset, and try some stuff!
 
 ## Download
 
-<a href="https://github.com/Vito217/VRIDE/releases/tag/v0.32.1">Download [VR]IDE v0.32.1</a>
+<a href="https://github.com/Vito217/VRIDE/releases/tag/v0.32.2">Download [VR]IDE v0.32.2</a>
 <br>
 <a href="https://github.com/Vito217/VRIDEStreamer/releases/tag/v1.2.0">Download [VR]IDE Streamer App v1.2.0</a>

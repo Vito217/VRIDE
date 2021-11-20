@@ -1,5 +1,8 @@
 # VRIDE's Channel Log
 
+## V0.32.2 (21/10/2021)
+* Fixed bad collisions for AFrames.
+
 ## V0.32.1 (26/09/2021)
 * Fixed class template and method template.
 
