@@ -1,5 +1,9 @@
 # VRIDE's Channel Log
 
+## V0.32.3 (19/11/2021)
+* Reorganized some menu elements
+* Now every response goes to VRIDE log
+
 ## V0.32.2 (21/10/2021)
 * Fixed bad collisions for AFrames.
 
